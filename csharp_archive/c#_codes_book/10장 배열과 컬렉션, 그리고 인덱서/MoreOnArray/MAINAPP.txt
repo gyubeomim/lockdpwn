@@ -1,0 +1,11 @@
+80 74 81 90 34 
+34 74 80 81 90 
+Number of dimensions : 1
+Binary Search : 81 is at 3
+Linear Search : 90 is at 4
+Everyone passed ? : False
+Everyone passed ? : True
+Old length of scores : 5
+New length of scores : 10
+61 74 80 81 90 0 0 0 0 0 
+61 74 80 0 0 0 0 0 0 0 

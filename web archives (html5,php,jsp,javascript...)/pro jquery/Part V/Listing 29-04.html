@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="jquery.mobile-1.0.css" type="text/css" />
+    <script type="text/javascript" src="jquery-1.6.4.js"></script>
+    <script type="text/javascript">
+        $(document).bind("pageinit", function() {           
+            $('button, #divButton').bind("tap", function() {
+                $.mobile.changePage("#page2");    
+            })
+        });
+    </script>        
+    <script type="text/javascript" src="jquery.mobile-1.0.js"></script>    
+</head>
+<body>
+    <div id="page1" data-role="page" data-theme="b">
+        <div data-role="header">
+           <h1>Jacqui's Shop</h1>
+        </div>        
+        <div data-role="content">      
+            <button>BUTTON Element</button>
+            <div id="divButton" data-role="button">DIV Element</div>
+        </div>
+    </div>
+    <div id="page2" data-role="page" data-theme="e">
+        <div data-role="header">
+           <h1>Jacqui's Shop</h1>
+        </div>        
+        <div data-role="content">
+            You pressed a button!
+            <a href="#" data-role="button" data-rel="back">OK</a>
+        </div>
+    </div>    
+</body>
+</html>

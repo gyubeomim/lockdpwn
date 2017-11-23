@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="jquery.mobile-1.0.css" type="text/css" />
+    <script type="text/javascript" src="jquery-1.6.4.js"></script>
+    <script type="text/javascript">
+        $(document).bind("pageinit", function() {
+            $('button').bind("tap", function() {
+                if (this.id == "open") {
+                    $('#speed').selectmenu("open")
+                } else {
+                    $('#speed').selectmenu("close")
+                }
+            })
+        })
+    </script>
+    <script type="text/javascript" src="jquery.mobile-1.0.js"></script>
+    <style type="text/css">
+        #buttonContainer {text-align: center}
+    </style>    
+</head>
+<body>
+    <div id="page1" data-role="page" data-theme="b">
+        <div data-role="header">
+           <h1>Jacqui's Shop</h1>
+        </div>
+        <form method="get">
+            
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <button id="open">Open Menu</button>
+                </div>
+                <div class="ui-block-b">
+                    <button id="close">Close Menu</button>
+                </div>                
+            </div>
+            
+            <select id="speed" name="speed" data-native-menu=false>
+                <option data-placeholder=true value="placeholder">Select a Speed</option>
+                <option value="vfast">Very Fast</option>
+                <option value="fast">Fast</option>
+                <option value="normal">Normal</option>
+                <option value="slow">Slow</option>
+            </select>
+
+            <div id="buttonContainer">
+                <input type="submit" data-inline="true" value="Submit"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

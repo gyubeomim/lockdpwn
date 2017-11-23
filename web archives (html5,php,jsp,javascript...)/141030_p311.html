@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Practice </title>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<style type="text/css">
+
+.aqua{background-color:aqua;}
+.red{background-color:red;}
+.green{background-color:green;}
+.yellow{background-color:yellow;}
+</style>
+<script type="text/javascript">
+//!<[CDATA[
+$(function(){
+	$("#p1").addClass("aqua");
+	$("#p2").removeClass("red");
+	$("#p3").toggleClass("green");
+	$("#p4").toggleClass("green");
+	$("#p6").text($("#p5").hasClass("yellow")).css("margin-left",300).css("text-decoration","underline")
+	.css("font-size",100);
+});
+//]]>
+</script>
+</head>
+  
+<body>
+  <p id="p1">Content 1</p>
+  <p id="p2" class="red">Content 2</p>
+  <p id="p3">Content 3</p>
+  <p id="p4" class="green">Content 4</p>
+  <p id="p5" class="yellow">Content 5</p>
+  <p id="p6"></p>
+  
+  
+  
+</body>
+</html>

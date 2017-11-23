@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 객체 조작 및 생성 </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+ $(function(){
+  $("strong").unwrap();
+  $(".ct1").wrap("<div />");
+  $(".ct2").wrapAll("<div />");
+  $("li").wrapInner("<h3 />");
+ });
+//]]>
+</script>
+<style type="text/css">
+   div{background-color:aqua;}
+</style>
+</head>
+<body>
+   <h1 id="tit_1"><strong>객체 조작 및 생성</strong></h1>
+   <p class="ct1">내용1</p>
+   <p class="ct1">내용2</p>
+   <p class="ct2">내용3</p>
+   <p class="ct2">내용4</p>
+   <ul>
+      <li>내용3</li>
+      <li>내용4</li>
+   </ul>
+</body>
+</html>

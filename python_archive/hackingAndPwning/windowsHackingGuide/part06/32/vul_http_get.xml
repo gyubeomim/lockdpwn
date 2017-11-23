@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Peach xmlns="http://peachfuzzer.com/2012/Peach" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://peachfuzzer.com/2012/Peach ../peach.xsd">
+
+  <DataModel name="DataGET">
+    <String value="GET /" mutable="false" token="true"/>
+    <String value="" />
+    <String value=" HTTP/1.1\r\n" mutable="false" token="true"/>
+    <String value="\r\n" mutable="false" token="true"/>
+  </DataModel>
+  
+  <DataModel name="DataResponse">
+    <String value=""/>
+  </DataModel>
+
+  <StateModel name="StateGET" initialState="Initial">
+    <State name="Initial">
+      <Action type="output"><DataModel ref="DataGET"/></Action>
+      <Action type="input" ><DataModel ref="DataResponse"/></Action>
+    </State>
+  </StateModel>
+
+  <Agent name="MyAgent">
+    <Monitor class="WindowsDebugger">
+      <Param name="WinDbgPath" value="C:\Program Files\Windows Kits\8.1\Debuggers\x86" />
+      <Param name="CommandLine" value="C:\vul_HTTP_server.exe"/>
+    </Monitor>
+  </Agent>
+
+  <Test name="TestGET">
+    <Agent ref="MyAgent"/>
+    <StateModel ref="StateGET"/>
+    <Publisher class="TcpClient">
+      <Param name="Host" value="127.0.0.1"/>
+      <Param name="Port" value="80"/>
+    </Publisher>
+	
+	  <Logger class="File">
+      <Param name="Path" value="Logs"/>
+    </Logger>
+  </Test> 
+</Peach>

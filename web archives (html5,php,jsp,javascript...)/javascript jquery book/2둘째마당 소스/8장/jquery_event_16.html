@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 이벤트 </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function(){
+  var num=0; //num에 초깃값 0 지정
+  $("button").one("click",function(){ //[증가 버튼]을 클릭했을 때...
+    num++; //변수 num에 데이터를 1만큼 증가시킵니다.
+    $("p").text(num); //변수 num에 데이터를 <p>에 텍스트로 출력함.
+  });
+});
+//]]>
+</script>
+</head>
+<body>
+  <button>증가 버튼</button>
+   <p>0</p>
+</body>
+</html>

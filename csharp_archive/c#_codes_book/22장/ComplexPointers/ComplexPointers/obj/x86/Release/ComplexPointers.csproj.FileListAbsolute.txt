@@ -1,0 +1,7 @@
+C:\Users\Sean\AppData\Local\Temporary Projects\ComplexPointers\bin\Release\ComplexPointers.exe
+C:\Users\Sean\AppData\Local\Temporary Projects\ComplexPointers\bin\Release\ComplexPointers.pdb
+C:\Users\Sean\AppData\Local\Temporary Projects\ComplexPointers\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Sean\AppData\Local\Temporary Projects\ComplexPointers\obj\x86\Release\ComplexPointers.exe
+C:\Users\Sean\AppData\Local\Temporary Projects\ComplexPointers\obj\x86\Release\ComplexPointers.pdb
+D:\집필\뇌자극C#\22장\ComplexPointers\ComplexPointers\obj\x86\Release\ComplexPointers.exe
+D:\집필\뇌자극C#\22장\ComplexPointers\ComplexPointers\obj\x86\Release\ComplexPointers.pdb

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+<title>Swipe 2</title>
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/> 
+<link href='style.css' rel='stylesheet'/>
+<style>
+
+/* Swipe 2 required styles */
+
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > li {
+  float:left;
+  width:100%;
+  position: relative;
+}
+
+/* END required styles */
+
+#mySwipe li{list-style:none;}
+#mySwipe img{width:100%; max-width:100%;}
+</style>
+
+</head>
+<body>
+
+<h1>Swipe 2</h1>
+
+
+
+<div id='mySwipe' style='max-width:500px;margin:0 auto' class='swipe'>
+  <ul class='swipe-wrap'>
+    <li><img src="images/pic_1.jpg" alt="사진1" /></li>
+    <li><img src="images/pic_2.jpg" alt="사진2" /></li>
+    <li><img src="images/pic_3.jpg" alt="사진3" /></li>
+    <li><img src="images/pic_4.jpg" alt="사진4" /></li>
+  </ul>
+</div>
+
+
+
+<div style='text-align:center;padding-top:20px;'>
+  
+  <button onclick='mySwipe.prev()'>prev</button> 
+  <button onclick='mySwipe.next()'>next</button>
+
+</div>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src='swipe.js'></script>
+<script>
+
+// pure JS
+var elem = document.getElementById('mySwipe');
+window.mySwipe = Swipe(elem, {
+  // startSlide: 4,
+  // auto: 3000,
+  continuous: false
+  // disableScroll: true,
+  // stopPropagation: true,
+  // callback: function(index, element) {},
+  // transitionEnd: function(index, element) {}
+});
+
+// with jQuery
+// window.mySwipe = $('#mySwipe').Swipe().data('Swipe');
+
+</script>
+</body>
+</html>

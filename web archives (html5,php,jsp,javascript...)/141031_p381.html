@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Practice </title>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<style type="text/css">
+ 
+</style>
+<script type="text/javascript">
+//!<[CDATA[
+$(function(){
+	$("h1 a").css("text-decoration","none");
+
+	$("h1 a").on("mouseover focus",function(){
+		$(this).css("background-color","yellow");
+	});
+	
+	$("h1 a").on("mouseout blur",function(){
+		$(this).css("background-color","white");
+	});
+	
+	$("button").on("click",function(){
+		$("h1 a").off();
+	});
+	
+	$("button").on("dblclick",function(){
+		$("h1 a").on({"mouseover focus":function(){
+		$(this).css("background-color","yellow")},
+		"mouseout blur":function(){$(this).css("background-color","white");
+		}});
+		});
+			//아 더럽게 헷갈리네 ㅡㅡ..
+
+});
+//]]>
+</script>
+</head>
+  
+<body>
+  
+		<h1><a href="#">Content</a></h1>
+		<button>Delete Event</button>
+  
+  
+</body>
+</html>

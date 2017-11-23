@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 슬라이드 갤러리 </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function(){
+  var mySlider=$("#sm_photo_wrap").bxSlider({
+      mode:"horizontal",   // 가로 수평으로 슬라이드 됩니다.
+      speed:500,              // 이동 속도를 설정합니다.
+      pager:false,            // 현재 위치 페이징 표시 여부 설정.
+      moveSlides:1,         // 슬라이드 이동시 갯수 설정.
+      slideWidth:72,        // 슬라이드 마다 너비 설정.
+      minSlides:3,           // 최소 노출 개수를 설정합니다.
+      maxSlides:3,          // 최대 노출 개수를 설정합니다.
+      slideMargin:0,      // 슬라이드간의 간격을 설정합니다.
+      auto:false,             // 자동으로 흐를지 설정합니다.
+      autoHover:true,    // 마우스 오버시 정시킬지 설정합니다.
+      controls:false        // 이전 다음 버튼 노출 여부 설정합니다.
+   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	"z-index":2 
+	
+	 .stop().animate({opacity:1},400,function(){
+	 
+	 
+	 
+	 
+	 
+	 
+			 $(this).addClass("on").css("z-index",1);
+			 
+	return false;		 
+	});
+});
+//]]>
+</script>
+<style type="text/css">
+  /*기본 세팅*/
+  *{margin:0;padding:0;}
+  img{border:none;}
+  li{list-style:none;}
+
+  /*갤러리 디자인*/
+   h1{text-align:center;}
+  #gallery{width:260px;position:relative;margin:0 auto;}
+  #photo_wrap{position:relative;height:195px;}
+  #photo_wrap li{position:absolute;}
+
+  /*버튼 디자인*/
+  .prevBtn, .nextBtn{display:block;text-indent:-9999px;font-size:0;
+  width:22px;height:54px;position:absolute;left:0;top:195px;
+  background:url("images/plugin_prev_btn.jpg") left top no-repeat;
+  }
+  .nextBtn{
+    background-image:url("images/plugin_next_btn.jpg");
+    left:238px;
+  }
+  .prevBtn:hover, .nextBtn:hover{background-position:left bottom;}
+
+  /*<li> 태그중 class="on"포함되어 있으면 가장 위로 뜨게 됩니다.*/
+  #photo_wrap li.on{z-index:1;}
+</style>
+</head>
+<body>
+<h1>포토 갤러리</h1>
+<div id="gallery">
+  <ul id="photo_wrap">
+    <li><a href="#">
+    <img src="images/pic_1.jpg" alt="사진1" width="260" />
+    </a></li>
+    <li><a href="#">
+    <img src="images/pic_2.jpg" alt="사진2" width="260" />
+    </a></li>
+    <li><a href="#">
+    <img src="images/pic_3.jpg" alt="사진3" width="260" />
+    </a></li>
+    <li><a href="#">
+    <img src="images/pic_4.jpg" alt="사진4" width="260" />
+    </a></li>
+    <li><a href="#">
+    <img src="images/pic_5.jpg" alt="사진5" width="260" />
+    </a></li>
+    <li><a href="#">
+    <img src="images/pic_6.jpg" alt="사진6" width="260" />
+    </a></li>
+    <li><a href="#">
+    <img src="images/pic_7.jpg" alt="사진7" width="260" />
+    </a></li>
+    <li><a href="#">
+    <img src="images/pic_8.jpg" alt="사진8" width="260" />
+    </a></li>
+  </ul>
+  <ul id="sm_photo_wrap">
+    <li><a href="#"><img src="images/pic_t1.jpg" alt="사진1" /></a></li>
+    <li><a href="#"><img src="images/pic_t2.jpg" alt="사진2" /></a></li>
+    <li><a href="#"><img src="images/pic_t3.jpg" alt="사진3" /></a></li>
+    <li><a href="#"><img src="images/pic_t4.jpg" alt="사진4" /></a></li>
+    <li><a href="#"><img src="images/pic_t5.jpg" alt="사진5" /></a></li>
+    <li><a href="#"><img src="images/pic_t6.jpg" alt="사진6" /></a></li>
+    <li><a href="#"><img src="images/pic_t7.jpg" alt="사진7" /></a></li>
+    <li><a href="#"><img src="images/pic_t8.jpg" alt="사진8" /></a></li>
+  </ul>
+  <p>
+  <a href="#" class="prevBtn">이전</a>
+  <a href="#" class="nextBtn">다음</a>
+ </p>
+</div>
+</body>
+</html>

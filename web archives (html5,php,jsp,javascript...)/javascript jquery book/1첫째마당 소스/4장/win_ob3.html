@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> window 객체 </title>
+<script type="text/javascript">
+//<![CDATA[
+   var i=0;
+   var auto=setInterval("console.log(i++);",3000);
+//]]>
+</script>
+</head>
+<body>
+   <!-- 버튼을 누르면 auto가 참조하는 setInterval을 삭제합니다. -->
+   <button onclick="clearInterval(auto)">정지버튼</button>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 객체 조작 및 생성 </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+ $(function(){
+   var w1=$("#box1").width();
+   $("#t1").text("너비: "+w1);
+
+   var w2=$("#box1").innerWidth();
+   $("#t2").text("너비: "+w2);
+
+   var w3=$("#box1").outerWidth();
+   $("#t3").text("너비: "+w3);
+
+   $("#box2").width("200").height("50")
+   .css("border","3px solid blue");
+ });
+//]]>
+</script>
+<style type="text/css">
+   *{margin:0;padding:0;}
+   body{margin:20px;}
+   #box1{width:200px;height:100px;padding:5px;
+   border:10px solid red;margin:10px;}
+</style>
+</head>
+<body>
+ <p id="box1">박스1</p>
+ <p id="t1"></p>
+ <p id="t2"></p>
+ <p id="t3"></p>
+ <p id="box2">박스2</p>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="jquery.mobile-1.0.css" type="text/css" />
+    <script type="text/javascript" src="jquery-1.6.4.js"></script>
+    <script type="text/javascript" src="jquery.tmpl.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.getJSON("data.json", function(data) {
+                $('#flowerTmpl').tmpl(data).appendTo("body");
+                $('ul').append($('#liTmpl').tmpl(data)).listview("refresh")            
+            })
+        })        
+    </script>
+    <script type="text/javascript" src="jquery.mobile-1.0.js"></script>
+    <style type="text/css">
+        .lcontainer {float: left; text-align: center; padding-top: 10px}
+        .productData {float: right; padding: 10px; width: 60%}
+        .cWrapper {text-align: center}
+    </style>
+    <script id="flowerTmpl" type="text/x-jquery-tmpl">
+       <div id="${name}" data-role="page" data-theme="b">
+            <div data-role="header">
+               <h1>${label}</h1>
+            </div>
+            <div>
+                <div class="lcontainer">
+                    <img src="${name}.png">
+                    <div><a href="#" data-rel="back" data-role="button"
+                           data-inline=true data-direction="reverse">Back</a>
+                    </div>
+                </div>             
+                <div class="productData">
+                    ${text}
+                    <div><b>Price: ${price}</b></div>                
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="liTmpl" type="text/x-jquery-tmpl">
+        <li>
+            <a href="#basket" class="buy" id="${name}">${label}</a>
+            <a href="#${name}">${label}</a>
+        </li>
+    </script>       
+</head>
+<body>
+    <div id="page1" data-role="page" data-theme="b">
+        <div data-role="header">
+           <h1>Jacqui's Shop</h1>
+        </div>
+        <div id="container" style="padding: 20px">
+            <ul data-role="listview" data-inset=true></ul>
+        </div>
+    </div>
+    
+    <div id="basket" data-role="page" data-theme="b">
+        <div data-role="header">
+           <h1>Jacqui's Shop</h1>
+        </div>
+        <div class="cWrapper">
+            Basket will go here
+        </div>
+        <div class="cWrapper">
+            <a href="#" data-rel="back" data-role="button" data-inline=true
+               data-direction="reverse">Back</a>
+        </div>      
+    </div>
+</body>
+</html>

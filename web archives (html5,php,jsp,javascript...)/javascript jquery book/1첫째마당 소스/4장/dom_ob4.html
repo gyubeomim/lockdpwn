@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> DOM 객체 </title>
+</head>
+<body>
+<div id="wrap">
+   <p>내용1</p>
+   <p>내용2</p>
+   <p>내용3</p>
+   <p>내용4</p>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+  document.getElementById("wrap").children[0].style.color="red";
+  
+  var p=document.getElementsByTagName("p")[1];
+  var nextObj=p.nextSibling;
+  while(nextObj.nodeType !=1){
+    nextObj=nextObj.nextSibling;
+  }
+ nextObj.style.backgroundColor="yellow";
+//]]>
+</script>
+</body>
+</html>

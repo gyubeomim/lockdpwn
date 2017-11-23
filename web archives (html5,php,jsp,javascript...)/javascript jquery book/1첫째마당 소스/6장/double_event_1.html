@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 이벤트 </title>
+<script type="text/javascript">
+//<![CDATA[
+window.onload=function(){
+    function fnc1(){
+      alert('실행문1');
+    }
+    function fnc2(){
+      alert('실행문2');
+    }
+    
+    //id의 값이 "btn"인 <button>인 요소를 선택합니다.
+    var myBtn=document.getElementById("btn");
+    
+    //파이어폭스, 크롬 등 브라우저에서 true를 반환하여 조건식을 만족함.
+    if(window.addEventListener){
+      
+      //<button id="btn">인 요소를 클릭할 때 마다 함수 fnc1을 호출합니다.
+      myBtn.addEventListener("click",fnc1,false);
+  
+      //<button id="btn">인 요소를 클릭할 때 마다 함수 fnc2를 호출합니다.
+      myBtn.addEventListener("click",fnc2,false);
+    
+    }else{ //IE(8 이하)에서만 실행
+  
+      myBtn.attachEvent("onclick",fnc1);
+      myBtn.attachEvent("onclick",fnc2);
+  
+    } //End : else
+} //End : onload
+//]]>
+</script>
+</head>
+ <body>
+  <button id="btn">버튼</button>
+ </body>
+</html>

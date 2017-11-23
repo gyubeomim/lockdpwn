@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<title> 운영체제 및 스크린 정보 </title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width"/>
+<style type="text/css">
+#info_wrap{width:300px;height:100px;background-color:#eee;overflow:hidden;padding:10px;}
+</style>
+<script type="text/javascript">
+//<![CDATA[
+
+/*① [운영 체제 정보]버튼을 누를 때마다 실행되는 함수입니다*/
+function info1(){
+      /* 브라우저 및 운영체제 종합정보를 반환후 모두 소문자로 바꿉니다.*/
+      var os=navigator.userAgent.toLowerCase();
+  
+      /*요소 중 id의 값이 "info_wrap"은 요소 객체를 가져옵니다.*/
+      var info_wrap=document.getElementById("info_wrap");
+
+      /*navigator객체를 이용해 반환받은 정보에 다음과 같은 문자가 포함되어 있으면  운영체제 명을 지정한 요소 사이에 텍스트로 출력합니다.*/
+      if(os.indexOf('windows')>=0){
+         info_wrap.innerHTML="윈도우";
+      }else if(os.indexOf('macintosh')>=0){
+         info_wrap.innerHTML="메킨토시";
+      }else if(os.indexOf('iphone')>=0){
+         info_wrap.innerHTML="아이폰";
+      }else if(os.indexOf('android')>=0){
+         info_wrap.innerHTML="안드로이드";
+      }
+
+      //3초 후에 운영체제 정보를 지웁니다.
+      setTimeout("info_wrap.innerHTML=''",3000);
+}
+
+/*② [스크린 정보]버튼을 누를 때마다 실행되는 함수입니다*/
+function info2(){
+      /*스크린 너비와 높이 값을 가져와 각각의 변수에 저장합니다.*/
+      var sc_w=screen.width;
+      var sc_h=screen.height;
+
+      /*요소 중 id의 값이 "info_wrap"은 요소 객체를 가져옵니다.*/      
+      var info_wrap=document.getElementById("info_wrap");
+
+      /*스크린 너비와 높이 값을 지정한 요소에 텍스트로 출력합니다. */
+      info_wrap.innerHTML=sc_w+"X"+sc_h;
+
+      //3초 후에 스크린 정보를 지웁니다.
+      setTimeout("info_wrap.innerHTML=''",3000); 
+}
+//]]>
+</script>
+</head>
+<body>
+   <h1>운영체제 및 스크린 정보</h1>
+   <p id="info_wrap"></p>
+
+   <!-- 아래 버튼을 누를 때 마다 info1 함수의 중괄호 사이의 자바스크립트 실행문 코드가 실행됩니다. -->
+   <button onclick="info1();">운영체제 정보</button> <br />
+
+
+   <!-- 아래 버튼을 누를 때 마다 info2 함수의 중괄호 사이의 자바스크립트 실행문 코드가 실행됩니다. -->
+   <button onclick="info2();">스크린 정보</button> <br />
+</body>
+</html>

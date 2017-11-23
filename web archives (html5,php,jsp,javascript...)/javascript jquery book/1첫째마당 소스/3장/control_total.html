@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> new document </title>
+<script type="text/javascript">
+//<![CDATA[
+  //현재 년도와 월을 입력받습니다.
+  var year=prompt("현재 몇 년입니까?","0000");
+  var mon=prompt("현재 몇 월입니까?","0");
+  var last_day;
+  
+  
+  /*현재 월이 몇일까지 있는지 선택문을
+  이용해 구합니다.*/
+  switch (mon){
+    case "1": last_day=31;
+    break;
+    case "2": last_day=28;
+    
+	/*현재 년도가 4년주기이고 100년 주기는 아닌경우
+    또는 400년 주기로 윤년이므로 2월은 29일까지 있습니다.*/
+     if(year % 4==0 && year % 100 !=0 || year % 400 ==0){
+        last_day=29;
+     }  
+    break;
+    case "3": last_day=31;
+    break;
+    case "4": last_day=30;
+    break;
+    case "5": last_day=31;
+    break;
+    case "6": last_day=30;
+    break;
+    case "7": last_day=31;
+    break;
+    case "8": last_day=31;
+    break;
+    case "9": last_day=30;
+    break;
+    case "10": last_day=31;
+    break;
+    case "11": last_day=30;
+    break;
+    case "12": last_day=31;
+    break;
+  }
+  
+  /*현재 1일부터 마지막일까지 문서에 출력합니다.*/
+  for(var i=1; i<=last_day; i++){
+    document.write(i+" ");
+  }
+//]]>
+</script>
+</head>
+<body>
+
+</body>
+</html>

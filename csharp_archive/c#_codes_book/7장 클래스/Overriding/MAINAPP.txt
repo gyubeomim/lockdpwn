@@ -1,0 +1,11 @@
+Creating ArmorSuite...
+Armored
+
+Creating IronMan...
+Armored
+Repulsor Rays Armed
+
+Creating WarMaching...
+Armored
+Double-Barrel Cannons Armed
+Micro-Rocket Launcher Armed

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> DOM 객체 </title>
+</head>
+<body>
+<h1 id="title">마우스 아웃</h1>
+<a href="#" id="btn"><img src="images/btn_out.gif" alt="버튼" /></a>
+<p id="img_src"></p>
+<script type="text/javascript">
+//<![CDATA[
+   var theBtn=document.getElementById("btn");
+   var s=document.getElementById("img_src");
+   theBtn.onmouseover=function(){
+      document.getElementById("title").innerHTML="마우스 오버";
+      
+      theBtn.firstChild.src="images/btn_over.gif";
+      s.innerHTML=theBtn.firstChild.src;
+   }
+
+   theBtn.onmouseout=function(){
+      document.getElementById("title").innerHTML="마우스 아웃";
+      
+      theBtn.firstChild.src="images/btn_out.gif";
+      s.innerHTML=theBtn.firstChild.src;
+   }
+//]]>
+</script>
+</body>
+</html>

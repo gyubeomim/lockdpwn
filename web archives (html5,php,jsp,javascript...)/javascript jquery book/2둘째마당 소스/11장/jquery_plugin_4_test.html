@@ -1,0 +1,70 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+<title>Swipe 2</title>
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/> 
+<style type="text/css">
+/* Swipe 플러그인 사용을 위해 필요한 스타일(CSS) */
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > li {
+  float:left;
+  width:100%;
+  position: relative;
+}
+
+/* 직접 추가한 스타일(CSS) */
+li{list-style:none;}
+img{width:100%; max-width:100%;}
+#mySwipe {max-width:500px;margin:0 auto;}
+.btn_wrap{text-align:center;padding-top:20px;}
+</style>
+<link href='css/style.css' rel='stylesheet'/>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+});
+</script>
+</head>
+<body>
+<h1>Swipe 2</h1>
+<div id='mySwipe'  class='swipe'>
+  <ul class='swipe-wrap'>
+    <li><img src="images/pic_1.jpg" alt="사진1" /></li>
+    <li><img src="images/pic_2.jpg" alt="사진2" /></li>
+    <li><img src="images/pic_3.jpg" alt="사진3" /></li>
+    <li><img src="images/pic_4.jpg" alt="사진4" /></li>
+  </ul>
+</div>
+<div class="btn_wrap">
+  <button class="prevBtn">prev</button> 
+  <button class="nextBtn">next</button>
+</div>
+</body>
+</html>

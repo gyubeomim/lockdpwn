@@ -1,0 +1,2 @@
+175이상 - Count:2, Max:186, Min:178, Average:182
+175미만 - Count:3, Max:172, Min:158, Average:167

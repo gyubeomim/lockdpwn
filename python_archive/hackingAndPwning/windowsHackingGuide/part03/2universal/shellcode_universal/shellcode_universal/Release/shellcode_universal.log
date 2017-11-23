@@ -1,0 +1,18 @@
+﻿빌드 시작: 2016-02-09 오후 6:56:53
+     1>2 노드의 "Z:\share\book\1_window_system_hacking\source\part 03. 쉘코드 원리와 작성\2.1 universal 쉘코드\shellcode_universal\shellcode_universal\shellcode_universal.vcxproj" 프로젝트(build 대상)입니다.
+     1>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "Release\shellcode_universal.unsuccessfulbuild"을(를) 만들고 있습니다.
+       ClCompile:
+         모든 출력이 최신 상태입니다.
+         모든 출력이 최신 상태입니다.
+       Link:
+         모든 출력이 최신 상태입니다.
+         shellcode_universal.vcxproj -> Z:\share\book\1_window_system_hacking\source\part 03. 쉘코드 원리와 작성\2.1 universal 쉘코드\shellcode_universal\Release\shellcode_universal.exe
+       FinalizeBuildStatus:
+         "Release\shellcode_universal.unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "Release\shellcode_universal.lastbuildstate"에 연결(touching)하고 있습니다.
+     1>"Z:\share\book\1_window_system_hacking\source\part 03. 쉘코드 원리와 작성\2.1 universal 쉘코드\shellcode_universal\shellcode_universal\shellcode_universal.vcxproj" 프로젝트를 빌드했습니다(build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:00.12

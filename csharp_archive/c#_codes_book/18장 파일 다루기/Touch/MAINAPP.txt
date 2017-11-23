@@ -1,0 +1,1 @@
+Usage : Touch.exe <Path> [Type:File/Directory]

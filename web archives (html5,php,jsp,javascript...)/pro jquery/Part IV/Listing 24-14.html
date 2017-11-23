@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example</title>
+    <script src="jquery-1.7.js" type="text/javascript"></script>
+    <script src="jquery-ui-1.8.16.custom.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.8.16.custom.css"/>
+    <style type="text/css">
+        #astor, #lily {text-align: center; width: 150px; border: thin solid black;
+            padding: 5px; float: left; margin: 20px}
+        #astor img, #lily img {display: block; margin: auto}
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {        
+            $('#astor').resizable({
+                alsoResize: "#astor img"
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Jacqui's Flower Shop</h1> 
+    <div id="astor" class="ui-widget">
+        <img src="astor.png" />
+        Astor
+    </div>
+     <div id="lily" class="ui-widget">
+        <img src="lily.png" />
+        Lilly
+    </div>
+</body>
+</html>

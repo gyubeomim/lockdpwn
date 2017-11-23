@@ -1,0 +1,183 @@
+
+
+#include <ros.h>
+#include <std_msgs/Int32.h>  // 거리값을 전송하기 위한 헤더 선언
+#include <std_msgs/Float32.h>
+#include <MsTimer2.h>  // 타이머를 사용하는 헤더
+#include "Servo.h"
+
+Servo myservo;
+Servo esc;
+
+const int pwPin = 7;
+float duration = 0;
+
+
+int n=0; 
+int m=0;
+int dt=100;
+
+int arraysize = 9;
+int rangevalue[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0};
+long pulse;
+int modE;
+
+ros::NodeHandle  nh;
+std_msgs::Int32 int_msg;
+std_msgs::Float32 float_msg;
+ros::Publisher dist("dist", &float_msg);
+ros::Publisher Rps("Rps", &int_msg);
+
+
+void setup() 
+{
+  Serial.begin(115200)
+  attachInterrupt(2, Encoder_front, CHANGE);    
+  attachInterrupt(3, Encoder_rear, CHANGE);   
+
+  myservo.attach(8); // servo 4번 핀
+  esc.attach(5);     // DC motor 5번 핀
+  esc.writeMicroseconds(1000);
+    
+  // 노드를 초기화하고 dist 노드를 선언한다
+ nh.initNode();
+ nh.advertise(dist);  
+ nh.advertise(Rps);
+ nh.subscribe(servo_steer);
+ nh.subscribe(DC_duty);
+}
+
+void loop() 
+{
+ calculateDistance(); 
+ getRps_front();
+ getRps_rear();
+}
+
+// servo_motor steering
+void messageCb(const std_msgs::Int32& angle_msg)
+{
+  myservo.write(angle_msg.data);
+}
+ros::Subscriber<std_msgs::Int32> servo_steer("angle_msg", messageCb );
+
+// DC_motor duty
+void motor_duty(const std_msgs::Int32& motor_speed)
+{
+  esc.writeMicroseconds(motor_speed.data);
+}
+ros::Subscriber<std_msgs::Int32> DC_duty("motor_speed", motor_duty );
+
+
+//초음파센서의 거리를 계산해서 반환하는 함수
+void calculateDistance()
+{
+ pinMode(pwPin, INPUT);
+
+  for (int i = 0; i < arraysize; i++)
+  {
+    pulse = pulseIn(pwPin, HIGH);
+    rangevalue[i] = pulse / 58;
+    delay(10);
+  }
+  printArray(rangevalue, arraysize);
+  isort(rangevalue, arraysize);
+  printArray(rangevalue, arraysize);
+  modE = mode(rangevalue, arraysize);
+  delay(100);
+
+  
+  float_msg.data=modE;
+  dist.publish( &float_msg);
+  nh.spinOnce();
+  delay(10);        // 0.01s 간격
+}
+//Function to print the arrays.
+void printArray(int *a, int n){
+  for (int i = 0; i < n; i++){
+    Serial.print(a[i], DEC);
+    Serial.print(' ');
+  }
+  Serial.println();
+}
+
+//Sorting function
+// sort function (Author: Bill Gentles, Nov. 12, 2010)
+void isort(int *a, int n) {
+  //  *a is an array pointer function
+  for (int i = 1; i < n; ++i){
+    int j = a[i];
+    int k;
+    for (k = i - 1; (k >= 0) && (j < a[k]); k--){
+      a[k + 1] = a[k];
+    }
+    a[k + 1] = j;
+  }
+}
+
+//Mode function, returning the mode or median.
+int mode(int *x, int n) {
+  int i = 0;
+  int count = 0;
+  int maxCount = 0;
+  int mode = 0;
+  int bimodal;
+  int prevCount = 0;
+
+  while (i < (n - 1)) {
+    prevCount = count;
+   count = 0;
+    while (x[i] == x[i + 1]) {
+      count++;
+      i++;
+    }
+    
+    if (count > prevCount & count > maxCount) {
+      mode = x[i];
+      maxCount = count;
+      bimodal = 0;
+    }
+    if (count == 0) {
+      i++;
+    }
+
+    if (count == maxCount) { //If the dataset has 2 or more modes.
+      bimodal = 1;
+    }
+
+    if (mode == 0 || bimodal == 1) { //Return the median if there is no mode.
+      mode = x[(n / 2)];
+    }
+    return mode;
+  }
+}
+
+// 후륜 속력
+void getRps_rear()
+{
+  rps=n/(4*dt*0.001);
+
+  int_msg.data=rps;
+  Rps.publish( &int_msg);
+  nh.spinOnce();
+  
+  n=0;
+}
+void Encoder_rear()
+{
+ n = n+1;
+}
+// 전륜 속력
+void getRps_front()
+{
+  rps=m/(4*dt*0.001);
+  int_msg.data=rps;
+  Rps.publish( &int_msg);
+  nh.spinOnce();
+ 
+  m=0;
+}
+void Encoder_front()
+{
+ m = m+1;
+}

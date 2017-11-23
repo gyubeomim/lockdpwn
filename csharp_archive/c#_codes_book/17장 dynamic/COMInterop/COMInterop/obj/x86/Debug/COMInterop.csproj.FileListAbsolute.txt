@@ -1,0 +1,13 @@
+C:\Users\Sean\AppData\Local\Temporary Projects\COMInterop\bin\Debug\COMInterop.exe
+C:\Users\Sean\AppData\Local\Temporary Projects\COMInterop\bin\Debug\COMInterop.pdb
+C:\Users\Sean\AppData\Local\Temporary Projects\COMInterop\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Sean\AppData\Local\Temporary Projects\COMInterop\obj\x86\Debug\Interop.MediaPlayer.dll
+C:\Users\Sean\AppData\Local\Temporary Projects\COMInterop\obj\x86\Debug\COMInterop.csproj.ResolveComReference.cache
+C:\Users\Sean\AppData\Local\Temporary Projects\COMInterop\obj\x86\Debug\COMInterop.exe
+C:\Users\Sean\AppData\Local\Temporary Projects\COMInterop\obj\x86\Debug\COMInterop.pdb
+D:\뇌자극C#\17장 dynamic\COMInterop\COMInterop\bin\Debug\COMInterop.exe
+D:\뇌자극C#\17장 dynamic\COMInterop\COMInterop\bin\Debug\COMInterop.pdb
+D:\뇌자극C#\17장 dynamic\COMInterop\COMInterop\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\뇌자극C#\17장 dynamic\COMInterop\COMInterop\obj\x86\Debug\COMInterop.csproj.ResolveComReference.cache
+D:\뇌자극C#\17장 dynamic\COMInterop\COMInterop\obj\x86\Debug\COMInterop.exe
+D:\뇌자극C#\17장 dynamic\COMInterop\COMInterop\obj\x86\Debug\COMInterop.pdb

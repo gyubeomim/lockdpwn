@@ -1,0 +1,38 @@
+CC     = "C:\Program Files\MATLAB\R2014a\sys\lcc\bin\lcc.exe"
+LD     = "C:\Program Files\MATLAB\R2014a\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "C:\Program Files\MATLAB\R2014a\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup 
+LDFLAGS = -s -dll -L"C:\Program Files\MATLAB\R2014a\sys\lcc\lib" 
+LIBFLAGS = 
+
+OBJECTS = \
+	"Bicycle_SCC_LKS_sfun.obj"\
+	"c1_Bicycle_SCC_LKS.obj"\
+	"Bicycle_SCC_LKS_sfun_registry.obj"\
+	"lccstub.obj"\
+	"C:\Program Files\MATLAB\R2014a\sys\lcc\mex\lccdef.def"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win32\lcc\sf_runtime.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win32\lcc\libmwblas.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win32\lcc\libmx.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win32\lcc\libmex.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win32\lcc\libmat.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win32\lcc\libut.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win32\lcc\libmwmathutil.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win32\lcc\libemlrt.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win32\lcc\libmwsl_log_load_blocks.lib"\
+	"C:\Program Files\MATLAB\R2014a\lib\win32\libippmwipt.lib"\
+
+INCLUDE_PATH= -I"C:\Program Files\MATLAB\R2014a\sys\lcc\include"  -I"C:\Program Files\MATLAB\R2014a\extern\include"  -I"C:\Program Files\MATLAB\R2014a\simulink\include"  -I"C:\Program Files\MATLAB\R2014a\stateflow\c\mex\include"  -I"C:\Program Files\MATLAB\R2014a\rtw\c\src"  -I"C:\2016년도 1차수\Matlab_SCCLKS\slprj\_sfprj\Bicycle_SCC_LKS\_self\sfun\src" 
+ 
+
+Bicycle_SCC_LKS_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o Bicycle_SCC_LKS_sfun.mexw32 @Bicycle_SCC_LKS_sfun.lmko
+Bicycle_SCC_LKS_sfun.obj :	"Bicycle_SCC_LKS_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "Bicycle_SCC_LKS_sfun.c"
+c1_Bicycle_SCC_LKS.obj :	"c1_Bicycle_SCC_LKS.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_Bicycle_SCC_LKS.c"
+Bicycle_SCC_LKS_sfun_registry.obj :	"Bicycle_SCC_LKS_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "Bicycle_SCC_LKS_sfun_registry.c"
+lccstub.obj :	"C:\Program Files\MATLAB\R2014a\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "C:\Program Files\MATLAB\R2014a\sys\lcc\mex\lccstub.c"

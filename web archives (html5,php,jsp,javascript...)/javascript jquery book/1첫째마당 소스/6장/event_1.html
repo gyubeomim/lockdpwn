@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 이벤트 </title>
+<script type="text/javascript">
+//<![CDATA[
+var color=["white","yellow","aqua","purple"];
+var i=0;
+function colorBg(){
+   i++;
+   if(i>=color.length) i=0;
+   var bodyTag=document.getElementsByTagName("body")[0];
+   bodyTag.style.backgroundColor=color[i];
+}
+  
+window.onload=function(){
+  //②, ④은 DOM을 이용해 이벤트를 등록하였습니다.
+  
+  //② [버튼2]를 클릭할 때 마다 colorBg함수를 호출합니다. 
+  var btn2=document.getElementById("btn2");
+  btn2.onclick=function(){ colorBg(); }
+ 
+  //④ [버튼4]에 마우스를 올릴 때 마다 colorBg함수를 호출합니다.
+  var btn4=document.getElementById("btn4");
+  btn4.onmouseover=function(){ colorBg(); }
+}
+//]]>
+</script>
+</head>
+<body>
+<p>
+   <!--① [버튼1]을 클릭할 때 마다 colorBg함수를 호출합니다. -->
+   <button onclick="colorBg();">버튼1</button>
+</p>
+<p><button id="btn2">버튼2</button></p>
+<p>
+   <!--③ [버튼3]을 클릭할 때 마다 colorBg함수를 호출합니다. -->
+   <button onmouseover="colorBg();">버튼3</button>
+</p>
+<p><button id="btn4">버튼4</button></p>
+</body>
+</html>

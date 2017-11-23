@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example</title>
+    <script src="jquery-1.7.js" type="text/javascript"></script>
+    <script src="jquery.tmpl.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script type="text/javascript">
+        $(document).ready(function() {
+                    
+            var data = [
+                { name: "Astor", product: "astor", elem: "<img src=astor.png/>"},
+                { name: "Daffodil", product: "daffodil", elem: "<img src=daffodil.png/>"},
+                { name: "Rose", product: "rose", elem: "<img src=rose.png/>"},
+                { name: "Peony", product: "peony", elem: "<img src=peony.png/>" },
+                { name: "Primula", product: "primula", elem: "<img src=primula.png/>" },
+                { name: "Snowdrop", product: "snowdrop", elem: "<img src=snowdrop.png/>" },
+            ];
+                    
+            var templResult = $('#flowerTmpl').tmpl(data);
+            templResult.slice(0, 3).appendTo('#row1');
+            templResult.slice(3).appendTo("#row2"); ;
+        });    
+    </script>
+    <script id="flowerTmpl" type="text/x-jquery-tmpl">
+        <div class="dcell">    
+            ${elem}
+            <label for="${product}">${name}: </label>
+            <input name="${product}" value="0" required />
+        </div>
+    </script>
+    <script id="rowTmpl" type="text/x-jquery-tmpl">
+        <div id="${rowid}" class="drow">
+            {{tmpl($data.flowers) '#flowerTmpl'}}    
+        </div>
+    </script>
+</head>
+<body>
+    <h1>Jacqui's Flower Shop</h1>
+    <form method="post">
+        <div id="oblock">        
+            <div class="dtable">
+                <div id="row1" class="drow"></div>
+                <div id="row2"class="drow"></div>            
+            </div>
+        </div>
+        <div id="buttonDiv"><button type="submit">Place Order</button></div>                    
+    </form>
+</body>
+</html>

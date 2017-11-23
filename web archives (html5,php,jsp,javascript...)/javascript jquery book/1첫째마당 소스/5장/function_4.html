@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 함수 </title>
+<script type="text/javascript">
+//<![CDATA[
+function login(id, pw){
+   if(id=="hanguk"){ //방문자가 입력한 id가 "hanguk"과 일치할 경우
+  
+        if(pw=="1234"){ //방문자가 입력한 pw가 "1234"와 일치할 경우
+          document.write(id+"님 방문을 환영합니다");
+        }else{ //비밀번호가 일치하지 않을 경우
+          alert("잘못된 비밀번호입니다.")
+        }
+  
+   }else{ //방문자가 입력한 id가 일치하지 않을 경우
+  
+      alert("존재하지 않는 아이디입니다.")
+  
+   }
+}
+  
+/*질의응답 창을 이용해 방문자에게  아이디와 
+비밀번호를 입력받습니다.*/
+var user_id=prompt("아이디를 입력하세요.","")
+var user_pw=prompt("패스워드를 입력하세요.","")
+  
+//방문자가 입력한 비밀번호와 아이디를 함수의 매개변수에 전달합니다.
+login(user_id,user_pw);
+//]]>
+</script>
+</head>
+<body>
+</body>
+</html>

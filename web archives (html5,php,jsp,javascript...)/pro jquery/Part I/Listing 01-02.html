@@ -1,0 +1,19 @@
+...
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var jq = $('label');
+        
+        // select and operate on the first element
+        jq.first().css("border", "thick double red");
+        
+        // select and operate on the last element
+        jq.last().css("border", "thick double green");
+        
+        // select and operate on an element by index
+        jq.eq(2).css("border", "thick double black");
+        jq.eq(-2).css("border", "thick double black");
+            
+    });     
+</script>
+...

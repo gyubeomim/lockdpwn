@@ -1,0 +1,10 @@
+. directory Info
+- Directories :
+bin : Directory
+obj : Directory
+Properties : Directory
+- Files :
+Dir.csproj : 2427, Archive
+Dir.csproj.user : 427, Archive
+MainApp.cs : 1530, Archive
+MainApp.exe : 9728, Archive

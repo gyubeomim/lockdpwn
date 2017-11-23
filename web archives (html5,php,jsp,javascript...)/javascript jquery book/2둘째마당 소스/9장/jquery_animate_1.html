@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 효과와 애니메이션 </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function(){
+   $("h1").animate({
+      marginLeft:"250px"
+   },5000,function(){ alert("도착완료!")});
+
+   $("h2").animate({
+      marginLeft:"250px",
+      opacity:0.3,
+      width:"100px"
+   },5000);
+
+   $("h3").animate({marginLeft:"250px"},3000)
+   .animate({marginLeft:"100px"},2000);
+});
+//]]>
+</script>
+<style type="text/css">
+  h1{width:50px;height:30px;background-color:red;font-size:100%;}
+  h2{width:50px;height:30px;background-color:orange;font-size:100%;}
+  h3{width:50px;height:30px;background-color:aqua;font-size:100%;}
+</style>
+</head>
+<body>
+   <h1>내용</h1>
+   <h2>내용</h2>
+   <h3>내용</h3>
+</body>
+</html>

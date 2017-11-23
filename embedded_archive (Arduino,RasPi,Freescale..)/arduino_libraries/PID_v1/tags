@@ -1,0 +1,43 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+AUTOMATIC	.\PID_v1.h	12;"	d
+Compute	.\PID_v1.cpp	/^bool PID::Compute()$/;"	f	class:PID
+DIRECT	.\PID_v1.h	14;"	d
+GetDirection	.\PID_v1.cpp	/^int PID::GetDirection(){ return controllerDirection;}$/;"	f	class:PID
+GetKd	.\PID_v1.cpp	/^double PID::GetKd(){ return  dispKd;}$/;"	f	class:PID
+GetKi	.\PID_v1.cpp	/^double PID::GetKi(){ return  dispKi;}$/;"	f	class:PID
+GetKp	.\PID_v1.cpp	/^double PID::GetKp(){ return  dispKp; }$/;"	f	class:PID
+GetMode	.\PID_v1.cpp	/^int PID::GetMode(){ return  inAuto ? AUTOMATIC : MANUAL;}$/;"	f	class:PID
+ITerm	.\PID_v1.h	/^	double ITerm, lastInput;$/;"	m	class:PID
+Initialize	.\PID_v1.cpp	/^void PID::Initialize()$/;"	f	class:PID
+LIBRARY_VERSION	.\PID_v1.h	3;"	d
+MANUAL	.\PID_v1.h	13;"	d
+PID	.\PID_v1.cpp	/^PID::PID(double* Input, double* Output, double* Setpoint,$/;"	f	class:PID
+PID	.\PID_v1.h	/^class PID$/;"	c
+PID_v1_h	.\PID_v1.h	2;"	d
+REVERSE	.\PID_v1.h	15;"	d
+SampleTime	.\PID_v1.h	/^	unsigned long SampleTime;$/;"	m	class:PID
+SetControllerDirection	.\PID_v1.cpp	/^void PID::SetControllerDirection(int Direction)$/;"	f	class:PID
+SetMode	.\PID_v1.cpp	/^void PID::SetMode(int Mode)$/;"	f	class:PID
+SetOutputLimits	.\PID_v1.cpp	/^void PID::SetOutputLimits(double Min, double Max)$/;"	f	class:PID
+SetSampleTime	.\PID_v1.cpp	/^void PID::SetSampleTime(int NewSampleTime)$/;"	f	class:PID
+SetTunings	.\PID_v1.cpp	/^void PID::SetTunings(double Kp, double Ki, double Kd)$/;"	f	class:PID
+controllerDirection	.\PID_v1.h	/^	int controllerDirection;$/;"	m	class:PID
+dispKd	.\PID_v1.h	/^	double dispKd;				\/\/$/;"	m	class:PID
+dispKi	.\PID_v1.h	/^	double dispKi;				\/\/   format for display purposes$/;"	m	class:PID
+dispKp	.\PID_v1.h	/^	double dispKp;				\/\/ * we'll hold on to the tuning parameters in user-entered $/;"	m	class:PID
+inAuto	.\PID_v1.h	/^	bool inAuto;$/;"	m	class:PID
+kd	.\PID_v1.h	/^    double kd;                  \/\/ * (D)erivative Tuning Parameter$/;"	m	class:PID
+ki	.\PID_v1.h	/^    double ki;                  \/\/ * (I)ntegral Tuning Parameter$/;"	m	class:PID
+kp	.\PID_v1.h	/^	double kp;                  \/\/ * (P)roportional Tuning Parameter$/;"	m	class:PID
+lastInput	.\PID_v1.h	/^	double ITerm, lastInput;$/;"	m	class:PID
+lastTime	.\PID_v1.h	/^	unsigned long lastTime;$/;"	m	class:PID
+myInput	.\PID_v1.h	/^    double *myInput;              \/\/ * Pointers to the Input, Output, and Setpoint variables$/;"	m	class:PID
+myOutput	.\PID_v1.h	/^    double *myOutput;             \/\/   This creates a hard link between the variables and the $/;"	m	class:PID
+mySetpoint	.\PID_v1.h	/^    double *mySetpoint;           \/\/   PID, freeing the user from having to constantly tell us$/;"	m	class:PID
+outMax	.\PID_v1.h	/^	double outMin, outMax;$/;"	m	class:PID
+outMin	.\PID_v1.h	/^	double outMin, outMax;$/;"	m	class:PID

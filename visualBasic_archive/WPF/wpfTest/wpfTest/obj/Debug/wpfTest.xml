@@ -1,0 +1,83 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+wpfTest
+</name>
+</assembly>
+<members>
+<member name="T:wpfTest.My.MyWpfExtension">
+ <summary>
+ WPF용 My 네임스페이스에 사용할 수 있는 속성을 정의하는 데 사용되는 모듈입니다.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:wpfTest.My.MyWpfExtension.Application">
+ <summary>
+ 실행하는 응용 프로그램에 대한 응용 프로그램 개체를 반환합니다.
+ </summary>
+</member>
+<member name="P:wpfTest.My.MyWpfExtension.Computer">
+ <summary>
+ 호스트 컴퓨터에 대한 정보를 반환합니다.
+ </summary>
+</member>
+<member name="P:wpfTest.My.MyWpfExtension.User">
+ <summary>
+ 현재 사용자에 대한 정보를 반환합니다.  현재 Windows 사용자 자격 증명을 사용하여 응용 프로그램을 실행하려면 
+ My.User.InitializeWithWindowsUser()를 호출하십시오.
+ </summary>
+</member>
+<member name="P:wpfTest.My.MyWpfExtension.Log">
+ <summary>
+ 응용 프로그램 로그를 반환합니다. 응용 프로그램의 구성 파일로 수신기를 구성할 수 있습니다.
+ </summary>
+</member>
+<member name="P:wpfTest.My.MyWpfExtension.Windows">
+ <summary>
+ 프로젝트에 정의된 Windows 컬렉션을 반환합니다.
+ </summary>
+</member>
+<member name="T:wpfTest.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:wpfTest.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:wpfTest.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:wpfTest.Application">
+<summary>
+Application
+</summary>
+</member>
+<member name="M:wpfTest.Application.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="M:wpfTest.Application.Main">
+<summary>
+Application Entry Point.
+</summary>
+</member>
+<member name="T:wpfTest.MainWindow">
+<summary>
+MainWindow
+</summary>
+</member>
+<member name="M:wpfTest.MainWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+</members>
+</doc>

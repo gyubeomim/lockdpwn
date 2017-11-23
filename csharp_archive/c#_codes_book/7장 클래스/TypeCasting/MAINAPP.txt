@@ -1,0 +1,3 @@
+Bark()
+Meow()
+cat2 is not a Cat

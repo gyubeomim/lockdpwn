@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 문자 객체 </title>
+<script type="text/javascript">
+//<![CDATA[
+var userEmail=prompt("당신의 이메일 주소는?","");
+//이메일 주소에 뒷부분 형식을 배열로 저장하였습니다.
+var arrUrl=[".co.kr",".com",".net",".or.kr",".go.kr"];
+  
+var check1=false; //초기 값 저장
+var check2=false; //초기 값 저장
+  
+/*방문자가 입력한 이메일 주소에 "@"포함되어 있으면 변수
+check1에 true가 저장되도록 하였습니다.*/
+if(userEmail.indexOf("@")>0) check1=true;
+  
+ //이메일에 배열 데이터 포함여부 검사
+
+
+  
+//AND(&&)연산자는 모두 피연산자가 모두 true여야 true를 반환합니다.
+if(check1&&check2){
+      document.write(userEmail);
+}else{
+      alert("이메일 형식이 잘못되었습니다.");
+}
+//]]>
+</script>
+</head>
+  
+<body>
+  
+</body>
+</html>

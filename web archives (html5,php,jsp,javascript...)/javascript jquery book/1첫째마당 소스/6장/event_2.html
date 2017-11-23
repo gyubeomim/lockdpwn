@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 이벤트 </title>
+<script type="text/javascript">
+//<![CDATA[
+var color=["white","yellow","aqua","purple"];
+var i=0;
+function colorBg(){
+   i++;
+   if(i>=color.length) i=0;
+   var bodyTag=document.getElementsByTagName("body")[0];
+   bodyTag.style.backgroundColor=color[i];
+}
+
+window.onload=function(){
+  var btn2=document.getElementById("btn2");
+  btn2.onclick=function(){ colorBg(); }
+  
+  /*④ 마우스가 없을 경우 키보드 [tab]키를 사용해 이용할
+  수 있도록 키보드 대응하는 이벤트 onfocus를 추가하였습니다.*/
+  var btn4=document.getElementById("btn4");
+  btn4.onmouseover=btn4.onfocus=function(){ colorBg(); }
+}
+//]]>
+</script>
+</head>
+<body>
+<p>
+   <button onclick="colorBg();">버튼1</button>
+</p>
+<p><button id="btn2">버튼2</button></p>
+<p>
+<!-- 
+  ③ 마우스가 없을 경우 키보드 [tab]키를 사용해 이용할
+  수 있도록 키보드 대응하는 이벤트 onfocus를 추가하였습니다.
+ -->
+   <button onmouseover="colorBg();" onfocus="colorBg();">
+   버튼3</button>
+</p>
+<p><button id="btn4">버튼4</button></p>
+</body>
+</html>

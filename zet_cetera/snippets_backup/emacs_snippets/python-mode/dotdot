@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: ''
+# key: ''
+# group : control structure
+# --
+'''
+	python ==> ${0:}
+'''

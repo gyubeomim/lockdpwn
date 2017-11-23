@@ -1,0 +1,5 @@
+C:\Users\Sean\AppData\Local\Temporary Projects\TooManyRoot\bin\Debug\TooManyRoot.exe
+C:\Users\Sean\AppData\Local\Temporary Projects\TooManyRoot\bin\Debug\TooManyRoot.pdb
+C:\Users\Sean\AppData\Local\Temporary Projects\TooManyRoot\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Sean\AppData\Local\Temporary Projects\TooManyRoot\obj\x86\Debug\TooManyRoot.exe
+C:\Users\Sean\AppData\Local\Temporary Projects\TooManyRoot\obj\x86\Debug\TooManyRoot.pdb

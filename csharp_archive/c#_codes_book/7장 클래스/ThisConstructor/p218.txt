@@ -1,0 +1,11 @@
+MyClass()
+a:5425, b:0, c:0
+
+MyClass()
+MyClass(1)
+a:5425, b:1, c:0
+
+MyClass()
+MyClass(10)
+MyClass(10. 20)
+a:5425, b:10, c:20

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 날짜 정보 객체 </title>
+<script type="text/javascript">
+//<![CDATA[
+var t=new Date(); //오늘 날짜 개체를 생성합니다.
+var nowYear=t.getFullYear(); //오늘 날짜의 연도 정보를 가져옵니다.
+  
+ //현재 연도에 12월 31 날짜 객체를 생성합니다.
+var theDate=new Date(nowYear,11,31);
+  
+var diffDate=theDate-t; //연말까지 남은 기간 = 연말 날짜 - 현재 날짜
+  
+//밀리초를 일로 개산합니다.
+var result=Math.ceil( diffDate / (60 * 1000 * 60 * 24) );
+  
+//남은 일수를 출력합니다.
+document.write("현재일로 부터 올해 말일까진 "+result+"일 남았습니다.");
+//]]>
+</script>
+</head>
+<body>
+
+</body>
+</html>

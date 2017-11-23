@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 선택문 </title>
+<script type="text/javascript">
+//<![CDATA[
+var areaName=prompt("지역번호가 궁금한 지역명을 적어주세요","서울");
+var areaNum;
+switch(areaName){
+   case "서울": areaNum="02"; //"서울"을 입력했을 경우
+   break;
+  
+   case "경기": areaNum="031"; //"경기"을 입력했을 경우
+   break;
+  
+   case "부산": areaNum="051"; //"부산"을 입력했을 경우
+   break;
+  
+   case "대구": areaNum="053"; //"대구"을 입력했을 경우
+   break;
+  
+   case "인천": areaNum="032"; //"인천"을 입력했을 경우
+   break;
+  
+   case "강원": areaNum="033"; //"강원"을 입력했을 경우
+   break;
+  
+   case "광주": areaNum="062"; //"광주"을 입력했을 경우
+   break;
+  
+   case "대전": areaNum="042"; //"대전"을 입력했을 경우
+   break;
+  
+   case "울산": areaNum="052"; //"울산"을 입력했을 경우
+   break;
+  
+   case "전북": areaNum="063"; //"전북"을 입력했을 경우
+   break;
+  
+   case "전남": areaNum="061"; //"전남"을 입력했을 경우
+   break;
+  
+   case "제주": areaNum="064"; //"제주"을 입력했을 경우
+   break;
+  
+   //등록되어 있지 않은 지역을 입력했을 경우
+   default: alert("아직 등록되어있지 않는 지역입니다.");
+}
+  
+//지역 명과 지역 번호를 출력합니다.
+document.write(areaName+"의 지역번호는 "+areaNum+"입니다.");
+//]]>
+</script>
+</head>
+<body>
+
+</body>
+</html>

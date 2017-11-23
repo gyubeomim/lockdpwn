@@ -1,0 +1,70 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+<title>Swipe 2</title>
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/> 
+<style type="text/css">
+/* Swipe 플러그인 사용을 위해 필요한 스타일(CSS) */
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > li {
+  float:left;
+  width:100%;
+  position: relative;
+}
+
+/* 직접 추가한 스타일(CSS) */
+li{list-style:none;}
+img{width:100%; max-width:100%;}
+#mySwipe {max-width:500px;margin:0 auto;}
+.btn_wrap{text-align:center;padding-top:20px;}
+</style>
+<link href='css/style.css' rel='stylesheet'/>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script src='js/swipe.js'></script>
+<script type="text/javascript">
+$(function(){
+  window.mySwipe = $('#mySwipe').Swipe({
+     startSlide: 0,   //초기에 첫 번째 배너가 노출됩니다.
+     auto: 3000,  //3초 이후 자동으로 배너가 이동됩니다.
+     continuous: true, //배너가 반복되어 롤링됩니다.
+     disableScroll: true, //슬라이드 배너에 스크롤바 생성을 차단시킵니다.
+     stopPropagation: true, //하위 요소에 이벤트 전달을 차단합니다.
+     callback: function(index, element) {}, //이벤트가 완료되면 콜백함수를 실행함.
+     transitionEnd: function(index, element) {} //화면이 전환되면 익명함수 실행함.
+  }).data('Swipe');
+
+  $(".prevBtn").on("click",function(){//이전 버튼을 클릭했을 때...
+    mySwipe.prev(); //이전 배너로 이동합니다.
+  });
+
+  $(".nextBtn").on("click",function(){//다음 버튼을 클릭했을 때...
+    mySwipe.next(); //다음 배너로 이동합니다.
+  });
+});
+</script>
+</head>
+<body>
+<h1>Swipe 2</h1>
+<div id='mySwipe'  class='swipe'>
+  <ul class='swipe-wrap'>
+    <li><img src="images/pic_1.jpg" alt="사진1" /></li>
+    <li><img src="images/pic_2.jpg" alt="사진2" /></li>
+    <li><img src="images/pic_3.jpg" alt="사진3" /></li>
+    <li><img src="images/pic_4.jpg" alt="사진4" /></li>
+  </ul>
+</div>
+<div class="btn_wrap">
+  <button class="prevBtn">prev</button> 
+  <button class="nextBtn">next</button>
+</div>
+</body>
+</html>

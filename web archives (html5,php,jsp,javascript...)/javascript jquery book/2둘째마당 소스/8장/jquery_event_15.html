@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 이벤트 </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function(){
+   $("h1 a").on("mouseover focus",function(){
+      $(this).css("background-color","yellow");
+   });
+
+   $("button").on("click",function(){//버튼을 클릭했을 때
+      $("h1 a").off();
+   });
+});
+//]]>
+</script>
+</head>
+<body>
+   <h1><a href="#">내용</a></h1>
+   <button>이벤트 삭제</button>
+</body>
+</html>

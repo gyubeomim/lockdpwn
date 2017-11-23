@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> window 객체 </title>
+<script type="text/javascript">
+//<![CDATA[
+//변수 pop가 팝업 창을 참조합니다.
+var pop=window.open("winpopup.html","pop1","width=300,height=400,left=300,top=10,scrollbars=no,toolbars=no,location=no");
+//]]>
+</script>
+</head>
+<body>
+  <p>
+   <button onclick="pop.moveTo(200,300); pop.focus();">브라우저 창 위치 변경</button>
+  </p>
+  <p>
+   <button onclick="pop.resizeTo(200,300); pop.focus();">브라우저 창 크기 변경</button>
+  </p>
+</body>
+</html>

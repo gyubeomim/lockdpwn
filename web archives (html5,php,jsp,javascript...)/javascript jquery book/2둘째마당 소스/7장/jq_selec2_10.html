@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 탐색 선택자 </title>
+<style type="text/css">
+#menu li{margin:5px 0;}
+</style>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+   $(function(){
+      $("#menu li:contains('내용3')").css("border","1px dashed red");
+      $("#menu li:has('strong')").css("border","2px solid blue");
+      $("#menu li").not(":first").css("background-color","yellow");
+      $("#menu li:eq(1)").find("strong").css("font-size","22px");
+      $("#menu").closest("div").css("border","5px double green");
+   });
+//]]>
+</script>
+</head>
+<body>
+<h1>탐색 선택자</h1>
+<div id="wrap">
+   <div id="inner_wrap">
+      <ul id="menu">
+         <li>내용1</li>
+         <li>
+            <span>내용<strong>2</strong></span>
+         </li>
+         <li><a href="#">내용3</a></li>
+         <li>내용4</li>
+         <li>내용5</li>
+      </ul>
+   </div>
+</div>
+</body>
+</html>

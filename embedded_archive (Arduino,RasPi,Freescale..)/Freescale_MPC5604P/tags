@@ -1,0 +1,496 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+A	.\main13.c	/^			vuint8_t A:1;$/;"	m	struct:LED_tag::__anon11::__anon12	file:
+ADCRead_1	.\lineTracerCode_Edward_Joseph2.c	/^void ADCRead_1()$/;"	f
+ADCRead_1	.\main10.c	/^void ADCRead_1()$/;"	f
+ADCRead_1	.\main16.c	/^void ADCRead_1(void)$/;"	f
+ADCRead_1	.\main17.c	/^void ADCRead_1(void)$/;"	f
+ADCRead_1	.\main18.c	/^void ADCRead_1()$/;"	f
+ADCRead_1	.\main2.c	/^void ADCRead_1 (void)$/;"	f
+ADCRead_1	.\main3.c	/^void ADCRead_1()$/;"	f
+ADCRead_1	.\main4.c	/^void ADCRead_1()$/;"	f
+ADCRead_1	.\main9.c	/^void ADCRead_1 (void)$/;"	f
+ADCspeedController	.\lineTracerCode_Edward_Joseph.c	/^int ADCspeedController = 0;$/;"	v
+ADCspeedController	.\lineTracerCode_Edward_Joseph3.c	/^int ADCspeedController = 0;$/;"	v
+ADCspeedController	.\lineTracerCode_Edward_Joseph4.c	/^int ADCspeedController = 0;$/;"	v
+ADCspeedController	.\lineTracerCode_Edward_Joseph5.c	/^int ADCspeedController = 0;$/;"	v
+B	.\lineTracerCode_Edward_Joseph.c	/^		}B;$/;"	m	union:SENSOR::__anon1	typeref:struct:SENSOR::__anon1::__anon2	file:
+B	.\lineTracerCode_Edward_Joseph2.c	/^		}B;$/;"	m	union:SENSOR::__anon3	typeref:struct:SENSOR::__anon3::__anon4	file:
+B	.\lineTracerCode_Edward_Joseph3.c	/^		}B;$/;"	m	union:SENSOR::__anon5	typeref:struct:SENSOR::__anon5::__anon6	file:
+B	.\lineTracerCode_Edward_Joseph4.c	/^		}B;$/;"	m	union:SENSOR::__anon7	typeref:struct:SENSOR::__anon7::__anon8	file:
+B	.\lineTracerCode_Edward_Joseph5.c	/^		}B;$/;"	m	union:SENSOR::__anon9	typeref:struct:SENSOR::__anon9::__anon10	file:
+B	.\main13.c	/^			vuint8_t B:1;$/;"	m	struct:LED_tag::__anon11::__anon12	file:
+B	.\main13.c	/^		}B;$/;"	m	union:LED_tag::__anon11	typeref:struct:LED_tag::__anon11::__anon12	file:
+B	.\main18.c	/^		}B;$/;"	m	union:SENSOR::__anon13	typeref:struct:SENSOR::__anon13::__anon14	file:
+B	.\main2.c	/^	}B;$/;"	m	union:__anon15	typeref:struct:__anon15::__anon16	file:
+Blank	.\main3.c	/^unsigned int Blank = 1000;$/;"	v
+BrakeTimer	.\lineTracerCode_Edward_Joseph4.c	/^int BrakeTimer = 0;$/;"	v
+BrakeTimer	.\lineTracerCode_Edward_Joseph5.c	/^int BrakeTimer = 0;$/;"	v
+BrakeTimer2	.\lineTracerCode_Edward_Joseph4.c	/^int BrakeTimer2 = 0;$/;"	v
+BrakeTimer2	.\lineTracerCode_Edward_Joseph5.c	/^int BrakeTimer2 = 0;$/;"	v
+Brakeflag1	.\lineTracerCode_Edward_Joseph4.c	/^int Brakeflag1 = 1;$/;"	v
+Brakeflag1	.\lineTracerCode_Edward_Joseph5.c	/^int Brakeflag1 = 1;$/;"	v
+Brakeflag2	.\lineTracerCode_Edward_Joseph4.c	/^int Brakeflag2 = 1;$/;"	v
+Brakeflag2	.\lineTracerCode_Edward_Joseph5.c	/^int Brakeflag2 = 1;$/;"	v
+C	.\main13.c	/^			vuint8_t C:1;$/;"	m	struct:LED_tag::__anon11::__anon12	file:
+CNT	.\main13.c	/^void CNT()$/;"	f
+CalculateInputFromSensor	.\lineTracerCode_Edward_Joseph3.c	/^void CalculateInputFromSensor()$/;"	f
+CalculateInputFromSensor	.\lineTracerCode_Edward_Joseph4.c	/^void CalculateInputFromSensor()$/;"	f
+CalculateInputFromSensor	.\lineTracerCode_Edward_Joseph5.c	/^void CalculateInputFromSensor()$/;"	f
+D	.\main13.c	/^			vuint8_t D:1;$/;"	m	struct:LED_tag::__anon11::__anon12	file:
+DCServoMotorControlPWM	.\lineTracerCode_Edward_Joseph.c	/^void DCServoMotorControlPWM()$/;"	f
+DCServoMotorControlPWM	.\lineTracerCode_Edward_Joseph3.c	/^void DCServoMotorControlPWM()$/;"	f
+DCServoMotorControlPWM	.\lineTracerCode_Edward_Joseph4.c	/^void DCServoMotorControlPWM()$/;"	f
+DCServoMotorControlPWM	.\lineTracerCode_Edward_Joseph5.c	/^void DCServoMotorControlPWM()$/;"	f
+DC_MOTOR	.\main2.c	/^void DC_MOTOR(void)$/;"	f
+DCpwm	.\main2.c	/^unsigned short DCpwm=0;$/;"	v
+DP	.\main13.c	/^			vuint8_t DP:1;$/;"	m	struct:LED_tag::__anon11::__anon12	file:
+DPcnt	.\main14.c	/^vuint32_t Pit0cnt = 0, DPcnt = 0;			$/;"	v
+DisturbanceAmount	.\lineTracerCode_Edward_Joseph4.c	/^double DisturbanceAmount = 0;$/;"	v
+DisturbanceAmount	.\lineTracerCode_Edward_Joseph5.c	/^double DisturbanceAmount = 0;$/;"	v
+E	.\main13.c	/^			vuint8_t E:1;$/;"	m	struct:LED_tag::__anon11::__anon12	file:
+F	.\main13.c	/^			vuint8_t F:1;$/;"	m	struct:LED_tag::__anon11::__anon12	file:
+FALSE	.\lineTracerCode_Edward_Joseph.c	19;"	d	file:
+FALSE	.\lineTracerCode_Edward_Joseph5.c	24;"	d	file:
+Forward	.\main17.c	8;"	d	file:
+G	.\main13.c	/^			vuint8_t G:1;$/;"	m	struct:LED_tag::__anon11::__anon12	file:
+Halt	.\main17.c	10;"	d	file:
+INTERRUPTINTERVAL	.\lineTracerCode_Edward_Joseph.c	16;"	d	file:
+INTERRUPTINTERVAL	.\lineTracerCode_Edward_Joseph3.c	19;"	d	file:
+INTERRUPTINTERVAL	.\lineTracerCode_Edward_Joseph4.c	18;"	d	file:
+INTERRUPTINTERVAL	.\lineTracerCode_Edward_Joseph5.c	18;"	d	file:
+INTERRUPTINTERVAL2	.\lineTracerCode_Edward_Joseph3.c	20;"	d	file:
+INTERRUPTINTERVAL2	.\lineTracerCode_Edward_Joseph4.c	19;"	d	file:
+INTERRUPTINTERVAL2	.\lineTracerCode_Edward_Joseph5.c	19;"	d	file:
+INTERRUPTINTERVAL3	.\lineTracerCode_Edward_Joseph5.c	20;"	d	file:
+ITerm	.\lineTracerCode_Edward_Joseph.c	/^double ITerm;$/;"	v
+ITerm	.\lineTracerCode_Edward_Joseph3.c	/^double ITerm;$/;"	v
+ITerm	.\lineTracerCode_Edward_Joseph4.c	/^double ITerm;$/;"	v
+ITerm	.\lineTracerCode_Edward_Joseph5.c	/^double ITerm;$/;"	v
+ITerm2	.\lineTracerCode_Edward_Joseph3.c	/^double ITerm2;$/;"	v
+ITerm2	.\lineTracerCode_Edward_Joseph4.c	/^double ITerm2;$/;"	v
+ITerm2	.\lineTracerCode_Edward_Joseph5.c	/^double ITerm2;$/;"	v
+IsCorner	.\lineTracerCode_Edward_Joseph.c	/^int IsCorner = FALSE;$/;"	v
+IsEndLineLeft	.\lineTracerCode_Edward_Joseph.c	/^int IsEndLineLeft = FALSE;$/;"	v
+IsEndLineRight	.\lineTracerCode_Edward_Joseph.c	/^int IsEndLineRight = FALSE;$/;"	v
+IsInOutLine	.\lineTracerCode_Edward_Joseph5.c	/^int IsInOutLine = 0;$/;"	v
+IsMiddle	.\lineTracerCode_Edward_Joseph5.c	/^int IsMiddle;$/;"	v
+Kd	.\lineTracerCode_Edward_Joseph.c	/^double Kd = .1;$/;"	v
+Kd	.\lineTracerCode_Edward_Joseph3.c	/^double Kd = 50;$/;"	v
+Kd	.\lineTracerCode_Edward_Joseph4.c	/^double Kd = 5;$/;"	v
+Kd	.\lineTracerCode_Edward_Joseph5.c	/^double Kd = 5;$/;"	v
+Kd2	.\lineTracerCode_Edward_Joseph3.c	/^double Kd2 = .1;$/;"	v
+Kd2	.\lineTracerCode_Edward_Joseph4.c	/^double Kd2 = .1;$/;"	v
+Kd2	.\lineTracerCode_Edward_Joseph5.c	/^double Kd2 = .1;$/;"	v
+Ki	.\lineTracerCode_Edward_Joseph.c	/^double Ki = .1;$/;"	v
+Ki	.\lineTracerCode_Edward_Joseph3.c	/^double Ki = 50;$/;"	v
+Ki	.\lineTracerCode_Edward_Joseph4.c	/^double Ki = 5;$/;"	v
+Ki	.\lineTracerCode_Edward_Joseph5.c	/^double Ki = 5;$/;"	v
+Ki2	.\lineTracerCode_Edward_Joseph3.c	/^double Ki2 = .1;$/;"	v
+Ki2	.\lineTracerCode_Edward_Joseph4.c	/^double Ki2 = .1;$/;"	v
+Ki2	.\lineTracerCode_Edward_Joseph5.c	/^double Ki2 = .1;$/;"	v
+Kp	.\lineTracerCode_Edward_Joseph.c	/^double Kp = .5;$/;"	v
+Kp	.\lineTracerCode_Edward_Joseph3.c	/^double Kp = 100;$/;"	v
+Kp	.\lineTracerCode_Edward_Joseph4.c	/^double Kp = 8;$/;"	v
+Kp	.\lineTracerCode_Edward_Joseph5.c	/^double Kp = 10;$/;"	v
+Kp2	.\lineTracerCode_Edward_Joseph3.c	/^double Kp2 = .2;$/;"	v
+Kp2	.\lineTracerCode_Edward_Joseph4.c	/^double Kp2 = .2;$/;"	v
+Kp2	.\lineTracerCode_Edward_Joseph5.c	/^double Kp2 = .2;$/;"	v
+LED	.\main13.c	/^struct LED_tag LED;$/;"	v	typeref:struct:LED_tag
+LED	.\main3.c	/^int LED[4];$/;"	v
+LED1	.\main10.c	/^int LED1=1,LED2=1,LED3=1,LED4=1;$/;"	v
+LED1	.\main12.c	/^int LED1=0,LED2=0,LED3=0,LED4=0;$/;"	v
+LED1	.\main3.c	/^char LED1=1, LED2=2, LED3=1, LED4=1;$/;"	v
+LED2	.\main10.c	/^int LED1=1,LED2=1,LED3=1,LED4=1;$/;"	v
+LED2	.\main12.c	/^int LED1=0,LED2=0,LED3=0,LED4=0;$/;"	v
+LED2	.\main3.c	/^char LED1=1, LED2=2, LED3=1, LED4=1;$/;"	v
+LED3	.\main10.c	/^int LED1=1,LED2=1,LED3=1,LED4=1;$/;"	v
+LED3	.\main12.c	/^int LED1=0,LED2=0,LED3=0,LED4=0;$/;"	v
+LED3	.\main3.c	/^char LED1=1, LED2=2, LED3=1, LED4=1;$/;"	v
+LED4	.\main10.c	/^int LED1=1,LED2=1,LED3=1,LED4=1;$/;"	v
+LED4	.\main12.c	/^int LED1=0,LED2=0,LED3=0,LED4=0;$/;"	v
+LED4	.\main3.c	/^char LED1=1, LED2=2, LED3=1, LED4=1;$/;"	v
+LEDFlag	.\main10.c	/^int LEDFlag = 0;$/;"	v
+LEDSET	.\main13.c	/^	}LEDSET;$/;"	m	struct:LED_tag	typeref:union:LED_tag::__anon11	file:
+LED_Ctr	.\main3.c	/^void LED_Ctr()$/;"	f
+LED_tag	.\main13.c	/^struct LED_tag$/;"	s	file:
+LIMITEDMOTORMAXSPEED	.\lineTracerCode_Edward_Joseph.c	15;"	d	file:
+LIMITEDMOTORMAXSPEED	.\lineTracerCode_Edward_Joseph3.c	15;"	d	file:
+LIMITEDMOTORMAXSPEED	.\lineTracerCode_Edward_Joseph4.c	15;"	d	file:
+LIMITEDMOTORMAXSPEED	.\lineTracerCode_Edward_Joseph5.c	15;"	d	file:
+LineTracing	.\lineTracerCode_Edward_Joseph.c	/^void LineTracing()$/;"	f
+LineTracing	.\lineTracerCode_Edward_Joseph3.c	/^void LineTracing()$/;"	f
+LineTracing	.\lineTracerCode_Edward_Joseph4.c	/^void LineTracing()$/;"	f
+LineTracing	.\lineTracerCode_Edward_Joseph5.c	/^void LineTracing()$/;"	f
+MotorSpeedADCRead	.\lineTracerCode_Edward_Joseph.c	/^void MotorSpeedADCRead()$/;"	f
+MotorSpeedADCRead	.\lineTracerCode_Edward_Joseph3.c	/^void MotorSpeedADCRead()$/;"	f
+MotorSpeedADCRead	.\lineTracerCode_Edward_Joseph4.c	/^void MotorSpeedADCRead()$/;"	f
+MotorSpeedADCRead	.\lineTracerCode_Edward_Joseph5.c	/^void MotorSpeedADCRead()$/;"	f
+NUM_SENSORS	.\lineTracerCode_Edward_Joseph3.c	21;"	d	file:
+NUM_SENSORS	.\lineTracerCode_Edward_Joseph4.c	20;"	d	file:
+NUM_SENSORS	.\lineTracerCode_Edward_Joseph5.c	21;"	d	file:
+Num	.\main6.c	/^int Num = 0;       $/;"	v
+OneSecondTimer	.\lineTracerCode_Edward_Joseph5.c	/^void OneSecondTimer()$/;"	f
+PIDCompute	.\lineTracerCode_Edward_Joseph.c	/^void PIDCompute(double *setpointPID, double *inputPID, double *outputPID, double kp, double ki, double kd)$/;"	f
+PIDComputeforDCMotor	.\lineTracerCode_Edward_Joseph3.c	/^void PIDComputeforDCMotor(double *setpointPID, double *inputPID, double *outputPID, double kp, double ki, double kd, double Min, double Max)$/;"	f
+PIDComputeforDCMotor	.\lineTracerCode_Edward_Joseph4.c	/^void PIDComputeforDCMotor(double *setpointPID, double *inputPID, double *outputPID, double kp, double ki, double kd, double Min, double Max)$/;"	f
+PIDComputeforDCMotor	.\lineTracerCode_Edward_Joseph5.c	/^void PIDComputeforDCMotor(double *setpointPID, double *inputPID, double *outputPID, double kp, double ki, double kd, double Min, double Max)$/;"	f
+PIDComputeforServo	.\lineTracerCode_Edward_Joseph3.c	/^void PIDComputeforServo(double *setpointPID, double *inputPID, double *outputPID, double kp, double ki, double kd, double Min, double Max)$/;"	f
+PIDComputeforServo	.\lineTracerCode_Edward_Joseph4.c	/^void PIDComputeforServo(double *setpointPID, double *inputPID, double *outputPID, double kp, double ki, double kd, double Min, double Max)$/;"	f
+PIDComputeforServo	.\lineTracerCode_Edward_Joseph5.c	/^void PIDComputeforServo(double *setpointPID, double *inputPID, double *outputPID, double kp, double ki, double kd, double Min, double Max, int IsMiddle)$/;"	f
+PIDMAX	.\lineTracerCode_Edward_Joseph.c	13;"	d	file:
+PIDMAX	.\lineTracerCode_Edward_Joseph3.c	13;"	d	file:
+PIDMAX	.\lineTracerCode_Edward_Joseph4.c	13;"	d	file:
+PIDMAX	.\lineTracerCode_Edward_Joseph5.c	13;"	d	file:
+PIDMAXDCMotor	.\lineTracerCode_Edward_Joseph3.c	17;"	d	file:
+PIDMAXDCMotor	.\lineTracerCode_Edward_Joseph4.c	16;"	d	file:
+PIDMAXDCMotor	.\lineTracerCode_Edward_Joseph5.c	16;"	d	file:
+PIDMIN	.\lineTracerCode_Edward_Joseph.c	12;"	d	file:
+PIDMIN	.\lineTracerCode_Edward_Joseph3.c	12;"	d	file:
+PIDMIN	.\lineTracerCode_Edward_Joseph4.c	12;"	d	file:
+PIDMIN	.\lineTracerCode_Edward_Joseph5.c	12;"	d	file:
+PIDMINDCMotor	.\lineTracerCode_Edward_Joseph3.c	16;"	d	file:
+PIT0ISR	.\main11.c	/^void PIT0ISR()$/;"	f
+PIT0ISR	.\main12.c	/^void PIT0ISR()$/;"	f
+PIT0ISR	.\main14.c	/^void PIT0ISR(void)$/;"	f
+PIT0ISR	.\main16.c	/^void PIT0ISR(void)$/;"	f
+PIT0ISR	.\main3.c	/^void PIT0ISR()$/;"	f
+PIT0ISR	.\main7.c	/^void PIT0ISR()$/;"	f
+PIT0ISR	.\main8.c	/^void PIT0ISR()$/;"	f
+PIT1ISR	.\main7.c	/^void PIT1ISR()$/;"	f
+PIT1ISR	.\main8.c	/^void PIT1ISR()$/;"	f
+PWM	.\main16.c	/^void PWM(void)$/;"	f
+PWM	.\main17.c	/^void PWM(void)$/;"	f
+PWM1_X	.\main15.c	/^int PWM1_X =0;$/;"	v
+PWM1_X	.\main9.c	/^int PWM1_X =0;$/;"	v
+PWM1_Y	.\main9.c	/^int PWM1_Y =0;$/;"	v
+PWM1_Z	.\main9.c	/^int PWM1_Z =0;$/;"	v
+PWM_OUT	.\main15.c	/^void PWM_OUT(void)$/;"	f
+PWM_X	.\main16.c	/^int PWM_X = 0;$/;"	v
+PWM_out	.\main9.c	/^void PWM_out(void)$/;"	f
+Pit0cnt	.\main11.c	/^vuint32_t Pit0cnt = 0;$/;"	v
+Pit0cnt	.\main12.c	/^vuint32_t Pit0cnt = 0;$/;"	v
+Pit0cnt	.\main14.c	/^vuint32_t Pit0cnt = 0, DPcnt = 0;			$/;"	v
+Pit0cnt	.\main16.c	/^volatile int i = 0, Pit0cnt = 0;$/;"	v
+Pit0cnt	.\main17.c	/^volatile int i = 0, Pit0cnt = 0;$/;"	v
+Pit0cnt	.\main3.c	/^vuint32_t Pit0cnt = 0;$/;"	v
+R	.\lineTracerCode_Edward_Joseph.c	/^		vuint8_t R;$/;"	m	union:SENSOR::__anon1	file:
+R	.\lineTracerCode_Edward_Joseph2.c	/^		vuint8_t R;$/;"	m	union:SENSOR::__anon3	file:
+R	.\lineTracerCode_Edward_Joseph3.c	/^		vuint8_t R;$/;"	m	union:SENSOR::__anon5	file:
+R	.\lineTracerCode_Edward_Joseph4.c	/^		vuint8_t R;$/;"	m	union:SENSOR::__anon7	file:
+R	.\lineTracerCode_Edward_Joseph5.c	/^		vuint8_t R;$/;"	m	union:SENSOR::__anon9	file:
+R	.\main13.c	/^		vuint8_t R;$/;"	m	union:LED_tag::__anon11	file:
+R	.\main18.c	/^		vuint8_t R;$/;"	m	union:SENSOR::__anon13	file:
+R	.\main2.c	/^	vuint8_t R;$/;"	m	union:__anon15	file:
+R_adc	.\lineTracerCode_Edward_Joseph2.c	/^int R_adc = 0;$/;"	v
+R_adc	.\main10.c	/^int R_adc = 0;$/;"	v
+R_adc	.\main16.c	/^int  R_adc = 0;$/;"	v
+R_adc	.\main17.c	/^int  R_adc = 0;$/;"	v
+R_adc	.\main18.c	/^int R_adc = 0;$/;"	v
+R_adc	.\main2.c	/^int R_adc =0;$/;"	v
+R_adc	.\main3.c	/^int R_adc = 0;$/;"	v
+R_adc	.\main4.c	/^int R_adc = 0;$/;"	v
+R_adc	.\main9.c	/^int R_adc =0;$/;"	v
+Reverse	.\main17.c	9;"	d	file:
+SENSOR	.\lineTracerCode_Edward_Joseph.c	/^struct SENSOR$/;"	s	file:
+SENSOR	.\lineTracerCode_Edward_Joseph2.c	/^struct SENSOR$/;"	s	file:
+SENSOR	.\lineTracerCode_Edward_Joseph3.c	/^struct SENSOR$/;"	s	file:
+SENSOR	.\lineTracerCode_Edward_Joseph4.c	/^struct SENSOR$/;"	s	file:
+SENSOR	.\lineTracerCode_Edward_Joseph5.c	/^struct SENSOR$/;"	s	file:
+SENSOR	.\main18.c	/^struct SENSOR$/;"	s	file:
+SENSOR	.\main2.c	/^}SENSOR;$/;"	v	typeref:union:__anon15
+SENSOR1	.\main2.c	/^		  vuint8_t SENSOR1 :1;$/;"	m	struct:__anon15::__anon16	file:
+SENSOR2	.\main2.c	/^		  vuint8_t SENSOR2 :1;$/;"	m	struct:__anon15::__anon16	file:
+SENSOR3	.\main2.c	/^		  vuint8_t SENSOR3 :1;$/;"	m	struct:__anon15::__anon16	file:
+SENSOR4	.\main2.c	/^		  vuint8_t SENSOR4 :1;$/;"	m	struct:__anon15::__anon16	file:
+SERVOMIDDLE	.\lineTracerCode_Edward_Joseph.c	10;"	d	file:
+SERVOMIDDLE	.\lineTracerCode_Edward_Joseph3.c	10;"	d	file:
+SERVOMIDDLE	.\lineTracerCode_Edward_Joseph4.c	10;"	d	file:
+SERVOMIDDLE	.\lineTracerCode_Edward_Joseph5.c	10;"	d	file:
+SERVORANGE	.\lineTracerCode_Edward_Joseph.c	11;"	d	file:
+SERVORANGE	.\lineTracerCode_Edward_Joseph3.c	11;"	d	file:
+SERVORANGE	.\lineTracerCode_Edward_Joseph4.c	11;"	d	file:
+SERVORANGE	.\lineTracerCode_Edward_Joseph5.c	11;"	d	file:
+SERVO_MOTOR	.\main2.c	/^void SERVO_MOTOR(void)$/;"	f
+SERVOpwm	.\main2.c	/^unsigned short SERVOpwm=0;$/;"	v
+SW	.\main3.c	/^char SW[4] = {0,0,0,0};$/;"	v
+SW	.\main6.c	/^char SW = 0;     \/\/ 버튼을 누르는걸 인식하기 위해 SW, SWold를 선언한다$/;"	v
+SW	.\main8.c	/^char SW =0;$/;"	v
+SW1	.\main.c	/^char SW1 =0;$/;"	v
+SW1	.\main5.c	/^char SW1 =0;$/;"	v
+SW2	.\main.c	/^char SW2 =0;$/;"	v
+SW3	.\main.c	/^char SW3 =0;$/;"	v
+SW4	.\main.c	/^char SW4 =0;$/;"	v
+SWold	.\main3.c	/^char SWold[4] = {0,0,0,0};$/;"	v
+SWold	.\main5.c	/^char SWold = 0;$/;"	v
+SWold	.\main6.c	/^char SWold = 0;$/;"	v
+Sensing	.\lineTracerCode_Edward_Joseph.c	/^void Sensing()$/;"	f
+Sensing	.\lineTracerCode_Edward_Joseph3.c	/^void Sensing()$/;"	f
+Sensing	.\lineTracerCode_Edward_Joseph4.c	/^void Sensing()$/;"	f
+Sensing	.\lineTracerCode_Edward_Joseph5.c	/^void Sensing()$/;"	f
+SensorErrorAmount	.\lineTracerCode_Edward_Joseph5.c	/^int SensorErrorAmount = 0;$/;"	v
+ShakeAmount	.\lineTracerCode_Edward_Joseph3.c	/^int ShakeAmount = 0;$/;"	v
+ShakingTime	.\lineTracerCode_Edward_Joseph4.c	/^int ShakingTime = 0;$/;"	v
+ShakingTime	.\lineTracerCode_Edward_Joseph5.c	/^int ShakingTime = 0;$/;"	v
+SuperBrakeTime	.\lineTracerCode_Edward_Joseph4.c	/^int SuperBrakeTime = 0;$/;"	v
+SuperBrakeTime	.\lineTracerCode_Edward_Joseph5.c	/^int SuperBrakeTime = 0;$/;"	v
+Switch	.\main3.c	/^void Switch()$/;"	f
+TRUE	.\lineTracerCode_Edward_Joseph.c	18;"	d	file:
+TRUE	.\lineTracerCode_Edward_Joseph5.c	23;"	d	file:
+TimerforPIDCompute	.\lineTracerCode_Edward_Joseph.c	/^void TimerforPIDCompute()$/;"	f
+TimerforPIDCompute	.\lineTracerCode_Edward_Joseph3.c	/^void TimerforPIDCompute()$/;"	f
+TimerforPIDCompute	.\lineTracerCode_Edward_Joseph4.c	/^void TimerforPIDCompute()$/;"	f
+TimerforPIDCompute	.\lineTracerCode_Edward_Joseph5.c	/^void TimerforPIDCompute()$/;"	f
+TimerforRecognizeShake	.\lineTracerCode_Edward_Joseph3.c	/^void TimerforRecognizeShake()$/;"	f
+TimerforRecognizeShake	.\lineTracerCode_Edward_Joseph4.c	/^void TimerforRecognizeShake()$/;"	f
+TimerforRecognizeShake	.\lineTracerCode_Edward_Joseph5.c	/^void TimerforRecognizeShake()$/;"	f
+Vector	.\main17.c	/^int Vector = Forward;$/;"	v
+binary	.\main6.c	/^int binary[4] = {0,0,0,0};  \/\/ LED를 깜빡이기 위해 2진수를 읽는 배열을 선언한다$/;"	v
+btnClickToIncrease	.\main5.c	/^void btnClickToIncrease()$/;"	f
+btnClickToIncrease	.\main6.c	/^void btnClickToIncrease()$/;"	f
+cnt	.\main3.c	/^char cnt = 0;$/;"	v
+cntLED	.\main14.c	/^void cntLED(void)$/;"	f
+dInput	.\lineTracerCode_Edward_Joseph.c	/^double dInput;$/;"	v
+dInput	.\lineTracerCode_Edward_Joseph3.c	/^double dInput;$/;"	v
+dInput	.\lineTracerCode_Edward_Joseph4.c	/^double dInput;$/;"	v
+dInput	.\lineTracerCode_Edward_Joseph5.c	/^double dInput;$/;"	v
+dInput2	.\lineTracerCode_Edward_Joseph3.c	/^double dInput2;$/;"	v
+dInput2	.\lineTracerCode_Edward_Joseph4.c	/^double dInput2;$/;"	v
+dInput2	.\lineTracerCode_Edward_Joseph5.c	/^double dInput2;$/;"	v
+display_seg	.\main13.c	/^void display_seg()$/;"	f
+dotpoinblinker	.\main13.c	/^vuint8_t dotpoinblinker = 0;$/;"	v
+dutyBackward	.\main17.c	/^float dutyBackward = 0;	$/;"	v
+dutyForward	.\main17.c	/^float dutyForward = 0;$/;"	v
+error	.\lineTracerCode_Edward_Joseph.c	/^double error;$/;"	v
+error	.\lineTracerCode_Edward_Joseph3.c	/^double error;$/;"	v
+error	.\lineTracerCode_Edward_Joseph4.c	/^double error;$/;"	v
+error	.\lineTracerCode_Edward_Joseph5.c	/^double error;$/;"	v
+error2	.\lineTracerCode_Edward_Joseph3.c	/^double error2;$/;"	v
+error2	.\lineTracerCode_Edward_Joseph4.c	/^double error2;$/;"	v
+error2	.\lineTracerCode_Edward_Joseph5.c	/^double error2;$/;"	v
+flag	.\main15.c	/^int flag = 0;$/;"	v
+goMinus	.\main11.c	/^int goMinus = 0;$/;"	v
+goMinus	.\main12.c	/^int goMinus = 0;$/;"	v
+goPlus	.\main11.c	/^int goPlus = 0;$/;"	v
+hex	.\main13.c	/^char hex[16] = {0x03 , 0x9F, 0x25, 0x0D, 0x99, 0x49, 0x41, 0x1B, 0x01, 0x09,0x11,0x01,0x63,0x03,0x61,0x71};$/;"	v
+i	.\main.c	/^vuint32_t i = 0;			    \/* Dummy idle counter *\/$/;"	v
+i	.\main14.c	/^int i=0;$/;"	v
+i	.\main16.c	/^volatile int i = 0, Pit0cnt = 0;$/;"	v
+i	.\main17.c	/^volatile int i = 0, Pit0cnt = 0;$/;"	v
+i	.\main2.c	/^int i=0;$/;"	v
+i	.\main3.c	/^vuint32_t i = 0;			    \/* Dummy idle counter *\/$/;"	v
+i	.\main5.c	/^vuint32_t i = 0;			    \/* Dummy idle counter *\/$/;"	v
+i	.\main6.c	/^vuint32_t i = 0;   \/\/ i를 선언한다$/;"	v
+i	.\main9.c	/^int i=0;$/;"	v
+iBin	.\main6.c	/^int iBin = 0;               \/\/ i 값을 2진수로 변환시키는 iBin, Num을 선언한다$/;"	v
+increasePWM	.\main15.c	/^void increasePWM()$/;"	f
+init_ADC	.\main16.c	/^void init_ADC(void)$/;"	f
+init_ADC	.\main17.c	/^void init_ADC(void)$/;"	f
+init_ADC1	.\lineTracerCode_Edward_Joseph2.c	/^void init_ADC1()$/;"	f
+init_ADC1	.\main10.c	/^void init_ADC1()$/;"	f
+init_ADC1	.\main18.c	/^void init_ADC1()$/;"	f
+init_ADC1	.\main3.c	/^void init_ADC1()$/;"	f
+init_ADC1	.\main4.c	/^void init_ADC1()$/;"	f
+init_ADC_1	.\main2.c	/^void init_ADC_1(void)$/;"	f
+init_ADC_1	.\main9.c	/^void init_ADC_1(void)$/;"	f
+init_FlexPWM0	.\lineTracerCode_Edward_Joseph.c	/^void init_FlexPWM0(void) \/\/ 모터 초기화 코드$/;"	f
+init_FlexPWM0	.\lineTracerCode_Edward_Joseph3.c	/^void init_FlexPWM0(void) \/\/ 모터 초기화 코드$/;"	f
+init_FlexPWM0	.\lineTracerCode_Edward_Joseph4.c	/^void init_FlexPWM0(void) \/\/ 모터 초기화 코드$/;"	f
+init_FlexPWM0	.\lineTracerCode_Edward_Joseph5.c	/^void init_FlexPWM0(void) \/\/ 모터 초기화 코드$/;"	f
+init_FlexPWM0_DCMotor	.\lineTracerCode_Edward_Joseph.c	/^void init_FlexPWM0_DCMotor(void) \/\/ DC MOTOR 제어를 위해 1번 모듈 초기화$/;"	f
+init_FlexPWM0_DCMotor	.\lineTracerCode_Edward_Joseph3.c	/^void init_FlexPWM0_DCMotor(void) \/\/ DC MOTOR 제어를 위해 1번 모듈 초기화$/;"	f
+init_FlexPWM0_DCMotor	.\lineTracerCode_Edward_Joseph4.c	/^void init_FlexPWM0_DCMotor(void) \/\/ DC MOTOR 제어를 위해 1번 모듈 초기화$/;"	f
+init_FlexPWM0_DCMotor	.\lineTracerCode_Edward_Joseph5.c	/^void init_FlexPWM0_DCMotor(void) \/\/ DC MOTOR 제어를 위해 1번 모듈 초기화$/;"	f
+init_FlexPWM0_GenConfig	.\lineTracerCode_Edward_Joseph2.c	/^void init_FlexPWM0_GenConfig(void) \/\/ 모터 초기화 코드$/;"	f
+init_FlexPWM0_GenConfig	.\main18.c	/^void init_FlexPWM0_GenConfig(void) \/\/ 모터 초기화 코드$/;"	f
+init_FlexPWM0_GenConfig	.\main2.c	/^void init_FlexPWM0_GenConfig(void)$/;"	f
+init_FlexPWM0_GenConfig	.\main9.c	/^void init_FlexPWM0_GenConfig(void)$/;"	f
+init_FlexPWM0_Servo	.\lineTracerCode_Edward_Joseph.c	/^void init_FlexPWM0_Servo(void) \/\/ SERVO MOTOR 제어를 위해 0번 모튤 초기화$/;"	f
+init_FlexPWM0_Servo	.\lineTracerCode_Edward_Joseph3.c	/^void init_FlexPWM0_Servo(void) \/\/ SERVO MOTOR 제어를 위해 0번 모튤 초기화$/;"	f
+init_FlexPWM0_Servo	.\lineTracerCode_Edward_Joseph4.c	/^void init_FlexPWM0_Servo(void) \/\/ SERVO MOTOR 제어를 위해 0번 모튤 초기화$/;"	f
+init_FlexPWM0_Servo	.\lineTracerCode_Edward_Joseph5.c	/^void init_FlexPWM0_Servo(void) \/\/ SERVO MOTOR 제어를 위해 0번 모튤 초기화$/;"	f
+init_FlexPWM0_sub0	.\lineTracerCode_Edward_Joseph2.c	/^void init_FlexPWM0_sub0(void) \/\/ SERVO MOTOR 제어를 위해 0번 모튤 초기화$/;"	f
+init_FlexPWM0_sub0	.\main18.c	/^void init_FlexPWM0_sub0(void) \/\/ SERVO MOTOR 제어를 위해 0번 모튤 초기화$/;"	f
+init_FlexPWM0_sub0	.\main2.c	/^void init_FlexPWM0_sub0(void)$/;"	f
+init_FlexPWM0_sub1	.\lineTracerCode_Edward_Joseph2.c	/^void init_FlexPWM0_sub1(void) \/\/ DC MOTOR 제어를 위해 1번 모듈 초기화$/;"	f
+init_FlexPWM0_sub1	.\main18.c	/^void init_FlexPWM0_sub1(void) \/\/ DC MOTOR 제어를 위해 1번 모듈 초기화$/;"	f
+init_FlexPWM0_sub1	.\main2.c	/^void init_FlexPWM0_sub1(void)$/;"	f
+init_MotorSpeedADC	.\lineTracerCode_Edward_Joseph.c	/^void init_MotorSpeedADC()$/;"	f
+init_MotorSpeedADC	.\lineTracerCode_Edward_Joseph3.c	/^void init_MotorSpeedADC()$/;"	f
+init_MotorSpeedADC	.\lineTracerCode_Edward_Joseph4.c	/^void init_MotorSpeedADC()$/;"	f
+init_MotorSpeedADC	.\lineTracerCode_Edward_Joseph5.c	/^void init_MotorSpeedADC()$/;"	f
+init_PIT	.\main11.c	/^void init_PIT()$/;"	f
+init_PIT	.\main12.c	/^void init_PIT()$/;"	f
+init_PIT	.\main13.c	/^void init_PIT()$/;"	f
+init_PIT	.\main14.c	/^void init_PIT(void)$/;"	f
+init_PIT	.\main15.c	/^void init_PIT()$/;"	f
+init_PIT	.\main16.c	/^void init_PIT(void)$/;"	f
+init_PIT	.\main3.c	/^void init_PIT()$/;"	f
+init_PIT	.\main7.c	/^void init_PIT()$/;"	f
+init_PIT	.\main8.c	/^void init_PIT()$/;"	f
+init_PITforPID	.\lineTracerCode_Edward_Joseph.c	/^void init_PITforPID()$/;"	f
+init_PITforPID	.\lineTracerCode_Edward_Joseph3.c	/^void init_PITforPID()$/;"	f
+init_PITforPID	.\lineTracerCode_Edward_Joseph4.c	/^void init_PITforPID()$/;"	f
+init_PITforPID	.\lineTracerCode_Edward_Joseph5.c	/^void init_PITforPID()$/;"	f
+init_PWM	.\main15.c	/^void init_PWM(void)$/;"	f
+init_PWM	.\main16.c	/^void init_PWM(void)$/;"	f
+init_PWM	.\main17.c	/^void init_PWM(void)$/;"	f
+input	.\lineTracerCode_Edward_Joseph.c	/^double input = 0;$/;"	v
+input	.\lineTracerCode_Edward_Joseph3.c	/^double input = 0;$/;"	v
+input	.\lineTracerCode_Edward_Joseph4.c	/^double input = 0;$/;"	v
+input	.\lineTracerCode_Edward_Joseph5.c	/^double input = 0;$/;"	v
+input2	.\lineTracerCode_Edward_Joseph3.c	/^double input2 = 0;$/;"	v
+input2	.\lineTracerCode_Edward_Joseph4.c	/^double input2 = 0;$/;"	v
+input2	.\lineTracerCode_Edward_Joseph5.c	/^double input2 = 0;$/;"	v
+inputDCMotor	.\lineTracerCode_Edward_Joseph3.c	/^double inputDCMotor = 0;$/;"	v
+inputDCMotor	.\lineTracerCode_Edward_Joseph4.c	/^double inputDCMotor = 0;$/;"	v
+inputDCMotor	.\lineTracerCode_Edward_Joseph5.c	/^double inputDCMotor = 0;$/;"	v
+input_val	.\main13.c	/^vuint8_t input_val =0;$/;"	v
+lastInput	.\lineTracerCode_Edward_Joseph.c	/^double lastInput;$/;"	v
+lastInput	.\lineTracerCode_Edward_Joseph3.c	/^double lastInput;$/;"	v
+lastInput	.\lineTracerCode_Edward_Joseph4.c	/^double lastInput;$/;"	v
+lastInput	.\lineTracerCode_Edward_Joseph5.c	/^double lastInput;$/;"	v
+lastInput2	.\lineTracerCode_Edward_Joseph3.c	/^double lastInput2;$/;"	v
+lastInput2	.\lineTracerCode_Edward_Joseph4.c	/^double lastInput2;$/;"	v
+lastInput2	.\lineTracerCode_Edward_Joseph5.c	/^double lastInput2;$/;"	v
+lastTracesensorValue	.\lineTracerCode_Edward_Joseph3.c	/^int lastTracesensorValue = 0;$/;"	v
+lastTracesensorValue	.\lineTracerCode_Edward_Joseph4.c	/^int lastTracesensorValue = 0;$/;"	v
+lastTracesensorValue	.\lineTracerCode_Edward_Joseph5.c	/^int lastTracesensorValue = 0;$/;"	v
+lineTracerTest	.\lineTracerCode_Edward_Joseph2.c	/^void lineTracerTest()$/;"	f
+lineTracerTest	.\main18.c	/^void lineTracerTest()$/;"	f
+main	.\lineTracerCode_Edward_Joseph.c	/^int main(void)$/;"	f
+main	.\lineTracerCode_Edward_Joseph2.c	/^int main(void)$/;"	f
+main	.\lineTracerCode_Edward_Joseph3.c	/^int main(void)$/;"	f
+main	.\lineTracerCode_Edward_Joseph4.c	/^int main(void)$/;"	f
+main	.\lineTracerCode_Edward_Joseph5.c	/^int main(void)$/;"	f
+main	.\main.c	/^void main(void) $/;"	f
+main	.\main10.c	/^void main(void) $/;"	f
+main	.\main11.c	/^void main(void) $/;"	f
+main	.\main12.c	/^void main(void) $/;"	f
+main	.\main13.c	/^void main(void) $/;"	f
+main	.\main14.c	/^void main(void) $/;"	f
+main	.\main15.c	/^int main(void)$/;"	f
+main	.\main16.c	/^int main(void)$/;"	f
+main	.\main17.c	/^int main(void)$/;"	f
+main	.\main18.c	/^int main(void)$/;"	f
+main	.\main2.c	/^int main(void)$/;"	f
+main	.\main3.c	/^void main(void) $/;"	f
+main	.\main4.c	/^void main(void) $/;"	f
+main	.\main5.c	/^int main(void) $/;"	f
+main	.\main6.c	/^int main(void) $/;"	f
+main	.\main7.c	/^void main(void) $/;"	f
+main	.\main8.c	/^void main(void) $/;"	f
+main	.\main9.c	/^int main(void)$/;"	f
+map	.\main14.c	/^int map[16][7] = { 0, 0, 0, 0, 0, 0, 1,$/;"	v
+motorControl	.\lineTracerCode_Edward_Joseph.c	/^int motorControl = 0;$/;"	v
+motorControl	.\lineTracerCode_Edward_Joseph2.c	/^int motorControl = 0;$/;"	v
+motorControl	.\lineTracerCode_Edward_Joseph3.c	/^double motorControl = LIMITEDMOTORMAXSPEED;$/;"	v
+motorControl	.\lineTracerCode_Edward_Joseph4.c	/^double motorControl = LIMITEDMOTORMAXSPEED;$/;"	v
+motorControl	.\lineTracerCode_Edward_Joseph5.c	/^double motorControl = LIMITEDMOTORMAXSPEED;$/;"	v
+motorControl	.\main18.c	/^int motorControl = 0;$/;"	v
+myInput	.\lineTracerCode_Edward_Joseph.c	/^double *myInput;$/;"	v
+myInput	.\lineTracerCode_Edward_Joseph3.c	/^double *myInput;$/;"	v
+myInput	.\lineTracerCode_Edward_Joseph4.c	/^double *myInput;$/;"	v
+myInput	.\lineTracerCode_Edward_Joseph5.c	/^double *myInput;$/;"	v
+myInput2	.\lineTracerCode_Edward_Joseph3.c	/^double *myInput2;$/;"	v
+myInput2	.\lineTracerCode_Edward_Joseph4.c	/^double *myInput2;$/;"	v
+myInput2	.\lineTracerCode_Edward_Joseph5.c	/^double *myInput2;$/;"	v
+mySetpoint	.\lineTracerCode_Edward_Joseph.c	/^double *mySetpoint;$/;"	v
+mySetpoint	.\lineTracerCode_Edward_Joseph3.c	/^double *mySetpoint;$/;"	v
+mySetpoint	.\lineTracerCode_Edward_Joseph4.c	/^double *mySetpoint;$/;"	v
+mySetpoint	.\lineTracerCode_Edward_Joseph5.c	/^double *mySetpoint;$/;"	v
+mySetpoint2	.\lineTracerCode_Edward_Joseph3.c	/^double *mySetpoint2;$/;"	v
+mySetpoint2	.\lineTracerCode_Edward_Joseph4.c	/^double *mySetpoint2;$/;"	v
+mySetpoint2	.\lineTracerCode_Edward_Joseph5.c	/^double *mySetpoint2;$/;"	v
+n	.\main16.c	/^char n = 0;$/;"	v
+n	.\main17.c	/^char n = 0;$/;"	v
+outMax	.\lineTracerCode_Edward_Joseph.c	/^double outMax;$/;"	v
+outMax	.\lineTracerCode_Edward_Joseph3.c	/^double outMax;$/;"	v
+outMax	.\lineTracerCode_Edward_Joseph4.c	/^double outMax;$/;"	v
+outMax	.\lineTracerCode_Edward_Joseph5.c	/^double outMax;$/;"	v
+outMax2	.\lineTracerCode_Edward_Joseph3.c	/^double outMax2;$/;"	v
+outMax2	.\lineTracerCode_Edward_Joseph4.c	/^double outMax2;$/;"	v
+outMax2	.\lineTracerCode_Edward_Joseph5.c	/^double outMax2;$/;"	v
+outMin	.\lineTracerCode_Edward_Joseph.c	/^double outMin;$/;"	v
+outMin	.\lineTracerCode_Edward_Joseph3.c	/^double outMin;$/;"	v
+outMin	.\lineTracerCode_Edward_Joseph4.c	/^double outMin;$/;"	v
+outMin	.\lineTracerCode_Edward_Joseph5.c	/^double outMin;$/;"	v
+outMin2	.\lineTracerCode_Edward_Joseph3.c	/^double outMin2;$/;"	v
+outMin2	.\lineTracerCode_Edward_Joseph4.c	/^double outMin2;$/;"	v
+outMin2	.\lineTracerCode_Edward_Joseph5.c	/^double outMin2;$/;"	v
+output	.\lineTracerCode_Edward_Joseph.c	/^double output;$/;"	v
+output	.\lineTracerCode_Edward_Joseph3.c	/^double output;$/;"	v
+output	.\lineTracerCode_Edward_Joseph4.c	/^double output;$/;"	v
+output	.\lineTracerCode_Edward_Joseph5.c	/^double output;$/;"	v
+output2	.\lineTracerCode_Edward_Joseph3.c	/^double output2;$/;"	v
+output2	.\lineTracerCode_Edward_Joseph4.c	/^double output2;$/;"	v
+output2	.\lineTracerCode_Edward_Joseph5.c	/^double output2;$/;"	v
+output_pin	.\main13.c	/^void output_pin()$/;"	f
+pwm	.\main2.c	/^unsigned short pwm = 0;$/;"	v
+sen	.\lineTracerCode_Edward_Joseph.c	/^	}sen;$/;"	m	struct:SENSOR	typeref:union:SENSOR::__anon1	file:
+sen	.\lineTracerCode_Edward_Joseph2.c	/^	}sen;$/;"	m	struct:SENSOR	typeref:union:SENSOR::__anon3	file:
+sen	.\lineTracerCode_Edward_Joseph3.c	/^	}sen;$/;"	m	struct:SENSOR	typeref:union:SENSOR::__anon5	file:
+sen	.\lineTracerCode_Edward_Joseph4.c	/^	}sen;$/;"	m	struct:SENSOR	typeref:union:SENSOR::__anon7	file:
+sen	.\lineTracerCode_Edward_Joseph5.c	/^	}sen;$/;"	m	struct:SENSOR	typeref:union:SENSOR::__anon9	file:
+sen	.\main18.c	/^	}sen;$/;"	m	struct:SENSOR	typeref:union:SENSOR::__anon13	file:
+sensor	.\lineTracerCode_Edward_Joseph2.c	/^void sensor(void)$/;"	f
+sensor	.\main18.c	/^void sensor(void)$/;"	f
+sensor1	.\lineTracerCode_Edward_Joseph.c	/^		  vuint8_t sensor1:1;$/;"	m	struct:SENSOR::__anon1::__anon2	file:
+sensor1	.\lineTracerCode_Edward_Joseph2.c	/^		  vuint8_t sensor1:1;$/;"	m	struct:SENSOR::__anon3::__anon4	file:
+sensor1	.\lineTracerCode_Edward_Joseph3.c	/^		  vuint8_t sensor1:1;$/;"	m	struct:SENSOR::__anon5::__anon6	file:
+sensor1	.\lineTracerCode_Edward_Joseph4.c	/^		  vuint8_t sensor1:1;$/;"	m	struct:SENSOR::__anon7::__anon8	file:
+sensor1	.\lineTracerCode_Edward_Joseph5.c	/^		  vuint8_t sensor1:1;$/;"	m	struct:SENSOR::__anon9::__anon10	file:
+sensor1	.\main18.c	/^		  vuint8_t sensor1:1;$/;"	m	struct:SENSOR::__anon13::__anon14	file:
+sensor2	.\lineTracerCode_Edward_Joseph.c	/^		  vuint8_t sensor2:1;$/;"	m	struct:SENSOR::__anon1::__anon2	file:
+sensor2	.\lineTracerCode_Edward_Joseph2.c	/^		  vuint8_t sensor2:1;$/;"	m	struct:SENSOR::__anon3::__anon4	file:
+sensor2	.\lineTracerCode_Edward_Joseph3.c	/^		  vuint8_t sensor2:1;$/;"	m	struct:SENSOR::__anon5::__anon6	file:
+sensor2	.\lineTracerCode_Edward_Joseph4.c	/^		  vuint8_t sensor2:1;$/;"	m	struct:SENSOR::__anon7::__anon8	file:
+sensor2	.\lineTracerCode_Edward_Joseph5.c	/^		  vuint8_t sensor2:1;$/;"	m	struct:SENSOR::__anon9::__anon10	file:
+sensor2	.\main18.c	/^		  vuint8_t sensor2:1;$/;"	m	struct:SENSOR::__anon13::__anon14	file:
+sensor3	.\lineTracerCode_Edward_Joseph.c	/^		  vuint8_t sensor3:1;$/;"	m	struct:SENSOR::__anon1::__anon2	file:
+sensor3	.\lineTracerCode_Edward_Joseph2.c	/^		  vuint8_t sensor3:1;$/;"	m	struct:SENSOR::__anon3::__anon4	file:
+sensor3	.\lineTracerCode_Edward_Joseph3.c	/^		  vuint8_t sensor3:1;$/;"	m	struct:SENSOR::__anon5::__anon6	file:
+sensor3	.\lineTracerCode_Edward_Joseph4.c	/^		  vuint8_t sensor3:1;$/;"	m	struct:SENSOR::__anon7::__anon8	file:
+sensor3	.\lineTracerCode_Edward_Joseph5.c	/^		  vuint8_t sensor3:1;$/;"	m	struct:SENSOR::__anon9::__anon10	file:
+sensor3	.\main18.c	/^		  vuint8_t sensor3:1;$/;"	m	struct:SENSOR::__anon13::__anon14	file:
+sensor4	.\lineTracerCode_Edward_Joseph.c	/^		  vuint8_t sensor4:1;$/;"	m	struct:SENSOR::__anon1::__anon2	file:
+sensor4	.\lineTracerCode_Edward_Joseph2.c	/^		  vuint8_t sensor4:1;$/;"	m	struct:SENSOR::__anon3::__anon4	file:
+sensor4	.\lineTracerCode_Edward_Joseph3.c	/^		  vuint8_t sensor4:1;$/;"	m	struct:SENSOR::__anon5::__anon6	file:
+sensor4	.\lineTracerCode_Edward_Joseph4.c	/^		  vuint8_t sensor4:1;$/;"	m	struct:SENSOR::__anon7::__anon8	file:
+sensor4	.\lineTracerCode_Edward_Joseph5.c	/^		  vuint8_t sensor4:1;$/;"	m	struct:SENSOR::__anon9::__anon10	file:
+sensor4	.\main18.c	/^		  vuint8_t sensor4:1;$/;"	m	struct:SENSOR::__anon13::__anon14	file:
+sensorValues	.\lineTracerCode_Edward_Joseph3.c	/^int sensorValues[NUM_SENSORS];$/;"	v
+sensorValues	.\lineTracerCode_Edward_Joseph4.c	/^int sensorValues[NUM_SENSORS];$/;"	v
+sensorValues	.\lineTracerCode_Edward_Joseph5.c	/^int sensorValues[NUM_SENSORS];$/;"	v
+servoControl	.\lineTracerCode_Edward_Joseph.c	/^double servoControl = SERVOMIDDLE;$/;"	v
+servoControl	.\lineTracerCode_Edward_Joseph2.c	/^int servoControl = 0;$/;"	v
+servoControl	.\lineTracerCode_Edward_Joseph3.c	/^double servoControl = SERVOMIDDLE;$/;"	v
+servoControl	.\lineTracerCode_Edward_Joseph4.c	/^double servoControl = SERVOMIDDLE;$/;"	v
+servoControl	.\lineTracerCode_Edward_Joseph5.c	/^double servoControl = SERVOMIDDLE;$/;"	v
+servoControl	.\main18.c	/^int servoControl = 0;$/;"	v
+setPoint	.\lineTracerCode_Edward_Joseph.c	/^double setPoint = SERVOMIDDLE;$/;"	v
+setPointDCMotor	.\lineTracerCode_Edward_Joseph3.c	/^double setPointDCMotor = 0;  $/;"	v
+setPointDCMotor	.\lineTracerCode_Edward_Joseph4.c	/^double setPointDCMotor = 0;  $/;"	v
+setPointDCMotor	.\lineTracerCode_Edward_Joseph5.c	/^double setPointDCMotor = 0;  $/;"	v
+setPointServo	.\lineTracerCode_Edward_Joseph3.c	/^double setPointServo = 0;  \/\/ SetPoint는 정중앙을 달리고 있어서 Error = 0 임을 의미한다$/;"	v
+setPointServo	.\lineTracerCode_Edward_Joseph4.c	/^double setPointServo = 0;  \/\/ SetPoint는 정중앙을 달리고 있어서 Error = 0 임을 의미한다$/;"	v
+setPointServo	.\lineTracerCode_Edward_Joseph5.c	/^double setPointServo = 0;  \/\/ SetPoint는 정중앙을 달리고 있어서 Error = 0 임을 의미한다$/;"	v
+spdgain	.\main2.c	/^int spdgain=0;$/;"	v
+tracesensor	.\lineTracerCode_Edward_Joseph.c	/^struct SENSOR tracesensor;$/;"	v	typeref:struct:SENSOR
+tracesensor	.\lineTracerCode_Edward_Joseph2.c	/^struct SENSOR tracesensor;$/;"	v	typeref:struct:SENSOR
+tracesensor	.\lineTracerCode_Edward_Joseph3.c	/^struct SENSOR tracesensor;$/;"	v	typeref:struct:SENSOR
+tracesensor	.\lineTracerCode_Edward_Joseph4.c	/^struct SENSOR tracesensor;$/;"	v	typeref:struct:SENSOR
+tracesensor	.\lineTracerCode_Edward_Joseph5.c	/^struct SENSOR tracesensor;$/;"	v	typeref:struct:SENSOR
+tracesensor	.\main18.c	/^struct SENSOR tracesensor;$/;"	v	typeref:struct:SENSOR
+volt	.\main4.c	/^int volt = 0;$/;"	v
+vuint8_t	.\lineTracerCode_Edward_Joseph.c	/^          vuint8_t :4;$/;"	m	struct:SENSOR::__anon1::__anon2	file:
+vuint8_t	.\lineTracerCode_Edward_Joseph2.c	/^          vuint8_t :4;$/;"	m	struct:SENSOR::__anon3::__anon4	file:
+vuint8_t	.\lineTracerCode_Edward_Joseph3.c	/^          vuint8_t :4;$/;"	m	struct:SENSOR::__anon5::__anon6	file:
+vuint8_t	.\lineTracerCode_Edward_Joseph4.c	/^          vuint8_t :4;$/;"	m	struct:SENSOR::__anon7::__anon8	file:
+vuint8_t	.\lineTracerCode_Edward_Joseph5.c	/^          vuint8_t :4;$/;"	m	struct:SENSOR::__anon9::__anon10	file:
+vuint8_t	.\main18.c	/^          vuint8_t :4;$/;"	m	struct:SENSOR::__anon13::__anon14	file:
+vuint8_t	.\main2.c	/^vuint8_t :4;$/;"	m	struct:__anon15::__anon16	file:

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="jquery.mobile-1.0.css" type="text/css" />
+    <script type="text/javascript" src="jquery-1.6.4.js"></script>  
+    <script type="text/javascript" src="jquery.mobile-1.0.js"></script>
+    <style type="text/css">
+            #buttonContainer {text-align: center}
+    
+            @media all and (min-width: 100px){
+                .ui-field-contain label.ui-input-text  { vertical-align: top;
+                    display: inline-block;  width: 20%;  margin: 0 2% 0 0 }
+                .ui-field-contain input.ui-input-text, 
+                .ui-field-contain textarea.ui-input-text, 
+                .ui-field-contain .ui-input-search { width: 60%; display: inline-block;} 
+                .ui-field-contain .ui-input-search { width: 50%; }
+                .ui-hide-label input.ui-input-text, 
+                .ui-hide-label textarea.ui-input-text, 
+                .ui-hide-label .ui-input-search { padding: .4em; width: 97%; } 
+                .ui-input-search input.ui-input-text { width: 98%;}
+            }
+    </style>
+</head>
+<body>
+    <div id="page1" data-role="page" data-theme="b">
+        <div data-role="header">
+           <h1>Jacqui's Shop</h1>
+        </div>
+        <form method="get">            
+            <div data-role="fieldcontain">
+                <label for="name">Name: </label>
+                <input id="name">
+            </div>
+            <div data-role="fieldcontain">
+                <label for="address">Address: </label>
+                <textarea id="address"></textarea>
+            </div>
+            <div id="buttonContainer">
+                <input type="submit" data-inline="true" value="Submit"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

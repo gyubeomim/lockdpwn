@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 문자 객체 </title>
+<script type="text/javascript">
+//<![CDATA[
+ /*변수 t에 문자형 데이터를 저장했는 것은 다시 말하면 
+ 변수 t에 문자 객체를 참시킨거나 같다.*/
+ var t="Hello Thank you good luck to you";
+ document.write(t.charAt(16),"<br />");
+ document.write(t.indexOf("you"),"<br />");
+ document.write(t.indexOf("you",16),"<br />");
+ document.write(t.lastIndexOf("you"),"<br />");
+ document.write(t.lastIndexOf("you",25),"<br />");
+ document.write(t.match("luck"),"<br />");
+ document.write(t.search("you"),"<br />");
+ document.write(t.substr(21,4),"<br />");
+ document.write(t.substring(6,12),"<br />");
+ document.write(t.replace("you","me"),"<br />");
+ document.write(t.toLowerCase(),"<br />");
+ document.write(t.toUpperCase(),"<br />");
+ document.write(t.length,"<br />");
+
+ var s=t.split(" ");
+ document.write(s[0],"<br />");
+ document.write(s[4],"<br />");
+
+ document.write(String.charCodeAt("A"),"<br />");
+ document.write(String.fromCharCode(65),"<br />");
+//]]>
+</script>
+</head>
+<body>
+</body>
+</html>

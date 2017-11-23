@@ -1,0 +1,128 @@
+#visual{height:263px;position:relative;}
+.touch_bullet{position:absolute;top:230px;left:50%;margin-left:-27px;}
+.touch_bullet li{float:left;}
+.touch_left_btn{position:absolute;top:50%;left:30px;margin-top:-25px;}
+.touch_right_btn{position:absolute;top:50%;right:30px;margin-top:-25px;}
+
+#roll_banner_wrap{
+	width:320px;height:144px;
+	overflow:hidden;
+	position:relative;
+	float:left;margin-right:20px;
+}
+#roll_banner_wrap h3{margin-bottom:8px;}
+.roll_btn1,.roll_btn2,.roll_btn3,.roll_btn4{
+	position:absolute;top:0;left:55px;
+}
+.roll_btn2{left:73px;}
+.roll_btn3{left:91px;}
+.roll_btn4{left:109px;}
+#roll_banner_wrap .ctl_btn{
+	position:absolute;top:1px;right:2px;
+}
+
+#tabmenu{
+   width:363px;position:relative;
+   background:url("../images/tab_line_bg.gif") 0 0 repeat-x;
+   float:left;
+}
+#tabmenu dt.tab_btn1{margin-bottom:8px;}
+#tabmenu dt.tab_btn2{position:absolute;top:0;left:104px;}
+#tabmenu dt.tab_btn3{position:absolute;top:0;left:208px;}
+#tabmenu li{
+	line-height:21px;
+	position:relative;
+	padding-left:15px;
+	background:url("../images/main_bullet.png") 7px 8px no-repeat;
+}
+#tabmenu span{
+	position:absolute;
+	top:0;right:5px;
+}
+#tabmenu p{
+	position:absolute;
+	top:8px;right:3px;
+}
+#tabmenu dd{display:none;}
+#tabmenu dt:first-child+dd{display:block;}
+
+#consult_wrap{float:right;}
+#contents_top{overflow:hidden;width:100%;margin-bottom:40px;}
+
+#bestbook_zone{
+	margin-bottom:40px;overflow:hidden;
+}
+#bestbook_zone h3{margin-bottom:10px;}
+#best_bg{
+	width:963px;height:243px;
+	padding-top:18px;
+	background:url("../images/bestbook_bg.gif") 0 0 no-repeat;
+	position:relative;
+}
+#best_bg span, #best_bg span strong{
+	display:block;text-align:center;
+}
+#best_bg span strong{
+	color:#88332e;font-weight:bold;
+}
+#best_bg span{
+	padding-top:18px;
+}
+#best_bg .prev_btn{
+	position:absolute;top:98px;left:50px;
+}
+#best_bg .next_btn{
+	position:absolute;top:98px;right:50px;
+}
+
+#contents_bottom h3{margin-bottom:15px;}
+#facebook_wrap{float:left;margin-right:20px;}
+#facebook_wrap>p{
+	width:298px;height:197px;
+	border:1px solid #b4a09d;
+	overflow-y:scroll;
+}
+
+#marketing_wrap{float:left;}
+#marketing_wrap dl{width:363px;overflow:hidden;}
+#marketing_wrap dl.first{margin-bottom:20px;}
+#marketing_wrap dt, #marketing_wrap dd{
+	width:230px;float:right;
+}
+#marketing_wrap dt a{color:#88332e;font-weight:bold;}
+#marketing_wrap dt{margin-bottom:15px;}
+#marketing_wrap dd.img_wrap{width:auto;float:left;}
+
+#online_wrap{float:right;}
+#online_wrap li{float:left;height:69px;}
+#online_wrap li.fl_r{float:right;}
+#online_wrap ul{width:250px;overflow:hidden;}
+#contents_bottom{width:100%;overflow:hidden;}
+
+#pop_wrap{
+	position:absolute;top:200px;
+	left:100px;z-index:30;
+	display:none;
+	box-shadow:0 2px 10px #000;
+}
+
+
+/* Swipe 2 required styles */
+
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > li {
+  float:left;
+  width:100%;
+  position: relative;
+}
+
+/* END required styles */
+#mySwipe img{width:100%; max-width:100%;}

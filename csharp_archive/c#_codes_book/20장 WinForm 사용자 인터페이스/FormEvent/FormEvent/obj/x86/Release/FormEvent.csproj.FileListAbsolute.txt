@@ -1,0 +1,5 @@
+C:\Users\Sean\AppData\Local\Temporary Projects\FormEvent\bin\Release\FormEvent.exe
+C:\Users\Sean\AppData\Local\Temporary Projects\FormEvent\bin\Release\FormEvent.pdb
+C:\Users\Sean\AppData\Local\Temporary Projects\FormEvent\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Sean\AppData\Local\Temporary Projects\FormEvent\obj\x86\Release\FormEvent.exe
+C:\Users\Sean\AppData\Local\Temporary Projects\FormEvent\obj\x86\Release\FormEvent.pdb

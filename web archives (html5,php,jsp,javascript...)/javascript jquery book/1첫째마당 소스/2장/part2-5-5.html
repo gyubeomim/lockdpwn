@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 비교 연산자 </title>
+<script type="text/javascript">
+   var a=10;  //변수 a의 값 10
+   var b=20;  //변수 b의 값 20
+   var c=10;  //변수 c의 값 10
+   var f="20";  //변수 f의 값 문자 형 "20"
+   var result;
+
+   result=a>b;  //거짓
+   document.write(result,"<br/>");
+   result=a<b;  //참
+   document.write(result,"<br/>");
+   result=a<=b; //참
+   document.write(result,"<br/>");
+   result=b==f;  //데이터 형 상관없이 데이터가 같으므로 참
+   document.write(result,"<br/>");
+   result=a!=b;   //데이터가 다르므로 참
+   document.write(result,"<br/>");
+   result=b===f;  //데이터 형이 일치하지 않으므로 거짓
+    document.write(result,"<br/>");
+</script>
+</head>
+<body>
+
+</body>
+</html>

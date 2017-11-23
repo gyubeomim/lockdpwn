@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 정규표현 객체 </title>
+<script type="text/javascript">
+//<![CDATA[
+   var str="Html Css Jquery ";
+   var reg1=/css/; // var reg1=new RegExp("css")
+  
+   /*변수 str에 데이터가 reg1에 정규표현 형식을 잘 
+   지켰으면 true를 반환하고 안지켰을 경우엔 false를 반환합니다*/
+   var result_1=reg1.test(str);
+   document.write(result_1,"<br />");
+  
+  
+  /*옵션에 'i'를 입력하면 영문 대소문자를 구분하지 않습니다*/
+   var reg2=/css/i; // var reg2=new RegExp("css","i")
+  
+   var result_2=reg2.test(str);
+   document.write(result_2,"<br />");
+//]]>
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

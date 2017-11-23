@@ -1,0 +1,3 @@
+Turn on water : 20
+Turn on water : -2
+Out of temperature range

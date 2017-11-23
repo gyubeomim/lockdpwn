@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 이벤트 </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function(){
+   $("#user_id").keydown(function(e){ //키보드 자판을 눌렀을 때
+      $(this).css("background-color","purple");
+      $("#txt1").text(e.keyCode);  //고유 키 코드 값을 출력합니다.
+   });
+
+   $("#user_id").keypress(function(e){ //키보드 자판을 눌렀을 때
+      $("#txt2").text(e.keyCode); //고유 키 코드 값을 출력합니다.
+   });
+
+   $("#user_id").keyup(function(){ //자판을 눌렀다 띄었을 때
+      $(this).css("background-color","yellow");
+   });
+});
+//]]>
+</script>
+<style type="text/css">
+   #user_id{ime-mode:disabled;}
+</style>
+</head>
+<body>
+   <p>
+      <input type="text" name="user_id" id="user_id" />
+   </p>
+   <p id="txt1"></p>
+   <p id="txt2"></p>
+</body>
+</html>

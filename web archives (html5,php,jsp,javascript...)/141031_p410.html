@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Practice </title>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<style type="text/css">
+ *{margin:0; padding:0;}
+ img{border:none; vertical-align:top;}
+li{list-style:none; float:left; width:80px;}
+h1{text-align:center;}
+#banner_wrap{width:260px; padding:10px 20px; margin:0 auto; border:1px solid #aaa;} 
+#banner{width:5000px;}
+#frame{width:232px; overflow:hidden; position:relative margin:10px auto;}
+ 
+</style>
+<script type="text/javascript">
+//!<[CDATA[
+$(function(){
+	var list=$("#banner");
+	var show_num=3;
+	var num=0;
+	var total=$(">li",list).size();
+	var li_width=$("li:first",list).width();
+	
+	var copyObj=$(">li:lt("+show_num+")",list).clone();
+		list.append(copyObj);
+		
+	$(".next").on("click",function(){
+		if(num==total){
+			num=0;
+			list.css("margin-left",num);
+		}
+	
+	num++;
+	
+	list.stop().animate({marginLeft:-li_width*num+"px"},500)
+	return false;
+	});
+	$(".prev").on("click",function(){
+		if(num==0){
+			num=total;
+			list.css("margin-left",-num*li_width+"px");
+		}
+		num--;
+		list.stop().animate({marginLeft:-li_width*num+"px"},500);
+		return false;
+	});
+
+	$(".next").on("click",function(){
+	console.log(num);
+	});
+	
+	$(".prev").on("click",function(){
+	console.log(num);
+	});
+	
+});
+//]]>
+</script>
+</head>
+  
+<body>
+  <h1>Creat Rolling Slide Banner</h1>
+  <div id="banner_wrap">
+  <div id="frame">
+	<ul id="banner">
+		<li><a href="#"><img src="images/pic_t1.jpg" alt="pic1" /></a></li>  
+		<li><a href="#"><img src="images/pic_t2.jpg" alt="pic2" /></a></li>
+		<li><a href="#"><img src="images/pic_t3.jpg" alt="pic3" /></a></li>
+		<li><a href="#"><img src="images/pic_t4.jpg" alt="pic4" /></a></li>
+		<li><a href="#"><img src="images/pic_t5.jpg" alt="pic5" /></a></li>
+	</ul>
+</div>
+	<p>
+		<a href="#" class="prev">
+			<img src="images/prev_btn.png" alt="prev Button" />
+		</a>
+		<a href="#" class="next">
+			<img src="images/next_btn.png" alt="Next Button" />
+	</a>
+	</p>
+	</div>
+	
+	<h1></h1>
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

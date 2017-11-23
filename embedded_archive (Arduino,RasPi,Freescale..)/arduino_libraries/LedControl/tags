@@ -1,0 +1,41 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+LedControl	.\LedControl.cpp	/^LedControl::LedControl(int dataPin, int clkPin, int csPin, int numDevices) {$/;"	f	class:LedControl
+LedControl	.\LedControl.h	/^class LedControl {$/;"	c
+LedControl_h	.\LedControl.h	28;"	d
+OP_DECODEMODE	.\LedControl.cpp	40;"	d	file:
+OP_DIGIT0	.\LedControl.cpp	32;"	d	file:
+OP_DIGIT1	.\LedControl.cpp	33;"	d	file:
+OP_DIGIT2	.\LedControl.cpp	34;"	d	file:
+OP_DIGIT3	.\LedControl.cpp	35;"	d	file:
+OP_DIGIT4	.\LedControl.cpp	36;"	d	file:
+OP_DIGIT5	.\LedControl.cpp	37;"	d	file:
+OP_DIGIT6	.\LedControl.cpp	38;"	d	file:
+OP_DIGIT7	.\LedControl.cpp	39;"	d	file:
+OP_DISPLAYTEST	.\LedControl.cpp	44;"	d	file:
+OP_INTENSITY	.\LedControl.cpp	41;"	d	file:
+OP_NOOP	.\LedControl.cpp	31;"	d	file:
+OP_SCANLIMIT	.\LedControl.cpp	42;"	d	file:
+OP_SHUTDOWN	.\LedControl.cpp	43;"	d	file:
+SPI_CLK	.\LedControl.h	/^    int SPI_CLK;$/;"	m	class:LedControl
+SPI_CS	.\LedControl.h	/^    int SPI_CS;$/;"	m	class:LedControl
+SPI_MOSI	.\LedControl.h	/^    int SPI_MOSI;$/;"	m	class:LedControl
+charTable	.\LedControl.h	/^const static byte charTable[128] = {$/;"	v
+clearDisplay	.\LedControl.cpp	/^void LedControl::clearDisplay(int addr) {$/;"	f	class:LedControl
+getDeviceCount	.\LedControl.cpp	/^int LedControl::getDeviceCount() {$/;"	f	class:LedControl
+maxDevices	.\LedControl.h	/^    int maxDevices;$/;"	m	class:LedControl
+setChar	.\LedControl.cpp	/^void LedControl::setChar(int addr, int digit, char value, boolean dp) {$/;"	f	class:LedControl
+setColumn	.\LedControl.cpp	/^void LedControl::setColumn(int addr, int col, byte value) {$/;"	f	class:LedControl
+setDigit	.\LedControl.cpp	/^void LedControl::setDigit(int addr, int digit, byte value, boolean dp) {$/;"	f	class:LedControl
+setIntensity	.\LedControl.cpp	/^void LedControl::setIntensity(int addr, int intensity) {$/;"	f	class:LedControl
+setLed	.\LedControl.cpp	/^void LedControl::setLed(int addr, int row, int column, boolean state) {$/;"	f	class:LedControl
+setRow	.\LedControl.cpp	/^void LedControl::setRow(int addr, int row, byte value) {$/;"	f	class:LedControl
+setScanLimit	.\LedControl.cpp	/^void LedControl::setScanLimit(int addr, int limit) {$/;"	f	class:LedControl
+shutdown	.\LedControl.cpp	/^void LedControl::shutdown(int addr, bool b) {$/;"	f	class:LedControl
+spiTransfer	.\LedControl.cpp	/^void LedControl::spiTransfer(int addr, volatile byte opcode, volatile byte data) {$/;"	f	class:LedControl
+spidata	.\LedControl.h	/^    byte spidata[16];$/;"	m	class:LedControl
+status	.\LedControl.h	/^    byte status[64];$/;"	m	class:LedControl

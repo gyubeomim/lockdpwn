@@ -1,0 +1,15 @@
+DuckTyping.Duck
+DuckTyping.Duck.Walk
+DuckTyping.Duck.Swim
+DuckTyping.Duck.Quack
+
+DuckTyping.Mallard
+DuckTyping.Mallard.Walk
+DuckTyping.Mallard.Swim
+DuckTyping.Mallard.Quack
+
+DuckTyping.Robot
+Robot.Walk
+Robot.Swim
+Robot.Quack
+

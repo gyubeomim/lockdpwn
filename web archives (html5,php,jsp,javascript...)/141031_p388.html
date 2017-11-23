@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Practice </title>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<style type="text/css">
+ 
+</style>
+<script type="text/javascript">
+//!<[CDATA[
+$(function(){
+	$("h2").css("position","absolute").css("top","100px").css("left","100px");
+	
+	$("#btn1").on("click",function(){
+		$("h1").hide(100,function(){ $("h2").text("Hide Complete!");})});
+	$("#btn2").on("click",function(){
+		$("h1").show(100,function(){ $("h2").text("Show Complete!");})});
+	$("#btn3").on("click",function(){
+		$("h1").toggle("slow",function(){ $("h2").text("Toggle Complete!");})});
+	
+
+
+
+});
+//]]>
+</script>
+</head>
+  
+<body>
+  <button id="btn1">Hide</button>
+  <button id="btn2">Show</button>
+    <button id="btn3">Toggle</button>
+  <h1>내용</h1>
+  <h2></h2>
+  
+</body>
+</html>

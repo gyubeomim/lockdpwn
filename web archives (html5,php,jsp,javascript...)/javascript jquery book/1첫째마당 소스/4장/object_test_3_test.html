@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 객체 </title>
+<style type="text/css">
+   #user_id{ime-mode:disabled;}
+</style>
+<script type="text/javascript">
+//<![CDATA[
+   window.onload=function(){
+      document.f.onsubmit=function(){
+         var myId=
+         var myPw=document.getElementById("user_pw");
+         var myEmail=document.getElementById("email");
+         
+         var id_pattern=/      /;
+         var pw_pattern=/^[a-z]\w{4,7}$/;
+         var email_pattern=/^[a-z]\w{4,11}@[a-z]{2,10}[\.][a-z]{2,3}[\.]?[a-z]{0,2}$/;
+         
+         if( ){
+            alert("아이디 형식이 잘못 작성되었습니다.");
+            return false;
+         }else if(!pw_pattern.test(myPw.value)){
+            alert("비밀번호가 형식이 잘못 작성되었습니다.");
+            return false;
+         }else if(!email_pattern.test(myEmail.value)){
+            alert("이메일 형식이 잘못 작성되었습니다.");
+            return false;
+         }
+      }
+   }
+//]]>
+</script>
+</head>
+<body>
+   <form action="#" method="post" name="f">
+      <fieldset>
+         <legend>회원가입</legend>
+         <p>
+            <label for="user_id">아이디</label>
+            <input type="text" name="user_id" id="user_id" />
+         </p>
+         <p>
+            <label for="user_pw">비밀번호</label>
+            <input type="password" name="user_pw" id="user_pw" />
+         </p>
+         <p>
+            <label for="email">이메일</label>
+            <input type="text" name="email" id="email" />
+         </p>
+         <p><input type="submit" value="회원가입" /></p>
+      </fieldset>
+   </form>
+</body>
+</html>

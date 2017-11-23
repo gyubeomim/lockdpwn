@@ -1,0 +1,72 @@
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Practice </title>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<script type="text/javascript" src="jquery.bxslider.js"></script>
+<script type="text/css" src="jquery.bxslider.css"></script>
+<style type="text/css">
+	*{margin:0; padding:0;}
+	img{border:none 0; vertical-align:top;}
+	#banner_wrap{position:relavtive; width:470px; margin:0 auto;}
+	#prevBtn{position:absolute; left:0; top:10px;}
+	#nextBtn{position:absolute; right:15px; top:10px;}
+	
+</style>
+<script type="text/javascript">
+//!<[CDATA[
+$(function(){
+		var mySlider=$("#slide_banner").bxSlider({
+			mode:"horizontal",
+			speed:500,
+			pager:false,
+			moveSlides:1,
+			slideWidth:90,
+			minSlides:4,
+			maxSlides:4,
+			slideMargin:10,
+			auto:true,
+			autoHover:true,
+			controls:false
+			});
+			
+		$("#prevBtn").on("click",function(){
+			mySlider.goToPrevSlide();
+			return false;
+			});
+			
+		$("#nextBtn").on("click",function(){
+			mySlider.goToNextSlide();
+			return false;
+		});
+
+		$("#slide_banner img").on("click",function(){
+			var a=$(this).attr("src");
+			$("h1").html("<img src="+a+" width=300>");
+			});
+
+});
+//]]>
+</script>
+</head>
+  
+<body>
+  <div id="banner_wrap">
+	<ul id="slide_banner">
+		<li><a href="#"><img src="images/pic_t1.jpg" /></a></li>
+		<li><a href="#"><img src="images/pic_t2.jpg" /></a></li>
+		<li><a href="#"><img src="images/pic_t3.jpg" /></a></li>
+		<li><a href="#"><img src="images/pic_t4.jpg" /></a></li>
+		<li><a href="#"><img src="images/pic_t5.jpg" /></a></li>
+		<li><a href="#"><img src="images/pic_t6.jpg" /></a></li>
+		<li><a href="#"><img src="images/pic_t7.jpg" /></a></li>
+		<li><a href="#"><img src="images/pic_t8.jpg" /></a></li>
+	</ul>
+	<p><a href="#" id="prevBtn"><img src="images/prev_btn.png" /></a></p>
+	<p><a href="#" id="nextBtn"><img src="images/next_btn.png" /></a></p>
+	
+	<h1></h1>
+  
+</body>
+</html>

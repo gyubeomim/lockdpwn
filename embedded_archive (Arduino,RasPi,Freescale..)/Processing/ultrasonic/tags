@@ -1,0 +1,111 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+angle	.\application.linux-armv6hf\source\test.java	/^String angle="";$/;"	f	class:test
+angle	.\application.linux32\source\test.java	/^String angle="";$/;"	f	class:test
+angle	.\application.linux64\source\test.java	/^String angle="";$/;"	f	class:test
+angle	.\application.windows32\source\test.java	/^String angle="";$/;"	f	class:test
+angle	.\application.windows64\source\test.java	/^String angle="";$/;"	f	class:test
+data	.\application.linux-armv6hf\source\test.java	/^String data="";$/;"	f	class:test
+data	.\application.linux32\source\test.java	/^String data="";$/;"	f	class:test
+data	.\application.linux64\source\test.java	/^String data="";$/;"	f	class:test
+data	.\application.windows32\source\test.java	/^String data="";$/;"	f	class:test
+data	.\application.windows64\source\test.java	/^String data="";$/;"	f	class:test
+distance	.\application.linux-armv6hf\source\test.java	/^String distance="";$/;"	f	class:test
+distance	.\application.linux32\source\test.java	/^String distance="";$/;"	f	class:test
+distance	.\application.linux64\source\test.java	/^String distance="";$/;"	f	class:test
+distance	.\application.windows32\source\test.java	/^String distance="";$/;"	f	class:test
+distance	.\application.windows64\source\test.java	/^String distance="";$/;"	f	class:test
+draw	.\application.linux-armv6hf\source\test.java	/^public void draw() $/;"	m	class:test
+draw	.\application.linux32\source\test.java	/^public void draw() $/;"	m	class:test
+draw	.\application.linux64\source\test.java	/^public void draw() $/;"	m	class:test
+draw	.\application.windows32\source\test.java	/^public void draw() $/;"	m	class:test
+draw	.\application.windows64\source\test.java	/^public void draw() $/;"	m	class:test
+drawLine	.\application.linux-armv6hf\source\test.java	/^public void drawLine() $/;"	m	class:test
+drawLine	.\application.linux32\source\test.java	/^public void drawLine() $/;"	m	class:test
+drawLine	.\application.linux64\source\test.java	/^public void drawLine() $/;"	m	class:test
+drawLine	.\application.windows32\source\test.java	/^public void drawLine() $/;"	m	class:test
+drawLine	.\application.windows64\source\test.java	/^public void drawLine() $/;"	m	class:test
+drawObject	.\application.linux-armv6hf\source\test.java	/^public void drawObject() $/;"	m	class:test
+drawObject	.\application.linux32\source\test.java	/^public void drawObject() $/;"	m	class:test
+drawObject	.\application.linux64\source\test.java	/^public void drawObject() $/;"	m	class:test
+drawObject	.\application.windows32\source\test.java	/^public void drawObject() $/;"	m	class:test
+drawObject	.\application.windows64\source\test.java	/^public void drawObject() $/;"	m	class:test
+drawRadar	.\application.linux-armv6hf\source\test.java	/^public void drawRadar() {$/;"	m	class:test
+drawRadar	.\application.linux32\source\test.java	/^public void drawRadar() {$/;"	m	class:test
+drawRadar	.\application.linux64\source\test.java	/^public void drawRadar() {$/;"	m	class:test
+drawRadar	.\application.windows32\source\test.java	/^public void drawRadar() {$/;"	m	class:test
+drawRadar	.\application.windows64\source\test.java	/^public void drawRadar() {$/;"	m	class:test
+drawText	.\application.linux-armv6hf\source\test.java	/^public void drawText() $/;"	m	class:test
+drawText	.\application.linux32\source\test.java	/^public void drawText() $/;"	m	class:test
+drawText	.\application.linux64\source\test.java	/^public void drawText() $/;"	m	class:test
+drawText	.\application.windows32\source\test.java	/^public void drawText() $/;"	m	class:test
+drawText	.\application.windows64\source\test.java	/^public void drawText() $/;"	m	class:test
+iAngle	.\application.linux-armv6hf\source\test.java	/^int iAngle;$/;"	f	class:test
+iAngle	.\application.linux32\source\test.java	/^int iAngle;$/;"	f	class:test
+iAngle	.\application.linux64\source\test.java	/^int iAngle;$/;"	f	class:test
+iAngle	.\application.windows32\source\test.java	/^int iAngle;$/;"	f	class:test
+iAngle	.\application.windows64\source\test.java	/^int iAngle;$/;"	f	class:test
+iDistance	.\application.linux-armv6hf\source\test.java	/^int iDistance;$/;"	f	class:test
+iDistance	.\application.linux32\source\test.java	/^int iDistance;$/;"	f	class:test
+iDistance	.\application.linux64\source\test.java	/^int iDistance;$/;"	f	class:test
+iDistance	.\application.windows32\source\test.java	/^int iDistance;$/;"	f	class:test
+iDistance	.\application.windows64\source\test.java	/^int iDistance;$/;"	f	class:test
+index1	.\application.linux-armv6hf\source\test.java	/^int index1=0;$/;"	f	class:test
+index1	.\application.linux32\source\test.java	/^int index1=0;$/;"	f	class:test
+index1	.\application.linux64\source\test.java	/^int index1=0;$/;"	f	class:test
+index1	.\application.windows32\source\test.java	/^int index1=0;$/;"	f	class:test
+index1	.\application.windows64\source\test.java	/^int index1=0;$/;"	f	class:test
+index2	.\application.linux-armv6hf\source\test.java	/^int index2=0;$/;"	f	class:test
+index2	.\application.linux32\source\test.java	/^int index2=0;$/;"	f	class:test
+index2	.\application.linux64\source\test.java	/^int index2=0;$/;"	f	class:test
+index2	.\application.windows32\source\test.java	/^int index2=0;$/;"	f	class:test
+index2	.\application.windows64\source\test.java	/^int index2=0;$/;"	f	class:test
+main	.\application.linux-armv6hf\source\test.java	/^  static public void main(String[] passedArgs) {$/;"	m	class:test
+main	.\application.linux32\source\test.java	/^  static public void main(String[] passedArgs) {$/;"	m	class:test
+main	.\application.linux64\source\test.java	/^  static public void main(String[] passedArgs) {$/;"	m	class:test
+main	.\application.windows32\source\test.java	/^  static public void main(String[] passedArgs) {$/;"	m	class:test
+main	.\application.windows64\source\test.java	/^  static public void main(String[] passedArgs) {$/;"	m	class:test
+myPort	.\application.linux-armv6hf\source\test.java	/^Serial myPort; \/\/ defines Object Serial$/;"	f	class:test
+myPort	.\application.linux32\source\test.java	/^Serial myPort; \/\/ defines Object Serial$/;"	f	class:test
+myPort	.\application.linux64\source\test.java	/^Serial myPort; \/\/ defines Object Serial$/;"	f	class:test
+myPort	.\application.windows32\source\test.java	/^Serial myPort; \/\/ defines Object Serial$/;"	f	class:test
+myPort	.\application.windows64\source\test.java	/^Serial myPort; \/\/ defines Object Serial$/;"	f	class:test
+noObject	.\application.linux-armv6hf\source\test.java	/^String noObject;$/;"	f	class:test
+noObject	.\application.linux32\source\test.java	/^String noObject;$/;"	f	class:test
+noObject	.\application.linux64\source\test.java	/^String noObject;$/;"	f	class:test
+noObject	.\application.windows32\source\test.java	/^String noObject;$/;"	f	class:test
+noObject	.\application.windows64\source\test.java	/^String noObject;$/;"	f	class:test
+orcFont	.\application.linux-armv6hf\source\test.java	/^PFont orcFont;$/;"	f	class:test
+orcFont	.\application.linux32\source\test.java	/^PFont orcFont;$/;"	f	class:test
+orcFont	.\application.linux64\source\test.java	/^PFont orcFont;$/;"	f	class:test
+orcFont	.\application.windows32\source\test.java	/^PFont orcFont;$/;"	f	class:test
+orcFont	.\application.windows64\source\test.java	/^PFont orcFont;$/;"	f	class:test
+pixsDistance	.\application.linux-armv6hf\source\test.java	/^float pixsDistance;$/;"	f	class:test
+pixsDistance	.\application.linux32\source\test.java	/^float pixsDistance;$/;"	f	class:test
+pixsDistance	.\application.linux64\source\test.java	/^float pixsDistance;$/;"	f	class:test
+pixsDistance	.\application.windows32\source\test.java	/^float pixsDistance;$/;"	f	class:test
+pixsDistance	.\application.windows64\source\test.java	/^float pixsDistance;$/;"	f	class:test
+serialEvent	.\application.linux-armv6hf\source\test.java	/^public void serialEvent (Serial myPort) $/;"	m	class:test
+serialEvent	.\application.linux32\source\test.java	/^public void serialEvent (Serial myPort) $/;"	m	class:test
+serialEvent	.\application.linux64\source\test.java	/^public void serialEvent (Serial myPort) $/;"	m	class:test
+serialEvent	.\application.windows32\source\test.java	/^public void serialEvent (Serial myPort) $/;"	m	class:test
+serialEvent	.\application.windows64\source\test.java	/^public void serialEvent (Serial myPort) $/;"	m	class:test
+settings	.\application.linux-armv6hf\source\test.java	/^  public void settings() {  size (1920, 1080);  smooth(); }$/;"	m	class:test
+settings	.\application.linux32\source\test.java	/^  public void settings() {  size (1920, 1080);  smooth(); }$/;"	m	class:test
+settings	.\application.linux64\source\test.java	/^  public void settings() {  size (1920, 1080);  smooth(); }$/;"	m	class:test
+settings	.\application.windows32\source\test.java	/^  public void settings() {  size (1920, 1080);  smooth(); }$/;"	m	class:test
+settings	.\application.windows64\source\test.java	/^  public void settings() {  size (1920, 1080);  smooth(); }$/;"	m	class:test
+setup	.\application.linux-armv6hf\source\test.java	/^public void setup()$/;"	m	class:test
+setup	.\application.linux32\source\test.java	/^public void setup()$/;"	m	class:test
+setup	.\application.linux64\source\test.java	/^public void setup()$/;"	m	class:test
+setup	.\application.windows32\source\test.java	/^public void setup()$/;"	m	class:test
+setup	.\application.windows64\source\test.java	/^public void setup()$/;"	m	class:test
+test	.\application.linux-armv6hf\source\test.java	/^public class test extends PApplet {$/;"	c
+test	.\application.linux32\source\test.java	/^public class test extends PApplet {$/;"	c
+test	.\application.linux64\source\test.java	/^public class test extends PApplet {$/;"	c
+test	.\application.windows32\source\test.java	/^public class test extends PApplet {$/;"	c
+test	.\application.windows64\source\test.java	/^public class test extends PApplet {$/;"	c

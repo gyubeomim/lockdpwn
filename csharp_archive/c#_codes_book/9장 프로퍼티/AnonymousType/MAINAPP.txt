@@ -1,0 +1,2 @@
+Name:박상현, Age:123
+Subject:수학, Scores: 90 80 70 60 

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 과체중 테스트 </title>
+<style type="text/css">
+ *{margin:0;padding:0;}
+ img{border:none;vertical-align:top;}
+ input{vertical-align:middle;}
+ fieldset{border:none;}
+ .hide,legend{position:absolute;left:-9999px;width:0;height:0;
+ overflow:hidden;}
+ body,button{font:12px/1.4 gulim,"굴림",sans-serif;}
+ #weight_wrap{width:698px;border:1px solid #ddd;
+ padding-bottom:20px;margin:20px auto;}
+ #weight_wrap h1{
+ height:36px; 
+ background:url("images/title_bg.gif") 0 0 repeat-x;
+ padding:17px 0 0 20px;}
+ #weight_wrap form{padding:15px;}
+ #graph_wrap{width:600px;height:40px;position:relative;}
+ #arrow{position:absolute;left:0;top:0;}
+ .user_input{margin-bottom:20px;}
+ #user_weight, #user_height{
+  width:50px;height:18px;
+  border:1px solid #999;}
+</style>
+<script type="text/javascript">
+//<![CDATA[
+ function weight_test(){
+
+    var myForm=document.weight_f;
+    var user_w=myForm.user_weight.value;
+    var user_h=myForm.user_height.value;
+    
+    var result=(user_w-((user_h-100)*0.9-10)) / 20 * 100;
+    if(result<0){
+       result=0;
+    }else if(result>100){
+       result=100;
+    }
+    document.getElementById("arrow").style.left=result+"%";
+    if(result>0){
+      document.getElementById("arrow").style.marginLeft="-10px";
+    }
+ }
+//]]>
+</script>
+</head>
+<body>
+<div id="weight_wrap">
+ <h1><img src="images/weight_title.gif" alt="과체중테스트" /></h1>
+ <form action="#" method="get" name="weight_f" onsubmit="return weight_test();return false;">
+    <fieldset>
+       <legend>과체중테스트</legend>
+       <p class="user_input">
+       <label for="user_height">키:</label>
+       <input type="text" name="user_height" id="user_height" /> (cm)
+       <label for="user_weight">몸무게:</label>
+       <input type="text" name="user_weight" id="user_weight" /> (kg)
+       <button>확인</button>
+       </p>
+       <p id="graph_wrap">
+       <img src="images/arrow.png" alt="화살표" id="arrow" />
+       <img src="images/graph.gif" alt="체중 그래프" />
+       </p>
+    </fieldset>
+ </form>
+</div>
+</body>
+</html>

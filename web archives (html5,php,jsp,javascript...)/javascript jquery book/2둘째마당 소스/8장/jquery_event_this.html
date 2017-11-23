@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 이벤트 </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function(){
+   $("#btn").mouseover(function(){ //버튼에 마우스를 올릴 때 마다...
+      $(this).css("border","2px solid red"); //버튼에 선을 생성합니다.
+      $(this).text("MouseOver"); //버튼에 텍스트를 "MouseOver"로 바꿉니다.
+   });
+});
+//]]>
+</script>
+</head>
+<body>
+   <button id="btn">마우스 오버</button>
+</body>
+</html>

@@ -1,0 +1,15 @@
+Testing && ... 
+1 > 0 && 4 < 5 : True
+1 > 0 && 4 > 5 : False
+1 == 0 && 4 > 5 : False
+1 == 0 && 4 < 5 : False
+
+Testing || ... 
+1 > 0 || 4 < 5 : True
+1 > 0 || 4 > 5 : True
+1 == 0 || 4 > 5 : False
+1 == 0 || 4 < 5 : True
+
+Testing ! ...
+!True : False
+!False: True

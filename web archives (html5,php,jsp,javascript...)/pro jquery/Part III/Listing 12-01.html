@@ -1,0 +1,14 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+        var fNames = ["Carnation", "Lily", "Orchid"];
+        var fRow = $('<div id=row3 class=drow/>').appendTo('div.dtable');
+        var fTemplate = $('<div class=dcell><img/><label/><input/></div>');
+        for (var i = 0; i < fNames.length; i++) {            
+            fTemplate.clone().appendTo(fRow).children()
+                .filter('img').attr('src', fNames[i] + ".png").end()
+                .filter('label').attr('for', fNames[i]).text(fNames[i]).end()
+                .filter('input').attr({name: fNames[i], value: 0, required: "required"})
+        }        
+    });     
+</script>

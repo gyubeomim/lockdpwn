@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExperimentDef rtULength="16" rtYLength="30">
+    <BlockDef id="Child_Regular_Leaning_1">
+        <PortDef id="Position_Child_Regular_Leaning_1" index="0"
+            type="1" width="3"/>
+        <PortDef id="Velocity_Child_Regular_Leaning_1" index="3"
+            type="1" width="3"/>
+        <PortDef id="Acceleration_Child_Regular_Leaning_1" index="6"
+            type="1" width="3"/>
+        <PortDef id="RPY_Child_Regular_Leaning_1" index="9" type="1" width="3"/>
+        <PortDef id="velRPY_Child_Regular_Leaning_1" index="12" type="1" width="3"/>
+        <PortDef id="SELF_Child_Regular_Leaning_1" index="0" type="0" width="8"/>
+    </BlockDef>
+    <BlockDef id="Citroen_C3_1">
+        <PortDef id="Position_Citroen_C3_1" index="15" type="1" width="3"/>
+        <PortDef id="Velocity_Citroen_C3_1" index="18" type="1" width="3"/>
+        <PortDef id="Acceleration_Citroen_C3_1" index="21" type="1" width="3"/>
+        <PortDef id="RPY_Citroen_C3_1" index="24" type="1" width="3"/>
+        <PortDef id="velRPY_Citroen_C3_1" index="27" type="1" width="3"/>
+        <PortDef id="SELF_Citroen_C3_1" index="8" type="0" width="8"/>
+    </BlockDef>
+</ExperimentDef>

@@ -1,0 +1,162 @@
+<!doctype = html>
+<html>
+	<head>
+	<meta charset = utf-8>
+		<title> tigerk's html5 + css3 Practice Page </title>
+	<style>
+	body{
+		background-color:#fff;
+	}
+	form fieldset{
+		margin-bottom:25px;
+		margin:10px 0px;
+	}
+	form legend{
+		font-size:18px;
+		color:#0066FF;
+		font-weight:600;
+	}
+	form label.reg{
+		font-size:14px;
+		width:140px;
+		float:left;
+	}
+	form ul li{
+		list-style:none;
+		margin:15px 0px;
+		font-size:14px;
+	}
+	
+	form label em{
+		font-size:15px;
+		color:red;
+		font-weight:800;
+	}
+	
+	form fieldset.sendform{
+		text-align:center;
+	}
+	</style>
+	</head>
+	<body>
+	<form>
+		<fieldset>
+			<legend><b>로그인</b></legend>
+			<label>아이디 <input type="text" size="10"></label>
+			<label>비밀번호 <input type="password"></label>
+		</fieldset>
+		<fieldset>
+			<legend><b>가입하기</b></legend>
+			<ul>
+				<li><label class="reg" for="usr_id">아이디 <em>*</em></label>
+				<input type="text", size="20", id="usr_id" autocomplete="on" required>
+				</li>
+				<li><label class="reg" for="usr_pw1">비밀번호<em>*</em></label>
+				<input type="password", size="20", id="usr_pw1" required>
+				</li>
+				<li><label class="reg" for="usr_pw2">비밀번호 확인<em>*</em></label>
+				<input type="password", size="20", id="usr_pw2" required>
+				</li>
+				<li><label class="reg" for="usr_name">이름<em>*</em></label>
+				<input type="text", size="20", id="usr_name" required>
+				</li>
+				<li><label class="reg" for="usr_email">메일 주소<em>*</em></label>
+				<input type="email", size="20", id="usr_email" required>
+				</li>
+				<li><label class="reg" for="usr_tel">전화 번호</label>
+				<input type="tel", size="20", id="usr_tel">
+				</li>
+		</fieldset>
+		<fieldset>
+				<legend><b>등록 정보</b></legend>
+					<ul>
+						<li>
+							<label class="reg" for="member">참여 인원<small>(최대 10명)
+							</small></label>
+							<input type="number" id="member" value="1" min="0" max="10"step="1">
+							</li>
+						<li>
+							<label class="reg" for="stuffs">지원 물품<small>(1인당 5개)
+							</small></label>
+							<input type="number" id="stuffs" value="1" min="0" max="50" step="5" size="5">
+							</li>
+						<li>
+							<label class="reg" for="satis">희망 단계<small>(하,중,상)
+							</small></label>
+							<input type="range" id="satis" value="1" min="1" max="30">
+							</li>
+		</fieldset>
+		<fieldset>
+			<legend><strong>수강 과목을 선택하세요</strong><small>(1과목 선택 가능)</small>
+			</legend>
+			<ul>
+				<li>
+					신청 과목<small>(회화)</small>
+						<label><input type="radio", name="spk" id="spk" value="low" checked="">영어 회화 초급</label>
+						<label><input type="radio", name="spk" id="spk" value="middle">영어 회화 중급</label>
+						<label><input type="radio", name="spk" id="spk" value="high">영어 회화 고급</label>
+				</li>
+				<li>
+					신청 과목<small>(자격)</small>
+						<label><input type="radio", name="cert" id="cert" value="toeic">TOEIC</label>
+						<label><input type="radio", name="cert" id="cert" value="toefl">TOEFL</label>
+						<label><input type="radio", name="cert" id="cert" value="opic">OPIC</label>
+				</li>
+			</ul>
+		</fieldset>
+		<fieldset>
+			<legend><strong>관심 차량은?</strong><small>(다수 선택 가능)</small>
+			</legend>
+				<ul>
+					<li>
+						<label class="reg" for="pre">관심 차량</label>
+							<input type="checkbox" id="pre" value="f12">Formula-12 
+							<input type="checkbox" id="pre" value="f13">Formula-13 
+							<input type="checkbox" id="pre" value="f14">Formula-14 
+							<input type="checkbox" id="pre" value="ev1">EV-1 
+							<input type="checkbox" id="pre" value="ev2">EV-2
+							<input type="checkbox" id="pre" value="shell">Shell M-1
+					</li>
+					<li>
+						<label class="reg" for="color">관심 색상</label>
+							<input type="color" id="color">
+					</li>
+		</fieldset>
+		<fieldset>
+			<legend>Sign up</legend>
+			<ul>
+				<li>
+					<label class="reg" for="id">Student-ID</label>
+					<input type="text" id="id" autofocus>
+				</li>
+				<li>
+					<label class="reg" for="name">Name</label>
+					<input type="text" id="name">
+				</li>
+				<li>
+					<label class="reg" for="class">Vehicle</label>
+					<select id="class">
+						<option value="f12">Formula-12</option>
+						<option value="f13">Formula-13</option>
+						<option value="f14" selected>Formula-14</option>
+						<option value="ev1">EV-1</option>
+						<option value="ev2">EV-2</option>
+						<option value="shell">Shell M-1</option>
+					</select>
+				</li>
+							
+		</fieldset>
+		<fieldset id="timetable">
+			<legend>차량 작업 기간을 선택하세요</legend>
+				<ul>
+					<li>
+						<label class="reg" for="startw">작업 시작 기간</label>
+							<input type="month" id="startw">
+					</li>
+					<li>
+						<label class="reg" for="startt">작업 시간</label>
+							<input type="time" id="startt">
+					</li>
+	</form>
+	</body>
+</html>

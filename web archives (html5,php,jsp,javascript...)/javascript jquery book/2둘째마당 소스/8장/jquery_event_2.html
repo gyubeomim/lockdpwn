@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 이벤트 </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function(){
+  $("#btn1").click(function(){ //<button id="btn1">을 클릭했을 때...
+     $("p").css("background-color","yellow");
+  });
+
+  $("#btn2").dblclick(function(){ //<button id="btn2">을 더블클릭했을 때...
+     $("p").css("background-color","purple");
+  });
+
+  $("#btn2").dblclick(); //<button id="btn2">을 강제로 더블클릭 이벤트 발생.
+});
+//]]>
+</script>
+</head>
+<body>
+   <button id="btn1">click</button> 
+   <button id="btn2">dblclick</button>
+   <p>내용</p>
+   <a href="#prev">버튼</a>
+</body>
+</html>

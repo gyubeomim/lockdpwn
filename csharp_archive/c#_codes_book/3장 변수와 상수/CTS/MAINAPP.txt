@@ -1,0 +1,4 @@
+a type:System.Int32, value:123
+b type:System.Int32, value:456
+c type:System.String, value:abc
+d type:System.String, value:def

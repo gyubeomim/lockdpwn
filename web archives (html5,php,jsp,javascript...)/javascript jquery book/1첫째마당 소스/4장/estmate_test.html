@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="kor" xml:lang="ko">
+<head>
+<title> 자동차 견적서 </title>
+<meta http-equiv="content-type"  content="text/html; charset=utf-8" />
+<style type="text/css">
+  *{margin:0; padding:0;}
+  body{font:12px/1.5 dotum,"돋움", gulim, "굴림", sans-serif;}
+  li{list-style:none;}
+  table{border-collapse:collapse;border-spacing:0;}
+  
+  h1{text-align:center;}
+  #carZone{width:600px; margin:0 auto;}
+  #estimate{width:100%;}
+  #estimate th, td{border:1px solid #ccc;height:30px;}
+  #estimate th{background-color:#333;color:#fff;}
+  #carZone td{text-align:center;}
+  tfoot{font-size:15px; font-weight:bold;}
+  #total{border:none 0;background:none;
+  font-size:1.5em;font-weight:bold;text-align:center;}
+</style>
+<script type="text/javascript">
+//<![CDATA[
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//]]>
+</script>
+</head>
+<body>
+<h1>자동차 견적</h1>
+<div id="carZone">
+  <p><img src="images/car1.jpg" alt="자동차" /></p>
+  <table id="estimate">
+    <colgroup>
+    <col width="380px" />
+    <col width="160px" />
+    <col width="*" />
+    </colgroup>
+    <thead>
+    <tr>
+      <th scope="row">옵 션</th>
+      <th scope="row">추가 가격</th>
+      <th scope="row">선택</th>
+    </tr>
+    </thead>
+  <tfoot>
+  <tr>
+    <th  scope="col">(기본)차량가격</th>
+    <td colspan="2">
+     <input type="text" name="total" id="total" 
+     value="13450000" readonly="readonly" />
+    </td>
+  </tr>
+  </tfoot>
+  <tbody>
+  <tr>
+    <td><label for="opt1">인조가죽시트</label></td><td>250000</td>
+    <td>
+    <!-- 옵션 체크박스에 클릭할 때 마다 car()에 저장된 
+    일련의 실행문을 실행합니다. -->
+    <input type="checkbox" name="opt1" id="opt1"
+    value="250000" onclick="car();" /></td>
+  </tr>
+  <tr>
+    <td><label for="opt2">내비게이션</label></td><td>250000</td>
+    <td><input type="checkbox" name="opt2" id="opt2"
+    value="250000" onclick="car();"  /></td>
+  </tr>
+  <tr>
+    <td><label for="opt3">선루프</label></td><td>440000</td>
+    <td><input type="checkbox" name="opt3" id="opt3"
+    value="440000" onclick="car();"  /></td>
+  </tr>
+  </tbody>
+  </table>
+ </div>
+</body>
+</html>

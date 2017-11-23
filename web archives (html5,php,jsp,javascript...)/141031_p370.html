@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Practice </title>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<style type="text/css">
+ 
+</style>
+<script type="text/javascript">
+//!<[CDATA[
+$(function(){
+
+	$("#menu a").css("text-decoration","none");
+	
+	$("#menu a").mouseover(function(){
+		$("#menu a").css("background","none")
+		$(this).css("background","yellow");
+		
+		var num=$("#menu a").index(this);
+		$(".txt").text(num);
+	});
+
+
+});
+//]]>
+</script>
+</head>
+  
+<body>
+	<ul id="menu">
+		<li><a href="#">Content 1</a></li>
+		<li><a href="#">Content 2</a></li>
+		<li><a href="#">Content 3</a></li>
+		<li><a href="#">Content 4</a></li>
+	</ul>
+	
+	<p class="txt"></p>  
+  
+</body>
+</html>

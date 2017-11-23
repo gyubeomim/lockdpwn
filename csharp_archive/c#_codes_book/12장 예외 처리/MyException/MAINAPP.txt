@@ -1,0 +1,4 @@
+0xFF6F6F6F
+0x141C080
+'MyException.InvalidArgumentException' 형식의 예외가 Throw되었습니다.
+Argument:300, Range:0~255

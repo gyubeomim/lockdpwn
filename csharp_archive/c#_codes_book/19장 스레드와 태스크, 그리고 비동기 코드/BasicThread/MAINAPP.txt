@@ -1,0 +1,13 @@
+Starting thread...
+Main : 0
+DoSomething : 0
+Main : 1
+DoSomething : 1
+DoSomething : 2
+Main : 2
+DoSomething : 3
+Main : 3
+Main : 4
+DoSomething : 4
+Wating until thread stops...
+Finished

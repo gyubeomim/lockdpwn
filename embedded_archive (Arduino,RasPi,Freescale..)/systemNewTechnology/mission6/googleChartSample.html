@@ -1,0 +1,40 @@
+<!--
+	html ==> 시스템최신기술, Google Chart 형식을 사용해 nodejs로부터 해당파일을 읽어와 localhost:3000/graph에 그래프를 그려주는 코드
+-->
+<html>
+<head>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+google.charts.load('current', {'packages':['line']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+	var data = new google.visualization.DataTable();
+	var options = {
+		chart: {
+			title: 'Edward Temperature Data Plot',
+			subtitle: ''
+		},
+		width: 900,
+		height: 500,
+		hAxis:{format:'hh:mm:ss'}
+	};
+
+	var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+	<!-- 해당부분이 데이터로 대체된다.. 굳굳!! -->
+	<%HEADER%>
+	<%DATA%>
+
+	chart.draw(data, options);
+
+}
+
+	</script>
+</head>
+<body>
+	<div id="line_top_x"></div>
+</body>
+</html>
+

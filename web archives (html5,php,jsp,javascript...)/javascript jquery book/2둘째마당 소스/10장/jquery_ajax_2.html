@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Ajax </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function(){
+   $("#member").on("submit",function(){//"확인"버튼을 눌렀을 때...
+      var d=$(this).serialize();//폼 요소에 전송할 데이터를 재가공합니다.
+
+      $.ajax({
+          url:"member.php", //데이터 전송 및 요청할 URL 주소
+          type:"post",  //데이터 전송 방식
+          data:d,   //전송할 데이터
+          success:function(result){ //전송 및 요청이 정상적으로 되었을 때...
+            $("#txt1").text(result);
+          }
+      });
+
+      return false;//action 페이지로 전환되는 것을 차단합니다.
+   });
+});
+//]]>
+</script>
+</head>
+<body>
+<form action="member.php" method="post" name="member"  id="member">
+  <fieldset>
+    <legend>회원가입</legend>
+    <p>
+    <label for="user_name">이름</label>
+    <input type="text" name="user_name" id="user_name" />
+    </p>
+    <p><input type="submit" value="확인" /></p>
+  </fieldset>
+</form>
+<h1 id="txt1"></h1>
+</body>
+</html>

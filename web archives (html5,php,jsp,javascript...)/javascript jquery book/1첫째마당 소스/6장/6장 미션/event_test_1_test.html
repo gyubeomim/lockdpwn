@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 이벤트 </title>
+<script type="text/javascript">
+//<![CDATA[
+window.onload=function(){
+  var btn1=document.getElementById("btn1");
+  var btn2=document.getElementById("btn2");
+  var btn3=document.getElementById("btn3");
+  
+  btn1.onclick=function(){//id 값이"btn1"인 요소를 클릭했을 때
+    =this.children[0].src.replace("out.png","on.png");
+    return false;
+  }
+  
+  //id 값이"btn2"인 요소에 마우스를 올리거나 또는 포커스가 생성되었을 때
+  =function(){
+    this.children[0].src=this.children[0].src.replace("out.png","on.png");
+  }
+  
+  
+  function chBtn(){
+     this.children[0].src=this.children[0].src.replace("out.png","on.png");
+  }
+  //id 값이"btn3"인 요소에 마우스가 벗어나거나 또는 포커스를 잃었을 때  
+  if(window.addEventListener){
+     
+      btn3.addEventListener("blur",chBtn,false);
+  }else{
+      btn3.attachEvent("onmouseout",chBtn);
+      btn3.attachEvent("onblur",chBtn);
+  }
+}
+//]]>
+</script>
+</head>
+<body>
+ <h1>마우스 클릭했을 때 이미지 변경</h1>
+ <p>( images/click_btn_out.png → images/click_btn_on.png )</p>
+ <p><a href="#" id="btn1">
+    <img src="images/click_btn_out.png" alt="버튼1" />
+ </a></p>
+ <h1>마우스 오버했을 때 이미지 변경</h1>
+ <p>( images/click_btn_out.png → images/click_btn_on.png )</p>
+ <p><a href="#" id="btn2">
+    <img src="images/over_btn_out.png" alt="버튼2" />
+ </a></p>
+ <h1>마우스 아웃했을 때 이미지 변경</h1>
+ <p>( images/click_btn_out.png → images/click_btn_on.png )</p>
+ <p><a href="#" id="btn3">
+    <img src="images/out_btn_out.png" alt="버튼3" />
+ </a></p>
+</body>
+</html>

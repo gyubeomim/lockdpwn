@@ -1,0 +1,31 @@
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\bin\Debug\wpfTest.exe.config
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\bin\Debug\wpfTest.exe
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\bin\Debug\wpfTest.pdb
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\bin\Debug\wpfTest.xml
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\obj\Debug\wpfTest.vbprojResolveAssemblyReference.cache
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\obj\Debug\MainWindow.g.vb
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\obj\Debug\Application.g.vb
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\obj\Debug\wpfTest_MarkupCompile.cache
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\obj\Debug\MainWindow.baml
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\obj\Debug\wpfTest.g.resources
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\obj\Debug\wpfTest.Resources.resources
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\obj\Debug\wpfTest.vbproj.GenerateResource.Cache
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\obj\Debug\wpfTest.exe
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\obj\Debug\wpfTest.xml
+C:\Users\edward\Documents\Visual Studio 2017\Projects\wpfTest\wpfTest\obj\Debug\wpfTest.pdb
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\bin\Debug\wpfTest.exe.config
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\wpfTest.exe
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\wpfTest.xml
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\wpfTest.pdb
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\bin\Debug\wpfTest.exe
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\bin\Debug\wpfTest.pdb
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\bin\Debug\wpfTest.xml
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\wpfTest.vbprojResolveAssemblyReference.cache
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\MainWindow.g.vb
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\Application.g.vb
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\wpfTest_MarkupCompile.cache
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\wpfTest_MarkupCompile.lref
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\MainWindow.baml
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\wpfTest.g.resources
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\wpfTest.Resources.resources
+D:\gitrepo\lockdpwn\visualBasic_archive\WPF\wpfTest\wpfTest\obj\Debug\wpfTest.vbproj.GenerateResource.Cache

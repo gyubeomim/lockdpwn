@@ -1,0 +1,7 @@
+C:\Users\gyurs\Downloads\DateDecoder-master\DateDecoder\DateDecoder\bin\Release\DateDecoder.exe
+C:\Users\gyurs\Downloads\DateDecoder-master\DateDecoder\DateDecoder\bin\Release\DateDecoder.pdb
+C:\Users\gyurs\Downloads\DateDecoder-master\DateDecoder\DateDecoder\obj\x86\Release\ARTeam_DateConverter.main.resources
+C:\Users\gyurs\Downloads\DateDecoder-master\DateDecoder\DateDecoder\obj\x86\Release\DateDecoder.Properties.Resources.resources
+C:\Users\gyurs\Downloads\DateDecoder-master\DateDecoder\DateDecoder\obj\x86\Release\DateDecoder.csproj.GenerateResource.Cache
+C:\Users\gyurs\Downloads\DateDecoder-master\DateDecoder\DateDecoder\obj\x86\Release\DateDecoder.exe
+C:\Users\gyurs\Downloads\DateDecoder-master\DateDecoder\DateDecoder\obj\x86\Release\DateDecoder.pdb

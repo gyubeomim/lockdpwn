@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Ajax </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function(){
+   $.ajax({ //외부에 데이터 전송 또는 요청합니다.
+       url:"rank.xml", //데이터를 요청할 URL 주소
+       dataType:"xml", //요청할 데이터의 타입
+       success:function(result){ //성공적으로 데이터가 요청되었을 때...
+          if($(result).find("rank").length>0){
+               $(result).find("rank").each(function(){
+                     var name=$(this).find("k").text();
+                     var result="<li>"+name+"</li>";
+
+                     $("#wrap ol").append(result);
+               });
+          }
+       }
+   });
+});
+//]]>
+</script>
+</head>
+<body>
+   <h1>인기 검색어</h1>
+   <div id="wrap">
+      <ol></ol>
+   </div>
+</body>
+</html>

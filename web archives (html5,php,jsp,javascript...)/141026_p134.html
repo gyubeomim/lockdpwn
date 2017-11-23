@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Practice </title>
+<script type="text/javascript">
+//<![CDATA[
+var userEmail=prompt("당신의 이메일 주소는?","");
+var arrUrl=[".co.kr",".com",".net",".or.kr",".go.kr"];
+var check1=false;
+var check2=false;
+
+
+if(userEmail.indexOf("@")>0) check1=true; 
+
+for(var i=0; i<arrUrl.length; i++){
+	if(userEmail.indexOf(arrUrl[i])>0) check2=true;
+}
+
+
+
+if(check1&&check2){
+	document.write(userEmail);
+	}else{ alert("이메일 형식이 잘못되었습니다"); 
+	}
+
+//]]>
+
+
+</script>
+</head>
+  
+<body>
+  
+</body>
+</html>

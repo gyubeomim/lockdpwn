@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example</title>
+    <script src="jquery-1.7.js" type="text/javascript"></script>
+    <script src="jquery-ui-1.8.16.custom.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.8.16.custom.css"/>
+    <script src="jquery.tmpl.js" type="text/javascript"></script>    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.getJSON("mydata.json", function(data) {
+                $('#flowerTmpl').tmpl(data).appendTo("#products");
+            });            
+        });
+    </script>
+    <script id="flowerTmpl" type="text/x-jquery-tmpl">
+        <div class="dcell">
+            <img src="${product}.png"/>
+            <label for="${product}">${name}:</label>
+            <input name="${product}" value="0" />
+        </div>
+    </script>    
+</head>
+<body>
+    <h1>Jacqui's Flower Shop</h1>
+    <form method="post" action="http://node.jacquisflowershop.com/order">
+        <div id="products"></div>
+        <div id="buttonDiv"><button type="submit">Place Order</button></div>
+    </form>
+</body>
+</html>

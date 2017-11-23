@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 선택문 </title>
+<script type="text/javascript">
+//<![CDATA[
+var site=prompt("네이버, 다음, 네이트, 구글 중 즐겨 사용하는 포털 검색 사이트는?","");
+var url;
+
+switch(site){
+  case "네이버": url="www.naver.com"; //“네이버”를 입력했을 경우
+  break;
+
+  case "다음": url="www.daum.net";   //“다음”을 입력했을 경우
+  break;
+
+  case "네이트": url="www.nate.com";  //“네이트”를 입력했을 경우
+  break;
+
+  case "구글": url="www.google.com"; //“구글”을 입력했을 경우
+  break;
+  
+  //일치하는 값이 없을 경우
+  default: alert("보기 중에 없는 사이트입니다.");
+}
+
+if(url) location.href="http://"+url; // url에 데이터가 있을 경우에만 실행됨.
+//]]>
+</script>
+</head>
+<body>
+
+</body>
+</html>

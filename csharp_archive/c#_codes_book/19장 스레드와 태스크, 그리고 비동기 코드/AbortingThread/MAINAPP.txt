@@ -1,0 +1,18 @@
+Starting thread...
+100 left
+99 left
+98 left
+97 left
+96 left
+95 left
+94 left
+Aborting thread...
+93 left
+92 left
+Wating until thread stops...
+System.Threading.ThreadAbortException: 스레드가 중단되었습니다.
+   위치: System.Threading.Monitor.Enter(Object obj)
+   위치: System.IO.TextWriter.SyncTextWriter.WriteLine(String format, Object arg0)
+   위치: AbortingThread.SideTask.KeepAlive()
+Clearing resource...
+Finished

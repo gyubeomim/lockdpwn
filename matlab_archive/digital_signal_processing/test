@@ -1,0 +1,29 @@
+N = 11;
+
+n_ori = 0 : N-1;
+x_ori = ceil(11 * rand(1, N)) - 6;
+
+disp(x_ori)
+
+ak = f_dfs(x_ori);
+akmag = abs(ak);
+akpha = angle(ak);
+
+sx = num2str(x_ori);
+sakmag = num2str(akmag');
+sakpha = num2str(akpha');
+
+a0 = ak(1);
+
+am1 = akmag(2);
+am2 = akmag(3);
+am3 = akmag(4);
+am4 = akmag(5);
+am5 = akmag(6);
+
+ap1 = akpha(2);
+ap2 = akpha(3);
+ap3 = akpha(4);
+ap4 = akpha(5);
+ap5 = akpha(6);
+

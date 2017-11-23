@@ -1,0 +1,14 @@
+Listener1.SomethingHappened : You've got mail.
+Listener2.SomethingHappened : You've got mail.
+Listener3.SomethingHappened : You've got mail.
+
+Listener1.SomethingHappened : Download complete.
+Listener3.SomethingHappened : Download complete.
+
+Listener2.SomethingHappened : Nuclear launch detected.
+Listener3.SomethingHappened : Nuclear launch detected.
+
+Listener1.SomethingHappened : Fire!!
+Listener2.SomethingHappened : Fire!!
+
+Listener1.SomethingHappened : RPG!

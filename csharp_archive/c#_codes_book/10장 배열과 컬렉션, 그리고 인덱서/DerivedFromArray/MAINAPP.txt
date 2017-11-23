@@ -1,0 +1,2 @@
+Type Of array : System.Int32[]
+Base type Of array : System.Array

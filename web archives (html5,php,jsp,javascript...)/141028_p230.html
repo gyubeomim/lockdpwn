@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> Practice</title>
+<script type="text/javascript">
+//<![CDATA[
+
+function submit_chk(myForm){
+var reg1=/^[가-힣]{2,5}$/;
+var reg2=/^(010|011|016)\d{3,4}\d{4}$/;
+
+var name=myForm.user_name;
+var tel=myForm.user_tel;
+
+var result1=reg1.test(name.value);
+var result2=reg1.test(tel.value);
+
+if(!result1){
+	alert("Wrong Name");
+	name.value="";
+	name.focus();
+	return false;
+}else if(!result2){
+	alert("Wrong Telephone Number");
+	tel.value="";
+	tel.focus();
+	return false;
+}
+}
+
+function reset_chk(myForm){
+	var result=confirm("Do you sure to Cancel Sign in?");
+	if(result){
+		return true;
+		}
+}
+	
+	
+	
+
+//]]>
+</script>
+</head>
+<body onload="document.f1.user_name.focus();">
+
+	<form align=center action="#" method="post" name="f1" onsubmit="return submit_chk(this);" onreset="return reset_chk(this);">
+		<fieldset>
+			<legend>Sign in</legend>
+			<p>
+				<label for="user_name">Name</label>
+				<input type="text" name="user_name" id="user_name" />
+			</p>
+			<p>
+				<label for="user_tel">Telephone Number</label>
+				<input type="text" name="user_tel" id="user_tel">
+			</p>
+			<p>
+				<input type="submit" value="Sign in" />
+				<input type="reset" value="Cancel" />
+			</p>
+		</fieldset>
+	</form>
+			
+
+
+</body>
+</html>

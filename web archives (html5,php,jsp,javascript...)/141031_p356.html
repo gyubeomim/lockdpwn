@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Practice </title>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<style type="text/css">
+ 
+</style>
+<script type="text/javascript">
+//!<[CDATA[
+$(function(){
+	$("#user_name").focus();
+	
+	$("#user_id").focus(function(){
+		$(this).val("");
+	});
+	$("#user_id").blur(function(){
+		$(this).val("Enter ID")
+	});
+
+
+});
+//]]>
+</script>
+</head>
+  
+<body>
+
+	<p>
+		<input type="text" name="user_name" id="user_name" />
+	</p>
+	<p>
+		<input type="text" name="user_id" id="user_id" value="Enter ID" />
+	</p>
+  
+  
+  
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 내장함수 </title>
+<style type="text/css">
+   legend{position:absolute;left:-9999px;}
+   #calc{width:185px;}
+   #calc input[type=button]{
+   width:27px;border-radius:2px;
+   border:1px solid #09f;
+   }
+   #win{width:155px;border:none 0;
+   background-color:#cff;
+   }
+</style>
+<script type="text/javascript">
+//<![CDATA[
+   var t="";
+   window.onload=function(){
+      var rw=document.getElementById("win");
+      var bw=document.getElementById("btn_wrap");
+      var btns=bw.getElementsByTagName("input");
+      for(var i=0; i<=btns.length; i++){
+         btns[i].onclick=function(){
+            if(this.value=="="){
+               rw.value=eval(t);
+               return false;
+            }else if(this.value=="C"){
+               t="";
+               rw.value=t;
+               return false;
+            }
+            t+=this.value;
+         }
+      }
+   }
+//]]>
+</script>
+</head>
+<body>
+  <form action="#" id="calc">
+   <fieldset>
+      <legend>계산기</legend>
+      <p><input type="text" name="win" id="win" readonly="readonly" disabled="disabled" /></p>
+      <p id="btn_wrap">
+         <input type="button" value="1" />
+         <input type="button" value="2" />
+         <input type="button" value="3" />
+         <input type="button" value="4" />
+         <input type="button" value="5" />
+         <br /><br />
+
+         <input type="button" value="6" />
+         <input type="button" value="7" />
+         <input type="button" value="8" />
+         <input type="button" value="9" />
+         <input type="button" value="0" />
+         <br /><br />
+
+         <input type="button" value="/" />
+         <input type="button" value="*" />
+         <input type="button" value="-" />
+         <input type="button" value="+" />
+         <input type="button" value="=" />
+         <br /><br />
+
+         <input type="button" value="C" />
+      </p>
+   </fieldset>
+  </form>
+</body>
+</html>

@@ -1,0 +1,12 @@
+C:\Users\Sean\AppData\Local\Temporary Projects\SimpleWindow\bin\Release\SimpleWindow.exe
+C:\Users\Sean\AppData\Local\Temporary Projects\SimpleWindow\bin\Release\SimpleWindow.pdb
+C:\Users\Sean\AppData\Local\Temporary Projects\SimpleWindow\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Sean\AppData\Local\Temporary Projects\SimpleWindow\obj\x86\Release\SimpleWindow.exe
+C:\Users\Sean\AppData\Local\Temporary Projects\SimpleWindow\obj\x86\Release\SimpleWindow.pdb
+D:\집필\뇌자극C#\20장 WinForm 사용자 인터페이스\SimpleWindow\SimpleWindow\obj\x86\Release\SimpleWindow.exe
+D:\집필\뇌자극C#\20장 WinForm 사용자 인터페이스\SimpleWindow\SimpleWindow\obj\x86\Release\SimpleWindow.pdb
+H:\원고\뇌자극 C# 5.0\뇌자극 C# 5.0 140703(VS2013)\소스 코드 및 실행 결과 04\20장 WinForm 사용자 인터페이스\SimpleWindow\SimpleWindow\obj\x86\Release\SimpleWindow.exe
+H:\원고\뇌자극 C# 5.0\뇌자극 C# 5.0 140703(VS2013)\소스 코드 및 실행 결과 04\20장 WinForm 사용자 인터페이스\SimpleWindow\SimpleWindow\obj\x86\Release\SimpleWindow.pdb
+H:\원고\뇌자극 C# 5.0\뇌자극 C# 5.0 140703(VS2013)\소스 코드 및 실행 결과 04\20장 WinForm 사용자 인터페이스\SimpleWindow\SimpleWindow\bin\Release\SimpleWindow.exe
+H:\원고\뇌자극 C# 5.0\뇌자극 C# 5.0 140703(VS2013)\소스 코드 및 실행 결과 04\20장 WinForm 사용자 인터페이스\SimpleWindow\SimpleWindow\bin\Release\SimpleWindow.pdb
+H:\원고\뇌자극 C# 5.0\뇌자극 C# 5.0 140703(VS2013)\소스 코드 및 실행 결과 04\20장 WinForm 사용자 인터페이스\SimpleWindow\SimpleWindow\obj\x86\Release\SimpleWindow.csprojResolveAssemblyReference.cache

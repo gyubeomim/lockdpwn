@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Practice </title>
+<script type="text/javascript">
+//!<[CDATA[
+
+var date=new Date();
+var y=date.getFullYear();
+var m=date.getMonth();
+var d=date.getDate();
+
+var theDate=new Date(y,m,1);
+var theDay=theDate.getDay();
+
+
+var last=[31,28,31,30,31,30,31,31,30,31,30,31];
+if(y%4&&y%100!=0||y%400==0) lastDate=last[1]=29;
+var lastDate=last[m];
+
+
+var row=Math.ceil((theDay+lastDate)/7);
+
+document.write("<h1>"+y+"."+(m+1)+"</h1>");
+
+var calendar="<table border='0'>";
+calendar+="<tr>";
+calendar+="<th>일</th>";
+calendar+="<th>월</th>";
+calendar+="<th>화</th>";
+calendar+="<th>수</th>";
+calendar+="<th>목</th>";
+calendar+="<th>금</th>";
+calendar+="<th>토</th>";
+calendar+="</tr>";
+
+var dNum=1;
+
+for(var i=1; i<=row; i++){
+	calendar+="<tr>";
+	
+	for(var k=1; k<=7; k++){
+	
+		if(i==1 && k<=theDay || dNum>lastDate){
+			calendar+="<td> &nbsp; </td>";
+			}else{
+				calendar+="<td>"+dNum+"</td>";
+				dNum++;
+			}
+		}
+	calendar+="<tr>";
+	}
+	
+document.write(calendar);
+
+
+//]]>
+</script>
+</head>
+  
+<body>
+  
+</body>
+</html>

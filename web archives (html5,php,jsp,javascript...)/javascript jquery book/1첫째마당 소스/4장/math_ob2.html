@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 수학객체 </title>
+<script type="text/javascript">
+//<![CDATA[
+document.write("<h1>컴퓨터 가위, 바위, 보 맞추기</h1>");
+
+var t=prompt("가위, 바위, 보 중 선택하세요?","가위");
+var tNum;
+switch(t){ //가위, 바위, 보를 숫자 1,2,3으로 바꿉니다.
+   case "가위": tNum=1;
+   break;
+   case "바위": tNum=2;
+   break;
+   case "보": tNum=3;
+   break;
+   default: alert("잘못 작성하셨습니다.");
+   location.reload();
+}
+//1부터 3까지 난수(정수)를 발생시킵니다.
+var com=Math.ceil(Math.random()*3); //컴퓨터 가위(1), 바위(2), 보(3)
+
+/*난수를 이용해 컴퓨터 가위 바위 보 이미지가 출력되도록 하였습니다.*/
+document.write("<img src='images/math_img_"+com+".jpg' alt='가위,바위,보' />");
+
+//사용자가 낸 값과 컴퓨터의 값이 일치하나 조건검사합니다.
+if(tNum==com){
+   alert("맞췄습니다! 축하합니다!!");
+}else{
+   alert("틀렸네요! 다음기회 또 도전하세요!!");
+}
+//]]>
+</script>
+</head>
+<body>
+</body>
+</html>

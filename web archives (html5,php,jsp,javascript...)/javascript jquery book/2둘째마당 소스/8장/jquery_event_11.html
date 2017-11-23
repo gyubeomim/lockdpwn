@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 이벤트 </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function(){
+   $("#btn1").mouseover(function(){//버튼1에 마우스를 올렸을 때
+      alert("good");
+   });
+
+   //버튼2에 마우스를 올리거나 또는 포커스가 생성되었을 때
+   $("#btn2").on("mouseover focus",function(){
+      alert("hello");      
+   });
+});
+//]]>
+</script>
+</head>
+<body>
+  <p><a href="#" id="btn1">버튼1</a></p>
+  <p><a href="#" id="btn2">버튼2</a></p>
+</body>
+</html>

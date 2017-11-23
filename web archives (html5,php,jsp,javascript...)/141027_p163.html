@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> Practice</title>
+<script type="text/javascript">
+//<![CDATA[
+
+function info1(){
+
+	var os=navigator.userAgent.toLowerCase();
+	
+	var info_wrap=document.getElementById("info_wrap");
+	
+	if(os.indexOf('windows')>=0){
+		info_wrap.innerHTML="윈도우";
+	}else if(os.indexOf('machintosh')>=0){
+		info_wrap.innerHTML="맥킨토시";
+	}else if(os.indexOf('iphone')>=0){
+		info_wrap.innerHTML="아이폰";
+	}else if(os.indexOf('android')>=0){
+		info_wrap.innerHTML="안드로이드";
+	}
+	
+	
+	setTimeout("info_wrap.innerHTML=",3000);
+	}
+	
+function info2(){
+	var sc_w=screen.width;
+	var sc_h=screen.height;
+	
+	var info_wrap=document.getElementById("info_wrap");
+	
+	info_wrap.innerHTML=sc_w+"X"+sc_h;
+	
+	setTimeout("info_wrap.innerHTML=",3000);
+	}
+	
+
+	
+
+
+
+//]]>
+</script>
+</head>
+<body>
+
+<h1>운영체제 및 스크린 정보</h1>
+<p id="info_wrap"></p>
+
+
+
+<button onclick="info1();">운영체제 정보</button><br />
+<button onclick="info2();">스크린 정보</button><br />
+
+
+
+</body>
+</html>

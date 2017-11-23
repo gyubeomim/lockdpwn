@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> 이벤트 </title>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(function(){
+   $("#rel_site").change(function(){
+      $("#txt").text($(this).val());
+   });
+});
+//]]>
+</script>
+</head>
+<body>
+   <select id="rel_site">
+      <option value="">사이트 선택</option>
+      <option value="www.naver.com">네이버</option>
+      <option value="www.nate.com">네이트</option>
+      <option value="www.daum.net">다음</option>
+   </select>
+   <p id="txt"></p>
+</body>
+</html>

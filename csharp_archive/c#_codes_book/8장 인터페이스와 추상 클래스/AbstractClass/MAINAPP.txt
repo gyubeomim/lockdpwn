@@ -1,0 +1,3 @@
+Derived.AbstractMethodA()
+AbstractBase.PrivateMethodA()
+AbstractBase.PublicMethodA()

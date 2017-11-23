@@ -1,0 +1,4 @@
+Type: System.Int32, Value: 20
+Type: System.Double, Value: 3.1414213
+Type: System.String, Value: Hello, World!
+Type: System.Int32[], Value: 10 20 30 

@@ -1,0 +1,15 @@
+Array Resized : 4
+Array Resized : 5
+abc
+def
+ghi
+jkl
+mno
+
+Array Resized : 4
+Array Resized : 5
+0
+1
+2
+3
+4

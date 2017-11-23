@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> Practice </title>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+<style type="text/css">
+ 
+</style>
+<script type="text/javascript">
+//!<[CDATA[
+		$(function(){
+			$("#btn1").mouseover(function(){
+				$("p").css("background-color","grey");
+			});
+			$("#btn1").mouseout(function(){
+				$("p").css("background-color","orange");
+			});
+			$("#btn2").hover(function(){
+				$("p").css("background-color","yellow");
+			},
+				function(){$("p").css("background-color","green");
+			});
+		});
+//]]>
+</script>
+</head>
+  
+<body>
+		<button id="btn1">mouseover/out</button>
+		<button id="btn2">hover</button>
+		<p>Content</p>
+  
+  
+  
+</body>
+</html>

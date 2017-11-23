@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title> 이벤트 </title>
+<style type="text/css">
+body{font:12px gulim,"굴림",sans-serif;}
+fieldset{border:none 0;}
+legend{position:absolute;left:-9999px;}
+</style>
+<script type="text/javascript">
+//<![CDATA[
+function submit_chk(myForm){
+
+
+
+/*이름 입력하는 <input name="user_name">을 
+   변수 name에 참조시켰습니다.*/
+   
+   
+   /*연락처 입력하는 <input name="user_tel">을 
+   변수 tel에 참조시켰습니다.*/
+   
+   
+   /*방문자가 입력한 이름이 정규표현 규칙에 어긋나면
+      false를 반환합니다.*/
+	  
+	  
+	  /*방문자가 입력한 전화번호가 정규표현 규칙에 어긋나면
+      false를 반환합니다.*/
+	  
+   
+   /*이름 또는 연락처를 정규표현 규칙에 어긋나면 
+   경고 창을 띄우고 해당 입력 창에 포커스를 이동시킵니다.*/	 
+
+
+
+
+
+
+
+
+
+
+   
+}
+  
+  /*취소 버튼을 눌렀을 땐 확인/취소 창을 띄우고, 다시 한번
+회원가입 취소 여부를 묻습니다.*/
+function reset_chk(myForm){
+ 
+ 
+ 
+ 
+}
+//]]>
+</script>
+</head>
+<!-- <body>에 하위 요소를 모두 로딩한 후 이름 입력하는 
+곳으로 포커스 이동시킵니다. -->
+<body onload="document.f1.user_name.focus();">
+<form action="#" method="post" name="f1" >
+   <fieldset>
+      <legend>회원가입</legend>
+      <p>
+      <label for="user_name">이름</label>
+      <input type="text" name="user_name" id="user_name" />
+      </p>
+      <p>
+      <label for="user_tel">연락처</label>
+      <input type="text" name="user_tel" id="user_tel" />
+      </p>
+      <p>
+         <input type="submit" value="회원가입" />
+         <input type="reset" value="가입취소" />
+       </p>
+   </fieldset>
+</form>
+</body>
+</html>

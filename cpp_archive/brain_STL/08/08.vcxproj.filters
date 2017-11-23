@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일%28기존1%29">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="소스 파일%28기존2%29">
+      <UniqueIdentifier>{f507ccd1-b4cc-4dab-803e-66d3b7ee79dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일%28기존3%29">
+      <UniqueIdentifier>{4cb3c174-bf7c-4bfe-a89e-70f224cfdfcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일%28기존4%29">
+      <UniqueIdentifier>{4e0201c6-0540-48f9-8a2e-71f39659e6bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{2e0463e4-0bb6-48e3-8087-3621bb289c39}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ex08-01.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-02.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-03.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-04.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-05.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-06.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-07.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-08.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-09.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-10.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-11.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-12.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-13.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-14.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-15.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-16.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-17.cpp">
+      <Filter>소스 파일%28기존1%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-18.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-19.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-20.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-21.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-22.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-23.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-24.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-25.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-26.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-27.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-28.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-29.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-30.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-31.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-32.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-33.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-34.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-35.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-36.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-37.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-38.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-39.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-40.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-41.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-42.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-43.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-44.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-45.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-47.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-48.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-49.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-50.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-51.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-52.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-53.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-54.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-55.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-46.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-56.cpp">
+      <Filter>소스 파일%28기존4%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-57.cpp">
+      <Filter>소스 파일%28기존4%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-58.cpp">
+      <Filter>소스 파일%28기존4%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-59.cpp">
+      <Filter>소스 파일%28기존4%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-60.cpp">
+      <Filter>소스 파일%28기존4%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-61.cpp">
+      <Filter>소스 파일%28기존4%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-62.cpp">
+      <Filter>소스 파일%28기존4%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-63.cpp">
+      <Filter>소스 파일%28기존4%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-64.cpp">
+      <Filter>소스 파일%28기존4%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-65.cpp">
+      <Filter>소스 파일%28기존4%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-66.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-67.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-68.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-69.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-70.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-71.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-72.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-73.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-74.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-75.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-76.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-77.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-78.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-79.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-80.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-81.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-82.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex08-83.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
