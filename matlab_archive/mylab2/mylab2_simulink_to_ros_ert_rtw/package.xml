@@ -1,0 +1,17 @@
+<package>
+  <name>mylab2_simulink_to_ros</name>
+  <version>1.0.0</version>
+  <description>
+  This package is generated from mylab2_simulink_to_ros Simulink model.
+  </description>
+  <maintainer email="gyurse@odroid.com">odroid</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+</package>

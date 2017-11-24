@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.300"
+    ComputedModelVersion    "1.335"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -76,12 +76,12 @@ Model {
 	Dimension		3
 	Object {
 	  $ObjectID		  6
-	  IsActive		  [0]
+	  IsActive		  [1]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1745.0, 766.0]
 	  ZoomFactor		  [1.25]
-	  Offset		  [337.67183272726982, 297.61196487607748]
+	  Offset		  [340.70429538411747, 263.71591524733208]
 	}
 	Object {
 	  $ObjectID		  7
@@ -94,12 +94,12 @@ Model {
 	}
 	Object {
 	  $ObjectID		  8
-	  IsActive		  [1]
+	  IsActive		  [0]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "2839"
 	  Extents		  [1745.0, 766.0]
 	  ZoomFactor		  [1.4999999999999998]
-	  Offset		  [-173.32687102053046, 76.159999999999968]
+	  Offset		  [-230.35146104523693, 80.158413779067018]
 	}
 	PropName		"EditorsInfo"
       }
@@ -135,9 +135,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "edward"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Nov 24 15:40:34 2017"
-  RTWModifiedTimeStamp	  433438698
-  ModelVersionFormat	  "1.%<AutoIncrement:300>"
+  LastModifiedDate	  "Sat Nov 25 01:40:44 2017"
+  RTWModifiedTimeStamp	  433474823
+  ModelVersionFormat	  "1.%<AutoIncrement:335>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -244,7 +244,7 @@ Model {
 	  DisabledProps		  []
 	  Description		  ""
 	  StartTime		  "0.0"
-	  StopTime		  "10"
+	  StopTime		  "12"
 	  AbsTol		  "auto"
 	  FixedStep		  "0.1"
 	  InitialStep		  "auto"
@@ -1377,7 +1377,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2878"
+    SIDHighWatermark	    "2963"
     Block {
       BlockType		      Reference
       Name		      " "
@@ -1400,8 +1400,8 @@ Model {
       UseFilter		      on
       ControllerParametersSource "internal"
       P			      "Kp_throttle"
-      I			      "Ki_throttle"
-      D			      "Kd_throttle"
+      I			      "Ki"
+      D			      "Kd"
       N			      "100"
       InitialConditionSource  "internal"
       InitialConditionForIntegrator "0"
@@ -1527,8 +1527,8 @@ Model {
       UseFilter		      on
       ControllerParametersSource "internal"
       P			      "Kp_brake"
-      I			      "Ki_brake"
-      D			      "Kd_brake"
+      I			      "Ki"
+      D			      "Kd"
       N			      "100"
       InitialConditionSource  "internal"
       InitialConditionForIntegrator "0"
@@ -1640,6 +1640,7 @@ Model {
       Position		      [775, 366, 905, 424]
       ZOrder		      101
       BackgroundColor	      "magenta"
+      ShowName		      off
       LibraryVersion	      "1.32"
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
@@ -1773,9 +1774,11 @@ Model {
       Name		      "               ACC Based On DIstance            "
       SID		      "2870"
       Ports		      [1, 2]
-      Position		      [775, 506, 905, 564]
+      Position		      [775, 481, 905, 539]
       ZOrder		      110
       BackgroundColor	      "magenta"
+      NamePlacement	      "alternate"
+      ShowName		      off
       LibraryVersion	      "1.32"
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
@@ -1905,12 +1908,286 @@ Model {
       }
     }
     Block {
+      BlockType		      SubSystem
+      Name		      "               ACC Based On DIstance             "
+      SID		      "2923"
+      Ports		      [1, 2]
+      Position		      [775, 696, 905, 754]
+      ZOrder		      125
+      BackgroundColor	      "magenta"
+      ShowName		      off
+      LibraryVersion	      "1.32"
+      ErrorFcn		      "Stateflow.Translate.translate"
+      PermitHierarchicalResolution "ExplicitOnly"
+      TreatAsAtomicUnit	      on
+      RequestExecContextInheritance off
+      SFBlockType	      "MATLAB Function"
+      Variant		      off
+      System {
+	Name			"               ACC Based On DIstance             "
+	Location		[227, 345, 838, 789]
+	Open			off
+	PortBlocksUseCompactNotation off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	SIDHighWatermark	"39"
+	Block {
+	  BlockType		  Inport
+	  Name			  "ei"
+	  SID			  "2923::32"
+	  Position		  [20, 101, 40, 119]
+	  ZOrder		  17
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  " Demux "
+	  SID			  "2923::37"
+	  Ports			  [1, 1]
+	  Position		  [270, 230, 320, 270]
+	  ZOrder		  22
+	  Outputs		  "1"
+	}
+	Block {
+	  BlockType		  S-Function
+	  Name			  " SFunction "
+	  SID			  "2923::36"
+	  Tag			  "Stateflow S-Function platoon_project_string_stability 4"
+	  Ports			  [1, 3]
+	  Position		  [180, 100, 230, 180]
+	  ZOrder		  21
+	  FunctionName		  "sf_sfun"
+	  PortCounts		  "[1 3]"
+	  SFunctionDeploymentMode off
+	  EnableBusSupport	  on
+	  SFcnIsStateOwnerBlock	  off
+	  Port {
+	    PortNumber		    2
+	    Name		    "Throttle_Angle_err"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "Pmc_err"
+	  }
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  " Terminator "
+	  SID			  "2923::38"
+	  Position		  [460, 241, 480, 259]
+	  ZOrder		  23
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Throttle_Angle_err"
+	  SID			  "2923::5"
+	  Position		  [460, 101, 480, 119]
+	  ZOrder		  -8
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Pmc_err"
+	  SID			  "2923::39"
+	  Position		  [460, 136, 480, 154]
+	  ZOrder		  24
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  1
+	  SrcBlock		  " SFunction "
+	  SrcPort		  1
+	  DstBlock		  " Demux "
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  2
+	  SrcBlock		  " Demux "
+	  SrcPort		  1
+	  DstBlock		  " Terminator "
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Pmc_err"
+	  ZOrder		  3
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  3
+	  DstBlock		  "Pmc_err"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Throttle_Angle_err"
+	  ZOrder		  4
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  2
+	  DstBlock		  "Throttle_Angle_err"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  5
+	  SrcBlock		  "ei"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "               ACC Based On DIstance              "
+      SID		      "2895"
+      Ports		      [1, 2]
+      Position		      [775, 596, 905, 654]
+      ZOrder		      121
+      BackgroundColor	      "magenta"
+      ShowName		      off
+      LibraryVersion	      "1.32"
+      ErrorFcn		      "Stateflow.Translate.translate"
+      PermitHierarchicalResolution "ExplicitOnly"
+      TreatAsAtomicUnit	      on
+      RequestExecContextInheritance off
+      SFBlockType	      "MATLAB Function"
+      Variant		      off
+      System {
+	Name			"               ACC Based On DIstance              "
+	Location		[227, 345, 838, 789]
+	Open			off
+	PortBlocksUseCompactNotation off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	SIDHighWatermark	"39"
+	Block {
+	  BlockType		  Inport
+	  Name			  "ei"
+	  SID			  "2895::32"
+	  Position		  [20, 101, 40, 119]
+	  ZOrder		  17
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  " Demux "
+	  SID			  "2895::37"
+	  Ports			  [1, 1]
+	  Position		  [270, 230, 320, 270]
+	  ZOrder		  22
+	  Outputs		  "1"
+	}
+	Block {
+	  BlockType		  S-Function
+	  Name			  " SFunction "
+	  SID			  "2895::36"
+	  Tag			  "Stateflow S-Function platoon_project_string_stability 3"
+	  Ports			  [1, 3]
+	  Position		  [180, 100, 230, 180]
+	  ZOrder		  21
+	  FunctionName		  "sf_sfun"
+	  PortCounts		  "[1 3]"
+	  SFunctionDeploymentMode off
+	  EnableBusSupport	  on
+	  SFcnIsStateOwnerBlock	  off
+	  Port {
+	    PortNumber		    2
+	    Name		    "Throttle_Angle_err"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "Pmc_err"
+	  }
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  " Terminator "
+	  SID			  "2895::38"
+	  Position		  [460, 241, 480, 259]
+	  ZOrder		  23
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Throttle_Angle_err"
+	  SID			  "2895::5"
+	  Position		  [460, 101, 480, 119]
+	  ZOrder		  -8
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Pmc_err"
+	  SID			  "2895::39"
+	  Position		  [460, 136, 480, 154]
+	  ZOrder		  24
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  1
+	  SrcBlock		  "ei"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Throttle_Angle_err"
+	  ZOrder		  2
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  2
+	  DstBlock		  "Throttle_Angle_err"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Pmc_err"
+	  ZOrder		  3
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  3
+	  DstBlock		  "Pmc_err"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  4
+	  SrcBlock		  " Demux "
+	  SrcPort		  1
+	  DstBlock		  " Terminator "
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  5
+	  SrcBlock		  " SFunction "
+	  SrcPort		  1
+	  DstBlock		  " Demux "
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
       BlockType		      Reference
       Name		      "  1"
-      SID		      "2869"
+      SID		      "2959"
       Ports		      [1, 1]
-      Position		      [950, 539, 990, 561]
-      ZOrder		      112
+      Position		      [940, 514, 980, 536]
+      ZOrder		      131
       ShowName		      off
       LibraryVersion	      "1.391"
       SourceBlock	      "simulink/Continuous/PID Controller"
@@ -1927,8 +2204,264 @@ Model {
       UseFilter		      on
       ControllerParametersSource "internal"
       P			      "Kp_brake"
-      I			      "Ki_brake"
-      D			      "Kd_brake"
+      I			      "Ki"
+      D			      "Kd"
+      N			      "100"
+      InitialConditionSource  "internal"
+      InitialConditionForIntegrator "0"
+      InitialConditionForFilter	"0"
+      ExternalReset	      "none"
+      IgnoreLimit	      off
+      ZeroCross		      on
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      LinearizeAsGain	      on
+      AntiWindupMode	      "none"
+      Kb		      "1"
+      TrackingMode	      off
+      Kt		      "1"
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      LockScale		      off
+      PParamMin		      "[]"
+      PParamMax		      "[]"
+      PParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      IParamMin		      "[]"
+      IParamMax		      "[]"
+      IParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      DParamMin		      "[]"
+      DParamMax		      "[]"
+      DParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      NParamMin		      "[]"
+      NParamMax		      "[]"
+      NParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      KbParamMin	      "[]"
+      KbParamMax	      "[]"
+      KbParamDataTypeStr      "Inherit: Inherit via internal rule"
+      KtParamMin	      "[]"
+      KtParamMax	      "[]"
+      KtParamDataTypeStr      "Inherit: Inherit via internal rule"
+      POutMin		      "[]"
+      POutMax		      "[]"
+      POutDataTypeStr	      "Inherit: Inherit via internal rule"
+      PGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      PProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IOutMin		      "[]"
+      IOutMax		      "[]"
+      IOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      IGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DOutMin		      "[]"
+      DOutMax		      "[]"
+      DOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      DGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NOutMin		      "[]"
+      NOutMax		      "[]"
+      NOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      NGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      KbOutMin		      "[]"
+      KbOutMax		      "[]"
+      KbOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      KtOutMin		      "[]"
+      KtOutMax		      "[]"
+      KtOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      IntegratorOutMin	      "[]"
+      IntegratorOutMax	      "[]"
+      IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
+      FilterOutMin	      "[]"
+      FilterOutMax	      "[]"
+      FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
+      SumOutMin		      "[]"
+      SumOutMax		      "[]"
+      SumOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SumI1OutMin	      "[]"
+      SumI1OutMax	      "[]"
+      SumI1OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI2OutMin	      "[]"
+      SumI2OutMax	      "[]"
+      SumI2OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI3OutMin	      "[]"
+      SumI3OutMax	      "[]"
+      SumI3OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumDOutMin	      "[]"
+      SumDOutMax	      "[]"
+      SumDOutDataTypeStr      "Inherit: Inherit via internal rule"
+      SumAccumDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
+      SaturationOutMin	      "[]"
+      SaturationOutMax	      "[]"
+      SaturationOutDataTypeStr "Inherit: Same as input"
+      IntegratorContinuousStateAttributes "''"
+      IntegratorStateMustResolveToSignalObject off
+      IntegratorRTWStateStorageClass "Auto"
+      FilterContinuousStateAttributes "''"
+      FilterStateMustResolveToSignalObject off
+      FilterRTWStateStorageClass "Auto"
+      DifferentiatorICPrevScaledInput "0"
+      DifferentiatorOutMin    "[]"
+      DifferentiatorOutMax    "[]"
+      DifferentiatorOutDataTypeStr "Inherit: Inherit via internal rule"
+      InitialConditionSetting "State (most efficient)"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "  2"
+      SID		      "2960"
+      Ports		      [1, 1]
+      Position		      [940, 629, 980, 651]
+      ZOrder		      133
+      ShowName		      off
+      LibraryVersion	      "1.391"
+      SourceBlock	      "simulink/Continuous/PID Controller"
+      SourceType	      "PID 1dof"
+      SourceProductName	      "Simulink"
+      SourceProductBaseCode   "SL"
+      ContentPreviewEnabled   off
+      Controller	      "PID"
+      TimeDomain	      "Continuous-time"
+      SampleTime	      "-1"
+      IntegratorMethod	      "Forward Euler"
+      FilterMethod	      "Forward Euler"
+      Form		      "Parallel"
+      UseFilter		      on
+      ControllerParametersSource "internal"
+      P			      "Kp_brake"
+      I			      "Ki"
+      D			      "Kd"
+      N			      "100"
+      InitialConditionSource  "internal"
+      InitialConditionForIntegrator "0"
+      InitialConditionForFilter	"0"
+      ExternalReset	      "none"
+      IgnoreLimit	      off
+      ZeroCross		      on
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      LinearizeAsGain	      on
+      AntiWindupMode	      "none"
+      Kb		      "1"
+      TrackingMode	      off
+      Kt		      "1"
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      LockScale		      off
+      PParamMin		      "[]"
+      PParamMax		      "[]"
+      PParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      IParamMin		      "[]"
+      IParamMax		      "[]"
+      IParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      DParamMin		      "[]"
+      DParamMax		      "[]"
+      DParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      NParamMin		      "[]"
+      NParamMax		      "[]"
+      NParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      KbParamMin	      "[]"
+      KbParamMax	      "[]"
+      KbParamDataTypeStr      "Inherit: Inherit via internal rule"
+      KtParamMin	      "[]"
+      KtParamMax	      "[]"
+      KtParamDataTypeStr      "Inherit: Inherit via internal rule"
+      POutMin		      "[]"
+      POutMax		      "[]"
+      POutDataTypeStr	      "Inherit: Inherit via internal rule"
+      PGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      PProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IOutMin		      "[]"
+      IOutMax		      "[]"
+      IOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      IGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DOutMin		      "[]"
+      DOutMax		      "[]"
+      DOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      DGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NOutMin		      "[]"
+      NOutMax		      "[]"
+      NOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      NGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      KbOutMin		      "[]"
+      KbOutMax		      "[]"
+      KbOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      KtOutMin		      "[]"
+      KtOutMax		      "[]"
+      KtOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      IntegratorOutMin	      "[]"
+      IntegratorOutMax	      "[]"
+      IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
+      FilterOutMin	      "[]"
+      FilterOutMax	      "[]"
+      FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
+      SumOutMin		      "[]"
+      SumOutMax		      "[]"
+      SumOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SumI1OutMin	      "[]"
+      SumI1OutMax	      "[]"
+      SumI1OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI2OutMin	      "[]"
+      SumI2OutMax	      "[]"
+      SumI2OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI3OutMin	      "[]"
+      SumI3OutMax	      "[]"
+      SumI3OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumDOutMin	      "[]"
+      SumDOutMax	      "[]"
+      SumDOutDataTypeStr      "Inherit: Inherit via internal rule"
+      SumAccumDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
+      SaturationOutMin	      "[]"
+      SaturationOutMax	      "[]"
+      SaturationOutDataTypeStr "Inherit: Same as input"
+      IntegratorContinuousStateAttributes "''"
+      IntegratorStateMustResolveToSignalObject off
+      IntegratorRTWStateStorageClass "Auto"
+      FilterContinuousStateAttributes "''"
+      FilterStateMustResolveToSignalObject off
+      FilterRTWStateStorageClass "Auto"
+      DifferentiatorICPrevScaledInput "0"
+      DifferentiatorOutMin    "[]"
+      DifferentiatorOutMax    "[]"
+      DifferentiatorOutDataTypeStr "Inherit: Inherit via internal rule"
+      InitialConditionSetting "State (most efficient)"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "  3"
+      SID		      "2962"
+      Ports		      [1, 1]
+      Position		      [940, 729, 980, 751]
+      ZOrder		      135
+      ShowName		      off
+      LibraryVersion	      "1.391"
+      SourceBlock	      "simulink/Continuous/PID Controller"
+      SourceType	      "PID 1dof"
+      SourceProductName	      "Simulink"
+      SourceProductBaseCode   "SL"
+      ContentPreviewEnabled   off
+      Controller	      "PID"
+      TimeDomain	      "Continuous-time"
+      SampleTime	      "-1"
+      IntegratorMethod	      "Forward Euler"
+      FilterMethod	      "Forward Euler"
+      Form		      "Parallel"
+      UseFilter		      on
+      ControllerParametersSource "internal"
+      P			      "Kp_brake"
+      I			      "Ki"
+      D			      "Kd"
       N			      "100"
       InitialConditionSource  "internal"
       InitialConditionForIntegrator "0"
@@ -2035,10 +2568,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      " 1"
-      SID		      "2868"
+      SID		      "2958"
       Ports		      [1, 1]
-      Position		      [950, 509, 990, 531]
-      ZOrder		      111
+      Position		      [940, 484, 980, 506]
+      ZOrder		      130
       ShowName		      off
       LibraryVersion	      "1.391"
       SourceBlock	      "simulink/Continuous/PID Controller"
@@ -2055,8 +2588,264 @@ Model {
       UseFilter		      on
       ControllerParametersSource "internal"
       P			      "Kp_throttle"
-      I			      "Ki_throttle"
-      D			      "Kd_throttle"
+      I			      "Ki"
+      D			      "Kd"
+      N			      "100"
+      InitialConditionSource  "internal"
+      InitialConditionForIntegrator "0"
+      InitialConditionForFilter	"0"
+      ExternalReset	      "none"
+      IgnoreLimit	      off
+      ZeroCross		      on
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      LinearizeAsGain	      on
+      AntiWindupMode	      "none"
+      Kb		      "1"
+      TrackingMode	      off
+      Kt		      "1"
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      LockScale		      off
+      PParamMin		      "[]"
+      PParamMax		      "[]"
+      PParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      IParamMin		      "[]"
+      IParamMax		      "[]"
+      IParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      DParamMin		      "[]"
+      DParamMax		      "[]"
+      DParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      NParamMin		      "[]"
+      NParamMax		      "[]"
+      NParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      KbParamMin	      "[]"
+      KbParamMax	      "[]"
+      KbParamDataTypeStr      "Inherit: Inherit via internal rule"
+      KtParamMin	      "[]"
+      KtParamMax	      "[]"
+      KtParamDataTypeStr      "Inherit: Inherit via internal rule"
+      POutMin		      "[]"
+      POutMax		      "[]"
+      POutDataTypeStr	      "Inherit: Inherit via internal rule"
+      PGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      PProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IOutMin		      "[]"
+      IOutMax		      "[]"
+      IOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      IGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DOutMin		      "[]"
+      DOutMax		      "[]"
+      DOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      DGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NOutMin		      "[]"
+      NOutMax		      "[]"
+      NOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      NGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      KbOutMin		      "[]"
+      KbOutMax		      "[]"
+      KbOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      KtOutMin		      "[]"
+      KtOutMax		      "[]"
+      KtOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      IntegratorOutMin	      "[]"
+      IntegratorOutMax	      "[]"
+      IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
+      FilterOutMin	      "[]"
+      FilterOutMax	      "[]"
+      FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
+      SumOutMin		      "[]"
+      SumOutMax		      "[]"
+      SumOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SumI1OutMin	      "[]"
+      SumI1OutMax	      "[]"
+      SumI1OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI2OutMin	      "[]"
+      SumI2OutMax	      "[]"
+      SumI2OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI3OutMin	      "[]"
+      SumI3OutMax	      "[]"
+      SumI3OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumDOutMin	      "[]"
+      SumDOutMax	      "[]"
+      SumDOutDataTypeStr      "Inherit: Inherit via internal rule"
+      SumAccumDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
+      SaturationOutMin	      "[]"
+      SaturationOutMax	      "[]"
+      SaturationOutDataTypeStr "Inherit: Same as input"
+      IntegratorContinuousStateAttributes "''"
+      IntegratorStateMustResolveToSignalObject off
+      IntegratorRTWStateStorageClass "Auto"
+      FilterContinuousStateAttributes "''"
+      FilterStateMustResolveToSignalObject off
+      FilterRTWStateStorageClass "Auto"
+      DifferentiatorICPrevScaledInput "0"
+      DifferentiatorOutMin    "[]"
+      DifferentiatorOutMax    "[]"
+      DifferentiatorOutDataTypeStr "Inherit: Inherit via internal rule"
+      InitialConditionSetting "State (most efficient)"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      " 2"
+      SID		      "2961"
+      Ports		      [1, 1]
+      Position		      [940, 599, 980, 621]
+      ZOrder		      132
+      ShowName		      off
+      LibraryVersion	      "1.391"
+      SourceBlock	      "simulink/Continuous/PID Controller"
+      SourceType	      "PID 1dof"
+      SourceProductName	      "Simulink"
+      SourceProductBaseCode   "SL"
+      ContentPreviewEnabled   off
+      Controller	      "PID"
+      TimeDomain	      "Continuous-time"
+      SampleTime	      "-1"
+      IntegratorMethod	      "Forward Euler"
+      FilterMethod	      "Forward Euler"
+      Form		      "Parallel"
+      UseFilter		      on
+      ControllerParametersSource "internal"
+      P			      "Kp_throttle"
+      I			      "Ki"
+      D			      "Kd"
+      N			      "100"
+      InitialConditionSource  "internal"
+      InitialConditionForIntegrator "0"
+      InitialConditionForFilter	"0"
+      ExternalReset	      "none"
+      IgnoreLimit	      off
+      ZeroCross		      on
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      LinearizeAsGain	      on
+      AntiWindupMode	      "none"
+      Kb		      "1"
+      TrackingMode	      off
+      Kt		      "1"
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      LockScale		      off
+      PParamMin		      "[]"
+      PParamMax		      "[]"
+      PParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      IParamMin		      "[]"
+      IParamMax		      "[]"
+      IParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      DParamMin		      "[]"
+      DParamMax		      "[]"
+      DParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      NParamMin		      "[]"
+      NParamMax		      "[]"
+      NParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      KbParamMin	      "[]"
+      KbParamMax	      "[]"
+      KbParamDataTypeStr      "Inherit: Inherit via internal rule"
+      KtParamMin	      "[]"
+      KtParamMax	      "[]"
+      KtParamDataTypeStr      "Inherit: Inherit via internal rule"
+      POutMin		      "[]"
+      POutMax		      "[]"
+      POutDataTypeStr	      "Inherit: Inherit via internal rule"
+      PGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      PProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IOutMin		      "[]"
+      IOutMax		      "[]"
+      IOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      IGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      IProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DOutMin		      "[]"
+      DOutMax		      "[]"
+      DOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      DGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      DProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NOutMin		      "[]"
+      NOutMax		      "[]"
+      NOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      NGainOutDataTypeStr     "Inherit: Inherit via internal rule"
+      NProdOutDataTypeStr     "Inherit: Inherit via internal rule"
+      KbOutMin		      "[]"
+      KbOutMax		      "[]"
+      KbOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      KtOutMin		      "[]"
+      KtOutMax		      "[]"
+      KtOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      IntegratorOutMin	      "[]"
+      IntegratorOutMax	      "[]"
+      IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
+      FilterOutMin	      "[]"
+      FilterOutMax	      "[]"
+      FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
+      SumOutMin		      "[]"
+      SumOutMax		      "[]"
+      SumOutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SumI1OutMin	      "[]"
+      SumI1OutMax	      "[]"
+      SumI1OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI2OutMin	      "[]"
+      SumI2OutMax	      "[]"
+      SumI2OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI3OutMin	      "[]"
+      SumI3OutMax	      "[]"
+      SumI3OutDataTypeStr     "Inherit: Inherit via internal rule"
+      SumDOutMin	      "[]"
+      SumDOutMax	      "[]"
+      SumDOutDataTypeStr      "Inherit: Inherit via internal rule"
+      SumAccumDataTypeStr     "Inherit: Inherit via internal rule"
+      SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
+      SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
+      SaturationOutMin	      "[]"
+      SaturationOutMax	      "[]"
+      SaturationOutDataTypeStr "Inherit: Same as input"
+      IntegratorContinuousStateAttributes "''"
+      IntegratorStateMustResolveToSignalObject off
+      IntegratorRTWStateStorageClass "Auto"
+      FilterContinuousStateAttributes "''"
+      FilterStateMustResolveToSignalObject off
+      FilterRTWStateStorageClass "Auto"
+      DifferentiatorICPrevScaledInput "0"
+      DifferentiatorOutMin    "[]"
+      DifferentiatorOutMax    "[]"
+      DifferentiatorOutDataTypeStr "Inherit: Inherit via internal rule"
+      InitialConditionSetting "State (most efficient)"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      " 3"
+      SID		      "2963"
+      Ports		      [1, 1]
+      Position		      [940, 699, 980, 721]
+      ZOrder		      134
+      ShowName		      off
+      LibraryVersion	      "1.391"
+      SourceBlock	      "simulink/Continuous/PID Controller"
+      SourceType	      "PID 1dof"
+      SourceProductName	      "Simulink"
+      SourceProductBaseCode   "SL"
+      ContentPreviewEnabled   off
+      Controller	      "PID"
+      TimeDomain	      "Continuous-time"
+      SampleTime	      "-1"
+      IntegratorMethod	      "Forward Euler"
+      FilterMethod	      "Forward Euler"
+      Form		      "Parallel"
+      UseFilter		      on
+      ControllerParametersSource "internal"
+      P			      "Kp_throttle"
+      I			      "Ki"
+      D			      "Kd"
       N			      "100"
       InitialConditionSource  "internal"
       InitialConditionForIntegrator "0"
@@ -2172,7 +2961,15 @@ Model {
       Variant		      off
       Port {
 	PortNumber		1
-	Name			"v_1"
+	Name			"v1"
+      }
+      Port {
+	PortNumber		2
+	Name			"x1"
+      }
+      Port {
+	PortNumber		3
+	Name			"a1"
       }
       System {
 	Name			"1st Vehicle"
@@ -2981,7 +3778,7 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [805, 15, 835, 45]
 	  ZOrder		  5
-	  InitialCondition	  "L"
+	  InitialCondition	  "3*L"
 	}
 	Block {
 	  BlockType		  Product
@@ -6512,7 +7309,7 @@ Model {
 	  "><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</styl"
 	  "e></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n<p style=\""
 	  " margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-he"
-	  "ight:100%;\"><span style=\" font-size:10px; color:#0070c0;\">Inital Condition : L [m]</span></p></body></html>"
+	  "ight:100%;\"><span style=\" font-size:10px; color:#0070c0;\">Inital Condition : 3L [m]</span></p></body></html>"
 	  Position		  [771, -6, 773, 12]
 	  InternalMargins	  [0, 0, 0, 0]
 	  FixedHeight		  off
@@ -6529,11 +7326,23 @@ Model {
       Name		      "2nd Vehicle"
       SID		      "2030"
       Ports		      [2, 3]
-      Position		      [1025, 503, 1155, 567]
+      Position		      [1025, 478, 1155, 542]
       ZOrder		      6
       BackgroundColor	      "lightBlue"
       RequestExecContextInheritance off
       Variant		      off
+      Port {
+	PortNumber		1
+	Name			"v2"
+      }
+      Port {
+	PortNumber		2
+	Name			"x2"
+      }
+      Port {
+	PortNumber		3
+	Name			"a2"
+      }
       System {
 	Name			"2nd Vehicle"
 	Location		[28, 15, 1474, 803]
@@ -7341,6 +8150,7 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [785, 0, 815, 30]
 	  ZOrder		  5
+	  InitialCondition	  "2*L"
 	}
 	Block {
 	  BlockType		  Product
@@ -10871,8 +11681,8 @@ Model {
 	  "><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</styl"
 	  "e></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n<p style=\""
 	  " margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-he"
-	  "ight:100%;\"><span style=\" font-size:10px; color:#0070c0;\">Inital Condition : 0 [m]</span></p></body></html>"
-	  Position		  [751, -22, 753, -4]
+	  "ight:100%;\"><span style=\" font-size:10px; color:#0070c0;\">Inital Condition : 2L [m]</span></p></body></html>"
+	  Position		  [751, -23, 753, -5]
 	  InternalMargins	  [0, 0, 0, 0]
 	  FixedHeight		  off
 	  FixedWidth		  off
@@ -10888,15 +11698,26 @@ Model {
       Name		      "3rd Vehicle"
       SID		      "2251"
       Ports		      [2, 3]
-      Position		      [965, 651, 1095, 719]
+      Position		      [1025, 593, 1155, 657]
       ZOrder		      7
       BackgroundColor	      "lightBlue"
-      Commented		      "on"
       RequestExecContextInheritance off
       Variant		      off
+      Port {
+	PortNumber		1
+	Name			"v3"
+      }
+      Port {
+	PortNumber		2
+	Name			"x3"
+      }
+      Port {
+	PortNumber		3
+	Name			"a3"
+      }
       System {
 	Name			"3rd Vehicle"
-	Location		[28, 15, 1485, 803]
+	Location		[28, 15, 1474, 803]
 	Open			off
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
@@ -11701,7 +12522,7 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [785, -25, 815, 5]
 	  ZOrder		  5
-	  InitialCondition	  "-3*L"
+	  InitialCondition	  "L"
 	}
 	Block {
 	  BlockType		  Product
@@ -15233,7 +16054,7 @@ Model {
 	  "><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</styl"
 	  "e></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n<p style=\""
 	  " margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-he"
-	  "ight:100%;\"><span style=\" font-size:10px; color:#0070c0;\">Inital Condition : -3L [m]</span></p></body></html>"
+	  "ight:100%;\"><span style=\" font-size:10px; color:#0070c0;\">Inital Condition : L [m]</span></p></body></html>"
 	  Position		  [751, -45, 753, -27]
 	  InternalMargins	  [0, 0, 0, 0]
 	  FixedHeight		  off
@@ -15250,15 +16071,26 @@ Model {
       Name		      "4th Vehicle"
       SID		      "2472"
       Ports		      [2, 3]
-      Position		      [965, 751, 1095, 819]
+      Position		      [1025, 693, 1155, 757]
       ZOrder		      8
       BackgroundColor	      "lightBlue"
-      Commented		      "on"
       RequestExecContextInheritance off
       Variant		      off
+      Port {
+	PortNumber		1
+	Name			"v4"
+      }
+      Port {
+	PortNumber		2
+	Name			"x4"
+      }
+      Port {
+	PortNumber		3
+	Name			"a4"
+      }
       System {
 	Name			"4th Vehicle"
-	Location		[28, 15, 1485, 803]
+	Location		[28, 15, 1474, 803]
 	Open			off
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
@@ -16063,7 +16895,6 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [785, -20, 815, 10]
 	  ZOrder		  5
-	  InitialCondition	  "-4*L"
 	}
 	Block {
 	  BlockType		  Product
@@ -19595,7 +20426,7 @@ Model {
 	  "><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</styl"
 	  "e></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n<p style=\""
 	  " margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-he"
-	  "ight:100%;\"><span style=\" font-size:10px; color:#0070c0;\">Inital Condition : -4L [m]</span></p></body></html>"
+	  "ight:100%;\"><span style=\" font-size:10px; color:#0070c0;\">Inital Condition : 0 [m]</span></p></body></html>"
 	  Position		  [751, -41, 753, -23]
 	  InternalMargins	  [0, 0, 0, 0]
 	  FixedHeight		  off
@@ -19608,13 +20439,22 @@ Model {
       }
     }
     Block {
+      BlockType		      Constant
+      Name		      "Constant"
+      SID		      "2953"
+      Position		      [430, 230, 460, 260]
+      ZOrder		      129
+      ShowName		      off
+      Value		      "21"
+    }
+    Block {
       BlockType		      Integrator
-      Name		      "Initial Condition : 2L [m]"
+      Name		      "Initial Condition : 4L [m]"
       SID		      "2873"
       Ports		      [1, 1]
       Position		      [685, 270, 715, 300]
       ZOrder		      115
-      InitialCondition	      "2*L"
+      InitialCondition	      "4*L"
       Port {
 	PortNumber		1
 	Name			"x_lead"
@@ -19624,33 +20464,32 @@ Model {
       BlockType		      Mux
       Name		      "Mux"
       SID		      "2740"
-      Ports		      [3, 1]
+      Ports		      [5, 1]
       Position		      [1305, 303, 1315, 487]
       ZOrder		      36
       ShowName		      off
-      Inputs		      "3"
+      Inputs		      "5"
       DisplayOption	      "bar"
     }
     Block {
       BlockType		      Mux
       Name		      "Mux1"
       SID		      "2874"
-      Ports		      [3, 1]
-      Position		      [1305, 503, 1315, 687]
+      Ports		      [5, 1]
+      Position		      [1305, 513, 1315, 697]
       ZOrder		      116
       ShowName		      off
-      Inputs		      "3"
+      Inputs		      "5"
       DisplayOption	      "bar"
     }
     Block {
       BlockType		      Mux
       Name		      "Mux2"
       SID		      "2876"
-      Ports		      [2, 1]
+      Ports		      [4, 1]
       Position		      [1305, 715, 1315, 810]
       ZOrder		      118
       ShowName		      off
-      Inputs		      "2"
       DisplayOption	      "bar"
     }
     Block {
@@ -19758,7 +20597,7 @@ Model {
 	  BlockType		  TransferFcn
 	  Name			  "H2"
 	  SID			  "2827"
-	  Position		  [385, 209, 445, 251]
+	  Position		  [395, 209, 455, 251]
 	  ZOrder		  95
 	  Numerator		  "[tau*q (k2*tau+1)*tau 0]"
 	  Denominator		  "[q (1+k2*tau) -k2 k1]"
@@ -19775,6 +20614,84 @@ Model {
 	    PortNumber		    1
 	    Name		    "e1"
 	  }
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope"
+	  SID			  "2955"
+	  Ports			  [1]
+	  Position		  [85, 319, 115, 351]
+	  ZOrder		  108
+	  ShowName		  off
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData2'),extmgr.Configuration('Visuals','Time Domain',true,'S"
+	  "erializedDisplays',{struct('MinYLimReal','-10.73864','MaxYLimReal','11.19433','YLabelReal','','MinYLimMag','0.00000"
+	  "','MaxYLimMag','11.19433','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 "
+	  "0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0"
+	  "745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745"
+	  "098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'"
+	  "Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'tau *"
+	  " a_1'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-10.73864','MaxYLimReal'"
+	  ",'11.19433','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','11.19433','LegendVisibility','off','XGrid',true,'Y"
+	  "Grid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.68627450"
+	  "9803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666"
+	  "666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117"
+	  "647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Confi"
+	  "guration('Tools','Measurements',true,'Version','2017a')),'Version','2017a')"
+	  NumInputPorts		  "1"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope1"
+	  SID			  "2956"
+	  Ports			  [1]
+	  Position		  [75, 129, 105, 161]
+	  ZOrder		  109
+	  ShowName		  off
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData3'),extmgr.Configuration('Visuals','Time Domain',true,'S"
+	  "erializedDisplays',{struct('MinYLimReal','-20.3896','MaxYLimReal','2.26551','YLabelReal','','MinYLimMag','0.00000',"
+	  "'MaxYLimMag','20.3896','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],"
+	  "'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0745"
+	  "098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745098"
+	  "039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Tit"
+	  "le','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'v_r'}},'"
+	  "ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-20.3896','MaxYLimReal','2.26551'"
+	  ",'YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','20.3896','LegendVisibility','off','XGrid',true,'YGrid',true,'"
+	  "PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'Co"
+	  "lorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717"
+	  "647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0."
+	  "0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('To"
+	  "ols','Measurements',true,'Version','2017a')),'Version','2017a')"
+	  NumInputPorts		  "1"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope2"
+	  SID			  "2957"
+	  Ports			  [1]
+	  Position		  [565, 104, 595, 136]
+	  ZOrder		  110
+	  ShowName		  off
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData4'),extmgr.Configuration('Visuals','Time Domain',true,'S"
+	  "erializedDisplays',{struct('MinYLimReal','-293.90097','MaxYLimReal','953.11898','YLabelReal','','MinYLimMag',' 0.00"
+	  "000','MaxYLimMag','953.11898','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',["
+	  "0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667"
+	  ";0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0."
+	  "0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.65098039215686"
+	  "3],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'S"
+	  "um'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-293.90097','MaxYLimReal',"
+	  "'953.11898','YLabelReal','','MinYLimMag',' 0.00000','MaxYLimMag','953.11898','LegendVisibility','off','XGrid',true,"
+	  "'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274"
+	  "509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.06666666"
+	  "66666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.05882352941"
+	  "17647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Con"
+	  "figuration('Tools','Measurements',true,'Version','2017a')),'Version','2017a')"
+	  NumInputPorts		  "1"
 	}
 	Block {
 	  BlockType		  Sum
@@ -19799,7 +20716,7 @@ Model {
 	  ZOrder		  83
 	  ShowName		  off
 	  IconShape		  "round"
-	  Inputs		  "-|+"
+	  Inputs		  "+|-"
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
@@ -19888,6 +20805,12 @@ Model {
 	  SrcPort		  1
 	  Points		  [45, 0]
 	  Branch {
+	    ZOrder		    486
+	    Points		    [0, -55]
+	    DstBlock		    "Scope1"
+	    DstPort		    1
+	  }
+	  Branch {
 	    ZOrder		    464
 	    Labels		    [1, 1]
 	    DstBlock		    "Sum5"
@@ -19915,8 +20838,18 @@ Model {
 	  Labels		  [1, 1]
 	  SrcBlock		  "Gain"
 	  SrcPort		  1
-	  DstBlock		  "Sum5"
-	  DstPort		  2
+	  Points		  [40, 0]
+	  Branch {
+	    ZOrder		    485
+	    Points		    [0, 45]
+	    DstBlock		    "Scope"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    483
+	    DstBlock		    "Sum5"
+	    DstPort		    2
+	  }
 	}
 	Line {
 	  Name			  "u1"
@@ -19971,7 +20904,7 @@ Model {
 	  ZOrder		  462
 	  SrcBlock		  "H2"
 	  SrcPort		  1
-	  Points		  [55, 0]
+	  Points		  [45, 0]
 	  DstBlock		  "Sum"
 	  DstPort		  2
 	}
@@ -19979,8 +20912,18 @@ Model {
 	  ZOrder		  463
 	  SrcBlock		  "Sum"
 	  SrcPort		  1
-	  DstBlock		  "ei"
-	  DstPort		  1
+	  Points		  [14, 0]
+	  Branch {
+	    ZOrder		    489
+	    Points		    [0, -60]
+	    DstBlock		    "Scope2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    487
+	    DstBlock		    "ei"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  ZOrder		  478
@@ -19990,6 +20933,137 @@ Model {
 	  DstBlock		  "Sum"
 	  DstPort		  1
 	}
+	Annotation {
+	  SID			  "2886"
+	  Position		  [390, 430, 604, 475]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_baba182b-d8d8-4b95-9ed6-f359c74a554a.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -1
+	}
+	Annotation {
+	  SID			  "2885"
+	  Position		  [390, 376, 619, 422]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_205745b0-3c50-4f3b-a820-c8e6149fe7b7.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -2
+	}
+	Annotation {
+	  SID			  "2884"
+	  Position		  [386, 339, 623, 371]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_a36af6ac-c298-4def-b91b-b04404599e81.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -3
+	}
+	Annotation {
+	  SID			  "2883"
+	  Position		  [116, 436, 217, 470]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_4b532a21-ff78-4f15-8de9-28564528e754.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -4
+	}
+	Annotation {
+	  SID			  "2882"
+	  Position		  [253, 91, 358, 142]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_914cb5af-7c02-46ec-9538-b4bc774e7d37.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -5
+	}
+	Annotation {
+	  SID			  "2881"
+	  Position		  [-66, 402, 113, 434]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_cd476934-4c77-4c08-9998-924f7abee41c.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -6
+	}
+	Annotation {
+	  SID			  "2880"
+	  Position		  [-78, 91, -2, 123]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_db0b61b4-0c81-407a-825f-17075faf8b38.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -7
+	}
+	Annotation {
+	  SID			  "2879"
+	  Position		  [117, 405, 314, 432]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_534d26eb-65fb-4249-bf31-79a4ce97ef89.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -8
+	}
+	Connector {
+	  Annotation		  "2879"
+	  Target		  "Block:2820"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2880"
+	  Target		  "Block:2814"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2881"
+	  Target		  "Block:2816"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2882"
+	  Target		  "Block:2821"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2884"
+	  Target		  "Block:2849"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
       }
     }
     Block {
@@ -19997,7 +21071,7 @@ Model {
       Name		      "String Stability Conroller1"
       SID		      "2850"
       Ports		      [4, 1]
-      Position		      [605, 501, 730, 564]
+      Position		      [605, 476, 730, 539]
       ZOrder		      108
       BackgroundColor	      "green"
       RequestExecContextInheritance off
@@ -20147,7 +21221,7 @@ Model {
 	  ZOrder		  83
 	  ShowName		  off
 	  IconShape		  "round"
-	  Inputs		  "-|+"
+	  Inputs		  "+|-"
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
@@ -20344,6 +21418,1143 @@ Model {
 	  DstBlock		  "Sum6"
 	  DstPort		  1
 	}
+	Annotation {
+	  SID			  "2887"
+	  Position		  [407, 301, 644, 333]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_a36af6ac-c298-4def-b91b-b04404599e81.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -1
+	}
+	Annotation {
+	  SID			  "2888"
+	  Position		  [133, 422, 234, 456]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_4b532a21-ff78-4f15-8de9-28564528e754.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -2
+	}
+	Annotation {
+	  SID			  "2889"
+	  Position		  [273, 58, 378, 114]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_914cb5af-7c02-46ec-9538-b4bc774e7d37.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -3
+	}
+	Annotation {
+	  SID			  "2890"
+	  Position		  [-49, 389, 130, 421]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_cd476934-4c77-4c08-9998-924f7abee41c.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -4
+	}
+	Annotation {
+	  SID			  "2891"
+	  Position		  [134, 391, 331, 418]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_534d26eb-65fb-4249-bf31-79a4ce97ef89.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -5
+	}
+	Annotation {
+	  SID			  "2892"
+	  Position		  [411, 392, 625, 437]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_baba182b-d8d8-4b95-9ed6-f359c74a554a.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -6
+	}
+	Annotation {
+	  SID			  "2893"
+	  Position		  [411, 338, 640, 384]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_205745b0-3c50-4f3b-a820-c8e6149fe7b7.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -7
+	}
+	Annotation {
+	  SID			  "2894"
+	  Position		  [-78, 58, -2, 90]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_db0b61b4-0c81-407a-825f-17075faf8b38.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -8
+	}
+	Connector {
+	  Annotation		  "2894"
+	  Target		  "Block:2862"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2889"
+	  Target		  "Block:2865"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2887"
+	  Target		  "Block:2861"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2890"
+	  Target		  "Block:2863"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2891"
+	  Target		  "Block:2864"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "String Stability Conroller2"
+      SID		      "2898"
+      Ports		      [4, 1]
+      Position		      [605, 591, 730, 654]
+      ZOrder		      120
+      BackgroundColor	      "green"
+      RequestExecContextInheritance off
+      Variant		      off
+      System {
+	Name			"String Stability Conroller2"
+	Location		[28, 15, 1474, 803]
+	Open			off
+	PortBlocksUseCompactNotation off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"150"
+	Block {
+	  BlockType		  Inport
+	  Name			  "v_i-1"
+	  SID			  "2899"
+	  Position		  [-120, 169, -90, 181]
+	  ZOrder		  96
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "v_i"
+	  SID			  "2900"
+	  Position		  [-120, 223, -90, 237]
+	  ZOrder		  97
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "a_i"
+	  SID			  "2901"
+	  Position		  [-120, 283, -90, 297]
+	  ZOrder		  98
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "e_i-1"
+	  SID			  "2902"
+	  Position		  [-120, 128, -90, 142]
+	  ZOrder		  104
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain"
+	  SID			  "2903"
+	  Position		  [-55, 275, -25, 305]
+	  ZOrder		  84
+	  ShowName		  off
+	  Gain			  "tau"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "tau * a_1"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain1"
+	  SID			  "2904"
+	  Position		  [175, 190, 205, 220]
+	  ZOrder		  87
+	  ShowName		  off
+	  Gain			  "-k2"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain2"
+	  SID			  "2905"
+	  Position		  [175, 250, 205, 280]
+	  ZOrder		  88
+	  ShowName		  off
+	  Gain			  "-k1"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  TransferFcn
+	  Name			  "H1"
+	  SID			  "2906"
+	  Position		  [405, 114, 460, 156]
+	  ZOrder		  103
+	  Numerator		  "[-k2 k1]"
+	  Denominator		  "[q (1+k2*tau) -k2 k1]"
+	}
+	Block {
+	  BlockType		  TransferFcn
+	  Name			  "H2"
+	  SID			  "2907"
+	  Position		  [405, 209, 465, 251]
+	  ZOrder		  95
+	  Numerator		  "[tau*q (k2*tau+1)*tau 0]"
+	  Denominator		  "[q (1+k2*tau) -k2 k1]"
+	}
+	Block {
+	  BlockType		  Integrator
+	  Name			  "Integrator"
+	  SID			  "2908"
+	  Ports			  [1, 1]
+	  Position		  [105, 250, 135, 280]
+	  ZOrder		  86
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "e1"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum"
+	  SID			  "2909"
+	  Ports			  [2, 1]
+	  Position		  [515, 170, 535, 190]
+	  ZOrder		  105
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "+|+"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum4"
+	  SID			  "2910"
+	  Ports			  [2, 1]
+	  Position		  [-50, 190, -30, 210]
+	  ZOrder		  83
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "+|-"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "v_r"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum5"
+	  SID			  "2911"
+	  Ports			  [2, 1]
+	  Position		  [30, 255, 50, 275]
+	  ZOrder		  85
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "-|+"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "e1_dot"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum6"
+	  SID			  "2912"
+	  Ports			  [2, 1]
+	  Position		  [225, 220, 245, 240]
+	  ZOrder		  89
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "+|+"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "u1"
+	  }
+	}
+	Block {
+	  BlockType		  TransferFcn
+	  Name			  "Transfer Fcn"
+	  SID			  "2913"
+	  Position		  [280, 212, 370, 248]
+	  ZOrder		  90
+	  ShowName		  off
+	  Denominator		  "[q 1]"
+	  Port {
+	    PortNumber		    1
+	    Name		    "a1"
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "ei"
+	  SID			  "2914"
+	  Position		  [580, 173, 610, 187]
+	  ZOrder		  99
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  1
+	  SrcBlock		  "Gain1"
+	  SrcPort		  1
+	  DstBlock		  "Sum6"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  2
+	  SrcBlock		  "Gain2"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  DstBlock		  "Sum6"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "v_r"
+	  ZOrder		  3
+	  SrcBlock		  "Sum4"
+	  SrcPort		  1
+	  Points		  [65, 0; 0, 5]
+	  Branch {
+	    ZOrder		    4
+	    Labels		    [1, 1]
+	    DstBlock		    "Sum5"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    5
+	    Labels		    [-1, 1]
+	    DstBlock		    "Gain1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "e1_dot"
+	  ZOrder		  6
+	  Labels		  [1, 0]
+	  SrcBlock		  "Sum5"
+	  SrcPort		  1
+	  DstBlock		  "Integrator"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "tau * a_1"
+	  ZOrder		  7
+	  Labels		  [1, 1]
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  DstBlock		  "Sum5"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "u1"
+	  ZOrder		  8
+	  Labels		  [1, 1]
+	  SrcBlock		  "Sum6"
+	  SrcPort		  1
+	  DstBlock		  "Transfer Fcn"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "a1"
+	  ZOrder		  9
+	  Labels		  [0, 0]
+	  SrcBlock		  "Transfer Fcn"
+	  SrcPort		  1
+	  DstBlock		  "H2"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  10
+	  SrcBlock		  "a_i"
+	  SrcPort		  1
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "e1"
+	  ZOrder		  11
+	  Labels		  [1, 1]
+	  SrcBlock		  "Integrator"
+	  SrcPort		  1
+	  DstBlock		  "Gain2"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  12
+	  SrcBlock		  "v_i"
+	  SrcPort		  1
+	  Points		  [45, 0]
+	  DstBlock		  "Sum4"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  13
+	  SrcBlock		  "v_i-1"
+	  SrcPort		  1
+	  Points		  [45, 0]
+	  DstBlock		  "Sum4"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  14
+	  SrcBlock		  "e_i-1"
+	  SrcPort		  1
+	  DstBlock		  "H1"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  15
+	  SrcBlock		  "H1"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  16
+	  SrcBlock		  "H2"
+	  SrcPort		  1
+	  Points		  [55, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  17
+	  SrcBlock		  "Sum"
+	  SrcPort		  1
+	  DstBlock		  "ei"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "2922"
+	  Position		  [-78, 58, -2, 90]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_db0b61b4-0c81-407a-825f-17075faf8b38.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -1
+	}
+	Annotation {
+	  SID			  "2921"
+	  Position		  [411, 338, 640, 384]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_205745b0-3c50-4f3b-a820-c8e6149fe7b7.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -2
+	}
+	Annotation {
+	  SID			  "2920"
+	  Position		  [411, 392, 625, 437]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_baba182b-d8d8-4b95-9ed6-f359c74a554a.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -3
+	}
+	Annotation {
+	  SID			  "2919"
+	  Position		  [134, 391, 331, 418]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_534d26eb-65fb-4249-bf31-79a4ce97ef89.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -4
+	}
+	Annotation {
+	  SID			  "2918"
+	  Position		  [-49, 389, 130, 421]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_cd476934-4c77-4c08-9998-924f7abee41c.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -5
+	}
+	Annotation {
+	  SID			  "2917"
+	  Position		  [273, 58, 378, 114]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_914cb5af-7c02-46ec-9538-b4bc774e7d37.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -6
+	}
+	Annotation {
+	  SID			  "2916"
+	  Position		  [133, 422, 234, 456]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_4b532a21-ff78-4f15-8de9-28564528e754.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -7
+	}
+	Annotation {
+	  SID			  "2915"
+	  Position		  [407, 301, 644, 333]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_a36af6ac-c298-4def-b91b-b04404599e81.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -8
+	}
+	Connector {
+	  Annotation		  "2922"
+	  Target		  "Block:2910"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2917"
+	  Target		  "Block:2913"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2915"
+	  Target		  "Block:2909"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2918"
+	  Target		  "Block:2911"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2919"
+	  Target		  "Block:2912"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "String Stability Conroller3"
+      SID		      "2926"
+      Ports		      [4, 1]
+      Position		      [605, 691, 730, 754]
+      ZOrder		      124
+      BackgroundColor	      "green"
+      RequestExecContextInheritance off
+      Variant		      off
+      System {
+	Name			"String Stability Conroller3"
+	Location		[28, 15, 1474, 803]
+	Open			off
+	PortBlocksUseCompactNotation off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"125"
+	Block {
+	  BlockType		  Inport
+	  Name			  "v_i-1"
+	  SID			  "2927"
+	  Position		  [-120, 169, -90, 181]
+	  ZOrder		  96
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "v_i"
+	  SID			  "2928"
+	  Position		  [-120, 223, -90, 237]
+	  ZOrder		  97
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "a_i"
+	  SID			  "2929"
+	  Position		  [-120, 283, -90, 297]
+	  ZOrder		  98
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "e_i-1"
+	  SID			  "2930"
+	  Position		  [-120, 128, -90, 142]
+	  ZOrder		  104
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain"
+	  SID			  "2931"
+	  Position		  [-55, 275, -25, 305]
+	  ZOrder		  84
+	  ShowName		  off
+	  Gain			  "tau"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "tau * a_1"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain1"
+	  SID			  "2932"
+	  Position		  [175, 190, 205, 220]
+	  ZOrder		  87
+	  ShowName		  off
+	  Gain			  "-k2"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain2"
+	  SID			  "2933"
+	  Position		  [175, 250, 205, 280]
+	  ZOrder		  88
+	  ShowName		  off
+	  Gain			  "-k1"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  TransferFcn
+	  Name			  "H1"
+	  SID			  "2934"
+	  Position		  [405, 114, 460, 156]
+	  ZOrder		  103
+	  Numerator		  "[-k2 k1]"
+	  Denominator		  "[q (1+k2*tau) -k2 k1]"
+	}
+	Block {
+	  BlockType		  TransferFcn
+	  Name			  "H2"
+	  SID			  "2935"
+	  Position		  [405, 209, 465, 251]
+	  ZOrder		  95
+	  Numerator		  "[tau*q (k2*tau+1)*tau 0]"
+	  Denominator		  "[q (1+k2*tau) -k2 k1]"
+	}
+	Block {
+	  BlockType		  Integrator
+	  Name			  "Integrator"
+	  SID			  "2936"
+	  Ports			  [1, 1]
+	  Position		  [105, 250, 135, 280]
+	  ZOrder		  86
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "e1"
+	  }
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope"
+	  SID			  "2951"
+	  Ports			  [1]
+	  Position		  [580, 59, 610, 91]
+	  ZOrder		  106
+	  ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extmgr."
+	  "Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('Sources"
+	  "','WiredSimulink',true,'DataLoggingVariableName','ScopeData1'),extmgr.Configuration('Visuals','Time Domain',true,'S"
+	  "erializedDisplays',{struct('MinYLimReal','-5241.48523','MaxYLimReal','1343.06043','YLabelReal','','MinYLimMag','  0"
+	  ".00000','MaxYLimMag','5241.48523','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColo"
+	  "r',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.066666666666"
+	  "6667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.83137254901960"
+	  "8 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.6509803921"
+	  "56863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',"
+	  "{{'H1'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-5241.48523','MaxYLimRe"
+	  "al','1343.06043','YLabelReal','','MinYLimMag','  0.00000','MaxYLimMag','5241.48523','LegendVisibility','off','XGrid"
+	  "',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0"
+	  ".686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0"
+	  "666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588"
+	  "235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true,'Pre"
+	  "viousAutoscale','XY'),extmgr.Configuration('Tools','Measurements',true,'Version','2017a')),'Version','2017a')"
+	  NumInputPorts		  "1"
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum"
+	  SID			  "2937"
+	  Ports			  [2, 1]
+	  Position		  [515, 170, 535, 190]
+	  ZOrder		  105
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "+|+"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum4"
+	  SID			  "2938"
+	  Ports			  [2, 1]
+	  Position		  [-50, 190, -30, 210]
+	  ZOrder		  83
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "+|-"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "v_r"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum5"
+	  SID			  "2939"
+	  Ports			  [2, 1]
+	  Position		  [30, 255, 50, 275]
+	  ZOrder		  85
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "-|+"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "e1_dot"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum6"
+	  SID			  "2940"
+	  Ports			  [2, 1]
+	  Position		  [225, 220, 245, 240]
+	  ZOrder		  89
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "+|+"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "u1"
+	  }
+	}
+	Block {
+	  BlockType		  TransferFcn
+	  Name			  "Transfer Fcn"
+	  SID			  "2941"
+	  Position		  [280, 212, 370, 248]
+	  ZOrder		  90
+	  ShowName		  off
+	  Denominator		  "[q 1]"
+	  Port {
+	    PortNumber		    1
+	    Name		    "a1"
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "ei"
+	  SID			  "2942"
+	  Position		  [580, 173, 610, 187]
+	  ZOrder		  99
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  1
+	  SrcBlock		  "Sum"
+	  SrcPort		  1
+	  DstBlock		  "ei"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  2
+	  SrcBlock		  "H2"
+	  SrcPort		  1
+	  Points		  [55, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  3
+	  SrcBlock		  "H1"
+	  SrcPort		  1
+	  Points		  [45, 0]
+	  Branch {
+	    ZOrder		    20
+	    Points		    [0, -60]
+	    DstBlock		    "Scope"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    18
+	    Points		    [15, 0]
+	    DstBlock		    "Sum"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  ZOrder		  4
+	  SrcBlock		  "e_i-1"
+	  SrcPort		  1
+	  DstBlock		  "H1"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  5
+	  SrcBlock		  "v_i-1"
+	  SrcPort		  1
+	  DstBlock		  "Sum4"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  6
+	  SrcBlock		  "v_i"
+	  SrcPort		  1
+	  Points		  [45, 0]
+	  DstBlock		  "Sum4"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "e1"
+	  ZOrder		  7
+	  Labels		  [1, 1]
+	  SrcBlock		  "Integrator"
+	  SrcPort		  1
+	  DstBlock		  "Gain2"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  8
+	  SrcBlock		  "a_i"
+	  SrcPort		  1
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "a1"
+	  ZOrder		  9
+	  Labels		  [0, 0]
+	  SrcBlock		  "Transfer Fcn"
+	  SrcPort		  1
+	  DstBlock		  "H2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "u1"
+	  ZOrder		  10
+	  Labels		  [1, 1]
+	  SrcBlock		  "Sum6"
+	  SrcPort		  1
+	  DstBlock		  "Transfer Fcn"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "tau * a_1"
+	  ZOrder		  11
+	  Labels		  [1, 1]
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  DstBlock		  "Sum5"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "e1_dot"
+	  ZOrder		  12
+	  Labels		  [1, 0]
+	  SrcBlock		  "Sum5"
+	  SrcPort		  1
+	  DstBlock		  "Integrator"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "v_r"
+	  ZOrder		  13
+	  SrcBlock		  "Sum4"
+	  SrcPort		  1
+	  Points		  [65, 0; 0, 5]
+	  Branch {
+	    ZOrder		    14
+	    Labels		    [-1, 1]
+	    DstBlock		    "Gain1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    15
+	    Labels		    [1, 1]
+	    DstBlock		    "Sum5"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  ZOrder		  16
+	  SrcBlock		  "Gain2"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  DstBlock		  "Sum6"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  17
+	  SrcBlock		  "Gain1"
+	  SrcPort		  1
+	  DstBlock		  "Sum6"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "2950"
+	  Position		  [407, 301, 644, 333]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_a36af6ac-c298-4def-b91b-b04404599e81.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -1
+	}
+	Annotation {
+	  SID			  "2949"
+	  Position		  [133, 422, 234, 456]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_4b532a21-ff78-4f15-8de9-28564528e754.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -2
+	}
+	Annotation {
+	  SID			  "2948"
+	  Position		  [273, 58, 378, 109]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_914cb5af-7c02-46ec-9538-b4bc774e7d37.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -3
+	}
+	Annotation {
+	  SID			  "2947"
+	  Position		  [-49, 389, 130, 421]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_cd476934-4c77-4c08-9998-924f7abee41c.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -4
+	}
+	Annotation {
+	  SID			  "2946"
+	  Position		  [134, 391, 331, 418]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_534d26eb-65fb-4249-bf31-79a4ce97ef89.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -5
+	}
+	Annotation {
+	  SID			  "2945"
+	  Position		  [411, 392, 625, 437]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_baba182b-d8d8-4b95-9ed6-f359c74a554a.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -6
+	}
+	Annotation {
+	  SID			  "2944"
+	  Position		  [411, 338, 640, 384]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_205745b0-3c50-4f3b-a820-c8e6149fe7b7.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -7
+	}
+	Annotation {
+	  SID			  "2943"
+	  Position		  [-78, 58, -2, 90]
+	  InternalMargins	  [0, 0, 0, 0]
+	  ImagePath		  "[$unpackedFolder]/simulink/resources/mwimg_db0b61b4-0c81-407a-825f-17075faf8b38.PNG"
+	  FixedHeight		  on
+	  FixedWidth		  on
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  AnnotationType	  "image_annotation"
+	  ZOrder		  -8
+	}
+	Connector {
+	  Annotation		  "2943"
+	  Target		  "Block:2938"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2948"
+	  Target		  "Block:2941"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2950"
+	  Target		  "Block:2937"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2947"
+	  Target		  "Block:2939"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
+	Connector {
+	  Annotation		  "2946"
+	  Target		  "Block:2940"
+	  MarkupType		  "model"
+	  StrokeWidth		  2
+	  Color			  "[0.000000, 0.000000, 0.700000]"
+	}
       }
     }
     Block {
@@ -20356,20 +22567,20 @@ Model {
       ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
       "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
       "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData2'),extmgr.Configuration('Visuals','Time Domain"
-      "',true,'SerializedDisplays',{struct('MinYLimReal','-9.03231','MaxYLimReal','5.86924','YLabelReal','','MinYLimMag"
-      "','0.00000','MaxYLimMag','9.03231','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'Axes"
-      "Color',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.06666"
-      "66666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.8313"
-      "72549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686"
-      " 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines"
-      "',2,'LineNames',{{'1st Vehicle/3','2nd Vehicle/3'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults'"
-      ",struct('MinYLimReal','-9.03231','MaxYLimReal','5.86924','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','9."
-      "03231','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColo"
-      "r',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;"
-      "1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745"
-      "098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr"
-      ".Configuration('Tools','Plot Navigation',true,'PreviousAutoscale','XY'),extmgr.Configuration('Tools','Measuremen"
-      "ts',true,'Version','2017a')),'Version','2017a','Position',[776.2 232.2 646.4 467.2])"
+      "',true,'SerializedDisplays',{struct('MinYLimReal','-12.83512','MaxYLimReal','12.65838','YLabelReal','','MinYLimM"
+      "ag','0.00000','MaxYLimMag','12.83512','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'A"
+      "xesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.06"
+      "66666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.8"
+      "31372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215"
+      "686 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLi"
+      "nes',4,'LineNames',{{'a1','a2','a3','a4'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('"
+      "MinYLimReal','-12.83512','MaxYLimReal','12.65838','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','12.83512'"
+      ",'LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0."
+      "686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.41"
+      "1764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862745098 0."
+      "831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Confi"
+      "guration('Tools','Plot Navigation',true,'PreviousAutoscale','XY'),extmgr.Configuration('Tools','Measurements',tr"
+      "ue,'Version','2017a')),'Version','2017a','Position',[776.2 232.2 646.4 467.2])"
       NumInputPorts	      "1"
     }
     Block {
@@ -20382,20 +22593,20 @@ Model {
       ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
       "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
       "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData1'),extmgr.Configuration('Visuals','Time Domain"
-      "',true,'SerializedDisplays',{struct('MinYLimReal','-22.99934','MaxYLimReal','206.9941','YLabelReal','','MinYLimM"
-      "ag','0.00000','MaxYLimMag','206.9941','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'A"
-      "xesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.06"
-      "66666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.8"
-      "31372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215"
-      "686 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLi"
-      "nes',3,'LineNames',{{'x_lead','1st Vehicle/2','2nd Vehicle/2'}},'ShowContent',true,'Placement',1)},'DisplayPrope"
-      "rtyDefaults',struct('MinYLimReal','-22.99934','MaxYLimReal','206.9941','YLabelReal','','MinYLimMag','0.00000','M"
-      "axYLimMag','206.9941','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0"
-      "],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623"
-      "529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1"
-      ";0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.6509803921"
-      "56863])),extmgr.Configuration('Tools','Plot Navigation',true,'PreviousAutoscale','XY'),extmgr.Configuration('Too"
-      "ls','Measurements',true,'Version','2017a')),'Version','2017a','Position',[776.2 232.2 646.4 467.2])"
+      "',true,'SerializedDisplays',{struct('MinYLimReal','-22.39252','MaxYLimReal','201.53268','YLabelReal','','MinYLim"
+      "Mag','0.00000','MaxYLimMag','201.53268','LegendVisibility','On','XGrid',true,'YGrid',true,'PlotMagPhase',false,'"
+      "AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0"
+      "666666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0."
+      "831372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.074509803921"
+      "5686 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumL"
+      "ines',5,'LineNames',{{'x_lead','x1','x2','x3','x4'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults"
+      "',struct('MinYLimReal','-22.39252','MaxYLimReal','201.53268','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag'"
+      ",'201.53268','LegendVisibility','On','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTic"
+      "kColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.6235294117647"
+      "06 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.3921568"
+      "62745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),e"
+      "xtmgr.Configuration('Tools','Plot Navigation',true,'PreviousAutoscale','XY'),extmgr.Configuration('Tools','Measu"
+      "rements',true,'Version','2017a')),'Version','2017a','Position',[969.8 47.4 540 316.8],'VisibleAtModelOpen','on')"
       NumInputPorts	      "1"
     }
     Block {
@@ -20404,7 +22615,7 @@ Model {
       SID		      "2872"
       Tag		      "STV Subsys"
       Ports		      [0, 1]
-      Position		      [425, 265, 510, 305]
+      Position		      [375, 265, 460, 305]
       ZOrder		      114
       CopyFcn		      "sigbuilder_block('copy');"
       DeleteFcn		      "sigbuilder_block('delete');"
@@ -20518,46 +22729,46 @@ Model {
       Name		      "velocity"
       SID		      "2875"
       Ports		      [1]
-      Position		      [1385, 579, 1415, 611]
+      Position		      [1385, 589, 1415, 621]
       ZOrder		      117
       ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
       "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
       "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData1'),extmgr.Configuration('Visuals','Time Domain"
-      "',true,'SerializedDisplays',{struct('MinYLimReal','-2.82991','MaxYLimReal','25.46915','YLabelReal','','MinYLimMa"
-      "g','0.00000','MaxYLimMag','25.46915','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'Ax"
-      "esColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.066"
-      "6666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.83"
-      "1372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.07450980392156"
-      "86 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLin"
-      "es',3,'LineNames',{{'v_lead','v_1','2nd Vehicle/1'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults"
-      "',struct('MinYLimReal','-2.82991','MaxYLimReal','25.46915','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','"
-      "25.46915','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickC"
-      "olor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706"
-      " 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862"
-      "745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),ext"
-      "mgr.Configuration('Tools','Plot Navigation',true,'PreviousAutoscale','XY'),extmgr.Configuration('Tools','Measure"
-      "ments',true,'Version','2017a')),'Version','2017a','Position',[776.2 232.2 646.4 467.2])"
+      "',true,'SerializedDisplays',{struct('MinYLimReal','-2.35801','MaxYLimReal','28.41272','YLabelReal','','MinYLimMa"
+      "g','0.00000','MaxYLimMag','28.41272','LegendVisibility','On','XGrid',true,'YGrid',true,'PlotMagPhase',false,'Axe"
+      "sColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666"
+      "666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831"
+      "372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.074509803921568"
+      "6 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLine"
+      "s',5,'LineNames',{{'v_lead','v1','v2','v3','v4'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',s"
+      "truct('MinYLimReal','-2.35801','MaxYLimReal','28.41272','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','28."
+      "41272','LegendVisibility','On','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor"
+      "',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1"
+      " 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.3921568627450"
+      "98 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),extmgr."
+      "Configuration('Tools','Plot Navigation',true,'PreviousAutoscale','XY'),extmgr.Configuration('Tools','Measurement"
+      "s',true,'Version','2017a')),'Version','2017a','Position',[974.6 451.4 533.6 306.4],'VisibleAtModelOpen','on')"
       NumInputPorts	      "1"
     }
     Line {
       Name		      "x_lead"
       ZOrder		      480
-      Labels		      [1, 1]
-      SrcBlock		      "Initial Condition : 2L [m]"
+      Labels		      [-1, 1]
+      SrcBlock		      "Initial Condition : 4L [m]"
       SrcPort		      1
-      Points		      [504, 0; 0, 50]
+      Points		      [504, 0; 0, 40]
       DstBlock		      "Mux"
       DstPort		      1
     }
     Line {
-      ZOrder		      458
+      ZOrder		      625
       SrcBlock		      " 1"
       SrcPort		      1
       DstBlock		      "2nd Vehicle"
       DstPort		      1
     }
     Line {
-      ZOrder		      459
+      ZOrder		      626
       SrcBlock		      "  1"
       SrcPort		      1
       DstBlock		      "2nd Vehicle"
@@ -20599,49 +22810,54 @@ Model {
       DstPort		      2
     }
     Line {
+      Name		      "x1"
       ZOrder		      441
+      Labels		      [-1, 0]
       SrcBlock		      "1st Vehicle"
       SrcPort		      2
+      Points		      [49, 0; 0, -35]
       DstBlock		      "Mux"
       DstPort		      2
     }
     Line {
-      Name		      "v_1"
+      Name		      "v1"
       ZOrder		      449
       SrcBlock		      "1st Vehicle"
       SrcPort		      1
-      Points		      [13, 0]
+      Points		      [75, 0]
       Branch {
 	ZOrder			484
-	Points			[62, 0; 0, 220]
+	Labels			[-1, 1]
+	Points			[0, 195]
 	DstBlock		"Mux1"
 	DstPort			2
       }
       Branch {
 	ZOrder			483
-	Points			[0, -26; -671, 0; 0, 46]
+	Points			[0, -26; -702, 0; 0, 46]
 	Branch {
-	  ZOrder		  466
-	  Labels		  [1, 1]
-	  DstBlock		  "String Stability Conroller"
-	  DstPort		  2
-	}
-	Branch {
-	  ZOrder		  464
-	  Points		  [0, 115]
+	  ZOrder		  562
+	  Points		  [0, 90]
 	  DstBlock		  "String Stability Conroller1"
 	  DstPort		  1
+	}
+	Branch {
+	  ZOrder		  466
+	  DstBlock		  "String Stability Conroller"
+	  DstPort		  2
 	}
       }
     }
     Line {
+      Name		      "a1"
       ZOrder		      450
       SrcBlock		      "1st Vehicle"
       SrcPort		      3
       Points		      [21, 0; 0, 48]
       Branch {
 	ZOrder			493
-	Points			[0, 21; 94, 0; 0, 256]
+	Labels			[-1, 0]
+	Points			[33, 0; 0, 262]
 	DstBlock		"Mux2"
 	DstPort			1
       }
@@ -20656,15 +22872,15 @@ Model {
       ZOrder		      451
       SrcBlock		      "String Stability Conroller"
       SrcPort		      1
-      Points		      [15, 0]
+      Points		      [6, 0]
       Branch {
-	ZOrder			470
+	ZOrder			560
 	DstBlock		"               ACC Based On DIstance           "
 	DstPort			1
       }
       Branch {
 	ZOrder			461
-	Points			[0, 58; -228, 0; 0, 102]
+	Points			[0, 72; -199, 0; 0, 63]
 	DstBlock		"String Stability Conroller1"
 	DstPort			4
       }
@@ -20673,93 +22889,92 @@ Model {
       ZOrder		      456
       SrcBlock		      "String Stability Conroller1"
       SrcPort		      1
-      DstBlock		      "               ACC Based On DIstance            "
-      DstPort		      1
+      Points		      [5, 0]
+      Branch {
+	ZOrder			529
+	DstBlock		"               ACC Based On DIstance            "
+	DstPort			1
+      }
+      Branch {
+	ZOrder			528
+	Points			[0, 77; -180, 0; 0, 58]
+	DstBlock		"String Stability Conroller2"
+	DstPort			4
+      }
     }
     Line {
-      ZOrder		      454
+      ZOrder		      624
       SrcBlock		      "               ACC Based On DIstance            "
       SrcPort		      2
       DstBlock		      "  1"
       DstPort		      1
     }
     Line {
-      ZOrder		      455
+      ZOrder		      623
       SrcBlock		      "               ACC Based On DIstance            "
       SrcPort		      1
       DstBlock		      " 1"
       DstPort		      1
     }
     Line {
+      Name		      "v2"
       ZOrder		      467
       SrcBlock		      "2nd Vehicle"
       SrcPort		      1
       Points		      [9, 0]
       Branch {
 	ZOrder			486
-	Points			[47, 0; 0, 140]
+	Labels			[-1, 1]
+	Points			[47, 0; 0, 115]
 	DstBlock		"Mux1"
 	DstPort			3
       }
       Branch {
 	ZOrder			485
-	Points			[0, 80; -666, 0; 0, -70]
-	DstBlock		"String Stability Conroller1"
-	DstPort			2
+	Points			[0, 80; -651, 0]
+	Branch {
+	  ZOrder		  563
+	  Points		  [0, 30]
+	  DstBlock		  "String Stability Conroller2"
+	  DstPort		  1
+	}
+	Branch {
+	  ZOrder		  530
+	  Points		  [0, -70]
+	  DstBlock		  "String Stability Conroller1"
+	  DstPort		  2
+	}
       }
     }
     Line {
+      Name		      "a2"
       ZOrder		      468
       SrcBlock		      "2nd Vehicle"
       SrcPort		      3
       Points		      [23, 0; 0, 33]
       Branch {
 	ZOrder			495
-	Points			[0, 197]
+	Labels			[-1, 0]
+	Points			[19, 0; 0, 187]
 	DstBlock		"Mux2"
 	DstPort			2
       }
       Branch {
 	ZOrder			494
-	Points			[-673, 0; 0, -48]
+	Points			[-650, 0; 0, -48]
 	DstBlock		"String Stability Conroller1"
 	DstPort			3
       }
     }
     Line {
+      Name		      "x2"
       ZOrder		      469
+      Labels		      [-1, 0]
       SrcBlock		      "2nd Vehicle"
       SrcPort		      2
-      Points		      [65, 0; 0, -80]
+      Points		      [66, 0; 0, -115]
       DstBlock		      "Mux"
       DstPort		      3
-    }
-    Line {
-      ZOrder		      474
-      SrcBlock		      "v_lead"
-      SrcPort		      1
-      Points		      [39, 0]
-      Branch {
-	ZOrder			479
-	Points			[0, 90]
-	DstBlock		"String Stability Conroller"
-	DstPort			1
-      }
-      Branch {
-	ZOrder			477
-	Points			[111, 0]
-	Branch {
-	  ZOrder		  489
-	  Points		  [0, -29; 582, 0; 0, 279]
-	  DstBlock		  "Mux1"
-	  DstPort		  1
-	}
-	Branch {
-	  ZOrder		  488
-	  DstBlock		  "Initial Condition : 2L [m]"
-	  DstPort		  1
-	}
-      }
     }
     Line {
       ZOrder		      482
@@ -20774,6 +22989,217 @@ Model {
       SrcPort		      1
       DstBlock		      "acceleration"
       DstPort		      1
+    }
+    Line {
+      ZOrder		      628
+      SrcBlock		      "               ACC Based On DIstance              "
+      SrcPort		      1
+      DstBlock		      " 2"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      629
+      SrcBlock		      "               ACC Based On DIstance              "
+      SrcPort		      2
+      DstBlock		      "  2"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      519
+      SrcBlock		      "String Stability Conroller2"
+      SrcPort		      1
+      Points		      [4, 0]
+      Branch {
+	ZOrder			539
+	DstBlock		"               ACC Based On DIstance              "
+	DstPort			1
+      }
+      Branch {
+	ZOrder			538
+	Points			[0, 57; -200, 0; 0, 63]
+	DstBlock		"String Stability Conroller3"
+	DstPort			4
+      }
+    }
+    Line {
+      ZOrder		      520
+      SrcBlock		      "String Stability Conroller3"
+      SrcPort		      1
+      DstBlock		      "               ACC Based On DIstance             "
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      619
+      SrcBlock		      "               ACC Based On DIstance             "
+      SrcPort		      2
+      DstBlock		      "  3"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      620
+      SrcBlock		      "               ACC Based On DIstance             "
+      SrcPort		      1
+      DstBlock		      " 3"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      627
+      SrcBlock		      " 2"
+      SrcPort		      1
+      DstBlock		      "3rd Vehicle"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      630
+      SrcBlock		      "  2"
+      SrcPort		      1
+      DstBlock		      "3rd Vehicle"
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      621
+      SrcBlock		      " 3"
+      SrcPort		      1
+      DstBlock		      "4th Vehicle"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      618
+      SrcBlock		      "  3"
+      SrcPort		      1
+      DstBlock		      "4th Vehicle"
+      DstPort		      2
+    }
+    Line {
+      Name		      "v3"
+      ZOrder		      533
+      SrcBlock		      "3rd Vehicle"
+      SrcPort		      1
+      Points		      [15, 0]
+      Branch {
+	ZOrder			556
+	Points			[0, -26; -666, 0; 0, 36]
+	Branch {
+	  ZOrder		  566
+	  DstBlock		  "String Stability Conroller2"
+	  DstPort		  2
+	}
+	Branch {
+	  ZOrder		  565
+	  Points		  [0, 85]
+	  DstBlock		  "String Stability Conroller3"
+	  DstPort		  1
+	}
+      }
+      Branch {
+	ZOrder			547
+	Labels			[-1, 1]
+	Points			[0, 35]
+	DstBlock		"Mux1"
+	DstPort			4
+      }
+    }
+    Line {
+      Name		      "a3"
+      ZOrder		      534
+      SrcBlock		      "3rd Vehicle"
+      SrcPort		      3
+      Points		      [14, 0]
+      Branch {
+	ZOrder			550
+	Labels			[-1, 0]
+	Points			[65, 0; 0, 130]
+	DstBlock		"Mux2"
+	DstPort			3
+      }
+      Branch {
+	ZOrder			549
+	Points			[0, 30; -627, 0; 0, -45]
+	DstBlock		"String Stability Conroller2"
+	DstPort			3
+      }
+    }
+    Line {
+      Name		      "x3"
+      ZOrder		      535
+      Labels		      [-1, 0]
+      SrcBlock		      "3rd Vehicle"
+      SrcPort		      2
+      Points		      [2, 0; 0, -195]
+      DstBlock		      "Mux"
+      DstPort		      4
+    }
+    Line {
+      Name		      "x4"
+      ZOrder		      536
+      Labels		      [-1, 0]
+      SrcBlock		      "4th Vehicle"
+      SrcPort		      2
+      Points		      [2, 0; 0, 35; 96, 0; 0, -295]
+      DstBlock		      "Mux"
+      DstPort		      5
+    }
+    Line {
+      Name		      "v4"
+      ZOrder		      543
+      SrcBlock		      "4th Vehicle"
+      SrcPort		      1
+      Points		      [9, 0; 0, 1]
+      Branch {
+	ZOrder			552
+	Labels			[-1, 1]
+	Points			[10, 0; 0, -31]
+	DstBlock		"Mux1"
+	DstPort			5
+      }
+      Branch {
+	ZOrder			551
+	Points			[0, 77; -613, 0; 0, -68]
+	DstBlock		"String Stability Conroller3"
+	DstPort			2
+      }
+    }
+    Line {
+      Name		      "a4"
+      ZOrder		      544
+      SrcBlock		      "4th Vehicle"
+      SrcPort		      3
+      Points		      [22, 0; 0, 55]
+      Branch {
+	ZOrder			554
+	Labels			[-1, 0]
+	DstBlock		"Mux2"
+	DstPort			4
+      }
+      Branch {
+	ZOrder			553
+	Points			[-637, 0; 0, -70]
+	DstBlock		"String Stability Conroller3"
+	DstPort			3
+      }
+    }
+    Line {
+      ZOrder		      632
+      SrcBlock		      "v_lead"
+      SrcPort		      1
+      Points		      [118, 0]
+      Branch {
+	ZOrder			631
+	Points			[0, -29; 699, 0; 0, 279]
+	DstBlock		"Mux1"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			579
+	DstBlock		"Initial Condition : 4L [m]"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			578
+	Points			[0, 90]
+	DstBlock		"String Stability Conroller"
+	DstPort			1
+      }
     }
     Annotation {
       SID		      "1097"
@@ -20815,24 +23241,21 @@ MatData {
   NumRecords		  3
   DataRecord {
     Tag			    DataTag0
-    Data		    "  %)30     .    N 4   8    (     @         %    \"     $    +     0         %  0 !@    $    ,    3F%M90"
-    "  5F%L=64       X    X    !@    @    $          4    (     0    @    !         !     (    2V1?8G)A:V4.    .     8 "
-    "   (    !@         %    \"     $    !     0         )    \"               #@   $     &    \"     0         !0    @"
-    "    !    \"P    $         $     L   !+9%]T:')O='1L90      #@   #@    &    \"     8         !0    @    !     0    $"
-    "         \"0    @               X    X    !@    @    $          4    (     0    @    !         !     (    2VE?8G)A"
-    ":V4.    .     8    (    !@         %    \"     $    !     0         )    \"            / _#@   $     &    \"     0"
-    "         !0    @    !    \"P    $         $     L   !+:5]T:')O='1L90      #@   #@    &    \"     8         !0    @"
-    "    !     0    $         \"0    @           #P/PX    X    !@    @    $          4    (     0    @    !         !  "
-    "   (    2W!?8G)A:V4.    .     8    (    !@         %    \"     $    !     0         )    \"           B+- #@   $  "
-    "   &    \"     0         !0    @    !    \"P    $         $     L   !+<%]T:')O='1L90      #@   #@    &    \"     8"
-    "         !0    @    !     0    $         \"0    @            N0 X    P    !@    @    $          4    (     0    $ "
-    "   !         !   0!,    #@   #@    &    \"     8         !0    @    !     0    $         \"0    @            N0 X "
-    "   P    !@    @    $          4    (     0    (    !         !   @!K,0  #@   #@    &    \"     8         !0    @  "
-    "  !     0    $         \"0    @    THK0W^,+4/PX    P    !@    @    $          4    (     0    (    !         !   @"
-    "!K,@  #@   #@    &    \"     8         !0    @    !     0    $         \"0    @   !A5%(GH(GSOPX    P    !@    @   "
-    " $          4    (     0    $    !         !   0!Q    #@   #@    &    \"     8         !0    @    !     0    $    "
-    "     \"0    @   \":F9F9F9G)/PX    P    !@    @    $          4    (     0    ,    !         !   P!T874 #@   #@    "
-    "&    \"     8         !0    @    !     0    $         \"0    @   #7HW ]\"M?S/P"
+    Data		    "  %)30     .    F 0   8    (     @         %    \"     $    )     0         %  0 !@    $    ,    3F%M90"
+    "  5F%L=64       X    P    !@    @    $          4    (     0    (    !         !   @!+9   #@   #@    &    \"     8"
+    "         !0    @    !     0    $         \"0    @             0 X    P    !@    @    $          4    (     0    ( "
+    "   !         !   @!+:0  #@   #@    &    \"     8         !0    @    !     0    $         \"0    @            (0 X "
+    "   X    !@    @    $          4    (     0    @    !         !     (    2W!?8G)A:V4.    .     8    (    !@        "
+    " %    \"     $    !     0         )    \"           6+M #@   $     &    \"     0         !0    @    !    \"P    $ "
+    "        $     L   !+<%]T:')O='1L90      #@   #@    &    \"     8         !0    @    !     0    $         \"0    @ "
+    "           Y0 X    P    !@    @    $          4    (     0    $    !         !   0!,    #@   #@    &    \"     8  "
+    "       !0    @    !     0    $         \"0    @            N0 X    P    !@    @    $          4    (     0    (   "
+    " !         !   @!K,0  #@   #@    &    \"     8         !0    @    !     0    $         \"0    @    THK0W^,+4/PX   "
+    " P    !@    @    $          4    (     0    (    !         !   @!K,@  #@   #@    &    \"     8         !0    @    "
+    "!     0    $         \"0    @   \"4AX5:T[SVOPX    P    !@    @    $          4    (     0    $    !         !   0!"
+    "Q    #@   #@    &    \"     8         !0    @    !     0    $         \"0    @   \":F9F9F9G)/PX    P    !@    @   "
+    " $          4    (     0    ,    !         !   P!T874 #@   #@    &    \"     8         !0    @    !     0    $    "
+    "     \"0    @   \"D<#T*UZ/P/P"
   }
   DataRecord {
     Tag			    DataTag1
@@ -20919,7 +23342,61 @@ MatData {
   }
 }
 MatResources {
-  NumRecords		  6
+  NumRecords		  14
+  ResourceRecord {
+    Path		    /simulink/resources/mwimg_205745b0-3c50-4f3b-a820-c8e6149fe7b7.PNG
+    Data		    "B5!.1PT*&@H    -24A$4@   <L   !;\" 8    <$ZZP     7-21T( KLX<Z0    1G04U!  \"QCPO\\804    )<$A9<P  $G0 "
+    " !)T =YF'W@   _>241!5'A>[9W_ZRU%&<<O\" 87%.$*@GC!0! $PT 0[2?!M)\\$0[MB8)B!89C]8!C8%0G#,\"040Y(P# F1,$1)PM D\"4.2_J"
+    "/3>1UYW\\:]SSYGO\\SNV?V<]P,O[OWLS,[NSC[SO&=F9_><VMAL-IO-9DO-8FFSV6PVVQZS6-IL-IO-ML<LEC:;S6:S[3&+I<UFL]EL>\\QB:;/9;"
+    "#;;'DO%\\K^??VZ,,<8<!9E9+(TQQI@MF5DLC3'&F\"V962R-,<:8+9E9+(TQQI@MF5DLC3'&F\"V962R-,<:8+9E9+(TQQI@MF5DLC3'&F\"V962R"
+    "-F8G;;KUU<^K4J0O\\X;77PGS'BNO'')K,+);&S,@/'G[X@AA\\_-%'89YCQO5C#DEF%DMC9N17SSVW$X*SUUP3IJ\\)KH/18)0VE)-4/V9]9&:Q-&"
+    "9&-'+ZSGWWA>EK8@JQ/$GU8]9'9A9+8V9$S^5^_M138?J:F$(L3U+]F/61F<72F!E!\".\"M-]\\,T]?$%&)YDNK'K(_,+);&S 2K.R4&Y?9R40O<<"
+    ",,-7TH? HMC?O+XX[NRFF7?=>>=F_?>?3?<KP^45U,LYZP?8R(RLU@:,Q-,+1+L(X&1J%U^^>6C1U4(I<ICP8RVO_S22[ORV;Y$L9RK?HQI(S.+I3$"
+    "SP8B.@,](J=R.<-44 JTHC1;)($BU5IJV\"=M0YJH?8]K(S&)IS$P@4@1]1GC:IE$@U'JOD.E7CD.947HM:HOE7/5C3!N962R-F0&-CD!3H/P[A1\""
+    "4S_X870XMNRQG*%&Y$7/6CS%M9&:Q-&8&-#7*5*+^YO]CQ\"Q#QP-&;.5HK2MSBN7<]6-,1&862V-FH+FB4S!E&N47C*YXSLATI_;I*B*(':,R[==\\"
+    "%C@6RJPU#3NT?@1UH>GG*-V8+F1FL31F!B1:\"OY=GRM*)/62/J* 4+*MJU I/PP98;;1YQSV,;1^@+QT('2-41YCNI\"9Q=*8&5 @9[3'W^4SNFR$"
+    "B!@A=N4V\\FO?<GN&1+=9UA@HKY98ZGKZU \\K8YEBYIKH!\"A_E->8+F1FL31F8LIG?V7@CU9_=B42!HFH%LB4:*3&ZQG-M*%07@VQ'%H_Y)6X@LH"
+    "H\\QC3A\\PLEL9,3-N4HI[3]1WM:=35%\"J)#HMCRNV@8VDZMP;1.0RA5OV0%Z(T8[J0F<72F(EI>]E>XL8(2J,D!*,<7450'L_HFB-(B0YIY8A+7\\"
+    ";I4G8?*+.&6-:J'_)\"E&9,%S*S6!HS,5I\\DHWXM,)UWQ=JM)@ERH=X4AX\")N$ !(;]:@HE4'8-L:Q5/[K>*,V8+F1FL31F)>C=PZ5\\\\JV66-;"
+    "\"8FG&DIG%TI@5L#2A7\"(62S.6S&87RW))>$DS\"#2GDJ#Y3,.88X!G=1;*_2A.1&G&=\"&S@XPL2\\',@H >_(.%TAPC/&>DC32?Y[&=A2_E0IYC"
+    "1[$B2C.F\"YD=;!I6CITM\"]?J/JB].,&8-5!V&\",LEE]T'+3B%VI^I<@<%YD=1\"QQ[BZ.C9\"29TF+\"(R9B[9'%B7-UT>.C:A.A..&Z4MF!Q%+"
+    "O3\\%V8A17_!@A!FE&V.,,;7([\"!BJ>G5YA<[2LK1IZ>:C#'&3$UF!Q%+K73-GE?.]6%D'6,H%G)CC#D99'80L9301%_L$/IR1S;ZK('.92@62V.,"
+    ".1ED-KM8\\II()#IM^)418XPQ<Y#9[&*I)=XLWHG2A<0R&WVN'5VC,<:8X43Q=0B9S2Z6>AV$]\\>B=\"A7RY[DI?&Z1F.,,<.)XNL0,IM=+/4Z2/:"
+    "[>EHMNV_TB:CJ%Q6B=&.,,:8KF<TJEN5+UMG\"&*V6;1M]\\MRS_';L&+%4&4/Q A]CC#D99#:K6'9]'81O89(G&GVRX(<1)\\\\R]2DPBZ4QQIBQ9"
+    "#:K6.IUD.PS5.5JV4B(V*:O_FBZUM.PQAACQI+9K&*IYY696)8?1([22RR6PV%*G'HKI[.Y/W1HLD\\0&C,U^\"9QH/1-9IM8'&C?-%.2V6QBR;2I'"
+    ")]%.9'3TT@DJ+!OBM-B.1P%(DUU<S^ZK%1>(O_^]-/-3Y]X8O/KYY\\/TTT=?OGLLYNGSY_?U7>47HO,-[..MC%CR6P6L92HE41?YFGF@4PP+9;#(>"
+    "@T/S=(4%*]E]N7RK\\^^63SPT<>V5QYYLSF[-FSF]^]\\DJ8;XV4HRK8UW&<@Y=>?'%S]=57[^J;SLE_/OLLS#>6M?IF,\\XY+GV9-=1/9K-.P]9&E"
+    "6^GK ?UR917E+8D\"-2WW'++YO3ITYT#-PO,N+8E\"$\\7](P?HIF80\\\"H\\L>//;:YY))+-M^\\XX[)!#-\"=1&E+85R$6/V\\X/'RM+K)S.+I;"
+    "F GA?7K$^-D**T,1\"H*9>IP2B]A.G]\\D>4IQ!+RJT]1:A'%_O>-SX$/WORR=VYW7_N7)A>&[UV5KN.:Z/S!/X?Y5D+4[3=I==/9A9+LQ,/IKT8=>"
+    "DY42VF:'!,O5+F???>&Z:7<#UZ%4FL12PULFQ.22Z%;]UUU^[\\&&E&Z36AL\\-]7+H :>2TQ Y.7Z9HNTNOG\\PLED<.]2=H'+6_Q5N[P?WSXX\\W"
+    "7[GTTLT55UR13@$25#DVC9)KDJ_ 6L12=5>[ U.+\\EY,N>B'>X=0\\EI9E+XDY&=K6R074;OMPM+K)[/5BB4-AT5\"JOBU3WD<FO*K2#5',K4;',\\"
+    "G*>_;]]P3I@L$LGP-!H%D/UB+6.I\\ERP2M]]^^^X<NTR'#X'[N!:AA*5W</HPA5@NO7XR6YU8EB.$B\"D\"X9P0W GRY2LT= 8(&OS;UB-C/^I&'0"
+    "C!WUT[$Y2A*<M:G8_:#>ZKUUZ[*Z_ORM>UB65YON7V<M$/1*O*^\\!Q=(\\RVA88(9*D?^W&&\\-T&.J;:Q-*T+65/E8N:A%M]=D'ZJ=Y[X@;;*OAX"
+    "[7;+N@\\YZB?(62VZFG8DP9!@>  - 2VX32,].1$!,OF?N11(-)^@!/V%3\\UD!J-#6HVN#^^_OJNK,LNNZSW*DRNAWUK7EL)Y7*M4=H0Z'FWE:E[/"
+    "59(RCK)R)XO\\?J.\\OWUO?<N2A_JFYS;V.N;&\\Y5==%,*SLY93T,13&AG#WA^%%=#Z6V6,Y9/T/)S&*Y$ @8!(<H0)1!C2!3I@'.15HT?4K0C8(="
+    "#2$J2R/:)8XL^>@ 9?%.992>L3:Q9,1%F<W.$?>%[6.%A !+&?B,@JT$.NJ095QUU56[_7[_ZJL7I0WQ39U;,VBRG?Q3W+\\:J/X0K&::VE4-(9 /1"
+    "'4G0:K1?FN+Y5SU,X;,+)8+08Z)0S73RD ?-0)-34=.V ;Y\"4@*/ 0B]>[Z!LN,F@U.SRMOOOGF,#UC;6*IX%%V:+A'W&.0P V%<IOW6?<JZD1E7'"
+    "_]];O]?O',,Q>E#?%-=13:6*I8EJ.]YO:QG9N2TI?'^D%&;;&<JW[&D)G%<@&H-XC#1.GJG4<]22@;#X[7I0$ARC0&CJE]^7M(ST[[#Z5K\\/O>@P_"
+    "N\\O/*0I2>4=;1D&!;[C^4J-P(C1Q G2/^K264$939/&97^#@$^_WHT4<O2NOKF^6UM]'G_*+]^]#'5YJC(ZYU\"B&@7+5;_*'O_2HIKW4(2ZR?,61"
+    "FL5P . Q.Q+]1ND9\\;8M[0((*.&7?T<$8=-RA=&UP=]]]]R[_OI6P$670[M/ 1;G_4*)R(W0OU7GB;_[?16R&@K^4Q^R#[DO;>Z_'X)NER!/XV4^="
+    "FS%BU@;'D&#R+R/X*-\\^=,Y#66K]#\"4SB^4\":/:XVM*C*=H2.:\"<LN9TZE!J3N4@DI1%<([2,Z@;U4O7!MX'RN5:H[2^J'/49%] ).AHQD#[=!"
+    "79+AVR-KYQVVV[?;__T$-A.BS1-VNBSD:3?3[!?:'=4^\\2/^#O?:,M[G<Y9<VQ:G:F:K;=H?53HD[C%.U79&:Q7 !RG,@)A@1YC51ASEY\\1,T&IR"
+    "_WG/1GEA(5B6/7YWZJ:W6J-,W5Y=R:Q^R#]N43>%%ZR9)\\LR;J;*B>2W_+!$SWMNS0</_8AC!T$;]RY%ZS$U*S[0ZM'\\!/-&\" *=JOR,QBN0#:G"
+    "  G*IVD3-N'')U&&*7/1<T&QP(2RKKNNNO\"](RR<4[1V\"A7@6 LS?,LI[\"RP,+QF_>;_-JWW-Y$>8;4#;]$PKZ_>>&%,+W)4GRS)KJFLK.AMIMU"
+    "\"LA/ON9V=4\"ZW@^);E364&JVW2'U@^^R'Y2\".47[%9E9+!< #A Y#<%$3A:-*A0(HSE_-9XATVHUJ=G@>#6!LGA5(4K/H(&Q+TS1V\"B7:XW2^E"
+    "\">9RF,70)O&RHO2H.V8W:%7R!AWS^]\\<:%;6OPS9JH_LK[0_MEVY#1GMI-TU>) ]'C&MU#1J/-M*'4;+N4 WWKI\\S?5B<UR<QBN0#TK(+@09#1L"
+    "PA08(D<2@TD:CR:]MCWG'-J:C8X?8N4\\MY]YYTP3QNE($S1V\"BWAECJ?C<[1[J??4=C&I5FYU;6C;9QO\"[UI'WY4$3Y?5AM7[)OUJ*LO[*S0:!G"
+    "VY#1'OM$T[\"4%_F CE6S U*K[=:J'XNEN1 \\2@B6.)8<) HZ\"JS-A]YZYJ$RRGWFIE:#$UKD$[VFT 8+):@+]@/.:=_BB;ZHW\"BM#P0[RL(GRN"
+    "T*. 06[BE_=[F_E(=_1\",\\05VH;B@/_V&_+K[SW0<>V.W':SWE]C7X9BW*:RJW<WWJ\"%/'W -\\9%^P5WGEJ KD T\"><CO'@9I^7:OMUJH?G<^"
+    "^^AM#9A;+!8#3:$H\"YR'0*)\"P#:)@QS:\"JIQ(X)1E&8>D5H,33/51'B_\"1^DE99VTP?E%^_:E5ED*'MF(C#SXR[[ B ]T#: J&S%FORA/A+[>T"
+    "QSIK\\$W:Z$.3C3BXS[JGI*O*8!-)(C1_:?.$![J5&4\"]XQC1S%B#+7:;JWZT?E8+,U%J.'@3%'Z&JC5X$KX:#=E_O;EE\\/T0\\#Y<*U1VB%0$*H"
+    "YTFCR]/GSN^OFU9$HW?2#>\\4]BX3R$$S1=L=@L32MT /'.>AQ1>G'RE_>?GMSY9DSN]]1_-O[[X=YCIDYA/+/;[VU.7WZ]&YD^?<//@CSF.XL32B7"
+    "B,72M*+IBS[38L<\"T[$$ZZ_?=--NX4^4YQ@AD$PME(@CK^_08:'C$N4QW6%ZU4*Y'XNE:84&-+5SK!GJA8#-2DP^LM[W9[M.&FU!E^T\\UQKK1ZQV"
+    "96$5]<TOO]@OZX (1,_SZ\"R[H_Q_+)8FA)$!C@'[%@4<,P1P/E9 \\.8+/U&>8T$S$6V,#3+WGSNW&U%2W\\?>,:F%5HJV8;'\\ F*@!@]3+A#+S&"
+    "*Y4,I&A).XT>00O/_QX8=AVC' 2DCY2QMC5TMZNKL^C/BC>R6.?6I6H\\DVHGW&D)G%TAACC-F2F<72&&.,V9*9Q=(88XS9DIG%TAACC-F2F<72&&."
+    ",V9*9Q=(88XS9DEDJEC:;S6:SV2R6-IO-9K/M-8NES6:SV6Q[S&)IL]EL-ML>LUC:;#:;S;;'+)8VF\\UFL^TQBZ7-9K/9;*EM-O\\#!SM[U\\U[/A"
+    "\\     245.1*Y\"8(("
+  }
   ResourceRecord {
     Path		    /simulink/resources/mwimg_2bf34881-b191-452c-91df-4df945da42fd.PNG
     Data		    "B5!.1PT*&@H    -24A$4@   >D   !+\" 8   !4;7_&     7-21T( KLX<Z0    1G04U!  \"QCPO\\804    )<$A9<P  %B4 "
@@ -21022,6 +23499,63 @@ MatResources {
     ",ID\\Q-XXB1/G[B#VK18SD\"E 2D080DY>P)T76:5^ET'^JULX'7(-D7H\\VYNH!KCSW<.O(>3W0!S](P2A#^*5>;MUP3[WZE8(@L[=17R>MI%(*0<"
     "A0>=P-Y[&J^JFJGU:FA&.BT&G$!:9IO>([8I@ DJ:( B\"($P34M($01 $8:\"0DB8(@B ( X64-$$0!$$8**2D\"8(@\",) (25-$ 1!$ 8**6F\""
     "( B\",%!(21,$01\"$@4)*FB (@B ,%%+2!$$0!&&@D)(F\"((@\"(,$^#_Y*?<\\\\?A=;0    !)14Y$KD)@@@"
+  }
+  ResourceRecord {
+    Path		    /simulink/resources/mwimg_4b532a21-ff78-4f15-8de9-28564528e754.PNG
+    Data		    "B5!.1PT*&@H    -24A$4@   ,0   ! \" 8   !%A]BE     7-21T( KLX<Z0    1G04U!  \"QCPO\\804    )<$A9<P  $G0 "
+    " !)T =YF'W@   2G241!5'A>[9I!CA0Y$$7[!'T\"N$#?  X )^BY .QAS^R9=6O6S!;-%O9H+H#F1HE>2;\\52B)*G=GI*F?Z?^FIFG1F53D<WPZ["
+    "N)DLRWJ4#6%903:$9079$)859$-85I -85E!-H1E!=D0EA5D0UA6D UA64$VA&4%E8;X_^=/8PY+)1O\"#$DE&\\(,224;P@Q))1O\"#$DE&\\(,22"
+    "4;P@Q))1O\"#$DE&\\(,224;P@Q))1O\"#$DE&\\(,224;P@Q))1NB$7\\_/$QOW[R9;F]OIYN;FQ/\\_?K5J^GCAP_3?S]^I,^-PK]?OTY_W-]/+U"
+    "^\\>(P/$)_W[]Z=VK/GMJ*2#;$Q)#J#RN RX-^_?3M=YU778?[<2)#P2OY_OGPY72-NN@ZZWHI*-L2&,*A:$?[Z_/FW=DRA1)BWC4*<++)VK1A9VY9"
+    "4LB$VY.[N[NQ@ X9A)LS:CHY6 .)4E8R4F;1G;5M2R8;8\"/8%##8)/_K^((,2B/A ZW+H*52ZN\"$H)9@%%)PCS)BQ5,(8V3VCHU*IEW*QTL4,0=("
+    "H*']^^G3Z-ZAFY%KVW!IXO^>P= ;CN^M9KPZ_PXF1XL/I6W;/I:ET$4.0)*JOYYM-E1JL&O'Z<U#PU[+4$.K;EGTX$MH[L(IF[=>@TD4,P2:3@&2ED"
+    "=KV6FKHY BV7.6.A*J GB:,2LT-$9?+>3E!&[,&Z+Q^;[#BJ7^M?TS:DKC)74OVOG-ZG3 J-3>$EDO-#@2(.E(K [-'5:+0WM,RFZ&2#[+VIW\"-?E"
+    "[*$/%SEI:B@F>WCD^EYH:8_S1/Q]A<8XCLQRNA0/9>E^N@8.W9^7/[.4_LWC;U<<)8\\]U:Y4&EYH90,-;.#FO09ZYER7?MX3A19<DE?M!:RA8K: L"
+    "JV1 )>S,$)2C?X=POY-?\"AIBA8&1)QA)*(L6S:>[3,]!;\"3!' TYIF+6#^A0WW6O[R6I XE-ZZG-ERG,EZ+6(_:P.3N@[_8F;[M9Y4*FY(71&SZL"
+    "\"PBN#1Q\"X/N^L3J9Z+ 'FJ%R!;,#I&TF;;0J7]E.G<C&6\\4?![/-[0/O(RK#L#VB?G]*US(-*S0VAY3PC,P-H=NBQ!,B(_VDM#BI]5S)D)=62?F"
+    "H6A1@SO4=FN%Y0#O =8S5 K+2Z07P&6N9!I>:& () LJCC_'UN>:>-^_;T0Q=]C(,+) #7&% &=_[,DGZJ-)O'34G3^VD<R<]W)\":*#Q ?KF?YT#("
+    "/*EW$$$LA@0C$? D]&DOZJ42:KZ@JF?8T>3R5EGE0J4M#J,S(VH[$4_M)0G!?5DNK_LY6H+W3,@\\J=6<(;5*SFOM(+.FGRJ+YO7J/5DES35KG0:7N"
+    "#*'!IV;.VH_\"DGY6AE!)<<3)HW4>5.K6$)S<,$LPV%S+[MTSY_J9)0-[\".!>P RQE&)O46U.]TCK/*C4G2$86)U($82C;JS/]3,S!(FNC36)K_NU"
+    "2E!OQR/-O=,Z#RIUN:D>'1GB*+-]CU2R(3J$E2$[43+;4<F&Z Q*!4H$7K-VLPV5; @S))5L\"#,DE6P(,R25; @S))5*0UC6B+(A+\"O(AK\"L(!O"
+    "\"LH)L\",L*LB$L*\\B&L*P@&\\*R@FP(RWK4-/T\"G^]D*B$E<,D     245.1*Y\"8(("
+  }
+  ResourceRecord {
+    Path		    /simulink/resources/mwimg_534d26eb-65fb-4249-bf31-79a4ce97ef89.PNG
+    Data		    "B5!.1PT*&@H    -24A$4@   8     N\" 8    AILZ5     7-21T( KLX<Z0    1G04U!  \"QCPO\\804    )<$A9<P  $G0 "
+    " !)T =YF'W@   JN241!5'A>[9W!ZQU%$L<# 84<<E'(Q8!\"3CGI*9A%(:!&].1B]JYFCZ[>%+,'$471FT1$$;W(ZH;%/1@4<=$-*UYD9?^C63XCW"
+    "U!IJV=ZIGO>F_>F\"CXDOU?]NGNJJZNJ9][O]TYT(2$A(2&;E$@ (2$A(1N52  A(2$A&Y5( \"$A(2$;%3<!_._77X,@\"(*54RN1 ((@\" Z46HD"
+    "$$ 1!<*#42B2 ( B\" Z56(@$$01 <*+42\"2 (@N! J95( ('+W[_XHOOSU:NNK@7TS1B>+@B\",FHE$D!P!Y]]^FGWZ\"./='??=5?W_'//N6U:0"
+    "-^,P5B,Z;4)?&[]^&/W\\DLO=6?ONZ__O]<F6 =77WBAN_S$$XOY>*U$ E@9-[_^NCMQXL3ON/'EE[?;X$Q>F^OOOW]'7U-Y[]UWNY,G3W9/7K[<?7"
+    "/SIMNF)8S!6(S)V%Z;M?'.VV__SNZG3Y^^HPW!.6T#+8+U7Z]=Z\\<[?_Y\\]7H'R\\-^EC]<?/CA_F>OW5QJ)1+ \"K%)@,UN@[^@LE ;*L':\"H/"
+    "W$X@O7+C0_?>77]PV2\\!8C,G8AW(2L$F 0.P%=EY7FU8;_T]7KO3]\\:^G#]8+>YB]G-O/<ZF52  K1<&#0._I%0QR 6@*_[AQHSMUZE1W[SWW=/_"
+    "Z_GNWS9(P)F,S!^;BM5D3]@26J\\))RNA;!6LJ_Y;]!;M'2:#EK;M:B02P0G\".H0\"C\"I1@T,*1_OC,,WU_;[S^NJO?!8S-')B+IU\\3K(G6Q[._"
+    "DC-!.]7-02?\"N.=_^+1.Y+42\"6\"%V HSW? V^-O7Y_+O'W[H'\\;\"SS_]Y+;9!8RM>3 GK\\U:T#U=3E^I3L&?=4IU<UFBSV!_Z'38XK9@K31-"
+    " %P03[RY.(XZN>.Q[H^VJI\".C5R 4?#/W1::PU]>?+'OD_OPGCX'<]%: ^M=.Z]+ER[U?3$G3[\\6N*?OK0.!&CNT#-3V>=!8]6_WGW=:8#\\J^.!"
+    "C5A?\\=O)F35E#2)])<0M':\\^_5C<%QJ\"/%D5<K31+ !B'@(43VJ?>:3N,C Y:/_33XLQE+9O\"\"S *_JVKP ?NO[_O]]577G'U*:R?YD<\"YV="
+    "08*E)ZF^]^6;?Q[ESYUS]6F\".8 L<!?^6#_A MPS& H[N+VMN8/>7_,=BW[]U\\&$5IL+&@S'[3H'W\\7[Z\\_13J)5F\"8!@)><?<EI=/*2Z6HXE"
+    " 6@^!!A;U;4._L\"#5_K^X/IU5V^QFR2=BY(^<[6O3^&3CS_N^V!.GGX-6/_%'OR,398(_J\"U'_)-?(3QE7PU/P4H!2]^MLG:]K%U6$.2./91')'-"
+    "93/95VLB^\\Y!:U3K,[6RR#, '7&\\8*! @<%37?#;9I5SI+0.,/^Y=>MVWW_[_'.WC47WHNW))-75)-%_?O75[?DP-Z_-OE%QD]*BFO.@7_H?2_XV"
+    "&&E.\\A<E*ND)9C6)^ABQ]K$G7+WFG?;T\\QQ:G)BA5A9) *H2O8N3<;T@<DC@,%Q'#5Z_\"C X\"#^K>N,U'\"]M7P,?N=1<QG[QRR8F DJJ8XY -"
+    "6IU4_CNVV]OCU'Z<5 5%'/Q3JE#J/K36MA;*TN<T-1W:;6)_?4>3\\_:+377I=#US*74=D+!.?<^G18\\72GI*6,NM=(\\ <C!P L&)16-C-.ZXFW)"
+    "4@E E;2MT!3DL%T:?&O0+9?<7\"SIJ8ZUI2K2?-DTWH:1G4HK3LV'N7GZE%TG *]RD[].[:L$S;,TB,G>N1,V\\U9QD<+[\\#%/MT]D@[F4VD[H?=Y"
+    ">4R'DQ;8I<4MMCRX!R $])[-5Y)\"1T*_1$7>!%V!L55=2N>&X\"HR>7FBM8.RCEYJ78'UP8A+ T)PT#^\\TF&)O24W=M+O KH/U7ZY?KWN!02AA6E"
+    "L2J.WMA12U*[6'[.TE(_R\"=?/62[ZPQ*TA;$*_2R3(UM@]X>GE\\YZ.]Y3&K:-- ') STBJ%I<*[C+J7&H7HQ8;8-(-+]N-/3OA&K\"O^O':\"&[["
+    "J!WWW[TV0NV6#,QV/KOX6T13L8$^U2FHYVYM*K\"P?DH2O*:URME5XY7:72<USY?QH5T&81*._!8.(0&0C'-S9?U9KQ:G\\*-- +JPM.+3!EC2$33V"
+    "7/:= .1\\D.JL_;Q@0$5*$&+##?63HG9CMUS4KC00S<%>HZ??-PJNGO_B.^AR 4+7EIX0A@(VH(-2N^?V'S\\SMZ$32DL(EO@CUR7;++7O6Z*YIB<A"
+    "W;T8.JU-0>N46_=2:J5Y O J&IQ.P6GHHM&)5H8^)(8\"#*C*Q(ZICJ!C;2X[VC8>9\\Z<Z=OQ&7Q/+]2?%X@8FSG;-=-&@K%3B^\"CJ+1G3IY^WW "
+    "=S,_S7WMZ\\VZQY)\"=<GM\"^ZFT3\\W1KI/\\REL[7D,G6E2W0,\"T)QWZ/H0$X\"5D5?ZY-;+V*XU;VLLEMT:'J)7F\"4\"&4 9E\\3$>1N0U=')"
+    "FG 2#Z[TXGPS3RA$/\"5U[;J/@+++OF'W4SM-9]-NW5YY]UM4+!19[\"X-_M3EX/9V3YFO7> B^)(;VCS_VF*O?)S; YP*!_!M;>'H/%45>< ;UF1L"
+    "S17,D$-&G*LVA!*+J=LJ\\IW!(\"4#VPF=9<ZV/5W2).7&+MH#M/7TIM=(\\ <AA+0H UIFY<(R6&@ ]K]O7M@ ;5/;R@BFPJ=5FR\"%![3R=Y:,//"
+    "^S;C57==NR4W'Q99_1#P<=R]NS9OCUS\\O3[1($ <K97]5AZS0J\\0PE22;0T>+(6F@.0G'/)12A C_G47 XI =@U%\"55.NU*XY;LP=IX^BG42O,$"
+    "@%/+\"3&(/1*AXZ+1X6RJ)(6J+!*%??W84:\"T>-5821NA-IXNA3^]0-NQ7P9C+6V X?]#@4Y!,TWR'GP])&W7^&<@5!5:TJ\"M33W4QD+\"9\"^,!"
+    "5U[\\BBI+I4PV'OX5<E[5'R4!+HY'%(\"8*ZLB]8FC5$>4^.6DDR+A%LKS1- #4L[XI; CN#I4JZ]]EK?]NFGGG+U<R$(E58YC,T<F(NG/R8(RB3/T"
+    "@\"@1+K4OE#_7J+VDE^.W&VJ0TH <Y@:MU0$ER27,6IE50E CHC#>/J@'.P(GBZ%;^7BOCOM6WTG@*JBDDVO[P)@#KO\\-K)],#7X@VQ)X\"BIZ*=\""
+    "HL[Y2B2 <:;$+9W0IJS_$+6RJ@0PY(C!-+#C%%L2>!]Z\\,'^#[%Q.\\9K,P551;F@(!B+,1G[V(,_$ 3G;/[6@4-,2=1S.?8$4!JW= N<]JT2>:VL"
+    "*@$<LY/L&FQ9XI06OI3E#Q<O]M_/RZ>\":KX>4L\\U<E41?3,&8S'F/K^,9E=@$ZK_=/,3W$O\\7I5FRR2@X#R6J&LX]@10<FT*_E#R3*R46EE= M "
+    "&P<F7NN=YS& [58M@'\\*7PL-@/A[*IW(\\?0E* (Q/ $@#'WTS1LE?(3T&V/1:$X_2X,C:$D2PYYRU35%PYL$DIP'FD4O:<Z!/)2XJWY;!;RUP;;F"
+    "XQ?5K+V!;?K;OK:565OD, $=IX=Q; ]OEF%-]U9P 5/$P-NN:5KW[^/+Y?2+?SH'>>Y\\'082 W>)6 N\\G>#$'?*15@%9BR;'DB6/7#,4MUHE/!PU"
+    "]6JZ&6EE5 @B\"( C*J14W 82$A(2$'+]$ @@)\"0G9J$0\"\" D)\"=FH1 ((\"0D)V:A$ @@)\"0G9J$0\"\" D)\"=FH1 ((\"0D)V:A$ @@)\""
+    "0G9J$0\"\" D)\"=FD=-W_ =Z'?7R,;4!6     $E%3D2N0F\"\""
   }
   ResourceRecord {
     Path		    /simulink/resources/mwimg_5458c177-7522-4970-a8d7-85659efaf632.PNG
@@ -21453,6 +23987,72 @@ MatResources {
     "((!,(!(*.0 290\" 0= +@_P%IU]+W^J>S:@    !)14Y$KD)@@@"
   }
   ResourceRecord {
+    Path		    /simulink/resources/mwimg_914cb5af-7c02-46ec-9538-b4bc774e7d37.PNG
+    Data		    "B5!.1PT*&@H    -24A$4@   -H   !?\" 8   \".8-FP     7-21T( KLX<Z0    1G04U!  \"QCPO\\804    )<$A9<P  $G0"
+    "  !)T =YF'W@   9A241!5'A>[9Q+KA-7%$7?\"-X(R 28 1D &0&9 .F3/NF3-DJ;=%&ZI(\\R 909&>TG;;BI7)=];ITZ57:M+2W9S]=E</FL^_/"
+    "GX40(63V(1DA!$(V0@B :(05!-$(*@FB$%&16M'^_? & ,T2\": \"#1()H (-$@F@ @T2\": \"#1()H (-$@F@ @T2\": \"#1()H (-$@F@'XY_"
+    "/GT\\_O7QY^O'%BVX[7$\\DB'8@?G_W[O3X^'AZ>'A M 0B0;0#\\/>G3T]B23\"#:,N)!-'NG-_>OGT:Q7Y^]>KTYX</IQ^>/4.T)\")!M#M'0DFP"
+    "]F]$RR$21#L8B)9')(AV,! MCT@0[6 @6AZ1(-K!0+0\\(D&T@X%H>42\": <#T?*(!-$.!J+E$0FB'0Q$RR,21#L8B)9')(AV,! MCT@0[6 @6AZ1"
+    "(-I!T/?0] %C26;TM1G=WKL_7\"821+MS?GWSYC]RG:/]X#%<1R2(!C!()(@&,$@DB 8P2\"2(!C!()(@&,$@DB 8P2\"2(!C!().6BZ0W27UZ__O9"
+    "K3$*?4M\";I_IA3]$[#HZ)WM][_OSY4YVH9O33>=/[J*9<2W]]_/B_]K6(I%0TG03]])F06+Y=/X7F$R4)VV.6<NT;MN?@HTK;X<Y7(OFC8WH]I_?["
+    "X_W[;Z_7M&U-(BD333V1)9OV.NJU?*): 3- M-O%DOFZ7H^>:'Z-JU^K2,I$<X^DS]M-VUK1>E,# $\\?>_7CVLJ>#5TBDA+1-(+I1&@TZ[5[Z#_7?"
+    "LOH><%E>N?.7%J#N4UU-&U;DTA*1/,:3)>]=O5$:I_;\"'&O5;G8S<!% //TSIUQ1ZS-D&F;.W$Q-QM2>W9''DF):-YA/+?^<GMO_FW6.%%P&W@-UN"
+    "NH_=6?N=KPTB1[1SN2$M'T)$7OJQCM^JS7OA0V0VX?SV9Z';4[Z6R)KB&23473W-LG2K1M62#:[>/78KIL:%_;N=G06D12*MITL:JI@-=OVE5JVXR/"
+    "[1T/]T^[!FMO5RVH9CS:79HM\";]5D$4D):)I_JPGZO=%M&C5=9TD30?4YI%#[>U<O!WULD\\4[)]6%F_MZU(U)0E=6]X(45O;(5O4<QWY$B(I$<V["
+    "BBUZXA+'HOEO23:=BZM=LK6WP7&P3\"V6R6T24G7C.O*Q%K6WD;*42$I$LT!ZPCHQNNZ3H4L/_SI)TRF >BJU;;'8A7T@@3RK4:VT:S5WU*HKK=-:R"
+    "=KVWAO=2XFD1+0EK'FBH [)H8ZT>M/\"'7PK9Q:1[%XTGZCI2 >Y> <O^SQKA-ER=] C8:]M*9'L7K0U3Q1\\9PW1]%A^_4RE:%YV>*,MFTAV+]J:)"
+    "PJ^DRF:1C%M@'G=I(V++433<UGSWXSD)D1K=R19JZU#IF@:2=0Y>LM=;\"F:I/?_*>/YF4AN9HVF*<B]O&&MSD*=AXM/UW6;BE\"C0.\\8%8AV7KV="
+    "+71=Q9/1^62*UL/_YTK1U#G[/.L\\96^(1+)[T>Z)]H57P>EOW2Y17(AJGQ[GG==VE-\"E.R%=3H^)<H^BK4TDB%:()9,XTS878N_+B]Y0:*=B1J-:"
+    "[_&B(%J<2!\"M\"!?RN3?>78AS$JXY=4:T.)$@6A%>6_76\"1JI7(B]44M31K7I,9:(X,<998DD&8^Q-R)!M *\\QM(4L-?N[6^)U&MOUW9\":S*O["
+    "R(@6BZ1(%H!ES8MW#[W>4Z)I2)UP4K:S%TT/S93Q^N)!-$*\\$C2*S()Y&GE-44HN7S_W@[E*(@6)Q)$*V!.-(UB+L)KBUSW\\S&]-=T(B!8G$D0KP"
+    "*)-M^ZU=FO73=-UE^Y_;KKI8[*FCX@6)Q)$*\\\"CEM95&H&\\WO*G7=36FP9*PMX&BH[7,><V3T9 M#B1(%H![8=JC231:.0\"[XU<OJ_:/-I)U+D"
+    "WOD=92S3]?[W9(]RY].Y[:T2\":$6HD+V)H<+SVLI3QYXTNDVCH8K3A:K'T&W90F2+UDZ)Y^@=>RM$@F@;XX++W*H?8:T1[9Z)!-$V1$6MXLY<:T$="
+    "D2#:AOA3^YIF]=IAWT2\":!OBW4A-VWKML&\\B0;0-\\>9([ZLQL'\\B0;2-T.:')#,:W7KW@_T2\":(!#!()H@$,$@FB 0P2\":(!#!()H@$,$@FB"
+    " 0P2R:QHA)\"<(!HA!4$T0@J\":(04!-$(*0BB$5(01\".D((A&2$$0C9\"\"(!HA!4$T0@J\":(2LGM/I*RC0F4.L\"6?C     $E%3D2N0F\"\""
+  }
+  ResourceRecord {
+    Path		    /simulink/resources/mwimg_a36af6ac-c298-4def-b91b-b04404599e81.PNG
+    Data		    "B5!.1PT*&@H    -24A$4@   <X    Y\" 8   \"_!LNE     7-21T( KLX<Z0    1G04U!  \"QCPO\\804    )<$A9<P  $G0"
+    "  !)T =YF'W@   P8241!5'A>[9I-SB2W#8;G!',\"YP)S ^< S@F<\"SA[9V_OG;7AM;TULG7V1BXPR(TZ>()^ 5IA253]=*N_[R7P8&9**OV0%$E"
+    "5SX>;Q6*Q6\"R6LCAQ6BP6B\\4R(4Z<%HO%8K%,B!.GQ6*Q6\"P3XL1IL5@L%LN$.'%:+!:+Q3(A3IP6B\\5BL4S(9N+\\S^?/QAACS+NB(DZ<QAAC"
+    "S)V*.'$:8XPQ=RKBQ&F,,<;<J8@3IS'&&'.G(DZ<QAACS)V*.'$:8XPQ=RKBQ&F,,<;<J8@3IS'&&'.G(DZ<QAACS)V*.'$:8XPQ=RKBQ&F,,<;<J<"
+    "B[3)S__OWWV]^__?;VIR^^^-_?LSXC_O;--[>_?/75[9>??T[;31W;XWS^]=MOM[]^_?7MSU]^F;:/P [8 [OLM8GY?/O'#S_</GWZ=/OIQQ_3]A&\\"
+    "Q_N,D[6OPEO:9T662)PHZ\\.'#V7V!@/X_KOO;A\\_?CQD9\" P$52T'OZ=]5L9UMSJ%O[YZZ]_Z,?^VCXDJMAG+\\^VQY8.>F3CK ))#MNP3@J)UI"
+    "8S*)AA'^R4]5F1+)ZPA[9?VP>.^&\"$ H[\"@WE9S][B@_=XGW$8;Z8PQ/9Z+\\Y/0<5>S[#I\"OL\\FXHL<^.,SIX9%,6B4-H)D&U[!3D,?V;M>Y!"
+    "SPI$@]2QBXNCM@2\"L?F<ES57L$77 /K,^VO^1HNUJ.\",D.M;)><KZ[.$*.UU-C\"?H) OH,:; 64E3<V_-NX<]ME4A\"3$1Z=E17UYEGV=3D642)"
+    "X:50;<\"GAQA3S5\",N;=*PZ_@G5;V;T*TGM/-_$0GK''U>RAO6U5X?+/O47;(U!ROR+@*'F><4MY!#&>]/2AKRD$ZZQ]%GQ/XYT=\"V)2J12%6^?@"
+    "#%NNM,^SJ<B2B3-K!U4X65L/W2BN3&Q7)H(K01_2>Z_BUF$[X\\:UHCVD@ZVB3&O>4[0] IV-K1OS4; 3]F(.=)'U60E\\63;M^9CV=%9!I/&N\"OA"
+    "*6,R3M3^*M[S/BBR3.'6CN>)3F(+^U5=_.=,K!!81\"Y9'!9C5[%$IVE;G$;ZGY/P*Q:'B2>\\FJ6((SBB('J6?1YV?+=[Z/BNR3.+4)Y.S?C\\3\\"
+    "7!4;C?TX=#I4X'@WU3SO<\"D_Y3Q\"H%%5 (,.I$>C@:8%>U1T<'**)!5UX\\-T1V?\\:1/_LX9['V^BW[0T_L*5.))O)5F[;.H>*G^5HK=M$[!&#S"
+    "KG3.MF[Y9.V!'V1?_;MMU-GIC;+'2/J^@(LLD3AFY-0:*Y7DER&;HDQU&RMHCS*$ ':L<UJ3U]0*&UDK?K+U'ZUBS9(>C@N;M)1<Y,&3M,ZQH#_TVV"
+    " 99YN?=UB=70^NO^(\"2+/J7[OA3U?VHR)\"_]!+L\"K!&B'[3HN11\\<41^K0(67N+],T:%-L8(_/W#,V5?2K%#QB?<97DXCG1W#\"[]Y7V>14562"
+    ")Q1F-$ _.<P%6MI#/V!)4L>! H*I6/]C%K: 6DO>Q-G'J_$F\".V$&L: \\EX:B#F+1UX%=%Z^]5[R(+I()Q1H$,N_$^=LS:5T %T]8^A>S;%DQ[F\""
+    "D(61-],_]5+.RM&[8*&'PUKD%G5_WX$SNC(]IFX\\8J^[R2BBR1.!4@MSCBV%E0W$)!X4B\"4&!ZI*'W(N>M<D: 6<T>.MQ;G%$L7$FTX2@(@?KNO4"
+    "7KK&+'K'T%%-RKG/%%005A5N2UQ,2^MRC336Y4P.AK$?WQCTIQU&/5?9Y)199(G%O*T2$=.39]M@XR;5\"IQJ.A6=,>8ZM\"FJWDGH$\"3%811J23("
+    "P=.:*Q5[+&5\")101\\5\"]NXCB3K*VEND#]9<L4'+['R@ F@OE=M-I!+<XSXJ!<>(F7./'Z-_^E.8[9E?.AWI1G[,//2M%+_:2_:59M5]GDE%EDB<"
+    "6[<\".7<O8*K/5D5\"&U2#A (IL*[9:G3&L9Y-I9JK!ACT5@G&&FL5>_1TP//>?\"/?.P(^KZ\"1M8MHGZR]A7$)8GIGMB\"9G0^TC[W,!LW15P;0F"
+    "K*BD81!@HEZHE_O3,^>>^904N'/ZGM\"ZZ_H)B:OK+U%:\\K:5M[G653DZ8F30XMBH!I,9]@S-GWCH9GY1#GK6,_D:( !$HO&@9&>J_TB5]I#XZYD+"
+    "]:B8 -9'X%N*OTB,2D#]LMN%QE[YGLDNF%!;T_RB^Q6RG/T+Q]ES)&?[#GWC*O;,3!&M8B1_7@G:X]H[3-G;HN5]WD6%7EZXB3P2J%9^U$T]AZGT6T"
+    "$JC>=/8X%>F\\OL_/% -/3C=;5WJIP?-H@)L^1GBMS;G&V/:XNVF8AT*-']ED]%ZR[TB\\CW@8(KEF?EB/S/8+XA2)K%^J3%8T\\9YSX3/; G^)ST?"
+    ".S$7'-U:*PFE#T<\\S>M;6LNL\\SJ<C3$Z<44SVX(AY@V*I@U+XW,,I1LLHT8Z]CZ;V]S,Y7#<P*K%F B<E+ZQ_I67.N8(_H0]4*&*J^-POC1+UH_-"
+    "BG):XE:Q\\1WZ>8ROI$CLYW-01DUH;=LW:@8- >9F_:6^/V_*R\"XN#6EYT6]:_L4\\ES]),\"?<168;KB/L^F(D]/G#)$+Q\"B/ )X^UR.T4NZ\"O"
+    "QM!1G1S2,+'#)<]7<LW;QZGS]78#; Q(\">(3N.^JUDC\\HA5L!L VS%]X[\"^)\"UB6BC7N+#WEMG3.^W>\\S0K2$[CRN@SY+8-FN'> O+VC.T[ZU"
+    "Q]2ER5-\"QOLSWY6=5O3(/_;?. 6<(O]9Z*V/K'?KR]ZS/:ON\\@HH\\/7&B%-@*I!QFE)PI3D;H&5&&[ATDC9.M00FFF@CI\"Y4@]$QT0'J)<R; 5"
+    "!/G2O88%6T$#P) =L@KOG<4K3UKB[ ^^O5TSUZS D%%2C6083?Z/S*058D_/_3\\2S[8\\_V($DJO2-)9&8U)G\\QG] 6HJE?Y;CP'BI7RV[@6_DU_"
+    "G0/FRW1$G\\Q/Q K[O)J*/#5Q$AA1\"F2!C4\"@ )\\%4;W?4VK%T H&.%T,/GH7I]NJP\"(*IM4@]\"RBWK?V1A\"2[J$7E$$./NJWBCUBD,W\\AW"
+    ";M*0L %=\\[BM:7M44JQ8C&8B_2'7M40,W.5\\8S ED5]A;WF?613P#^C0ZR?A'V//(YXI?&S=HASAWUQW-\\%+(XF*%Q8O]XKADKKE<%)S[\"<_;3"
+    "SJ4ST4MJ*^SS:BKRM,2) 5&@%#,B<W =E)Y2Y0RPY?CTP;$4% 3.)4?+WFN1<VX=VA504FKWV?9K^P\".W_83TEVO#ZQ@#ZK>6!2,R))*S_<R'6_!'"
+    "MOWA?ID;1$%S,R.@CX$Q+AOSA_/1C83Z%WO9N?QF;2^ M@_]HD!/1+[M&!G]%KQ.>EVZ_=!QB\"1L-88^WB/>:HZU:V-]^)S^1W/6[]D;O9!._-G?B"
+    "L_&A5%S][GU53DZ9]JCR #9FT1!;F10QQ%3K):4'D$\"ER5(/P6[-'SO4<G3M!ZKJS,L1=S8+^L_:W!/JM)$Y1XJI\\A]Z(O#%E!=P2=R]$9?O5]CJ"
+    "C(RR9.@B%*[04>H;X$TNHAF.6]!966F<3YZO:8\\;TC, =D;2T*9E>M\"3LI.5]1B*P&Q<],TA324?46/PN%$>,S3]9^A%XQV/+*^QQ1D9=-G!@,Q>"
+    "+@67O+E8$4(Y,$,/)5B6!U9A(GO+(]9GUO+\\P!65O&E16Z;B/8+6M_2V!?_*>]O2N8QV<MZK,GZ8Y@/'UN;==V!HQ;+;Q>>9\\C*O+RB9/?,:B ,?"
+    "@H:.OPGQFL,2R'+#MH[P5^BV#_Z)9D4CU(KVJ//;XW _I380%;OR6UQ(!S9O*\\PDZK@@YUF]HB>R^BV_^92>4JVT;BFK'UJ$AZU7V.J,C+)LZH8 )"
+    "7-4CB# 15WJT&I P\"IG[+8O[W\\/FJA7VS_RVR=UI>T1Y[?:]\"U%\\+<V7O1%B;_E,4-] C:\\,>[!/[O(>;)B@9;%']=$@A15]TQYA[$POO\\3["
+    "C,-Z9!5J+\"B3FJ9[%5]SGB(J\\]'\\.V@M!E>\"\"@?8:FO<)3!@[:S=U;(_S(? 0\"\"O)-@,[8 _T^AZ+PC- AQ0<1XI\"%2^,L_=L7,U;VV=%W"
+    "F7B-,888S(JXL1IC#'&W*F($Z<QQAASIR).G,888\\R=BCAQ&F.,,7<JXL1IC#'&W*G(9N*T6\"P6B\\7R_^+$:;%8+!;+A#AQ6BP6B\\4R(4Z<%HO"
+    "%8K%,B!.GQ6*Q6\"P3XL1IL5@L%LN$.'%:+!:+Q5*6V^V_$-'OMEW_!ST     245.1*Y\"8(("
+  }
+  ResourceRecord {
     Path		    /simulink/resources/mwimg_a83d2c92-fdbc-40d8-90ab-9774487aa9c8.PNG
     Data		    "B5!.1PT*&@H    -24A$4@   :P    \\\" 8    ZV8Y;     7-21T( KLX<Z0    1G04U!  \"QCPO\\804    )<$A9<P  %B4"
     "  !8E 4E2)/   \".E241!5'A>[9T)5(WI'\\=OM-@&80:3;1A9,@PA:PNR9LBNL?Q'F\"&R9C!D&7LB9$NV[(6*5\"<QHD)UM)$ZM.@4U5$ZU3VW>"
@@ -21566,6 +24166,95 @@ MatResources {
     " 0%\" *B_!MP(_&AFY-8;HG\\3,^> *!4)\\A\"HM0*Y2^O0Q'V]G8$<8$W$5XYS4%W2P/(*&L[&L\"@5#O(0J+4 M0R#HW @UY[6!_[PUB+JW%U.D"
     "[\\9]2EAN!0\" H0Q06H7809N'!\\7^P]N^=.!'PFE31)Q (7X0H+ *!0\"!H!41A$0@$ D$K( J+0\" 0\"%H!45@$ H% T J(PB(0\" 2\"5D 4%"
     "H% (!\"T J*P\" 0\"@: 5$(5%(! (!\"T ^#_%,_6$D%-FC@    !)14Y$KD)@@@"
+  }
+  ResourceRecord {
+    Path		    /simulink/resources/mwimg_baba182b-d8d8-4b95-9ed6-f359c74a554a.PNG
+    Data		    "B5!.1PT*&@H    -24A$4@   <L   !D\" 8   #I/QO(     7-21T( KLX<Z0    1G04U!  \"QCPO\\804    )<$A9<P  $G0 "
+    " !)T =YF'W@  !+<241!5'A>[9W?RR3%%887%@P(*X(!87$A@05!,*P@B.9*,)HKP8 Q&# 8 ^9FU8\"YT1@D& P&\"8JYD6 P2)!<F LE-RL:B805"
+    "B>0_FGS/A-<MR].G?TQ-3_<W[X&'W>FJKJZN.GW>JNJ:^<YL;#:;S6:SI6:QM-EL-INMQRR6-IO-9K/UF,729K/9;+8>LUC:;#:;S=9C%DN;S6:SV7"
+    "JL4RS_^\\47QAACS-&0F<72&&.,.2$SBZ4QQAAS0F862V.,,>:$S\"R6QAACS F962R-,<:8$S*S6!ICC#$G9&:Q-,888T[(S&)IC#'&G)\"9Q=*8B"
+    "@_>?W_SJ^>?W]QS]]V;,V?.;+GAAALV/WSXX<TG'W\\<GF.,63^962R-J9!((IA\\1B 12HZ15N<WQIP.,K-8&E.!(\"*.Y3$$4[/,\\K@QYO20F<7"
+    "2F(%8+(TYW61FL31F +S'7.,R[)_?>FOSP/WW;W[VQ!-A^AHIWR4#]QCEFQ/:EW9>0EW,=#*S6!HS  (AFWP0S2A]:5!/B<HS3S_=6^\\W7G]]>W]K"
+    "\"?:(D\\1R\"9NN:%_:F?K0[FOQ$_-5,K-8&M,#01 A^=N[[X;I4U%@C=)V@7I2WR%U)J@S$)#P[$,L]W&?OWOYY6VY%VZY)4P_%&/:WBR/S\"R6QB"
+    "00E/<5^/8A(LRR$) A=6:W+_DDE+ 6L=3,LMZ(M00DF/2#OVJT+C*S6!K3P3Z%$O8A(OJ*B[[V$J$E6H(Y]ZCE0UB+6%)>WWT>$NI%_98HYJ:;S\"R"
+    "6Q@0@&OL42F@M(H@@9?8M32*0S,PTZ^%>.0_6(I:J[S[[9U?H!^KH]Y?K(3.+I9D= K)F!AG1$A;!D=&ZE@_YE\\\\(P&VWW1;.-\"B'V1/I9?E\\Y"
+    "GU='<S(3[F461\\G +82%.K04D0TJQR[\\W5M8EG6MSQ>;OH!^K=,'\\LN?@I]2\\53R^<\\;3A3'OY/64N=::^%S\"R69E;*0)<1S8X0+]((@I3#,"
+    "82N%$%V=9;G$&B47HJ?=G]RO!;+<L-+A*Z]*Y354D1T/V/K5_9)JWLK:7V?6N*,RE1?TQ:[S#K+-LG(9O$J@[ITI?51EZ]G@'N7W_*O!DI=PFR&D9G"
+    "%TLR&9FP\\T!HM*_#US880-_(1#.N1=OG.K4Y3<(F\"\"->N@Q&!1V5U48OK5\"BKE8@@#*I?E)ZQ-K'48*;V&?7=KD*YBY_6< Z4]=FE?/R5?)$/4"
+    "F:]&F+&D9G%TLP&@E<' X(H#W\\](RQ1<*F#CI!81J-\\I2&R==JAH5ZM1$3!-IOI=+$VL91@E#Z#C]#'T6!J+%/]-$)UI7]T;)?RR3.E'F88F5DLS"
+    "<$@J.GASV9K$@)F%%$Z(W32H]EC*03E2'X.RFM/)2HW0H.\"*:*TJUC.>9_ES%\\^P[^MA#)BJ)]&2 3IGR@=QI2O\\A@\\3NDKDY.9Q=(<#$;'>O\""
+    "C=*'1>=<2$T&2]'+T7J*E6*\"LN4;E%LOA1.5&J\"_E,WSF_WT#(40(_Y#8J(PA ZBA?AHQ1\"S'E$]=Y>\\P]P#PM).9Q=(<#):B>.\"[9HQ D%-@"
+    "B$;=97KVGHJ 7@:9OG=#<T ]IHA;Q\"'%LH^6]RF?J<G$\"\"1:&E A, @-Q_KJ-L1/N]!UL_J-+9^ZJ[^! > N[VC--3*S6)J#(?'* DD9R*/T,FA"
+    "$Z34*D'#H]S[4H96(J!VFE+<FL:Q]1O?-\\3IO\"=>G[\\MCB([NNSQ>,\\1/NQ@BEE/+1R\"9C7)NW_V;861FL30'@X<<L@\"=B27!0FEC@K$\"6!"
+    "T\\YV9LO3,D&E/*6Y-8UO4L5Q:F+$?JW\"A-*,^4MI&O94*X2_EEWT4K+V8<F5DLS4$H'_(LR'7EX_^,IA6,ZF55S1JB \")AF;*LUA+JT$I$M F*)"
+    ";DH/:-LXRD!NX]6]]GE\"WJG/7:E0$*;U6VHGW:ANG6]3Q]:/O[=-;C3^5Z*W9W,+);F()1!0L<(\"'6P+F>/&IV3!Z$L-VS4@5+E1YN\"](ZH*X#-"
+    "!75H)99E.T7I&65?U.W?@E;WJ4%.O>2H_AR[4L!@B67,;$96MHV.17[:A<[M$K*AY=-^T4!(@\\(IFX_,U\\G,8FD.0AG<>> 1+H)7-+K6.YT2!49]"
+    "K@.> BM!I P\\FH%1YI290DNH1RNQ!+V_&AK(@7XHVY?Z= 7VJ;2Z3_R#LA\"3\\K@$!S&A3_G<U[_X!^W5=Z]C_+1&]<J$;&CYRH/?*PV?5]]U[10"
+    "WX\\C,8FD.AF8$!#G-&B,(* 1;Y55@*(-D?0Z!A/)UGB\"X<*TAP6[?4)^68DD@I<Q:3\"+*-NFB5=U:E:7!0+9:0![:(1-!?=VD3RC%4#^MT7E],]"
+    "XAY5-G1)0\\Y-6]<FS,X,CD9&:Q-*N%P$+0(&!$Z4N'NK<42[V#RV8RAZ#U?>[\"6*'<!:[#O6?+O&999&:Q-*N% $PP.O2[QR6AV>68&=\"QP QL+"
+    "J'4<G_?K-(LB\\QF%4N-?&MJYU40+!FRM&2.\"XW<O0QU#9:76:J;2Q36 NU\"F]1+N&JOECY$NW,MREW\"<K\\93F:SSRQ+P<P>:);6+)2F\"_Q&_"
+    "A&E'S,*UA;,:Y3Q)**56+KMUTUF!UF&E8-F2Q1Z'P4>G9D:+7/9/V(8E&J%AF?IF-^;=:UHE>S:/IROF$6['W-[KYG,9A=+ IL<-/L2L=Z]+&5C@%D"
+    "6Y4R!Y:Y#_W3=4M$N2J_.[!?:EW:NEWG-NLAL=K%DN4-!+IL1:(NT-RH88XR9@\\QF%TLM5?!]MR@=RMFG-V\\88XR9@\\QF%TN]1\\G>5[*D)K&,T"
+    "EM1SG*G$I5KC#%F?60VNUA*9+*U??VB13;[;('%TAACC,AL5K$LM_L/P9L2C#'&S$5FLXJEMONS>2=*%Q++T[ZS3/=IC#%F.E%\\G4)FLXJEO@[\"%"
+    "NLH'<JET?J[2FS\\T59XOO2K?'Q>XQ> 57]CC#'3B>+K%#*;52SU=9#LMSRU6S::?2H-T=773C1;13RSKZ(88XPQ&9G-)I;EKVAD7P?1;MEH]HE81B"
+    "*JO^DV]FLFWN!CC#%&9#:;6 [].HB65[/99XT$UF)IC#%F*IG-)I;Z.DCV\\W7E;MDQPL=LT\\NPQAAC=B&SV<12[RLSL2Q_'#M*C] Y_FW0<;!1BG"
+    ">_ZA?US=C9^5)8:[W7Q%_>?CL\\WAH&S0RN]7H%\\%/_]*79-YG-(I8$9CD]#T T ^2=9AFXAP0_+:.>]J^8M$;M1E]HQS''M 2^EIW%__G\\\\\\U"
+    "O7WII<^NMMVYNO/'&S8=7KH3YS.Y\\=O7JYOSY\\YL+%RYL?OW\"\"]O/4;X6X(/XHF( /BKAM&\":?9+9WL52.UA+</PZ7YT']+!$$-!YH\"R4XY%"
+    "8UE_-T5+Y&@+2OS[Y9'/QXL7--ZZ[;O/3QQ_??H[RK97R.8 HS]P@D$]=OKPY=^[<YMO?^M;>!B?<;_U<:\\]#MC)U:,K^@BC/,;.&]LELMF78EE@H"
+    "]X,&-F,V5QT\"@O8=ERYMSIX]FPZH2EC-8(?UDH-M\"?6EKO1'-+@\\)']_[[W-]==?OZW7OS_]-,S3&@WPEMQ_2^ZS);\"&]LEL=6))@ULHVT.[MM"
+    "XHI0#7<J;*TNOW[KMO6^XOGGDFS%.#KW!?^PJV^[A/T(]X9']TX%#0IM3MN_?<L^V3*$]+=+VEKWHLN<_&<(P^#9FM3BP)=E%#,VM8^H.T1%B*)1 A"
+    "E+1MO32[\"_MXX%Y_[;5MF7?==5>87L*]:\"0KUB26C+XI=ZD#PQ\\\\]-\"V?KPWCM);H8'<&F9K2^^SH1RK3V>V*K$L=\\M&6\"S'07NI[9AY\\<"
+    "YRZ6+)3(8R^P(TOL(],;\"B'MH\\MB:QI$Q8ZH8KW?>^18P^XQJM5CSVR=+[;\"C'ZM.9K4HLR]VR$6L?S1T*@I#$!5HY<NL'CG=EE,>FGKYW9018K"
+    "E]^YMRUB*7*I#^B]*5P\\\\TW;^OYUW?>\"=-WA<'.6H1R+7TVA&/UZ<Q6N<'G-,.N/Y:4<2I@@,\",CX% )F3,\" DL]8 \"<1CZ?H '@W.&YN^C]"
+    "0/WD\\<>VY9W[[WWAND9:Q-+]45=7RUC\"7RC3!\\# L1U\\*NRS)KL&C]^]-%MG@<??#!,AZF^2=I:A!+FZ#.AOJO+YC/Q8]<5HK7Z]*YD9K%<$ 0"
+    "'G*5T=IRV#&91X$! R4,P(C_'R*=E:X[7YT3H 6DE**T?.-Y34M[/GWPR3,_@GEK>6\\D^ HL&3'69]\"O'85<A49OTD:W8_.;%%[=YOG/[[6'Z5-_"
+    "DOG>]O[F9H\\^ \\R4P9=\\PT%:L6*)8SM4^NY\"9Q7(A,)K\"6:*1MH(:CE2G@40V\"FHX:%TF^3A>'M/QKCI,H?4#QW?[*._YYYX+TS/6)I8*>O4"
+    "O4ZF/=@TJU)5K2,! UQQ3[A_?>&-[#LNQ4?I8WP3J1%WJ510^4U9Y;$GLN\\]$]IPR\"!DZ.,Y8HT^W(#.+Y0*08^+DD;,HT'>)F-*'+E_P *@\\78"
+    "\\Z<'T<>M=1J6C]P/'=/LK[_2NOA.D9:Q)+VI_RH/0'S=*Z_& ,\"%4I1KJ'K@%9%[RK5%VC]+&^R?WBARHS(CKOT,S19T+/[]B^&L,:?;H%F5DL%X"
+    "\"6)Q@51ND*'M'H'/3P9&64X* X)P^;SN,:'!LKE.6UIS!4O/B%'IW#@QSER=A5+.>Z3]!(FS[1,>YYGT$E6]G(^,<''WQYC_R_3A_KF[KW+LHVZ>."
+    "T]IF$#\"B[%)\\QG':?GD)F%LL#4XZX(J'B05!Z.1.HP>&4#R?.\\K9DK@?NGQ]]].4Y?WKSS3!/!M<9<[V:.0.+^I)!%/VO:_>)#<M;G$M TG49$-"
+    "7+7A$:. T1M)(^L833[ILPM<]H\"P8J]<\"5\\Z/\\HAQ4D'](']>LH7U$>4Z4WHK,+)8')AIQ1>F,P*+T$O*23_GY'.6;\"XV ^Q[\\H?\"5$<H[["
+    "<NP9> LX3I1?E =.%>#+HW<^\\X=.B\"+*)=ALU_R69IOMF9*GP%Y: _EH^]45I\\_<4YYW:%+W4.@[\"%U&,K4]@'J(-^!*$\\K,K-8'A@< 0?H\""
+    "N)C@SR!3XZ)@XU=5FU)ZP>.OWA!>:=Y@T\\I7 HDJGL6#%6'NK^UO)K5C5F)KAFE9VB#SS=ONBE,+UF2;[9D:I\\!>>J!@_ICJ*^6,_<I,\\R()?@T"
+    " S<F$=S?+CXZALPLE@<F$TN6*.0@8YP6Y]1([) C^)8/'-QYYYW;\\D[S5T=4%N@8?<AGA*;,.P3Y5U8WY9G2-OKJR-\"Z+<4W6]*ZSU3>F/Z0?R,L"
+    "4?I8EN#3^ KGZG-=QC[(S&)Y8!2H:J=A5,4QO7^*1HP<ZUJ^U<,S]AU42UH^</\"C1Q[9EG>:?Y0@\\@=F8!P# DB9OP_-.LJ@4Z.VF;*,IQ\\E^/X"
+    "##WSE^-)]LR6M^TQ\"4OL3Y7 \\FI&K#KP3K-.FL$2?5OXHK16962P/3#E[5$#C86'TC6 J+7(H.6'T\\.\"8I(U]!]62UF*I]V-#?NZN9BUBV25<Z"
+    "L\\QLS'Y3Y\\(ZIJJ/_XT-.CJY^Y8CBV/+]TW6]*RSWC.&624PB+D9U%Y7)NT5@.0)?HT>2%*:T5F%LL#0S#1LE0)#B2'[1NAXW0*2CQLFDVT6I*92"
+    "FNQ!'XIAC*'_J4+VJ,<D !M.W0T.X26]RE?J%<2)#X2,>XI$S3NC[*&^ #E4#;!##_\"KZ*5C!K=]_GSY[^6MG3?;$FK/@/:C3:+_%/E<3W:7L?EWU"
+    "WG36&)/DU>B-):D9G%<@%HR0I'X&'1@R!GZ@HLY\"--(S1!&6-&L_NBY0,GN\"_*[/L376J[/LJ@,Y56]UFN)-0S,H*@! A?0=BZ B/'\\8FA@L1UY"
+    "7\\$JZ$S/OV)KJ<N7_Y:VM)]LQ6M^@S47EUY*)\\R5*;@''PO*WLL2_-I4#E16BLRLU@N&#D2(ZXH?>GL0RP_NWIU<\\>E2]MR?_GLLV&>N=G'?4Z%"
+    "8#-&**?RAU=?W=XS/T'(#T9$><QP^H1R;I;DTX+Z0)36BLPLE@M&SC%TI'\\L\\+[RXL6+F[-GS^[M3T.M%098^Q9*?GS@W+ESV_>5'UZY$N8QPT&0"
+    "EB242\\5B:4+*Y8LH_=@A2/.]2X(V,\\SL\"_''0E?0964\"$2V/385WQ7RG$OC[HE$>,QQF<+S3JP?$>O[+8\\>.Q=*$Z*5]JR!W&F%)%J$D<#/3/"
+    ".;EP')P%;&K'S$88?F;P0G?<_72Z^XPJ-&[XBZB\\XX-VDGQ$(9L/IM*9A;+A<)&\"QR#F4*4;JY!(#]-FT:FP-*K@DE$BZ59?F:0 4J49L:CS6I=("
+    "*31><=$U\"YB'Q.)S\"R6\"T7;K0'!K'>2&6.,:4MF%DMCC#'FA,PLEL888\\P)F5DLC3'&F!,RLU@:8XPQ)V1FL33&&&-.R,QB:8PQQIR06:=8VFP"
+    "VF\\UF^[]9+&TVF\\UFZS&+I<UFL]EL/6:QM-EL-INMQRR6-IO-9K/UF,729K/9;+8>LUC:;#:;S=9C%DN;S6:SV7K,8FFSV6PV6X]9+&TVF\\UFZS"
+    "&+I<UFL]EL/6:QM-EL-ILMM<WF?ZHGC'A%)-D\"     $E%3D2N0F\"\""
+  }
+  ResourceRecord {
+    Path		    /simulink/resources/mwimg_cd476934-4c77-4c08-9998-924f7abee41c.PNG
+    Data		    "B5!.1PT*&@H    -24A$4@   3X    [\" 8   #B@N8W     7-21T( KLX<Z0    1G04U!  \"QCPO\\804    )<$A9<P  $G0 "
+    " !)T =YF'W@   ;;241!5'A>[9I-DM1&$(7G!)P 7X ;X /@$^ +X#W>XSU>$U[C+>$MWA.^ .$;-?&-XWG*Y=3/9*LTRM9[$5_ 3*G54E;FRU)I[B"
+    "Z695DGDXW/LJS3R<9G6=;I9..S+.MTLO%9EG4ZV?@LRSJ=;'R699U.JXSO[Z]?C3'FD&1DXS/&E\"8C&Y\\QIC09V?B,,:7)R,9GC\"E-1C8^8TQI,"
+    "K+Q&6-*DY&-SQA3FHQL?,:8TF1DXS/&E\"8C&Y\\QIC09V?B,,:7)R,9G2O#GY\\^7'U^_OGS_\\F4X;HX#<\\1<,6?1^-9D= CC(TAW=W>7G]^^#<"
+    "?->?GKRY?+3V_>W.?'#Z]>7?[X]\"D\\SAP'YHBY8LZ8.^8P.FXK,CJ$\\1$@$8V;<T+!O'CQXCXO?GW_/CS&'!?FC+EC#D>:7T9>\\9G#HE6#3:\\"
+    "N,C_F,AK?@HR\\QV<.R1X%8_9A= /+R,9G#LEWSY_?%\\M>&^1F',PA<\\F<1N/7DM&3&A\\!8?-320[L!]SB!O;O'S_>O^W2?4XQM1?RR[MW_^YW "
+    "?]G:P\">/7L6?J8J[=Y0--Y\"7!67:'6H^,!O'S[\\;_SL4(-:D5&'??X1,]7G-5M1FJ,1J[Z,GLSX\" #)2$!D=!0WP=FRD)DLSIEEBS^?H#BC<_="
+    "$';'=X.=>E)@R!UAC$)50(2X56AL#T8YK[UCX3V'^\"W5'K;4Q(E<UOA3?QZ Z'+%UD=&3&)\\\"2L'V'48!WFK5]]3&Q_V17!2A[E4&SVJW/[YGKE"
+    "/J&CEW/U89%6-;A#VL1#B.8]K&HG&MD%G1D$N,V?@>(\"[$CSCQL^*GF,L4^9F\\U:JO/<=CT!QQSFC\\&C+:W?CTO$\\ ^'\\T=DV CP8%VAN<'GF"
+    "7'KV6NJ1B%9EB5612T.='\"\\6HYA@5%9_5N/)*16[^028'BKEB1GS;<8SOFM5:6]OZCJW(:'?CTV-,M-K1H\\F:E5!52\"@EP%QA X4\\E2CM>;9."
+    "I B9=9:EQU8A$X-H/$)/$%,K.AH,XTOQ/@IM#+)$YYVB-:5H7+EV;8/5=[2&N@49[6I\\4;$2!#JQEM*8'L?UG]7JIWK75A$N+?E5S-&^'ZPYCPIHB"
+    "WV5(QN?<F.J87+_T7; EO'9DC8&6:+S3J'OF]HK5GU&8WQN*9>%KHWOB\\:S9+2K\\:F86P@V147RSG5D%=X>JYN14)S<QU*Q:?4[M7^G\\:E5#E1L"
+    "%AGC4VY$YJKS1;DU,CY\\+[D=7=/14!RB7&(1@K%%JSW%=FWCX%@XG?'-!7@4^LXL6U^K7E8L%<1<,2L9UYRG&AGC4TS[@B).>YL/C5ES5V5^U(RC:"
+    "Z7!;E4#BHF-;P?TG5FVOE:==VGRYXR/#KOV/-7(&)^.[Y\\&B!/&U_YN)!@(CX2LCC1'%8Q/N=:O?/F9!KO5WJCFR<;70<+T8YH4F-K#J4);U-$^9H"
+    "ONN[]G%956?'/[H;!GX6\\!YJ5K7U-PW+^.;W]'_(C1GO%A?O5]^HX*QA>MF+4*C$RJS6.(8MS3OD#9>KLJHUV-3QORT'87 JD.&>TE:&SISS^.3IL"
+    "P^AT)%B67[ID5!$E#<E%$%'-K#CJ>\\[1&07P9K]@L9.I17'K:F!(C\\H>8*4[19V!T?\"H9G^)'?1%/-=VH%H5R<&WCT#PQ+]'X-62TJ_&!NDO$5*"
+    " U$5LMN9^*UK H4HH/@XLZ9MLDA(JY[9XZ3_\\21(4WE[Q'1::_QC2X?\\5\"D&-+N3(Z/I6,KZ])\\FRIZ<C(IEZ^]2@>S&TT?@T9[6Y\\)\"K!4E"
+    "?G7WZ>2U1U\\&BL&GJ$X)Z6BH)QQ8F$:5<P[7G:U;,@IHS/K7J.\"F;$M:]=3<@H.7ZMD8V.3R7CT^I7.1DUXA[-491[$3+7$8TFH]V-[[%H=3.B4]"
+    "PRU9L%U\\^\\CS*FN?CPO6N96AE5,KX,CVD<',.QQ#P:OY:,#F]\\ZBRWFD C4+-@BR :KX#F?<0]+,6'L;6<U?C4F**Q'JW(1ZSV(*/#&Y\\ZR]*>"
+    "@WG@5IK%J(+9(SZW;'R/::R*]<@GMHP.;WQZL1&-F1@57?5FP5[3B+VA/>)SR\\9'W-;<FTR/.5RS;Y@EHS+&1^#T%C0ZSCR@HM.?)XQ.O)%PW7J1P"
+    "]QOL><W.CY<HPR;:YY[<5<1&1_SPKU1HVT3X?ZU6N>8T;F749D]/C:B;[%[CH#$T]M@M@JJFEX+A<6]K'F\\6F)4?&2H4[3F4!GB)6-G/OIFQ.^(ZU"
+    "[WF]'AC<\\88^;(R,9GC\"E-1C8^8TQI,K+Q&6-*DY&-SQA3FHQL?,:8TF2TRO@LR[)N238^R[).)QN?95FGDXW/LJS3R<9G6=;I9..S+.MTLO%9EG"
+    "4ZV?@LRSJ=;'R699U,E\\LW6,E4F*V-!SD     245.1*Y\"8(("
   }
   ResourceRecord {
     Path		    /simulink/resources/mwimg_d2be3898-b64c-4a4a-a1b9-b025765f5e05.PNG
@@ -21770,6 +24459,21 @@ MatResources {
     "*.40\" 0\" 0\"@4 @$ AF@QBE! *!0\" 0\" 0\"@4 P&\\0H)1 (! *!0\" 0\" 2\"V2!&*8% (! (! *!0\" 0S 8Q2@D$ H% (! (! *!8#:("
     "44H@$ @$ H% (! (!+-!C%(\"@4 @$ @$ H% ()@)X/_PSB8_$O_VF     !)14Y$KD)@@@"
   }
+  ResourceRecord {
+    Path		    /simulink/resources/mwimg_db0b61b4-0c81-407a-825f-17075faf8b38.PNG
+    Data		    "B5!.1PT*&@H    -24A$4@   (T    Z\" 8   \"-D=IH     7-21T( KLX<Z0    1G04U!  \"QCPO\\804    )<$A9<P  $G0"
+    "  !)T =YF'W@   -L241!5'A>[9E!3AM!%$1] I^ 7, W( <@)R 7('NR)WNR1EF3+<J6[%$N@'*C036H2'G48__&_:T>ITIZPG9[8/K[]9\\>LQH<"
+    "IS*6QJF.I7&J8VF<ZE@:ISJ6QJF.I7&JLR7-W^=G8XIH+(T)H;$T)H3&TI@0&DMC0F@LC0FAL30FA,;2F! :2V-\":\"R-\":&Q-\":$QM*8$!I+8T"
+    ")H+(T)H;$T)H3&TI@0&DMC0F@LC0FA29'FS]/3\\.7J:EBOUR,_[^^WQG\\]/ P?S\\^'U6HU_M0Q\\\\JWFYOAP]G96\",\\UC'4]_/EY3B&]_Q^?"
+    "-P:ST#37!I,:+/9C!,B7Z^OW\\8A#$32\\:E4_SL4@NC\"VE??+#3-I<&$,&E,CMV$D\\)K6!E<.9\\N+L9Q2_,/=&C4$-T#=4-]5!K4C/5%'4]\"&"
+    "A6 TFA[_7%W]_88DT?7X7/SVHDA!!Y3&HC\"<=27X]]O;\\=Q',/Q+#2I&V%>D^<Z\";M2::Q'N C>2VU'X&5J[CAT)=2X--8:3:HT+!97AH+5@;'2"
+    ")HX?SC%64 W'EH9_3[NS@BZ-;C-]G1UJNH$^!$V:-.@N+%9I' 69ZS(X)NNRA2*7[NAZA/4KG2O$F.LR&8M.DR8-5@=.'!.8CO&#*W6@+' ^O%S.?1"
+    " ]@=KP7*=CD.'8XFO2I&&+U$T<X&5IKN6V!L6'N$#%Z5T:G!_.<]IQ,1_, ?L9?3T;39HTF!0FK==Q=IBY:SO>3UI*I;^+K;MW:7#..$_MU%AP$*;4"
+    "O0'G!EI+I4F3AA/ R6.SRSN!77=+7$5X7]:E:RG2L%/C#A.UP',L.#XO'0/XW5?K3JY)[S1*9#>/]T&<TE@+EB(-.XV\"!;=O,7%^K?^UH$F3!A\\*"
+    "5@; 9\".3P'LPX>D^J\"5+D4:[+NH1/5\\<,]T'M4\"3)LU[X#><I8[$=AT!8DR/)TN1YCUD+CI-5])PWU/Z0\"W-?KCHYFXT#D'3E31LQZ6Q5IRR-"
+    "+L6W:%HNI(&$][5)5IPRM)P;J6Q0]%T)PUO*;%J6O[O!.\".!)M$_!VT\\'UW(DN#TF!>J%W+O8VFRST-+E,MOV=@,><H';-$N*?!PFB]K]%T)8WI%"
+    "XVE,2$TEL:$T%@:$T)C:4P(C:4Q(31;TCA.));&J8ZE<:IC:9SJ6!JG.I;&J8ZE<:IC:9S*#,,+>>8&C^AI'P@     245.1*Y\"8(("
+  }
 }
 #Finite State Machines
 #
@@ -21783,7 +24487,7 @@ Stateflow {
     created		    "15-Oct-2017 01:42:55"
     isLibrary		    0
     sfVersion		    80000011
-    firstTarget		    18
+    firstTarget		    34
   }
   chart {
     id			    2
@@ -22089,8 +24793,312 @@ Stateflow {
     name		    "               ACC Based On DIstance           "
     chart		    10
   }
-  target {
+  chart {
     id			    18
+    machine		    1
+    name		    "               ACC Based On DIstance              "
+    windowPosition	    [485 158 257 428]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1920 1080 1.611111111111111]
+    treeNode		    [0 19 0 0]
+    viewObj		    18
+    ssIdHighWaterMark	    16
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    chartFileNumber	    3
+    disableImplicitCasting  1
+    eml {
+      name		      "acc"
+    }
+    firstData		    20
+    firstTransition	    24
+    firstJunction	    23
+  }
+  state {
+    id			    19
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    18
+    treeNode		    [18 0 0 0]
+    superState		    SUBCHART
+    subviewer		    18
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function [Throttle_Angle_err,Pmc_err] = acc(ei)\n\nif ei > 0\n    Throttle_Angle_err =  1;\n    P"
+      "mc_err = 0;\nelse \n    Throttle_Angle_err =  0;\n    Pmc_err =  1; \nend\n\nend\n\n\n"
+      editorLayout	      "100 M4x1[10 5 700 500]"
+    }
+  }
+  data {
+    id			    20
+    ssIdNumber		    15
+    name		    "ei"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [18 0 21]
+  }
+  data {
+    id			    21
+    ssIdNumber		    5
+    name		    "Throttle_Angle_err"
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [18 20 22]
+  }
+  data {
+    id			    22
+    ssIdNumber		    16
+    name		    "Pmc_err"
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [18 21 0]
+  }
+  junction {
+    id			    23
+    position		    [23.5747 49.5747 7]
+    chart		    18
+    subviewer		    18
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+    linkNode		    [18 0 0]
+  }
+  transition {
+    id			    24
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [28.125 13.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      23
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    18
+    dataLimits		    [21.175 25.975 14.625 42.575]
+    subviewer		    18
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
+    linkNode		    [18 0 0]
+  }
+  instance {
+    id			    25
+    machine		    1
+    name		    "               ACC Based On DIstance              "
+    chart		    18
+  }
+  chart {
+    id			    26
+    machine		    1
+    name		    "               ACC Based On DIstance             "
+    windowPosition	    [485 158 257 428]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1920 1080 1.611111111111111]
+    treeNode		    [0 27 0 0]
+    viewObj		    26
+    ssIdHighWaterMark	    16
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    chartFileNumber	    4
+    disableImplicitCasting  1
+    eml {
+      name		      "acc"
+    }
+    firstData		    28
+    firstTransition	    32
+    firstJunction	    31
+  }
+  state {
+    id			    27
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    26
+    treeNode		    [26 0 0 0]
+    superState		    SUBCHART
+    subviewer		    26
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function [Throttle_Angle_err,Pmc_err] = acc(ei)\n\nif ei > 0\n    Throttle_Angle_err =  1;\n    P"
+      "mc_err = 0;\nelse \n    Throttle_Angle_err =  0;\n    Pmc_err =  1; \nend\n\nend\n\n\n"
+      editorLayout	      "100 M4x1[10 5 700 500]"
+    }
+  }
+  data {
+    id			    28
+    ssIdNumber		    15
+    name		    "ei"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [26 0 29]
+  }
+  data {
+    id			    29
+    ssIdNumber		    5
+    name		    "Throttle_Angle_err"
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [26 28 30]
+  }
+  data {
+    id			    30
+    ssIdNumber		    16
+    name		    "Pmc_err"
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [26 29 0]
+  }
+  junction {
+    id			    31
+    position		    [23.5747 49.5747 7]
+    chart		    26
+    subviewer		    26
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+    linkNode		    [26 0 0]
+  }
+  transition {
+    id			    32
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [28.125 13.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      31
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    26
+    dataLimits		    [21.175 25.975 14.625 42.575]
+    subviewer		    26
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
+    linkNode		    [26 0 0]
+  }
+  instance {
+    id			    33
+    machine		    1
+    name		    "               ACC Based On DIstance             "
+    chart		    26
+  }
+  target {
+    id			    34
     machine		    1
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
