@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.427"
+    ComputedModelVersion    "1.431"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -76,12 +76,12 @@ Model {
 	Dimension		4
 	Object {
 	  $ObjectID		  6
-	  IsActive		  [1]
+	  IsActive		  [0]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1685.0, 724.0]
 	  ZoomFactor		  [1.25]
-	  Offset		  [67.7663583908595, -82.890421055907638]
+	  Offset		  [399.4123118691316, 339.82079352067865]
 	}
 	Object {
 	  $ObjectID		  7
@@ -94,12 +94,12 @@ Model {
 	}
 	Object {
 	  $ObjectID		  8
-	  IsActive		  [0]
+	  IsActive		  [1]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "2839"
-	  Extents		  [1920.0, 1080.0]
+	  Extents		  [1685.0, 724.0]
 	  ZoomFactor		  [1.4097186700767264]
-	  Offset		  [-188.33889695210434, 64.005304828838234]
+	  Offset		  [-188.33889695210422, 64.005304828838234]
 	}
 	Object {
 	  $ObjectID		  9
@@ -108,7 +108,7 @@ Model {
 	  LoadSaveID		  "1572"
 	  Extents		  [1920.0, 1080.0]
 	  ZoomFactor		  [1.4999999999999998]
-	  Offset		  [394.15374177837327, -52.984580592791417]
+	  Offset		  [394.15374177837316, -52.984580592791417]
 	}
 	PropName		"EditorsInfo"
       }
@@ -144,9 +144,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "edward"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Nov 26 18:31:48 2017"
-  RTWModifiedTimeStamp	  433621906
-  ModelVersionFormat	  "1.%<AutoIncrement:427>"
+  LastModifiedDate	  "Sun Nov 26 18:37:44 2017"
+  RTWModifiedTimeStamp	  433622263
+  ModelVersionFormat	  "1.%<AutoIncrement:431>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1398,7 +1398,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "3030"
+    SIDHighWatermark	    "3031"
     Block {
       BlockType		      Reference
       Name		      " "
@@ -20986,7 +20986,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "Constant1"
 	  SID			  "3017"
-	  Position		  [410, 350, 430, 370]
+	  Position		  [410, 385, 430, 405]
 	  ZOrder		  119
 	  BlockRotation		  270
 	  ShowName		  off
@@ -21012,7 +21012,7 @@ Model {
 	  BlockType		  Gain
 	  Name			  "Gain1"
 	  SID			  "2818"
-	  Position		  [200, 185, 230, 215]
+	  Position		  [215, 185, 245, 215]
 	  ZOrder		  87
 	  ShowName		  off
 	  Gain			  "-k2"
@@ -21024,7 +21024,7 @@ Model {
 	  BlockType		  Gain
 	  Name			  "Gain2"
 	  SID			  "2819"
-	  Position		  [200, 250, 230, 280]
+	  Position		  [215, 250, 245, 280]
 	  ZOrder		  88
 	  ShowName		  off
 	  Gain			  "-k1"
@@ -21274,7 +21274,7 @@ Model {
 	  ZOrder		  457
 	  SrcBlock		  "Gain1"
 	  SrcPort		  1
-	  Points		  [30, 0]
+	  Points		  [15, 0]
 	  DstBlock		  "Sum6"
 	  DstPort		  1
 	}
@@ -21282,7 +21282,7 @@ Model {
 	  ZOrder		  459
 	  SrcBlock		  "Gain2"
 	  SrcPort		  1
-	  Points		  [30, 0]
+	  Points		  [15, 0]
 	  DstBlock		  "Sum6"
 	  DstPort		  2
 	}
@@ -21452,6 +21452,22 @@ Model {
 	    DstBlock		    "dist_gap"
 	    DstPort		    1
 	  }
+	}
+	Annotation {
+	  SID			  "3031"
+	  Name			  "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html"
+	  "><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</styl"
+	  "e></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n<p style=\""
+	  " margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-he"
+	  "ight:100%;\"><span style=\" font-weight:600; color:#c00000;\">init distance between Lead &amp; 1st Vehicle</span></"
+	  "p></body></html>"
+	  Position		  [442, 388, 635, 402]
+	  InternalMargins	  [0, 0, 0, 0]
+	  FixedHeight		  off
+	  FixedWidth		  off
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  Interpreter		  "rich"
 	}
 	Annotation {
 	  SID			  "2883"
