@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- 
+	javascript ==> 소프트웨어융합최신기술, part3_1 javascript를 사용해 서울에서 부산까지 차량 네이버게이션 웨이포인트를 찍어주는 코드
+-->
+<html>
+	<head>
+		<style>
+#map {
+	height: 800px;
+	width: 100%;
+}
+		</style>
+	</head>
+	<body>
+		<input type="file" name="file" id="file">
+
+		<h3>Software Convergence Technology Part3_1</h3>
+		<div id="map"></div>
+		<script>
+
+function initMap() {
+	var center = {lat: 37.565, lng: 126.995};
+
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 11,
+		center: center
+	});
+
+	var CoordinatePair = [];
+
+	// file Input에 파일을 넣은 경우 실행되는 함수
+	document.getElementById('file').onchange = function(){
+		var file = this.files[0];
+		var reader = new FileReader();
+
+		reader.onload = function(progressEvent){
+			// By lines
+			var lines = this.result.split('\n');
+
+			// 파일의 첫째줄을 콘솔에 찍어주는 명령어
+			console.log(lines[0]);
+
+			for(var i=0 ; i < lines.length-1 ; i++){
+				// 정규표현식을 사용해 line에서 Coordinate와 Name을 분리한다
+				var re = /(.+);/g;
+				var re2 = /(\d+.\d+,\d+.\d+)/g;
+
+				var name = re.exec(lines[i]);
+				var coord = lines[i].match(re2);
+
+				//console.log(coord);
+				var tmpCoordinates = [];
+
+				// 루프를 돌면서 tmpCoordinates 객체에 좌표를 넣어준다
+				for(var j=0; j < coord.length ; j++){
+					//console.log(coord.length);
+					var latlon = coord[j].split(',');
+					//console.log(latlon);
+					if(latlon == '') continue;
+
+					tmpCoordinates.push(
+							{lat:parseFloat(latlon[1]), lng:parseFloat(latlon[0])},
+							);
+				}
+				//console.log(tmpCoordinates);
+				// 위 정보를 토대로 Polyline을 그리는 객체
+				var NavigationPath = new google.maps.Polyline({
+					path: tmpCoordinates,
+					geodesic: true,
+					strokeColor: 'green',
+					strokeOpacity: 1.0,
+					strokeWeight: 2
+				});
+
+				// Polyline을 그린다
+				NavigationPath.setMap(map);
+			}
+
+			// 출발지와 도착지의 마커를 그린다
+			var myLatLng1 = {lat: 37.563, lng: 126.982};
+			var myLatLng2 = {lat: 35.177, lng: 129.075};
+			
+			var marker_departure = new google.maps.Marker({
+				position: myLatLng1,
+				map: map,
+				title: '출발지'
+			});
+
+			var marker_destination = new google.maps.Marker({
+				position: myLatLng2,
+				map: map,
+				title: '도착지'
+			});
+		};
+		reader.readAsText(file);
+	};
+}
+
+		</script>
+		<script async defer
+	   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqWxzu4_FiVvO_BaZe915SJGRPxaaauBM&callback=initMap">
+		</script>
+	</body>
+</html>

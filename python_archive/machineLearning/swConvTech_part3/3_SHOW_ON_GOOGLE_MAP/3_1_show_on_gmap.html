@@ -17,12 +17,13 @@
 		<h3>Software Convergence Technology Part3_1</h3>
 		<div id="map"></div>
 		<script>
-		function initMap() {
-			var center = {lat: 37.363, lng: 126.344};
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 10,
-				center: center
-			});
+
+function initMap() {
+	var center = {lat: 37.565, lng: 126.895};
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 13,
+		center: center
+	});
 
 	// file Input에 파일을 넣은 경우 실행되는 함수
 	document.getElementById('file').onchange = function(){
@@ -37,9 +38,7 @@
 			console.log(lines[0]);
 
 			for(var i=0 ; i < lines.length ; i++){
-
 				var tmpCoordinates = [];
-
 				// 정규표현식을 사용해 line에서 Coordinate와 Congestion을 분리한다
 				var re = /&path=color:\w+\|weight:5\|(\d+\.\d+\,\d+\.\d+\|\d+\.\d+\,\d+\.\d+)/g;
 				var re2 = /color:(\w+)/g;
@@ -95,6 +94,7 @@
 		reader.readAsText(file);
 	};
 }
+
 		</script>
 		<script async defer
 	   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqWxzu4_FiVvO_BaZe915SJGRPxaaauBM&callback=initMap">
