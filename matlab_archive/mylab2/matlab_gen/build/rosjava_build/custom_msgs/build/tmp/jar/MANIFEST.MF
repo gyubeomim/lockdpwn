@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Export-Package: custom_msgs;version="1.1.01";uses:="org.ros.internal.m
+ essage,std_msgs"
+Bundle-Version: 1.1.01
+Tool: Bnd-2.1.0.20130426-122213
+Bundle-Name: custom_msgs
+Bnd-LastModified: 1511770716619
+Created-By: 1.7.0_60 (Oracle Corporation)
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.ros.rosjava_messages.custom_msgs
+Import-Package: org.ros.internal.message,std_msgs;version="[0.5,1)"
+
