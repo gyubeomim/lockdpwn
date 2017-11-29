@@ -32,11 +32,11 @@ D = 0;
 
 
 %%
-P_K = [-10+3i -10-3i -10 -10];  % Pole for State Feedback
-P_L = [-20+2i 20-2i -30 -30] ;     % Pole for Observer
+P_K = [-10 -10 -15 -115];                % Pole for State Feedback
+P_L = [-35+2i -35-2i -30+0.5i -30-0.5i] ;     % Pole for Observer
 
-K = acker(A, B, P_K); %% [-10+10i -10-10i -10 -10] ,[-1.5+1.5i -1.5-1.5i -15 -15]
-L = acker(A', C', P_L); %% [-20+2i 20-2i -30 -30 ],[-3+5.5i -3-5.5i -20 -20 ]
+K = acker(A, B, P_K); 
+L = acker(A', C', P_L); 
 L = L';
 
 

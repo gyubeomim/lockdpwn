@@ -1,18 +1,30 @@
 Model {
   Name			  "test_ed_cs"
-  Version		  8.3
-  MdlSubVersion		  0
+  Version		  8.9
   SavedCharacterEncoding  "windows-949"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.72"
+    ComputedModelVersion    "1.74"
     NumModelReferences	    0
     NumTestPointedSignals   0
+    NumProvidedFunctions    0
+    NumRequiredFunctions    0
+    NumResetEvents	    0
+    HasInitializeEvent	    0
+    HasTerminateEvent	    0
+    IsExportFunctionModel   0
+    NumParameterArguments   0
+    OrderedModelArguments   1
   }
+  LogicAnalyzerGraphicalSettings ""
+  LogicAnalyzerPlugin	  "on"
+  LogicAnalyzerSignalOrdering ""
+  DiagnosticSuppressor	  "on"
+  SuppressorTable	  "22 serialization::archive 11 0 6 0 0 0 8 0"
+  SLCCPlugin		  "on"
   PreLoadFcn		  "check_NUTS_defined;\n\nassignin('base',['model_closed_' bdroot],false);"
-  SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
   DisableAllScopes	  off
@@ -25,6 +37,7 @@ Model {
   CloseFcn		  "evalin('base',['clear model_closed_' bdroot]);"
   InitFcn		  "PreScanExperimentInitFcn(bdroot)"
   StopFcn		  "PreScanExperimentStopFcn(bdroot)"
+  LastSavedArchitecture	  "win64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -34,7 +47,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [832.0, 7.0, 951.0, 793.0]
+      Location		      [172.0, 7.0, 1288.0, 793.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -57,22 +70,46 @@ Model {
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
 	ViewObjType		"SimulinkSubsys"
-	LoadSaveID		"4"
-	Extents			[901.0, 620.0]
-	ZoomFactor		[1.25]
-	Offset			[94.668729515827337, 392.78144995532364]
+	LoadSaveID		"368"
+	Extents			[1547.0, 776.0]
+	ZoomFactor		[0.99999999999999978]
+	Offset			[-197.66732273601622, 428.13902880781495]
       }
+      Object {
+	$PropName		"DockComponentsInfo"
+	$ObjectID		6
+	$ClassName		"Simulink.DockComponentInfo"
+	Type			"GLUE2:PropertyInspector"
+	ID			"Property Inspector"
+	Visible			[0]
+	CreateCallback		""
+	UserData		""
+	Floating		[0]
+	DockPosition		"Right"
+	Width			[512]
+	Height			[384]
+      }
+      WindowState	      "AAAA/wAAAAD9AAAAAgAAAAAAAAC9AAAB+PwCAAAAA/sAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAA"
+      "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
+      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAAB4AP///wAAAAEAAAAAAAAAAPwCA"
+      "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
+      "QBjAHQAbwByAAAAAAD/////AAAANAD///8AAAY4AAADTQAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
+      "////wEAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/"
+      "////wEAAACR/////wAAAAAAAAAA/////wEAAAEE/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAGV/////wAAAAAAAAAA/"
+      "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAPG/////wAAAAAAAAAA/"
+      "////wEAAAP+/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA"
     }
   }
+  HideAutomaticNames	  on
   Created		  "Fri Mar 09 16:06:35 2007"
   Creator		  "PRESCAN"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "IVDL"
+  LastModifiedBy	  "edward"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Nov 23 20:19:47 2017"
-  RTWModifiedTimeStamp	  433369183
-  ModelVersionFormat	  "1.%<AutoIncrement:72>"
+  LastModifiedDate	  "Tue Nov 28 20:42:15 2017"
+  RTWModifiedTimeStamp	  433792970
+  ModelVersionFormat	  "1.%<AutoIncrement:74>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -80,6 +117,11 @@ Model {
   WideLines		  off
   ShowLineDimensions	  off
   ShowPortDataTypes	  off
+  PortDataTypeDisplayFormat "AliasTypeOnly"
+  ShowEditTimeErrors	  on
+  ShowEditTimeWarnings	  on
+  ShowEditTimeAdvisorChecks off
+  ShowPortUnits		  off
   ShowDesignRanges	  off
   ShowLoopsOnError	  on
   IgnoreBidirectionalLines off
@@ -88,16 +130,21 @@ Model {
   ShowSignalResolutionIcons on
   ShowViewerIcons	  on
   SortedOrder		  off
+  VariantCondition	  off
   ExecutionContextIcon	  off
   ShowLinearizationAnnotations on
+  ShowVisualizeInsertedRTB on
+  ShowMarkup		  on
   BlockNameDataTip	  off
   BlockParametersDataTip  off
   BlockDescriptionStringDataTip	off
   ToolBar		  on
   StatusBar		  on
   BrowserShowLibraryLinks off
+  FunctionConnectors	  off
   BrowserLookUnderMasks	  off
   SimulationMode	  "normal"
+  VisualizeLoggedSignalsWhenLoggingToFile off
   PauseTimes		  "5"
   NumberOfSteps		  1
   SnapshotBufferSize	  10
@@ -112,7 +159,7 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    6
+    $ObjectID		    7
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "test_ed_cs"
     Array {
@@ -128,24 +175,6 @@ Model {
       PropName		      "logAsSpecifiedByModelsSSIDs_"
     }
   }
-  RecordCoverage	  off
-  CovPath		  "/"
-  CovSaveName		  "covdata"
-  CovMetricSettings	  "dw"
-  CovNameIncrementing	  off
-  CovHtmlReporting	  on
-  CovForceBlockReductionOff on
-  CovEnableCumulative	  on
-  covSaveCumulativeToWorkspaceVar on
-  CovSaveSingleToWorkspaceVar on
-  CovCumulativeVarName	  "covCumulativeData"
-  CovCumulativeReport	  off
-  CovReportOnPause	  on
-  CovModelRefEnable	  "Off"
-  CovExternalEMLEnable	  off
-  CovSFcnEnable		  off
-  CovBoundaryAbsTol	  0.000010
-  CovBoundaryRelTol	  0.010000
   ExtModeBatchMode	  off
   ExtModeEnableFloating	  on
   ExtModeTrigType	  "manual"
@@ -167,21 +196,25 @@ Model {
   ExtModeSkipDownloadWhenConnect off
   ExtModeLogAll		  on
   ExtModeAutoUpdateStatusClock on
-  BufferReuse		  on
   ShowModelReferenceBlockVersion off
   ShowModelReferenceBlockIO off
+  OrderedModelArguments	  on
   Array {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      7
-      Version		      "1.14.2"
+      $ObjectID		      8
+      Version		      "1.17.0"
+      DisabledProps	      []
+      Description	      ""
       Array {
 	Type			"Handle"
-	Dimension		8
+	Dimension		9
 	Simulink.SolverCC {
-	  $ObjectID		  8
-	  Version		  "1.14.2"
+	  $ObjectID		  9
+	  Version		  "1.17.0"
+	  DisabledProps		  []
+	  Description		  ""
 	  StartTime		  "0.0"
 	  StopTime		  "30"
 	  AbsTol		  "auto"
@@ -198,7 +231,7 @@ Model {
 	  MinStep		  "auto"
 	  MaxConsecutiveMinStep	  "1"
 	  RelTol		  "1e-3"
-	  SolverMode		  "SingleTasking"
+	  EnableMultiTasking	  off
 	  EnableConcurrentExecution off
 	  ConcurrentTasks	  off
 	  Solver		  "ode5"
@@ -208,15 +241,20 @@ Model {
 	  ZeroCrossControl	  "UseLocalSettings"
 	  ZeroCrossAlgorithm	  "Nonadaptive"
 	  AlgebraicLoopSolver	  "TrustRegion"
+	  SolverInfoToggleStatus  off
+	  IsAutoAppliedInSIP	  off
 	  SolverResetMethod	  "Fast"
 	  PositivePriorityOrder	  off
 	  AutoInsertRateTranBlk	  off
 	  SampleTimeConstraint	  "Unconstrained"
 	  InsertRTBMode		  "Whenever possible"
+	  SampleTimeProperty	  []
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  9
-	  Version		  "1.14.2"
+	  $ObjectID		  10
+	  Version		  "1.17.0"
+	  DisabledProps		  []
+	  Description		  ""
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -235,6 +273,8 @@ Model {
 	  DSMLogging		  on
 	  InspectSignalLogs	  off
 	  VisualizeSimOutput	  on
+	  StreamToWorkspace	  off
+	  StreamVariableName	  "streamout"
 	  SaveTime		  on
 	  ReturnWorkspaceOutputs  off
 	  StateSaveName		  "xout"
@@ -246,24 +286,33 @@ Model {
 	  OutputTimes		  "[]"
 	  ReturnWorkspaceOutputsName "out"
 	  Refine		  "1"
+	  LoggingToFile		  off
+	  DatasetSignalFormat	  "timeseries"
+	  LoggingFileName	  "out.mat"
+	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  10
-	  Version		  "1.14.2"
+	  $ObjectID		  11
+	  Version		  "1.17.0"
 	  Array {
 	    Type		    "Cell"
-	    Dimension		    4
+	    Dimension		    8
 	    Cell		    "ZeroExternalMemoryAtStartup"
 	    Cell		    "ZeroInternalMemoryAtStartup"
 	    Cell		    "NoFixptDivByZeroProtection"
 	    Cell		    "OptimizeModelRefInitCode"
+	    Cell		    "BooleansAsBitfields"
+	    Cell		    "PassReuseOutputArgsAs"
+	    Cell		    "PassReuseOutputArgsThreshold"
+	    Cell		    "UseSpecifiedMinMax"
 	    PropName		    "DisabledProps"
 	  }
+	  Description		  ""
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  InlineParams		  off
-	  UseIntDivNetSlope	  off
+	  DefaultParameterBehavior "Tunable"
+	  UseDivisionForNetSlopeComputation "off"
 	  UseFloatMulNetSlope	  off
 	  DefaultUnderspecifiedDataType	"double"
 	  UseSpecifiedMinMax	  off
@@ -274,38 +323,45 @@ Model {
 	  CachingGlobalReferences off
 	  GlobalBufferReuse	  on
 	  StrengthReduction	  off
+	  AdvancedOptControl	  ""
 	  ExpressionFolding	  on
 	  BooleansAsBitfields	  off
 	  BitfieldContainerType	  "uint_T"
 	  EnableMemcpy		  on
 	  MemcpyThreshold	  64
 	  PassReuseOutputArgsAs	  "Structure reference"
+	  PassReuseOutputArgsThreshold 12
 	  ExpressionDepthLimit	  2147483647
-	  FoldNonRolledExpr	  on
 	  LocalBlockOutputs	  on
 	  RollThreshold		  5
-	  SystemCodeInlineAuto	  off
 	  StateBitsets		  off
 	  DataBitsets		  off
 	  ActiveStateOutputEnumStorageType "Native Integer"
-	  UseTempVars		  off
 	  ZeroExternalMemoryAtStartup on
 	  ZeroInternalMemoryAtStartup on
 	  InitFltsAndDblsToZero	  on
 	  NoFixptDivByZeroProtection off
 	  EfficientFloat2IntCast  off
 	  EfficientMapNaN2IntZero on
-	  OptimizeModelRefInitCode off
 	  LifeSpan		  "inf"
 	  MaxStackSize		  "Inherit from target"
 	  BufferReusableBoundary  on
-	  SimCompilerOptimization "Off"
+	  SimCompilerOptimization "off"
 	  AccelVerboseBuild	  off
-	  ParallelExecutionInRapidAccelerator on
+	  OptimizeBlockOrder	  "off"
+	  OptimizeDataStoreBuffers on
+	  BusAssignmentInplaceUpdate on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  11
-	  Version		  "1.14.2"
+	  $ObjectID		  12
+	  Version		  "1.17.0"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    1
+	    Cell		    "UseOnlyExistingSharedCode"
+	    PropName		    "DisabledProps"
+	  }
+	  Description		  ""
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -332,7 +388,6 @@ Model {
 	  IgnoredZcDiagnostic	  "warning"
 	  SolverPrmCheckMsg	  "none"
 	  InheritedTsInSrcMsg	  "warning"
-	  DiscreteInheritContinuousMsg "warning"
 	  MultiTaskDSMMsg	  "warning"
 	  MultiTaskCondExecSysMsg "none"
 	  MultiTaskRateTransMsg	  "error"
@@ -354,23 +409,24 @@ Model {
 	  UnnecessaryDatatypeConvMsg "none"
 	  VectorMatrixConversionMsg "none"
 	  InvalidFcnCallConnMsg	  "error"
-	  FcnCallInpInsideContextMsg "UseLocalSettings"
+	  FcnCallInpInsideContextMsg "warning"
 	  SignalLabelMismatchMsg  "none"
 	  UnconnectedInputMsg	  "warning"
 	  UnconnectedOutputMsg	  "warning"
 	  UnconnectedLineMsg	  "warning"
+	  UseOnlyExistingSharedCode "error"
 	  SFcnCompatibilityMsg	  "none"
-	  FrameProcessingCompatibilityMsg "warning"
+	  FrameProcessingCompatibilityMsg "error"
 	  UniqueDataStoreMsg	  "none"
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
-	  EnableOverflowDetection off
+	  AllowSymbolicDim	  on
+	  RowMajorDimensionSupport off
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
 	  ModelReferenceIOMismatchMessage "none"
-	  ModelReferenceCSMismatchMessage "none"
 	  UnknownTsInhSupMsg	  "warning"
 	  ModelReferenceDataLoggingMessage "warning"
 	  ModelReferenceSymbolNameMessage "warning"
@@ -382,20 +438,35 @@ Model {
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
-	  LoggingUnavailableSignals "error"
+	  SymbolicDimMinMaxWarning "warning"
+	  LossOfSymbolicDimsSimulationWarning "warning"
+	  LossOfSymbolicDimsCodeGenerationWarning "error"
+	  SymbolicDimsDataTypeCodeGenerationDiagnostic "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "warning"
 	  SFInvalidInputDataAccessInChartInitDiag "warning"
 	  SFNoUnconditionalDefaultTransitionDiag "warning"
 	  SFTransitionOutsideNaturalParentDiag "warning"
-	  SFUnconditionalTransitionShadowingDiag "warning"
+	  SFUnreachableExecutionPathDiag "warning"
 	  SFUndirectedBroadcastEventsDiag "warning"
 	  SFTransitionActionBeforeConditionDiag	"warning"
+	  SFOutputUsedAsStateInMooreChartDiag "error"
+	  SFTemporalDelaySmallerThanSampleTimeDiag "warning"
+	  SFSelfTransitionDiag	  "warning"
+	  SFExecutionAtInitializationDiag "none"
+	  SFMachineParentedDataDiag "warning"
+	  IntegerSaturationMsg	  "warning"
+	  AllowedUnitSystems	  "all"
+	  UnitsInconsistencyMsg	  "warning"
+	  AllowAutomaticUnitConversions	on
+	  UnitDatabase		  ""
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  12
-	  Version		  "1.14.2"
+	  $ObjectID		  13
+	  Version		  "1.17.0"
+	  DisabledProps		  []
+	  Description		  ""
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -404,6 +475,8 @@ Model {
 	  ProdBitPerFloat	  32
 	  ProdBitPerDouble	  64
 	  ProdBitPerPointer	  32
+	  ProdBitPerSizeT	  32
+	  ProdBitPerPtrDiffT	  32
 	  ProdLargestAtomicInteger "Char"
 	  ProdLargestAtomicFloat  "None"
 	  ProdIntDivRoundTo	  "Undefined"
@@ -420,6 +493,8 @@ Model {
 	  TargetBitPerFloat	  32
 	  TargetBitPerDouble	  64
 	  TargetBitPerPointer	  32
+	  TargetBitPerSizeT	  32
+	  TargetBitPerPtrDiffT	  32
 	  TargetLargestAtomicInteger "Char"
 	  TargetLargestAtomicFloat "None"
 	  TargetShiftRightIntArith on
@@ -427,54 +502,86 @@ Model {
 	  TargetIntDivRoundTo	  "Undefined"
 	  TargetEndianess	  "Unspecified"
 	  TargetWordSize	  32
-	  TargetTypeEmulationWarnSuppressLevel 0
 	  TargetPreprocMaxBitsSint 32
 	  TargetPreprocMaxBitsUint 32
 	  TargetHWDeviceType	  "Specified"
 	  TargetUnknown		  off
 	  ProdEqTarget		  on
+	  UseEmbeddedCoderFeatures on
+	  UseSimulinkCoderFeatures on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  13
-	  Version		  "1.14.2"
+	  $ObjectID		  14
+	  Version		  "1.17.0"
+	  DisabledProps		  []
+	  Description		  ""
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
+	  EnableRefExpFcnMdlSchedulingChecks on
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
 	  ParallelModelReferenceErrorOnInvalidPool on
 	  ParallelModelReferenceMATLABWorkerInit "None"
 	  ModelReferenceNumInstancesAllowed "Multi"
 	  PropagateVarSize	  "Infer from blocks in model"
+	  ModelDependencies	  ""
 	  ModelReferencePassRootInputsByReference on
 	  ModelReferenceMinAlgLoopOccurrences off
 	  PropagateSignalLabelsOutOfModel off
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  14
-	  Version		  "1.14.2"
-	  SFSimEnableDebug	  on
-	  SFSimOverflowDetection  on
+	  $ObjectID		  15
+	  Version		  "1.17.0"
+	  DisabledProps		  []
+	  Description		  ""
+	  SimCustomSourceCode	  ""
+	  SimCustomHeaderCode	  ""
+	  SimCustomInitializer	  ""
+	  SimCustomTerminator	  ""
+	  SimReservedNameArray	  []
+	  SimUserSources	  ""
+	  SimUserIncludeDirs	  ""
+	  SimUserLibraries	  ""
+	  SimUserDefines	  ""
+	  SimCustomCompilerFlags  ""
+	  SimCustomLinkerFlags	  ""
 	  SFSimEcho		  on
-	  SimBlas		  on
 	  SimCtrlC		  on
-	  SimExtrinsic		  on
 	  SimIntegrity		  on
 	  SimUseLocalCustomCode	  off
 	  SimParseCustomCode	  on
 	  SimBuildMode		  "sf_incremental_build"
 	  SimGenImportedTypeDefs  off
+	  ModelFunctionsGlobalVisibility "on"
+	  CompileTimeRecursionLimit 50
+	  EnableRuntimeRecursion  on
+	  MATLABDynamicMemAlloc	  on
+	  MATLABDynamicMemAllocThreshold 65536
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  15
-	  Version		  "1.14.2"
+	  $ObjectID		  16
+	  Version		  "1.17.0"
 	  Array {
 	    Type		    "Cell"
-	    Dimension		    1
+	    Dimension		    13
 	    Cell		    "IncludeHyperlinkInReport"
+	    Cell		    "GenerateTraceInfo"
+	    Cell		    "GenerateTraceReport"
+	    Cell		    "GenerateTraceReportSl"
+	    Cell		    "GenerateTraceReportSf"
+	    Cell		    "GenerateTraceReportEml"
+	    Cell		    "PortableWordSizes"
+	    Cell		    "GenerateWebview"
+	    Cell		    "GenerateCodeMetricsReport"
+	    Cell		    "GenerateCodeReplacementReport"
+	    Cell		    "GenerateMissedCodeReplacementReport"
+	    Cell		    "GenerateErtSFunction"
+	    Cell		    "CreateSILPILBlock"
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
+	  HardwareBoard		  "None"
 	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
@@ -488,15 +595,11 @@ Model {
 	  SaveLog		  off
 	  RTWVerbose		  on
 	  RetainRTWFile		  off
+	  RTWBuildHooks		  []
 	  ProfileTLC		  off
 	  TLCDebug		  off
 	  TLCCoverage		  off
 	  TLCAssert		  off
-	  ProcessScriptMode	  "Default"
-	  ConfigurationMode	  "Optimized"
-	  ProcessScript		  ""
-	  ConfigurationScript	  ""
-	  ConfigAtBuild		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
 	  CustomSourceCode	  ""
@@ -504,10 +607,13 @@ Model {
 	  CustomInclude		  ""
 	  CustomSource		  ""
 	  CustomLibrary		  ""
+	  CustomDefine		  ""
+	  CustomLAPACKCallback	  ""
 	  CustomInitializer	  ""
 	  CustomTerminator	  ""
 	  Toolchain		  "Automatically locate an installed toolchain"
 	  BuildConfiguration	  "Faster Builds"
+	  CustomToolchainOptions  []
 	  IncludeHyperlinkInReport off
 	  LaunchReport		  off
 	  PortableWordSizes	  off
@@ -519,31 +625,29 @@ Model {
 	  SILDebugging		  off
 	  TargetLang		  "C"
 	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
-	  IncludeERTFirstTime	  on
 	  GenerateTraceInfo	  off
 	  GenerateTraceReport	  off
 	  GenerateTraceReportSl	  off
 	  GenerateTraceReportSf	  off
 	  GenerateTraceReportEml  off
-	  GenerateCodeInfo	  off
 	  GenerateWebview	  off
 	  GenerateCodeMetricsReport off
 	  GenerateCodeReplacementReport	off
-	  RTWCompilerOptimization "Off"
+	  GenerateMissedCodeReplacementReport off
+	  RTWCompilerOptimization "off"
+	  ObjectivePriorities	  []
 	  RTWCustomCompilerOptimizations ""
 	  CheckMdlBeforeBuild	  "Off"
-	  CustomRebuildMode	  "OnUpdate"
-	  DataInitializer	  ""
 	  SharedConstantsCachingThreshold 1024
 	  Array {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      16
-	      Version		      "1.14.2"
+	      $ObjectID		      17
+	      Version		      "1.17.0"
 	      Array {
 		Type			"Cell"
-		Dimension		16
+		Dimension		27
 		Cell			"IgnoreCustomStorageClasses"
 		Cell			"InsertBlockDesc"
 		Cell			"SFDataObjDesc"
@@ -560,8 +664,21 @@ Model {
 		Cell			"CustomSymbolStrBlkIO"
 		Cell			"CustomSymbolStrTmpVar"
 		Cell			"CustomSymbolStrMacro"
+		Cell			"IgnoreTestpoints"
+		Cell			"InsertPolySpaceComments"
+		Cell			"MATLABFcnDesc"
+		Cell			"InternalIdentifier"
+		Cell			"CustomSymbolStrModelFcn"
+		Cell			"CustomSymbolStrFcnArg"
+		Cell			"CustomSymbolStrUtil"
+		Cell			"CustomSymbolStrEmxType"
+		Cell			"CustomSymbolStrEmxFcn"
+		Cell			"CustomUserTokenString"
+		Cell			"ReqsInCode"
 		PropName		"DisabledProps"
 	      }
+	      Description	      ""
+	      Comment		      ""
 	      ForceParamTrailComments off
 	      GenerateComments	      on
 	      CommentStyle	      "Auto"
@@ -583,33 +700,43 @@ Model {
 	      CustomSymbolStrType     "$N$R$M_T"
 	      CustomSymbolStrField    "$N$M"
 	      CustomSymbolStrFcn      "$R$N$M$F"
+	      CustomSymbolStrModelFcn "$R$N"
 	      CustomSymbolStrFcnArg   "rt$I$N$M"
 	      CustomSymbolStrBlkIO    "rtb_$N$M"
 	      CustomSymbolStrTmpVar   "$N$M"
 	      CustomSymbolStrMacro    "$R$N$M"
 	      CustomSymbolStrUtil     "$N$C"
+	      CustomSymbolStrEmxType  "emxArray_$M$N"
+	      CustomSymbolStrEmxFcn   "emx$M$N"
+	      CustomUserTokenString   ""
+	      CustomCommentsFcn	      ""
 	      DefineNamingRule	      "None"
+	      DefineNamingFcn	      ""
 	      ParamNamingRule	      "None"
+	      ParamNamingFcn	      ""
 	      SignalNamingRule	      "None"
+	      SignalNamingFcn	      ""
 	      InsertBlockDesc	      off
 	      InsertPolySpaceComments off
 	      SimulinkBlockComments   on
 	      MATLABSourceComments    off
 	      EnableCustomComments    off
+	      InternalIdentifierFile  ""
 	      InternalIdentifier      "Shortened"
 	      InlinedPrmAccess	      "Literals"
 	      ReqsInCode	      off
 	      UseSimReservedNames     off
+	      ReservedNameArray	      []
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      17
-	      Version		      "1.14.2"
+	      $ObjectID		      18
+	      Version		      "1.17.0"
 	      Array {
 		Type			"Cell"
-		Dimension		12
+		Dimension		15
 		Cell			"IncludeMdlTerminateFcn"
-		Cell			"CombineOutputUpdateFcns"
+		Cell			"RemoveResetFunc"
 		Cell			"SuppressErrorStatus"
 		Cell			"ERTCustomFileBanners"
 		Cell			"GenerateSampleERTMain"
@@ -620,8 +747,12 @@ Model {
 		Cell			"SupportComplex"
 		Cell			"SupportAbsoluteTime"
 		Cell			"SupportContinuousTime"
+		Cell			"ExistingSharedCode"
+		Cell			"ModelStepFunctionPrototypeControlCompliant"
+		Cell			"RemoveDisableFunc"
 		PropName		"DisabledProps"
 	      }
+	      Description	      ""
 	      TargetFcnLib	      "ansi_tfl_tmw.mat"
 	      TargetLibSuffix	      ""
 	      TargetPreCompLibLocation ""
@@ -629,10 +760,11 @@ Model {
 	      TargetLangStandard      "C89/C90 (ANSI)"
 	      CodeReplacementLibrary  "None"
 	      UtilityFuncGeneration   "Auto"
-	      ERTMultiwordTypeDef     "System defined"
-	      ERTMultiwordLength      256
+	      MultiwordTypeDef	      "System defined"
 	      MultiwordLength	      2048
 	      GenerateFullHeader      on
+	      InferredTypesCompatibility off
+	      ExistingSharedCode      ""
 	      GenerateSampleERTMain   off
 	      GenerateTestInterfaces  off
 	      ModelReferenceCompliant on
@@ -657,15 +789,23 @@ Model {
 	      PurelyIntegerCode	      off
 	      SupportContinuousTime   on
 	      SupportNonInlinedSFcns  on
+	      RemoveDisableFunc	      off
+	      RemoveResetFunc	      off
 	      SupportVariableSizeSignals off
-	      EnableShiftOperators    on
 	      ParenthesesLevel	      "Nominal"
+	      CastingMode	      "Nominal"
 	      MATLABClassNameForMDSCustomization "Simulink.SoftwareTarget.GRTCustomization"
 	      ModelStepFunctionPrototypeControlCompliant off
 	      CPPClassGenCompliant    on
 	      AutosarCompliant	      off
+	      MDXCompliant	      off
 	      GRTInterface	      on
 	      GenerateAllocFcn	      off
+	      UseToolchainInfoCompliant	on
+	      GenerateSharedConstants on
+	      CoderGroups	      []
+	      AccessMethods	      []
+	      LookupTableObjectStructAxisOrder "1,2,3,4,..."
 	      UseMalloc		      off
 	      ExtMode		      off
 	      ExtModeStaticAlloc      off
@@ -673,6 +813,7 @@ Model {
 	      ExtModeStaticAllocSize  1000000
 	      ExtModeTransport	      0
 	      ExtModeMexFile	      "ext_comm"
+	      ExtModeMexArgs	      ""
 	      ExtModeIntrfLevel	      "Level1"
 	      RTWCAPISignals	      off
 	      RTWCAPIParams	      off
@@ -684,21 +825,62 @@ Model {
 	    PropName		    "Components"
 	  }
 	}
+	SlCovCC.ConfigComp {
+	  $ObjectID		  19
+	  Version		  "1.17.0"
+	  DisabledProps		  []
+	  Description		  "Simulink Coverage Configuration Component"
+	  Name			  "Simulink Coverage"
+	  CovEnable		  off
+	  CovScope		  "EntireSystem"
+	  CovIncludeTopModel	  on
+	  RecordCoverage	  off
+	  CovPath		  "/"
+	  CovSaveName		  "covdata"
+	  CovCompData		  ""
+	  CovMetricSettings	  "dw"
+	  CovFilter		  ""
+	  CovHTMLOptions	  ""
+	  CovNameIncrementing	  off
+	  CovHtmlReporting	  on
+	  CovForceBlockReductionOff on
+	  CovEnableCumulative	  on
+	  CovSaveCumulativeToWorkspaceVar on
+	  CovSaveSingleToWorkspaceVar on
+	  CovCumulativeVarName	  "covCumulativeData"
+	  CovCumulativeReport	  off
+	  CovSaveOutputData	  on
+	  CovOutputDir		  "slcov_output/$ModelName$"
+	  CovDataFileName	  "$ModelName$_cvdata"
+	  CovShowResultsExplorer  on
+	  CovReportOnPause	  on
+	  CovModelRefEnable	  "off"
+	  CovModelRefExcluded	  ""
+	  CovExternalEMLEnable	  off
+	  CovSFcnEnable		  off
+	  CovBoundaryAbsTol	  1e-05
+	  CovBoundaryRelTol	  0.01
+	  CovUseTimeInterval	  off
+	  CovStartTime		  0
+	  CovStopTime		  0
+	  CovMcdcMode		  "Masking"
+	}
 	PropName		"Components"
       }
       Name		      "Configuration"
+      ExtraOptions	      ""
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 400, 210, 1280, 840 ] 
+      ConfigPrmDlgPosition    [ 400, 210, 1280, 840 ]
     }
     PropName		    "ConfigurationSets"
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    7
+    $ObjectID		    8
   }
   Object {
     $PropName		    "DataTransfer"
-    $ObjectID		    18
+    $ObjectID		    20
     $ClassName		    "Simulink.GlobalDataTransfer"
     DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
     DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
@@ -718,6 +900,7 @@ Model {
     FontWeight		    "normal"
     FontAngle		    "normal"
     ShowName		    on
+    HideAutomaticName	    on
     BlockRotation	    0
     BlockMirror		    off
   }
@@ -742,8 +925,8 @@ Model {
   MaskDefaults {
     SelfModifiable	    "off"
     IconFrame		    "on"
-    IconOpaque		    "on"
-    RunInitForIconRedraw    "off"
+    IconOpaque		    "opaque"
+    RunInitForIconRedraw    "analyze"
     IconRotate		    "none"
     PortRotate		    "default"
     IconUnits		    "autoscale"
@@ -774,6 +957,7 @@ Model {
       BlockType		      ActionPort
       InitializeStates	      "held"
       PropagateVarSize	      "Only when execution is resumed"
+      DisallowConstTsAndPrmTs off
       ActionType	      "unset"
     }
     Block {
@@ -783,21 +967,15 @@ Model {
       OutputInitialize	      "Initialize using input port <Y0>"
       DiagnosticForDimensions "None"
       SampleTime	      "-1"
-      IndexOptions	      "Index vector (dialog)"
-      Indices		      "1"
-      OutputSizes	      "1"
     }
     Block {
       BlockType		      BusCreator
-      Inputs		      "4"
       DisplayOption	      "none"
       OutDataTypeStr	      "Inherit: auto"
       NonVirtualBus	      off
     }
     Block {
       BlockType		      BusSelector
-      OutputSignals	      "signal1,signal2,signal3"
-      OutputAsBus	      off
     }
     Block {
       BlockType		      Constant
@@ -822,7 +1000,6 @@ Model {
       StateMustResolveToSignalObject off
       RTWStateStorageClass    "Auto"
       VectorParams1D	      on
-      ShowAdditionalParam     off
       OutMin		      "[]"
       OutMax		      "[]"
       OutDataTypeStr	      "Inherit: auto"
@@ -865,9 +1042,10 @@ Model {
       InitialConditionSource  "Dialog"
       InitialCondition	      "0.0"
       ExternalReset	      "None"
+      ShowEnablePort	      off
       PreventDirectFeedthrough off
-      DiagnosticForOutOfRangeDelayLength "None"
-      RemoveProtectionDelayLength off
+      DiagnosticForDelayLength "None"
+      RemoveDelayLengthCheckInGeneratedCode off
       InputProcessing	      "Elements as channels (sample based)"
       UseCircularBuffer	      off
       SampleTime	      "-1"
@@ -886,7 +1064,6 @@ Model {
     }
     Block {
       BlockType		      DotProduct
-      SampleTime	      "-1"
       InputSameDT	      on
       OutMin		      "[]"
       OutMax		      "[]"
@@ -894,6 +1071,7 @@ Model {
       LockScale		      off
       RndMeth		      "Floor"
       SaturateOnIntegerOverflow	off
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      EnablePort
@@ -901,6 +1079,7 @@ Model {
       PropagateVarSize	      "Only when enabling"
       ShowOutputPort	      off
       ZeroCross		      on
+      DisallowConstTsAndPrmTs off
       PortDimensions	      "1"
       SampleTime	      "-1"
       OutMin		      "[]"
@@ -969,6 +1148,7 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
+      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -986,6 +1166,9 @@ Model {
       LimitOutput	      off
       UpperSaturationLimit    "inf"
       LowerSaturationLimit    "-inf"
+      WrapState		      off
+      WrappedStateUpperValue  "pi"
+      WrappedStateLowerValue  "-pi"
       ShowSaturationPort      off
       ShowStatePort	      off
       AbsoluteTolerance	      "auto"
@@ -1044,7 +1227,6 @@ Model {
     }
     Block {
       BlockType		      M-S-Function
-      FunctionName	      "matlabfile"
       DisplayMFileStacktrace  on
     }
     Block {
@@ -1103,14 +1285,17 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
+      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
       SignalType	      "auto"
       SamplingMode	      "auto"
+      EnsureOutportIsVirtual  off
       SourceOfInitialOutputValue "Dialog"
       OutputWhenDisabled      "held"
       InitialOutput	      "[]"
+      MustResolveToSignalObject	off
     }
     Block {
       BlockType		      Product
@@ -1134,6 +1319,7 @@ Model {
       OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
       ZeroCross		      on
       SampleTime	      "-1"
+      RndMeth		      "Nearest"
     }
     Block {
       BlockType		      Rounding
@@ -1145,7 +1331,6 @@ Model {
       FunctionName	      "system"
       SFunctionModules	      "''"
       PortCounts	      "[]"
-      SFunctionDeploymentMode off
     }
     Block {
       BlockType		      Saturate
@@ -1164,21 +1349,8 @@ Model {
     }
     Block {
       BlockType		      Scope
-      ModelBased	      off
-      TickLabels	      "OneTimeTick"
-      ZoomMode		      "on"
-      Grid		      "on"
-      TimeRange		      "auto"
-      YMin		      "-5"
-      YMax		      "5"
-      SaveToWorkspace	      off
-      SaveName		      "ScopeData"
-      DataFormat	      "Array"
-      LimitDataPoints	      on
-      MaxDataPoints	      "5000"
-      Decimation	      "1"
-      SampleInput	      off
-      SampleTime	      "-1"
+      DefaultConfigurationName "Simulink.scopes.TimeScopeBlockCfg"
+      Floating		      off
     }
     Block {
       BlockType		      Selector
@@ -1186,9 +1358,6 @@ Model {
       IndexMode		      "One-based"
       InputPortWidth	      "-1"
       SampleTime	      "-1"
-      IndexOptions	      "Index vector (dialog)"
-      Indices		      "1"
-      OutputSizes	      "1"
     }
     Block {
       BlockType		      Signum
@@ -1212,7 +1381,6 @@ Model {
       TreatAsAtomicUnit	      off
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
-      CheckFcnCallInpInsideContextMsg off
       SystemSampleTime	      "-1"
       RTWSystemCode	      "Auto"
       RTWFcnNameOpts	      "Auto"
@@ -1231,9 +1399,11 @@ Model {
       Opaque		      off
       MaskHideContents	      off
       SFBlockType	      "NONE"
-      Variant		      off
       GeneratePreprocessorConditionals off
+      PropagateVariantConditions off
+      TreatAsGroupedWhenPropagatingVariantConditions on
       ContentPreviewEnabled   off
+      IsWebBlock	      off
     }
     Block {
       BlockType		      Sum
@@ -1299,6 +1469,7 @@ Model {
     Name		    "test_ed_cs"
     Location		    [832, 7, 1783, 800]
     Open		    off
+    PortBlocksUseCompactNotation off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1311,7 +1482,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "456"
+    SIDHighWatermark	    "460"
     Block {
       BlockType		      DataStoreMemory
       Name		      "Actuators"
@@ -1322,6 +1493,7 @@ Model {
       ShowName		      off
       DataStoreName	      "SimCoreActuators"
       InitialValue	      "zeros(15,1)"
+      ShowAdditionalParam     off
     }
     Block {
       BlockType		      SubSystem
@@ -1335,9 +1507,10 @@ Model {
       DropShadow	      on
       InitFcn		      "                \nUniqueId = '20';"
       RequestExecContextInheritance off
+      Variant		      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		19
+	$ObjectID		21
 	$ClassName		"Simulink.Mask"
 	Display			"image(imread('Audi_A8.jpg'));color('white');text(0,0,' ID=1\\n')"
       }
@@ -1345,13 +1518,12 @@ Model {
 	PortNumber		1
 	Name			"L1"
 	PropagatedSignals	"L18"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
       }
       System {
 	Name			"Audi_A8_1"
-	Location		[832, 7, 1783, 800]
-	Open			on
+	Location		[172, 7, 1460, 800]
+	Open			off
+	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1362,7 +1534,7 @@ Model {
 	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"125"
+	ZoomFactor		"250"
 	Block {
 	  BlockType		  Inport
 	  Name			  "SELF_Audi_A8_1"
@@ -1377,8 +1549,6 @@ Model {
 	    PortNumber		    1
 	    Name		    "L7"
 	    PropagatedSignals	    "L6"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -1397,8 +1567,6 @@ Model {
 	    PortNumber		    1
 	    Name		    "L11"
 	    PropagatedSignals	    "L12"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -1411,17 +1579,14 @@ Model {
 	  ShowName		  off
 	  OutputSignals		  "ScanAtDistance1.LeftCurbIntersection.DistanceFromScanCenter,ScanAtDistance1.RightCurbIntersection"
 	  ".DistanceFromScanCenter"
+	  OutputAsBus		  off
 	  Port {
 	    PortNumber		    1
 	    Name		    "<DistanceFromScanCenter>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    2
 	    Name		    "<DistanceFromScanCenter>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -1440,15 +1605,16 @@ Model {
 	  Ports			  [7, 3]
 	  Position		  [970, 75, 1115, 255]
 	  ZOrder		  10
-	  ForegroundColor	  "[0.501961, 0.501961, 0.501961]"
+	  ForegroundColor	  "gray"
 	  DropShadow		  on
 	  UserDataPersistent	  on
 	  UserData		  "DataTag1"
 	  DeleteFcn		  "PreScanBlockDeleteFcn;"
 	  RequestExecContextInheritance	off
+	  Variant		  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    20
+	    $ObjectID		    22
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "PreScan Block: Simple Dynamics"
 	    Description		    "The Simple Dynamics Model is selected in the GUI to simulate vehicle dynamics behavior.\n\nThe "
@@ -1466,7 +1632,7 @@ Model {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      2
 	      Object {
-		$ObjectID		21
+		$ObjectID		23
 		Type			"edit"
 		Name			"TimeStep"
 		Prompt			"Auto assigned: Time Step [s]"
@@ -1475,7 +1641,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		22
+		$ObjectID		24
 		Type			"edit"
 		Name			"ComputationMode"
 		Prompt			"Computation mode:"
@@ -1491,26 +1657,21 @@ Model {
 	    PortNumber		    1
 	    Name		    "L18"
 	    PropagatedSignals	    "State"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    2
 	    Name		    "l3"
 	    PropagatedSignals	    "vx_[ms-1]"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    3
 	    Name		    "l4"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  System {
 	    Name		    "Dynamics_Simple"
 	    Location		    [264, 52, 1381, 1123]
 	    Open		    off
+	    PortBlocksUseCompactNotation off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -1610,6 +1771,7 @@ Model {
 	      ShowName		      off
 	      Inputs		      "14"
 	      DisplayOption	      "bar"
+	      InheritFromInputs	      on
 	    }
 	    Block {
 	      BlockType		      SubSystem
@@ -1620,9 +1782,10 @@ Model {
 	      ZOrder		      -9
 	      ForegroundColor	      "gray"
 	      RequestExecContextInheritance off
+	      Variant		      off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		23
+		$ObjectID		25
 		$ClassName		"Simulink.Mask"
 		Display			"image(imread('Chassis.png'));"
 	      }
@@ -1630,13 +1793,12 @@ Model {
 		PortNumber		7
 		Name			"n_driveline_[rpm]"
 		PropagatedSignals	"TransmissionOut_[rpm]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	      System {
 		Name			"Chassis"
 		Location		[345, 52, 1395, 1102]
 		Open			off
+		PortBlocksUseCompactNotation off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -1662,8 +1824,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "DriveTorque_[Nm]"
 		    PropagatedSignals	    "TransmissionTorque_[Nm]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -1681,8 +1841,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "BrakePressure_[bar]"
 		    PropagatedSignals	    "L15"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -1712,8 +1870,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "Initial_Vx_[m s-1]"
 		    PropagatedSignals	    "L16"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -1735,9 +1891,10 @@ Model {
 		  ZOrder		  -6
 		  ForegroundColor	  "gray"
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    24
+		    $ObjectID		    26
 		    $ClassName		    "Simulink.Mask"
 		    Display		    "image(imread('Bicycle_model.png'));"
 		  }
@@ -1745,83 +1902,62 @@ Model {
 		    PortNumber		    1
 		    Name		    "|vx|_[ms-1]"
 		    PropagatedSignals	    "|vx|_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  Port {
 		    PortNumber		    2
 		    Name		    "Vy_[ms-1]"
 		    PropagatedSignals	    "vy_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  Port {
 		    PortNumber		    3
 		    Name		    "Vz_[ms-1]"
 		    PropagatedSignals	    "vz_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  Port {
 		    PortNumber		    4
 		    Name		    "RollAngle_[rad]"
 		    PropagatedSignals	    "RollAngle_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  Port {
 		    PortNumber		    5
 		    Name		    "RollRate_[rad s-1]"
 		    PropagatedSignals	    "RollRate_[rads-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  Port {
 		    PortNumber		    6
 		    Name		    "YawRate_[rad s-1]"
 		    PropagatedSignals	    "dYawAngle_[rads-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  Port {
 		    PortNumber		    7
 		    Name		    "Vx_[ms-1]"
 		    PropagatedSignals	    "vx_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  Port {
 		    PortNumber		    8
 		    Name		    "PitchAngle_[rad]"
 		    PropagatedSignals	    "PitchAngle_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  Port {
 		    PortNumber		    9
 		    Name		    "YawAngle_[rad]"
 		    PropagatedSignals	    "YawAngle_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  Port {
 		    PortNumber		    10
 		    Name		    "ax_[ms-2]"
 		    PropagatedSignals	    "ax_[ms-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  Port {
 		    PortNumber		    11
 		    Name		    "ay_[ms-2]"
 		    PropagatedSignals	    "ay_[ms-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  System {
 		    Name		    "Bicycle_model_[XYZ]"
 		    Location		    [254, 52, 1704, 1143]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -1883,8 +2019,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "BrakePressure_[bar]"
 		    PropagatedSignals	    "BrakePressure_[bar]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -1901,8 +2035,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "DriveTorque_[Nm]"
 		    PropagatedSignals	    "DriveTorque_[Nm]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -1919,8 +2051,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "v0_[ms-1]"
 		    PropagatedSignals	    "Initial_Vx_[m s-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -2042,22 +2172,20 @@ Model {
 		    ForegroundColor	    "gray"
 		    BackgroundColor	    "lightBlue"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Port {
 		    PortNumber		    1
 		    Name		    "Fy_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    Port {
 		    PortNumber		    2
 		    Name		    "Mz_[Nm]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Fyi --> Fy / Mz"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -2083,8 +2211,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "DeltaWheel_[rad]"
 		    PropagatedSignals	    "DeltaWheel_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -2281,23 +2407,21 @@ Model {
 		    ForegroundColor	    "gray"
 		    BackgroundColor	    "cyan"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Port {
 		    PortNumber		    1
 		    Name		    "vx_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    Port {
 		    PortNumber		    2
 		    Name		    "ax_[ms-2]"
 		    PropagatedSignals	    "ax [ms-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "X_Motion"
 		    Location		    [254, 52, 1704, 1143]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -2323,8 +2447,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "DriveTorque_[Nm]"
 		    PropagatedSignals	    "DriveTorque_[Nm]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -2342,8 +2464,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "BrakePressure_[bar]"
 		    PropagatedSignals	    "BrakePressure_[bar]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -2368,10 +2488,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "Air&RoadResistance"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -2410,8 +2532,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "Resistance Force_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -2426,8 +2546,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "ResistanceTorque_[Nm]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -2454,8 +2572,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "sign"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -2483,8 +2599,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "F_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -2579,10 +2693,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "BrakeSystem"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -2668,8 +2784,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "sign"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -2826,15 +2940,16 @@ Model {
 		    "igurable\nSubsystem"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    25
+		    $ObjectID		    27
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    26
+		    $ObjectID		    28
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -2846,13 +2961,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "vx_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -2958,15 +3072,16 @@ Model {
 		    "le\nSubsystem"
 		    MemberBlocks	    "Discrete Torsional damping,Torsional damping"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    27
+		    $ObjectID		    29
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    28
+		    $ObjectID		    30
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -2979,6 +3094,7 @@ Model {
 		    Name		    "Configurable\nSubsystem1"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -3108,8 +3224,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "ax[ms-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -3122,16 +3236,16 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Port {
 		    PortNumber		    1
 		    Name		    "ax [ms-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Max RPM and zero-\nvelocity detection"
 		    Location		    [254, 52, 1704, 1143]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -3157,8 +3271,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "ax"
 		    PropagatedSignals	    "ax[ms-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -3212,8 +3324,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "vx"
 		    PropagatedSignals	    "vx_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -3251,6 +3361,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
 		    SourceType		    "Compare To Zero"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    "<="
 		    OutDataTypeStr	    "boolean"
@@ -3269,6 +3381,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
 		    SourceType		    "Compare To Zero"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    ">="
 		    OutDataTypeStr	    "boolean"
@@ -3287,6 +3401,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
 		    SourceType		    "Compare To Zero"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    ">="
 		    OutDataTypeStr	    "boolean"
@@ -3305,6 +3421,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
 		    SourceType		    "Compare To Zero"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    "<="
 		    OutDataTypeStr	    "boolean"
@@ -3327,15 +3445,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/Step Function/Configurable\nSubsystem"
 		    MemberBlocks	    "Discrete Step,Step"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    29
+		    $ObjectID		    31
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    30
+		    $ObjectID		    32
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -3348,6 +3467,7 @@ Model {
 		    Name		    "Configurable\nSubsystem"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -3425,8 +3545,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "zero-crossing\nforward"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -3471,8 +3589,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "zero-crossing\nbackward"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -3510,8 +3626,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "vx"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -3562,10 +3676,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "SR-Memory"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -3622,6 +3738,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
 		    SourceType		    "Detect Rise Positive"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    vinit		    "0"
 		    InputProcessing	    "Inherited"
@@ -3637,6 +3755,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
 		    SourceType		    "Detect Rise Positive"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    vinit		    "0"
 		    InputProcessing	    "Inherited"
@@ -4154,7 +4274,7 @@ Model {
 		    Annotation {
 		    SID			    "198:122"
 		    Name		    "Set to zero after infinite small time-step"
-		    Position		    [206, 361, 393, 376]
+		    Position		    [113, 354, 287, 368]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -4165,7 +4285,7 @@ Model {
 		    Annotation {
 		    SID			    "198:121"
 		    Name		    "Zero velocity detection"
-		    Position		    [169, 42, 278, 57]
+		    Position		    [115, 35, 216, 49]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -4189,8 +4309,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "sumForce_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -4425,44 +4543,36 @@ Model {
 		    ForegroundColor	    "gray"
 		    BackgroundColor	    "lightBlue"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Port {
 		    PortNumber		    1
 		    Name		    "|vx|_[ms-1]"
 		    PropagatedSignals	    "|vx|_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    Port {
 		    PortNumber		    2
 		    Name		    "vy_[ms-1]"
 		    PropagatedSignals	    "vy_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    Port {
 		    PortNumber		    3
 		    Name		    "ay_[ms-2]"
 		    PropagatedSignals	    "ddy_[ms-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    Port {
 		    PortNumber		    4
 		    Name		    "dYawAngle_[rads-1]"
 		    PropagatedSignals	    "dYawAngle_[rad/s]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    Port {
 		    PortNumber		    5
 		    Name		    "YawAngle_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Y & Yaw_Motion"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -4487,8 +4597,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "|vx|_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -4506,8 +4614,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "Fy_[N]"
 		    PropagatedSignals	    "Fy_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -4525,8 +4631,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "Mz_[Nm]"
 		    PropagatedSignals	    "Mz_[Nm]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -4540,6 +4644,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
 		    SourceType		    "Compare To Zero"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    "=="
 		    OutDataTypeStr	    "boolean"
@@ -4562,15 +4668,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/integral with reset/Configurable\nSubsystem"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    31
+		    $ObjectID		    33
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    32
+		    $ObjectID		    34
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -4582,13 +4689,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "vy_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -4682,15 +4788,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/integral/Configurable\nSubsystem1"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    33
+		    $ObjectID		    35
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    34
+		    $ObjectID		    36
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -4703,6 +4810,7 @@ Model {
 		    Name		    "Configurable\nSubsystem1"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -4773,15 +4881,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/integral with reset/Configurable\nSubsystem"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    35
+		    $ObjectID		    37
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    36
+		    $ObjectID		    38
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -4793,13 +4902,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "dYawAngle_[rads-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem2"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -4884,8 +4992,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "|vx|*dYawAngle_[ms-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -4923,8 +5029,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "ddy_[ms-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -4940,8 +5044,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "ddYawAngle_[rads-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -4968,8 +5070,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "dvy_[ms-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -4988,8 +5088,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "|vx|_[ms-1]_vy_[ms-1]_dYawAngle_[rads-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -5247,36 +5345,30 @@ Model {
 		    ForegroundColor	    "gray"
 		    BackgroundColor	    "yellow"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Port {
 		    PortNumber		    1
 		    Name		    "PitchAngle_[rad]"
 		    PropagatedSignals	    "PitchAngle_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    Port {
 		    PortNumber		    2
 		    Name		    "vz_[ms-1]"
 		    PropagatedSignals	    "vz_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    Port {
 		    PortNumber		    3
 		    Name		    "RollAngle_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    Port {
 		    PortNumber		    4
 		    Name		    "RollRate_[rads-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Z, Pitch_Motion &\nRoll_Motion"
 		    Location		    [266, 116, 1185, 811]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -5413,15 +5505,16 @@ Model {
 		    "able\nSubsystem"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    37
+		    $ObjectID		    39
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    38
+		    $ObjectID		    40
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -5434,6 +5527,7 @@ Model {
 		    Name		    "Configurable\nSubsystem"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -5507,15 +5601,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/integral/Configurable\nSubsystem1"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    39
+		    $ObjectID		    41
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    40
+		    $ObjectID		    42
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -5527,13 +5622,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "vz_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem1"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -5604,15 +5698,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/integral/Configurable\nSubsystem1"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    41
+		    $ObjectID		    43
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    42
+		    $ObjectID		    44
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -5624,13 +5719,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "dPitchAngle[rads-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem2"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -5701,15 +5795,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/integral/Configurable\nSubsystem1"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    43
+		    $ObjectID		    45
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    44
+		    $ObjectID		    46
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -5721,13 +5816,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "PitchAngle_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem3"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -5798,15 +5892,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/integral/Configurable\nSubsystem1"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    45
+		    $ObjectID		    47
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    46
+		    $ObjectID		    48
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -5818,13 +5913,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "z_[m]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem4"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -5895,15 +5989,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/integral/Configurable\nSubsystem1"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    47
+		    $ObjectID		    49
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    48
+		    $ObjectID		    50
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -5916,6 +6011,7 @@ Model {
 		    Name		    "Configurable\nSubsystem5"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -5985,15 +6081,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/Derivative/Configurable\nSubsystem"
 		    MemberBlocks	    "Derivative,Discrete Derivative"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    49
+		    $ObjectID		    51
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    50
+		    $ObjectID		    52
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -6006,6 +6103,7 @@ Model {
 		    Name		    "Configurable\nSubsystem9"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -6100,8 +6198,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "FdampFront"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -6116,8 +6212,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "FdampRear"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -6190,8 +6284,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "RollRate_[rads-2]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -6313,8 +6405,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "FspringFront"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -6329,8 +6419,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "FspringRear"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -6346,8 +6434,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "sumTorque_[Nm]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -6363,8 +6449,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "sumForce_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -6380,8 +6464,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "sumTorque_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -6397,8 +6479,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "sumForce_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -7165,7 +7245,7 @@ Model {
 		    Annotation {
 		    SID			    "198:210"
 		    Name		    "MOTORCYCLE"
-		    Position		    [134, 866, 209, 881]
+		    Position		    [97, 859, 169, 873]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -7175,7 +7255,7 @@ Model {
 		    Annotation {
 		    SID			    "198:209"
 		    Name		    "VEHICLE"
-		    Position		    [114, 566, 160, 581]
+		    Position		    [91, 559, 135, 573]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -7185,7 +7265,7 @@ Model {
 		    Annotation {
 		    SID			    "198:208"
 		    Name		    "Roll limitation \nto prevent \nRollover\n[-5 .. 5] deg"
-		    Position		    [1065, 647, 1137, 701]
+		    Position		    [1029, 620, 1093, 670]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -7599,7 +7679,7 @@ Model {
 		    }
 		    Annotation {
 		    SID			    "198:222"
-		    Position		    [77, 682, 79, 697]
+		    Position		    [76, 675, 78, 689]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -7622,8 +7702,6 @@ Model {
 		  Port {
 		    PortNumber		    1
 		    Name		    "zFront_[m]_dzFront_[m s-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -7640,8 +7718,6 @@ Model {
 		  Port {
 		    PortNumber		    1
 		    Name		    "zRear_[m]_dzRear_[m s-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -7657,6 +7733,8 @@ Model {
 		  LibraryVersion	  "1.44"
 		  SourceBlock		  "simulink_extras/Transformations/Degrees to\nRadians"
 		  SourceType		  "DegreesToRadians"
+		  SourceProductName	  "Simulink"
+		  SourceProductBaseCode	  "SL"
 		  ContentPreviewEnabled	  off
 		}
 		Block {
@@ -7670,8 +7748,6 @@ Model {
 		  Port {
 		    PortNumber		    1
 		    Name		    "TransmissionOut_[rpm]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -7686,8 +7762,6 @@ Model {
 		  Port {
 		    PortNumber		    1
 		    Name		    "DriveTorque_[Nm]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -7771,8 +7845,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "vy_[ms-1]"
 		    PropagatedSignals	    "Vy_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -7869,8 +7941,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "vx_[ms-1]"
 		    PropagatedSignals	    "Vx_[ms-1]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -7895,9 +7965,10 @@ Model {
 		  ZOrder		  -26
 		  ForegroundColor	  "gray"
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    51
+		    $ObjectID		    53
 		    $ClassName		    "Simulink.Mask"
 		    Display		    "image(imread('Tyre.png'));"
 		  }
@@ -7905,13 +7976,12 @@ Model {
 		    PortNumber		    1
 		    Name		    "Fy_front_[N]"
 		    PropagatedSignals	    "FyFront_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  System {
 		    Name		    "FrontTyre"
 		    Location		    [266, 116, 1202, 811]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -7937,8 +8007,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "DeltaWheel_[rad]"
 		    PropagatedSignals	    "DeltaWheel_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -7999,10 +8067,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "AlphaFront"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -8045,6 +8115,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 		    SourceType		    "Compare To Constant"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    ">"
 		    const		    "0"
@@ -8062,10 +8134,12 @@ Model {
 		    ShowName		    off
 		    TreatAsAtomicUnit	    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "Enabled\nSubsystem"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -8142,6 +8216,9 @@ Model {
 		    ZOrder		    -5
 		    ForegroundColor	    "gray"
 		    ShowName		    off
+		    IndexOptions	    "Index vector (dialog)"
+		    Indices		    "1"
+		    OutputSizes		    "1"
 		    }
 		    Block {
 		    BlockType		    Outport
@@ -8210,6 +8287,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
 		    SourceType		    "Compare To Zero"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    "=="
 		    OutDataTypeStr	    "boolean"
@@ -8233,15 +8312,16 @@ Model {
 		    "e/Configurable\nSubsystem"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    52
+		    $ObjectID		    54
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    53
+		    $ObjectID		    55
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -8253,13 +8333,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "AlphaRelaxFront_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -8350,15 +8429,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/integral with reset/Configurable\nSubsystem"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    54
+		    $ObjectID		    56
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    55
+		    $ObjectID		    57
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -8370,13 +8450,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "GammaRelaxFront_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem1"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -8537,6 +8616,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 		    SourceType		    "Compare To Constant"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    "=="
 		    const		    "2"
@@ -8625,10 +8706,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "Prevent_instability_at_low_Vx"
 		    Location		    [403, 291, 957, 775]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -8696,7 +8779,9 @@ Model {
 		    ForegroundColor	    "gray"
 		    ShowName		    off
 		    InputPortWidth	    "3"
+		    IndexOptions	    "Index vector (dialog)"
 		    Indices		    "[1]"
+		    OutputSizes		    "1"
 		    }
 		    Block {
 		    BlockType		    Outport
@@ -8746,7 +8831,7 @@ Model {
 		    Annotation {
 		    SID			    "198:283"
 		    Name		    "|vx|"
-		    Position		    [225, 164, 243, 179]
+		    Position		    [216, 157, 233, 171]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -8783,8 +8868,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "AlphaStatFront_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -8805,8 +8888,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "FyFront_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -8821,8 +8902,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "AlphaFront_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -8837,8 +8916,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "GammaFront_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -8862,8 +8939,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "GammaStatFront_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -9208,7 +9283,7 @@ Model {
 		    Annotation {
 		    SID			    "198:296"
 		    Name		    "alpha limiter\n[-1 ... 1]"
-		    Position		    [743, 88, 805, 116]
+		    Position		    [712, 74, 768, 100]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -9217,7 +9292,7 @@ Model {
 		    Annotation {
 		    SID			    "198:295"
 		    Name		    "relax_on\nON: 1\nOFF: 0"
-		    Position		    [917, 76, 960, 117]
+		    Position		    [896, 56, 936, 94]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -9229,7 +9304,7 @@ Model {
 		    Annotation {
 		    SID			    "198:294"
 		    Name		    "MOTORCYCLE ONLY"
-		    Position		    [209, 231, 314, 246]
+		    Position		    [157, 224, 258, 238]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -9239,7 +9314,7 @@ Model {
 		    Annotation {
 		    SID			    "198:293"
 		    Name		    "VEHICLE + MOTORCYCLE"
-		    Position		    [224, 71, 355, 86]
+		    Position		    [159, 64, 285, 78]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -9356,16 +9431,16 @@ Model {
 		  ForegroundColor	  "gray"
 		  DropShadow		  on
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  Port {
 		    PortNumber		    1
 		    Name		    "State"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  System {
 		    Name		    "MuxDynState"
 		    Location		    [570, 52, 1620, 1102]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -9451,8 +9526,6 @@ Model {
 		    PortNumber		    1
 		    Name		    "yaw"
 		    PropagatedSignals	    "YawAngle_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -9472,15 +9545,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/integral/Configurable\nSubsystem1"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    56
+		    $ObjectID		    58
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    57
+		    $ObjectID		    59
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -9492,13 +9566,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "PosVEH wrt  GLOB"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem1"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -9561,8 +9634,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "roll"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -9574,8 +9645,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "pitch"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -9625,16 +9694,16 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Port {
 		    PortNumber		    1
 		    Name		    "VelVEH wrt  GLOB"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Transformation_BODY2GLOBAL"
 		    Location		    [264, 372, 1381, 964]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -9809,8 +9878,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "RotationMatrix Visu"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -9835,7 +9902,9 @@ Model {
 		    ZOrder		    -17
 		    ForegroundColor	    "gray"
 		    InputPortWidth	    "9"
+		    IndexOptions	    "Index vector (dialog)"
 		    Indices		    "[1 2 3]"
+		    OutputSizes		    "1"
 		    }
 		    Block {
 		    BlockType		    Selector
@@ -9846,7 +9915,9 @@ Model {
 		    ZOrder		    -18
 		    ForegroundColor	    "gray"
 		    InputPortWidth	    "9"
+		    IndexOptions	    "Index vector (dialog)"
 		    Indices		    "[4 5 6]"
+		    OutputSizes		    "1"
 		    }
 		    Block {
 		    BlockType		    Selector
@@ -9857,7 +9928,9 @@ Model {
 		    ZOrder		    -19
 		    ForegroundColor	    "gray"
 		    InputPortWidth	    "9"
+		    IndexOptions	    "Index vector (dialog)"
 		    Indices		    "[7 8 9]"
+		    OutputSizes		    "1"
 		    }
 		    Block {
 		    BlockType		    Selector
@@ -9869,7 +9942,9 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    InputPortWidth	    "3"
+		    IndexOptions	    "Index vector (dialog)"
 		    Indices		    "[3 2 1]"
+		    OutputSizes		    "1"
 		    }
 		    Block {
 		    BlockType		    Outport
@@ -10305,7 +10380,7 @@ Model {
 		    Annotation {
 		    SID			    "198:344"
 		    Name		    "The position inputs are computed by the\nintegrated velocity."
-		    Position		    [124, 104, 316, 132]
+		    Position		    [124, 90, 303, 116]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -10318,7 +10393,7 @@ Model {
 		    Annotation {
 		    SID			    "198:343"
 		    Name		    "mode: Dynamics\nVelVEHICLE\nwrt VEH"
-		    Position		    [188, 203, 268, 244]
+		    Position		    [148, 183, 224, 221]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -10329,7 +10404,7 @@ Model {
 		    Annotation {
 		    SID			    "198:342"
 		    Name		    "AnglesVEHICLE\nwrtGLOB"
-		    Position		    [517, 691, 595, 719]
+		    Position		    [478, 677, 553, 703]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -10349,10 +10424,12 @@ Model {
 		  ZOrder		  -36
 		  ForegroundColor	  "gray"
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  System {
 		    Name		    "Power Assisted Steering"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -10545,7 +10622,7 @@ Model {
 		    Annotation {
 		    SID			    "198:357"
 		    Name		    "MOTORCYCLE"
-		    Position		    [139, 206, 214, 221]
+		    Position		    [102, 199, 174, 213]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -10555,7 +10632,7 @@ Model {
 		    Annotation {
 		    SID			    "198:356"
 		    Name		    "VEHICLE"
-		    Position		    [134, 91, 180, 106]
+		    Position		    [111, 84, 155, 98]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -10565,7 +10642,7 @@ Model {
 		    Annotation {
 		    SID			    "198:355"
 		    Name		    "Reverse steering direction for negative velocities"
-		    Position		    [229, 26, 458, 41]
+		    Position		    [115, 19, 331, 33]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -10596,9 +10673,10 @@ Model {
 		  ZOrder		  -38
 		  ForegroundColor	  "gray"
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    58
+		    $ObjectID		    60
 		    $ClassName		    "Simulink.Mask"
 		    Display		    "image(imread('Tyre.png'));"
 		  }
@@ -10606,13 +10684,12 @@ Model {
 		    PortNumber		    1
 		    Name		    "Fy_rear_[N]"
 		    PropagatedSignals	    "FyRear_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  System {
 		    Name		    "RearTyre"
 		    Location		    [266, 116, 1202, 811]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -10681,16 +10758,16 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Port {
 		    PortNumber		    1
 		    Name		    "AlphaStatRear_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "AlphaRear"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -10733,6 +10810,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 		    SourceType		    "Compare To Constant"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    ">"
 		    const		    "0"
@@ -10750,10 +10829,12 @@ Model {
 		    ShowName		    off
 		    TreatAsAtomicUnit	    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "Enabled\nSubsystem"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -10830,6 +10911,9 @@ Model {
 		    ZOrder		    -5
 		    ForegroundColor	    "gray"
 		    ShowName		    off
+		    IndexOptions	    "Index vector (dialog)"
+		    Indices		    "1"
+		    OutputSizes		    "1"
 		    }
 		    Block {
 		    BlockType		    Outport
@@ -10899,6 +10983,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
 		    SourceType		    "Compare To Zero"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    "=="
 		    OutDataTypeStr	    "boolean"
@@ -10921,15 +11007,16 @@ Model {
 		    TemplateBlock	    "PreScanSimulinkLibrary/Configurable Subsystems/integral with reset/Configurable\nSubsystem"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    59
+		    $ObjectID		    61
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    60
+		    $ObjectID		    62
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -10941,13 +11028,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "GammaRelaxRear_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -11036,15 +11122,16 @@ Model {
 		    "e/Configurable\nSubsystem"
 		    MemberBlocks	    "Discrete-Time Integrator,Integrator"
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    61
+		    $ObjectID		    63
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    62
+		    $ObjectID		    64
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -11056,13 +11143,12 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "AlphaRelaxRear_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    System {
 		    Name		    "Configurable\nSubsystem1"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -11226,6 +11312,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 		    SourceType		    "Compare To Constant"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    "=="
 		    const		    "2"
@@ -11349,8 +11437,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "FyRear_[N]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -11365,8 +11451,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "AlphaRear_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -11381,8 +11465,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "GammaFront_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -11406,8 +11488,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "GammaStatRear_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -11733,7 +11813,7 @@ Model {
 		    Annotation {
 		    SID			    "198:404"
 		    Name		    "alpha limiter\n[-1 ... 1]"
-		    Position		    [629, 88, 691, 116]
+		    Position		    [598, 74, 654, 100]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -11742,7 +11822,7 @@ Model {
 		    Annotation {
 		    SID			    "198:403"
 		    Name		    "relax_on\nON: 1\nOFF: 0"
-		    Position		    [832, 66, 875, 107]
+		    Position		    [811, 46, 851, 84]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -11754,7 +11834,7 @@ Model {
 		    Annotation {
 		    SID			    "198:402"
 		    Name		    "MOTORCYCLE ONLY"
-		    Position		    [214, 231, 319, 246]
+		    Position		    [162, 224, 263, 238]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -11764,7 +11844,7 @@ Model {
 		    Annotation {
 		    SID			    "198:401"
 		    Name		    "VEHICLE + MOTORCYCLE"
-		    Position		    [229, 71, 360, 86]
+		    Position		    [164, 64, 290, 78]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -11788,8 +11868,6 @@ Model {
 		  Port {
 		    PortNumber		    1
 		    Name		    "DeltaWheel_[rad]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -11824,8 +11902,6 @@ Model {
 		  Port {
 		    PortNumber		    1
 		    Name		    "PDrive_[kW]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -12354,9 +12430,10 @@ Model {
 	      ZOrder		      -10
 	      ForegroundColor	      "gray"
 	      RequestExecContextInheritance off
+	      Variant		      off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		63
+		$ObjectID		65
 		$ClassName		"Simulink.Mask"
 		Display			"image(imread('Engine.png'));"
 	      }
@@ -12364,13 +12441,12 @@ Model {
 		PortNumber		1
 		Name			"nEngine_[rpm]"
 		PropagatedSignals	"rpm"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	      System {
 		Name			"Engine"
 		Location		[266, 116, 1202, 828]
 		Open			off
+		PortBlocksUseCompactNotation off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -12419,15 +12495,16 @@ Model {
 		  TemplateBlock		  "PreScanSimulinkLibrary/Configurable Subsystems/TransferFunction\nEngine/Configurable\nSubsystem"
 		  MemberBlocks		  "Discrete Rate Limiter,Rate Limiter"
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    64
+		    $ObjectID		    66
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    65
+		    $ObjectID		    67
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -12440,6 +12517,7 @@ Model {
 		    Name		    "Configurable\nSubsystem"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -12510,15 +12588,16 @@ Model {
 		  "gine/Configurable\nSubsystem"
 		  MemberBlocks		  "Discrete-Time Integrator,Integrator"
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    66
+		    $ObjectID		    68
 		    $ClassName		    "Simulink.Mask"
 		    Initialization	    "SetComputationMode(gcb,ComputationMode);"
 		    SelfModifiable	    "on"
 		    Object {
 		    $PropName		    "Parameters"
-		    $ObjectID		    67
+		    $ObjectID		    69
 		    $ClassName		    "Simulink.MaskParameter"
 		    Type		    "edit"
 		    Name		    "ComputationMode"
@@ -12530,13 +12609,12 @@ Model {
 		  Port {
 		    PortNumber		    1
 		    Name		    "rpm"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  System {
 		    Name		    "Configurable\nSubsystem1"
 		    Location		    [118, 70, 672, 554]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -12832,8 +12910,6 @@ Model {
 		PortNumber		1
 		Name			"Ax_[ms-2]"
 		PropagatedSignals	"ax_[ms-2]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -12851,8 +12927,6 @@ Model {
 		PortNumber		1
 		Name			"vx_[ms-1]"
 		PropagatedSignals	"vx_[ms-1]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -12870,8 +12944,6 @@ Model {
 		PortNumber		1
 		Name			"vy_[ms-1]"
 		PropagatedSignals	"vy_[ms-1]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -12889,8 +12961,6 @@ Model {
 		PortNumber		1
 		Name			"NEngine_[rpm]"
 		PropagatedSignals	"nEngine_[rpm]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -12908,8 +12978,6 @@ Model {
 		PortNumber		1
 		Name			"Gear_[-]"
 		PropagatedSignals	"gear"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -12927,8 +12995,6 @@ Model {
 		PortNumber		1
 		Name			"Ay_[ms-2]"
 		PropagatedSignals	"ay_[ms-2]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -12946,8 +13012,6 @@ Model {
 		PortNumber		1
 		Name			"Auto_Manual_[-]"
 		PropagatedSignals	"l1"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -12965,8 +13029,6 @@ Model {
 		PortNumber		1
 		Name			"Throttle_[perc]"
 		PropagatedSignals	"L14"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -12984,8 +13046,6 @@ Model {
 		PortNumber		1
 		Name			"Brake_[bar]"
 		PropagatedSignals	"L15"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -13002,8 +13062,6 @@ Model {
 	      Port {
 		PortNumber		1
 		Name			"PEngine_[kW]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -13021,8 +13079,6 @@ Model {
 		PortNumber		1
 		Name			"PDrive_[kW]"
 		PropagatedSignals	"n_driveline_[rpm]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -13040,8 +13096,6 @@ Model {
 	      Port {
 		PortNumber		1
 		Name			"Vx_[kmh-1]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -13053,16 +13107,16 @@ Model {
 	      ZOrder		      -25
 	      ForegroundColor	      "gray"
 	      RequestExecContextInheritance off
+	      Variant		      off
 	      Port {
 		PortNumber		1
 		Name			"gear"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	      System {
 		Name			"Gear: Auto Manual"
 		Location		[266, 116, 1202, 828]
 		Open			off
+		PortBlocksUseCompactNotation off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -13126,10 +13180,12 @@ Model {
 		  ForegroundColor	  "gray"
 		  TreatAsAtomicUnit	  on
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  System {
 		    Name		    "If Action\nSubsystem"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -13188,10 +13244,12 @@ Model {
 		  ForegroundColor	  "gray"
 		  TreatAsAtomicUnit	  on
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  System {
 		    Name		    "If Action\nSubsystem1"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -13321,7 +13379,7 @@ Model {
 		Annotation {
 		  SID			  "198:458"
 		  Name			  "0; Auto = on // Manual =off\n1; Auto = off // Manual =on"
-		  Position		  [231, 38, 359, 66]
+		  Position		  [167, 24, 286, 50]
 		  InternalMargins	  [0, 0, 0, 0]
 		  FixedHeight		  off
 		  FixedWidth		  off
@@ -13468,12 +13526,12 @@ Model {
 	      LibraryVersion	      "1.44"
 	      SourceBlock	      "simulink_extras/Transformations/Radians\nto Degrees"
 	      SourceType	      "RadiansToDegrees"
+	      SourceProductName	      "Simulink"
+	      SourceProductBaseCode   "SL"
 	      ContentPreviewEnabled   off
 	      Port {
 		PortNumber		1
 		Name			"Roll_[deg]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -13488,12 +13546,12 @@ Model {
 	      LibraryVersion	      "1.44"
 	      SourceBlock	      "simulink_extras/Transformations/Radians\nto Degrees"
 	      SourceType	      "RadiansToDegrees"
+	      SourceProductName	      "Simulink"
+	      SourceProductBaseCode   "SL"
 	      ContentPreviewEnabled   off
 	      Port {
 		PortNumber		1
 		Name			"Pitch_[deg]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -13507,7 +13565,9 @@ Model {
 	      BackgroundColor	      "lightBlue"
 	      ShowName		      off
 	      InputPortWidth	      "9"
+	      IndexOptions	      "Index vector (dialog)"
 	      Indices		      "7"
+	      OutputSizes	      "1"
 	    }
 	    Block {
 	      BlockType		      Selector
@@ -13520,7 +13580,9 @@ Model {
 	      BackgroundColor	      "lightBlue"
 	      ShowName		      off
 	      InputPortWidth	      "9"
+	      IndexOptions	      "Index vector (dialog)"
 	      Indices		      "8"
+	      OutputSizes	      "1"
 	    }
 	    Block {
 	      BlockType		      SubSystem
@@ -13531,22 +13593,22 @@ Model {
 	      ZOrder		      -41
 	      ForegroundColor	      "gray"
 	      RequestExecContextInheritance off
+	      Variant		      off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		68
+		$ObjectID		70
 		$ClassName		"Simulink.Mask"
 		Display			"image(imread('Gearshift.png'));"
 	      }
 	      Port {
 		PortNumber		1
 		Name			"GearNr_[-]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	      System {
 		Name			"ShiftLogic"
 		Location		[208, 52, 1085, 1106]
 		Open			off
+		PortBlocksUseCompactNotation off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -13642,6 +13704,8 @@ Model {
 		  LibraryVersion	  "1.287"
 		  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect\nIncrease"
 		  SourceType		  "Detect Increase"
+		  SourceProductName	  "Simulink"
+		  SourceProductBaseCode	  "SL"
 		  ContentPreviewEnabled	  off
 		  vinit			  "0.0"
 		  InputProcessing	  "Inherited"
@@ -13656,10 +13720,12 @@ Model {
 		  ZOrder		  -8
 		  ForegroundColor	  "gray"
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  System {
 		    Name		    "Detect Increase"
 		    Location		    [184, 52, 1704, 1143]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -13735,6 +13801,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Detect\nIncrease"
 		    SourceType		    "Detect Increase"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    vinit		    "1"
 		    InputProcessing	    "Inherited"
@@ -13761,10 +13829,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    TreatAsAtomicUnit	    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "If V0 higher of the from\n2->3 shifting velocity"
 		    Location		    [172, 52, 1704, 1143]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -13833,10 +13903,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    TreatAsAtomicUnit	    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "Other"
 		    Location		    [172, 52, 1704, 1143]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -13890,6 +13962,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Detect\nIncrease"
 		    SourceType		    "Detect Increase"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    vinit		    "0.0"
 		    InputProcessing	    "Inherited"
@@ -14057,8 +14131,6 @@ Model {
 		  Port {
 		    PortNumber		    1
 		    Name		    "GearNr_[-]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -14100,10 +14172,12 @@ Model {
 		  ForegroundColor	  "gray"
 		  TreatAsAtomicUnit	  on
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  System {
 		    Name		    "If Action\nNeutral"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -14163,10 +14237,12 @@ Model {
 		  ForegroundColor	  "gray"
 		  TreatAsAtomicUnit	  on
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  System {
 		    Name		    "If Action\nNormal"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -14226,10 +14302,12 @@ Model {
 		  ForegroundColor	  "gray"
 		  TreatAsAtomicUnit	  on
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  System {
 		    Name		    "If Action\nReverse"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -14292,8 +14370,6 @@ Model {
 		  Port {
 		    PortNumber		    1
 		    Name		    "GearNr_[-]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		}
 		Block {
@@ -14737,28 +14813,26 @@ Model {
 	      ZOrder		      -42
 	      ForegroundColor	      "gray"
 	      RequestExecContextInheritance off
+	      Variant		      off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		69
+		$ObjectID		71
 		$ClassName		"Simulink.Mask"
 		Display			"image(imread('Transmission.png'));"
 	      }
 	      Port {
 		PortNumber		1
 		Name			"ImpellerTorque_[Nm]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	      Port {
 		PortNumber		2
 		Name			"TransmissionTorque_[Nm]"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	      System {
 		Name			"Transmission"
 		Location		[266, 116, 1202, 828]
 		Open			off
+		PortBlocksUseCompactNotation off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -14812,22 +14886,22 @@ Model {
 		  ZOrder		  -4
 		  ForegroundColor	  "gray"
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    70
+		    $ObjectID		    72
 		    $ClassName		    "Simulink.Mask"
 		    Display		    "image(imread('TorqueConverter.png'));"
 		  }
 		  Port {
 		    PortNumber		    2
 		    Name		    "Converter_Torque_[Nm]"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		  }
 		  System {
 		    Name		    "Torque_Converter"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -14885,6 +14959,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 		    SourceType		    "Compare To Constant"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    "<="
 		    const		    "1"
@@ -14903,6 +14979,8 @@ Model {
 		    LibraryVersion	    "1.287"
 		    SourceBlock		    "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
 		    SourceType		    "Compare To Zero"
+		    SourceProductName	    "Simulink"
+		    SourceProductBaseCode   "SL"
 		    ContentPreviewEnabled   off
 		    relop		    "~="
 		    OutDataTypeStr	    "uint8"
@@ -15302,7 +15380,7 @@ Model {
 		    Annotation {
 		    SID			    "198:561"
 		    Name		    "To compensate for no hydraulic connection when in neutral gear"
-		    Position		    [586, 28, 891, 43]
+		    Position		    [434, 21, 719, 35]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -15311,7 +15389,7 @@ Model {
 		    Annotation {
 		    SID			    "198:560"
 		    Name		    "> 0"
-		    Position		    [305, 346, 322, 361]
+		    Position		    [297, 339, 313, 353]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -15322,7 +15400,7 @@ Model {
 		    Annotation {
 		    SID			    "198:559"
 		    Name		    "<= 0"
-		    Position		    [305, 256, 328, 271]
+		    Position		    [294, 249, 315, 263]
 		    InternalMargins	    [0, 0, 0, 0]
 		    FixedHeight		    off
 		    FixedWidth		    off
@@ -15341,10 +15419,12 @@ Model {
 		  ZOrder		  -5
 		  ForegroundColor	  "gray"
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  System {
 		    Name		    "Transmission_Ratio"
 		    Location		    [266, 116, 1202, 811]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -15417,10 +15497,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    TreatAsAtomicUnit	    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "If Action\nNeutral"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -15480,10 +15562,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    TreatAsAtomicUnit	    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "If Action\nNormal"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -15543,10 +15627,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    TreatAsAtomicUnit	    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "If Action\nReverse"
 		    Location		    [266, 116, 1202, 828]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -16409,8 +16495,6 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "y (Lateral Offset)"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -16435,8 +16519,6 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "l1"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -16449,8 +16531,6 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "l2"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -16463,8 +16543,6 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "l5"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -16477,8 +16555,6 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "l6"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -16490,10 +16566,12 @@ Model {
 	  ZOrder		  2748
 	  BackgroundColor	  "lightBlue"
 	  RequestExecContextInheritance	off
+	  Variant		  off
 	  System {
 	    Name		    "LKAS Controller"
-	    Location		    [832, 7, 1783, 800]
+	    Location		    [172, 7, 1460, 800]
 	    Open		    off
+	    PortBlocksUseCompactNotation off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -16527,19 +16605,6 @@ Model {
 	      SaturateOnIntegerOverflow	off
 	    }
 	    Block {
-	      BlockType		      Gain
-	      Name		      "Gain3"
-	      SID		      "453"
-	      Position		      [25, 77, 100, 113]
-	      ZOrder		      2727
-	      BlockMirror	      on
-	      ShowName		      off
-	      Gain		      "1/1.3963"
-	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
 	      BlockType		      Mux
 	      Name		      "Mux1"
 	      SID		      "363"
@@ -16551,8 +16616,6 @@ Model {
 	      Port {
 		PortNumber		1
 		Name			"X_hat"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -16562,30 +16625,14 @@ Model {
 	      Ports		      [1]
 	      Position		      [470, 34, 500, 66]
 	      ZOrder		      2725
-	      Floating		      off
-	      Location		      [80, 121, 636, 411]
-	      Open		      off
+	      ScopeSpecificationString "C++SS(StrPVP('Location','[80, 121, 636, 411]'),StrPVP('Open','off'),MxPVP('AxesTitles"
+	      "',53,'struct(''axes1'',''%<SignalLabel>'')'),MxPVP('ScopeGraphics',56,'struct(''FigureColor'',''[0.5 0.5 0.5]''"
+	      ",''AxesColor'',''[0 0 0]'',''AxesTickColor'',''[1 1 1]'',''LineColors'',''[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	      "'',''LineStyles'',''-|-|-|-|-|-'',''LineWidths'',''[0.5 0.5 0.5 0.5 0.5 0.5]'',''MarkerStyles'',''none|none|non"
+	      "e|none|none|none'')'),StrPVP('ShowLegends','off'),StrPVP('YMin','-1.1'),StrPVP('YMax','0.7'),StrPVP('SaveName',"
+	      "'ScopeData5'),StrPVP('DataFormat','StructureWithTime'),StrPVP('BlockParamSampleTime','0'),StrPVP('LimitDataPoin"
+	      "ts','on'),StrPVP('Decimation','1'),StrPVP('BlockParamSampleInput','off'))"
 	      NumInputPorts	      "1"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      ShowLegends	      off
-	      YMin		      "-1.1"
-	      YMax		      "0.7"
-	      SaveName		      "ScopeData5"
-	      DataFormat	      "StructureWithTime"
-	      SampleTime	      "0"
 	    }
 	    Block {
 	      BlockType		      Scope
@@ -16598,28 +16645,14 @@ Model {
 	      BlockMirror	      on
 	      NamePlacement	      "alternate"
 	      ShowName		      off
-	      Floating		      off
-	      Location		      [188, 365, 804, 805]
-	      Open		      off
+	      ScopeSpecificationString "C++SS(StrPVP('Location','[188, 365, 804, 805]'),StrPVP('Open','off'),MxPVP('AxesTitle"
+	      "s',53,'struct(''axes1'',''%<SignalLabel>'',''axes2'',''%<SignalLabel>'')'),MxPVP('ScopeGraphics',56,'struct(''F"
+	      "igureColor'',''[0.5 0.5 0.5]'',''AxesColor'',''[0 0 0]'',''AxesTickColor'',''[1 1 1]'',''LineColors'',''[1 1 0;"
+	      "1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]'',''LineStyles'',''-|-|-|-|-|-'',''LineWidths'',''[0.5 0.5 0.5 0.5 0.5 0.5]'',''"
+	      "MarkerStyles'',''none|none|none|none|none|none'')'),StrPVP('ShowLegends','off'),StrPVP('YMin','-5~-5'),StrPVP('"
+	      "YMax','5~5'),StrPVP('LimitDataPoints','on'),StrPVP('DataFormat','Array'),StrPVP('Decimation','1'),StrPVP('Block"
+	      "ParamSampleInput','off'))"
 	      NumInputPorts	      "2"
-	      List {
-		ListType		AxesTitles
-		axes1			"%<SignalLabel>"
-		axes2			"%<SignalLabel>"
-	      }
-	      List {
-		ListType		ScopeGraphics
-		FigureColor		"[0.5 0.5 0.5]"
-		AxesColor		"[0 0 0]"
-		AxesTickColor		"[1 1 1]"
-		LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		LineStyles		"-|-|-|-|-|-"
-		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-		MarkerStyles		"none|none|none|none|none|none"
-	      }
-	      ShowLegends	      off
-	      YMin		      "-5~-5"
-	      YMax		      "5~5"
 	    }
 	    Block {
 	      BlockType		      SubSystem
@@ -16630,16 +16663,16 @@ Model {
 	      ZOrder		      467
 	      BackgroundColor	      "orange"
 	      RequestExecContextInheritance off
+	      Variant		      off
 	      Port {
 		PortNumber		4
 		Name			"y_hat"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	      System {
 		Name			"State Feedback + Observer"
-		Location		[832, 7, 1783, 800]
+		Location		[172, 7, 1460, 800]
 		Open			off
+		PortBlocksUseCompactNotation off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -16650,7 +16683,7 @@ Model {
 		TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
 		TiledPageScale		1
 		ShowPageBoundaries	off
-		ZoomFactor		"100"
+		ZoomFactor		"125"
 		Block {
 		  BlockType		  Inport
 		  Name			  "Steer"
@@ -16677,10 +16710,12 @@ Model {
 		  ZOrder		  37
 		  BackgroundColor	  "red"
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  System {
 		    Name		    "Differential Equation"
-		    Location		    [832, 7, 1783, 800]
-		    Open		    off
+		    Location		    [172, 7, 1460, 800]
+		    Open		    on
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -17039,8 +17074,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "x1_dot_hat"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -17057,8 +17090,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "x2_dot_hat"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -17076,8 +17107,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "x3_dot_hat"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -17094,8 +17123,6 @@ Model {
 		    Port {
 		    PortNumber		    1
 		    Name		    "x4_dot_hat"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
 		    }
 		    }
 		    Block {
@@ -17428,17 +17455,63 @@ Model {
 		    DstPort		    1
 		    }
 		    Annotation {
-		    SID			    "421"
-		    Position		    [18, 349, 578, 484]
+		    SID			    "460"
+		    Position		    [15, 831, 569, 956]
 		    InternalMargins	    [0, 0, 0, 0]
-		    FixedHeight		    on
+		    FixedHeight		    off
 		    FixedWidth		    on
 		    HorizontalAlignment	    "left"
 		    VerticalAlignment	    "top"
 		    ForegroundColor	    "[0.901961, 0.901961, 1.000000]"
 		    BackgroundColor	    "[0.901961, 0.901961, 1.000000]"
 		    DropShadow		    on
-		    ZOrder		    -1
+		    AnnotationType	    "area_annotation"
+		    ZOrder		    10
+		    FontSize		    12
+		    }
+		    Annotation {
+		    SID			    "459"
+		    Position		    [15, 498, 574, 818]
+		    InternalMargins	    [0, 0, 0, 0]
+		    FixedHeight		    off
+		    FixedWidth		    on
+		    HorizontalAlignment	    "left"
+		    VerticalAlignment	    "top"
+		    ForegroundColor	    "[0.901961, 0.901961, 1.000000]"
+		    BackgroundColor	    "[0.901961, 0.901961, 1.000000]"
+		    DropShadow		    on
+		    AnnotationType	    "area_annotation"
+		    ZOrder		    9
+		    FontSize		    12
+		    }
+		    Annotation {
+		    SID			    "458"
+		    Position		    [13, 348, 573, 480]
+		    InternalMargins	    [0, 0, 0, 0]
+		    FixedHeight		    off
+		    FixedWidth		    on
+		    HorizontalAlignment	    "left"
+		    VerticalAlignment	    "top"
+		    ForegroundColor	    "[0.901961, 0.901961, 1.000000]"
+		    BackgroundColor	    "[0.901961, 0.901961, 1.000000]"
+		    DropShadow		    on
+		    AnnotationType	    "area_annotation"
+		    ZOrder		    8
+		    FontSize		    12
+		    }
+		    Annotation {
+		    SID			    "457"
+		    Position		    [8, -13, 573, 328]
+		    InternalMargins	    [0, 0, 0, 0]
+		    FixedHeight		    off
+		    FixedWidth		    on
+		    HorizontalAlignment	    "left"
+		    VerticalAlignment	    "top"
+		    ForegroundColor	    "[0.901961, 0.901961, 1.000000]"
+		    BackgroundColor	    "[0.901961, 0.901961, 1.000000]"
+		    DropShadow		    on
+		    AnnotationType	    "area_annotation"
+		    ZOrder		    7
 		    FontSize		    12
 		    }
 		    Annotation {
@@ -17450,49 +17523,8 @@ Model {
 		    FixedWidth		    on
 		    HorizontalAlignment	    "left"
 		    VerticalAlignment	    "top"
+		    AnnotationType	    "image_annotation"
 		    ZOrder		    -3
-		    }
-		    Annotation {
-		    SID			    "418"
-		    Position		    [18, 14, 578, 339]
-		    InternalMargins	    [0, 0, 0, 0]
-		    FixedHeight		    on
-		    FixedWidth		    on
-		    HorizontalAlignment	    "left"
-		    VerticalAlignment	    "top"
-		    ForegroundColor	    "[0.901961, 0.901961, 1.000000]"
-		    BackgroundColor	    "[0.901961, 0.901961, 1.000000]"
-		    DropShadow		    on
-		    ZOrder		    -4
-		    FontSize		    12
-		    }
-		    Annotation {
-		    SID			    "417"
-		    Position		    [18, 499, 578, 814]
-		    InternalMargins	    [0, 0, 0, 0]
-		    FixedHeight		    on
-		    FixedWidth		    on
-		    HorizontalAlignment	    "left"
-		    VerticalAlignment	    "top"
-		    ForegroundColor	    "[0.901961, 0.901961, 1.000000]"
-		    BackgroundColor	    "[0.901961, 0.901961, 1.000000]"
-		    DropShadow		    on
-		    ZOrder		    -5
-		    FontSize		    12
-		    }
-		    Annotation {
-		    SID			    "416"
-		    Position		    [18, 833, 578, 958]
-		    InternalMargins	    [0, 0, 0, 0]
-		    FixedHeight		    on
-		    FixedWidth		    on
-		    HorizontalAlignment	    "left"
-		    VerticalAlignment	    "top"
-		    ForegroundColor	    "[0.901961, 0.901961, 1.000000]"
-		    BackgroundColor	    "[0.901961, 0.901961, 1.000000]"
-		    DropShadow		    on
-		    ZOrder		    -6
-		    FontSize		    12
 		    }
 		    Annotation {
 		    SID			    "414"
@@ -17503,6 +17535,7 @@ Model {
 		    FixedWidth		    on
 		    HorizontalAlignment	    "left"
 		    VerticalAlignment	    "top"
+		    AnnotationType	    "image_annotation"
 		    ZOrder		    -8
 		    }
 		    Annotation {
@@ -17514,6 +17547,7 @@ Model {
 		    FixedWidth		    on
 		    HorizontalAlignment	    "left"
 		    VerticalAlignment	    "top"
+		    AnnotationType	    "image_annotation"
 		    ZOrder		    -10
 		    }
 		    Annotation {
@@ -17525,6 +17559,7 @@ Model {
 		    FixedWidth		    on
 		    HorizontalAlignment	    "left"
 		    VerticalAlignment	    "top"
+		    AnnotationType	    "image_annotation"
 		    ZOrder		    -12
 		    }
 		  }
@@ -17609,7 +17644,7 @@ Model {
 		Annotation {
 		  SID			  "438"
 		  Name			  "lateral_offset"
-		  Position		  [226, 314, 289, 329]
+		  Position		  [226, 314, 284, 328]
 		  InternalMargins	  [0, 0, 0, 0]
 		  FixedHeight		  off
 		  FixedWidth		  off
@@ -17620,7 +17655,7 @@ Model {
 		Annotation {
 		  SID			  "437"
 		  Name			  "lateral_offset_dot"
-		  Position		  [226, 297, 310, 312]
+		  Position		  [226, 297, 304, 311]
 		  InternalMargins	  [0, 0, 0, 0]
 		  FixedHeight		  off
 		  FixedWidth		  off
@@ -17631,7 +17666,7 @@ Model {
 		Annotation {
 		  SID			  "436"
 		  Name			  "yaw"
-		  Position		  [228, 268, 248, 283]
+		  Position		  [228, 268, 248, 282]
 		  InternalMargins	  [0, 0, 0, 0]
 		  FixedHeight		  off
 		  FixedWidth		  off
@@ -17642,7 +17677,7 @@ Model {
 		Annotation {
 		  SID			  "435"
 		  Name			  "yaw_rate"
-		  Position		  [228, 254, 272, 269]
+		  Position		  [228, 254, 270, 268]
 		  InternalMargins	  [0, 0, 0, 0]
 		  FixedHeight		  off
 		  FixedWidth		  off
@@ -17659,6 +17694,7 @@ Model {
 		  FixedWidth		  on
 		  HorizontalAlignment	  "left"
 		  VerticalAlignment	  "top"
+		  AnnotationType	  "image_annotation"
 		  ZOrder		  -5
 		}
 		Annotation {
@@ -17670,6 +17706,7 @@ Model {
 		  FixedWidth		  on
 		  HorizontalAlignment	  "left"
 		  VerticalAlignment	  "top"
+		  AnnotationType	  "image_annotation"
 		  ZOrder		  -7
 		}
 		Annotation {
@@ -17681,6 +17718,7 @@ Model {
 		  FixedWidth		  on
 		  HorizontalAlignment	  "left"
 		  VerticalAlignment	  "top"
+		  AnnotationType	  "image_annotation"
 		  ZOrder		  -8
 		}
 		Annotation {
@@ -17692,6 +17730,7 @@ Model {
 		  FixedWidth		  on
 		  HorizontalAlignment	  "left"
 		  VerticalAlignment	  "top"
+		  AnnotationType	  "image_annotation"
 		  ZOrder		  -10
 		}
 		Annotation {
@@ -17703,6 +17742,7 @@ Model {
 		  FixedWidth		  on
 		  HorizontalAlignment	  "left"
 		  VerticalAlignment	  "top"
+		  AnnotationType	  "image_annotation"
 		  ZOrder		  -12
 		}
 	      }
@@ -17819,14 +17859,15 @@ Model {
 		ZOrder			27
 		Points			[0, -80]
 		Branch {
-		  ZOrder		  30
-		  Points		  [0, -45]
-		  DstBlock		  "Scope1"
+		  ZOrder		  34
+		  Points		  [-418, 0; 0, 45]
+		  DstBlock		  "State Feedback + Observer"
 		  DstPort		  1
 		}
 		Branch {
-		  ZOrder		  26
-		  DstBlock		  "Gain3"
+		  ZOrder		  30
+		  Points		  [0, -45]
+		  DstBlock		  "Scope1"
 		  DstPort		  1
 		}
 	      }
@@ -17837,14 +17878,6 @@ Model {
 		DstPort			1
 	      }
 	    }
-	    Line {
-	      ZOrder		      28
-	      SrcBlock		      "Gain3"
-	      SrcPort		      1
-	      Points		      [-14, 0; 0, 45]
-	      DstBlock		      "State Feedback + Observer"
-	      DstPort		      1
-	    }
 	    Annotation {
 	      SID		      "445"
 	      Name		      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">"
@@ -17853,7 +17886,7 @@ Model {
 	      "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-inde"
 	      "nt:0px; line-height:100%;\"><span style=\" font-size:10px; color:#000000;\">State Feedback</span></p></body></h"
 	      "tml>"
-	      Position		      [174, 66, 249, 81]
+	      Position		      [174, 66, 245, 80]
 	      InternalMargins	      [0, 0, 0, 0]
 	      FixedHeight	      off
 	      FixedWidth	      off
@@ -17871,6 +17904,7 @@ Model {
 	      FixedWidth	      on
 	      HorizontalAlignment     "left"
 	      VerticalAlignment	      "top"
+	      AnnotationType	      "image_annotation"
 	      ZOrder		      -3
 	    }
 	    Annotation {
@@ -17882,6 +17916,7 @@ Model {
 	      FixedWidth	      on
 	      HorizontalAlignment     "left"
 	      VerticalAlignment	      "top"
+	      AnnotationType	      "image_annotation"
 	      ZOrder		      -5
 	    }
 	  }
@@ -17901,10 +17936,12 @@ Model {
 	  FunctionName		  "sfun_LaneMarkerSensor"
 	  Parameters		  "[VerticalResolution HorizontalResolution] FrameRate SensorName OutputReferenceImage SharedMemTag Sha"
 	  "redMemDataTag"
+	  SFunctionDeploymentMode off
 	  EnableBusSupport	  on
+	  SFcnIsStateOwnerBlock	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    71
+	    $ObjectID		    73
 	    $ClassName		    "Simulink.Mask"
 	    Initialization	    "DataPort = 1;\nif OutputReferenceImage==1\n    Rport = 2;\n    Gport = 3;\n    Bport = 4;\n  "
 	    "  RportName = 'Ref. Image R';\n    GportName = 'Ref. Image G';\n    BportName = 'Ref. Image B';\nelse\n    Rport "
@@ -17916,7 +17953,7 @@ Model {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      7
 	      Object {
-		$ObjectID		72
+		$ObjectID		74
 		Type			"edit"
 		Name			"HorizontalResolution"
 		Prompt			"User Specified: Horizontal Resolution [pixels]"
@@ -17924,7 +17961,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		73
+		$ObjectID		75
 		Type			"edit"
 		Name			"VerticalResolution"
 		Prompt			"User Specified: Vertical Resolution [pixels]"
@@ -17932,7 +17969,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		74
+		$ObjectID		76
 		Type			"edit"
 		Name			"FrameRate"
 		Prompt			"User Specified: Frame Rate [Hz]"
@@ -17940,7 +17977,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		75
+		$ObjectID		77
 		Type			"edit"
 		Name			"SensorName"
 		Prompt			"User Specified: Lane Marker Sensor Name"
@@ -17949,7 +17986,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		76
+		$ObjectID		78
 		Type			"checkbox"
 		Name			"OutputReferenceImage"
 		Prompt			"User Specified: Output Reference Image"
@@ -17957,7 +17994,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		77
+		$ObjectID		79
 		Type			"edit"
 		Name			"SharedMemTag"
 		Prompt			"Tag for shared memory for lane marker img"
@@ -17969,7 +18006,7 @@ Model {
 		ToolTip			"off"
 	      }
 	      Object {
-		$ObjectID		78
+		$ObjectID		80
 		Type			"edit"
 		Name			"SharedMemDataTag"
 		Prompt			"Tag for shared memory data"
@@ -17986,20 +18023,14 @@ Model {
 	  Port {
 	    PortNumber		    2
 	    Name		    "L8"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    3
 	    Name		    "L9"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    4
 	    Name		    "L10"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -18021,7 +18052,7 @@ Model {
 	  "tputDir CameraType"
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    79
+	    $ObjectID		    81
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "PreScan Color Display Block"
 	    Description		    "This block displays the RGB output of a PreScan camera sensor."
@@ -18037,7 +18068,7 @@ Model {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      9
 	      Object {
-		$ObjectID		80
+		$ObjectID		82
 		Type			"edit"
 		Name			"SensorName"
 		Prompt			"User Specified: Title of Display"
@@ -18045,14 +18076,14 @@ Model {
 		Evaluate		"off"
 	      }
 	      Object {
-		$ObjectID		81
+		$ObjectID		83
 		Type			"checkbox"
 		Name			"EnableDisplay"
 		Prompt			"Active"
 		Value			"on"
 	      }
 	      Object {
-		$ObjectID		82
+		$ObjectID		84
 		Type			"checkbox"
 		Name			"EnablePosition"
 		Prompt			"Set Display window position"
@@ -18061,7 +18092,7 @@ Model {
 		"else\n    MV{4}='off';\nend\nset_param(gcb,'MaskVisibilities',MV);"
 	      }
 	      Object {
-		$ObjectID		83
+		$ObjectID		85
 		Type			"edit"
 		Name			"DisplayPosition"
 		Prompt			"Display window position [xpos ypos width height]"
@@ -18069,7 +18100,7 @@ Model {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		84
+		$ObjectID		86
 		Type			"edit"
 		Name			"FigureHandle"
 		Prompt			"Unique Handle"
@@ -18077,14 +18108,14 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		85
+		$ObjectID		87
 		Type			"checkbox"
 		Name			"SaveResults"
 		Prompt			"Save results"
 		Value			"off"
 	      }
 	      Object {
-		$ObjectID		86
+		$ObjectID		88
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -18099,7 +18130,7 @@ Model {
 		Value			"PNG"
 	      }
 	      Object {
-		$ObjectID		87
+		$ObjectID		89
 		Type			"edit"
 		Name			"TempOutputDir"
 		Prompt			"OutputDir"
@@ -18109,7 +18140,7 @@ Model {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		88
+		$ObjectID		90
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -18158,45 +18189,31 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "l7"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    2
 	    Name		    "L14"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    3
 	    Name		    "L15"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    4
 	    Name		    "L16"
 	    PropagatedSignals	    "l6"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    5
 	    Name		    "L17"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    6
 	    Name		    "l8"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    7
 	    Name		    "l9"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -18211,9 +18228,10 @@ Model {
 	  DropShadow		  on
 	  DeleteFcn		  "PreScanBlockDeleteFcn;"
 	  RequestExecContextInheritance	off
+	  Variant		  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    89
+	    $ObjectID		    91
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "PreScan Demux Block:"
 	    Display		    "port_label('output',1,'x [m]')\nport_label('output',2,'y [m]')\nport_label('output',3,'z [m]','texm"
@@ -18226,49 +18244,36 @@ Model {
 	  Port {
 	    PortNumber		    3
 	    Name		    "l10"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    4
 	    Name		    "l11"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    5
 	    Name		    "l12"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    7
 	    Name		    "l13"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    8
 	    Name		    "l14"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    9
 	    Name		    "l15"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    11
 	    Name		    "l16"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  System {
 	    Name		    "SELF_Demux"
 	    Location		    [746, 52, 1537, 1008]
 	    Open		    off
+	    PortBlocksUseCompactNotation off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -18383,7 +18388,9 @@ Model {
 	      ForegroundColor	      "gray"
 	      DropShadow	      on
 	      InputPortWidth	      "3"
+	      IndexOptions	      "Index vector (dialog)"
 	      Indices		      "[3]"
+	      OutputSizes	      "1"
 	    }
 	    Block {
 	      BlockType		      SubSystem
@@ -18395,10 +18402,12 @@ Model {
 	      ForegroundColor	      "gray"
 	      DropShadow	      on
 	      RequestExecContextInheritance off
+	      Variant		      off
 	      System {
 		Name			"compas converter"
 		Location		[267, 444, 854, 806]
 		Open			off
+		PortBlocksUseCompactNotation off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -18431,10 +18440,12 @@ Model {
 		  ForegroundColor	  "gray"
 		  DropShadow		  on
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  System {
 		    Name		    "cart2compas"
 		    Location		    [84, 163, 861, 534]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -18728,10 +18739,12 @@ Model {
 	      DropShadow	      on
 	      FunctionName	      "sfun_xyz2GPS"
 	      Parameters	      "CoordinateCount GPS_base"
+	      SFunctionDeploymentMode off
 	      EnableBusSupport	      off
+	      SFcnIsStateOwnerBlock   off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		90
+		$ObjectID		92
 		$ClassName		"Simulink.Mask"
 		Description		"Converts experiment xyz coordinates to GPS coordinates.\n\nThe xyz coordinate system is defined as the"
 		" tangential plane at the specified GPS coordinate (to be defined below), with x pointing east, y pointing north and "
@@ -18742,14 +18755,14 @@ Model {
 		  Type			  "Simulink.MaskParameter"
 		  Dimension		  2
 		  Object {
-		    $ObjectID		    91
+		    $ObjectID		    93
 		    Type		    "edit"
 		    Name		    "CoordinateCount"
 		    Prompt		    "Number of coordinates to convert"
 		    Value		    "1"
 		  }
 		  Object {
-		    $ObjectID		    92
+		    $ObjectID		    94
 		    Type		    "edit"
 		    Name		    "GPS_base"
 		    Prompt		    "GPS coordinate of the origin of the xyz coordinate system [lat lon alt]:"
@@ -19086,16 +19099,10 @@ Model {
 	  Position		  [535, 444, 565, 476]
 	  ZOrder		  2727
 	  ShowName		  off
-	  Floating		  off
-	  Location		  [188, 365, 512, 604]
-	  Open			  off
+	  ScopeSpecificationString "C++SS(StrPVP('Location','[188, 365, 512, 604]'),StrPVP('Open','off'),MxPVP('AxesTitles',5"
+	  "3,'struct(''axes1'',''%<SignalLabel>'')'),StrPVP('ShowLegends','off'),StrPVP('SaveName','ScopeData3'),StrPVP('Limit"
+	  "DataPoints','on'),StrPVP('DataFormat','Array'),StrPVP('Decimation','1'),StrPVP('BlockParamSampleInput','off'))"
 	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  ShowLegends		  off
-	  SaveName		  "ScopeData3"
 	}
 	Block {
 	  BlockType		  Scope
@@ -19104,30 +19111,14 @@ Model {
 	  Ports			  [1]
 	  Position		  [955, 19, 985, 51]
 	  ZOrder		  2724
-	  Floating		  off
-	  Location		  [689, 598, 1245, 888]
-	  Open			  off
+	  ScopeSpecificationString "C++SS(StrPVP('Location','[689, 598, 1245, 888]'),StrPVP('Open','off'),MxPVP('AxesTitles',"
+	  "53,'struct(''axes1'',''%<SignalLabel>'')'),MxPVP('ScopeGraphics',56,'struct(''FigureColor'',''[0.5 0.5 0.5]'',''Axe"
+	  "sColor'',''[0 0 0]'',''AxesTickColor'',''[1 1 1]'',''LineColors'',''[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]'',''LineS"
+	  "tyles'',''-|-|-|-|-|-'',''LineWidths'',''[0.5 0.5 0.5 0.5 0.5 0.5]'',''MarkerStyles'',''none|none|none|none|none|no"
+	  "ne'')'),StrPVP('ShowLegends','off'),StrPVP('YMin','-1.1'),StrPVP('YMax','0.7'),StrPVP('SaveName','ScopeData2'),StrP"
+	  "VP('DataFormat','StructureWithTime'),StrPVP('BlockParamSampleTime','0'),StrPVP('LimitDataPoints','on'),StrPVP('Deci"
+	  "mation','1'),StrPVP('BlockParamSampleInput','off'))"
 	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  ShowLegends		  off
-	  YMin			  "-1.1"
-	  YMax			  "0.7"
-	  SaveName		  "ScopeData2"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
 	}
 	Block {
 	  BlockType		  Scope
@@ -19137,26 +19128,13 @@ Model {
 	  Position		  [380, 519, 410, 551]
 	  ZOrder		  2728
 	  ShowName		  off
-	  Floating		  off
-	  Location		  [188, 365, 933, 829]
-	  Open			  off
+	  ScopeSpecificationString "C++SS(StrPVP('Location','[188, 365, 933, 829]'),StrPVP('Open','off'),MxPVP('AxesTitles',5"
+	  "3,'struct(''axes1'',''%<SignalLabel>'')'),MxPVP('ScopeGraphics',56,'struct(''FigureColor'',''[0.5 0.5 0.5]'',''Axes"
+	  "Color'',''[0 0 0]'',''AxesTickColor'',''[1 1 1]'',''LineColors'',''[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]'',''LineSt"
+	  "yles'',''-|-|-|-|-|-'',''LineWidths'',''[0.5 0.5 0.5 0.5 0.5 0.5]'',''MarkerStyles'',''none|none|none|none|none|non"
+	  "e'')'),StrPVP('ShowLegends','off'),StrPVP('SaveName','ScopeData4'),StrPVP('LimitDataPoints','on'),StrPVP('DataForma"
+	  "t','Array'),StrPVP('Decimation','1'),StrPVP('BlockParamSampleInput','off'))"
 	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  ShowLegends		  off
-	  SaveName		  "ScopeData4"
 	}
 	Block {
 	  BlockType		  Scope
@@ -19166,30 +19144,14 @@ Model {
 	  Position		  [959, 295, 991, 325]
 	  ZOrder		  2751
 	  BlockRotation		  270
-	  Floating		  off
-	  Location		  [689, 598, 1245, 888]
-	  Open			  off
+	  ScopeSpecificationString "C++SS(StrPVP('Location','[689, 598, 1245, 888]'),StrPVP('Open','off'),MxPVP('AxesTitles',"
+	  "53,'struct(''axes1'',''%<SignalLabel>'')'),MxPVP('ScopeGraphics',56,'struct(''FigureColor'',''[0.5 0.5 0.5]'',''Axe"
+	  "sColor'',''[0 0 0]'',''AxesTickColor'',''[1 1 1]'',''LineColors'',''[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]'',''LineS"
+	  "tyles'',''-|-|-|-|-|-'',''LineWidths'',''[0.5 0.5 0.5 0.5 0.5 0.5]'',''MarkerStyles'',''none|none|none|none|none|no"
+	  "ne'')'),StrPVP('ShowLegends','off'),StrPVP('YMin','-1.1'),StrPVP('YMax','0.7'),StrPVP('SaveName','ScopeData6'),StrP"
+	  "VP('DataFormat','StructureWithTime'),StrPVP('BlockParamSampleTime','0'),StrPVP('LimitDataPoints','on'),StrPVP('Deci"
+	  "mation','1'),StrPVP('BlockParamSampleInput','off'))"
 	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  ShowLegends		  off
-	  YMin			  "-1.1"
-	  YMax			  "0.7"
-	  SaveName		  "ScopeData6"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
 	}
 	Block {
 	  BlockType		  Scope
@@ -19199,30 +19161,14 @@ Model {
 	  Position		  [1039, 295, 1071, 325]
 	  ZOrder		  2752
 	  BlockRotation		  270
-	  Floating		  off
-	  Location		  [49, 98, 605, 388]
-	  Open			  off
+	  ScopeSpecificationString "C++SS(StrPVP('Location','[49, 98, 605, 388]'),StrPVP('Open','off'),MxPVP('AxesTitles',53,"
+	  "'struct(''axes1'',''%<SignalLabel>'')'),MxPVP('ScopeGraphics',56,'struct(''FigureColor'',''[0.5 0.5 0.5]'',''AxesCo"
+	  "lor'',''[0 0 0]'',''AxesTickColor'',''[1 1 1]'',''LineColors'',''[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]'',''LineStyl"
+	  "es'',''-|-|-|-|-|-'',''LineWidths'',''[0.5 0.5 0.5 0.5 0.5 0.5]'',''MarkerStyles'',''none|none|none|none|none|none'"
+	  "')'),StrPVP('ShowLegends','off'),StrPVP('YMin','-350'),StrPVP('YMax','400'),StrPVP('SaveName','ScopeData7'),StrPVP("
+	  "'DataFormat','StructureWithTime'),StrPVP('BlockParamSampleTime','0'),StrPVP('LimitDataPoints','on'),StrPVP('Decimat"
+	  "ion','1'),StrPVP('BlockParamSampleInput','off'))"
 	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.5 0.5 0.5]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[1 1 1]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  ShowLegends		  off
-	  YMin			  "-350"
-	  YMax			  "400"
-	  SaveName		  "ScopeData7"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
 	}
 	Block {
 	  BlockType		  Sum
@@ -19354,9 +19300,10 @@ Model {
 	  DropShadow		  on
 	  DeleteFcn		  "PreScanBlockDeleteFcn;"
 	  RequestExecContextInheritance	off
+	  Variant		  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    93
+	    $ObjectID		    95
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "PreScan Source Block: Trajectories"
 	    Description		    "The Trajectory block contains the trajectories defined in the PreScan Experiment Editor. The ou"
@@ -19368,13 +19315,12 @@ Model {
 	    PortNumber		    1
 	    Name		    "l17"
 	    PropagatedSignals	    "L5"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	  System {
 	    Name		    "Trajectories"
 	    Location		    [404, 289, 1042, 916]
 	    Open		    off
+	    PortBlocksUseCompactNotation off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -19398,22 +19344,22 @@ Model {
 	      DropShadow	      on
 	      DeleteFcn		      "PreScanBlockDeleteFcn;"
 	      RequestExecContextInheritance off
+	      Variant		      off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		94
+		$ObjectID		96
 		$ClassName		"Simulink.Mask"
 		Type			"PreScan Demux Block:"
 	      }
 	      Port {
 		PortNumber		1
 		Name			"L5"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	      System {
 		Name			"Traj2State1"
 		Location		[656, 52, 1386, 1005]
 		Open			off
+		PortBlocksUseCompactNotation off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -19654,7 +19600,9 @@ Model {
 		  ForegroundColor	  "gray"
 		  DropShadow		  on
 		  InputPortWidth	  "6"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[4 5 6]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19668,7 +19616,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[5]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19682,7 +19632,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[2]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19696,7 +19648,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[3]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19710,7 +19664,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[1]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19724,7 +19680,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[8]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19738,7 +19696,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[9]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19752,7 +19712,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[7]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19766,7 +19728,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[14]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19780,7 +19744,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[15]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19794,7 +19760,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[13]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19808,7 +19776,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[20]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19822,7 +19792,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[6]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19836,7 +19808,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[21]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19850,7 +19824,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[19]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19864,7 +19840,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[12]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19878,7 +19856,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[17]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19892,7 +19872,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[18]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19906,7 +19888,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[16]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19920,7 +19904,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[11]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19934,7 +19920,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[10]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -19948,7 +19936,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "21"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[4]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  SubSystem
@@ -19960,10 +19950,12 @@ Model {
 		  ForegroundColor	  "gray"
 		  DropShadow		  on
 		  RequestExecContextInheritance	off
+		  Variant		  off
 		  System {
 		    Name		    "Traj2State2"
 		    Location		    [1574, 52, 1996, 603]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -19996,10 +19988,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "MuxState"
 		    Location		    [510, 140, 765, 844]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -20224,10 +20218,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "Traj2MuxState_Ext"
 		    Location		    [519, 171, 931, 902]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -20350,10 +20346,12 @@ Model {
 		    ForegroundColor	    "gray"
 		    DropShadow		    on
 		    RequestExecContextInheritance off
+		    Variant		    off
 		    System {
 		    Name		    "demux"
 		    Location		    [52, 52, 294, 1048]
 		    Open		    off
+		    PortBlocksUseCompactNotation off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -21604,9 +21602,10 @@ Model {
 	      ShowName		      off
 	      DeleteFcn		      "PreScanBlockDeleteFcn;"
 	      RequestExecContextInheritance off
+	      Variant		      off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		95
+		$ObjectID		97
 		$ClassName		"Simulink.Mask"
 		Type			"PreScan Source Block: Trajectory"
 		Description		"The Trajectory block contains the trajectories defined in the PreScan Experiment Editor. The output of"
@@ -21620,7 +21619,7 @@ Model {
 		  Type			  "Simulink.MaskParameter"
 		  Dimension		  2
 		  Object {
-		    $ObjectID		    96
+		    $ObjectID		    98
 		    Type		    "edit"
 		    Name		    "FileName"
 		    Prompt		    "Filename"
@@ -21628,7 +21627,7 @@ Model {
 		    Enabled		    "off"
 		  }
 		  Object {
-		    $ObjectID		    97
+		    $ObjectID		    99
 		    Type		    "edit"
 		    Name		    "TimeStep"
 		    Prompt		    " Time Step [s]"
@@ -21641,13 +21640,12 @@ Model {
 	      Port {
 		PortNumber		1
 		Name			"L3"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	      System {
 		Name			"Trajectory_1"
 		Location		[580, 141, 1072, 569]
 		Open			off
+		PortBlocksUseCompactNotation off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -21706,7 +21704,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "24"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[7:18]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Selector
@@ -21720,7 +21720,9 @@ Model {
 		  NamePlacement		  "alternate"
 		  ShowName		  off
 		  InputPortWidth	  "24"
+		  IndexOptions		  "Index vector (dialog)"
 		  Indices		  "[1:6]"
+		  OutputSizes		  "1"
 		}
 		Block {
 		  BlockType		  Outport
@@ -21785,8 +21787,6 @@ Model {
 	      Port {
 		PortNumber		1
 		Name			"L4"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
@@ -21844,8 +21844,6 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "L2"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -22314,9 +22312,10 @@ Model {
       ShowName		      off
       DeleteFcn		      "PreScanBlockDeleteFcn;"
       RequestExecContextInheritance off
+      Variant		      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		98
+	$ObjectID		100
 	$ClassName		"Simulink.Mask"
 	Type			"PreScan Simulation Core Block"
 	Description		"Please do not remove this block from the PreScan compilation sheet, \nas it contains essential configur"
@@ -22325,7 +22324,7 @@ Model {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  2
 	  Object {
-	    $ObjectID		    99
+	    $ObjectID		    101
 	    Type		    "edit"
 	    Name		    "NrOfSensors"
 	    Prompt		    "Number of sensor values"
@@ -22333,7 +22332,7 @@ Model {
 	    Tunable		    "off"
 	  }
 	  Object {
-	    $ObjectID		    100
+	    $ObjectID		    102
 	    Type		    "edit"
 	    Name		    "TimeStep"
 	    Prompt		    "Timestep [s]"
@@ -22347,6 +22346,7 @@ Model {
 	Name			"GetSensors"
 	Location		[361, 173, 942, 604]
 	Open			off
+	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -22416,9 +22416,10 @@ Model {
       ShowName		      off
       DeleteFcn		      "PreScanBlockDeleteFcn;"
       RequestExecContextInheritance off
+      Variant		      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		101
+	$ObjectID		103
 	$ClassName		"Simulink.Mask"
 	Type			"PreScan Source Block: Lane Marker Sensor"
 	Description		"The Lane Marker Sensor provides information relating the sensor to the lane markers on the road."
@@ -22428,13 +22429,12 @@ Model {
       Port {
 	PortNumber		1
 	Name			"L12"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
       }
       System {
 	Name			"LaneMarkerSensor_1"
 	Location		[284, 238, 853, 574]
 	Open			off
+	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -22527,9 +22527,10 @@ Model {
       ShowName		      off
       DeleteFcn		      "PreScanBlockDeleteFcn;"
       RequestExecContextInheritance off
+      Variant		      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		102
+	$ObjectID		104
 	$ClassName		"Simulink.Mask"
 	Type			"PreScan Source Block: SELF"
 	Description		"The SELF port shows (state) information of the actor itself. The outputs are position in the experiment"
@@ -22541,7 +22542,7 @@ Model {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  4
 	  Object {
-	    $ObjectID		    103
+	    $ObjectID		    105
 	    Type		    "edit"
 	    Name		    "PortName"
 	    Prompt		    "Auto-Assigned: Port Name [-]"
@@ -22551,7 +22552,7 @@ Model {
 	    Enabled		    "off"
 	  }
 	  Object {
-	    $ObjectID		    104
+	    $ObjectID		    106
 	    Type		    "edit"
 	    Name		    "PortIndex"
 	    Prompt		    "Auto-Assigned: Port Index [-]"
@@ -22561,7 +22562,7 @@ Model {
 	    Visible		    "off"
 	  }
 	  Object {
-	    $ObjectID		    105
+	    $ObjectID		    107
 	    Type		    "edit"
 	    Name		    "PortWidth"
 	    Prompt		    "Auto-Assigned: Port Dimensions"
@@ -22571,7 +22572,7 @@ Model {
 	    Visible		    "off"
 	  }
 	  Object {
-	    $ObjectID		    106
+	    $ObjectID		    108
 	    Type		    "edit"
 	    Name		    "TimeStep"
 	    Prompt		    "Auto-Assigned: Upload Period [s]"
@@ -22585,13 +22586,12 @@ Model {
       Port {
 	PortNumber		1
 	Name			"L6"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
       }
       System {
 	Name			"SELF_Audi_A8_1"
 	Location		[448, 300, 828, 683]
 	Open			off
+	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -22673,9 +22673,10 @@ Model {
       ShowName		      off
       DeleteFcn		      "PreScanBlockDeleteFcn;"
       RequestExecContextInheritance off
+      Variant		      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		107
+	$ObjectID		109
 	$ClassName		"Simulink.Mask"
 	Type			"PreScan Sink Block: State"
 	Description		"The Actor State contains a vector signal of size (9x1), containing the following signals: \n\n-  Positi"
@@ -22689,7 +22690,7 @@ Model {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  7
 	  Object {
-	    $ObjectID		    108
+	    $ObjectID		    110
 	    Type		    "edit"
 	    Name		    "x0"
 	    Prompt		    "Ini x-position VEHICLE wrt GLOBAL axis system [m]"
@@ -22697,7 +22698,7 @@ Model {
 	    Enabled		    "off"
 	  }
 	  Object {
-	    $ObjectID		    109
+	    $ObjectID		    111
 	    Type		    "edit"
 	    Name		    "y0"
 	    Prompt		    "Ini y-position VEHICLE wrt GLOBAL axis system [m]"
@@ -22705,7 +22706,7 @@ Model {
 	    Enabled		    "off"
 	  }
 	  Object {
-	    $ObjectID		    110
+	    $ObjectID		    112
 	    Type		    "edit"
 	    Name		    "z0"
 	    Prompt		    "Ini z-position VEHICLE wrt GLOBAL axis system [m]"
@@ -22713,7 +22714,7 @@ Model {
 	    Enabled		    "off"
 	  }
 	  Object {
-	    $ObjectID		    111
+	    $ObjectID		    113
 	    Type		    "edit"
 	    Name		    "Roll0"
 	    Prompt		    "Ini roll-angle BODY wrt VEHICLE axis system [deg]"
@@ -22721,7 +22722,7 @@ Model {
 	    Enabled		    "off"
 	  }
 	  Object {
-	    $ObjectID		    112
+	    $ObjectID		    114
 	    Type		    "edit"
 	    Name		    "Pitch0"
 	    Prompt		    "Ini pitch-angle BODY wrt VEHICLE axis system [deg]"
@@ -22729,7 +22730,7 @@ Model {
 	    Enabled		    "off"
 	  }
 	  Object {
-	    $ObjectID		    113
+	    $ObjectID		    115
 	    Type		    "edit"
 	    Name		    "Yaw0"
 	    Prompt		    "Ini yaw-angle VEHICLE wrt GLOBAL axis system [deg]"
@@ -22737,7 +22738,7 @@ Model {
 	    Enabled		    "off"
 	  }
 	  Object {
-	    $ObjectID		    114
+	    $ObjectID		    116
 	    Type		    "edit"
 	    Name		    "TimeStep"
 	    Prompt		    "Time Step [s]"
@@ -22751,6 +22752,7 @@ Model {
 	Name			"STATE_Audi_A8_1"
 	Location		[368, 52, 1418, 1119]
 	Open			off
+	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -22785,9 +22787,10 @@ Model {
 	  BackgroundColor	  "red"
 	  DropShadow		  on
 	  RequestExecContextInheritance	off
+	  Variant		  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    115
+	    $ObjectID		    117
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "ToSensorWorld"
 	    Description		    "Sends signal(s) from Simulink to the Sensor World\n"
@@ -22800,7 +22803,7 @@ Model {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      4
 	      Object {
-		$ObjectID		116
+		$ObjectID		118
 		Type			"edit"
 		Name			"PortName"
 		Prompt			"Port Name [-]"
@@ -22810,7 +22813,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		117
+		$ObjectID		119
 		Type			"edit"
 		Name			"PortIndex"
 		Prompt			"Index [-]"
@@ -22819,7 +22822,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		118
+		$ObjectID		120
 		Type			"edit"
 		Name			"PortWidth"
 		Prompt			"Port Dimensions [-]"
@@ -22828,7 +22831,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		119
+		$ObjectID		121
 		Type			"edit"
 		Name			"TimeStep"
 		Prompt			"Upload Period [s]"
@@ -22843,6 +22846,7 @@ Model {
 	    Name		    "Acceleration"
 	    Location		    [362, 286, 914, 698]
 	    Open		    off
+	    PortBlocksUseCompactNotation off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -22960,9 +22964,10 @@ Model {
 	  BackgroundColor	  "red"
 	  DropShadow		  on
 	  RequestExecContextInheritance	off
+	  Variant		  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    120
+	    $ObjectID		    122
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "ToSensorWorld"
 	    Description		    "Sends signal(s) from Simulink to the Sensor World\n"
@@ -22975,7 +22980,7 @@ Model {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      4
 	      Object {
-		$ObjectID		121
+		$ObjectID		123
 		Type			"edit"
 		Name			"PortName"
 		Prompt			"Port Name [-]"
@@ -22985,7 +22990,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		122
+		$ObjectID		124
 		Type			"edit"
 		Name			"PortIndex"
 		Prompt			"Index [-]"
@@ -22994,7 +22999,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		123
+		$ObjectID		125
 		Type			"edit"
 		Name			"PortWidth"
 		Prompt			"Port Dimensions [-]"
@@ -23003,7 +23008,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		124
+		$ObjectID		126
 		Type			"edit"
 		Name			"TimeStep"
 		Prompt			"Upload Period [s]"
@@ -23018,6 +23023,7 @@ Model {
 	    Name		    "Position"
 	    Location		    [362, 286, 914, 698]
 	    Open		    off
+	    PortBlocksUseCompactNotation off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -23121,9 +23127,10 @@ Model {
 	  BackgroundColor	  "red"
 	  DropShadow		  on
 	  RequestExecContextInheritance	off
+	  Variant		  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    125
+	    $ObjectID		    127
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "ToSensorWorld"
 	    Description		    "Sends signal(s) from Simulink to the Sensor World\n"
@@ -23136,7 +23143,7 @@ Model {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      4
 	      Object {
-		$ObjectID		126
+		$ObjectID		128
 		Type			"edit"
 		Name			"PortName"
 		Prompt			"Port Name [-]"
@@ -23146,7 +23153,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		127
+		$ObjectID		129
 		Type			"edit"
 		Name			"PortIndex"
 		Prompt			"Index [-]"
@@ -23155,7 +23162,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		128
+		$ObjectID		130
 		Type			"edit"
 		Name			"PortWidth"
 		Prompt			"Port Dimensions [-]"
@@ -23164,7 +23171,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		129
+		$ObjectID		131
 		Type			"edit"
 		Name			"TimeStep"
 		Prompt			"Upload Period [s]"
@@ -23179,6 +23186,7 @@ Model {
 	    Name		    "RPY"
 	    Location		    [362, 286, 914, 698]
 	    Open		    off
+	    PortBlocksUseCompactNotation off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -23282,9 +23290,10 @@ Model {
 	  BackgroundColor	  "red"
 	  DropShadow		  on
 	  RequestExecContextInheritance	off
+	  Variant		  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    130
+	    $ObjectID		    132
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "ToSensorWorld"
 	    Description		    "Sends signal(s) from Simulink to the Sensor World\n"
@@ -23297,7 +23306,7 @@ Model {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      4
 	      Object {
-		$ObjectID		131
+		$ObjectID		133
 		Type			"edit"
 		Name			"PortName"
 		Prompt			"Port Name [-]"
@@ -23307,7 +23316,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		132
+		$ObjectID		134
 		Type			"edit"
 		Name			"PortIndex"
 		Prompt			"Index [-]"
@@ -23316,7 +23325,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		133
+		$ObjectID		135
 		Type			"edit"
 		Name			"PortWidth"
 		Prompt			"Port Dimensions [-]"
@@ -23325,7 +23334,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		134
+		$ObjectID		136
 		Type			"edit"
 		Name			"TimeStep"
 		Prompt			"Upload Period [s]"
@@ -23340,6 +23349,7 @@ Model {
 	    Name		    "Velocity"
 	    Location		    [362, 286, 914, 698]
 	    Open		    off
+	    PortBlocksUseCompactNotation off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -23494,9 +23504,10 @@ Model {
 	  BackgroundColor	  "red"
 	  DropShadow		  on
 	  RequestExecContextInheritance	off
+	  Variant		  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    135
+	    $ObjectID		    137
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "ToSensorWorld"
 	    Description		    "Sends signal(s) from Simulink to the Sensor World\n"
@@ -23509,7 +23520,7 @@ Model {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      4
 	      Object {
-		$ObjectID		136
+		$ObjectID		138
 		Type			"edit"
 		Name			"PortName"
 		Prompt			"Port Name [-]"
@@ -23519,7 +23530,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		137
+		$ObjectID		139
 		Type			"edit"
 		Name			"PortIndex"
 		Prompt			"Index [-]"
@@ -23528,7 +23539,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		138
+		$ObjectID		140
 		Type			"edit"
 		Name			"PortWidth"
 		Prompt			"Port Dimensions [-]"
@@ -23537,7 +23548,7 @@ Model {
 		Enabled			"off"
 	      }
 	      Object {
-		$ObjectID		139
+		$ObjectID		141
 		Type			"edit"
 		Name			"TimeStep"
 		Prompt			"Upload Period [s]"
@@ -23552,6 +23563,7 @@ Model {
 	    Name		    "velRPY"
 	    Location		    [362, 286, 914, 698]
 	    Open		    off
+	    PortBlocksUseCompactNotation off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -23727,9 +23739,10 @@ Model {
       ShowName		      off
       DeleteFcn		      "PreScanBlockDeleteFcn;"
       RequestExecContextInheritance off
+      Variant		      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		140
+	$ObjectID		142
 	$ClassName		"Simulink.Mask"
 	Type			"PreScan Simulation Core Block"
 	Description		"Please do not remove this block from the PreScan compilation sheet, \nas it contains essential configur"
@@ -23738,7 +23751,7 @@ Model {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  2
 	  Object {
-	    $ObjectID		    141
+	    $ObjectID		    143
 	    Type		    "edit"
 	    Name		    "TimeStep"
 	    Prompt		    "Timestep [s]"
@@ -23746,7 +23759,7 @@ Model {
 	    Tunable		    "off"
 	  }
 	  Object {
-	    $ObjectID		    142
+	    $ObjectID		    144
 	    Type		    "edit"
 	    Name		    "NrOfActuators"
 	    Prompt		    "Number of actuator values"
@@ -23760,6 +23773,7 @@ Model {
 	Name			"SetActuators"
 	Location		[628, 311, 1170, 682]
 	Open			off
+	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -23781,11 +23795,10 @@ Model {
 	  ShowName		  off
 	  Inputs		  "1"
 	  DisplayOption		  "bar"
+	  InheritFromInputs	  on
 	  Port {
 	    PortNumber		    1
 	    Name		    "SimCore"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -23821,8 +23834,6 @@ Model {
 	  Port {
 	    PortNumber		    2
 	    Name		    "ComputationTime[s]"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -23888,7 +23899,7 @@ Model {
       "putationTime"
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		143
+	$ObjectID		145
 	$ClassName		"Simulink.Mask"
 	Type			"PreScan Simulation Core Configurator"
 	Description		"Please do not remove this block from the PreScan compilation sheet, \nas it contains essential configur"
@@ -23900,7 +23911,7 @@ Model {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  8
 	  Object {
-	    $ObjectID		    144
+	    $ObjectID		    146
 	    Type		    "edit"
 	    Name		    "SimulationCore"
 	    Prompt		    "Simulation Core"
@@ -23911,7 +23922,7 @@ Model {
 	    Visible		    "off"
 	  }
 	  Object {
-	    $ObjectID		    145
+	    $ObjectID		    147
 	    Type		    "edit"
 	    Name		    "HostName"
 	    Prompt		    "Simulation Host"
@@ -23922,7 +23933,7 @@ Model {
 	    Visible		    "off"
 	  }
 	  Object {
-	    $ObjectID		    146
+	    $ObjectID		    148
 	    Type		    "edit"
 	    Name		    "CheckStart"
 	    Prompt		    "Show START Dialog"
@@ -23932,7 +23943,7 @@ Model {
 	    Visible		    "off"
 	  }
 	  Object {
-	    $ObjectID		    147
+	    $ObjectID		    149
 	    Type		    "edit"
 	    Name		    "prescanversion"
 	    Prompt		    "PreScan Version"
@@ -23941,14 +23952,14 @@ Model {
 	    Enabled		    "off"
 	  }
 	  Object {
-	    $ObjectID		    148
+	    $ObjectID		    150
 	    Type		    "checkbox"
 	    Name		    "EnableLog"
 	    Prompt		    "Create TA Log"
 	    Value		    "off"
 	  }
 	  Object {
-	    $ObjectID		    149
+	    $ObjectID		    151
 	    Type		    "edit"
 	    Name		    "RfR"
 	    Prompt		    "Record for Replay"
@@ -23957,14 +23968,14 @@ Model {
 	    Visible		    "off"
 	  }
 	  Object {
-	    $ObjectID		    150
+	    $ObjectID		    152
 	    Type		    "checkbox"
 	    Name		    "EnableGPUAccel"
 	    Prompt		    "Enable GPU Acceleration"
 	    Value		    "off"
 	  }
 	  Object {
-	    $ObjectID		    151
+	    $ObjectID		    153
 	    Type		    "checkbox"
 	    Name		    "ShowComputationTime"
 	    Prompt		    "Show ComputationTime Scope"
@@ -23984,10 +23995,12 @@ Model {
       ZOrder		      7
       ShowName		      off
       RequestExecContextInheritance off
+      Variant		      off
       System {
 	Name			"SimCoreInfo"
 	Location		[668, 310, 1117, 794]
 	Open			off
+	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -24008,11 +24021,10 @@ Model {
 	  ZOrder		  -1
 	  ShowName		  off
 	  OutputSignals		  "ComputationTime[s]"
+	  OutputAsBus		  off
 	  Port {
 	    PortNumber		    1
 	    Name		    "<ComputationTime[s]>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
@@ -24031,21 +24043,11 @@ Model {
 	  Ports			  [1]
 	  Position		  [305, 94, 335, 126]
 	  ZOrder		  -3
-	  Floating		  off
-	  Location		  [118, 745, 442, 984]
-	  Open			  off
+	  ScopeSpecificationString "C++SS(StrPVP('Location','[118, 745, 442, 984]'),StrPVP('Open','off'),MxPVP('AxesTitles',5"
+	  "3,'struct(''axes1'',''%<SignalLabel>'')'),StrPVP('ShowLegends','off'),StrPVP('TimeRange','10'),StrPVP('YMin','0'),S"
+	  "trPVP('YMax','0.5'),StrPVP('SaveName','ComputationTime'),StrPVP('DataFormat','StructureWithTime'),StrPVP('BlockPara"
+	  "mSampleTime','0'),StrPVP('LimitDataPoints','on'),StrPVP('Decimation','1'),StrPVP('BlockParamSampleInput','off'))"
 	  NumInputPorts		  "1"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	  }
-	  ShowLegends		  off
-	  TimeRange		  "10"
-	  YMin			  "0"
-	  YMax			  "0.5"
-	  SaveName		  "ComputationTime"
-	  DataFormat		  "StructureWithTime"
-	  SampleTime		  "0"
 	}
 	Line {
 	  Name			  "<ComputationTime[s]>"
@@ -24102,7 +24104,7 @@ Model {
     Annotation {
       SID		      "3"
       Name		      "Regenerate"
-      Position		      [135, 32, 192, 47]
+      Position		      [135, 32, 189, 46]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24117,7 +24119,7 @@ Model {
     Annotation {
       SID		      "213"
       Name		      "Record for Replay  "
-      Position		      [25, 142, 117, 157]
+      Position		      [25, 142, 112, 156]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24131,7 +24133,7 @@ Model {
     Annotation {
       SID		      "214"
       Name		      "Open Useful Blocks"
-      Position		      [25, 167, 117, 182]
+      Position		      [25, 167, 114, 181]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24145,7 +24147,7 @@ Model {
     Annotation {
       SID		      "215"
       Name		      "PreScan Options   "
-      Position		      [25, 192, 115, 207]
+      Position		      [25, 192, 110, 206]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24160,7 +24162,7 @@ Model {
     Annotation {
       SID		      "216"
       Name		      "Version:                  "
-      Position		      [25, 232, 118, 247]
+      Position		      [25, 232, 112, 246]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24174,7 +24176,7 @@ Model {
     Annotation {
       SID		      "217"
       Name		      "7.0.0"
-      Position		      [25, 251, 51, 266]
+      Position		      [25, 251, 49, 265]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24186,7 +24188,7 @@ Model {
     Annotation {
       SID		      "218"
       Name		      "Author(s):                "
-      Position		      [25, 272, 119, 287]
+      Position		      [25, 272, 115, 286]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24200,7 +24202,7 @@ Model {
     Annotation {
       SID		      "219"
       Name		      "N.A."
-      Position		      [25, 291, 47, 306]
+      Position		      [25, 291, 46, 305]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24212,7 +24214,7 @@ Model {
     Annotation {
       SID		      "220"
       Name		      "Descriptive text:      "
-      Position		      [25, 312, 119, 327]
+      Position		      [25, 312, 114, 326]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24226,7 +24228,7 @@ Model {
     Annotation {
       SID		      "221"
       Name		      "ID\n\n1"
-      Position		      [620, 52, 632, 93]
+      Position		      [608, 52, 619, 90]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24238,7 +24240,7 @@ Model {
     Annotation {
       SID		      "222"
       Name		      "OBU-Beacon ID\n\n"
-      Position		      [657, 52, 733, 93]
+      Position		      [657, 52, 730, 90]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24250,7 +24252,7 @@ Model {
     Annotation {
       SID		      "223"
       Name		      "TypeID\n\n1"
-      Position		      [780, 52, 815, 93]
+      Position		      [745, 52, 778, 90]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24262,7 +24264,7 @@ Model {
     Annotation {
       SID		      "224"
       Name		      "TypeTag\n\nCar"
-      Position		      [800, 52, 843, 93]
+      Position		      [800, 52, 839, 90]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24274,7 +24276,7 @@ Model {
     Annotation {
       SID		      "225"
       Name		      "SD\n\nY"
-      Position		      [885, 52, 901, 93]
+      Position		      [885, 52, 900, 90]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24286,7 +24288,7 @@ Model {
     Annotation {
       SID		      "226"
       Name		      "CD\n\nN"
-      Position		      [925, 52, 941, 93]
+      Position		      [925, 52, 941, 90]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24298,7 +24300,7 @@ Model {
     Annotation {
       SID		      "227"
       Name		      "Name\n\nAudi_A8_1"
-      Position		      [977, 52, 1032, 93]
+      Position		      [977, 52, 1027, 90]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -24311,7 +24313,7 @@ Model {
       SID		      "342"
       Name		      "Num ID       OBU-Beacon ID     Type ID      Type Tag             SD        CD             Name     "
       "                     "
-      Position		      [1200, 0, 1681, 15]
+      Position		      [1200, 0, 1652, 14]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off

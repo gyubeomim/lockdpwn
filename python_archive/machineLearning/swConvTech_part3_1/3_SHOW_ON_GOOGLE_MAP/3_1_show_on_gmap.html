@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!-- 
+	javascript ==> 소프트웨어융합최신기술, part3_1 javascript를 사용해 Coordinate와 Congestion을 Google Map 상에 띄우는 코드 
+-->
+<html>
+	<head>
+		<style>
+#map {
+	height: 800px;
+	width: 100%;
+}
+		</style>
+	</head>
+	<body>
+		<input type="file" name="file" id="file">
+
+		<h3>Software Convergence Technology Part3_1</h3>
+		<div id="map"></div>
+		<script>
+
+function initMap() {
+	var center = {lat: 37.565, lng: 126.895};
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 13,
+		center: center
+	});
+
+	// file Input에 파일을 넣은 경우 실행되는 함수
+	document.getElementById('file').onchange = function(){
+		var file = this.files[0];
+		var reader = new FileReader();
+
+		reader.onload = function(progressEvent){
+			// By lines
+			var lines = this.result.split('\n');
+
+			// 파일의 첫째줄을 콘솔에 찍어주는 명령어
+			console.log(lines[0]);
+
+			for(var i=0 ; i < lines.length ; i++){
+				var tmpCoordinates = [];
+				// 정규표현식을 사용해 line에서 Coordinate와 Congestion을 분리한다
+				var re = /&path=color:\w+\|weight:5\|(\d+\.\d+\,\d+\.\d+\|\d+\.\d+\,\d+\.\d+)/g;
+				var re2 = /color:(\w+)/g;
+				var coord = lines[i].split(re);
+				var conges = lines[i].split(re2);
+
+				// Coordinates 배열을 만드는 루프
+				for(var j=0 ; j < coord.length ; j++){
+					if(j == 0)        continue; 
+					if(coord[j] == "") continue;
+
+					// Coordinates를 추출해서 배열에 삽입한다
+					tmp = coord[j].split('|');
+					first = tmp[0].split(',');
+					last =  tmp[1].split(',');
+
+					tmpCoordinates.push(
+							{lat:parseFloat(first[0]), lng:parseFloat(first[1])},
+							{lat:parseFloat(last[0]), lng:parseFloat(last[1])}
+							);
+				}
+				// pop을 하기 위해 tmpCoordinates를 reverse 시킨다
+				tmpCoordinates.reverse()
+
+					// Congestion 색깔을 정하는 루프 
+					for(var k=0; k < conges.length; k++){
+						if(conges[k].length > 8) continue;
+
+						// 위 Coordinates에서 한 쌍의 좌표만 추출한다
+						var CoordinatePair = [];
+						CoordinatePair.push(
+								tmpCoordinates.pop(), tmpCoordinates.pop()
+								);
+
+						// 색깔을 가져온다
+						var color = conges[k];
+						console.log(color);
+
+						// 위 두 정보를 토대로 Polyline을 그리는 객체
+						var congestionPath = new google.maps.Polyline({
+							path: CoordinatePair,
+							geodesic: true,
+							strokeColor: color,
+							strokeOpacity: 1.0,
+							strokeWeight: 2
+						});
+
+						// Polyline을 그린다
+						congestionPath.setMap(map);
+					}
+			}
+		};
+		reader.readAsText(file);
+	};
+}
+
+		</script>
+		<script async defer
+	   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqWxzu4_FiVvO_BaZe915SJGRPxaaauBM&callback=initMap">
+		</script>
+	</body>
+</html>
+
+
+

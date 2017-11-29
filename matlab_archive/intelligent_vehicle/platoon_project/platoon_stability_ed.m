@@ -3,9 +3,9 @@
 %}
 
 % set parameters
-k1 = 0.0244;
-k2 = -1.7211;
-q = 0.2;
+k1 = 0.0001;
+k2 = -1.004;
+q = 0.01;
 tau = 1.24;
 
 % find out string stability
