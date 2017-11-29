@@ -6,12 +6,13 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+arduino_sub_pub
 roscpp
 std_msgs
 )
 
 add_definitions(
--DMODEL=mylab2_simulink_to_ros -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=0 -DROS_PROJECT -DMW_SCHED_OTHER -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DRT=RT )
+-DMODEL=mylab2_simulink_to_ros -DNUMST=2 -DNCSTATES=0 -DHAVESTDIO -DUNIX -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=1 -DROS_PROJECT -DMW_SCHED_OTHER -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DRT=RT )
 
 ## The catkin_package macro generates cmake config files for your package
 ## Declare things to be passed to dependent projects
@@ -20,7 +21,7 @@ add_definitions(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-   CATKIN_DEPENDS roscpp std_msgs 
+   CATKIN_DEPENDS arduino_sub_pub roscpp std_msgs 
 )
 
 ###########

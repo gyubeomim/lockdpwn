@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'mylab2_simulink_to_ros'.
 //
-// Model version                  : 1.14
+// Model version                  : 1.21
 // Simulink Coder version         : 8.12 (R2017a) 16-Feb-2017
-// C/C++ source code generated on : Fri Nov 24 19:52:38 2017
+// C/C++ source code generated on : Tue Nov 28 03:48:40 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Intel->x86-64 (Linux 64)
@@ -18,8 +18,8 @@
 //
 #ifndef RTW_HEADER_mylab2_simulink_to_ros_h_
 #define RTW_HEADER_mylab2_simulink_to_ros_h_
-#include <stddef.h>
 #include <string.h>
+#include <stddef.h>
 #ifndef mylab2_simulink_to_ros_COMMON_INCLUDES_
 # define mylab2_simulink_to_ros_COMMON_INCLUDES_
 #include "rtwtypes.h"
@@ -39,24 +39,52 @@
 # define rtmSetErrorStatus(rtm, val)   ((rtm)->errorStatus = (val))
 #endif
 
+#ifndef rtmGetT
+# define rtmGetT(rtm)                  (rtmGetTPtr((rtm))[0])
+#endif
+
+// Block signals (auto storage)
+typedef struct {
+  SL_Bus_mylab2_simulink_to_ros_arduino_sub_pub_msgs_type In1;// '<S10>/In1'
+} B_mylab2_simulink_to_ros_T;
+
 // Block states (auto storage) for system '<Root>'
 typedef struct {
-  void *SinkBlock_PWORK;               // '<S4>/SinkBlock'
-  void *SinkBlock_PWORK_g;             // '<S3>/SinkBlock'
-  robotics_slros_internal_block_T obj; // '<S4>/SinkBlock'
-  robotics_slros_internal_block_T obj_e;// '<S3>/SinkBlock'
+  void *SourceBlock_PWORK;             // '<S8>/SourceBlock'
+  void *SinkBlock_PWORK;               // '<S6>/SinkBlock'
+  void *SinkBlock_PWORK_i;             // '<S5>/SinkBlock'
+  void *SinkBlock_PWORK_g;             // '<S4>/SinkBlock'
+  robotics_slros_internal_block_T obj; // '<S6>/SinkBlock'
+  robotics_slros_internal_block_T obj_j;// '<S5>/SinkBlock'
+  robotics_slros_internal_block_T obj_e;// '<S4>/SinkBlock'
+  robotics_slros_internal_blo_b_T obj_l;// '<S8>/SourceBlock'
 } DW_mylab2_simulink_to_ros_T;
 
 // Parameters (auto storage)
 struct P_mylab2_simulink_to_ros_T_ {
-  SL_Bus_mylab2_simulink_to_ros_std_msgs_Float32 Constant_Value;// Computed Parameter: Constant_Value
-                                                                //  Referenced by: '<S1>/Constant'
+  SL_Bus_mylab2_simulink_to_ros_arduino_sub_pub_msgs_type Out1_Y0;// Computed Parameter: Out1_Y0
+                                                                  //  Referenced by: '<S10>/Out1'
+
+  SL_Bus_mylab2_simulink_to_ros_arduino_sub_pub_msgs_type Constant_Value;// Computed Parameter: Constant_Value
+                                                                      //  Referenced by: '<S8>/Constant'
+
+  SL_Bus_mylab2_simulink_to_ros_arduino_sub_pub_msgs_type Constant_Value_o;// Computed Parameter: Constant_Value_o
+                                                                      //  Referenced by: '<S3>/Constant'
+
+  real_T Switch_Threshold;             // Expression: 5
+                                       //  Referenced by: '<Root>/Switch'
 
   SL_Bus_mylab2_simulink_to_ros_std_msgs_Float32 Constant_Value_l;// Computed Parameter: Constant_Value_l
-                                                                  //  Referenced by: '<S2>/Constant'
+                                                                  //  Referenced by: '<S1>/Constant'
+
+  SL_Bus_mylab2_simulink_to_ros_std_msgs_Float32 Constant_Value_ln;// Computed Parameter: Constant_Value_ln
+                                                                   //  Referenced by: '<S2>/Constant'
 
   real32_T Constant2_Value;            // Computed Parameter: Constant2_Value
                                        //  Referenced by: '<Root>/Constant2'
+
+  real32_T Constant3_Value;            // Computed Parameter: Constant3_Value
+                                       //  Referenced by: '<Root>/Constant3'
 
   real32_T Constant1_Value;            // Computed Parameter: Constant1_Value
                                        //  Referenced by: '<Root>/Constant1'
@@ -66,6 +94,21 @@ struct P_mylab2_simulink_to_ros_T_ {
 // Real-time Model Data Structure
 struct tag_RTM_mylab2_simulink_to_ro_T {
   const char_T *errorStatus;
+  RTWSolverInfo solverInfo;
+
+  //
+  //  Timing:
+  //  The following substructure contains information regarding
+  //  the timing information for the model.
+
+  struct {
+    uint32_T clockTick0;
+    time_T stepSize0;
+    uint32_T clockTick1;
+    SimTimeStep simTimeStep;
+    time_T *t;
+    time_T tArray[2];
+  } Timing;
 };
 
 // Block parameters (auto storage)
@@ -81,6 +124,9 @@ extern "C" {
 
 }
 #endif
+
+// Block signals (auto storage)
+extern B_mylab2_simulink_to_ros_T mylab2_simulink_to_ros_B;
 
 // Block states (auto storage)
 extern DW_mylab2_simulink_to_ros_T mylab2_simulink_to_ros_DW;
@@ -143,12 +189,14 @@ extern "C" {
 //  '<Root>' : 'mylab2_simulink_to_ros'
 //  '<S1>'   : 'mylab2_simulink_to_ros/Blank Message'
 //  '<S2>'   : 'mylab2_simulink_to_ros/Blank Message1'
-//  '<S3>'   : 'mylab2_simulink_to_ros/Publish'
-//  '<S4>'   : 'mylab2_simulink_to_ros/Publish1'
-//  '<S5>'   : 'mylab2_simulink_to_ros/Subscribe'
-//  '<S6>'   : 'mylab2_simulink_to_ros/Subscribe1'
-//  '<S7>'   : 'mylab2_simulink_to_ros/Subscribe/Enabled Subsystem'
-//  '<S8>'   : 'mylab2_simulink_to_ros/Subscribe1/Enabled Subsystem'
+//  '<S3>'   : 'mylab2_simulink_to_ros/Blank Message2'
+//  '<S4>'   : 'mylab2_simulink_to_ros/Publish'
+//  '<S5>'   : 'mylab2_simulink_to_ros/Publish1'
+//  '<S6>'   : 'mylab2_simulink_to_ros/Publish2'
+//  '<S7>'   : 'mylab2_simulink_to_ros/Subscribe'
+//  '<S8>'   : 'mylab2_simulink_to_ros/Subscribe1'
+//  '<S9>'   : 'mylab2_simulink_to_ros/Subscribe/Enabled Subsystem'
+//  '<S10>'  : 'mylab2_simulink_to_ros/Subscribe1/Enabled Subsystem'
 
 #endif                                 // RTW_HEADER_mylab2_simulink_to_ros_h_
 

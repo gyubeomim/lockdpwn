@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'mylab2_simulink_to_ros'. 
 ## 
 ## Makefile     : mylab2_simulink_to_ros.mk
-## Generated on : Fri Nov 24 19:52:49 2017
+## Generated on : Tue Nov 28 03:48:51 2017
 ## MATLAB Coder version: 3.3 (R2017a)
 ## 
 ## Build Info:
@@ -24,13 +24,13 @@
 
 PRODUCT_NAME              = mylab2_simulink_to_ros
 MAKEFILE                  = mylab2_simulink_to_ros.mk
-COMPUTER                  = PCWIN64
-MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2017a
-MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2017a/bin
-MATLAB_ARCH_BIN           = C:/PROGRA~1/MATLAB/R2017a/bin/win64
+COMPUTER                  = GLNXA64
+MATLAB_ROOT               = /usr/local/MATLAB/R2017a
+MATLAB_BIN                = /usr/local/MATLAB/R2017a/bin
+MATLAB_ARCH_BIN           = /usr/local/MATLAB/R2017a/bin/glnxa64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = E:/gitrepo/lockdpwn/matlab_archive/mylab2
-ARCH                      = win64
+START_DIR                 = /home/dyros-vehicle/gitrepo/lockdpwn/matlab_archive/mylab2
+ARCH                      = glnxa64
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -45,7 +45,7 @@ CPP_STANDARD_OPTS         =
 ## TOOLCHAIN SPECIFICATIONS
 ###########################################################################
 
-# Toolchain Name:          Catkin v1.0 | gmake (64-bit Windows)
+# Toolchain Name:          Catkin v1.0 | gmake (64-bit Linux)
 # Supported Version(s):    
 # ToolchainInfo Version:   R2017a
 # Specification Revision:  1.0
@@ -115,9 +115,9 @@ OUTPUT_FLAG         = -o
 ARDEBUG             =
 STATICLIB_OUTPUT_FLAG =
 MEX_DEBUG           = -g
-RM                  = @del /F
+RM                  = @rm -f
 ECHO                = @echo
-MV                  = @move
+MV                  = @mv
 RUN                 =
 
 #----------------------------------------
@@ -160,7 +160,7 @@ CPP_EXT             = .cpp
 EXE_EXT             =
 SHAREDLIB_EXT       = .so
 STATICLIB_EXT       = .lib
-MEX_EXT             = .mexw64
+MEX_EXT             = .mexa64
 MAKE_EXT            = .mk
 
 
@@ -184,19 +184,19 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ## DEFINES
 ###########################################################################
 
-DEFINES_ = -DMODEL=mylab2_simulink_to_ros -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=0 -DROS_PROJECT -DMW_SCHED_OTHER -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DRT=RT
+DEFINES_ = -DMODEL=mylab2_simulink_to_ros -DNUMST=2 -DNCSTATES=0 -DHAVESTDIO -DUNIX -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=1 -DROS_PROJECT -DMW_SCHED_OTHER -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DRT=RT
 DEFINES_BUILD_ARGS = -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0
-DEFINES_IMPLIED = -DTID01EQ=0
+DEFINES_OPTS = -DTID01EQ=1
 DEFINES_SKIPFORSIL = -DROS_PROJECT -DMW_SCHED_OTHER -DSTACK_SIZE=64
-DEFINES_STANDARD = -DMODEL=mylab2_simulink_to_ros -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO
+DEFINES_STANDARD = -DMODEL=mylab2_simulink_to_ros -DNUMST=2 -DNCSTATES=0 -DHAVESTDIO -DUNIX
 
-DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_IMPLIED) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD)
+DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_OPTS) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD)
 
 ###########################################################################
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/mylab2_simulink_to_ros.cpp $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/mylab2_simulink_to_ros_data.cpp $(MATLAB_ROOT)/toolbox/target/codertarget/rtos/src/linuxinitialize.cpp $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/slros_busmsg_conversion.cpp $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/slros_initialize.cpp C:/PROGRA~1/MATLAB/R2017a/toolbox/robotics/ROBOTS~1/ROBOTS~1/src/SLROS_~1.CPP
+SRCS = $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/mylab2_simulink_to_ros.cpp $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/mylab2_simulink_to_ros_data.cpp $(MATLAB_ROOT)/toolbox/target/codertarget/rtos/src/linuxinitialize.cpp $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/slros_busmsg_conversion.cpp $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/slros_initialize.cpp /usr/local/MATLAB/R2017a/toolbox/robotics/robotsimulink/robotslros/src/slros_generic_param.cpp
 
 MAIN_SRC = $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/ert_main.cpp
 
@@ -206,7 +206,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = mylab2_simulink_to_ros.cpp.o mylab2_simulink_to_ros_data.cpp.o linuxinitialize.cpp.o slros_busmsg_conversion.cpp.o slros_initialize.cpp.o slros_generic_param.cpp.o
+OBJS = mylab2_simulink_to_ros.cpp.o mylab2_simulink_to_ros_data.cpp.o linuxinitialize.cpp.o slros_busmsg_conversion.cpp.o slros_initialize.cpp.o /usr/local/MATLAB/R2017a/toolbox/robotics/robotsimulink/robotslros/src/slros_generic_param.cpp.o
 
 MAIN_OBJ = ert_main.cpp.o
 
@@ -369,30 +369,6 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o $@ $<
 
 
-%.c.o : $(START_DIR)/%.c
-	$(CC) $(CFLAGS) -o $@ $<
-
-
-%.s.o : $(START_DIR)/%.s
-	$(AS) $(ASFLAGS) -o $@ $<
-
-
-%.cpp.o : $(START_DIR)/%.cpp
-	$(CPP) $(CPPFLAGS) -o $@ $<
-
-
-%.c.o : $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/%.c
-	$(CC) $(CFLAGS) -o $@ $<
-
-
-%.s.o : $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/%.s
-	$(AS) $(ASFLAGS) -o $@ $<
-
-
-%.cpp.o : $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/%.cpp
-	$(CPP) $(CPPFLAGS) -o $@ $<
-
-
 %.c.o : $(MATLAB_ROOT)/rtw/c/src/%.c
 	$(CC) $(CFLAGS) -o $@ $<
 
@@ -417,11 +393,35 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o $@ $<
 
 
+%.c.o : $(START_DIR)/%.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+
+%.s.o : $(START_DIR)/%.s
+	$(AS) $(ASFLAGS) -o $@ $<
+
+
+%.cpp.o : $(START_DIR)/%.cpp
+	$(CPP) $(CPPFLAGS) -o $@ $<
+
+
+%.c.o : $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/%.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+
+%.s.o : $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/%.s
+	$(AS) $(ASFLAGS) -o $@ $<
+
+
+%.cpp.o : $(START_DIR)/mylab2_simulink_to_ros_ert_rtw/%.cpp
+	$(CPP) $(CPPFLAGS) -o $@ $<
+
+
 linuxinitialize.cpp.o : $(MATLAB_ROOT)/toolbox/target/codertarget/rtos/src/linuxinitialize.cpp
 	$(CPP) $(CPPFLAGS) -o $@ $<
 
 
-slros_generic_param.cpp.o : C:/PROGRA~1/MATLAB/R2017a/toolbox/robotics/ROBOTS~1/ROBOTS~1/src/slros_generic_param.cpp
+/usr/local/MATLAB/R2017a/toolbox/robotics/robotsimulink/robotslros/src/slros_generic_param.cpp.o : /usr/local/MATLAB/R2017a/toolbox/robotics/robotsimulink/robotslros/src/slros_generic_param.cpp
 	$(CPP) $(CPPFLAGS) -o $@ $<
 
 
@@ -467,8 +467,8 @@ info :
 
 clean : 
 	$(ECHO) "### Deleting all derived files..."
-	$(RM) $(subst /,\,$(PRODUCT))
-	$(RM) $(subst /,\,$(ALL_OBJS))
+	$(RM) $(PRODUCT)
+	$(RM) $(ALL_OBJS)
 	$(RM) *Object
 	$(ECHO) "### Deleted all derived files."
 
