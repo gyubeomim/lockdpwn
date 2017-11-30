@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'mylab2_simulink_to_ros'.
 //
-// Model version                  : 1.14
+// Model version                  : 1.21
 // Simulink Coder version         : 8.12 (R2017a) 16-Feb-2017
-// C/C++ source code generated on : Fri Nov 24 19:52:38 2017
+// C/C++ source code generated on : Tue Nov 28 03:48:40 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Intel->x86-64 (Linux 64)
@@ -29,6 +29,19 @@ typedef struct {
 
 #endif
 
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_mylab2_simulink_to_ros_arduino_sub_pub_msgs_type_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_mylab2_simulink_to_ros_arduino_sub_pub_msgs_type_
+
+// MsgType=arduino_sub_pub/msgs_type
+typedef struct {
+  real32_T Rpm1;
+  real32_T Rpm2;
+  real32_T Rpm3;
+  real32_T Rpm4;
+} SL_Bus_mylab2_simulink_to_ros_arduino_sub_pub_msgs_type;
+
+#endif
+
 #ifndef typedef_robotics_slros_internal_block_T
 #define typedef_robotics_slros_internal_block_T
 
@@ -37,6 +50,15 @@ typedef struct {
 } robotics_slros_internal_block_T;
 
 #endif                                 //typedef_robotics_slros_internal_block_T
+
+#ifndef typedef_robotics_slros_internal_blo_b_T
+#define typedef_robotics_slros_internal_blo_b_T
+
+typedef struct {
+  int32_T isInitialized;
+} robotics_slros_internal_blo_b_T;
+
+#endif                                 //typedef_robotics_slros_internal_blo_b_T
 
 #ifndef typedef_struct_T_mylab2_simulink_to_r_T
 #define typedef_struct_T_mylab2_simulink_to_r_T

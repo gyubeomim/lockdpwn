@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'mylab2_simulink_to_ros'.
 //
-// Model version                  : 1.14
+// Model version                  : 1.21
 // Simulink Coder version         : 8.12 (R2017a) 16-Feb-2017
-// C/C++ source code generated on : Fri Nov 24 19:52:38 2017
+// C/C++ source code generated on : Tue Nov 28 03:48:40 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Intel->x86-64 (Linux 64)
