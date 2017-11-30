@@ -7,8 +7,8 @@
 		<Viewer4 camera="East Direction"/>
 	</Viewers>
 	<Layout>
-		<splitter horizontal="True" left="1901" right="0"/>
-		<splitter2 horizontal="True" left="1901" right="0"/>
-		<splitter3 horizontal="False" left="927" right="0"/>
+		<splitter horizontal="True" left="925" right="0"/>
+		<splitter2 horizontal="True" left="925" right="0"/>
+		<splitter3 horizontal="False" left="899" right="0"/>
 	</Layout>
 </ViewerSettings>

@@ -19,6 +19,7 @@ a13 = -2*(Caf*Lf-Car*Lr)/(Iz*Vx);
 a31 = 2*(-Caf*Lf+Car*Lr)/(m*Vx);
 a32 = 2*(Caf+Car)/m;
 a33 = -2*(Caf+Car)/(m*Vx);
+
 b11 = 2*Caf*Lf/Iz;
 b31 = 2*Caf/m;
 
@@ -32,8 +33,8 @@ D = 0;
 
 
 %%
-P_K = [-10 -10 -15 -115];                % Pole for State Feedback
-P_L = [-35+2i -35-2i -30+0.5i -30-0.5i] ;     % Pole for Observer
+P_K = [-11.6 -17.6 -14 -12];          % Pole for State Feedback
+P_L = [-9 -9 -17 -25] ;             % Pole for Observer
 
 K = acker(A, B, P_K); 
 L = acker(A', C', P_L); 

@@ -27,7 +27,7 @@ input_img_x = 32
 input_img_y = 32
 train_test_split_ratio = 0.9
 batch_size = 32
-checkpoint_name = "model.ckpt"
+checkpoint_name = "./model.ckpt"
 
 
 # Helper layer functions
@@ -42,6 +42,10 @@ def bias_variable(shape):
 def conv2d(x, W, stride):
     return tf.nn.conv2d(x, W, strides=[1, stride, stride, 1], padding='SAME')
 
+# Function added for VALID option
+def conv2d_valid(x, W, stride):
+    return tf.nn.conv2d(x, W, strides=[1, stride, stride, 1], padding='VALID')
+
 def max_pool_2x2(x):
     return tf.nn.max_pool(x, ksize=[1, 2, 2, 1],
                         strides=[1, 2, 2, 1], padding='SAME')
@@ -53,54 +57,93 @@ y_ = tf.placeholder(tf.float32, shape=[None, len(image_types)])
 
 
 # Model - THIS PART SHOULD BE SAVED SEPARATELY IN "model.txt" file, SO IT CAN BE RETRIEVED AUTOMATICALLY BY "ranking.ipynb"
-# ed: 꼭 model.txt 파일을 사용해야하고 이름을 바꾸면 안된다!
+#  꼭 model.txt 파일을 사용해야하고 이름을 바꾸면 안된다!
+#START-------------------------------------------------------------------------
 x_image = x
 
+#  1층 conv 다음에 바로 max pooling ==> fully connected layer로 이어지도록 구성되어 있다
 
-# ed: 1층 conv 다음에 바로 max pooling ==> fully connected layer로 이어지도록 구성되어 있다
-# Our first three convolutional layers, of 16 3x3 filters
+# 1st conv layer-----------------------------
 W_conv1 = weight_variable([3, 3, 3, 16])
 b_conv1 = bias_variable([16])
+
 h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1, 1) + b_conv1)
+h_pool1 = max_pool_2x2(h_conv1) # (32,32) ==> (16,16)
 
-# Our pooling layer
 
-h_pool4 = max_pool_2x2(h_conv1)
+# 2nd conv layer-----------------------------
+W_conv2 = weight_variable([5,5,16,32])
+b_conv2 = weight_variable([32]) 
 
-n1, n2, n3, n4 = h_pool4.get_shape().as_list()
+h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2, 1) + b_conv2)
+h_pool2 = max_pool_2x2(h_conv2) # (16,16) ==> (8,8)
 
-W_fc1 = weight_variable([n2*n3*n4, 3])
-b_fc1 = bias_variable([3])
 
-# We flatten our pool layer into a fully connected layer
+# 3rd conv layer-----------------------------
+W_conv3 = weight_variable([3,3,32,64])
+b_conv3 = weight_variable([64])
 
-h_pool4_flat = tf.reshape(h_pool4, [-1, n2*n3*n4])
+h_conv3 = tf.nn.relu(conv2d_valid(h_pool2, W_conv3, 1) + b_conv3) # (8,8) ==> (6,6)
+h_pool3 = max_pool_2x2(h_conv3) # (6,6) ==> (3,3)
 
-y = tf.matmul(h_pool4_flat, W_fc1) + b_fc1
 
-# ed: Dictionary 형식으로 가중치를 저장하는 코드 (아직은 저장 안하고 저장하도록 설정만 함)
-saver = tf.train.Saver({'W_conv1' : W_conv1, 'b_conv1' : b_conv1, 'W_fc1' : W_fc1, 'b_fc1' : b_fc1})
+# 4th conv layer-----------------------------
+W_conv4 = weight_variable([4,4,64,128])
+b_conv4 = weight_variable([128])
+
+h_conv4 = tf.nn.relu(conv2d(h_pool3, W_conv4, 1) + b_conv4) # (3,3) ==> (3,3)
+
+
+# 1st Fully Connected layer------------------------
+n1, n2, n3, n4 = h_conv4.get_shape().as_list()
+
+W_fc1 = weight_variable([n2*n3*n4, 3000])
+b_fc1 = bias_variable([3000])
+
+h_pool1_flat = tf.reshape(h_conv4, [-1, n2*n3*n4]) 
+h_fc1 = tf.nn.relu(tf.matmul(h_pool1_flat, W_fc1) + b_fc1) # (3,3) ==> (3000,1)
+
+
+# Dropout-----------------------------------------
+keep_prob = tf.placeholder(tf.float32)
+h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)
+
+
+# 2nd Fully Connected layer------------------------
+W_fc2 = weight_variable([3000, 3])
+b_fc2 = bias_variable([3])
+
+y = tf.matmul(h_fc1_drop, W_fc2) + b_fc2  # (3000,1) ==> (3,1)
+
+
+#  Dictionary 형식으로 가중치를 저장하는 코드 (아직은 저장 안하고 저장하도록 설정만 함)
+saver = tf.train.Saver({'W_conv1' : W_conv1, 'b_conv1' : b_conv1, 'W_conv2' : W_conv2,'b_conv2' : b_conv2, 'W_conv3' : W_conv3, 'b_conv3' : b_conv3, 'W_conv4' : W_conv4,'b_conv4' : b_conv4, 'W_fc1' : W_fc1, 'b_fc1' : b_fc1, 'W_fc2' : W_fc2, 'b_fc2' : b_fc2})
+#END-------------------------------------------------------------------------
+
 
 sess = tf.InteractiveSession()
 
+
 # Our loss function and optimizer
-# ed: loss func, optimizer 변경하고 싶으면 변경하면 된다
+#  loss func, optimizer 변경하고 싶으면 변경하면 된다
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = y_, logits = y))
 train_step = tf.train.AdamOptimizer(1e-4, 0.9).minimize(loss)
 sess.run(tf.initialize_all_variables())
-
 
 v_loss = least_loss = 99999999
 
 # Load data
 full_set = []
 
+# base_image_path에서 모든 이미지 데이터를 읽어온다
 for im_type in image_types:
     for ex in glob.glob(os.path.join(base_image_path, im_type, "*")):
         im = cv2.imread(ex)
         if not im is None:
+            # 모든 이미지를 32x32로 리사이징한다
             im = cv2.resize(im, (32, 32))
 
+            # one hot vector를 만든다 
             # Create an array representing our classes and set it
             one_hot_array = [0] * len(image_types)
             one_hot_array[image_types.index(im_type)] = 1
@@ -109,16 +152,14 @@ for im_type in image_types:
 
             full_set.append((im, one_hot_array, ex))
 
-# ed: 모든 데이터를 받아서 랜덤으로 섞는다 
+#  모든 데이터를 받아서 랜덤으로 섞는다 
 random.shuffle(full_set)
 
-
-# ed: Train set, Test set을 나누는 코드 (9:1)
+#  Train set, Test set을 나누는 코드 (9:1)
 # We split our data into a training and test set here
 split_index = int(math.floor(len(full_set) * train_test_split_ratio))
 train_set = full_set[:split_index]
 test_set = full_set[split_index:]
-
 
 # We ensure that our training and test sets are a multiple of batch size
 train_set_offset = len(train_set) % batch_size
@@ -129,36 +170,36 @@ test_set = test_set[: len(test_set) - test_set_offset]
 train_x, train_y, train_z = zip(*train_set)
 test_x, test_y, test_z = zip(*test_set)
 
-
 print("Starting training... [{} training examples]".format(len(train_x)))
-
 v_loss = 9999999
 train_loss = []
 val_loss = []
+
 
 for i in range(0, max_epochs):
     # Iterate over our training set
     for tt in range(0, (len(train_x) // batch_size)):
         start_batch = batch_size * tt
         end_batch = batch_size * (tt + 1)
-        train_step.run(feed_dict={x: train_x[start_batch:end_batch], y_: train_y[start_batch:end_batch]})
-        ex_seen = "Current epoch, examples seen: {:20} / {} \r".format(tt * batch_size, len(train_x))
+        # keep_prob : 0.5로 훈련데이터를 학습한다
+        train_step.run(feed_dict={x: train_x[start_batch:end_batch], y_: train_y[start_batch:end_batch], keep_prob:0.5})
+        ex_seen = "Current epoch, examples seen: {:20} / {} \r\n".format(tt * batch_size, len(train_x))
         sys.stdout.write(ex_seen.format(tt * batch_size))
         sys.stdout.flush()
 
-    ex_seen = "Current epoch, examples seen: {:20} / {} \r".format((tt + 1) * batch_size, len(train_x))
+    ex_seen = "Current epoch, examples seen: {:20} / {} \r\n".format((tt + 1) * batch_size, len(train_x))
     sys.stdout.write(ex_seen.format(tt * batch_size))
     sys.stdout.flush()
 
-    t_loss = loss.eval(feed_dict={x: train_x, y_: train_y})
-    v_loss = loss.eval(feed_dict={x: test_x, y_: test_y})
+    t_loss = loss.eval(feed_dict={x: train_x, y_: train_y, keep_prob:1.0})
+    v_loss = loss.eval(feed_dict={x: test_x, y_: test_y, keep_prob:1.0})
     
     train_loss.append(t_loss)
     val_loss.append(v_loss)
 
     sys.stdout.write("Epoch {:5}: loss: {:15.10f}, val. loss: {:15.10f}".format(i + 1, t_loss, v_loss))
 
-    # ed: v_loss가 제일 낮을 경우에만 파라미터를 저장한다
+    #  v_loss가 제일 낮을 경우에만 파라미터를 저장한다
     if v_loss < least_loss:
         sys.stdout.write(", saving new best model to {}".format(checkpoint_name))
         least_loss = v_loss
@@ -166,8 +207,12 @@ for i in range(0, max_epochs):
 
     sys.stdout.write("\n")
 
-# ed: 윗부분까지가 사실상 끝난 것이다. 아랫부분은 analyze 부분-----------------------------------------
 
+# Training Finished
+#----------------------------------------------------------------
+# Analyze Start
+#----------------------------------------------------------------
+# Epoch-Loss 그래프를 그려주는 코드 
 plt.figure()
 plt.xticks(np.arange(0, len(train_loss), 1.0))
 plt.ylabel("Loss")
@@ -178,14 +223,14 @@ plt.legend()
 plt.show()
 
 
-
+# 훈련모델에 Test 데이터를 넣어본 다음 예측이 틀린 경우에만 출력하는 코드
 zipped_x_y = list(zip(test_x, test_y))
 conf_true = []
 conf_pred = []
 
 for tt in range(0, len(zipped_x_y)):
     q = zipped_x_y[tt]
-    sfmax = list(sess.run(tf.nn.softmax(y.eval(feed_dict={x: [q[0]]})))[0])
+    sfmax = list(sess.run(tf.nn.softmax(y.eval(feed_dict={x: [q[0]], keep_prob:1.0})))[0])
     sf_ind = sfmax.index(max(sfmax))
     
     predicted_label = image_types[sf_ind]
@@ -202,8 +247,7 @@ for tt in range(0, len(zipped_x_y)):
 
 
 
-# confusion_matrix를 plot하는 코드
-# From sklearn docs
+# confusion_matrix를 plot하는 함수
 def plot_confusion_matrix(cm, classes,
                           normalize=False,
                           title='Confusion matrix',
@@ -235,17 +279,11 @@ def plot_confusion_matrix(cm, classes,
 
 
 
+# confusion_matrix를 출력하는 코드
 cnf_matrix = confusion_matrix(conf_true, conf_pred)
 plt.figure()
 plot_confusion_matrix(cnf_matrix, classes=image_types, normalize=False,
                       title='Normalized confusion matrix')
 plt.show()
-
-
-
-
-
-
-
 
 

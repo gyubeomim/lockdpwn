@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ExperimentDef rtULength="8" rtYLength="15">
+<ExperimentDef rtULength="26" rtYLength="30">
+    <BlockDef id="CollisionDetection">
+        <PortDef id="CollisionDetection" index="0" type="0" width="10"/>
+    </BlockDef>
     <BlockDef id="Audi_A8_1">
         <PortDef id="Position_Audi_A8_1" index="0" type="1" width="3"/>
         <PortDef id="Velocity_Audi_A8_1" index="3" type="1" width="3"/>
         <PortDef id="Acceleration_Audi_A8_1" index="6" type="1" width="3"/>
         <PortDef id="RPY_Audi_A8_1" index="9" type="1" width="3"/>
         <PortDef id="velRPY_Audi_A8_1" index="12" type="1" width="3"/>
-        <PortDef id="SELF_Audi_A8_1" index="0" type="0" width="8"/>
+        <PortDef id="SELF_Audi_A8_1" index="10" type="0" width="8"/>
+    </BlockDef>
+    <BlockDef id="Fiat_Bravo_1">
+        <PortDef id="Position_Fiat_Bravo_1" index="15" type="1" width="3"/>
+        <PortDef id="Velocity_Fiat_Bravo_1" index="18" type="1" width="3"/>
+        <PortDef id="Acceleration_Fiat_Bravo_1" index="21" type="1" width="3"/>
+        <PortDef id="RPY_Fiat_Bravo_1" index="24" type="1" width="3"/>
+        <PortDef id="velRPY_Fiat_Bravo_1" index="27" type="1" width="3"/>
+        <PortDef id="SELF_Fiat_Bravo_1" index="18" type="0" width="8"/>
     </BlockDef>
 </ExperimentDef>

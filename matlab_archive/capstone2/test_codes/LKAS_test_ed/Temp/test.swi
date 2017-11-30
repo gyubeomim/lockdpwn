@@ -1,0 +1,20 @@
+# create sensor mounts and cameras
+LaneMarkerSensor_1_mount = visnodes.VisTransform.createTransformNode(r"LaneMarkerSensor_1_mount")
+scene.Audi_A8_1.addChild(LaneMarkerSensor_1_mount)
+scene.getTransformChild("LaneMarkerSensor_1_mount")
+LaneMarkerSensor_1_mount.setTranslation(1.77, 0, 1.4)
+LaneMarkerSensor_1_mount.setRotation(0, 1, 0, 0)
+
+LaneMarkerSensor_1_monoBeam = visviewer.VisCamera(r"LaneMarkerSensor_1_monoBeam")
+LaneMarkerSensor_1_mount.addChild(LaneMarkerSensor_1_monoBeam)
+LaneMarkerSensor_1_monoBeam.setTranslation(0, 0, 0)
+LaneMarkerSensor_1_monoBeam.setRotationLegacyYUpAxes(1.5707963267948966, 0, 0, -1)
+LaneMarkerSensor_1_monoBeam.setProjectionMatrixPerspective(0.80634212773718572, 0.619591884457987, 0.10000000149011612, 750)
+
+LaneMarkerSensor_1_monoBeam_viewer = vismanager.createLaneMarkerViewer(r"LaneMarkerSensor_1_monoBeam_viewer", 320, 240, True)
+vismanager.getViewer(r"LaneMarkerSensor_1_monoBeam_viewer").setBackgroundColor(0, 0, 0, 1)
+vismanager.getViewer(r"LaneMarkerSensor_1_monoBeam_viewer").asLaneMarkerViewer().setDistances(3, 5, 10, 15, 5, 2.1326807700417549, 4.26536154008351, 6.3980423101252653)
+vismanager.getViewer(r"LaneMarkerSensor_1_monoBeam_viewer").setCameraContent(visviewer.VisViewerBase.LANE_MARKERS, visviewer.VisViewerBase.HUMAN_EYE)
+vismanager.getViewer(r"LaneMarkerSensor_1_monoBeam_viewer").setActiveCamera(scene.LaneMarkerSensor_1_monoBeam)
+cameras[r"LaneMarkerSensor_1"] = VisCameras.CameraInfo(r"LaneMarkerSensor_1", LaneMarkerSensor_1_monoBeam, visviewer.VisViewerBase.LANE_MARKERS, visviewer.VisViewerBase.HUMAN_EYE, True)
+
