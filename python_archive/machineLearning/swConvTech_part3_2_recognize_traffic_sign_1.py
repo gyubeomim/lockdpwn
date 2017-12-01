@@ -3,6 +3,10 @@
 '''
     python ==> 소프트웨어융합최신기술 part3_2, 신호등 사진을 주면 색깔을 맞혀보는 프로젝트
                                                정확도 & 시간을 둘 다 고려해서 모델을 맞춰야 한다
+
+                                               4 CNN & 3 Max pooling layer (3 SAME, 1 VALID)
+                                               2 fully connected layer
+                                               drop out
 '''
 %matplotlib inline
 
@@ -59,9 +63,10 @@ y_ = tf.placeholder(tf.float32, shape=[None, len(image_types)])
 # Model - THIS PART SHOULD BE SAVED SEPARATELY IN "model.txt" file, SO IT CAN BE RETRIEVED AUTOMATICALLY BY "ranking.ipynb"
 #  꼭 model.txt 파일을 사용해야하고 이름을 바꾸면 안된다!
 #START-------------------------------------------------------------------------
+# 4 CNN & 3 Max pooling layer (3 SAME, 1 VALID)
+# 2 fully connected layer
+# drop out
 x_image = x
-
-#  1층 conv 다음에 바로 max pooling ==> fully connected layer로 이어지도록 구성되어 있다
 
 # 1st conv layer-----------------------------
 W_conv1 = weight_variable([3, 3, 3, 16])
@@ -116,7 +121,6 @@ b_fc2 = bias_variable([3])
 y = tf.matmul(h_fc1_drop, W_fc2) + b_fc2  # (3000,1) ==> (3,1)
 
 
-#  Dictionary 형식으로 가중치를 저장하는 코드 (아직은 저장 안하고 저장하도록 설정만 함)
 saver = tf.train.Saver({'W_conv1' : W_conv1, 'b_conv1' : b_conv1, 'W_conv2' : W_conv2,'b_conv2' : b_conv2, 'W_conv3' : W_conv3, 'b_conv3' : b_conv3, 'W_conv4' : W_conv4,'b_conv4' : b_conv4, 'W_fc1' : W_fc1, 'b_fc1' : b_fc1, 'W_fc2' : W_fc2, 'b_fc2' : b_fc2})
 #END-------------------------------------------------------------------------
 
