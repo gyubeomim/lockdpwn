@@ -36,13 +36,7 @@ b_fc1 = bias_variable([3])
 h_pool1_flat = tf.reshape(h_pool3, [-1, n2*n3*n4]) 
 
 
-# Dropout-----------------------------------------
-keep_prob = tf.placeholder(tf.float32)
-h_fc1_drop = tf.nn.dropout(h_pool1_flat, keep_prob)
-
-
-
-y= tf.matmul(h_fc1_drop, W_fc1) + b_fc1 # (4,4) ==> (3,1)
+y= tf.matmul(h_pool1_flat, W_fc1) + b_fc1 # (4,4) ==> (3,1)
 
 
 saver = tf.train.Saver({'W_conv1' : W_conv1, 'b_conv1' : b_conv1, 'W_conv2' : W_conv2,'b_conv2' : b_conv2, 'W_conv3' : W_conv3, 'b_conv3' : b_conv3,  'W_fc1' : W_fc1, 'b_fc1' : b_fc1})

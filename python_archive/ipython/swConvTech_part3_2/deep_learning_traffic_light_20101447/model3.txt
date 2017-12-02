@@ -1,6 +1,7 @@
-# 4 CNN & Max pooling layer (4 SAME)
+# 4 CNN & 3 Max pooling layer (4 SAME)
 # 1 fully connected layer
-# drop out
+# ddef conv2d_valid(x, W, stride):
+    return tf.nn.conv2d(x, W, strides=[1, stride, stride, 1], padding='VALID')rop out
 x_image = x
 
 # 1st conv layer-----------------------------
@@ -43,11 +44,7 @@ b_fc1 = bias_variable([3])
 h_pool1_flat = tf.reshape(h_conv4, [-1, n2*n3*n4]) 
 
 
-# Dropout-----------------------------------------
-keep_prob = tf.placeholder(tf.float32)
-h_fc1_drop = tf.nn.dropout(h_pool1_flat, keep_prob)
-
-y= tf.matmul(h_fc1_drop, W_fc1) + b_fc1 # (4,4) ==> (3,1)
+y= tf.matmul(h_pool1_flat, W_fc1) + b_fc1 # (4,4) ==> (3,1)
 
 
 saver = tf.train.Saver({'W_conv1' : W_conv1, 'b_conv1' : b_conv1, 'W_conv2' : W_conv2,'b_conv2' : b_conv2, 'W_conv3' : W_conv3, 'b_conv3' : b_conv3, 'W_conv4' : W_conv4,'b_conv4' : b_conv4, 'W_fc1' : W_fc1, 'b_fc1' : b_fc1})

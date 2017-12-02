@@ -146,6 +146,7 @@ for num in range(501,601):
 
 # Image 데이터를 numpy 데이터로 수정한다
 test_images = np.array(test_images)
+
 # HOG Feature 작업을 위한 변수
 test_images_hog = np.array(test_images)
 test_images = test_images.reshape(292, 9380, )
@@ -377,7 +378,6 @@ print('test accuracy', test_accuracy)
 
 
 
-
 #----------------------------------------------
 # 임의의 얼굴 하나를 출력한 다음 맞혀보는 코드 
 r = random.randint(0, _num_examples -1)
@@ -386,6 +386,7 @@ print ("Prediction: ", sess.run(tf.argmax(y_conv, 1), {x:test_images[r:r+1], kee
 
 plt.imshow(test_images[r:r+1].reshape(134, 70), cmap='gray', interpolation='nearest')
 plt.show()
+
 
 
 #-------------------------------------------------------
@@ -574,7 +575,7 @@ for i in range(2, 11):
 img_1 = orig_img
 # img_1, img_2 같은 변수를 loop 안에서 다루기 위해 namespace 변수를 추가한다
 namespace = globals()
-for i in range(2, num_resize_img+2):
+for i in range(2, num_resize_img + 2):
     namespace['img_%d' % i] = cv2.imread('./resize_image_forVC/_'+str(i) +'.jpg',0)
 
 # 이미지를 잘라서 저장한다
