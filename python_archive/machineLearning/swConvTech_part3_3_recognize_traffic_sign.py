@@ -10,7 +10,7 @@
     http://www.cvl.isy.liu.se/research/datasets/traffic-signs-dataset/
 
     ONE HOT VECTOR  
-       length : 19
+       length : 20
 
         0  : 30_SIGN
         1  : 50_SIGN
@@ -31,6 +31,7 @@
         16 : URDBL
         17 : NO_STOPPING_NO_STANDING 
         18 : PASS_EITHER_SIDE
+        19 : STOP
 
 '''
 import sys,os,time
@@ -41,14 +42,19 @@ import math
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
+import time
+import itertools
+from sklearn.metrics import confusion_matrix
 
 #--------------------------------------------------------------------------------------
 # START OF DATA PREPROCESSING
 #--------------------------------------------------------------------------------------
-img_path = 'E:\\ml_dataset\\Set1Part0\\'
+img_path = 'E:\\ml_dataset\\Set2Part0\\'
 img_fnames = os.listdir(img_path)
 
 annotations = open(img_path + 'annotations.txt')
+save_path = './swConvTech_part3_3/cropped_img_forSW/'
+
 
 img_name = []
 traffic_signs = []
@@ -93,7 +99,8 @@ def img_trim(img, x1, y1, x2, y2, name1, name2, delimiter):
 
     img_trim = img[y2:y2+h, x2:x2+w]
 
-    cv2.imwrite('./swConvTech_part3_3/cropped_img_forSW/' + str(name1) + delimiter + str(name2) + '.jpg', img_trim)
+    # 잘라진 사진들을 해당경로에 저장합니다 [사진이름]-[표지판이름].jpg
+    cv2.imwrite(save_path + str(name1) + delimiter + str(name2) + '.jpg', img_trim)
 
 
 
@@ -125,6 +132,7 @@ for i in range(0, len(traffic_signs)):
 # END OF DATA PREPROCESSING
 #--------------------------------------------------------------------------------------
 # IMAGE LOAD
+# 이 코드는 ipython\\swConvTech_part3_3\\ 폴더에서 실행하는게 좋다 (ckpt 저장해야되므로)
 #--------------------------------------------------------------------------------------
 import sys,os,time
 import math, random
@@ -134,6 +142,9 @@ import math
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
+import time
+import itertools
+from sklearn.metrics import confusion_matrix
 
 # 잘려진 이미지들의 파일이름을 전부 불러옵니다
 cropped_img_path = 'E:\\gitrepo\\lockdpwn\\python_archive\\ipython\\swConvTech_part3_3\\cropped_img_forSW'
@@ -171,12 +182,11 @@ traffic_label = np.array(traffic_label)
 
 # Basic parameters
 max_epochs = 25
-base_image_path = "5_tensorflow_traffic_light_images/"
-image_types = ["red", "green", "yellow"]
 input_img_x = 32
 input_img_y = 32
 train_test_split_ratio = 0.9
 batch_size = 32
+num_of_class = 20
 checkpoint_name = "./part3_3.ckpt"
 
 
@@ -202,7 +212,7 @@ def max_pool_2x2(x):
 
 # Model
 x = tf.placeholder(tf.float32, shape=[None, input_img_x, input_img_y, 3])
-y_ = tf.placeholder(tf.float32, shape=[None, 19])
+y_ = tf.placeholder(tf.float32, shape=[None, num_of_class])
 
 x_image = x
 
@@ -248,54 +258,53 @@ h_fc1 = tf.nn.relu(tf.matmul(h_pool1_flat, W_fc1) + b_fc1) # (3,3) ==> (3000,1)
 
 
 # 2nd Fully Connected layer------------------------
-W_fc2 = weight_variable([3000, 19])
-b_fc2 = bias_variable([19])
+W_fc2 = weight_variable([3000, num_of_class])
+b_fc2 = bias_variable([num_of_class])
 
 y = tf.matmul(h_fc1, W_fc2) + b_fc2  # (3000,1) ==> (3,1)
-
-
-saver = tf.train.Saver({'W_conv1' : W_conv1, 'b_conv1' : b_conv1, 'W_conv2' : W_conv2,'b_conv2' : b_conv2, 'W_conv3' : W_conv3, 'b_conv3' : b_conv3, 'W_conv4' : W_conv4,'b_conv4' : b_conv4, 'W_fc1' : W_fc1, 'b_fc1' : b_fc1, 'W_fc2' : W_fc2, 'b_fc2' : b_fc2})
-#END-------------------------------------------------------------------------
-
-
-sess = tf.InteractiveSession()
 
 # Our loss function and optimizer
 #  loss func, optimizer 변경하고 싶으면 변경하면 된다
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = y_, logits = y))
 train_step = tf.train.AdamOptimizer(1e-4, 0.9).minimize(loss)
 
+saver = tf.train.Saver({'W_conv1' : W_conv1, 'b_conv1' : b_conv1, 'W_conv2' : W_conv2,'b_conv2' : b_conv2, 'W_conv3' : W_conv3, 'b_conv3' : b_conv3, 'W_conv4' : W_conv4,'b_conv4' : b_conv4, 'W_fc1' : W_fc1, 'b_fc1' : b_fc1, 'W_fc2' : W_fc2, 'b_fc2' : b_fc2})
+#END-------------------------------------------------------------------------
+
+
+sess = tf.InteractiveSession()
 sess.run(tf.initialize_all_variables())
 
 v_loss = least_loss = 99999999
 
 # ONE HOT VECTOR index를 받아서 이름을 반환하는 함수
-def recognizeOneHot(index):
 '''
     ONE HOT VECTOR
-       length : 19
+       length : 20
 
-        0  : 30_SIGN
-        1  : 50_SIGN
-        2  : 60_SIGN
-        3  : 70_SIGN
-        4  : 80_SIGN
-        5  : 90_SIGN
-        6  : 100_SIGN
-        7  : 110_SIGN 
-        8  : 120_SIGN
-        9  : GIVE_WAY
-        10 : NO_PARKING
-        11 : PEDESTRIAN_CROSSING 
-        12 : OTHER
-        13 : PRIORITY_ROAD
-        14 : PASS_RIGHT_SIDE
-        15 : PASS_LEFT_SIDE
-        16 : URDBL
-        17 : NO_STOPPING_NO_STANDING 
-        18 : PASS_EITHER_SIDE
-
+        0  : 30_sign
+        1  : 50_sign
+        2  : 60_sign
+        3  : 70_sign
+        4  : 80_sign
+        5  : 90_sign
+        6  : 100_sign
+        7  : 110_sign 
+        8  : 120_sign
+        9  : give_way
+        10 : no_parking
+        11 : pedestrian_crossing 
+        12 : other
+        13 : priority_road
+        14 : pass_right_side
+        15 : pass_left_side
+        16 : urdbl
+        17 : no_stopping_no_standing 
+        18 : pass_either_side
+        19 : stop
 '''
+def recognizeOneHot(index):
+
     if(index == 0):
         name = '30_SIGN [0]'
     elif(index == 1):
@@ -334,6 +343,8 @@ def recognizeOneHot(index):
         name = 'NO_STOPPING_NO_STANDING [17]'
     elif(index == 18):
         name = 'PASS_EITHER_SIDE [18]'
+    elif(index == 19):
+        name = 'STOP [19]'
 
     return name
 
@@ -344,9 +355,14 @@ full_set = []
 
 # 사진데이터를 32x32로 reshape하고 one hot vector를 만든다
 for i in range(0, len(traffic_images)):
+
+    # 간혹 0 byte인 이미지는 넘어간다
+    if traffic_images[i] is None:
+        continue
+
     traffic_images[i] = cv2.resize(traffic_images[i], (32,32))
 
-    one_hot_array = [0] * 19
+    one_hot_array = [0] * num_of_class
     # 각 index에 표지판 이름을 설정한다
     if(traffic_label[i] == '30_SIGN'):
         one_hot_array[0] = 1
@@ -386,6 +402,8 @@ for i in range(0, len(traffic_images)):
         one_hot_array[17] = 1
     elif(traffic_label[i] == 'PASS_EITHER_SIDE'):
         one_hot_array[18] = 1
+    elif(traffic_label[i] == 'STOP'):
+        one_hot_array[19] = 1
 
     full_set.append((traffic_images[i], one_hot_array))
     
@@ -442,6 +460,42 @@ for i in range(0, max_epochs):
 #----------------------------------------------------------------
 # Analyze Start
 #----------------------------------------------------------------
+# ranking.ipynb에서 가져온 정확도 / 경과시간을 확인하는 코드 
+#--------------------------------------------------------------
+zipped_x_y = list(zip(test_x, test_y))
+total_count = 0
+correct_count = 0
+
+start = time.time()
+with tf.Session() as sess_test:
+    saver.restore(sess_test, checkpoint_name)
+#    optimistic_restore(sess_test, checkpoint_name)
+    print("Model restored.")
+
+    for tt in range(0, len(zipped_x_y)):
+        q = zipped_x_y[tt]
+        sfmax = list(sess_test.run(tf.nn.softmax(y.eval(feed_dict={x: [q[0]]})))[0])
+        sf_ind = sfmax.index(max(sfmax))
+
+        predicted_label = recognizeOneHot(sf_ind)
+        actual_label = recognizeOneHot(q[1].index(max(q[1])))
+
+        if predicted_label == actual_label:
+            correct_count = correct_count + 1
+
+        total_count = total_count + 1
+        if total_count % 100 == 0:
+            print(total_count)
+
+end = time.time()
+accuracy = correct_count / total_count
+timeTaken = end - start
+print("Accuracy = %.6f, Time = %.6f sec" % (accuracy, timeTaken))
+print("Slope = %.6f" % ((accuracy - 0.5) * 100 / timeTaken))
+#--------------------------------------------------------------
+
+
+
 # Epoch-Loss 그래프를 그려주는 코드 
 plt.figure()
 plt.xticks(np.arange(0, len(train_loss), 1.0))
@@ -461,7 +515,7 @@ traffic_name = []
 traffic_name_pred = []
 index = sess.run(tf.argmax(y, 1), feed_dict={x:test_x[r:r+1]})[0]
 
-for i in range(0, 19):
+for i in range(0, num_of_class):
     if(test_y[r][i] == 1):
         traffic_name = recognizeOneHot(i)
 
@@ -474,6 +528,134 @@ test_x = np.array(test_x)
 plt.imshow(test_x[r].reshape(32, 32, 3), cmap='gray', interpolation='nearest')
 plt.show()
 #----------------------------------------------
+
+
+# 훈련모델에 Test 데이터를 넣어본 다음 예측이 틀린 경우에만 출력하는 코드
+#----------------------------------------------
+zipped_x_y = list(zip(test_x, test_y))
+conf_true = []
+conf_pred = []
+
+for tt in range(0, len(zipped_x_y)):
+    q = zipped_x_y[tt]
+    sfmax = list(sess.run(tf.nn.softmax(y.eval(feed_dict={x: [q[0]]})))[0])
+    sf_ind = sfmax.index(max(sfmax))
+    
+    predicted_label = recognizeOneHot(sf_ind)
+    actual_label = recognizeOneHot(q[1].index(max(q[1])))
+    
+    conf_true.append(actual_label)
+    conf_pred.append(predicted_label)
+    
+    if predicted_label != actual_label:
+        print("Actual: {}, predicted: {}".format(actual_label, predicted_label))
+        plt.imshow(test_x[tt].reshape(32, 32, 3), cmap='gray', interpolation='nearest')
+        plt.show()
+
+#----------------------------------------------
+# Precision, Recall 값을 구하는 코드
+
+from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import classification_report
+
+actual_label = []
+pred_label = []
+
+for tt in range(0, len(zipped_x_y)):
+    q = zipped_x_y[tt]
+    sfmax = list(sess.run(tf.nn.softmax(y.eval(feed_dict={x: [q[0]]})))[0])
+
+    # precision과 recall을 구하기 위해 pred_label과 actual_label에 0~19까지의 데이터로 가공해서 넣어줍니다
+    for index in range(0, len(sfmax)):
+        if index is sfmax.index(max(sfmax)):
+            pred_label.append(index)
+
+    actual_label.append(test_y[tt].index(max(test_y[tt])))
+
+
+target_names = [
+        '30_SIGN','50_SIGN',
+        '60_SIGN','70_SIGN',
+        '80_SIGN','90_SIGN',
+        '100_SIGN','110_SIGN',
+        '120_SIGN','GIVE_WAY',
+        'NO_PARKING','PEDESTRIAN_CROSSING', 
+        'OTHER','PRIORITY_ROAD',
+        'PASS_RIGHT_SIDE','PASS_LEFT_SIDE',
+        'URDBL','NO_STOPPING_NO_STANDING', 
+        'PASS_EITHER_SIDE','STOP']
+
+
+# precision, recall, f1-score, support를 출력합니다
+print(classification_report(actual_label, pred_label, target_names=target_names))
+
+
+
+
+#----------------------------------------------
+# confusion_matrix를 plot하는 함수
+# 클래스가 너무 많아서(20개) 안보는게 낫다
+#----------------------------------------------
+def plot_confusion_matrix(cm, classes,
+                          normalize=False,
+                          title='Confusion matrix',
+                          cmap=plt.cm.Blues):
+    """
+    This function prints and plots the confusion matrix.
+    Normalization can be applied by setting `normalize=True`.
+    """
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=45)
+    plt.yticks(tick_marks, classes)
+
+    cm2 = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+
+    cm2 = np.around(cm2, 2)
+
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, str(cm[i, j]) + " / " + str(cm2[i, j]),
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black")
+
+    plt.tight_layout()
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+
+
+classes=[
+        '30_SIGN',
+        '50_SIGN',
+        '60_SIGN',
+        '70_SIGN',
+        '80_SIGN',
+        '90_SIGN',
+        '100_SIGN',
+        '110_SIGN',
+        '120_SIGN',
+        'GIVE_WAY',
+        'NO_PARKING',
+        'PEDESTRIAN_CROSSING', 
+        'OTHER',
+        'PRIORITY_ROAD',
+        'PASS_RIGHT_SIDE',
+        'PASS_LEFT_SIDE',
+        'URDBL',
+        'NO_STOPPING_NO_STANDING', 
+        'PASS_EITHER_SIDE',
+        'STOP'
+        ]
+# confusion_matrix를 출력하는 코드
+cnf_matrix = confusion_matrix(conf_true, conf_pred)
+plt.figure()
+plot_confusion_matrix(cnf_matrix, classes=classes, normalize=False,
+                      title='Normalized confusion matrix')
+plt.show()
+#----------------------------------------------
+
 
 
 
