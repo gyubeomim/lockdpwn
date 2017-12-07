@@ -45,7 +45,6 @@ import matplotlib.pyplot as plt
 #--------------------------------------------------------------------------------------
 # START OF DATA PREPROCESSING
 #--------------------------------------------------------------------------------------
-
 img_path = 'E:\\ml_dataset\\Set1Part0\\'
 img_fnames = os.listdir(img_path)
 
@@ -270,9 +269,10 @@ sess.run(tf.initialize_all_variables())
 
 v_loss = least_loss = 99999999
 
-
+# ONE HOT VECTOR index를 받아서 이름을 반환하는 함수
+def recognizeOneHot(index):
 '''
-    ONE HOT VECTOR  
+    ONE HOT VECTOR
        length : 19
 
         0  : 30_SIGN
@@ -296,6 +296,49 @@ v_loss = least_loss = 99999999
         18 : PASS_EITHER_SIDE
 
 '''
+    if(index == 0):
+        name = '30_SIGN [0]'
+    elif(index == 1):
+        name = '50_SIGN [1]'
+    elif(index == 2):
+        name = '60_SIGN [2]'
+    elif(index == 3):
+        name = '70_SIGN [3]'
+    elif(index == 4):
+        name = '80_SIGN [4]'
+    elif(index == 5):
+        name = '90_SIGN [5]'
+    elif(index == 6):
+        name = '100_SIGN [6]'
+    elif(index == 7):
+        name = '110_SIGN [7]'
+    elif(index == 8):
+        name = '120_SIGN [8]'
+    elif(index == 9):
+        name = 'GIVE_WAY [9]'
+    elif(index == 10):
+        name = 'NO_PARKING [10]'
+    elif(index == 11):
+        name = 'PEDESTRIAN_CROSSING [11]'
+    elif(index == 12):
+        name = 'OTHER [12]'
+    elif(index == 13):
+        name = 'PRIORITY_ROAD [13]'
+    elif(index == 14):
+        name = 'PASS_RIGH_SIDE [14]'
+    elif(index == 15):
+        name = 'PASS_LEFT_SIDE [15]'
+    elif(index == 16):
+        name = 'URDBL [16]'
+    elif(index == 17):
+        name = 'NO_STOPPING_NO_STANDING [17]'
+    elif(index == 18):
+        name = 'PASS_EITHER_SIDE [18]'
+
+    return name
+
+
+
 # Load data, [img, one_hot_array]
 full_set = [] 
 
@@ -304,7 +347,7 @@ for i in range(0, len(traffic_images)):
     traffic_images[i] = cv2.resize(traffic_images[i], (32,32))
 
     one_hot_array = [0] * 19
-
+    # 각 index에 표지판 이름을 설정한다
     if(traffic_label[i] == '30_SIGN'):
         one_hot_array[0] = 1
     elif(traffic_label[i] == '50_SIGN'):
@@ -346,6 +389,7 @@ for i in range(0, len(traffic_images)):
 
     full_set.append((traffic_images[i], one_hot_array))
     
+
 #  모든 데이터를 받아서 랜덤으로 섞는다 
 random.shuffle(full_set)
 
@@ -363,6 +407,7 @@ train_x, train_y = zip(*train_set)
 test_x, test_y   = zip(*test_set)
 
 
+#------------------------------------------------------------------------
 print("Starting training... [{} training examples]".format(len(train_x)))
 v_loss = 9999999
 train_loss = []
@@ -418,83 +463,9 @@ index = sess.run(tf.argmax(y, 1), feed_dict={x:test_x[r:r+1]})[0]
 
 for i in range(0, 19):
     if(test_y[r][i] == 1):
-        if(i == 0):
-            traffic_name = '30_SIGN [0]'
-        elif(i == 1):
-            traffic_name = '50_SIGN [1]'
-        elif(i == 2):
-            traffic_name = '60_SIGN [2]'
-        elif(i == 3):
-            traffic_name = '70_SIGN [3]'
-        elif(i == 4):
-            traffic_name = '80_SIGN [4]'
-        elif(i == 5):
-            traffic_name = '90_SIGN [5]'
-        elif(i == 6):
-            traffic_name = '100_SIGN [6]'
-        elif(i == 7):
-            traffic_name = '110_SIGN [7]'
-        elif(i == 8):
-            traffic_name = '120_SIGN [8]'
-        elif(i == 9):
-            traffic_name = 'GIVE_WAY [9]'
-        elif(i == 10):
-            traffic_name = 'NO_PARKING [10]'
-        elif(i == 11):
-            traffic_name = 'PEDESTRIAN_CROSSING [11]'
-        elif(i == 12):
-            traffic_name = 'OTHER [12]'
-        elif(i == 13):
-            traffic_name = 'PRIORITY_ROAD [13]'
-        elif(i == 14):
-            traffic_name = 'PASS_RIGH_SIDE [14]'
-        elif(i == 15):
-            traffic_name = 'PASS_LEFT_SIDE [15]'
-        elif(i == 16):
-            traffic_name = 'URDBL [16]'
-        elif(i == 17):
-            traffic_name = 'NO_STOPPING_NO_STANDING [17]'
-        elif(i == 18):
-            traffic_name = 'PASS_EITHER_SIDE [18]'
+        traffic_name = recognizeOneHot(i)
 
-if(index == 0):
-    traffic_name_pred = '30_SIGN [0]'
-elif(index == 1):
-    traffic_name_pred = '50_SIGN [1]'
-elif(index == 2):
-    traffic_name_pred = '60_SIGN [2]'
-elif(index == 3):
-    traffic_name_pred = '70_SIGN [3]'
-elif(index == 4):
-    traffic_name_pred = '80_SIGN [4]'
-elif(index == 5):
-    traffic_name_pred = '90_SIGN [5]'
-elif(index == 6):
-    traffic_name_pred = '100_SIGN [6]'
-elif(index == 7):
-    traffic_name_pred = '110_SIGN [7]'
-elif(index == 8):
-    traffic_name_pred = '120_SIGN [8]'
-elif(index == 9):
-    traffic_name_pred = 'GIVE_WAY [9]'
-elif(index == 10):
-    traffic_name_pred = 'NO_PARKING [10]'
-elif(index == 11):
-    traffic_name_pred = 'PEDESTRIAN_CROSSING [11]'
-elif(index == 12):
-    traffic_name_pred = 'OTHER [12]'
-elif(index == 13):
-    traffic_name_pred = 'PRIORITY_ROAD [13]'
-elif(index == 14):
-    traffic_name_pred = 'PASS_RIGH_SIDE [14]'
-elif(index == 15):
-    traffic_name_pred = 'PASS_LEFT_SIDE [15]'
-elif(index == 16):
-    traffic_name_pred = 'URDBL [16]'
-elif(index == 17):
-    traffic_name_pred = 'NO_STOPPING_NO_STANDING [17]'
-elif(index == 18):
-    traffic_name_pred = 'PASS_EITHER_SIDE [18]'
+traffic_name_pred = recognizeOneHot(index)
 
 print ("Label: ", traffic_name)
 print ("Prediction: ", traffic_name_pred )
