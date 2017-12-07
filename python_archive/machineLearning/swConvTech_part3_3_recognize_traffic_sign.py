@@ -146,6 +146,16 @@ import time
 import itertools
 from sklearn.metrics import confusion_matrix
 
+# Basic parameters
+max_epochs = 25
+input_img_x = 32
+input_img_y = 32
+train_test_split_ratio = 0.6
+batch_size = 32
+num_of_class = 20
+checkpoint_name = "./part3_3.ckpt"
+
+
 # 잘려진 이미지들의 파일이름을 전부 불러옵니다
 cropped_img_path = 'E:\\gitrepo\\lockdpwn\\python_archive\\ipython\\swConvTech_part3_3\\cropped_img_forSW'
 cropped_img_fnames = os.listdir(cropped_img_path)
@@ -179,16 +189,6 @@ traffic_label = np.array(traffic_label)
 #print(traffic_label[r])
 #plt.imshow(traffic_images[r], cmap='gray', interpolation='nearest')
 #plt.show()
-
-# Basic parameters
-max_epochs = 25
-input_img_x = 32
-input_img_y = 32
-train_test_split_ratio = 0.9
-batch_size = 32
-num_of_class = 20
-checkpoint_name = "./part3_3.ckpt"
-
 
 # Helper layer functions
 def weight_variable(shape):
@@ -509,26 +509,28 @@ plt.show()
 
 #----------------------------------------------
 # 임의의 표지판 하나를 출력한 다음 맞혀보는 코드 
-r = random.randint(0, len(test_x)-1)
-print(r)
-traffic_name = []
-traffic_name_pred = []
-index = sess.run(tf.argmax(y, 1), feed_dict={x:test_x[r:r+1]})[0]
+with tf.Session() as sess_test:
+    saver.restore(sess_test, checkpoint_name)
 
-for i in range(0, num_of_class):
-    if(test_y[r][i] == 1):
-        traffic_name = recognizeOneHot(i)
+    r = random.randint(0, len(test_x)-1)
+    print(r)
+    traffic_name = []
+    traffic_name_pred = []
+    index = sess_test.run(tf.argmax(y, 1), feed_dict={x:test_x[r:r+1]})[0]
 
-traffic_name_pred = recognizeOneHot(index)
+    for i in range(0, num_of_class):
+        if(test_y[r][i] == 1):
+            traffic_name = recognizeOneHot(i)
 
-print ("Label: ", traffic_name)
-print ("Prediction: ", traffic_name_pred )
+    traffic_name_pred = recognizeOneHot(index)
 
-test_x = np.array(test_x)
-plt.imshow(test_x[r].reshape(32, 32, 3), cmap='gray', interpolation='nearest')
-plt.show()
+    print ("Label: ", traffic_name)
+    print ("Prediction: ", traffic_name_pred )
+
+    test_x = np.array(test_x)
+    plt.imshow(test_x[r].reshape(32, 32, 3), cmap='gray', interpolation='nearest')
+    plt.show()
 #----------------------------------------------
-
 
 # 훈련모델에 Test 데이터를 넣어본 다음 예측이 틀린 경우에만 출력하는 코드
 #----------------------------------------------
@@ -536,60 +538,118 @@ zipped_x_y = list(zip(test_x, test_y))
 conf_true = []
 conf_pred = []
 
-for tt in range(0, len(zipped_x_y)):
-    q = zipped_x_y[tt]
-    sfmax = list(sess.run(tf.nn.softmax(y.eval(feed_dict={x: [q[0]]})))[0])
-    sf_ind = sfmax.index(max(sfmax))
-    
-    predicted_label = recognizeOneHot(sf_ind)
-    actual_label = recognizeOneHot(q[1].index(max(q[1])))
-    
-    conf_true.append(actual_label)
-    conf_pred.append(predicted_label)
-    
-    if predicted_label != actual_label:
-        print("Actual: {}, predicted: {}".format(actual_label, predicted_label))
-        plt.imshow(test_x[tt].reshape(32, 32, 3), cmap='gray', interpolation='nearest')
-        plt.show()
+with tf.Session() as sess_test:
+    saver.restore(sess_test, checkpoint_name)
+
+    for tt in range(0, len(zipped_x_y)):
+        q = zipped_x_y[tt]
+        sfmax = list(sess_test.run(tf.nn.softmax(y.eval(feed_dict={x: [q[0]]})))[0])
+        sf_ind = sfmax.index(max(sfmax))
+        
+        predicted_label = recognizeOneHot(sf_ind)
+        actual_label = recognizeOneHot(q[1].index(max(q[1])))
+        
+        conf_true.append(actual_label)
+        conf_pred.append(predicted_label)
+        
+        if predicted_label != actual_label:
+            print("Actual: {}, predicted: {}".format(actual_label, predicted_label))
+            plt.imshow(test_x[tt].reshape(32, 32, 3), cmap='gray', interpolation='nearest')
+            plt.show()
 
 #----------------------------------------------
 # Precision, Recall 값을 구하는 코드
 
 from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import classification_report
+from sklearn.metrics import average_precision_score
+
 
 actual_label = []
-pred_label = []
+pred_label   = []
+pred_label_one_hot = []
 
-for tt in range(0, len(zipped_x_y)):
-    q = zipped_x_y[tt]
-    sfmax = list(sess.run(tf.nn.softmax(y.eval(feed_dict={x: [q[0]]})))[0])
+with tf.Session() as sess_test:
+    saver.restore(sess_test, checkpoint_name)
 
-    # precision과 recall을 구하기 위해 pred_label과 actual_label에 0~19까지의 데이터로 가공해서 넣어줍니다
-    for index in range(0, len(sfmax)):
-        if index is sfmax.index(max(sfmax)):
-            pred_label.append(index)
+    for tt in range(0, len(zipped_x_y)):
+        q = zipped_x_y[tt]
+        sfmax = list(sess_test.run(tf.nn.softmax(y.eval(feed_dict={x: [q[0]]})))[0])
 
-    actual_label.append(test_y[tt].index(max(test_y[tt])))
+        # precision과 recall을 구하기 위해 pred_label과 actual_label에 0~19까지의 데이터로 가공해서 넣어줍니다
+        for index in range(0, len(sfmax)):
+            if index is sfmax.index(max(sfmax)):
+                pred_label.append(index)
+
+        pred_label_one_hot.append(sfmax)
+        actual_label.append(test_y[tt].index(max(test_y[tt])))
+        print('%d / %d\n' %(tt, len(zipped_x_y)))
 
 
+
+# label의 이름을 설정합니다
 target_names = [
-        '30_SIGN','50_SIGN',
-        '60_SIGN','70_SIGN',
-        '80_SIGN','90_SIGN',
-        '100_SIGN','110_SIGN',
-        '120_SIGN','GIVE_WAY',
-        'NO_PARKING','PEDESTRIAN_CROSSING', 
-        'OTHER','PRIORITY_ROAD',
-        'PASS_RIGHT_SIDE','PASS_LEFT_SIDE',
-        'URDBL','NO_STOPPING_NO_STANDING', 
-        'PASS_EITHER_SIDE','STOP']
+        '30_SIGN [0]','50_SIGN [1]',
+        '60_SIGN [2]','70_SIGN [3]',
+        '80_SIGN [4]','90_SIGN [5]',
+        '100_SIGN [6]','110_SIGN [7]',
+        '120_SIGN [8]','GIVE_WAY [9]',
+        'NO_PARKING [10]','PEDESTRIAN_CROSSING [11]', 
+        'OTHER [12]','PRIORITY_ROAD [13]',
+        'PASS_RIGHT_SIDE [14]','PASS_LEFT_SIDE [15]',
+        'URDBL [16]','NO_STOPPING_NO_STANDING [17]', 
+        'PASS_EITHER_SIDE [18]','STOP [19]']
 
 
 # precision, recall, f1-score, support를 출력합니다
 print(classification_report(actual_label, pred_label, target_names=target_names))
 
 
+# 정답, 예측데이터를 가공하기 쉽도록 numpy 데이터로 변환합니다
+test_y_one_hot = np.array(test_y)
+pred_label_one_hot = np.array(pred_label_one_hot)
+
+
+# For each class 딕셔너리 객체를 생성합니다
+precision = dict()
+recall = dict()
+average_precision = dict()
+
+
+# precision, recall, average_precision를 구합니다
+for i in range(num_of_class):
+    precision[i], recall[i], _ = precision_recall_curve(test_y_one_hot[:, i],
+                                                        pred_label_one_hot[:, i])
+    average_precision[i] = average_precision_score(test_y_one_hot[:, i], pred_label_one_hot[:, i])
+
+
+
+# A "micro-average": quantifying score on all classes jointly
+precision["micro"], recall["micro"], _ = precision_recall_curve(test_y_one_hot.ravel(),
+    pred_label_one_hot.ravel())
+average_precision["micro"] = average_precision_score(test_y_one_hot, pred_label_one_hot, average="micro")
+
+
+print('Average precision score, micro-averaged over all classes: {0:0.2f}'
+      .format(average_precision["micro"]))
+
+
+
+plt.figure()
+plt.step(recall['micro'], precision['micro'], color='b', alpha=0.2,
+         where='post')
+plt.fill_between(recall["micro"], precision["micro"], step='post', alpha=0.2,
+                 color='b')
+
+plt.xlabel('Recall')
+plt.ylabel('Precision')
+plt.ylim([0.0, 1.05])
+plt.xlim([0.0, 1.0])
+plt.title(
+    'Average precision score, micro-averaged over all classes: AP={0:0.2f}'
+    .format(average_precision["micro"]))
+
+plt.show()
 
 
 #----------------------------------------------
@@ -627,27 +687,18 @@ def plot_confusion_matrix(cm, classes,
 
 
 classes=[
-        '30_SIGN',
-        '50_SIGN',
-        '60_SIGN',
-        '70_SIGN',
-        '80_SIGN',
-        '90_SIGN',
-        '100_SIGN',
-        '110_SIGN',
-        '120_SIGN',
-        'GIVE_WAY',
-        'NO_PARKING',
-        'PEDESTRIAN_CROSSING', 
-        'OTHER',
-        'PRIORITY_ROAD',
-        'PASS_RIGHT_SIDE',
-        'PASS_LEFT_SIDE',
-        'URDBL',
-        'NO_STOPPING_NO_STANDING', 
-        'PASS_EITHER_SIDE',
-        'STOP'
-        ]
+        '30_SIGN','50_SIGN',
+        '60_SIGN','70_SIGN',
+        '80_SIGN','90_SIGN',
+        '100_SIGN','110_SIGN',
+        '120_SIGN','GIVE_WAY',
+        'NO_PARKING','PEDESTRIAN_CROSSING', 
+        'OTHER','PRIORITY_ROAD',
+        'PASS_RIGHT_SIDE','PASS_LEFT_SIDE',
+        'URDBL','NO_STOPPING_NO_STANDING', 
+        'PASS_EITHER_SIDE','STOP']
+
+
 # confusion_matrix를 출력하는 코드
 cnf_matrix = confusion_matrix(conf_true, conf_pred)
 plt.figure()

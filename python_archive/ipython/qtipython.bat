@@ -1,1 +1,1 @@
-jupyter qtconsole --IPythonWidget.buffer_size=3000
+jupyter qtconsole --IPythonWidget.buffer_size=9000
