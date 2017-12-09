@@ -9,30 +9,6 @@
     여기서 사진데이터를 다운받을 수 있다
     http://www.cvl.isy.liu.se/research/datasets/traffic-signs-dataset/
 
-    ONE HOT VECTOR  
-       length : 20
-
-        0  : 30_SIGN
-        1  : 50_SIGN
-        2  : 60_SIGN
-        3  : 70_SIGN
-        4  : 80_SIGN
-        5  : 90_SIGN
-        6  : 100_SIGN
-        7  : 110_SIGN 
-        8  : 120_SIGN
-        9  : GIVE_WAY
-        10 : NO_PARKING
-        11 : PEDESTRIAN_CROSSING 
-        12 : OTHER
-        13 : PRIORITY_ROAD
-        14 : PASS_RIGHT_SIDE
-        15 : PASS_LEFT_SIDE
-        16 : URDBL
-        17 : NO_STOPPING_NO_STANDING 
-        18 : PASS_EITHER_SIDE
-        19 : STOP
-
 '''
 import sys,os,time
 import math, random
@@ -44,11 +20,10 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import time
 import itertools
-from sklearn.metrics import confusion_matrix
 
-#--------------------------------------------------------------------------------------
+#----------------------------------------------------------------
 # START OF DATA PREPROCESSING
-#--------------------------------------------------------------------------------------
+#----------------------------------------------------------------
 img_path = 'E:\\ml_dataset\\Set2Part0\\'
 img_fnames = os.listdir(img_path)
 
@@ -145,6 +120,10 @@ import matplotlib.pyplot as plt
 import time
 import itertools
 from sklearn.metrics import confusion_matrix
+from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import classification_report
+from sklearn.metrics import average_precision_score
+
 
 # Basic parameters
 max_epochs = 25
@@ -334,7 +313,7 @@ def recognizeOneHot(index):
     elif(index == 13):
         name = 'PRIORITY_ROAD [13]'
     elif(index == 14):
-        name = 'PASS_RIGH_SIDE [14]'
+        name = 'PASS_RIGHT_SIDE [14]'
     elif(index == 15):
         name = 'PASS_LEFT_SIDE [15]'
     elif(index == 16):
@@ -426,6 +405,8 @@ test_x, test_y   = zip(*test_set)
 
 
 #------------------------------------------------------------------------
+# Train Model
+#------------------------------------------------------------------------
 print("Starting training... [{} training examples]".format(len(train_x)))
 v_loss = 9999999
 train_loss = []
@@ -462,15 +443,16 @@ for i in range(0, max_epochs):
 #----------------------------------------------------------------
 # ranking.ipynb에서 가져온 정확도 / 경과시간을 확인하는 코드 
 #--------------------------------------------------------------
-zipped_x_y = list(zip(test_x, test_y))
-total_count = 0
-correct_count = 0
-
-start = time.time()
 with tf.Session() as sess_test:
     saver.restore(sess_test, checkpoint_name)
 #    optimistic_restore(sess_test, checkpoint_name)
     print("Model restored.")
+
+    zipped_x_y = list(zip(test_x, test_y))
+    total_count = 0
+    correct_count = 0
+
+    start = time.time()
 
     for tt in range(0, len(zipped_x_y)):
         q = zipped_x_y[tt]
@@ -485,14 +467,124 @@ with tf.Session() as sess_test:
 
         total_count = total_count + 1
         if total_count % 100 == 0:
-            print(total_count)
+            print("%d / %d" % (total_count, len(zipped_x_y)))
 
-end = time.time()
-accuracy = correct_count / total_count
-timeTaken = end - start
-print("Accuracy = %.6f, Time = %.6f sec" % (accuracy, timeTaken))
-print("Slope = %.6f" % ((accuracy - 0.5) * 100 / timeTaken))
+    end = time.time()
+    accuracy = correct_count / total_count
+    timeTaken = end - start
+    print("Accuracy = %.6f, Time = %.6f sec" % (accuracy, timeTaken))
+    print("Slope = %.6f" % ((accuracy - 0.5) * 100 / timeTaken))
 #--------------------------------------------------------------
+# Precision, Recall 값을 구하는 코드
+
+with tf.Session() as sess_test:
+    saver.restore(sess_test, checkpoint_name)
+
+    actual_label = []
+    pred_label   = []
+    pred_label_one_hot = []
+
+    for tt in range(0, len(zipped_x_y)):
+        q = zipped_x_y[tt]
+        sfmax = list(sess_test.run(tf.nn.softmax(y.eval(feed_dict={x: [q[0]]})))[0])
+
+        # precision과 recall을 구하기 위해 pred_label과 actual_label에 0~19까지의 데이터로 가공해서 넣어줍니다
+        for index in range(0, len(sfmax)):
+            if index is sfmax.index(max(sfmax)):
+                pred_label.append(index)
+
+        pred_label_one_hot.append(sfmax)
+        actual_label.append(test_y[tt].index(max(test_y[tt])))
+        
+        if tt % 100 == 0:
+            print('%d / %d' %(tt, len(zipped_x_y)))
+
+
+
+# label의 이름을 설정합니다
+target_names = [
+        '30_SIGN [0]','50_SIGN [1]',
+        '60_SIGN [2]','70_SIGN [3]',
+        '80_SIGN [4]','90_SIGN [5]',
+        '100_SIGN [6]','110_SIGN [7]',
+        '120_SIGN [8]','GIVE_WAY [9]',
+        'NO_PARKING [10]','PEDESTRIAN_CROSSING [11]', 
+        'OTHER [12]','PRIORITY_ROAD [13]',
+        'PASS_RIGHT_SIDE [14]','PASS_LEFT_SIDE [15]',
+        'URDBL [16]','NO_STOPPING_NO_STANDING [17]', 
+        'PASS_EITHER_SIDE [18]','STOP [19]']
+
+
+# precision, recall, f1-score, support를 출력합니다
+print(classification_report(actual_label, pred_label, target_names=target_names))
+
+
+# 정답, 예측데이터를 가공하기 쉽도록 numpy 데이터로 변환합니다
+test_y_one_hot = np.array(test_y)
+pred_label_one_hot = np.array(pred_label_one_hot)
+
+
+# 각각 딕셔너리 객체를 생성합니다
+precision = dict()
+recall = dict()
+average_precision = dict()
+
+
+# precision, recall, average_precision를 구합니다
+for i in range(num_of_class):
+    precision[i], recall[i], _ = precision_recall_curve(test_y_one_hot[:, i],
+                                                        pred_label_one_hot[:, i])
+    average_precision[i] = average_precision_score(test_y_one_hot[:, i], pred_label_one_hot[:, i])
+
+
+
+# A "micro-average": quantifying score on all classes jointly
+precision["micro"], recall["micro"], _ = precision_recall_curve(test_y_one_hot.ravel(),
+    pred_label_one_hot.ravel())
+average_precision["micro"] = average_precision_score(test_y_one_hot, pred_label_one_hot, average="micro")
+
+
+# 각각의 클래스에 대해 average_precision을 구하고 그래프를 그립니다
+for i in range(0, num_of_class):
+    print('Average precision score of each class [%d]: %.2f' % (i, float(average_precision[i])))
+
+    # plot graph
+    plt.figure()
+    plt.step(recall[i], precision[i], color='b', alpha=0.2,
+             where='post')
+    plt.fill_between(recall[i], precision[i], step='post', alpha=0.2,
+                     color='b')
+
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.ylim([0.0, 1.05])
+    plt.xlim([0.0, 1.0])
+    plt.title('Average precision score of each class: AP={0:0.2f}' .format(average_precision[i]))
+    plt.show()
+    
+
+
+
+# 전체 클래스에 대해 average_precision을 구하고 그래프를 그립니다
+print('Average precision score, micro-averaged over all classes: {0:0.2f}'
+      .format(average_precision["micro"]))
+
+plt.figure()
+plt.step(recall['micro'], precision['micro'], color='b', alpha=0.2,
+         where='post')
+plt.fill_between(recall["micro"], precision["micro"], step='post', alpha=0.2,
+                 color='b')
+
+plt.xlabel('Recall')
+plt.ylabel('Precision')
+plt.ylim([0.0, 1.05])
+plt.xlim([0.0, 1.0])
+plt.title(
+    'Average precision score, micro-averaged over all classes: AP={0:0.2f}'
+    .format(average_precision["micro"]))
+
+plt.show()
+#------------------------------------------------
 
 
 
@@ -558,99 +650,6 @@ with tf.Session() as sess_test:
             plt.show()
 
 #----------------------------------------------
-# Precision, Recall 값을 구하는 코드
-
-from sklearn.metrics import precision_recall_curve
-from sklearn.metrics import classification_report
-from sklearn.metrics import average_precision_score
-
-
-actual_label = []
-pred_label   = []
-pred_label_one_hot = []
-
-with tf.Session() as sess_test:
-    saver.restore(sess_test, checkpoint_name)
-
-    for tt in range(0, len(zipped_x_y)):
-        q = zipped_x_y[tt]
-        sfmax = list(sess_test.run(tf.nn.softmax(y.eval(feed_dict={x: [q[0]]})))[0])
-
-        # precision과 recall을 구하기 위해 pred_label과 actual_label에 0~19까지의 데이터로 가공해서 넣어줍니다
-        for index in range(0, len(sfmax)):
-            if index is sfmax.index(max(sfmax)):
-                pred_label.append(index)
-
-        pred_label_one_hot.append(sfmax)
-        actual_label.append(test_y[tt].index(max(test_y[tt])))
-        print('%d / %d\n' %(tt, len(zipped_x_y)))
-
-
-
-# label의 이름을 설정합니다
-target_names = [
-        '30_SIGN [0]','50_SIGN [1]',
-        '60_SIGN [2]','70_SIGN [3]',
-        '80_SIGN [4]','90_SIGN [5]',
-        '100_SIGN [6]','110_SIGN [7]',
-        '120_SIGN [8]','GIVE_WAY [9]',
-        'NO_PARKING [10]','PEDESTRIAN_CROSSING [11]', 
-        'OTHER [12]','PRIORITY_ROAD [13]',
-        'PASS_RIGHT_SIDE [14]','PASS_LEFT_SIDE [15]',
-        'URDBL [16]','NO_STOPPING_NO_STANDING [17]', 
-        'PASS_EITHER_SIDE [18]','STOP [19]']
-
-
-# precision, recall, f1-score, support를 출력합니다
-print(classification_report(actual_label, pred_label, target_names=target_names))
-
-
-# 정답, 예측데이터를 가공하기 쉽도록 numpy 데이터로 변환합니다
-test_y_one_hot = np.array(test_y)
-pred_label_one_hot = np.array(pred_label_one_hot)
-
-
-# For each class 딕셔너리 객체를 생성합니다
-precision = dict()
-recall = dict()
-average_precision = dict()
-
-
-# precision, recall, average_precision를 구합니다
-for i in range(num_of_class):
-    precision[i], recall[i], _ = precision_recall_curve(test_y_one_hot[:, i],
-                                                        pred_label_one_hot[:, i])
-    average_precision[i] = average_precision_score(test_y_one_hot[:, i], pred_label_one_hot[:, i])
-
-
-
-# A "micro-average": quantifying score on all classes jointly
-precision["micro"], recall["micro"], _ = precision_recall_curve(test_y_one_hot.ravel(),
-    pred_label_one_hot.ravel())
-average_precision["micro"] = average_precision_score(test_y_one_hot, pred_label_one_hot, average="micro")
-
-
-print('Average precision score, micro-averaged over all classes: {0:0.2f}'
-      .format(average_precision["micro"]))
-
-
-
-plt.figure()
-plt.step(recall['micro'], precision['micro'], color='b', alpha=0.2,
-         where='post')
-plt.fill_between(recall["micro"], precision["micro"], step='post', alpha=0.2,
-                 color='b')
-
-plt.xlabel('Recall')
-plt.ylabel('Precision')
-plt.ylim([0.0, 1.05])
-plt.xlim([0.0, 1.0])
-plt.title(
-    'Average precision score, micro-averaged over all classes: AP={0:0.2f}'
-    .format(average_precision["micro"]))
-
-plt.show()
-
 
 #----------------------------------------------
 # confusion_matrix를 plot하는 함수
