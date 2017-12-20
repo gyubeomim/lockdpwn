@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Export-Package: arduino_sub_pub;version="1.1.01";uses:="org.ros.intern
+ al.message"
+Bundle-Version: 1.1.01
+Tool: Bnd-2.1.0.20130426-122213
+Bundle-Name: arduino_sub_pub
+Bnd-LastModified: 1512125436000
+Created-By: 1.7.0_60 (Oracle Corporation)
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.ros.rosjava_messages.arduino_sub_pub
+Import-Package: org.ros.internal.message
+

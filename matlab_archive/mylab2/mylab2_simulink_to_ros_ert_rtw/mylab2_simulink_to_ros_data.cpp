@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'mylab2_simulink_to_ros'.
 //
-// Model version                  : 1.21
+// Model version                  : 1.51
 // Simulink Coder version         : 8.12 (R2017a) 16-Feb-2017
-// C/C++ source code generated on : Tue Nov 28 03:48:40 2017
+// C/C++ source code generated on : Fri Dec  1 19:54:22 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Intel->x86-64 (Linux 64)
@@ -27,7 +27,7 @@ P_mylab2_simulink_to_ros_T mylab2_simulink_to_ros_P = {
     0.0F,                              // Rpm3
     0.0F                               // Rpm4
   },                                   // Computed Parameter: Out1_Y0
-                                       //  Referenced by: '<S10>/Out1'
+                                       //  Referenced by: '<S12>/Out1'
 
 
   {
@@ -36,7 +36,7 @@ P_mylab2_simulink_to_ros_T mylab2_simulink_to_ros_P = {
     0.0F,                              // Rpm3
     0.0F                               // Rpm4
   },                                   // Computed Parameter: Constant_Value
-                                       //  Referenced by: '<S8>/Constant'
+                                       //  Referenced by: '<S10>/Constant'
 
 
   {
@@ -47,8 +47,11 @@ P_mylab2_simulink_to_ros_T mylab2_simulink_to_ros_P = {
   },                                   // Computed Parameter: Constant_Value_o
                                        //  Referenced by: '<S3>/Constant'
 
+  -1.0,                                // Expression: SampleTime
+                                       //  Referenced by: '<Root>/cmd'
+
   5.0,                                 // Expression: 5
-                                       //  Referenced by: '<Root>/Switch'
+                                       //  Referenced by: '<S5>/Switch'
 
 
   {
@@ -62,11 +65,20 @@ P_mylab2_simulink_to_ros_T mylab2_simulink_to_ros_P = {
   },                                   // Computed Parameter: Constant_Value_ln
                                        //  Referenced by: '<S2>/Constant'
 
+  1500.0F,                             // Computed Parameter: Constant_Value_op
+                                       //  Referenced by: '<S4>/Constant'
+
+  0.0F,                                // Computed Parameter: Normal_Y0
+                                       //  Referenced by: '<S5>/Normal'
+
   1510.0F,                             // Computed Parameter: Constant2_Value
-                                       //  Referenced by: '<Root>/Constant2'
+                                       //  Referenced by: '<S5>/Constant2'
 
   1507.0F,                             // Computed Parameter: Constant3_Value
-                                       //  Referenced by: '<Root>/Constant3'
+                                       //  Referenced by: '<S5>/Constant3'
+
+  0.0F,                                // Computed Parameter: Switch_Threshold_c
+                                       //  Referenced by: '<Root>/Switch'
 
   1200.0F                              // Computed Parameter: Constant1_Value
                                        //  Referenced by: '<Root>/Constant1'

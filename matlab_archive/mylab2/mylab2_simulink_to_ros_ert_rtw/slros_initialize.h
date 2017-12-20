@@ -19,6 +19,9 @@ extern SimulinkPublisher<std_msgs::Float32, SL_Bus_mylab2_simulink_to_ros_std_ms
 // For Block mylab2_simulink_to_ros/Publish2
 extern SimulinkPublisher<arduino_sub_pub::msgs_type, SL_Bus_mylab2_simulink_to_ros_arduino_sub_pub_msgs_type> Pub_mylab2_simulink_to_ros_24;
 
+// For Block mylab2_simulink_to_ros/cmd
+extern SimulinkParameterGetter<int32_T, int> ParamGet_mylab2_simulink_to_ros_27;
+
 void slros_node_init(int argc, char** argv);
 
 #endif

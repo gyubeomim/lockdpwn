@@ -6,6 +6,7 @@ classdef CustomMsgConsts
     %   Copyright 2014-2017 The MathWorks, Inc.
     
     properties (Constant)
+        arduino_sub_pub_msgs_type = 'arduino_sub_pub/msgs_type'
         custom_msgs_edward = 'custom_msgs/edward'
     end
     
@@ -16,8 +17,9 @@ classdef CustomMsgConsts
             
             persistent msgList
             if isempty(msgList)
-                msgList = cell(1, 1);
-                msgList{1} = 'custom_msgs/edward';
+                msgList = cell(2, 1);
+                msgList{1} = 'arduino_sub_pub/msgs_type';
+                msgList{2} = 'custom_msgs/edward';
             end
             
             messageList = msgList;

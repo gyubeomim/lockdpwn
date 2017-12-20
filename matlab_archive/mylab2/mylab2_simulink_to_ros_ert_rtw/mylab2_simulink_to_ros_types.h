@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'mylab2_simulink_to_ros'.
 //
-// Model version                  : 1.21
+// Model version                  : 1.51
 // Simulink Coder version         : 8.12 (R2017a) 16-Feb-2017
-// C/C++ source code generated on : Tue Nov 28 03:48:40 2017
+// C/C++ source code generated on : Fri Dec  1 19:54:22 2017
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Intel->x86-64 (Linux 64)
@@ -47,6 +47,7 @@ typedef struct {
 
 typedef struct {
   int32_T isInitialized;
+  real_T SampleTime;
 } robotics_slros_internal_block_T;
 
 #endif                                 //typedef_robotics_slros_internal_block_T
@@ -60,11 +61,20 @@ typedef struct {
 
 #endif                                 //typedef_robotics_slros_internal_blo_b_T
 
+#ifndef typedef_robotics_slros_internal_bl_bx_T
+#define typedef_robotics_slros_internal_bl_bx_T
+
+typedef struct {
+  int32_T isInitialized;
+} robotics_slros_internal_bl_bx_T;
+
+#endif                                 //typedef_robotics_slros_internal_bl_bx_T
+
 #ifndef typedef_struct_T_mylab2_simulink_to_r_T
 #define typedef_struct_T_mylab2_simulink_to_r_T
 
 typedef struct {
-  real_T f1[2];
+  char_T f1[4];
 } struct_T_mylab2_simulink_to_r_T;
 
 #endif                                 //typedef_struct_T_mylab2_simulink_to_r_T
@@ -73,7 +83,7 @@ typedef struct {
 #define typedef_struct_T_mylab2_simulink_to_b_T
 
 typedef struct {
-  char_T f1[4];
+  char_T f1[8];
 } struct_T_mylab2_simulink_to_b_T;
 
 #endif                                 //typedef_struct_T_mylab2_simulink_to_b_T
@@ -82,7 +92,7 @@ typedef struct {
 #define typedef_struct_T_mylab2_simulink_t_bx_T
 
 typedef struct {
-  char_T f1[8];
+  char_T f1[7];
 } struct_T_mylab2_simulink_t_bx_T;
 
 #endif                                 //typedef_struct_T_mylab2_simulink_t_bx_T
@@ -91,7 +101,9 @@ typedef struct {
 #define typedef_struct_T_mylab2_simulink__bxc_T
 
 typedef struct {
-  char_T f1[7];
+  char_T f1[8];
+  char_T f2[4];
+  char_T f3[6];
 } struct_T_mylab2_simulink__bxc_T;
 
 #endif                                 //typedef_struct_T_mylab2_simulink__bxc_T
@@ -100,12 +112,21 @@ typedef struct {
 #define typedef_struct_T_mylab2_simulink_bxcj_T
 
 typedef struct {
-  char_T f1[8];
-  char_T f2[7];
-  char_T f3[6];
+  real_T f1[2];
 } struct_T_mylab2_simulink_bxcj_T;
 
 #endif                                 //typedef_struct_T_mylab2_simulink_bxcj_T
+
+#ifndef typedef_struct_T_mylab2_simulin_bxcjb_T
+#define typedef_struct_T_mylab2_simulin_bxcjb_T
+
+typedef struct {
+  char_T f1[8];
+  char_T f2[7];
+  char_T f3[6];
+} struct_T_mylab2_simulin_bxcjb_T;
+
+#endif                                 //typedef_struct_T_mylab2_simulin_bxcjb_T
 
 // Parameters (auto storage)
 typedef struct P_mylab2_simulink_to_ros_T_ P_mylab2_simulink_to_ros_T;
