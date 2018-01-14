@@ -1,0 +1,52 @@
+import numpy as np
+import tensorflow as tf
+
+class DQN:
+    def __init__(self, session, input_size, output_size, name="main"):
+        self.session = session
+        self.input_size = input_size
+        self.output_size = output_size
+        self.net_name = name
+
+        self._build_network()
+
+    def _build_network(self, h_size=32, l_rate=1e-3):
+        with tf.variable_scope(self.net_name):
+            self._X = tf.placeholder(tf.float32, [None, self.input_size], name="input_x")
+
+            # First layer of weights
+            W1 = tf.get_variable("W1", shape=[self.input_size, h_size], initializer=tf.contrib.layers.xavier_initializer())
+            layer1 = tf.nn.relu(tf.matmul(self._X, W1))
+
+            W2 = tf.get_variable("W2", shape=[h_size, h_size], initializer=tf.contrib.layers.xavier_initializer())
+            #W2 = tf.nn.dropout(W2, 0.9)
+            layer2 = tf.nn.relu(tf.matmul(layer1, W2))
+
+            W3 = tf.get_variable("W3", shape=[h_size, h_size], initializer=tf.contrib.layers.xavier_initializer())
+            #W3 = tf.nn.dropout(W3, 0.9)
+            layer3 = tf.nn.relu(tf.matmul(layer2, W3))
+
+            W4 = tf.get_variable("W4", shape=[h_size, h_size], initializer=tf.contrib.layers.xavier_initializer())
+            #W4 = tf.nn.dropout(W4, 0.9)
+            layer4 = tf.nn.relu(tf.matmul(layer3, W4))
+
+            W5 = tf.get_variable("W5", shape=[h_size, self.output_size], initializer=tf.contrib.layers.xavier_initializer())
+
+            self._Qpred = tf.matmul(layer4, W5)
+
+        # We need to define the parts of the network needed for learning a policy
+        self._Y = tf.placeholder(shape=[None, self.output_size], dtype=tf.float32)
+
+        # Loss function
+        self._loss = tf.reduce_mean(tf.square(self._Y - self._Qpred))
+        # Learning
+        self._train = tf.train.AdamOptimizer(learning_rate=l_rate).minimize(self._loss)
+
+
+
+    def predict(self, state):
+        x = np.reshape(state, [1, self.input_size])
+        return self.session.run(self._Qpred, feed_dict={self._X: x})
+
+    def update(self, x_stack, y_stack):
+        return self.session.run([self._loss, self._train], feed_dict={self._X: x_stack, self._Y: y_stack})
