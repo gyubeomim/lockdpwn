@@ -19,8 +19,9 @@ if [[ ! -d emacs-"$version" ]]; then
 fi
 
 # buil and install
-sudo mkdir /usr/local/stow
-# /usr/local/stow의 에러가 나시는분들은 위의 코드 한 줄을 빼고 실행시키시면 됩니다.
+if [ ! -d /usr/local/stow ]; then
+     sudo mkdir /usr/local/stow
+fi
 
 cd emacs-"$version"
 ./configure \
