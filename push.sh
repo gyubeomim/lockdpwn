@@ -1,1 +1,1 @@
-sudo git add . -A; sudo git commit -m "from linux $1" ; sudo git push
+sudo git add . -A; sudo git commit -m "from linux $(date)" ; sudo git push
