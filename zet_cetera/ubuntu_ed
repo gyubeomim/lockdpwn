@@ -194,6 +194,7 @@
 	
 
 	21. vncviewer 이름은 vinagre구만
+		하지만 real vncviewer가 가장 성능이 좋다. vinagre, tightvncviewr, chrome vncviewer, remmina vncviewer도 사용해봤지만 별로다
 
 
 	
@@ -253,4 +254,11 @@
 	    	    설정 - 키보드 - shortcut에서 설정했다
 		    ctrl + F3 : 전체 스크린샷 shutter -f
 		    ctrl + F4 : 영역 스크린샷 shutter -s
+
+
+	32. sudo apt install indicator-multiload
+		cpu, mem, disk io, network showed up in panel toolbar
+
+
+
 
