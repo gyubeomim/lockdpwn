@@ -254,3 +254,10 @@
 		    ctrl + F3 : 전체 스크린샷 shutter -f
 		    ctrl + F4 : 영역 스크린샷 shutter -s
 
+
+	32. sudo apt install indicator-multiload
+		cpu, mem, disk io, network showed up in panel toolbar
+
+
+
+
