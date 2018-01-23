@@ -149,7 +149,7 @@ more occurrences in this buffer."
   :group 'highlight-symbol)
 
 (defcustom highlight-symbol-color
-  '("yellow" "DeepPink" "cyan" "red" "SpringGreen1"
+  '("yellow" "DeepPink" "cyan" "gray" "SpringGreen1"
     "DarkOrange" "HotPink1" "RoyalBlue1" "OliveDrab")
   "Colors and/or faces used by `highlight-symbol'.
 highlighting the symbols will use these colors/faces in order."

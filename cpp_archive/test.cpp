@@ -10,7 +10,6 @@ class Phone {
 	string name;
 	string telnum;
 	string address;
-
 public:
 	Phone(string name="", string telnum="", string address=""){
 		this->name = name;
