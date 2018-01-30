@@ -38,6 +38,7 @@ for line in fin:
 fin.close()
 text = " ".join(lines)
 
+
 # creating lookup tables
 # Here chars is the number of features in our character "vocabulary"
 chars = set([c for c in text])
@@ -63,6 +64,7 @@ STEP = 1
 
 input_chars = []
 label_chars = []
+
 for i in range(0, len(text) - SEQLEN, STEP):
     input_chars.append(text[i:i + SEQLEN])
     label_chars.append(text[i + SEQLEN])

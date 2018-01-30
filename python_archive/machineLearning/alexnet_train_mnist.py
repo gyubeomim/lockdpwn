@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 '''
-    python ==> AlexNet을 사용해 mnist를 학습해본 코드
+    python ==> AlexNet (using keras) 을 사용해 mnist를 학습해본 코드
 '''
 %matplotlib inline
 from __future__ import division, print_function, absolute_import
