@@ -85,26 +85,6 @@ threadFunction=function()
 
         -- simAuxiliaryConsolePrint(aux_console, "["..string.format("%.2f",linearVelocity[1])..", "..string.format("%.2f",linearVelocity[2])..", "..string.format("%.2f",linearVelocity[3])..", "..string.format("%.2f",vehicle_vel).."]\n")
 
-
-        -- To send several transforms at once, use simExtRosInterface_sendTransforms insteads
-        transformations = {}
-        transformations[1]=(getTransformStamped(h_dyros_vehicle,'base_link',-1,'map'))
-        transformations[2]=(getTransformStamped(h_wheelFR,'wheel_link_fr',h_dyros_vehicle,'base_link'))
-        transformations[3]=(getTransformStamped(h_wheelFL,'wheel_link_fl',h_dyros_vehicle,'base_link'))
-        transformations[4]=(getTransformStamped(h_wheelRR,'wheel_link_rr',h_dyros_vehicle,'base_link'))
-        transformations[5]=(getTransformStamped(h_wheelRL,'wheel_link_rl',h_dyros_vehicle,'base_link'))
-        transformations[6]=(getTransformStamped(h_imu,'imu_link',h_dyros_vehicle,'base_link'))
-        transformations[7]=(getTransformStamped(h_velodyne,'velodyne_link',h_dyros_vehicle,'base_link'))
-
-
-        -- ed: V-Rep 차량의 tf를 broadcast한다
-        simExtRosInterface_sendTransforms(transformations)
-
-        -- ed: simGetSimulationTime  ==>  simGetSystemTime
-        --     /clock 토픽으로 퍼블리시
-        simExtRosInterface_publish(pub_clock,{clock=simExtRosInterface_getTime(0)})
-
-
         -- Since this script is threaded, don't waste time here:
         simSwitchThread() -- Resume the script at next simulation loop start
     end
@@ -113,10 +93,37 @@ end
 
 -- ed: INITIAL SETTINGS --------------------------------------
 
+-- ed: /vrep_clock_sync 토픽을 섭스크라이브하는 콜백함수
+function clock_msg_callback(msg)
+    vrep_clock = msg['clock']
+
+    -- simAuxiliaryConsolePrint(aux_console, msg['clock'].."\n")
+
+    -- To send several transforms at once, use simExtRosInterface_sendTransforms insteads
+   -- transformations = {}
+   -- transformations[1]=(getTransformStamped(h_dyros_vehicle,'base_link',-1,'map'))
+   -- transformations[2]=(getTransformStamped(h_wheelFR,'wheel_link_fr',h_dyros_vehicle,'base_link'))
+   -- transformations[3]=(getTransformStamped(h_wheelFL,'wheel_link_fl',h_dyros_vehicle,'base_link'))
+   -- transformations[4]=(getTransformStamped(h_wheelRR,'wheel_link_rr',h_dyros_vehicle,'base_link'))
+   -- transformations[5]=(getTransformStamped(h_wheelRL,'wheel_link_rl',h_dyros_vehicle,'base_link'))
+   -- transformations[6]=(getTransformStamped(h_imu,'imu_link',h_dyros_vehicle,'base_link'))
+   -- transformations[7]=(getTransformStamped(h_velodyne,'velodyne_link',h_dyros_vehicle,'base_link'))
+
+
+    -- ed: V-Rep 차량의 tf를 broadcast한다
+    -- simExtRosInterface_sendTransforms(transformations)
+
+    -- ed: simGetSimulationTime  ==>  simGetSystemTime
+    --     /clock topic publish
+    simExtRosInterface_publish(pub_clock,{clock=vrep_clock})
+end
+
+
+
 -- ed: tf를 설정하는 함수 추가
 -- function for tf publications
 function getTransformStamped(objHandle, name, relTo, relToName)
-    t=simExtRosInterface_getTime(0)
+    t=simGetSystemTime()
     p=simGetObjectPosition(objHandle,relTo)
     o=simGetObjectQuaternion(objHandle,relTo)
 
@@ -124,7 +131,7 @@ function getTransformStamped(objHandle, name, relTo, relToName)
 
     return {
         header={
-            stamp=t,
+            stamp=vrep_clock,
             frame_id=relToName
         },
         child_frame_id=name,
@@ -137,6 +144,52 @@ function getTransformStamped(objHandle, name, relTo, relToName)
 end
 
 
+function getOdom(objHandle, name)
+
+    return {
+        header={
+            stamp= ,
+            frame_id=
+        },
+        child_frame_id= ,
+        pose={
+            pose={
+                position={
+                    x= ,
+                    y= ,
+                    z=
+                },
+                orientation={
+                    x= ,
+                    y= ,
+                    z= ,
+                    w=
+                }
+            },
+            covariance={
+
+            }
+        },
+        twist={
+            twist={
+                linear={
+                    x= ,
+                    y= ,
+                    z=
+                },
+                angular={
+                    x= ,
+                    y= ,
+                    z=
+                }
+            },
+            covariance={
+            }
+        }
+    }
+
+
+end
 
 -- Put some initialization code here:
 -- Retrieving of some handles and setting of some initial values:
@@ -169,6 +222,10 @@ simExtRosInterface_publisherTreatUInt8ArrayAsString(pub_localization)
 pub_clock=simExtRosInterface_advertise('/clock','rosgraph_msgs/Clock')
 simExtRosInterface_publisherTreatUInt8ArrayAsString(pub_clock)
 
+-- ed: /vrep_time_sync 토픽 섭스크라이버 선언
+clock_sub = simExtRosInterface_subscribe('/vrep_clock_sync', 'rosgraph_msgs/Clock', 'clock_msg_callback')
+
+
 desiredSteeringAngle=0
 desiredWheelRotSpeed=0
 
@@ -195,3 +252,4 @@ end
 -- Put some clean-up code here:
 -- ed: /LocalizationData 퍼블리셔 소멸자
 simExtRosInterface_shutdownPublisher(pub_localization)
+simExtRosInterface_shutdownSubscriber(clock_sub)
