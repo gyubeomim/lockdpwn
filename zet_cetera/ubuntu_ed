@@ -19,7 +19,7 @@
 
 
 
-    4. 자동 시작 프로그램은 "sysv-rc-conf" 로 1차로 제어할 수 있고
+        4. 자동 시작 프로그램은 "sysv-rc-conf" 로 1차로 제어할 수 있고
 		"/etc/init.d/" 폴더 안에 있는 파일을 이용해 2차로 제어할 수 있다
 		"/etc/init" 폴더, "update-rc.d" 명령어, "/etc/rcN.d" 폴더, "systemctl 명령"도 자동시작과 관련되어 있다.
 		
@@ -257,6 +257,7 @@
 
 
 	32. sudo apt install indicator-multiload
+	        시스템의 cpu, ram, memory 상태를  트레이아이콘으로 보여주는 프로그램
 		cpu, mem, disk io, network showed up in panel toolbar
 
 
