@@ -178,6 +178,7 @@ tmux attach-session -d'
 alias cw='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic'
 alias cs='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic/src'
 alias cm='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic && catkin_make'
+alias cb='cd ~/bag_files'
 alias cma='catkin_make'
 alias so='source devel/setup.bash'
 
@@ -234,7 +235,6 @@ export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY
 # alias sog2='source /usr/share/gazebo/setup.sh'
 # alias cmb='cd ~/gitrepo/ims/ROS/rosbook_ws && catkin_make'
 # alias cdb='cd ~/gitrepo/ims/ROS/rosbook_ws'
-# alias cb='cd ~/bag_files'
 # # for stockroom_bot
 # #alias sb='source ~/gitrepo/ims/ROS/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims/ROS/stockroombot_ws/src/stockroom_bot'/models
 # PERL5LIB="/home/dyros-vehicle/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
