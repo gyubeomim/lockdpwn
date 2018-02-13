@@ -1,0 +1,13 @@
+syntax = "proto2";
+package test;
+
+message Root {
+    optional sint64 id = 1;
+    optional string name = 2;
+    optional Some some = 3;
+}
+message Some {
+    optional sint64 someId = 1;
+    optional string someName = 2;
+    optional Some some = 3;
+}

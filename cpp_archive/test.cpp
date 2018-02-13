@@ -3,6 +3,7 @@
  */
 #include <iostream>
 #include <string>
+#include <stdio.h>
 
 using namespace std;
 
@@ -16,6 +17,7 @@ public:
 		this->telnum = telnum;
 		this->address = address;
 	}
+
 };
 
 int main(int argc, const char *argv[]){
@@ -23,6 +25,12 @@ int main(int argc, const char *argv[]){
 	
 		cin >> girl >> boy;
 		cout << girl << endl << boy << endl;
+
+		printf(char* __format, vararg ...);
+		scanf(char* __format, vararg ...);
+
+		fprintf(FILE* __stream, char* __format, vararg ...)
+
 
 	return 0;
 }
