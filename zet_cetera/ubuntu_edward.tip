@@ -262,4 +262,18 @@
 
 
 
+	33. ccsm (compizconfig-settings-manager) 를 통해서 Ubuntu Workspace의 갯수를 바꿀 수 있다
+		default는 2x2이지만 3x3 이상으로 바꿀 수 있다 굳굳
+		general options에서 desktop size를 바꾸면 됨
+
+
+	
+	34. 터미널에서 C-r 을 누르면 (reverse-i-search) 라는 기능이 실행된다
+		이전에 사용한 명령어를 검색하는 기능인듯 굳굳 
+
+
+
+
+
+
 
