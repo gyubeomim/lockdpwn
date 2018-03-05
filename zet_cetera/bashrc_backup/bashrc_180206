@@ -116,6 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# CUSTOMIZING START-------------------------------------
+
 # define colors
 C_DEFAULT="\[\033[m\]"
 C_WHITE="\[\033[1m\]"
@@ -146,20 +148,19 @@ C_BG_LIGHTGRAY="\[\033[47m\]"
 
 PS1="$C_LIGHTGREEN[$C_LIGHTGREEN\u@$C_LIGHTGREEN\h]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
-LANG=ko_KR.utf-8
-LANGUAGE=ko_KR
+
+# LANG=ko_KR.utf-8
+# LANGUAGE=ko_KR
+
+# ida & msfconsole aliases
 PATH=$PATH:/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
 ida=/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
+msf=/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15
+alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
+
 git=/home/dyros-vehicle/gitrepo/lockdpwn
 git2=/home/dyros-vehicle/gitrepo/ims
-msf=/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15
-
-PATH="/home/dyros-vehicle/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/dyros-vehicle/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/dyros-vehicle/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/dyros-vehicle/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/dyros-vehicle/perl5"; export PERL_MM_OPT;
-
+gr=/home/dyros-vehicle/gitrepo/
 
 alias tmux='TERM=xterm-256color tmux -2 -u'
 alias tm='tmux -u new-session -d
@@ -170,78 +171,16 @@ tmux split-window -h
 tmux select-pane -L
 tmux attach-session -d'
 
+#export ROS_MASTER_URI=http://192.168.137.2:11311
+#export ROS_HOSTNAME=127.0.0.1
 
 # set ROS alias command
 alias cw='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic'
 alias cs='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic/src'
 alias cm='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic && catkin_make'
-
-#export ROS_MASTER_URI=http://192.168.137.2:11311
-#export ROS_HOSTNAME=127.0.0.1
-
-#alias cl='cd /home/dyros-vehicle/gitrepo/ims'
-#alias cr='cd /home/dyros-vehicle/gitrepo/ims/ROS/'
-alias so='source devel/setup.bash'
-
-if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
-    source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
-fi
-
-# set ROS
-source /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic/devel/setup.bash
-source /opt/ros/kinetic/setup.bash
-
-#alias emacs='/home/dyros-vehicle/Downloads/emacs-24.5/src/emacs'
-
-# for stockroom_bot
-#alias sb='source ~/gitrepo/ims/ROS/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims/ROS/stockroombot_ws/src/stockroom_bot'/models
-
-
-# for source gazebo config
-alias sog='source /usr/share/gazebo-2.2/setup.sh'
-alias sog2='source /usr/share/gazebo/setup.sh'
-
-# for source .bashrc
-alias sob='source /home/dyros-vehicle/.bashrc'
-
-alias cdb='cd ~/gitrepo/ims/ROS/rosbook_ws'
 alias cb='cd ~/bag_files'
-
 alias cma='catkin_make'
-alias cmb='cd ~/gitrepo/ims/ROS/rosbook_ws && catkin_make'
-
-
-source /opt/ros/kinetic/setup.bash
-
-export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
-
-alias co='cd /opt/ros/kinetic/share/'
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
-source /opt/ros/kinetic/setup.bash
-
-
-alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/directorPython'
-
-
-# setting for Tensorflow GPU version 
-# Using CUDA 8.0 & cuDNN 6.0
-export CUDA_HOME=/usr/local/cuda-8.0
-export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
-
-#UE4Editor-------------
-alias ueditor='~/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
-export UE4_ROOT='/home/dyros-vehicle/gitrepo/UnrealEngine'
-
-
-gr='/home/dyros-vehicle/gitrepo/'
+alias so='source devel/setup.bash'
 
 # Cartographer Settings
 alias soc='source install_isolated/setup.bash'
@@ -249,8 +188,64 @@ alias cwc='cd /home/dyros-vehicle/gitrepo/ims/ROS/cartographer_ws_kinetic'
 alias csc='cd /home/dyros-vehicle/gitrepo/ims/ROS/cartographer_ws_kinetic/src'
 alias cmc='cd /home/dyros-vehicle/gitrepo/ims/ROS/cartographer_ws_kinetic && catkin_make_isolated --install --use-ninja'
 
+# V-Rep Settings
+export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
 
+# source ROS PATH
+source /opt/ros/kinetic/setup.bash
+source /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic/devel/setup.bash
+
+
+# source .bashrc
+alias sob='source /home/dyros-vehicle/.bashrc'
+
+# clear screen
+alias cl='clear'
+
+# vnc viewer
 alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 
+# emacs 25.2
 alias emacs='/home/dyros-vehicle/Downloads/emacs-25.2/src/emacs'
-alias cl='clear'
+
+# Ti-Nspire CX CAS emulator
+alias ti='cd /home/dyros-vehicle/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
+
+# UE4Editor
+alias ueditor='~/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
+export UE4_ROOT='/home/dyros-vehicle/gitrepo/UnrealEngine'
+
+
+# setting for Tensorflow GPU version
+# Using CUDA 8.0 & cuDNN 6.0
+export CUDA_HOME=/usr/local/cuda-8.0
+export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+
+
+# NOT USED------------------------------------------------------
+
+# alias co='cd /opt/ros/kinetic/share/'
+# alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/directorPython'
+# # for source gazebo config
+# alias sog='source /usr/share/gazebo-2.2/setup.sh'
+# alias sog2='source /usr/share/gazebo/setup.sh'
+# alias cmb='cd ~/gitrepo/ims/ROS/rosbook_ws && catkin_make'
+# alias cdb='cd ~/gitrepo/ims/ROS/rosbook_ws'
+# # for stockroom_bot
+# #alias sb='source ~/gitrepo/ims/ROS/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims/ROS/stockroombot_ws/src/stockroom_bot'/models
+# PERL5LIB="/home/dyros-vehicle/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+# PERL_LOCAL_LIB_ROOT="/home/dyros-vehicle/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+# PERL_MB_OPT="--install_base \"/home/dyros-vehicle/perl5\""; export PERL_MB_OPT;
+# PERL_MM_OPT="INSTALL_BASE=/home/dyros-vehicle/perl5"; export PERL_MM_OPT;
+# PATH="/home/dyros-vehicle/perl5/bin${PATH:+:${PATH}}"; export PATH;
+# if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
+#     source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
+# fi
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# export PATH="$PATH:$HOME/.rvm/bin"
+
+# NOT USED------------------------------------------------------
