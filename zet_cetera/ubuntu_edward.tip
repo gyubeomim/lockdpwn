@@ -1,22 +1,13 @@
 160427~
-
-
 	1. PS1 = \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
-
-
 
 
 	2. 터미널로 경로 열기
 	nautilus <path> 또는  gnome-open <path>
 
 
-
-
 	3. vim .bashrc
 		 위 명령으로 쉘 프롬프트 색깔이나 모양을 마음대로 설정할 수 있다. 단 현재 사용자에 한해서만
-
-
-
 
 
         4. 자동 시작 프로그램은 "sysv-rc-conf" 로 1차로 제어할 수 있고
@@ -30,23 +21,16 @@
 
 
 
-
-
-
 	5. sudo psql -U postgres -h localhost , 비번은0215
 		sudo -u postgres psql
 		msfconsole
 		db_connect postgres:0215@localhost:5432/msf_db
 		db_status
 		
-		
-		
 
 
-	6. samba 서비스system-config-samba
+	6. samba 서비스 system-config-samba
 	
-	
-
 
 
 	7. emacs 여러 플러그인.. 등등등
@@ -55,22 +39,16 @@
 			 	2. M-x visit-tags-table 해 주고
 			 	3. 원하는 함수명 위에 커서 놓고 M-. 해 주고 엔터치면 함수 정의로 이동한다.
 			 	4. 되돌아 가려면 M-*
-	
-	
 
 
 	8. emacs 플러그인	중 etags 관한 코드 (현재는 gtags 때문에 etags는 거의 안쓴다)
-	find /usr/include/ -name "*.[ch]" -print | etags - *.cpp *.h
-    find /usr/include/ -name "*.[ch]" -print | etags - *.[ch]
-	
-	
-
-
-
-	9. 우분투에서 ssh 구문은 ssh -p 6666 user@koradb.iptime.org	
+        	find /usr/include/ -name "*.[ch]" -print | etags - *.cpp *.h
+                find /usr/include/ -name "*.[ch]" -print | etags - *.[ch]
 	
 
 
+	9. 우분투에서 ssh 구문은 ssh  user@koradb.iptime.org -p 6666
+	
 
 
 	10. latex 깔았다 sudo apt-get install texlive-full 용량 겁나 큼	
@@ -78,11 +56,7 @@
 		인터넷에서 online latex 편집기가 있어서 이용하는 중
 
 		## HISTORY
-
 		f(x,y) = \int M(x,y)dx + g(y)
-
-
-
 
 
 
@@ -91,33 +65,26 @@
 
 
 
-
-
 	12. sudo apt-get install compizconfig-settings-manager 윈도우 창 옆으로 크게 위로크게 작게
 	편리하게 ctrl + windows + arrow 키로 조절하기
 	
-	terminal ==> ccsm 에서 grid 항목 클릭하기
+		$ ccsm 에서 grid 항목 클릭하기
 
 
 
-
-
-
-	13. emacs 24.5 ==> emacs 25.1 로 업그레이드 했다
+	13. emacs 24.5 ==> emacs 25.2 로 업그레이드 했다
 		바로 된건 아니고 직접 내가 configure, make 로 컴파일해서 설치했다
 		또 바로 된건 아니고 .emacs에서 arduino 관련된 코드가 에러나서 주석처리하니깐 되더라
-		
-			# 결정적으로 계속 재부팅하면 소프트웨어가 지워지고 helm이랑 연동이 아직 안되서
+
+		   # 170123 : 결정적으로 계속 재부팅하면 소프트웨어가 지워지고 helm이랑 연동이 아직 안되서
 			그냥 24.5 계속 쓰는중.. 170123
-	
+
+		   # 180308_목 : 현재는 25.2 버전으로 잘 사용하고 있다
 
 
 
-
-
-	14. 170116_월 우분투가 에러나서 새로 포맷했다. 대부분 복구한듯
+	14. 170116_월 : 우분투가 에러나서 새로 포맷했다. 대부분 복구한듯
 		리눅스 포맷하면서 다시 필수로 깔아야할 소프트웨어들
-
 		emacs
 		vim
 		google-chrome
@@ -141,27 +108,23 @@
 
 
 
-
 	16. Emacs : highlight-symbol 패키지 
 	
-	highlight-symbol.elc ==> 이건 컴파일버전이다
+		highlight-symbol.elc ==> 이건 컴파일버전이다
 
-    M-x : byte-compile-file highlight-symbol.el로 컴파일 버전을 만든다
+		M-x : byte-compile-file highlight-symbol.el로 컴파일 버전을 만든다
 
-	아래 변수에서 s를 빼야 제대로 인식된다 
-	highlight-symbol-colors ==> highlight-symbol-color
-
-
-	# edebug defun ==> Ctrl + b 
-		Emacs lisp code debugger 
-		이맥스-lisp 코드들은 위 명령어로 디버깅할 수 있다
+		아래 변수에서 s를 빼야 제대로 인식된다 
+		highlight-symbol-colors ==> highlight-symbol-color
 
 
+		# edebug defun ==> Ctrl + b 
+		  Emacs lisp code debugger 
+		  이맥스-lisp 코드들은 위 명령어로 디버깅할 수 있다
 
 
 
 	17. simplescreenrecorder & peek  : 동영상 녹화 프로그램 (peek은 gif파일로 해준다)
-		
 		sudo add-apt-repository ppa:maarten-baert/simplescreenrecorder
 		sudo apt-get update
 		sudo apt-get install simplescreenrecorder
@@ -170,14 +133,14 @@
 		sudo apt-get update
 		sudo apt-get install peek
 
+		# 180308_목 : 현재 Peek 을 주로 사용하고 있다 .gif, .mp4 전부 지원한다
+
 
 
 
 	18. Ubuntu에서 Metasploit의 .rb 파일들의 경로는 여기 있더라
 	
 	/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15/modules/exploits
-
-
 
 
 
@@ -190,35 +153,23 @@
 
 
 
-
-	
-
 	21. vncviewer 이름은 vinagre구만
-		하지만 real vncviewer가 가장 성능이 좋다. vinagre, tightvncviewr, chrome vncviewer, remmina vncviewer도 사용해봤지만 별로다
+		180308_목 : real vncviewer가 가장 성능이 좋다. vinagre, tightvncviewr, chrome vncviewer, remmina vncviewer도 사용해봤지만 별로다
 
 
 	
-
-	22. 키보드 caps lock 키와 ctrl 키를 바꿨다 170217
+	22. 170217 : 키보드 caps lock 키와 ctrl 키를 바꿨다
 		sudo apt-get install dconf-editor 
 		org > gnome > desktop > input-method > xkb-options ['ctrl:swapcaps']
-
-
 
 
 
 	23. idaq.exe 글씨가 너무 작아서 눈알빠지는줄 알았는데 winecfg에서 DPI? 변경해주니깐 크게 잘보인다 굳굳
 
 
-
-
-
 	24. ASLR을 해제하기 위한 명령어
 		sudo sysctl -w kernel.randomize_va_space=0
 		sudo sysctl -w kernel.randomize_va_space=2 (다시 활성화)
-
-
-
 
 
 	25. gcc 컴파일러 옵션 
@@ -227,16 +178,14 @@
 
 
 
-
-
-	26. 글씨 크기가 너무 작아서 unity-tweak-tool 에서 font -> scale 값을 1.5로 설정했다
+	26. 글씨 크기가 너무 작으면 unity-tweak-tool 에서 font -> scale 값을 1.5로 설정하면 된다
 
 
 	27. 64gb microSD 카드에 용량 큰 것들은 전부 몰아 넣고
 		ros, opencv 같은 것들을 설치했다
 	
 
-	28. tmux가 좋다고 해서 tmux도 깔았다 : 170409_일
+	28. 170409_일 : tmux가 좋다고 해서 tmux도 깔았다
 		
 
 	29. vpython 설치하려면 우분투는 간단하다. 굳굳
@@ -270,7 +219,6 @@
 	
 	34. 터미널에서 C-r 을 누르면 (reverse-i-search) 라는 기능이 실행된다
 		이전에 사용한 명령어를 검색하는 기능인듯 굳굳 
-
 
 
 
