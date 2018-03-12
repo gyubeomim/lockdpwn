@@ -7,7 +7,9 @@ from APT2U.items import APT2UItem
 from scrapy.http import Request
 from scrapy.selector import Selector
 reload(sys)
-sys.setdefaultencoding('utf-8')
+''' sys.setdefaultencoding('utf-8') '''
+
+
 
 class APT2U_Spider(scrapy.Spider):
     name = "APT2U"  #spider 이름
