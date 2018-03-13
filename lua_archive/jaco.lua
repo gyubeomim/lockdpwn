@@ -70,6 +70,7 @@ generatePathLengths=function(path)
    return retLengths
 end
 
+
 getShiftedMatrix=function(matrix,localShift,dir)
    -- Returns a pose or matrix shifted by vector localShift
    local m={}

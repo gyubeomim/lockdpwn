@@ -8,6 +8,8 @@ from keras.layers.core import Dense, Dropout, Activation, Flatten
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.layers.normalization import BatchNormalization
 
+
+
 #AlexNet with batch normalization in Keras 
 def alexnet():
     model = Sequential()
