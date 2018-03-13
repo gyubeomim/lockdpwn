@@ -223,5 +223,10 @@
 
 
 
-
+	35. 윈도우와 TeamViewer로 연동하니 빠르게 잘된다
+	    	다만 shortcut들이 겹치는게 많아서 우분투에서 몇개 변경했다
+		
+		$ ccsm ==> Ubuntu Utility Plugin 으로 프로그램에 들어가서
+			Switcher 탭에서 Alt + Tab  ==>   Alt + Ctrl + Tab 으로 변경했다
+			그리고 Alt만 눌렀을 때 Windows 처럼 메뉴바가 뜨던걸 전부 Disable 했다
 
