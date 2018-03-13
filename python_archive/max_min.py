@@ -11,10 +11,13 @@ if len(sys.argv) != 2:
 
 with open(sys.argv[1]) as f:
     lines = f.read().splitlines()
-
 f.close()
+
+
 
 fvalues = [float(line) for line in lines]
 
 print "The minimum values is " , min(fvalues)
 print "The maximum values is " , max(fvalues)
+
+

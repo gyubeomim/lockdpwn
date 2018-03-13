@@ -15,3 +15,4 @@ def equation(p):
 
 x,y = fsolve(equation, (1,1))
 print equation((x,y))
+

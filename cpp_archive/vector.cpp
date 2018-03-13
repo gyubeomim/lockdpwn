@@ -15,6 +15,7 @@ int main()
 	ve.push_back(500);
 
 
+
 	// size_type을 이용해 i 값을 unsigned int 값으로 변경시켜준다
 	for (vector<int>::size_type i = 0; i < ve.size(); ++i) 
 	{

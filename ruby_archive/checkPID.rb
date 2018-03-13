@@ -13,6 +13,7 @@ file = File.new("/proc/#{pid}/cmdline")
 cmdline = file.read.split("\000")
 file.close
 
+
 filename = cmdline.shift
 
 print "Process #{pid} is owned by #{Etc.getpwuid(owner).name}\n"

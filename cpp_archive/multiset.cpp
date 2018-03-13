@@ -6,9 +6,7 @@
 
 using namespace std;
 
-
-int main()
-{
+int main() {
   multiset<int> ms;   // multiset<int> 컨테이너는 set<int>과 다르게 중복된 원소도 입력이 가능합니다
 
   ms.insert(50);

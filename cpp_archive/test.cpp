@@ -1,11 +1,12 @@
 /*
- * c++ ==> 객체지향 p
+ * c++ ==> 객체지향 p. 
  */
 #include <iostream>
 #include <string>
 #include <stdio.h>
 
 using namespace std;
+
 
 class Phone {
 	string name;
@@ -20,7 +21,10 @@ public:
 
 };
 
-int main(int argc, const char *argv[]){
+
+
+
+int main(int argc, const char *argv[]) {
 		Phone girl, boy;
 	
 		cin >> girl >> boy;
