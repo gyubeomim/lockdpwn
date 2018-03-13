@@ -9,18 +9,19 @@ using namespace std;
 
 
 class Phone {
-	string name;
-	string telnum;
-	string address;
-public:
-	Phone(string name="", string telnum="", string address=""){
-		this->name = name;
-		this->telnum = telnum;
-		this->address = address;
-	}
+  string name;
+  string telnum;
+  string address;
+ public:
+  Phone(string name="", string telnum="", string address=""){
+    this->name = name;
+    this->telnum = telnum;
+    this->address = address;
+  }
 
 };
 
+<<<<<<< HEAD
 
 
 
@@ -29,12 +30,16 @@ int main(int argc, const char *argv[]) {
 	
 		cin >> girl >> boy;
 		cout << girl << endl << boy << endl;
+=======
+int main(int argc, const char *argv[]){
+  Phone girl, boy;
+>>>>>>> c46d972e32e778b694cd19406715fcd77c2c9526
 
-		printf(char* __format, vararg ...);
-		scanf(char* __format, vararg ...);
 
-		fprintf(FILE* __stream, char* __format, vararg ...)
+  cin >> girl >> boy;
+  cout << girl << endl << boy << endl;
 
 
-	return 0;
+
+      return 0;
 }

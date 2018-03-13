@@ -14,7 +14,10 @@ with open(sys.argv[1]) as f:
 f.close()
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c46d972e32e778b694cd19406715fcd77c2c9526
 fvalues = [float(line) for line in lines]
 
 print "The minimum values is " , min(fvalues)

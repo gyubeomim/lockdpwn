@@ -7,7 +7,9 @@ from APT2U.items import APT2UItem
 from scrapy.http import Request
 from scrapy.selector import Selector
 reload(sys)
-sys.setdefaultencoding('utf-8')
+''' sys.setdefaultencoding('utf-8') '''
+
+
 
 
 class APT2U_Spider(scrapy.Spider):
@@ -29,6 +31,10 @@ class APT2U_Spider(scrapy.Spider):
             item['receiptdate'] = sel.xpath('normalize-space(td[2]/text())').extract() #청약기간 추출
             item['result_date'] = sel.xpath('td[@class="end"]/text()').extract()       #당첨자발표일 추출
             items.append(item)                                                         #Item 1개 세트를 리스트에 담음
+<<<<<<< HEAD
 
         return items
 
+=======
+        return items
+>>>>>>> c46d972e32e778b694cd19406715fcd77c2c9526
