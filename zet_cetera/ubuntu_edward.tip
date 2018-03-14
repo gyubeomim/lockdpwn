@@ -223,7 +223,7 @@
 
 
 
-	35. 윈도우와 TeamViewer로 연동하니 빠르게 잘된다
+	35. 윈도우와 TeamViewer로 연동하니 빠르게 잘된다 (사용안함)
 	    	다만 shortcut들이 겹치는게 많아서 우분투에서 몇개 변경했다
 		
 		$ ccsm ==> Ubuntu Utility Plugin 으로 프로그램에 들어가서
@@ -237,7 +237,8 @@
 
 
 
-	36. Launcher에 있는 Emacs를 root로 자동실행되도록 설정했다
+	36. Launcher에 있는 Emacs를 root로 자동실행되도록 설정했다 (사용안함)
+
 		magit을 잘 사용하기 위해 
 		
 		$ sudo vim /etc/sudoers
@@ -245,6 +246,8 @@
 
 		$ sudo vim ~/.local/share/applications/emacs.desktop
 			Exec=sudo /home/dyros-vehicle/Downloads/emacs-25.2/src/emacs --debug-init  로 코드륿 변경한다
+
+		Emacs를 root로 실행시키면 파일저장할 때 전부 root 권한이 되므로 차라리 .git-credential을 dyros-vehicle로 바꾸고 Emacs도 원래대로 dyros-vehicle 권한으로 실행되도록 했다
 
 		180314_수
 			
