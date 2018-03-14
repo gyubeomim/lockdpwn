@@ -230,7 +230,10 @@
 			Switcher 탭에서 Alt + Tab  ==>   Alt + Ctrl + Tab 으로 변경했다
 			Win key + Tab 키도 disable 시켰다
 			그리고 Alt만 눌렀을 때 Windows 처럼 메뉴바가 뜨던걸 전부 Disable 했다
-			180314_수
+			180313_화
+
+		teamviewer보단 tightvncserver가 나은것 같다 키보드가 몇개 안먹히는게 있어서
+			따라서 위에 Alt + Tab도 원상복구했다 180314_수
 
 
 
