@@ -20,7 +20,7 @@ def my_function():
     print "hello, world."
 
 
-print "Program start"
+print "[+] Program start"
 my_function();
 
 
