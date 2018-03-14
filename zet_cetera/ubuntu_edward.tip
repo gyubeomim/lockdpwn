@@ -230,4 +230,23 @@
 			Switcher 탭에서 Alt + Tab  ==>   Alt + Ctrl + Tab 으로 변경했다
 			Win key + Tab 키도 disable 시켰다
 			그리고 Alt만 눌렀을 때 Windows 처럼 메뉴바가 뜨던걸 전부 Disable 했다
+			180314_수
+
+
+
+	36. Launcher에 있는 Emacs를 root로 자동실행되도록 설정했다
+		magit을 잘 사용하기 위해 
+		
+		$ sudo vim /etc/sudoers
+			ALL ALL=NOPASSWD: /home/dyros-vehicle/Downloads/emacs-25.2/src/emacs --debug-init  라인 추가
+
+		$ sudo vim ~/.local/share/applications/emacs.desktop
+			Exec=sudo /home/dyros-vehicle/Downloads/emacs-25.2/src/emacs --debug-init  로 코드륿 변경한다
+
+		180314_수
+			
+
+
+
+
 
