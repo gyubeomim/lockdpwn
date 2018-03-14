@@ -246,6 +246,9 @@
 		180314_수
 			
 
+	37. reverse-i-search 검색을 편하게 하기 위해서 stty -ixon 명령어를 .bashrc에 추가했다
+		
+			터미널에서 C-r 키로 reverse-i-search를 하고 C-s키로 forward search를 할 수 있게된다
 
 
 
