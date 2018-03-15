@@ -1,26 +1,39 @@
 #!/usr/bin/env python
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 '''
-	python ==> decorator를 사용해서 tag를 달아본 예제코드
+	python ==>
 '''
+print("굳")
+# from keras.layers import Merge
+# from keras.layers.core import Dense, Reshape
+# from keras.layers.embeddings import Embedding
+# from keras.models import Sequential
+# from keras.preprocessing.text import *
+# from keras.preprocessing.sequence import skipgrams
 
-class Tagify():
-    def __init__(self, function):
-        self.function = function
+# vocab_size = 5000
+# embed_size = 300
 
-    def __call__(self, *args, **kwargs):
-        tagified_p = self.tagify('p', self.function(*args, **kwargs))
-        tagified_b = self.tagify('b', tagified_p)
-        tagified_i = self.tagify('i', tagified_b)
-        return tagified_i
+# word_model = Sequential()
+# word_model.add(Embedding(vocab_size, embed_size,
+#                          embeddings_initializer="glorot_uniform",
+#                          input_length=1))
 
-    def tagify(self, tag, text):
-        return "<{tag}>{text}</{tag}>".format(tag=tag, text=text)
+# word_model.add(Reshape((embed_size,)))
 
 
-@Tagify
-def set_text(text):
-    print(text)
-    return text
+# context_model = Sequential()
+# context_model.add(Embedding(vocab_size, embed_size,
+#                             embeddings_initializer="glorot_uniform",
+#                             input_length=1))
 
-print(set_text('python')) # <i><b><p>python</p></b></i>
+# context_model.add(Reshape((embed_size,)))
+
+
+# model = Sequential()
+
+# model.add(Merge([word_model, context_model], mode="dot", dot_axes=0))
+# model.add(Dense(1, kernel_initializer="glorot_uniform",
+#                 activation="sigmoid"))
+
+# model.compile(loss="mean_squared_error", optimizer="adam")
