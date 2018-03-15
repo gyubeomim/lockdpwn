@@ -1,39 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-	python ==>
+	python ==> 케라스딥러닝강화학습 p
 '''
-print("굳")
-# from keras.layers import Merge
-# from keras.layers.core import Dense, Reshape
-# from keras.layers.embeddings import Embedding
-# from keras.models import Sequential
-# from keras.preprocessing.text import *
-# from keras.preprocessing.sequence import skipgrams
 
-# vocab_size = 5000
-# embed_size = 300
-
-# word_model = Sequential()
-# word_model.add(Embedding(vocab_size, embed_size,
-#                          embeddings_initializer="glorot_uniform",
-#                          input_length=1))
-
-# word_model.add(Reshape((embed_size,)))
+from keras.models import Sequential
+from keras.layers.core import Dense, Lambda
+from keras.layers.embeddings import Embedding
+import keras.backend as K
 
 
-# context_model = Sequential()
-# context_model.add(Embedding(vocab_size, embed_size,
-#                             embeddings_initializer="glorot_uniform",
-#                             input_length=1))
-
-# context_model.add(Reshape((embed_size,)))
+vocab_size = 5000
+embed_size = 300
+window_size = 1
+text = "I love green eggs and ham"
 
 
-# model = Sequential()
+model = Sequential()
+model.add(Embedding(input_dim=vocab_size, output_dim=embed_size,
+					embeddings_initializer='glorot_uniform',
+					input_length=window_size*2))
 
-# model.add(Merge([word_model, context_model], mode="dot", dot_axes=0))
-# model.add(Dense(1, kernel_initializer="glorot_uniform",
-#                 activation="sigmoid"))
+model.add(Lambda(lambda x: K.mean(x, axis=1), output_shape=(embed_size,)))
+model.add(Dense(vocab_size, kernel_initializer='glorot_uniform',
+				activation='softmax'))
+model.compile(loss='categorical_crossentropy', optimizer='adam')
 
-# model.compile(loss="mean_squared_error", optimizer="adam")
