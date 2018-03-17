@@ -261,3 +261,12 @@
 
 
 
+
+        38. fluxgui 를 설치해서 우분투에서 bluelight를 어느정도는 없앴다
+
+	    $ sudo add-apt-repository ppa:nathan-renniewaldock/flux
+	    $ sudo apt-get update
+	    $ sudo apt-get install fluxgui
+
+	    lat, lon = 37.5665, 126.9780
+
