@@ -291,7 +291,10 @@
 			
 
 
+		42. Alt + Tab 할 때 Desktop 아이콘이 보이는 걸 없애려면
 
+			$ ccsm  ==> Ubuntu Unity Plugin
+			Switcher 탭에서 Disable Show Desktop in the Switch를 체크하면 Alt + Tab을 해도 Desktop 아이콘이 나타나지 않는다
 
 
 
