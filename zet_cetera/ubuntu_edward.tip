@@ -275,3 +275,23 @@
         39. evernote가 markdown을 지원하지 않아서 haroopad를 설치했다
 
 	    haroopad로 .md 파일을 작성하고 chrome에서 markdown here 플러그인으로 올리는 방식이 가장 괜춘한듯 180318_일
+
+
+		40. redshift (== f.lux) 라는 blue light filter 프로그램을 설치했다
+			
+			$ sudo apt-get install redshift-gtk
+
+			~/.config/redshift.config 파일을 작성하고 키면 원하는 설정을 먹일 수 있다 굳굳 180320_화
+	
+
+
+
+
+
+
+
+
+
+
+
+
