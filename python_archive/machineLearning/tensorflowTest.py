@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+'''
+	python ==>
+'''
 import tensorflow as tf
 
 # 변수를 받을 a, b를 설정합니다
