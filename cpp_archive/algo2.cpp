@@ -26,6 +26,7 @@ int main()
   list.push_back(40);
   list.push_back(50);
 
+
   sort(ve.begin(), ve.end());  // 정렬 가능(vector는 임의 접근반복자)
   //  sort(list.begin(), list.end()); 에러! (list는 양방향 반복자이므로 정렬이 불가능하다고 한다)
   return 0;

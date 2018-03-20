@@ -18,7 +18,6 @@ int main()
   s.insert(70);
   s.insert(90);
 
-
   set<int>::iterator iter;
 
   for(iter = s.begin() ; iter != s.end(); iter++)
@@ -39,6 +38,6 @@ int main()
 
   s.insert(50);
 
-  
+ 
   return 0;
 }

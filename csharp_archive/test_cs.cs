@@ -20,6 +20,7 @@ namespace testcsharp {
     class MainApp {
             static public void Myhandler(string message) {
                 Console.WriteLine(message);
+				
             }
 
             static void Main(string[] args) {

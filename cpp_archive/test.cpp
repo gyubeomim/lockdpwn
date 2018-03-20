@@ -1,6 +1,3 @@
-/*
- * c++ ==> 객체지향 p
- */
 #include <iostream>
 #include <string>
 #include <stdio.h>
@@ -8,29 +5,22 @@
 using namespace std;
 
 class Phone {
-	string name;
-	string telnum;
-	string address;
-public:
-	Phone(string name="", string telnum="", string address=""){
-		this->name = name;
-		this->telnum = telnum;
-		this->address = address;
-	}
+  string name;
+  string telnum;
+  string address;
+
+ public:
+  Phone(string name="", string telnum="", string address=""){
+    this->name = name;
+    this->telnum = telnum;
+    this->address = address;
+  }
 
 };
 
-int main(int argc, const char *argv[]){
-		Phone girl, boy;
-	
-		cin >> girl >> boy;
-		cout << girl << endl << boy << endl;
 
-		printf(char* __format, vararg ...);
-		scanf(char* __format, vararg ...);
+int main(int argc, char *argv[]){
+  Phone girl("Ashley", "010-6655-1111", "hi");
 
-		fprintf(FILE* __stream, char* __format, vararg ...)
-
-
-	return 0;
+  return 0;
 }

@@ -18,6 +18,8 @@ import tarfile
 import numpy as np
 from six.moves import urllib
 import tensorflow as tf
+import matplotlib.pyplot as plt
+
 
 FLAGS = tf.app.flags.FLAGS
 

@@ -11,6 +11,8 @@ import gzip
 import numpy as np
 from tensorflow.examples.tutorials.mnist import input_data
 
+import tensorflow as tf
+
 
 # 데이터를 불러와서 mnist 변수에 담는다
 data_dir = './MNIST_data/'
