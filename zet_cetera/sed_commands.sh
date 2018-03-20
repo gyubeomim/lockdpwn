@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-find ./ -type f -print0 | xargs -0 sed -i 's/gitrepo\/ims\/ROS\/test_ws/catkin_ws/g'
-=======
+- find ./ -type f -print0 | xargs -0 sed -i 's/gitrepo\/ims\/ROS\/test_ws/catkin_ws/g'
+
+
 - find /home/dyros-vehicle/catkin_ws -type f -print0 | xargs -0 sed -i 's/gitrepo\/ims\/ROS\/catkin_ws_kinetic/catkin_ws/g'
     - gitrepo/ims/ROS/catkin_ws_kinetic  ==> catkin_ws
 
@@ -35,4 +35,3 @@ find ./ -type f -print0 | xargs -0 sed -i 's/gitrepo\/ims\/ROS\/test_ws/catkin_w
 
 - find /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws -type f -print0 | xargs -0 sed -i 's/dbw_mkz_description/dyros_simulator/'
     - dbw_mkz_description --> dyros_simulator
->>>>>>> ab9426d2ebea3e8cc41f02098ab43b40d40c33e9

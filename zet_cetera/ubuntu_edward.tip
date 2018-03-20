@@ -285,6 +285,10 @@
 	
 
 
+		41. Caps Lock <==> Ctrl 키 바꾸는 명령어
+
+			$ dconf write /org/gnome/desktop/input-sources/xkb-options "['ctrl:swapcaps']"
+			
 
 
 
