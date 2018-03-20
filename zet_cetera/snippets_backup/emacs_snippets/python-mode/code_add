@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: code added for comment
+# key: code
+# group: definitions
+# --
+#START============================================
+$0
+#END==============================================
