@@ -20,12 +20,21 @@ class Text8Sentences(object):
 			text = ftext.read().split(" ")
 			words =[]
 
+<<<<<<< HEAD
+
+model.add(Lambda(lambda x: K.mean(x, axis=1), output_shape=(embed_size,)))
+model.add(Dense(vocab_size, kernel_initializer='glorot_uniform',
+				activation='softmax'))
+
+model.compile(loss='categorical_crossentropy', optimizer='adam')
+=======
 			for word  in text :
 				if len(words) >= self.maxlen:
 					yield words
 					words = []
 				words.append(word)
 			yield words
+>>>>>>> 5b577484c1a14ce8b1d8ad22314a9a2144f3703b
 
 
 
