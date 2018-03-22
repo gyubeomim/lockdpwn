@@ -1,3 +1,6 @@
+- find ./ -type f -print0 | xargs -0 sed -i 's/gitrepo\/ims\/ROS\/test_ws/catkin_ws/g'
+
+
 - find /home/dyros-vehicle/catkin_ws -type f -print0 | xargs -0 sed -i 's/gitrepo\/ims\/ROS\/catkin_ws_kinetic/catkin_ws/g'
     - gitrepo/ims/ROS/catkin_ws_kinetic  ==> catkin_ws
 

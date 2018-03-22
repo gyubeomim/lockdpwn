@@ -160,13 +160,11 @@ ostream & operator << (ostream & o,Array<T> & rhs)
 	return o;
 }
 
-void main()
+int main()
 {
-
 	int x = 1;
 	Member m("È«±æµ¿","¼­¿ï","123-1234");
 	Array<Member> MemberArray;
-
 
 	MyTestClass<Member,Array<Member> > Sample(m,MemberArray);
 	Sample.DispData();

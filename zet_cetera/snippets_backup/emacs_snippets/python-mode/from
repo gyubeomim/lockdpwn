@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: from
-# key: from
-# group : general
-# --
-from ${1: } import ${2: }
