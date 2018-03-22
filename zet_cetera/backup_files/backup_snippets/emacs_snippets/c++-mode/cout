@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# contributor: York Zhao <gtdplatform@gmail.com>
+# name: cout
+# key: cout
+# --
+`(progn (save-excursion) (goto-char (point-min)) (unless (re-search-forward
+"^using\\s-+namespace std;" nil 'no-errer) "std::"))
+`cout << ${1: };
+${0:}
