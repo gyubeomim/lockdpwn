@@ -300,5 +300,12 @@
 
 
 
+	40. rm -rf 명령어가 휴지통에 가지않아서 복구가 안되므로 trash-put 으로 alias 했다
 
+	    $ sudo apt-get install trash-cli -y
+
+	    .bashrc
+		alias rm='trash-put'
+
+	    이제 rm을 사용하면 파일들이 휴지통으로 이동한다. rm -rf는 사용하지 못한다
 
