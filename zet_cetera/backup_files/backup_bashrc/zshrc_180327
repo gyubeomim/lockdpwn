@@ -1,0 +1,243 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+  export ZSH=/home/dyros-vehicle/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+# ZSH_THEME="pure"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# ida & msfconsole aliases
+PATH=$PATH:/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
+ida=/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
+msf=/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15
+alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
+
+alias git1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
+alias git2='cd /home/dyros-vehicle/gitrepo/ims'
+alias gr='cd /home/dyros-vehicle/gitrepo/'
+
+alias tmux='TERM=xterm-256color tmux -2 -u'
+alias tm='tmux -u new-session -d
+tmux split-window -v
+tmux split-window -h
+tmux select-pane -U
+tmux split-window -h
+tmux select-pane -L
+tmux attach-session -d'
+
+
+# sudo apt-get install trash-cli -y
+# for rm to put files to Trash folder
+alias rm='trash-put'
+
+
+
+#export ROS_MASTER_URI=http://192.168.137.2:11311
+#export ROS_HOSTNAME=127.0.0.1
+
+# set ROS alias command
+alias cw='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic'
+alias cs='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic/src'
+alias cm='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic && catkin_make'
+alias cr='cd /home/dyros-vehicle/gitrepo/ims/ROS/'
+alias cb='cd /media/dyros-vehicle/edward_6/bag_files'
+alias cbb='cd ~/bag_files'
+alias cma='catkin_make'
+alias cmac='catkin_make_isolated --install --use-ninja'
+alias so='source devel/setup.zsh'
+alias cdd='cd /media/dyros-vehicle/edward_6'
+
+# Cartographer Settings
+alias soc='source install_isolated/setup.zsh'
+alias cwc='cd /home/dyros-vehicle/gitrepo/ims/ROS/cartographer_ws_kinetic'
+alias csc='cd /home/dyros-vehicle/gitrepo/ims/ROS/cartographer_ws_kinetic/src'
+alias cmc='cd /home/dyros-vehicle/gitrepo/ims/ROS/cartographer_ws_kinetic && catkin_make_isolated --install --use-ninja'
+
+# V-Rep Settings
+export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
+alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/gitrepo/ims/ROS/vrep_ws/dyros_simulator_v2.ttt'
+
+# source ROS PATH
+# source /opt/ros/kinetic/setup.zsh
+# source /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic/devel/setup.zsh
+
+
+# source .zshrc
+alias sob='source /home/dyros-vehicle/.zshrc'
+
+# clear screen
+alias cl='clear'
+
+# vnc viewer
+alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
+
+# emacs 25.2
+alias emacs='sudo /home/dyros-vehicle/Downloads/emacs-25.2/src/emacs'
+
+# Ti-Nspire CX CAS emulator
+alias ti='cd /home/dyros-vehicle/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
+
+# UE4Editor
+alias ueditor='~/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
+export UE4_ROOT='/home/dyros-vehicle/gitrepo/UnrealEngine'
+
+# ipython qtconsole
+alias qt2='~/Documents/qtipython_2.sh'
+alias qt3='~/Documents/qtipython_3.sh'
+
+
+# for chown to dyros-vehicle
+alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
+
+
+# setting for Tensorflow GPU version
+# Using CUDA 8.0 & cuDNN 6.0
+export CUDA_HOME=/usr/local/cuda-8.0
+export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+
+# variables for point-cloud-viewer from googlecartographer
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# for reverse-i-search
+stty -ixon
+
+
+# for caffe
+export PYTHONPATH=/home/dyros-vehicle/gitrepo/fast-rcnn/caffe-fast-rcnn/python:$PYTHONPATH
+
+
+# for Fast R-CNN
+export FRCN_ROOT=/home/dyros-vehicle/gitrepo/fast-rcnn
+
+
+# for simdat
+export PYTHONPATH=/home/dyros-vehicle/gitrepo:$PYTHONPATH
+
+
+# for vtk 6.2
+export LD_LIBRARY_PATH=/usr/include/vtk-6.2/:$LD_LIBRARY_PATH 
+
+
+# for vtk 5.
+export LD_LIBRARY_PATH=/home/dyros-vehicle/Documents/VTK-5.10.1/build:/home/dyros-vehicle/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
+
+
+
+#START NOT USED------------------------------------------------------
+# alias co='cd /opt/ros/kinetic/share/'
+# alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/directorPython'
+# # for source gazebo config
+# alias sog='source /usr/share/gazebo-2.2/setup.sh'
+# alias sog2='source /usr/share/gazebo/setup.sh'
+# alias cmb='cd ~/gitrepo/ims/ROS/rosbook_ws && catkin_make'
+# alias cdb='cd ~/gitrepo/ims/ROS/rosbook_ws'
+# # for stockroom_bot
+# #alias sb='source ~/gitrepo/ims/ROS/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims/ROS/stockroombot_ws/src/stockroom_bot'/models
+# PERL5LIB="/home/dyros-vehicle/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+# PERL_LOCAL_LIB_ROOT="/home/dyros-vehicle/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+# PERL_MB_OPT="--install_base \"/home/dyros-vehicle/perl5\""; export PERL_MB_OPT;
+# PERL_MM_OPT="INSTALL_BASE=/home/dyros-vehicle/perl5"; export PERL_MM_OPT;
+# PATH="/home/dyros-vehicle/perl5/bin${PATH:+:${PATH}}"; export PATH;
+# if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
+#     source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
+# fi
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# export PATH="$PATH:$HOME/.rvm/bin"
+#END------------------------------------------------------
+
