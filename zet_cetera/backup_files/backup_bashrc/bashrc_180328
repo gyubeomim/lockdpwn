@@ -164,9 +164,11 @@ alias git2='cd /home/dyros-vehicle/gitrepo/ims'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
 
 alias tmux='TERM=xterm-256color tmux -2 -u'
-alias tmls='tmux ls'         # session list 확인
-alias tm='tmux switch -t '   # 원하는 session으로 이동
-alias tma='tmux attach -t '  # 원하는 session으로 붙음 (tmux를 실행하고 있지 않은 경우)
+alias tmls='tmux ls'                   # session list 확인
+alias tm='tmux switch -t '             # 원하는 session으로 이동
+alias tma='tmux attach -t '            # 원하는 session으로 붙음 (tmux를 실행하고 있지 않은 경우)
+alias tmd='tmux detach'                # 해당 session에서 detach 합니다
+alias tmk='tmux kill-session -t '      # 해당 session에서 kill 합니다
 alias tm4='tmux -u new-session -d    
 tmux split-window -v
 tmux split-window -h
