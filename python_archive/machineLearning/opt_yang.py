@@ -20,6 +20,7 @@ map_mat = [[0,1,1,0,0,0,0,0,0,0] ,
             
 node_cnt = np.shape(map_mat)[0]
 connected_list = []
+
 for x in map_mat:
     connected = []
     cnt = 0 

@@ -300,5 +300,26 @@
 
 
 
+	40. rm -rf 명령어가 휴지통에 가지않아서 복구가 안되므로 trash-put 으로 alias 했다
+
+	    $ sudo apt-get install trash-cli -y
+
+	    .bashrc
+		alias rm='trash-put'
+
+	    이제 rm을 사용하면 파일들이 휴지통으로 이동한다. rm -rf는 사용하지 못한다
+
+
+
+	41. emacs --daemon 으로 실행하는게 훨씬 켜지는 시간이 빠르다
+
+		$ vim ~/.local/share/applications/emacs.desktop  에서
+		Exec=/home/dyros-vehicle/Downloads/emacs-25.2/lib-src/emacsclient -a '' -c
+
+		$ vim ~/.bashrc
+		alias emacs='/home/dyros-vehicle/Downloads/emacs-25.2/lib-src/emacsclient -a '"''"' -c'
+										
+		로 수정하니 저절로 서버가 켜지고 client가 잘 붙는다
+		서버를 끄는 방법은 M-x kill-emacs 라고 한다
 
 

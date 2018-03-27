@@ -1,52 +1,27 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-	python ==> 케라스딥러닝강화학습 p
+    python ==> 자동차융합실험1, 전자전기 회로 이론 및 센서 설계 실험의 그래프를 그리는 코드
 '''
 
-from gensim.models import word2vec
-import logging
-import os
+import numpy as np
+import matplotlib.pyplot as plt
+
+# plt.title('5V, 10V source Voltage [Red, Blue]')
+# plt.plot([100, 200, 500], [0.0001, 0.0002, 0.0005], 'ro')
+# plt.plot([100, 200, 500], [0.0002, 0.0004, 0.0010], 'bo')
+# plt.xlabel('mass [g]')
+# plt.ylabel('output Voltage [mV]')
+# plt.grid(True)
+# plt.show()
 
 
-class Text8Sentences(object):
-	def __init__(self, fname, maxlen):
-		self.fname = fname
-		self.maxlen = maxlen
-
-
-	def __iter__(self):
-		with open(os.path.join(DATA_DIR, "text8"), "rb") as ftext:
-			text = ftext.read().split(" ")
-			words =[]
-
-<<<<<<< HEAD
-
-model.add(Lambda(lambda x: K.mean(x, axis=1), output_shape=(embed_size,)))
-model.add(Dense(vocab_size, kernel_initializer='glorot_uniform',
-				activation='softmax'))
-
-model.compile(loss='categorical_crossentropy', optimizer='adam')
-=======
-			for word  in text :
-				if len(words) >= self.maxlen:
-					yield words
-					words = []
-				words.append(word)
-			yield words
->>>>>>> 5b577484c1a14ce8b1d8ad22314a9a2144f3703b
+plt.plot([11.4, 6.3, 4.34, 3.42], [11.33, 12.52, 12.99, 13.2], 'ro')
+plt.plot([11.31,6.26,4.32,3.30], [11.31,12.52,12.96,13.2], 'bo')
+plt.ylabel('Voltage [V]')
+plt.xlabel('Current [mA]')
+plt.grid(True)
+plt.show()
 
 
 
-logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-# DATA_DIR = "../data"
-DATA_DIR = "/media/dyros-vehicle/edward_6/"
-sentences = Text8Sentences(os.path.join(DATA_DIR, "text8"), 50)
-model = word2vec.Word2Vec(sentences, size=300, min_count=30)
-
-model.most_similar("woman")
-model.most_similar(positive=['woman', 'king'], negative=['man'])
-
-# ed: model 결과벡터를 정규화하고 저장한다
-model.init_sims(replace=True)
-model.save("word2vec_gensim.bin")
