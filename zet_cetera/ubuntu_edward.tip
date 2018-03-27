@@ -316,6 +316,9 @@
 		$ vim ~/.local/share/applications/emacs.desktop  에서
 		Exec=/home/dyros-vehicle/Downloads/emacs-25.2/lib-src/emacsclient -a '' -c
 
+		$ vim ~/.bashrc
+		alias emacs='/home/dyros-vehicle/Downloads/emacs-25.2/lib-src/emacsclient -a '"''"' -c'
+										
 		로 수정하니 저절로 서버가 켜지고 client가 잘 붙는다
 		서버를 끄는 방법은 M-x kill-emacs 라고 한다
 
