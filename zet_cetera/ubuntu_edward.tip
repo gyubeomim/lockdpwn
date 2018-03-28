@@ -323,3 +323,20 @@
 		서버를 끄는 방법은 M-x kill-emacs 라고 한다
 
 
+
+
+
+	42. tmux ls detach, attach, kill-session, switch-session 기능을 사용하기 시작헀다
+
+		tmux도 daemon 처럼 한 번 detach 하면 꺼지지 않고 다음에 접속할 수 있다 굳굳
+		tmls
+		tm 1
+		tma 1
+		tmk 1
+		tmd 
+
+
+
+
+
+
