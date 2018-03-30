@@ -126,7 +126,6 @@ from sklearn.metrics import average_precision_score
 
 
 # Basic parameters
-max_epochs = 25
 input_img_x = 32
 input_img_y = 32
 train_test_split_ratio = 0.6
@@ -411,7 +410,7 @@ print("Starting training... [{} training examples]".format(len(train_x)))
 v_loss = 9999999
 train_loss = []
 val_loss = []
-
+max_epochs = 250
 
 for i in range(0, max_epochs):
     # Iterate over our training set

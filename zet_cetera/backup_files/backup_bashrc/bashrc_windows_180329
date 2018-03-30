@@ -1,3 +1,5 @@
+alias tf='source activate tf'
+
 alias ll='ls -alF'
 alias l='ls -al'
 
@@ -41,5 +43,5 @@ C_BG_LIGHTGRAY="\[\033[47m\]"
 PS1="$C_LIGHTRED\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 
-
-
+# for reverse-i-search
+stty -ixon
