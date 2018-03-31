@@ -12,6 +12,5 @@ doskey git3=cd e:\gitrepo\ims_ml
 
 doskey up=cd c:\Users\edward\
 doskey down=cd c:\Users\edward\Downloads
-doskey cd=cd c:\Users\edward
 
 
