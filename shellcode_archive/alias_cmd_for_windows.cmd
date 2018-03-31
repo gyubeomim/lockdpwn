@@ -1,16 +1,17 @@
 @echo off
-REM doskey ëª…ë ¹ì–´ë¥¼ ì‚¬ìš©í•´ cmdì—ì„œ bash ê°™ì€ alias ëª…ë ¹ì–´ë¥¼ ì‚¬ìš©í•˜ëŠ” ì½”ë“œ
+REM doskey ¸í·É¾î¸¦ »ç¿ëÇØ cmd¿¡¼­ bash °°Àº alias ¸í·É¾î¸¦ »ç¿ëÇÏ´Â ÄÚµå
 
 doskey ls=dir
 doskey ll=dir /w
 doskey l=dir /w
 
-doskey gr=cd e:\gitrepo\
-doskey git1=cd e:\gitrepo\lockdpwn
-doskey git2=cd e:\gitrepo\ims
-doskey git3=cd e:\gitrepo\ims_ml
+doskey gr=cd e:\gitrepo 
+doskey git1=cd e:\gitrepo\lockdpwn 
+doskey git2=cd e:\gitrepo\ims 
+doskey git3=cd e:\gitrepo\ims_ml 
 
-doskey up=cd c:\Users\edward\
-doskey down=cd c:\Users\edward\Downloads
+doskey up=cd c:\Users\edward 
+doskey down=cd c:\Users\edward\Downloads 
 
-
+doskey tf=activate tf
+doskey vi=cd c:\Program Files (x86)\Vim 
