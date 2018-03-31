@@ -201,6 +201,7 @@ alias cma='catkin_make'
 alias cmac='catkin_make_isolated --install --use-ninja'
 alias so='source devel/setup.bash'
 alias cdd='cd /media/dyros-vehicle/edward_6'
+alias down='cd ~/Downloads'
 
 # Cartographer Settings
 alias soc='source install_isolated/setup.bash'
