@@ -286,10 +286,11 @@ export LD_LIBRARY_PATH=/home/dyros-vehicle/Documents/VTK-5.10.1/build:/home/dyro
 
 
 # for cd command 
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
+alias cd='cd '
+alias ..='..'
+alias ...='../..'
+alias ....='../../..'
+alias .....='../../../..'
 alias cd..='cd ..'
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
