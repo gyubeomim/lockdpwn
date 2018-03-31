@@ -1,7 +1,7 @@
 alias tf='source activate tf'
 
-alias ll='ls -alF'
-alias l='ls -al'
+alias ll='ls -alFh'
+alias l='ls -alh'
 
 
 alias git1='cd /e/gitrepo/lockdpwn'
