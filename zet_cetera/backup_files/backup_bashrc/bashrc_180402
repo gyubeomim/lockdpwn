@@ -164,6 +164,8 @@ alias git2='cd /home/dyros-vehicle/gitrepo/ims'
 alias git3='cd /home/dyros-vehicle/gitrepo/ims_ml'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
 
+
+# for tmux 
 alias t='tmux'
 alias tmux='TERM=xterm-256color tmux -2 -u'
 alias tmls='tmux ls'                   # session list 확인
@@ -203,6 +205,7 @@ alias cmac='catkin_make_isolated --install --use-ninja'
 alias so='source devel/setup.bash'
 alias cdd='cd /media/dyros-vehicle/edward_6'
 alias down='cd ~/Downloads'
+alias docu='cd ~/Documents'
 
 # Cartographer Settings
 alias soc='source install_isolated/setup.bash'
@@ -297,8 +300,22 @@ alias cd..='cd ..'
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
 
-
+# for triple-monitors
 alias cvt='/home/dyros-vehicle/gitrepo/lockdpwn/shellcode_archive/cvt_1920_1080.sh'
+
+
+# for systemctl
+alias stl='systemctl'
+
+
+
+
+
+
+
+
+
+
 
 
 #START NOT USED------------------------------------------------------
