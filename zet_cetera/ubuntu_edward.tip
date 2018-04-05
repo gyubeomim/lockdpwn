@@ -360,3 +360,13 @@
 		
 		
 
+
+	45. Ubuntu에서 다중 모니터 간에 프로그램 이동시키는 방법
+
+		$ sudo apt-get install compizconfig-settings-manager compiz-plugins compiz-plugins-extra -y
+		$ ccsm ==> Window Management ==> Put 사용하기 ==> Put to Next output, Put to Previous Output을 사용하면 된다
+		재부팅해주면 그때부터 적용된다 
+
+			180406_금
+
+
