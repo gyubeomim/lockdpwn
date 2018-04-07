@@ -28,8 +28,7 @@ class PointCloudRGBCombiner {
  public:
 
   PointCloudRGBCombiner(ros::NodeHandle nh) : nh_(nh)  {
-
-    // std::string image_topic = nh_.resolveName(“img_in”);
+    // std::string image_topic = nh_.resolveName("img_in");
     std::string image_topic = "/vrep/vrep_rgb_image";
     color_pcl_pub_ = nh_.advertise<sensor_msgs::PointCloud2>(nh_.resolveName("pcl_out"), 10);
     image_sub_ = nh_.subscribe(image_topic, 1, &PointCloudRGBCombiner::imageCb, this);
@@ -43,10 +42,11 @@ class PointCloudRGBCombiner {
     std::vector<uint8_t> color_vect;
     ros::Time start_time = ros::Time::now();
 
-    // std::string pcl_topic = nh_.resolveName(“pcl_in”);
-    std::string pcl_topic = “/vrep/vrep_point_cloud”;
+    // std::string pcl_topic = nh_.resolveName("pcl_in");
+    std::string pcl_topic = "/vrep/vrep_point_cloud";
 
-    ROS_INFO(“Waiting for point cloud2 and image”);
+
+    ROS_INFO("Waiting for point cloud2 and image");
 
     while (ros::ok()) {
       sensor_msgs::PointCloud2::ConstPtr recent_cloud =
