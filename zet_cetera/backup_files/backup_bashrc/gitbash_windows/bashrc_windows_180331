@@ -1,12 +1,14 @@
 alias tf='source activate tf'
 
-alias ll='ls -alF'
-alias l='ls -al'
+alias ll='ls -alFh'
+alias l='ls -alh'
 
 
 alias git1='cd /e/gitrepo/lockdpwn'
 alias git2='cd /e/gitrepo/ims'
 alias gr='cd /e/gitrepo/'
+alias up='cd /c/Users/edward'
+alias down='cd /c/Users/edward/Downloads'
 
 
 alias sob='source ~/.bashrc'

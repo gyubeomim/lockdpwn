@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ed comment
+# key: edd
+# --
+// ed: $0
