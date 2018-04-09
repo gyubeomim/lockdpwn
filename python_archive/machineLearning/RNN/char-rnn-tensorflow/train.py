@@ -81,6 +81,7 @@ grads, _ = tf.clip_by_global_norm(tf.gradients(loss, tvars), grad_clip)
 optimizer = tf.train.AdamOptimizer(learning_rate)
 train_step = optimizer.apply_gradients(zip(grads, tvars))
 
+
 # 세션을 열고 학습을 진행합니다.
 with tf.Session() as sess:
     # 변수들에 초기값을 할당합니다.
