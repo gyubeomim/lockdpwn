@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+'''
+	python ==> 해킹 & 보안 실습에 사용한 예제코드
+'''
+
 %matplotlib inline
 import pandas as pd
 import numpy as np
