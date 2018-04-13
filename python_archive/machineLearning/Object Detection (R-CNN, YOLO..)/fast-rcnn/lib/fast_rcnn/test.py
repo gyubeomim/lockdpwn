@@ -181,6 +181,7 @@ def im_detect(net, im, boxes):
     # reshape network inputs
     net.blobs['data'].reshape(*(blobs['data'].shape))
     net.blobs['rois'].reshape(*(blobs['rois'].shape))
+
     blobs_out = net.forward(data=blobs['data'].astype(np.float32, copy=False),
                             rois=blobs['rois'].astype(np.float32, copy=False))
     if cfg.TEST.SVM:
