@@ -370,3 +370,11 @@
 			180406_금
 
 
+
+
+	46. pyrenamer  여러 파일들 이름을 규칙성 있게 바꾸기 위한 프로그램
+		
+		$ sudp apt-get install pyrenamer -y
+
+
+
