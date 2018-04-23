@@ -9,7 +9,7 @@ import time
 msvcrt = cdll.msvcrt
 counter = 0
 
-while 1:
+while True:
     msvcrt.printf("Loop iteration %d! \n" %counter)
     time.sleep(.5)
     counter += 1

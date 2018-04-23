@@ -1,7 +1,7 @@
 #!/usr/bin/env pytohn
 #-*- coding: utf-8 -*-
 '''
-    python ==> 직접 제작한 계산기 프로그램 코드
+    python ==> 직접 제작한 계산기 프로그램 코드 (not completed)
 '''
 import sys
 
