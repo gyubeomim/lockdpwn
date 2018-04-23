@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns; sns.set_style("whitegrid")
 
 # tips 데이터를 불러온다. (영수증 데이터)
-tips = load_dataset("tips")
+tips = sns.load_dataset("tips")
 tips.head()
 
 # boxplot을 그린다
@@ -15,8 +15,8 @@ sns.boxplot(x = "day", y = "total_bill", hue= "smoker", data =tips, palette="Set
 plt.show()
 
 
-# 데이터를 점심과 저녁, 흡연여부, 성별로 구분짓는 그래프를 만든다 (왜인지 에러난다)
-g = sns.FaceGrid(tips, col="time", size=5, aspect=.7)
+# 데이터를 점심과 저녁, 흡연여부, 성별로 구분짓는 그래프를 만든다
+g = sns.FacetGrid(tips, col="time", size=5, aspect=.7)
 (g.map(sns.boxplot, "sex", "total_bill", "smoker").despine(left=True).add_legend(title="smoker"))
 plt.show()
 
