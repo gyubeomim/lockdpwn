@@ -19,6 +19,33 @@ dict(zip(unique, counts))
 #END==============================================
 
 
+#START============================================
+# ed: dyros_#.txt 파일에서 [0,0,0,0,0,0,0,0]이 아닌 데이터만 따로 저장하는 코드
+pop_list = []
+for i in range(dyros_np.shape[0]):
+    if dyros_np[i].any() == np.zeros(8).any():
+        pop_list.append(i)
+dyros_np2 = np.delete(dyros_np, pop_list, 0)
+np.savetxt('nozero_dyros_1.txt', dyros_np2, fmt='.2f')
+#END==============================================
+
+
+#START============================================
+# ed: dyros_#.txt 데이터에서 xyzi만 있는 데이터, rgb만 있는데이터, NULL 데이터는 몇개가 있는지 확인하는 코드
+xyzi_only = np.empty(0)
+rgb_only = np.empty(0)
+null_only = np.empty(0)  # null means [0,0,0,0,0,0,0,1]
+
+for i in range(dyros_np.shape[0]):
+    if dyros_np[i][0:3].any() and not dyros_np[i][4:7].any():
+        xyzi_only = np.append(xyzi_only, dyros_np[i]).reshape(-1,8)
+    elif not dyros_np[i][0:3].any() and dyros_np[i][4:7].any():
+        rgb_only = np.append(rgb_only, dyros_np[i]).reshape(-1,8)
+    elif not dyros_np[i][0:7].any() and dyros_np[i][7].any():
+        null_only = np.append(null_only, dyros_np[i]).reshape(-1,8)
+print('\n[+] xyzi_only : {} \nrgb_only : {} \nnull_only : {}'.format(xyzi_only.shape[0],rgb_only.shape[0],null_only.shape[0]))
+#END==============================================
+
 
 #START============================================
 # ed: dyros_#.txt 파일에서 [0,0,0,0,0,0,0,0]의 비율을 검사하는 코드
