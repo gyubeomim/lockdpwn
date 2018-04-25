@@ -13,5 +13,11 @@ doskey git3=cd e:\gitrepo\ims_ml
 doskey up=cd c:\Users\edward 
 doskey down=cd c:\Users\edward\Downloads 
 
+doskey ipy=cd e:\gitrepo\lockdpwn\python_archive\ipython
+doskey ml=cd e:\gitrepo\lockdpwn\python_archive\machineLearning
+
 doskey tf=activate tf
 doskey vi=cd c:\Program Files (x86)\Vim 
+
+doskey notebook=ipython notebook
+doskey qt=ipython qtconsole
