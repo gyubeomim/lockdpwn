@@ -1,6 +1,8 @@
 @echo off
 REM doskey 명령어를 사용해 cmd에서 bash 같은 alias 명령어를 사용하는 코드
 
+doskey uptime=powershell uptime2.ps1
+
 doskey ls=dir
 doskey ll=dir /w
 doskey l=dir /w
