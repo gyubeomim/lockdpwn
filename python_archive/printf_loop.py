@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 '''
-    python ==> printf() 함수를 사용해본 예제 코드
+    python ==> printf() 함수를 사용해본 예제 코드 (not working 180423)
 '''
 from ctypes import *
 import time
