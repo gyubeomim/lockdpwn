@@ -2,4 +2,4 @@
 # name: size of picture
 # key: size
 # --
-#+attr_org :width $0
+#+attr_org: :width $0
