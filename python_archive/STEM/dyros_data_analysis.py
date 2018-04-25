@@ -11,12 +11,13 @@ dyros_pd = pd.DataFrame(dyros_np)
 #END==============================================
 
 
-
 #START============================================
 # ed: dyros_np 변수에 value 별로 갯수를 세주는 코드
 unique, counts = np.unique(dyros_np, return_counts=True)
 dict(zip(unique, counts))
 #END==============================================
+
+
 
 
 #START============================================
@@ -30,12 +31,14 @@ np.savetxt('nozero_dyros_1.txt', dyros_np2, fmt='.2f')
 #END==============================================
 
 
+
 #START============================================
-# ed: dyros_#.txt 데이터에서 xyzi만 있는 데이터, rgb만 있는데이터, NULL 데이터는 몇개가 있는지 확인하는 코드
+# ed: dyros_#.txt 데이터에서 xyzi만 있는 데이터, rgb만 있는데이터, NULL 데이터는 몇개가 있는지 등등 확인하는 코드
 xyzi_only = np.empty(0)
 rgb_only = np.empty(0)
-null_only = np.empty(0)  # null means [0,0,0,0,0,0,0,1]
-
+null_only = np.empty(0)    # it means [0,0,0,0,0,0,0,1]
+label_count = np.empty(0)
+all_zero = 0               # it means [0,0,0,0,0,0,0,0]
 for i in range(dyros_np.shape[0]):
     if dyros_np[i][0:3].any() and not dyros_np[i][4:7].any():
         xyzi_only = np.append(xyzi_only, dyros_np[i]).reshape(-1,8)
@@ -43,12 +46,17 @@ for i in range(dyros_np.shape[0]):
         rgb_only = np.append(rgb_only, dyros_np[i]).reshape(-1,8)
     elif not dyros_np[i][0:7].any() and dyros_np[i][7].any():
         null_only = np.append(null_only, dyros_np[i]).reshape(-1,8)
-print('\n[+] xyzi_only : {} \nrgb_only : {} \nnull_only : {}'.format(xyzi_only.shape[0],rgb_only.shape[0],null_only.shape[0]))
+    if dyros_np[i][7] == 1:
+        label_count = np.append(label_count, dyros_np[i]).reshape(-1,8)
+    if not dyros_np[i].any():
+        all_zero += 1
+print('\n[+] xyzi_only : {} \nrgb_list : {} \nnull_list : {} \nlabel count : {} \nall zero : {}'.format(xyzi_only.shape[0],rgb_only.shape[0],null_only.shape[0], label_count.shape[0], all_zero))
 #END==============================================
 
 
+
 #START============================================
-# ed: dyros_#.txt 파일에서 [0,0,0,0,0,0,0,0]의 비율을 검사하는 코드
+# ed: dyros_#.txt 파일에서 '0' 값의 비율을 검사하는 코드
 # Label Count : 8714
 # 모든 Pointcloud   선택했다
 dyros_np = np.loadtxt('./dyros_002_15.txt', delimiter=',')
