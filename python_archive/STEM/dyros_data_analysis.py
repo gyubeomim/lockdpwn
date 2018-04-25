@@ -11,6 +11,7 @@ dyros_pd = pd.DataFrame(dyros_np)
 #END==============================================
 
 
+
 #START============================================
 # ed: dyros_np 변수에 value 별로 갯수를 세주는 코드
 unique, counts = np.unique(dyros_np, return_counts=True)
