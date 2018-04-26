@@ -1,715 +1,0 @@
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/utils/preprocess.pyc,56
-    Resize single image array with smallest side 4,527
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/utils/preprocess.py,75
-def resize_image_with_smallest_side(10,163
-def center_crop_image(53,1569
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/utils/classes.py,25
-def get_word_list(9,127
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/nets/googlenet_finetune.py,91
-class GoogLeNet_Finetuning(14,316
-    def get_grads(15,371
-    def _create_model(26,789
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/nets/googlenet.py,195
-def resize_tensor_image_with_smallest_side(17,359
-class GoogleNet(58,1867
-    def __init__(59,1895
-    def _create_input(85,2702
-    def _create_conv(98,3246
-    def _create_model(152,5919
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/models/fine_tuning.py,371
-class Net_Finetuning(12,257
-    def __init__(13,290
-    def _create_input(38,1053
-    def _create_model(41,1096
-    def _get_optimizer(44,1139
-    def _get_loss(48,1281
-    def _ex_setup_graph(51,1320
-class Classification_Finetuning(55,1366
-    def _create_input(57,1416
-    def _create_model(70,1980
-    def _get_loss(73,2023
-    def _ex_setup_graph(85,2598
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/models/inception.py,28
-def inception_layer(13,256
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/dataflow/dataset.py,341
-def separate_data(16,364
-class ImageLabelFromCSVFile(40,1235
-    def __init__(41,1284
-    def _load_file_list(56,1924
-    def get_data_list(88,3211
-    def set_data_list(91,3270
-    def get_label_list(94,3343
-    def set_label_list(97,3406
-    def suffle_data(100,3483
-class new_ImageFromFile(104,3545
-    def next_batch(105,3585
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/fig/3.png,696
-†ÁK0Şi‚ğ¢Aª¤™BÖZyCAP8ÅC‰’@ùĞ&¨*ƒª¡CP=CP10,710
-ßÆ¿'	Zk‚!– $l$Tçı„Â4Q¨Ot"†yÄ\b)±ØA¼I&N“I†$R$)™´TIj"]&=&½!“É:dGrY@^O®$Ÿ _%’?P”(&OJEBÙN9J¹@y@yC¥R¨nÔXª˜ºZO½D}J}/G“3—ó—ãÉ­“«‘k•ë—{%O”×—w—_.Ÿ'_!Jş¦ü¸Jş¦ü¸11,976
-=µ¶¡L}˜—Ÿk£FB @pij·ü’|Ë¡­ÚÛÚ-/~˜$,DAOøÃ½3œ(%ı<´éÈ¿ë:”{âÌQmOœæ±]äŠXàğ	"dâ·Ë:Õrã¿•`ô!I­I19,4113
-®zèiÁ“¿™ãr`¾l¦,-7¨­ó}Zşy0m©ó<´æB´û›Å6yùnî?\WÏ+dsÙ•1ÖšdsÙ•1Ö64,21570
-¢_]_66,21744
-¢_]ëyĞ¯Xı!EE66,21744
-„çLå÷{ÇÌ•Q/<ÊâU®‚Šÿ¢ˆŞßÊÊqpá‹ƒÓ!ˆb”‚v$ÜÉ„™]–Áx2h—úsÄqZ:Şi¦Î>Ù©éãæOÓ}{|“Ï¾VzÑ÷Sh§ì_¯óIp‡¯òÌMözÆGŒ7›&êR1f-¼üR»äò‹l»sşšêëõLPGÈ•æñYÍ&0O‹.â\çpSœúpSœ67,21773
-—Î]Npc@ò'vJô²Ä4};Ö={v82,25705
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/fig/4.png,3564
-†ÁK0Şi‚ğ¢Aª¤™BÖZyCAP8ÅC‰’@ùĞ&¨*ƒª¡CP=CP10,710
-ßÆ¿'	Zk‚!– $l$Tçı„Â4Q¨Ot"†yÄ\b)±ØA¼I&N“I†$R$)™´TIj"]&=&½!“É:dGrY@^O®$Ÿ _%’?P”(&OJEBÙN9J¹@y@yC¥R¨nÔXª˜ºZO½D}J}/G“3—ó—ãÉ­“«‘k•ë—{%O”×—w—_.Ÿ'_!Jş¦ü¸Jş¦ü¸11,976
-ùÜSŞñÑ˜–ƒyùï'™ø¢û„N~öl|1{—….I²ûÃ'úƒ¦qæturDô&5ßk¢`:­"/œÁ÷èS÷qy2ª_L¬|r’q:“ã—n£éhü+w¨}z™Oiz™Oi907,306193
-¼„ZfîJ?”©ªièPpéQmt”Œ§âÃ{ñÜóÚğŞÑ%p2tFeÓPğ0ÒŞãĞö©Ju«xœ6¿ÂY·rÎĞÖõê"l…»1Hê³şÏoÍ«kõe<ÉéG”écG”é2420,747193
-¼„ZfîJ?”©ªièPpéQmt”Œ§âÃ{ñÜóÚğŞÑ%p2tFeÓPğ0ÒŞãĞö©Ju«xœ6¿ÂY·rÎĞÖõê"l…»1Hê³şÏoÍ«kõe<ÉéG”écJøƒ7ë¹]÷{¦ëSÈS2420,747193
-¼„ZfîJ?”©ªièPpéQmt”Œ§âÃ{ñÜóÚğŞÑ%p2tFeÓPğ0ÒŞãĞö©Ju«xœ6¿ÂY·rÎĞÖõê"l…»1Hê³şÏoÍ«kõe<ÉéG”écJøƒ7ë¹]÷{¦ëSÈ=Ï`dªXwo›Z²)Ï¼ƒ³îN´.\H¢$GÀìkoQ×âxªJçg“Be;ğ¬>r,r2420,747193
-›”íè]´Á»ûE±˜ÃÃ¦ ôÇ~Nˆı¿Êûm{¨}UôâUô2423,747509
-›”íè]´Á»ûE±˜ÃÃ¦ ôÇ~Nˆı¿Êûm{¨}Uôâi{æÀÍìET}Ÿ;…üS†ãî¯¢›ã)vr$dgvr$d2423,747509
-)îzÏ÷©ŸêÇ×³n÷i,C•|Iàv)¿ú9pƒU9q+ZUÆtuE70ÜRÕÇ´Ñ½Õü8r·0k+@æc®Æ»»6}ìvyÍÜ®>®‹Ô—kUßãı™ju3åLïÌ‹ÖWoøy{÷@òr´/Ïtnó¢ƒ8H¶L)güOØ£ft]óU”Ÿ<‚QØ’QØ2429,748404
-±ÛIú¿•ıŸ?»ù›¦2äzXn}ô¨ü™çåé” ì©?ıôã¦Ñôà+ £Wz®¾œ”1†³Ğ¥©ºi›ğ×wÑ§YN-2¹8éÏÛòÁJ¢‰dTçU6Áô:5Ş/]Ûn*}?½yS†™yS†2437,749933
-÷¿hh2441,751710
-÷Cãf0õ3Ã½’º'brãô"¼ÀÃìSeŒ¸6D	,z°ÔÛ²`¸_ää°Ï›ğñ!#ı2‡ç}ô³·ÎıêÃm²Xd`êUš“áœ üƒ'âæ[eG.¨-ìî|™¿	w¿¾oj¬ã™NËX{F>ĞN¸2=Swµ·RÍŞ6®´õF]OšÅ§„ø)=jEœgL‰°q–a:ÄÏ¦‚7•GâøÚÏ‘Q]íE$r**ï¸†%&¯®eƒ³µh;øÌ1Ÿ=Ÿºgàe«¹¡ì´iÑ'ÏŸ´¢ïùì“°\Y«¿LKšöšıàa9ÙáNĞ•“2pÕÇÉSm e*ó¤Üubúhj‘n§×D¶¶ŞËnË#µÚ2455,755712
-÷Cãf0õ3Ã½’º'brãô"¼ÀÃìSeŒ¸6D	,z°ÔÛ²`¸_ää°Ï›ğñ!#ı2‡ç}ô³·ÎıêÃm²Xd`êUš“áœ üƒ'âæ[eG.¨-ìî|™¿	w¿¾oj¬ã™NËX{F>ĞN¸2=Swµ·RÍŞ6®´õF]OšÅ§„ø)=jEœgL‰°q–a:ÄÏ¦‚7•GâøÚÏ‘Q]íE$r**ï¸†%&¯®eƒ³µh;øÌ1Ÿ=Ÿºgàe«¹¡ì´iÑ'ÏŸ´¢ïùì“°\Y«¿LKšöšıàa9ÙáNĞ•“2pÕÇÉSm e*ó¤Üubúhj‘n§ubúhj‘n2455,755712
-1æ isSBpÇZ’ÉŒ¬Ó¼ßTì'B°„ˆ—uc–^ùşñw¿ÛTĞÓ¢)°ÈŒ1è»1V¸:Ê¬C÷÷(ÕßºÆKÊö·Ì¥ˆÆİêYãbtŒÇxá™PY¢îø<÷vêî|	3ûÍØz[ÙCGèİıœÂæ•ï¶kçÇÒ­Ëbô¸º…‡9FãÑúG7Y:Ê]ÎÙ!#h¼ğ‡_(õŠÇ!%.3(Û"úª‚Á{Š¬ã‘S3rê¤.'<½ï4›i©„…£/w89râIw89râ2499,765635
-ô#Ğ|ŞLÄ£öîLÄ£ö2500,766490
-hshÀeŠg¥€œGX)2éSµ2ğhSµ2ğ2501,766686
-ÀÉØ5vfèËœÀôõ§O*»Ş2ıëÇÙò¬~.{(«…ŒŸ3gÙSÓ[J0Œ7Ò%A¶•…`égI–jÌ6Äœõ€¼wÌ•5E'ó÷è³x lĞ]YÄøŸ`›€¥AáR‘¯ÃúaBÙÛißi™ø]QxFi!sbw*‚r~Ëj84óßàoĞ@	§‚ À‰0Ä­b œRÌ¤S{Õ*‡Qd‹âbÖ/ZÒ¸ÔòYÎËƒ³}2\[&;„k»şú’½,‹¤½xV©CŒTaTï·ôì¡°K*qé9xk¨À×R%„Í`D'z:#âF–`tš}‘YmaèñÁ¤”ì“Œ«ÂW	µBrJ(ÙÚç5«/‘¢œPË¢mºÁj.ÿ•ÂÁ¢€sP©Àp!mxõúÎÅï~ÿ—‹ÿñßÿ¥ÔãO¿üyÛƒGtNëãğBiÀ†×¯e³¦¡ï:æ.İÊ€”`¼ÔõpDr‘-òu=¦ƒïÑ[ıÛÀ‡;ƒî£4¯ë>äÔtu£¿pOï×F_÷Ü©;ˆÃAØ.²õk§k00 »ÎCg}q˜3†k/…MèàÃw²¯{–r7BÄû—ÛŠÂşé ¼­FàÓOÎ%‡¸f“Q,ş4†©ø¾'ØÁÍ(çõÛ³h¹x}Á…£d2àiô†7l1Y"^:ÊêÈDiïB‹6fS ¾bb2505,767602
-ÀÉØ5vfèËœÀôõ§O*»Ş2ıëÇÙò¬~.{(«…ŒŸ3gÙSÓ[J0Œ7Ò%A¶•…`égI–jÌ6Äœõ€¼wÌ•5E'ó÷è³x lĞ]YÄøŸ`›€¥AáR‘¯ÃúaBÙÛißi™ø]QxFi!sbw*‚r~Ëj84óßàoĞ@	§‚ À‰0Ä­b œRÌ¤S{Õ*‡Qd‹âbÖ/ZÒ¸ÔòYÎËƒ³}2\[&;„k»şú’½,‹¤½xV©CŒTaTï·ôì¡°K*qé9xk¨À×R%„Í`D'z:#âF–`tš}‘YmaèñÁ¤”ì“Œ«ÂW	µBrJ(ÙÚç5«/‘¢œPË¢mºÁj.ÿ•ÂÁ¢€sP©Àp!mxõúÎÅï~ÿ—‹ÿñßÿ¥ÔãO¿üyÛƒGtNëãğBiÀ†×¯e³¦¡ï:æ.İÊ€”`¼ÔõpDr‘-òu=¦ƒïÑ[ıÛÀ‡;ƒî£4¯ë>äÔtu£¿pOï×F_÷Ü©;ˆÃAØ.²õk§k00 »ÎCg}q˜3†k/…MèàÃw²¯{–r7BÄû—ÛŠÂşé ¼­FàÓOÎ%‡¸f“Q,ş4†©ø¾'ØÁÍ(çõÛ³h¹x}Á…£d2àiô†7l1Y"^:ÊêÈDiïB‹6fS ¾b]ïŸ¾gÊsdóæ~FõF2505,767602
-o£ê[zÂå;ÜKë¿«§ƒå^ï]ş®èÛ…›ß.öƒ}ë^Ï×´¾9màõ‚màõ2509,769235
-³Ùàlë›E¶ULÓ¶F¯ñ…8ú‚ÃKsTÆsÁş.\¼¾S&(½èL8:ÛÆì!}-øÿèz:òeIeI2511,769800
-è³âÉå¶öN„ÏXëº¡vàhˆë·E	_Ù?ç¨á½!9MJã–?V×ñ¬–Eˆ÷’üªO—š›9ŸeŸ¡q«:¡Ó+œ7»ÌŸÕ•Œc#3l¼c#3l2535,775934
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/fig/1.png,1246
-†ÁK0Şi‚ğ¢Aª¤™BÖZyCAP8ÅC‰’@ùĞ&¨*ƒª¡CP=CP10,710
-ßÆ¿'	Zk‚!– $l$Tçı„Â4Q¨Ot"†yÄ\b)±ØA¼I&N“I†$R$)™´TIj"]&=&½!“É:dGrY@^O®$Ÿ _%’?P”(&OJEBÙN9J¹@y@yC¥R¨nÔXª˜ºZO½D}J}/G“3—ó—ãÉ­“«‘k•ë—{%O”×—w—_.Ÿ'_!Jş¦ü¸Jş¦ü¸11,976
-G¨røØÙ“/[#›èHB¬~4^¼r‰&MèB'µÀk7È¸!µnf½RVAu¶pE€#¸‚>àêÜÁGÉe7å˜İwUYĞ?vNIcRF,ZYpŸòœ–õ.~X[Çgê~İU¹ºLRoc]3ÊnsM¯×$ÁÛ"k!ÒêÚˆøNñù^”*oÚ±eˆoÚ±e21,5829
-r¯r88,26716
-r¯`æŠ;vv88,26716
-r¯`æŠ;v;Û‹4W8ï%­<U>Î*?¦´wHëLwHë88,26716
-A<¬JNtçB½;áğpBêíœøŠ‘Q»)µvi:~WÅO•ÊEŞI£2¯™i¹ï@d:V²,0\Z‰~‚Oò›ñyiXğÏ‚ô“\‡.ôåì4âp?Ìß»„Éf´œ‚Œ>ÉßŠÚİÉ4‹„B¿fù"GHdZ‹F›0kè¬\aŒëúœí¢,=ÜÈ!Â˜¸Dá¬ÛAS`kÄ@xAFçØ)2@ôÿtíK³Î:Ê ¸ÁvàT•Ÿ ÑÙFÁvem“™7t¼që²fö¯3Ã ›c›ğ<ÌÈ2J·Ú™•şÔii½pÆ#MçÜŒ£RëUDÎè0ePK8C(Zñr§‰ƒôL¯ƒáŞ{uDØÄèT‚9?"]$@Ÿ£³Bœ9˜©%$*—BÇ”Á	ú¯Ÿ#ùA·A559,146648
-A<¬JNtçB½;áğpBêíœøŠ‘Q»)µvi:~WÅO•ÊEŞI£2¯™i¹ï@d:V²,0\Z‰~‚Oò›ñyiXğÏ‚ô“\‡.ôåì4âp?Ìß»„Éf´œ‚Œ>ÉßŠÚİÉ4‹„B¿fù"GHdZ‹F›0kè¬\aŒëúœí¢,=ÜÈ!Â˜¸Dá¬ÛAS`kÄ@xAFçØ)2@ôÿtíK³Î:Ê ¸ÁvàT•Ÿ ÑÙFÁvem“™7t¼që²fö¯3Ã ›c›ğ<ÌÈ2J·Ú™•şÔii½pÆ#MçÜŒ£RëUDÎè0ePK8C(Zñr§‰ƒôL¯ƒáŞ{uDØÄèT‚9?"]$@Ÿ£³Bœ9˜©%$*—BÇ”Á	ú¯Ÿ#ùA·‡]Eÿòo¿ÂéƒºÛ¶µ|³â?{¼ÅÒ:ĞöÌÌ4½AúµAú559,146648
-„f‹ËZmf‹ËZ1099,297202
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/fig/5.png,4301
-†ÁK0Şi‚ğ¢Aª¤™BÖZyCAP8ÅC‰’@ùĞ&¨*ƒª¡CP=CP10,710
-ßÆ¿'	Zk‚!– $l$Tçı„Â4Q¨Ot"†yÄ\b)±ØA¼I&N“I†$R$)™´TIj"]&=&½!“É:dGrY@^O®$Ÿ _%’?P”(&OJEBÙN9J¹@y@yC¥R¨nÔXª˜ºZO½D}J}/G“3—ó—ãÉ­“«‘k•ë—{%O”×—w—_.Ÿ'_!Jş¦ü¸Jş¦ü¸11,976
-­Fsuåz^U½zõrÎóûíó½®R0öØÜ¾ûİ{î	;Ÿ½÷9·êÿüİ?ÚŒ¨ŠªªªˆØŒ<ßŒêªj¾—ë›\MşûA±MOªk¢:¯SŒc“²ÕU”ñ¾ÏñS“×ói/æQÍ}ïåQµQµ15,2769
-­Fsuåz^U½zõrÎóûíó½®R0öØÜ¾ûİ{î	;Ÿ½÷9·êÿüİ?ÚŒ¨ŠªªªˆØŒ<ßŒêªj¾—ë›\MşûA±MOªk¢:¯SŒc“²ÕU”ñ¾ÏñS“×ói/æQÍ}ïåQµëë´h]¶ïeÚİ\_ÏşTWWçõåTWWçõ15,2769
-fÃ»ÕF(N;	Yòf«\l‘ÌTì)—`u;dïŞ}Â ¬ÚÃW¨Èñ9á*Ìß2uŸùY¸¯omÎ½ø$!Xİ…ÆXİ…Æ501,111026
-JØ„‡8’ Õ¬»-²½™Ï1¬–j-;]k;k506,111740
-²¡;&nîm5é¯übƒ`N ımjmK=ƒ­iğ:áAiğ:á513,112678
-²¡;&nîm5é¯übƒ`N ımjmK=mjmK513,112678
-ñ»?~Š7k`ÒDÔf.sXGìšVĞuÂD„‹h+aà˜™—rG	vtšÈ°•–PÂ´hºV›&È±%OÖb}““öS©äé>2/½*¡¡W²W517,113622
-±¥q<|HMÉ	Öš$ho€	‰©d\¸Px¶%„~`Ó¸ØŞŞî€‰âØ–°ìi•U`	 ã™JÜJ518,113810
-S•0ñ:¾dŒd519,113913
-ë,EÀ›çóêæó¥S¾”öÄ¿|³÷]¬–­ñÄƒ…kËÏU"×ãÖÖÚÂ sÖ…}RLŒ*B|e!(2{˜¥öh‰~…CÛ4bKk^%¦ñW-øe™£Sjºæ Œé¿Q UtQy³UtQy³525,115005
-ë,EÀ›çóêæó¥S¾”öÄ¿|³÷]¬–­ñÄƒ…kËÏU"×ãÖÖÚÂ sÖ…}RLŒ*B|e!(2{˜¥öh‰~…CÛ4bKk^%¦ñW-øe™£Sjºæ Œé¿Q UtQy³ZçXÁ³î¡‚»Ÿ=AH+ç!Ëœ-Šß›ğ!“tï,K288”†G.‡Ğş‹Üø(;Sw.–ôX“® x˜X“® x525,115005
-‹G\ã"ŒF¿‚±°¥Æ¡%ÂLç-¬Û¸¤ug–XZ'ÖvÈ”p6BÀDp’éàÂméhM‡Ï°.qd#ÛD"®pu!¸^CsÍ±Z†%Äq-æÊ´C³‹…Ïr¬£Œ­±ÙìUÊB¨ ¤»aÕlã´K	ÃVA…S-ğ]˜t¶°«UEÙt¶°«UEÙ536,117594
-åkdƒëzñxµ]İZãjÌè÷¹€)¬3^c-4^XT|ƒĞ¨	ßp8"n/a^ÃJ{‚°`bÒñ­qÂ\À&F¹İbvì&1UBÜ9á›bèåÕ¬İ¾ŞÚ8A ,ChÔàg<L.„zçÀrşR0“B `a¥nÆêÖÔë7/{éòèa”*lã®Å]$sr\!x}ê»qcîV	ñN]'W®\Ff¦*&]q&=û…2õvÀÌ¹ïùØRì™ÃÑ¨À­+Z·¿¡Ö5Şë+r	Œ´¨A€ı	ë°`EĞÚŠÔ;ÒƒÆÏñwG–7¡>,¸`İÉ”¦z,“Ö¯„ÂD¶ëqœ&_Ya¡È8]„¬ÓG$!°îlL±8³&{”´ZÃZ¾¶¾´¢Z;Còš1Ä¸+­â±u#_Q	Æƒå$ğ“Ã»ÆÊHû Mğ™vÊ«a5•m‘ıUà¾šD˜6,„Ò è-XƒÕ³VÀ$V?Üë¢G"^»yg)`ş2İıîkh³®ïy)Ü_|õU$ç†•üäƒÀI­1$l)pCW®\ÅÖ°šÉÉ‰ô÷¡™§¹Ìûñb›EBK¤e*˜ÂŠ˜i…ğmòø¡õx#ˆ9æ.ğŞıThhö¤-„!c¶Cà¶*)é–¥X$Ü›hFç<ÕRxõ¸O‹Ö–ƒ&vbåk¤V#~šô=qàkxÜ“Wr‰h'V}Ñ²65™˜IĞ±š‚‰ëÜJ\¡‰?•ÕXªÜköÏW¸¨—k1tTAY|)–®Ş Ñ€/Òl¤ô}‰1¤Á×­¥¿J‰ÏUiºÌŸ}ŒV¡±A:#¬G)7pJŞ«ÅKpJŞ«Å579,128657
-åkdƒëzñxµ]İZãjÌè÷¹€)¬3^c-4^XT|ƒĞ¨	ßp8"n/a^ÃJ{‚°`bÒñ­qÂ\À&F¹İbvì&1UBÜ9á›bèåÕ¬İ¾ŞÚ8A ,ChÔàg<L.„zçÀrşR0“B `a¥nÆêÖÔë7/{éòèa”*lã®Å]$sr\!x}ê»qcîV	ñN]'W®\Ff¦*&]q&=û…2õvÀÌ¹ïùØRì™ÃÑ¨À­+Z·¿¡Ö5Şë+r	Œ´¨A€ı	ë°`EĞÚŠÔ;ÒƒÆÏñwG–7¡>,¸`İÉ”¦z,“Ö¯„ÂD¶ëqœ&_Ya¡È8]„¬ÓG$!°îlL±8³&{”´ZÃZ¾¶¾´¢Z;Còš1Ä¸+­â±u#_Q	Æƒå$ğ“Ã»ÆÊHû Mğ™vÊ«a5•m‘ıUà¾šD˜6,„Ò è-XƒÕ³VÀ$V?Üë¢G"^»yg)`ş2İıîkh³®ïy)Ü_|õU$ç†•üäƒÀI­1$l)pCW®\ÅÖ°šÉÉ‰ô÷¡™§¹Ìûñb›EBK¤e*˜ÂŠ˜i…ğmòø¡õx#ˆ9æ.ğŞıThhö¤-„!c¶Cà¶*)é–¥X$Ü›hFç<ÕRxõ¸O‹Ö–ƒ&vbåk¤V#~šô=qàkxÜ“Wr‰h'V}Ñ²65™˜IĞ±š‚‰ëÜJ\¡‰?•ÕXªÜköÏW¸¨—k1tTAY|)–®Ş Ñ€/Òl¤ô}‰1¤Á×­¥¿J‰ÏUiºÌŸ}ŒV¡±A:#¬G)7pJŞ«ÅKïƒ8f]Úgïã%š€c•æZ-}c&óê³¬[xUW¡©“d6w²g-àÕazpï»¨}:;ƒ‚ğâqĞ²]s6ÀÅhyE¶×¡7Æ„÷r¤äÕéÛï€mpjt›½CôS:çáò%KÚİ{ò2ÆQ¾-£ükDñ~ëøÊÛƒ`±³Â{¦ÅoèkaÜSA•¥åå°øÕ6pğŠä!BóÄ£É0¼ÔÃ+TÒvPHÁõF`şunåßzı»‡±	‹¦áJ¡¸:¿FrÖdà=ãÅƒ>£¬)Ü–±v~B­g`\cÑÌøt„iİÖ€bİÍµ¹ºz;#iÎ}3ÁPXvÛóégó¹¨)—°GZî­°b}m]m579,128657
-CO‰š†éÃ¤ª÷§8JşÖ T* •4%œ¹+áĞ¢À€ùa\ŒWÀ°WÀ580,129717
-È;WNeÚ2VR·¶kÕ]ˆ´¬´“í<€"T;ØZ&¦µ)ıèç¯âöëNÍ¿M¿ÿ‚z„Ë$3Á|šè¿Ì¿‹a1“­$Ål éê!ñFÇ‚®KkD*é7ÿ€}PI³˜²±]Î5zsĞ(]õO>Iÿå¿ÿ4Iÿå¿ÿ622,136836
-(Êl{Î]Nƒƒg)lÜH£ÏFƒ±êâÌoPä˜K«g;¢0ÆpË*kAo×),l+‹…XUˆïß}tÁşh½µM½Æ:WT'øöÆ×ÔÆ¼~Yúé"ø¹Š Ø9ÕOPÖOP625,137029
-(Êl{Î]Nƒƒg)lÜH£ÏFƒ±êâÌoPä˜K«g;¢0ÆpË*kAo×),l+‹…XUˆïß}tÁşh½µM½Æ:WT'øöÆ×ÔÆ¼~Yúé"ø¹Š Ø9ÕOPÖÀW;³›},jA®–æQÑZ[ÅÍLáê³ÃçÓnZã‘)4Ê”Ô]¾„²‰%¡×ğ£ñÉÉXS3Ä–aMXS3Ä–a625,137029
-³Ş  Ğ³öÁî í¥$‡iİÌ°`+ÿ¹$ô®Ä$ô®627,137413
-³Ş  Ğ³öÁî í¥$‡iİÌ°`+ÿ¹$ô®ÄJ@ñ‰İ¬ cÆ“;GnQMx€<É8E2 m”Q‹|•M®ó%­4çÀÜ×Q3µ6â¤“Wi-çmÖù.%‚ÄÉø®á}åT)è£º†#i¡Fğ?(è•±¶°º–åmMdãïãÕØÃµn˜Ç4^OC=OC627,137413
-‹.İ¶5N¸N1662,380263
-vëå36³±N/÷¼] £Ç¾Øcš­ºá’iİ÷~ş×ÍÇP:`Ê@ğÔz(2†&g/>n~ò?¥oéG¥^t<p«âàNj‡´^O‘SœO‘S1669,381285
-e°™hje°™h1674,382695
-e°™hj„õ0Â£•]£¼ëĞ0tê!Ğ36Ë¸>R]R1674,382695
-e°™hj„õ0Â£•]£¼ëĞ0tê!Ğ36Ë¸>R]dİ6Tdİ61674,382695
-e°™hj„õ0Â£•]£¼ëĞ0tê!Ğ36Ë¸>R]dİ6TQ‘=K™²WÙQ¨KÒÆİÒC}dlFuô¡ëµQ,»CºœáPS‚8p‹|ö™ßd<xxØxx1674,382695
-”á)d—uZ\ªmL3¸U–ÖapÉ`aNGŠYN ™¸d¸İ‚¿*¶wUØ”nwUØ”1675,383133
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/fig/arch.png,733
-È181Ã#RTê şò)¬²Š¡ñŸFØÁ±©²©FäÀcô†<Òô'}ÉÔ¢æBz‘ŞÃãøšÃ:éaôPz$=œn7Ì€©ÎEMÒá¢‘MŒ²S ^6œÃ—x´Ç´6ÚCÚZ;í$Ãª(C™Î.Q+‰<ÚQ´ÁªˆQÅdĞ=ìCZ#Õîd0é‡ô#í$4GÒeD ÜÜ;\=JµrDÛ—Z×}ØRÍÿ[C<Çã>¤"c8+ô%‡+ñÏ(_,R!¯èzß‡‰sÄ)âqŒ¨>q’¨'ZˆãÒ®ªNÖÈÛâUÍA9H‡}œjœº>?ä*@¥€úhşŠg¢ù!3åss8,631
-¢ŠØO4 o}h'zˆ÷$ä’|ÒÍÏH2‰’ùär9¹‰ÜCÖ’Íä5²ƒì%?Ó4hF4š-Š6…–E›E+¡UĞvÑĞÎ §“ö†N§óè6tOôo¦Ò³éséËé[èèô6ú#zƒÁ0`80ü±£QÂØÈØÇ8É¸Êèd¼cª3M™.ÌpfSÆ\Â¬`îe`^e>aö«i©Y©ù¨Åª‰Ôæ¨­TÛ©Ö vY­S­Ÿ¥Í²aù±YÙ¬Å¬¬ı¬3¬{¬WêêêæêŞê“Õ¥ê‹Ô7¨T?¯Ş¡ş­Ã¶g‡°§²•ììİìFöö+k@4BÕ§5h¼ãp9c9Qg!§’SË¹Êy®©¦i¥¤9]³X³Bó°æeÍ-5-k­-Ö­J­£Z·´ú´¹ÚÎÚ±ÚyÚËµ÷j_ĞîÒaèXë„éˆt–êìĞ9­óˆKp-¸!\!÷kîNîn§.]×F7J7[·L÷'İVİ^==7½d½Ùz•zÇõÚyÏšÅËå­äâİä}e<*h”xÔ²h”xÔ9,1208
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/fig/2.png,458
-†ÁK0Şi‚ğ¢Aª¤™BÖZyCAP8ÅC‰’@ùĞ&¨*ƒª¡CP=CP10,710
-ßÆ¿'	Zk‚!– $l$Tçı„Â4Q¨Ot"†yÄ\b)±ØA¼I&N“I†$R$)™´TIj"]&=&½!“É:dGrY@^O®$Ÿ _%’?P”(&OJEBÙN9J¹@y@yC¥R¨nÔXª˜ºZO½D}J}/G“3—ó—ãÉ­“«‘k•ë—{%O”×—w—_.Ÿ'_!Jş¦ü¸Jş¦ü¸11,976
-›>oleóıæ6NË œ¦05Ãss»µÇÏDÏg*¿¡sûÓ6>S;S15,4565
-ÕtŞù1tŞù186,24182
-—¸Üš»/ÀHgKw™‘]ì±¢Y0 ‚÷îît$Ğ>ƒ¿îòw)6²Áy­y98,28378
-Ñüqª½5àZ®”Ãå;·@ÂƒõÃÇêƒõÃÇ109,32062
-ø2SwßşFyı:ú p_Lü…p_Lü…110,32121
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/data/kitten.png,4631
-   <rdf:RDF xmlns:rdf=rdf4,159
-ĞivOÓÎ%"jt2èÑ‚„	2¿Ùr¼zw›r¼zw33,8866
-Ïîñ0N„–jÙ¦@ƒÇ~jğ¼‚£4NneCyrÿ“}QQ37,9675
-Ïîñ0N„–jÙ¦@ƒÇ~jğ¼‚£4NneCyrÿ“}Q;ÓìsÕã¿¸»´Ô ³p0&nE%m8¶yìæUùh‚Æ¸×e§Ú!wò4ºAêŠ›&’JÍ#JÍ37,9675
-,C=YàfÓ±9Ğ£o+gğH^ÊĞçË@‚NË‚N40,10320
-,C=40,10320
-İØ÷åšl„kª‘&bA>0‡şM\ú#jäfÈ…4pÌğ"@o>Şàlûl42,10705
-z"*á­—	™±Qs¾ÄACI……3»%³Gï4Ñ©	¯HsPrö·Ç9úµÇI¸‘7@öÓ8è§K(‚Â,x}¿è…uf—uf53,12204
-é¡>aN†ªî†DCG‡‰;¸'ü‘øu1y£;ó†1¦ÛØ³pËs§¡8›2ÛÏ¬…GôÁv1ĞŞïvP¹×ë¡&Œ›H¾Ç5s©{j¢]z5ïñ´Ş†dä…i2>´>0RD.j".=­¨”Môet2üIäõnÌÊÖmÓäq(?oÇÛÄóç?ö©ËbtmR=8–9¡=ÀÓ+¬’5œ¸–”6X€—+‚mèúS™65!pyV#Ïvì`$Âa”ÿü½ğ#c=+SÙcr%èa‘¿fxXÌûcŠ­ş¢œ]“f>“äïP¬—şN¤uê˜PÀªÇKeÚ²•s°	ù-h¼ÿ«`ByXÀ²t´Ìà6Ì}ëdË³dË³126,36913
-áuô@tc÷­˜B/ms»H¥l¯Ñ.:¡¡(¶ÂÏİy`W‘‘¬°ãÑÊRhX¡›Ëa#s‹‰Kê‚ª©Ïßkõoğok\À#‚Û’åu—Ñõü‹›0÷ÄqÚıÇwğNôœ@öoÌïğúÂ*õn	É&ï„BıOß=Ü´¡òrÉxS…û)HT+³~Ò‹RD|S„Y¸.ƒd&ÔL2]ù|)§—UïU154,43523
-JWëJW177,49736
-ÑIñËµz·Üp™’Â<QZUÿ¶ë–hHIü¼îÌÌB¦Wá—÷€›Æ­`8¦V†­n	#Ağ¸›Ù/3ŞS8\–±/ÕŸbŞ´‘gdIŸó^g@kğıóOƒ`Ô¶…ù^]g]Óö@O3l¡ô»3¤%3ÉkNôÕ kNôÕ178,49978
-ÑIñËµz·Üp™’Â<QZUÿ¶ë–hHIü¼îÌÌB¦Wá—÷€›Æ­`8¦V†­n	#Ağ¸›Ù/3ŞS8\–±/ÕŸbŞ´‘gdIŸó^g@kğıóOƒ`Ô¶…ù^]g]Óö@O3l¡ô»3¤%3ÉkNôÕ Ñpœêæ†u)ÃÆ=gPï÷6¦üĞÊvp~É’Ğ•²ôÙÈ¬ßªé–Ld¹mÒfŸ2L+©¿oµİ‚´p ñ¯ƒ´´-â1W«¹­2£Ù]ê}Ù$èÄ	R@MÔeÙõ¬Ü™~ñ;K_üK_178,49978
-Á@gz@gz179,50525
-¬­«…ÚÈ¾}àÿŒÁÕêáíá*}dyö${5W4F5VÄ9ÃÜŞ½ğp7ï14Kn’ËÙQI/ˆÒÎ ^«#°«6‘Ìˆ(d™º?—ùGAkàsŞsË3idİTéV£A8I	í]-n)rİnæ@cÙÏÁÁF ¶­·Ç­ÌBpªwâŞ¢“"Ò6¹£Ap†¢çD·[åAÓV¡·Ûzz]îkdL‘¹ÆÏÛfÿí}¯Û¦}Ü|ókÚ´e^ˆ•ëÚ¯J¢pTïjìJ¢pTïj192,55241
-–ÒWÛçîµú§”\Ì"‹2ÒçŠ“§ã@"wI—Ó8±œü`Ø&V»ZÛº æ®6`ûùO!Q”ådŠ°üHñƒ ]Dà0ºÈºM€~JI¾JI207,59859
-'vÎ‡w¾ö.Ä€àÂ};ÉÚ£ã:æNú„…èxZ‹4vÿşıha<ymÊ2šaÌQ×õ-{æ†İİİaí‰±x„Õõ-œmw¹nyXØùjX¼ÿáğî$í|ú·9õ›éÎ°‰Ãï2şŞÑ#8&hN&,ÀkÄ£±'Mğ<¤™Î´ßö®Ÿ\îxX~:;.¯/·YL_ì¿`õÀc¹Ê]æ>%5…çøÌ{<“11n‰`›å<ó2mÄÒ	>WŒÁÃë<^ft¨áî³ä–ÀQ’¶Fü_ÅùÉĞ‡¾"Î‰Uğp‚ğ&xš‘£]âÛpìœãÒÃji¨ÎæÑ¢ìì_üÁğï|cøèæm.È«>\oBŠs¡;çtæA£“E4sPN“.¦jÜ¨^ iC¡Ü3!v-ªÚ26=åé˜Ü=SÕ¥_Ò—óÌ÷sÓ5Å9‚š/µ¾Zæ„ñ„v›¿À«1ş.«h`ş¸ñŠ‹U²Ñ.>3YåCÎ…Âc¥Ò\Úç¬}ónßn210,60064
-'vÎ‡w¾ö.Ä€àÂ};ÉÚ£ã:æNú„…èxZ‹4vÿşıha<ymÊ2šaÌQ×õ-{æ†İİİaí‰±x„Õõ-œmw¹nyXØùjX¼ÿáğî$í|ú·9õ›éÎ°‰Ãï2şŞÑ#8&hN&,ÀkÄ£±'Mğ<¤™Î´ßö®Ÿ\îxX~:;.¯/·YL_ì¿`õÀc¹Ê]æ>%5…çøÌ{<“11n‰`›å<ó2mÄÒ	>WŒÁÃë<^ft¨áî³ä–ÀQ’¶Fü_ÅùÉĞ‡¾"Î‰Uğp‚ğ&xš‘£]âÛpìœãÒÃji¨ÎæÑ¢ìì_üÁğï|cøèæm.È«>\oBŠs¡;çtæA£“E4sPN“.¦jÜ¨^ iC¡Ü3!v-ªÚ26=åé˜Ü=SÕ¥_Ò—óÌ÷sÓ5Å9‚š/µ¾Zæ„ñ„v›¿À«1ş.«h`ş¸ñŠ‹U²Ñ.>3YåCÎ…Âc¥Ò\Úç¬}ónß;¯sIÇ³!° p,210,60064
-n:ÍÄ‘·ç³%öÅ¬F¡/ëó„Ÿ{hÍ®ShÍ®S213,61691
-n:ÍÄ‘·ç³%öÅ¬F¡/ëó„Ÿ{hÍ®SxIĞ­¨²]ÖÙ¦ícv³*øçàšÕŞ?y™ãn‹…ÌµÆgı^tSø·ı†…tSø·ı†…213,61691
-œ.ª9Šø¤]P©öÅºdæÂ Ãì7‹CC321,93647
-kİò‹¾™)£‚-ÀváWâŠz-ldÖ×¡¥V¢¼-W°v²v±Ğöz/)tÇ.p-IS>k¶XÙäî¼B%Ò%„®Ç8øQ‰ğQ‰613,154820
-kİò‹¾™)£‚-ÀváWâŠz-ldÖ×¡¥V¢¼-W°v²v±Ğöz/)tÇ.p-IS>k¶XÙäî¼B%Ò%„®Ç8øQ‰ğà3›¬U„Ç*ëÌ,§kÁøøÂ)ô²A}Ï:v7è5Ö·Ékl\.0ÉÌûÔ\gó³çXgó³ç613,154820
-˜N«(håa:÷ÚõæèJ¥º¹89<jÎ]z»9z»9732,185185
-]HKZzHKZz733,185227
-]HKZzî­’=À­%x¬‰ñcËb·$}»º(TZœWTZœ733,185227
-]HKZzî­’=À­%x¬‰ñcËb·$}»º(TZœW;¤6£üw6š“%†ÆÍ”ãŞÚ>m~ıiói733,185227
-)öÉï(ìúìFÅ¡÷	Ùİss734,185324
-¸µÖËj2ß´j2ß´855,213399
-«%r"²4	\¤…X› nû_ïhÓa&S÷¥~ê‡=®¿†¼ú¶µƒËÂyHÍLtúIP‘ŠæùàÈ:â>ïXBi÷˜ ©æÑ>r×£«ÿãŠmáÔú9‘´›Á€pi#Ó’¸]¬3Ál,-3D`L–„wÜj&Ô<iÅsüz}·´Á“öP7DĞø47ÃÉğ·İ‹ĞÜ7—^Úw,w871,216272
-«%r"²4	\¤…X› nû_ïhÓa&S÷¥~ê‡=®¿†¼ú¶µƒËÂyHÍLtúIP‘ŠæùàÈ:â>ïXBi÷˜ ©æÑ>r×£«ÿãŠmáÔú9‘´›Á€pi#Ó’¸]¬3Ál,-3D`L–„wÜj&Ô<iÅsüz}·´Á“öP7DĞø47ÃÉğ·İ‹ĞÜ7—^Úw,>­«MhîMh871,216272
-º‘ªà¹GD; '– 9µ‰‰(´Îõu½óÓû?F–éõ83$B€ñ*|ÃâL:ÖÌíğÆ`#JS…å~Ì•å‡Vğ<p¶¢™CGèÉúÄ]B:u{ØÜ=¹876,218398
-ñÁ^È6»¤Kõãì!Ú¢~—•Ä¿Ş¸À^W;W877,218485
-ËRdRd879,218875
-óŒ‡A?lnœûˆ“1†t\Œ”Ækó€kó1199,310650
-óŒ‡A?lnœûˆ“1†t\Œ”Ækó€íĞŸdº=oĞş§y¦ú4àô¼{z!´G·‘€ó°Ö­(•ö&\@,º~3qn›ósØúè Ë½%ÃÉ¼ä~²VŸs;œæf8îÒÿ4ß—ä8&ËÓ*}<ô]LEü	ò@pÛ@p1199,310650
-{=ı"…`üæûK	=bÈX4ŞWÃæMüõ.´ıåsî!L }5q8½s	ŞÏ•ŠIÜ–E•Êb²¹‡FsMkÆ€Y_½RßeÃÅué´ÎÈ8[mÚŞ5õ,¢kG­×‰JÏAÛ°ÕG»'Á™ƒÔ>ö…yşrısd-&İ÷hÃ²^1ëÌ;Ú“bXºşàFr»=jLM`•¿L»;õûcA`ï›ã»„İ_Æ>fMcÇê÷÷I‡¯Ø”®¿Oi"Ô†¿h¾İ–µ~şùc™Ce}Å0­ëîÑ¾Oõ!{™ÕÒå¤O¸rO¸1217,314461
-{=ı"…`üæûK	=bÈX4ŞWÃæMüõ.´ıåsî!L }5q8½s	ŞÏ•ŠIÜ–E•Êb²¹‡FsMkÆ€Y_½RßeÃÅué´ÎÈ8[mÚŞ5õ,¢kG­×‰JÏAÛ°ÕG»'Á™ƒÔ>ö…yşrısd-&İ÷hÃ²^1ëÌ;Ú“bXºşàFr»=jLM`•¿L»;õûcA`ï›ã»„İ_Æ>fMcÇê÷÷I‡¯Ø”®¿Oi"Ô†¿h¾İ–µ~şùc™Ce}Å0­ëîÑ¾Oõ!{™ÕÒå¤O¸r]‹LNh€2hùªÀ,®DæÜqÕ_Š‰J©›_™›Oõ£f›¿ş·Çˆ<XmÌXm1217,314461
-ã«^qZ@qZ1218,314915
-ã«^qZ@±Xè;€¿p|ªhÓ'õhÓ'1218,314915
-gµñUN^åÓo›8u1Æ‚bİÛ<Ï‚Ï—‡6òyuÜ‘’V`ÃtSÉÂÑæ¡ş­:ˆ*÷¤3L¸ÌNÛxßĞsævÒ›uW8¾L¸ÌNÛxßĞsævÒ›uW81219,315385
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/data/IMG_4379.jpg,747
--€:“é\_í qÔk¾PvO$zÕ4ş ‘ÃÇtñ¨ˆ`w½?OŸíQIr£85uq-fÖ%š‰©Œˆõ¢‡p8/ÅµÂÄÊc“¶O™«½¸”3üÃ¢ãÖ»Ns‚Í"ÎzzÔ‹m¾RXå©Ü›€à‘5I™Ní¨3ş{W¬ZÊ$ƒ àã‘\•>#XìY]€’ë¹@è{šójâkÈì…NX/rh¦µd[Â‹p|ÜHäq]†æW±eSÂ¹®¦Ã‰·šBkA…©¨4›Pr}{SJúVX…à‘á¾òm Ï™(L—#ïc=‡Oz+©SV%³Ç¦²V»Ş’œc´mæò¯J²î—ÙnI£+XÎ¼Ao«Ê pÜJfJÉòƒõÇ"M­RM­27,8472
--€:“é\_í qÔk¾PvO$zÕ4ş ‘ÃÇtñ¨ˆ`w½?OŸíQIr£85uq-fÖ%š‰©Œˆõ¢‡p8/ÅµÂÄÊc“¶O™«½¸”3üÃ¢ãÖ»Ns‚Í"ÎzzÔ‹m¾RXå©Ü›€à‘5I™Ní¨3ş{W¬ZÊ$ƒ àã‘\•>#XìY]€’ë¹@è{šójâkÈì…NX/rh¦µd[Â‹p|ÜHäq]†æW±eSÂ¹®¦Ã‰·šBkA…©¨4›Pr}{SJúVX…à‘á¾òm Ï™(L—#ïc=‡Oz+©SV%³Ç¦²V»Ş’œc´mæò¯J²î—ÙnI£+XÎ¼Ao«Ê pÜJfJÉòƒõÇ"M­Rûøo,…#CpkÔ¬.ƒ¦àÛ•±ŒW=W27,8472
-                                                                   <?xpacket end=156,22878
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/data/imageNetLabel.txt,18452
-n01440764 tench,1,0
-n01443537 goldfish,2,29
-n01484850 great white shark,3,67
-n01484850 great white shark, white shark,3,67
-n01484850 great white shark, white shark, man-eater,eater3,67
-n01484850 great white shark, white shark, man-eater, man-eating shark,3,67
-n01491361 tiger shark,4,161
-n01494475 hammerhead,5,203
-n01496331 electric ray,6,242
-n01496331 electric ray, crampfish,6,242
-n01496331 electric ray, crampfish, numbfish,6,242
-n01518878 ostrich,10,343
-n01530575 brambling,11,379
-n01531178 goldfinch,12,425
-n01532829 house finch,13,466
-n01532829 house finch, linnet,13,466
-n01534433 junco,14,518
-n01537544 indigo bunting,15,544
-n01537544 indigo bunting, indigo finch,15,544
-n01537544 indigo bunting, indigo finch, indigo bird,15,544
-n01558993 robin,16,614
-n01558993 robin, American robin,16,614
-n01601694 water ouzel,21,734
-n01614925 bald eagle,23,779
-n01614925 bald eagle, American eagle,23,779
-n01622779 great grey owl,25,860
-n01622779 great grey owl, great gray owl,25,860
-n01629819 European fire salamander,26,917
-n01630670 common newt,27,975
-n01632458 spotted salamander,29,1030
-n01632777 axolotl,30,1080
-n01632777 axolotl, mud puppy,30,1080
-n01641577 bullfrog,31,1130
-n01644373 tree frog,32,1167
-n01644900 tailed frog,33,1198
-n01644900 tailed frog, bell toad,33,1198
-n01644900 tailed frog, bell toad, ribbed toad,33,1198
-n01644900 tailed frog, bell toad, ribbed toad, tailed toad,33,1198
-n01664065 loggerhead,34,1272
-n01664065 loggerhead, loggerhead turtle,34,1272
-n01665541 leatherback turtle,35,1329
-n01665541 leatherback turtle, leatherback,35,1329
-n01665541 leatherback turtle, leatherback, leathery turtle,35,1329
-n01669191 box turtle,38,1450
-n01677366 common iguana,40,1508
-n01677366 common iguana, iguana,40,1508
-n01682714 American chameleon,41,1555
-n01682714 American chameleon, anole,41,1555
-n01685808 whiptail,42,1612
-n01688243 frilled lizard,44,1664
-n01692333 Gila monster,46,1738
-n01693334 green lizard,47,1782
-n01694178 African chameleon,48,1822
-n01695060 Komodo dragon,49,1872
-n01695060 Komodo dragon, Komodo lizard,49,1872
-n01695060 Komodo dragon, Komodo lizard, dragon lizard,49,1872
-n01695060 Komodo dragon, Komodo lizard, dragon lizard, giant lizard,49,1872
-n01697457 African crocodile,50,1961
-n01697457 African crocodile, Nile crocodile,50,1961
-n01698640 American alligator,51,2027
-n01728572 thunder snake,53,2105
-n01728572 thunder snake, worm snake,53,2105
-n01728920 ringneck snake,54,2161
-n01728920 ringneck snake, ring-necked snake,54,2161
-n01729322 hognose snake,55,2217
-n01729322 hognose snake, puff adder,55,2217
-n01729977 green snake,56,2265
-n01734418 king snake,57,2300
-n01735189 garter snake,58,2332
-n01740131 night snake,61,2411
-n01742172 boa constrictor,62,2454
-n01744401 rock python,63,2505
-n01744401 rock python, rock snake,63,2505
-n01748264 Indian cobra,64,2553
-n01753488 horned viper,67,2629
-n01753488 horned viper, cerastes,67,2629
-n01753488 horned viper, cerastes, sand viper,67,2629
-n01753488 horned viper, cerastes, sand viper, horned asp,67,2629
-n01755581 diamondback,68,2705
-n01755581 diamondback, diamondback rattlesnake,68,2705
-n01756291 sidewinder,69,2773
-n01756291 sidewinder, horned rattlesnake,69,2773
-n01770081 harvestman,71,2853
-n01770081 harvestman, daddy longlegs,71,2853
-n01773157 black and gold garden spider,73,2928
-n01773549 barn spider,74,2985
-n01773797 garden spider,75,3026
-n01774384 black widow,76,3068
-n01775062 wolf spider,78,3131
-n01797886 ruffed grouse,83,3247
-n01797886 ruffed grouse, partridge,83,3247
-n01798484 prairie chicken,84,3299
-n01798484 prairie chicken, prairie grouse,84,3299
-n01817953 African grey,88,3409
-n01817953 African grey, African gray,88,3409
-n01819313 sulphur-crested cockatoo,90,3483
-n01819313 sulphur-crested cockatoo, Kakatoe galerita,90,3483
-n01855032 red-breasted merganser,99,3702
-n01860187 black swan,101,3768
-n01872401 echidna,103,3822
-n01872401 echidna, spiny anteater,103,3822
-n01873310 platypus,104,3866
-n01873310 platypus, duckbill,104,3866
-n01873310 platypus, duckbill, duckbilled platypus,104,3866
-n01873310 platypus, duckbill, duckbilled platypus, duck-billed platypus,104,3866
-n01877812 wallaby,105,3964
-n01882714 koala,106,3998
-n01882714 koala, koala bear,106,3998
-n01882714 koala, koala bear, kangaroo bear,106,3998
-n01882714 koala, koala bear, kangaroo bear, native bear,106,3998
-n01914609 sea anemone,109,4115
-n01924916 flatworm,111,4168
-n01930112 nematode,112,4202
-n01930112 nematode, nematode worm,112,4202
-n01950731 sea slug,116,4294
-n01955084 chiton,117,4325
-n01955084 chiton, coat-of-mail shell,117,4325
-n01955084 chiton, coat-of-mail shell, sea cradle,117,4325
-n01968897 chambered nautilus,118,4390
-n01968897 chambered nautilus, pearly nautilus,118,4390
-n01978287 Dungeness crab,119,4446
-n01978455 rock crab,120,4488
-n01981276 king crab,122,4549
-n01981276 king crab, Alaska crab,122,4549
-n01981276 king crab, Alaska crab, Alaskan king crab,122,4549
-n01981276 king crab, Alaska crab, Alaskan king crab, Alaska king crab,122,4549
-n01983481 American lobster,123,4646
-n01983481 American lobster, Northern lobster,123,4646
-n01983481 American lobster, Northern lobster, Maine lobster,123,4646
-n01984695 spiny lobster,124,4726
-n01984695 spiny lobster, langouste,124,4726
-n01984695 spiny lobster, langouste, rock lobster,124,4726
-n01984695 spiny lobster, langouste, rock lobster, crawfish,124,4726
-n01984695 spiny lobster, langouste, rock lobster, crawfish, crayfish,124,4726
-n01985128 crayfish,125,4809
-n01985128 crayfish, crawfish,125,4809
-n01985128 crayfish, crawfish, crawdad,125,4809
-n02002556 white stork,128,4897
-n02002724 black stork,129,4936
-n02009229 little blue heron,132,5012
-n02009912 American egret,133,5058
-n02009912 American egret, great white heron,133,5058
-n02013706 limpkin,136,5151
-n02017213 European gallinule,137,5184
-n02018207 American coot,138,5234
-n02018207 American coot, marsh hen,138,5234
-n02018207 American coot, marsh hen, mud hen,138,5234
-n02018207 American coot, marsh hen, mud hen, water hen,138,5234
-n02025239 ruddy turnstone,140,5325
-n02027492 red-backed sandpiper,141,5371
-n02027492 red-backed sandpiper, dunlin,141,5371
-n02028035 redshank,142,5425
-n02037110 oystercatcher,144,5480
-n02056570 king penguin,146,5538
-n02058221 albatross,147,5585
-n02066245 grey whale,148,5616
-n02066245 grey whale, gray whale,148,5616
-n02066245 grey whale, gray whale, devilfish,148,5616
-n02066245 grey whale, gray whale, devilfish, Eschrichtius gibbosus,148,5616
-n02071294 killer whale,149,5706
-n02071294 killer whale, killer,149,5706
-n02071294 killer whale, killer, orca,149,5706
-n02071294 killer whale, killer, orca, grampus,149,5706
-n02071294 killer whale, killer, orca, grampus, sea wolf,149,5706
-n02074367 dugong,150,5776
-n02085936 Maltese dog,154,5873
-n02085936 Maltese dog, Maltese terrier,154,5873
-n02086079 Pekinese,155,5921
-n02086079 Pekinese, Pekingese,155,5921
-n02088094 Afghan hound,161,6074
-n02088238 basset,162,6105
-n02088466 bloodhound,164,6153
-n02089867 Walker hound,167,6240
-n02090622 borzoi,170,6325
-n02091244 Ibizan hound,174,6433
-n02091467 Norwegian elkhound,175,6472
-n02091635 otterhound,176,6511
-n02091831 Saluki,177,6545
-n02092002 Scottish deerhound,178,6577
-n02093256 Staffordshire bullterrier,180,6638
-n02093428 American Staffordshire terrier,181,6702
-n02093428 American Staffordshire terrier, Staffordshire terrier,181,6702
-n02093428 American Staffordshire terrier, Staffordshire terrier, American pit bull terrier,181,6702
-n02095889 Sealyham terrier,191,7059
-n02096051 Airedale,192,7096
-n02096177 cairn,193,7133
-n02096437 Dandie Dinmont,195,7193
-n02096585 Boston bull,196,7242
-n02097298 Scotch terrier,200,7365
-n02097298 Scotch terrier, Scottish terrier,200,7365
-n02097474 Tibetan terrier,201,7417
-n02097658 silky terrier,202,7462
-n02098413 Lhasa,205,7576
-n02100583 vizsla,212,7798
-n02100877 Irish setter,214,7859
-n02101556 clumber,217,7945
-n02102040 English springer,218,7980
-n02102318 cocker spaniel,220,8066
-n02102318 cocker spaniel, English cocker spaniel,220,8066
-n02105641 Old English sheepdog,230,8310
-n02105855 Shetland sheepdog,231,8350
-n02105855 Shetland sheepdog, Shetland sheep dog,231,8350
-n02106382 Bouvier des Flandres,234,8449
-n02106662 German shepherd,236,8524
-n02106662 German shepherd, German shepherd dog,236,8524
-n02106662 German shepherd, German shepherd dog, German police dog,236,8524
-n02107142 Doberman,237,8600
-n02109525 Saint Bernard,248,8890
-n02109961 Eskimo dog,249,8926
-n02110063 malamute,250,8954
-n02110063 malamute, malemute,250,8954
-n02110341 dalmatian,252,9026
-n02110341 dalmatian, coach dog,252,9026
-n02110627 affenpinscher,253,9071
-n02110627 affenpinscher, monkey pinscher,253,9071
-n02110958 pug,255,9142
-n02111277 Newfoundland,257,9184
-n02111889 Samoyed,259,9250
-n02112137 chow,261,9299
-n02113023 Pembroke,264,9372
-n02113186 Cardigan,265,9413
-n02114367 timber wolf,270,9555
-n02114367 timber wolf, grey wolf,270,9555
-n02114367 timber wolf, grey wolf, gray wolf,270,9555
-n02114548 white wolf,271,9612
-n02114548 white wolf, Arctic wolf,271,9612
-n02114712 red wolf,272,9669
-n02114712 red wolf, maned wolf,272,9669
-n02114712 red wolf, maned wolf, Canis rufus,272,9669
-n02114855 coyote,273,9726
-n02114855 coyote, prairie wolf,273,9726
-n02114855 coyote, prairie wolf, brush wolf,273,9726
-n02115641 dingo,274,9784
-n02115641 dingo, warrigal,274,9784
-n02115641 dingo, warrigal, warragal,274,9784
-n02115913 dhole,275,9833
-n02116738 African hunting dog,276,9863
-n02116738 African hunting dog, hyena dog,276,9863
-n02116738 African hunting dog, hyena dog, Cape hunting dog,276,9863
-n02117135 hyena,277,9937
-n02119022 red fox,278,9961
-n02119789 kit fox,279,9994
-n02120079 Arctic fox,280,10029
-n02120079 Arctic fox, white fox,280,10029
-n02120505 grey fox,281,10077
-n02120505 grey fox, gray fox,281,10077
-n02123045 tabby,282,10132
-n02123597 Siamese cat,285,10201
-n02125311 cougar,287,10255
-n02125311 cougar, puma,287,10255
-n02125311 cougar, puma, catamount,287,10255
-n02125311 cougar, puma, catamount, mountain lion,287,10255
-n02125311 cougar, puma, catamount, mountain lion, painter,287,10255
-n02125311 cougar, puma, catamount, mountain lion, painter, panther,287,10255
-n02127052 lynx,288,10338
-n02128385 leopard,289,10364
-n02128757 snow leopard,290,10399
-n02128757 snow leopard, ounce,290,10399
-n02128925 jaguar,291,10445
-n02128925 jaguar, panther,291,10445
-n02128925 jaguar, panther, Panthera onca,291,10445
-n02129165 lion,292,10498
-n02129165 lion, king of beasts,292,10498
-n02129604 tiger,293,10543
-n02130308 cheetah,294,10576
-n02130308 cheetah, chetah,294,10576
-n02132136 brown bear,295,10620
-n02132136 brown bear, bruin,295,10620
-n02133161 American black bear,296,10662
-n02133161 American black bear, black bear,296,10662
-n02133161 American black bear, black bear, Ursus americanus,296,10662
-n02134084 ice bear,297,10743
-n02134084 ice bear, polar bear,297,10743
-n02134084 ice bear, polar bear, Ursus Maritimus,297,10743
-n02134418 sloth bear,298,10813
-n02134418 sloth bear, Melursus ursinus,298,10813
-n02138441 meerkat,300,10886
-n02165456 ladybug,302,10936
-n02165456 ladybug, ladybeetle,302,10936
-n02165456 ladybug, ladybeetle, lady beetle,302,10936
-n02165456 ladybug, ladybeetle, lady beetle, ladybird,302,10936
-n02167151 ground beetle,303,11006
-n02168699 long-horned beetle,304,11046
-n02168699 long-horned beetle, longicorn,304,11046
-n02169497 leaf beetle,305,11104
-n02219486 ant,311,11234
-n02219486 ant, emmet,311,11234
-n02226429 grasshopper,312,11264
-n02231487 walking stick,314,11312
-n02231487 walking stick, walkingstick,314,11312
-n02233338 cockroach,315,11364
-n02236044 mantis,316,11391
-n02256656 cicada,317,11416
-n02264363 lacewing,319,11462
-n02268443 dragonfly,320,11495
-n02268443 dragonfly, darning needle,320,11495
-n02277742 ringlet,323,11665
-n02279972 monarch,324,11702
-n02279972 monarch, monarch butterfly,324,11702
-n02279972 monarch, monarch butterfly, milkweed butterfly,324,11702
-n02281406 sulphur butterfly,326,11805
-n02281787 lycaenid,327,11851
-n02317335 starfish,328,11890
-n02321529 sea cucumber,330,11940
-n02325366 wood rabbit,331,11976
-n02325366 wood rabbit, cottontail,331,11976
-n02328150 Angora,333,12044
-n02346627 porcupine,335,12094
-n02356798 fox squirrel,336,12124
-n02356798 fox squirrel, eastern fox squirrel,336,12124
-n02364673 guinea pig,339,12218
-n02395406 hog,342,12286
-n02395406 hog, pig,342,12286
-n02395406 hog, pig, grunter,342,12286
-n02395406 hog, pig, grunter, squealer,342,12286
-n02396427 wild boar,343,12336
-n02396427 wild boar, boar,343,12336
-n02398521 hippopotamus,345,12392
-n02398521 hippopotamus, hippo,345,12392
-n02398521 hippopotamus, hippo, river horse,345,12392
-n02408429 water buffalo,347,12472
-n02408429 water buffalo, water ox,347,12472
-n02408429 water buffalo, water ox, Asiatic buffalo,347,12472
-n02412080 ram,349,12556
-n02415577 bighorn,350,12575
-n02415577 bighorn, bighorn sheep,350,12575
-n02415577 bighorn, bighorn sheep, cimarron,350,12575
-n02415577 bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn,350,12575
-n02415577 bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn, Rocky Mountain sheep,350,12575
-n02417914 ibex,351,12681
-n02422699 impala,353,12729
-n02437312 Arabian camel,355,12784
-n02437312 Arabian camel, dromedary,355,12784
-n02443114 polecat,359,12888
-n02443114 polecat, fitch,359,12888
-n02443114 polecat, fitch, foulmart,359,12888
-n02443114 polecat, fitch, foulmart, foumart,359,12888
-n02443484 black-footed ferret,360,12950
-n02443484 black-footed ferret, ferret,360,12950
-n02445715 skunk,362,13022
-n02445715 skunk, polecat,362,13022
-n02457408 three-toed sloth,365,13096
-n02457408 three-toed sloth, ai,365,13096
-n02480495 orangutan,366,13149
-n02480495 orangutan, orang,366,13149
-n02480495 orangutan, orang, orangutang,366,13149
-n02480855 gorilla,367,13204
-n02481823 chimpanzee,368,13239
-n02481823 chimpanzee, chimp,368,13239
-n02483362 gibbon,369,13284
-n02483708 siamang,370,13316
-n02483708 siamang, Hylobates syndactylus,370,13316
-n02484975 guenon,371,13383
-n02486261 patas,372,13415
-n02486261 patas, hussar monkey,372,13415
-n02488702 colobus,376,13518
-n02489166 proboscis monkey,377,13552
-n02492035 capuchin,379,13616
-n02492035 capuchin, ringtail,379,13616
-n02492660 howler monkey,380,13662
-n02493509 titi,381,13694
-n02493793 spider monkey,382,13722
-n02494079 squirrel monkey,383,13764
-n02497673 Madagascar cat,384,13808
-n02497673 Madagascar cat, ring-tailed lemur,384,13808
-n02500267 indri,385,13865
-n02500267 indri, indris,385,13865
-n02500267 indri, indris, Indri indri,385,13865
-n02504013 Indian elephant,386,13923
-n02504458 African elephant,387,13966
-n02509815 lesser panda,388,14013
-n02509815 lesser panda, red panda,388,14013
-n02509815 lesser panda, red panda, panda,388,14013
-n02509815 lesser panda, red panda, panda, bear cat,388,14013
-n02509815 lesser panda, red panda, panda, bear cat, cat bear,388,14013
-n02510455 giant panda,389,14091
-n02510455 giant panda, panda,389,14091
-n02510455 giant panda, panda, panda bear,389,14091
-n02510455 giant panda, panda, panda bear, coon bear,389,14091
-n02514041 barracouta,390,14167
-n02536864 coho,392,14209
-n02536864 coho, cohoe,392,14209
-n02536864 coho, cohoe, coho salmon,392,14209
-n02536864 coho, cohoe, coho salmon, blue jack,392,14209
-n02536864 coho, cohoe, coho salmon, blue jack, silver salmon,392,14209
-n02606052 rock beauty,393,14292
-n02641379 gar,396,14378
-n02641379 gar, garfish,396,14378
-n02641379 gar, garfish, garpike,396,14378
-n02641379 gar, garfish, garpike, billfish,396,14378
-n02655020 puffer,398,14459
-n02655020 puffer, pufferfish,398,14459
-n02655020 puffer, pufferfish, blowfish,398,14459
-n02669723 academic gown,401,14542
-n02669723 academic gown, academic robe,401,14542
-n02672831 accordion,402,14595
-n02672831 accordion, piano accordion,402,14595
-n02687172 aircraft carrier,404,14671
-n02687172 aircraft carrier, carrier,404,14671
-n02687172 aircraft carrier, carrier, flattop,404,14671
-n02692877 airship,406,14760
-n02704792 amphibian,409,14825
-n02727426 apiary,411,14888
-n02747177 ashcan,413,14932
-n02747177 ashcan, trash can,413,14932
-n02747177 ashcan, trash can, garbage can,413,14932
-n02747177 ashcan, trash can, garbage can, wastebin,413,14932
-n02747177 ashcan, trash can, garbage can, wastebin, ash bin,413,14932
-n02747177 ashcan, trash can, garbage can, wastebin, ash bin, ash-bin,bin413,14932
-n02747177 ashcan, trash can, garbage can, wastebin, ash bin, ash-bin, ashbin,413,14932
-n02747177 ashcan, trash can, garbage can, wastebin, ash bin, ash-bin, ashbin, dustbin,413,14932
-n02747177 ashcan, trash can, garbage can, wastebin, ash bin, ash-bin, ashbin, dustbin, trash barrel,413,14932
-n02749479 assault rifle,414,15043
-n02769748 backpack,415,15080
-n02769748 backpack, back pack,415,15080
-n02769748 backpack, back pack, knapsack,415,15080
-n02769748 backpack, back pack, knapsack, packsack,415,15080
-n02769748 backpack, back pack, knapsack, packsack, rucksack,415,15080
-n02776631 bakery,416,15151
-n02776631 bakery, bakeshop,416,15151
-n02777292 balance beam,417,15189
-n02783161 ballpoint,419,15236
-n02783161 ballpoint, ballpoint pen,419,15236
-n02783161 ballpoint, ballpoint pen, ballpen,419,15236
-n02788148 bannister,422,15321
-n02788148 bannister, banister,422,15321
-n02788148 bannister, banister, balustrade,422,15321
-n02788148 bannister, banister, balustrade, balusters,422,15321
-n02795169 barrel,428,15481
-n02797295 barrow,429,15504
-n02797295 barrow, garden cart,429,15504
-n02797295 barrow, garden cart, lawn cart,429,15504
-n02807133 bathing cap,434,15635
-n02808440 bathtub,436,15692
-n02808440 bathtub, bathing tub,436,15692
-n02808440 bathtub, bathing tub, bath,436,15692
-n02814533 beach wagon,437,15734
-n02814533 beach wagon, station wagon,437,15734
-n02814533 beach wagon, station wagon, wagon,437,15734
-n02814533 beach wagon, station wagon, wagon, estate car,437,15734
-n02814533 beach wagon, station wagon, wagon, estate car, beach waggon,437,15734
-n02814533 beach wagon, station wagon, wagon, estate car, beach waggon, station waggon,437,15734
-n02814860 beacon,438,15828
-n02814860 beacon, lighthouse,438,15828
-n02814860 beacon, lighthouse, beacon light,438,15828
-n02817516 bearskin,440,15896
-n02817516 bearskin, busby,440,15896
-n02825657 bell cote,443,15972
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/data/IMG_7940.JPG,531
-¹å_¶_19,4317
-¹å_¶€,<ñßÂğj=j19,4317
-¹å_¶€,<ñßÂğj=?HOxrÚÛZ±şÕ6Ÿvf’)–ì‘–w"9;:ùv×;ğÛá§İézG‹µÍÃÄ1G<—ÒßİlŠ&Î$™¤GÀÛ"ª¹b22	eĞñ±¸×/’}KSĞäKSĞ19,4317
-å„¨§i;¶šŞÉ¤Ú³µÓjıW‘ğ÷ìÅ¦Yx?á~‘¯kº“ÛéoñÈL©oæ4Z•Ş1ËnàcÏz«ñËAoˆ?µw{m5ŒÒİ,«Hå·ß:|½n<v5—ğóâMìÒ<7ây4Û/øzâNV†×÷³2ÜÇûÉY3½†ö#8®sPÖ¿·¼]%¦+E	Öæ bâTF“Ë ~ë}ÚöæéÎSªº?Ñ~&ÁÕ§É¶ıYëY32,8278
-×Åú¬“ÏÔ“"}ªI±Ú›°ïn™ë_œ“k:ÅİÙ:\¤İZ&íªFæF59,19028
-×Åú¬“ÏÔ“"}ªI±Ú›°ïn™ë_œ“k:ÅİÙ:\¤İZ&íªFæ¾;šé¬5Û=VæÖûPº’‹6ÊmÚz’?µòµ8]I.ZÜ’K{^şºšc²l¢.[.i]¾gè}…®AgâAg59,19028
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/data/ILSVRC2017_test_00000005.JPEG,545
-óƒšTº4¨¬KéÍ½ZdÜïFÓBSwqy&à Û»zo|´Á±'”7¦Ã–½£r¦=U‘vQdÓıAs…ŠxÃV¤›œ!ògØJ#¿N½7!&ÒÜ”d”‘}Í?8;Qå~feÄKµÌØ‹Ar£Á~—U›ºD¢à“¸„J®G	B¨‘TÚïN˜·shiOÎ’¦ŞgÍ¦VíHÕ$S O\ğ¢H§ú¡±'‰¾„bÙ¡0»mÅáñSÉç„Ir¹>zoz3,628
-‰›UÒ.½nY¨ù«nY¨ù4,941
-CïÙô±¥W¥İu²‹ÆÚ"X¥ Ïˆ¨:ˆŠ'2ÓŞŠ‘o+8/,©E¤7N¸»BÑc7áÕnÅÆİQù½³„¤Ñ"š)¾ãÁ°Gk‚MrTñi$…Ÿb›×Æ_^õJ}Ã—RxŒ9Elfº4¦n|œ5¼ #ÛÖ^õæ¢«¢&‰Š?ú­ÆÚM»W½M»W79,18689
-\üÜq¯¿Çq¯¿80,18833
-\üÜq¯¿Ç«Ã·Ñ°ÕéÊ£97ô]kYa²ùíeX‘A·å7è\C—-ú¤“O2œææx›x’ğ\ÛI4i±úÚãv±yqiâWuÚ)·§N¥‚¦0²¢Ã³ó­ÂrÔ~°™+Õä)é	§~²~80,18833
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/data/ILSVRC2017_test_00000004.jpg,156
-ñ%şu£…§¶u£…§3,2050
-ñ%şu£…§¶ÃúòRşÑã$ÛxßŞ¨öEìà;§„¨€ô’_çW_ç3,2050
-‡M!wK÷*/6prâ—’Aõ¾õŞàÁñØÄ9„¡¤›*İPcn°]õÛ3,Ji…¹Vú‡Js×>Kj7ÛKj730,9003
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/example/fine_tuning.py,48
-def config_train(32,1164
-def get_args(70,2753
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/example/pre_trained.py,46
-def display_data(19,424
-def get_args(29,755
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/example/setup_env.pyc,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/example/setup_env.py,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/example,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/data/ILSVRC2017_test_00000014.JPEG,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/data,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/fig,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/dataflow/__init__.py,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/dataflow,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/models/__init__.py,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/models/__init__.pyc,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/models/inception.pyc,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/models,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/nets/googlenet.pyc,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/nets/__init__.py,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/nets/__init__.pyc,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/nets,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/utils/classes.pyc,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/utils/__init__.py,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/utils/__init__.pyc,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib/utils,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/lib,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/README.md,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/TAGS,0
-
-/home/dyros-vehicle/gitrepo/ims/ML_archive/GoogLeNet-Inception-tensorflow/,0
