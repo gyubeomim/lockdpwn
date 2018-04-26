@@ -1,0 +1,610 @@
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/COMMANDS.md,2257
+DATASET_DIR=7,260
+    --output_name=output_name12,473
+CAFFE_MODEL=15,540
+DATASET_DIR=24,973
+    --dataset_dir=dataset_dir29,1163
+    --dataset_name=dataset_name30,1198
+    --save_summaries_secs=save_summaries_secs34,1341
+    --eval_dir=eval_dir46,1681
+    --dataset_dir=dataset_dir47,1710
+    --dataset_name=dataset_name48,1745
+    --wait_for_checkpoints=wait_for_checkpoints52,1881
+    --dataset_dir=dataset_dir64,2300
+    --dataset_name=dataset_name65,2335
+    --batch_size=batch_size69,2477
+    --dataset_dir=dataset_dir78,2743
+    --dataset_name=dataset_name79,2778
+    --batch_size=batch_size83,2920
+    --dataset_dir=dataset_dir94,3384
+    --dataset_name=dataset_name95,3419
+    --checkpoint_model_scope=checkpoint_model_scope99,3562
+    --dataset_dir=dataset_dir114,4314
+    --dataset_name=dataset_name115,4349
+    --checkpoint_model_scope=checkpoint_model_scope119,4492
+    --dataset_dir=dataset_dir136,5597
+    --dataset_name=dataset_name137,5632
+    --save_summaries_secs=save_summaries_secs141,5775
+    --eval_dir=eval_dir151,6034
+    --dataset_dir=dataset_dir152,6063
+    --dataset_name=dataset_name153,6098
+    --wait_for_checkpoints=wait_for_checkpoints157,6234
+    --dataset_dir=dataset_dir171,6770
+    --dataset_name=dataset_name172,6805
+    --save_summaries_secs=save_summaries_secs176,6943
+    --dataset_dir=dataset_dir190,7400
+    --dataset_name=dataset_name191,7435
+    --dataset_dir=dataset_dir204,7935
+    --dataset_name=dataset_name205,7970
+    --dataset_dir=dataset_dir216,8312
+    --dataset_name=dataset_name217,8347
+    --dataset_dir=dataset_dir233,8891
+    --dataset_name=dataset_name234,8926
+    --save_summaries_secs=save_summaries_secs239,9084
+    --dataset_dir=dataset_dir248,9318
+    --dataset_name=dataset_name249,9353
+    --dataset_dir=dataset_dir269,10009
+    --labels_offset=labels_offset270,10044
+DATASET_DIR=287,10578
+    --dataset_dir=dataset_dir294,10833
+    --dataset_name=dataset_name295,10868
+    --save_summaries_secs=save_summaries_secs300,11026
+    --dataset_dir=dataset_dir309,11259
+    --dataset_name=dataset_name310,11294
+    --dataset_dir=dataset_dir329,11871
+    --labels_offset=labels_offset330,11906
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_utils.py,294
+def reshape_list(29,1077
+def print_configuration(61,1894
+    def print_config(64,2016
+def configure_learning_rate(92,3436
+def configure_optimizer(126,5061
+def add_variables_summaries(174,6869
+def update_model_scope(182,7159
+def get_init_fn(186,7264
+def get_variables_to_train(238,9163
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/datasets/pascalvoc_2012.py,23
+def get_split(63,1896
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/datasets/dataset_factory.py,25
+def get_dataset(35,1158
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/datasets/cifar10.py,23
+def get_split(44,1290
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/datasets/pascalvoc_to_tfrecords.py,146
+def _process_image(70,2703
+def _convert_to_example(124,4590
+def _add_to_tfrecord(168,6464
+def _get_output_filename(183,7082
+def run(187,7192
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/datasets/pascalvoc_common.py,23
+def get_split(49,1489
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/datasets/pascalvoc_2007.py,23
+def get_split(89,2431
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/datasets/dataset_utils.py,269
+def int64_feature(30,989
+def float_feature(38,1221
+def bytes_feature(46,1453
+def image_to_tfexample(54,1685
+def download_and_uncompress_tarball(64,2076
+    def _progress(74,2429
+def write_label_file(85,2902
+def has_labels(101,3545
+def read_label_file(114,3968
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/datasets/imagenet.py,79
+def create_readable_names_for_imagenet_labels(62,2199
+def get_split(118,4391
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/TAGS,139
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/COMMANDS.md,md2,2
+DATASET_DIR=3,119
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/preprocessing/tf_image.py,401
+def _assert(41,1793
+def _is_tensor(62,2497
+def _ImageDimensions(72,2780
+def _Check3DImage(90,3505
+def fix_image_flip_shape(119,4693
+def bboxes_crop_or_pad(138,5387
+def resize_image_bboxes_with_crop_or_pad(166,6579
+        def max_(206,8504
+        def min_(212,8673
+        def equal_(218,8842
+def resize_image(266,10988
+def random_flip_left_right(281,11534
+    def flip_bboxes(284,11662
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/preprocessing/ssd_vgg_preprocessing.py,340
+def tf_image_whitened(48,1605
+def tf_image_unwhitened(65,2139
+def np_image_unwhitened(79,2499
+def tf_summary_image(93,2861
+def apply_with_random_selector(104,3235
+def distort_color(123,3946
+def distorted_bounding_box_crop(176,6782
+def preprocess_for_train(235,9897
+def preprocess_for_eval(300,12806
+def preprocess_image(370,15755
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/preprocessing/inception_preprocessing.py,209
+def apply_with_random_selector(26,952
+def distort_color(45,1663
+def distorted_bounding_box_crop(99,4500
+def preprocess_for_train(156,7581
+def preprocess_for_eval(236,11475
+def preprocess_image(277,13226
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/preprocessing/preprocessing_factory.py,65
+def get_preprocessing(32,1099
+    def preprocessing_fn(55,1885
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/preprocessing/vgg_preprocessing.py,292
+def _crop(49,1511
+def _random_crop(94,3205
+def _central_crop(178,6500
+def _mean_image_subtraction(203,7299
+def _smallest_size_at_least(236,8386
+def _aspect_preserving_resize(266,9534
+def preprocess_for_train(291,10432
+def preprocess_for_eval(324,11774
+def preprocess_image(343,12531
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/preprocessing/tf_image.pyc,124
+Most of the following methods extend TensorFlow image library,6,429
+      height, width: Original image dimension;61,4847
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/notebooks/visualization.py,160
+def colors_subselect(26,979
+def draw_lines(48,2017
+def draw_rectangle(56,2257
+def draw_bbox(60,2385
+def bboxes_draw_on_img(68,2750
+def plt_bboxes(86,3530
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/deployment/model_deploy.py,879
+    def model_fn(49,1905
+def create_clones(146,5576
+def _gather_clone_loss(201,7991
+def _optimize_clone(243,9679
+def optimize_clones(269,10724
+def deploy(314,12610
+def _sum_clones_gradients(418,17057
+def _add_gradients_summaries(451,18135
+class DeploymentConfig(478,19101
+    def __init__(486,19414
+    def num_clones(545,22178
+    def clone_on_cpu(549,22251
+    def fake_multiple_gpus(553,22328
+    def replica_id(557,22417
+    def num_replicas(561,22490
+    def num_ps_tasks(565,22567
+    def ps_device(569,22644
+    def worker_device(573,22715
+    def caching_device(576,22780
+    def clone_device(589,23162
+    def clone_scope(613,23984
+    def optimizer_device(632,24569
+    def inputs_device(643,24877
+    def variables_device(655,25184
+        class _PSDeviceChooser(666,25499
+            def __init__(669,25607
+            def choose(674,25760
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/eval_ssd_network.py,19
+def main(107,4359
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/caffe_to_tensorflow.py,17
+def main(30,942
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/np_methods.pyc,234
+      numpy array Nx4: ymin,12,922
+      numpy array Nx4: ymin, xmin,12,922
+      numpy array Nx4: ymin, xmin, ymax,12,922
+      classes,24,1812
+      classes, scores,24,1812
+      classes,36,2637
+      classes, scores,36,2637
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/ssd_vgg_512.py,575
+class SSDNet(63,2351
+    def __init__(103,3789
+    def net(113,4153
+    def arg_scope(139,5205
+    def arg_scope_caffe(144,5382
+    def anchors(150,5622
+    def bboxes_encode(161,6169
+    def bboxes_decode(173,6594
+    def detected_bboxes(182,6926
+    def losses(203,7978
+def layer_shape(224,8832
+def ssd_size_bounds_to_values(241,9441
+def ssd_feat_shapes_from_net(269,10514
+def ssd_anchor_one_layer(286,10990
+def ssd_anchors_all_layers(341,13047
+def ssd_net(364,14058
+def ssd_arg_scope(463,18702
+def ssd_arg_scope_caffe(490,19892
+def ssd_losses(516,20946
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/np_methods.py,297
+def ssd_bboxes_decode(23,966
+def ssd_bboxes_select_layer(56,2230
+def ssd_bboxes_select(100,4001
+def bboxes_sort(137,5321
+def bboxes_clip(153,5933
+def bboxes_resize(167,6394
+def bboxes_jaccard(186,6961
+def bboxes_intersection(208,7800
+def bboxes_nms(229,8587
+def bboxes_nms_fast(245,9307
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/vgg.py,88
+def vgg_arg_scope(49,1578
+def vgg_a(66,2084
+def vgg_16(125,4892
+def vgg_19(184,7731
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/custom_layers.pyc,36
+      inputs: Input Tensor;63,4555
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/custom_layers.py,104
+def abs_smooth(31,1235
+def l2_normalization(47,1677
+def pad2d(119,4868
+def channel_to_last(147,5826
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/ssd_vgg_300.py,682
+class SSDNet(82,3243
+    def __init__(126,4796
+    def net(136,5160
+    def arg_scope(162,6216
+    def arg_scope_caffe(167,6393
+    def update_feature_shapes(173,6633
+    def anchors(180,6933
+    def bboxes_encode(191,7480
+    def bboxes_decode(203,7905
+    def detected_bboxes(212,8237
+    def losses(233,9285
+def ssd_size_bounds_to_values(254,10139
+def ssd_feat_shapes_from_net(282,11237
+def ssd_anchor_one_layer(306,11977
+def ssd_anchors_all_layers(361,14034
+def tensor_shape(384,15045
+def ssd_multibox_layer(401,15633
+def ssd_net(432,16850
+def ssd_arg_scope(525,21041
+def ssd_arg_scope_caffe(552,22231
+def ssd_losses(578,23285
+def ssd_losses_old(659,26756
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/nets_factory.py,81
+def get_network(56,1929
+def get_network_fn(63,2112
+    def network_fn(83,2975
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/ssd_common.py,462
+def tf_ssd_bboxes_encode_layer(25,1034
+    def jaccard_with_anchors(64,2542
+    def intersection_with_anchors(80,3148
+    def condition(93,3643
+    def body(100,3868
+def tf_ssd_bboxes_encode(159,6568
+def tf_ssd_bboxes_decode_layer(199,8322
+def tf_ssd_bboxes_decode(228,9381
+def tf_ssd_bboxes_select_layer(255,10428
+def tf_ssd_bboxes_select(299,12490
+def tf_ssd_bboxes_select_layer_all_classes(339,14266
+def tf_ssd_bboxes_select_all_classes(378,16188
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/ssd_vgg_300.pyc,496
+Wei Liu,10,600
+Wei Liu, Dragomir Anguelov,10,600
+Wei Liu, Dragomir Anguelov, Dumitru Erhan,10,600
+Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy,10,600
+Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,10,600
+Cheng-Yang Fu,11,674
+Two variants of the model are defined: the 300x300 and 512x512 models,14,741
+    with slim.arg_scope(arg_scope18,883
+      size: Absolute reference sizes;116,9947
+      ratios: Ratios to use on these features;117,9985
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/caffe_scope.py,278
+class CaffeScope(15,286
+    def __init__(18,340
+    def load(26,530
+    def conv_weights_init(48,1478
+        def _initializer(49,1511
+    def conv_biases_init(67,2426
+        def _initializer(68,2458
+    def l2_norm_scale_init(79,2964
+        def _initializer(80,2998
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/inception_resnet_v2.py,140
+def block35(33,1122
+def block17(54,2153
+def block8(74,3063
+def inception_resnet_v2(94,3969
+def inception_resnet_v2_arg_scope(254,11496
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/xception.py,593
+def xception(16,431
+def xception_arg_scope(120,5079
+def xception_keras_arg_scope(156,6598
+    def keras_bn_params(179,7277
+        def _beta_initializer(180,7304
+        def _gamma_initializer(186,7598
+        def _mean_initializer(192,7894
+        def _variance_initializer(198,8196
+    def keras_conv2d_weights(218,8951
+        def _initializer(219,8983
+    def keras_sep_conv2d_weights(227,9332
+        def _initializer(228,9368
+    def keras_dense_weights(245,10244
+        def _initializer(246,10275
+    def keras_dense_biases(254,10604
+        def _initializer(255,10634
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/inception_v3.py,148
+def inception_v3_base(27,992
+def inception_v3(417,20847
+def _reduced_kernel_size_for_small_input(527,25765
+def inception_v3_arg_scope(558,26975
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/ssd_common.pyc,312
+      labels: 1D Tensor(17,1104
+    Return:Return23,1419
+      bboxes: Nx4 Tensor(59,4852
+    Return:Return64,5107
+      localizations_net: List of localization layers;118,9138
+       localizations_layer: A SSD localization layer;132,10482
+      localizations_net: List of localization layers;148,11529
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/pictures/ex2.png,5095
+tL ∑BB5,1174
+<4⁄Z2œ‹õ]Haj&ÇYyóËS`jÑ©¢@£ŸJç√¨(d	"’∏ÑéäÖ”¢)—ˆ˘ô}“tÃ.’‚òQö2ﬂ¨ÒÒO~ö˜ºÁÔKøÙK¸?¯ª¸÷o}Ñﬂˇ˝ﬂÃ§ıÈ?zÜ˝›=ça‰ª–xëfå,Ω_ØTJ3Lánu«1iö:⁄``Í≠ïZ≥,+®ƒ1a`≤z6TS∂i	≤Ü√!”ç»ıôrr.rõEòÁ.+ŒÑ]≤âär:™ úKº1X3îe_œsEKº1X3îe_œs218,61680
+Ñ4L—Ò—>BjŒù;K£s‹1N¯øã?OÁ¯êZµ¡ÏÏ<ıZì˘ŸE“D—ÎùIm†aÈÏ2«#ì)∏~ÎÎÎÎ\y¸	ßÖÌFxAàÔÖ§yFxAàÔÖ§219,62370
+hﬂ±4Oz¯Æ∂)U{Â√øRçÁò^åô"˜Ê}Ìtõ«LÿE°h¥Zÿ´Ù∑r]◊˛—q,q254,73406
+i‘:6†ú‹JïaORZ2‹ºyìjµ4õ Ñ6Õ≤å7˙<ÛÃ3ñﬂW∂eÛ<76ÖÂoE¡˙˙:£—»û€íÁxıfãfkÅ≠ù}v«É©æØ«iü®—%´úøxâx255,73620
+i‘:6†ú‹JïaORZ2‹ºyìjµ4õ Ñ6Õ≤å7˙<ÛÃ3ñﬂW∂eÛ<76ÖÂoE¡˙˙:£—»û€íÁxıfãfkÅ≠ù}v«É©æØ«iü®—%´úøxâ,À®◊´8ÆC<‹ŸÁ∏qÌ*/^§R©–j5êËvï sNœ∏t˙ZÎ±^F,F255,73620
+˘aŒa256,73766
+˘aŒˆÌ]⁄Õiöi256,73766
+˘aŒˆÌ]⁄Õiö∞€;‡»ë£H)Ÿ⁄ﬁ∂ECög4õM˙¶•Ä8’„.1ÖΩÁ˚Zh’ÒΩ«qhµ¯ R∆ìûπ?VVπ|Ì*qú±∂zúÂÓ£I∆Wˇµø¡O<¿âªNÒMÛõ9~¸$„ÈÑZögGaüO|˛q._º@ö∆T_º@ö∆256,73766
+°ØFM«≤,lªìUpÇHÁÀ%åX¯ ö¶âm€LNN≤≤¥H±$“≠µJôÕÕM¶ßßÈızl5LÌ‹A°P‡¬ÖÄ†ºx‚$≠FãrπÃŒ]”åééä ·$·ÃI°èµººLcsãZ≠∆Ìo!âc!’a;»öFŸúÕjµJªŸƒul∂∑DtddMQ3«M”D*[’2Œaxÿ=°e¶ﬂπ§»ƒë ‚7«:Ñ~@$É§*ûè$]2ºÆ—˜|Î´<¯CÏ;xÄ˝Œ“›ÕfìÁüû∑ˇ¬€X__Áf⁄À"–J∏é‘?Qª÷¬Ω@$æÏòõÌ˜’q?.íw#AÀı∏M7⁄~‘†D—¿‡™W†áŸ	„2‚ºŸÎ^kúØ ≥sKWû›q¨Bû˜ΩÔˇ‰ìü¸$ü˝‹É»≤ƒøˇ˜†ûVÃ¨ÆÆr‰ªﬂc«éôTø∆#ÚÖ0b’≤rQÑ¨ä	√∞*h∫IπZ£óríI%W,QÆ·yaF.á™(∫¡˙∫ ˇˇ„øefÁ.÷◊Îhö‡8IqÇa‰∞˚)öR)„y-¡…BE—¢®1ÜÆ“Ôâ≤ÈÇeR-}§$@B¶V+S*Ê¯⁄ˇÅµ’eq>+áeòòﬁ¡áøÕ#ﬂ|îWΩÍUÏ›=óUˆÜA.g	q⁄¬îÉG¬tv–Ù˚}L√¿w˚ååå–‹Æ.	ÇÏß¡AÑƒq≤$&–8∆Ãp˚p350,101307
+A1<<L±X$écr∫8W∑€ÊŒ;Ô‰◊~ıù‘ÎÎ¸—{ﬁÉ$qÖ≤z«t;M|ÛH™ƒk^˚J·ë"”Éoÿ4Mz∂êÔêëËwª®≤Ç„8¢_©ÄiÂ	„ò¿è–sBEﬁ˜BsBEﬁ˜369,107621
+A1<<L±X$écr∫8W∑€ÊŒ;Ô‰◊~ıù‘ÎÎ¸—{ﬁÉ$qÖ≤z«t;M|ÛH™ƒk^˚J·ë"”Éoÿ4Mz∂êÔêëËwª®≤Ç„8¢_©ÄiÂ	„ò¿è–sBEﬁ˜Bt]gÁNa‹∆ëxF<¸√lmm1<RÊ÷CRÊ÷369,107621
+aS‚Ï¬¨úíD'ÿi– ´ó™SÔª˜Nû8ÜY0pè|π@+≠H•St€=˙]•§2<$»¡N/U¨◊% Â"/,“jnR.îŸ±kÇ;∆G8q~Åè}ˆoxÙâoxÙ402,112542
+aS‚Ï¬¨úíD'ÿi– ´ó™SÔª˜Nû8ÜY0pè|π@+≠H•St€=˙]•§2<$»¡N/U¨◊% Â"/,“jnR.îŸ±kÇ;∆G8q~Åè}ˆoxÙâßûò„Ø˝Uﬁr'ïr-≠˛®ïs¥[¢P‚»ì«h4∂hı6Ò˝Äâ…ùTÜ∆©÷F	1Æa$13øêŸ\o∞µQßX"ü≥H:=Hø99éPË®™JÀ(≤$RÒ95’´Ú%YV≥M’¿g“˜}ÃTÇ†R™≤x˛"≈|Y«ÓëÀÂX__ghhà¡,tÚ¯qç-°ìgÍƒQD‡˚BŒ Æâ"\€Aë%˙vHÿ‹⁄BñE0®•-≤,ì∑äË∫âÔFDI¬°€ney≥≈—£G3˘B°Ä'ÏüﬂÀ]w›Ö°)<˘ùo1=o1402,112542
+˝*·€©¿≥®fÛY^d`¥8æK^	—Ÿ0I„XÉÄ£ŸÑ˛∞Gû$´%--MSˆ:é∏~7tqKá¿rIW¬zßi+º@,∆Ü†UÚySêÃf§EÅÔ≤síäJCÄ"_ASQ◊0ü-(K)°c4Tµÿúu≠>√®ãi;îeÕÖ_b|ÎMïaPÎ9ÎƒÓ.ÛÉÜ…ı+ƒè···bÉ”b!£œuéiòuéi609,169582
+bæ7µåä™‘Ë·\D=Tvª]ö™¶®r	V®r	612,170438
+!Ù®¥’Ñà{LﬁAU}©*.ı¨ö¶° ◊^ì7oﬁdwoﬁd613,170467
+öºƒhÖh614,171291
+@mS0[L1-®K!Â`õ6ROîF>OÀ0h Zè	5ﬂ*p4üœu•ˆW”‡ò¢≤Pß⁄*©îUâe!‹‚8Ê‡‡Ä››]\y¨››Ç'Î˚îe…b± îƒZ¢Fmﬁ|ﬂß¨≈y|{_DÚè¶“«p6õ±wBÙcûx°éçFk{©8«ÓDtª'0É?=xâ˚mo†µŸÍ∂=ñ*˙˜π›	í4}'öWÇÜ˝÷5^Ó∆SSø=Py∑„›O{Ωt≠˙˚ÊÓ]G•‘NKÍ!)›†Î7n1òNßM≠wPJYÿq<0,a™kK}!ô6	=ep]€1©+¡;á$…∫ú>IEzBêv+aac5k«±ÿëÂƒü¸‰'Y-˛Ûøı∑x‰ëG¯Úü~ë<`I•I617,171614
+aÃÌHï’øB≥IY›$Û)ÆÎ ˜J®∆èF€≤µµµéhµ-√·6´4a>ù“ŸŸŸ·`<—^ÄYíj §"dïåfπŒ–WUÖÎàw÷Òp+Àí÷^€qŸÆÖc8ÜI±ﬁC(/„ô˛ø<œ1mßm∞ZïÔvÖûñˆt4n‹∏Aû≠ËıÑƒŒhèΩ'u*\ç£˘|Æ#ª∂Î‡j™çﬁ+¢†Àl6£jjÌÅôVBÎ-´Eümç˙ö'⁄Ô˜PlZ¶ám*m56√~ü¢(∏-=GÔ∑Ω-Ä÷ù¿™Uì°¸√}FﬁnZØGñˇNà˘r~›ﬁ‰π^Ô‰w˜ìjº[ª◊sﬂywöz´<æ"°A¿t6”π|◊uôÏuô620,172408
+¬–◊i˚∆Pi˚∆622,173350
+]Q«qX,"ÕU∑E)Ü!Œ«1›≠˙|æÔsòÁxsòÁ625,174928
+“¥–QeEAQ‰fù.ãXAi¸åêí\)“X'†LÕ†áÂ:ï_™êqnf£,Tf„ôVnÑç-Ú¥–ÉIX’Ø„x‘˛gÿÔëf§„8‰J‡ôn≥mKù4 l∫Äç"=âõDqUÑßaH,ﬂbjÓÂAøèÔÿ§Èf>∞-$)aºœæØ;a∂%(Ã‰∞c	,ØA8”¸¥¿˜˚4j>iò"ÀŒ£rpÖEPØk"|êÊ	a·ñùÎ¨®à[q8ˇú◊∑E°eIINòá,ÃwYY“îf´¡˙ 2ÕfùÌ€∑±kœnzΩ'Oßﬂêe˙t¯’ªÓÊ‰…ì¥j5ç5œ„âì1©JX4ÒçfáI8£°⁄ ›Ö9ﬁˇ°q¯©ªH‚º*¥¢(Buéù<≈æÀˆ”hµYYÌ±∏s”≥{œ>é= `0@)AñFé H‚¨zØ8é)J!0¨sssú?ûF£UUÁPTãF´›0ì«±*H€©”ßËv€¨≠Â¯5!§ca€›vó}{tÿÚ«ˇÎÁÁ~Êgı&æGZ§4§l{÷jy¶';‹˘yvæâ{ﬁÒ˚ÏwıtPôÏbIâ4≈Äm9H°Gß-iìóôfæG2Î±˜¢ 3ß◊F∑Õxm)ıC•PXñM£ﬁ`FÏx—˜Búp˛Ô?Ea⁄Àâ·¥(`ÁÀ^Ç’ÂôœklÜ»Òçå·Ì‹A„)7ê¸ŸG)R›“|øzp§ë¶ÚB·JIEH–ïRÿﬂyj0‰ÒÀ¡s]˙˝>áˆ,íÂÌÔˇn∆üªÉeWˇ{BÍı4èÁÒ’uûTØìKã≥¬ô)©Zp¡∂¯Bªç@∞0ø¿“Ú˝˛Ä››&¶#óÂ9q^∞CZ‘Ça8√u=@!-ãÖ']çÿËsd2°çˇ™P’Ù•gŸÿé√µ¿1!LC«èx¶#t]ñ!ÕtNñextNñe1212,325719
+hŸ(N7√„]◊f:	5KK1213,326803
+hŸ(N7√„]◊f:	5K§\◊]‘-HÉBl2ïJ9ÏßHÉBl2ïJ9Ï1213,326803
+√~s]ó0J»sÖ∏¥t6õ¯n’ëÛ]è8Ÿå‰J≥åÌ€∑≥¥¥DxX&Ã›˜}F”IHø¥≤åÉñdÀézo∆Ô¸Ÿ—íBqˆÿvÕ∑±UJ8”ãN4õ%)Q≤∂±∆ﬁÀvs«?«`–„5Øy›ªÔ%é#é>~Ñóˇ‡K˘ÿ_¸ôFÊ&I≠VÁI≠V1214,327086
+√~s]ó0J»sÖ∏¥t6õ¯n’ëÛ]è8Ÿå‰J≥åÌ€∑≥¥¥DxX&Ã›˜}F”IHø¥≤åÉñdÀézo∆Ô¸Ÿ—íBqˆÿvÕ∑±UJ8”ãN4õ%)Q≤∂±∆ﬁÀvs«?«`–„5Øy›ªÔ%é#é>~Ñóˇ‡K˘ÿ_¸ôFÊ&I≠VÁÏy]¥ÌŸ≥€Ø≥≤∂Lª›fimi9‘-|_2òViñC°ÿπk/gœ_dcgœ_d1214,327086
+ˆ\∂ãã˜=Ä∞%W}ˇŸÛ¥õ8ˆ—øF	Ì≠Ú\èŸtFß”ÆÃ’ÁWEe6.äÇÈdä„j≥~Üc*Õ2“T£5t Æˆ‚†6ø)≠KÇ_]3àëõ‹¬≠§c"E$¶˚\h~Xu–Pö¨^ﬁøZ“≥Z“1220,329028
+ˆ\∂ãã˜=Ä∞%W}ˇŸÛ¥õ8ˆ—øF	Ì≠Ú\èŸtFß”ÆÃ’ÁWEe6.äÇÈdä„j≥~Üc*Õ2“T£5t Æˆ‚†6ø)≠KÇ_]3àëõ‹¬≠§c"E$¶˚\h~Xu–Pö¨^ﬁøZ“≥âì∏Aå,d!–>ï¬@t°ÕﬁeTL^ÇzUô°hvÙPOﬂòwzUô°hvÙPOﬂò1220,329028
+&MSÌY±ıX“ À1˘Z≠Fû)VW◊+bΩÎ¯®"&œÀë{m~n7õÃ&£-˘ê¶ µt·ì•9ûÁ ¸∑d9ÈP„&£ﬁÜñëFã™÷q´l’©˘£—® £ìR"+».’{ñÉ2ûÁVﬂ„uﬂ˚B¬çÔ∞¨ÿı˜kv`π·j&ú™ÓÅ2"Ï˙ó˝ ˛óøa„ƒIîR‹ıﬁ?‰ﬁ˜Ó¸èÔ∆∂uÙî*¥k·)Of˘¡oqÊÎ˜è˛ÂÂ∆◊˝(ã7‹¿ ˝1∫∏\¿EQP‰9ÌΩª…R}`;¸Ü◊Ú¿G>JˇËqÚ,#\ÎÈò0!HùGHù1221,329235
+]Òwz&Ék€ƒ1iΩ™*ißK◊ìÖ;AÙa∑‚ÎD<ëú@Y˚£Z%)æNeÓ§Õ0BO`ΩçF#•À+öötwíﬂôjµJπ\~V£”‘V£”1224,330485
+E◊ı?πkF&¡O$/,®◊uE«µ›Ê¸Û∂133CÂHD¬Ã¥¯=õv´CâàûûÌ‡:ÖBÅvªÕö◊]¡˛;Ô¢›Èp¸¯qp¸¯1248,337324
+ÀóØâóØ1250,337877
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/train_ssd_network.py,51
+def main(184,7946
+        def clone_fn(263,11947
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/eagle.jpg,211
+æÑæˇøzøı¿p¿Ï¡g¡zøı¿p¿Ï¡g21,6604
+ÉQ,ã∫™Üsà≠‡!‰]ÿˆ™˜âßI7 °A¸+Xb™AŸIXb™AŸ85,21436
+ÉQ,ã∫™Üsà≠‡!‰]ÿˆ™˜âßI7 °A¸+Xb™AŸI0‰;8¸}§™ÏhF}≈qQiöqQi85,21436
+ä‚Øæ_ÃH≈Ul…%{?ΩÇGh⁄ï˝∫í/7bºùÕ¬û„Íkœó%¢ã˚ Q=Q86,21614
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/000022.jpg,182
+k&Œ™ã¨tö?ã¸R⁄çùR⁄ç67,2286
+¯Ÿs®s76,7789
+¯˚MeñmÌ˙EÁŸ%˝¸êJ–Õ˛√˘J–Õ˛√˘86,16187
+AˇA88,16627
+¯sK∂“ol““H£9{ÌÔ%π]Õ≤RËªFSh⁄:m˜¢ºÔ™?Á7>m’<*Ø·+;ç⁄}zÊÏÏÁÜË…ˆ<Œçn6¨n6118,39209
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/000004.jpg,63
+ö~ï~66,633
+pT’+ª9ﬁ;ìp¢X ¿cíHﬂ$¢/ò™xÀn2wxÀn2w85,3998
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/street.jpg,244
+£HJtŒOîßÿ∫T‹µ6ÔµO&Ç5!™èAÎX∂AÎX10,3643
+ÎÙÀ9$µY$.∞DHYùá»Ou•	:z§S^ÒÂO∆üxvÕ, MºI˜n,Yˆw€ûΩ˚’ªØé~.Ú‘ò»„!ÖéA¸k¶Òl⁄Üπd⁄Vç§ﬁÀh_2]≈íIwfœNÿÈÄ*?O◊-t÷≥ojJ√_≥/æ3]úÒz¥`ÈEhô…/«\Ü˚=†∫bp°tÕ¿}MP⁄c∆6ﬁdDÿ#gk†·Å«•wzãØhÛHüè_\˘çºßîPÌP12,3893
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/000010.jpg,45
+RV±<ÈΩwGΩ∂‘¥Î¶∏ú@qò£⁄Ÿf>ú˘’]BÀPBÀ90,8304
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/000003.jpg,158
+¬¿Í“ÁsìŒsP¯Oˆ≥¯”‚ªÙo|/cn€·èGcn€·è67,919
+T©!Å#ÅUµﬂ¸7‘ÏŒï?Ñ¡π‘7Åg˚g99,15080
+ı>.À”r—›µfÂ%n÷NÀÒ.¶aRkìõôzX˜ÔÇi’~%Õ§|OÒm◊Ç¥ª˚aOÒm◊Ç¥ª˚a102,15957
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/person.jpg,314
+æÑæˇøzøı¿p¿Ï¡g¡zøı¿p¿Ï¡g20,6604
+®≤Mƒ.Y»Õ*Ä›:‘0∏Ù©åYÎKAÍCºw®‰∑ê(≤I÷a⁄©˝ûe°≈e„(™aeEO(6À*ÁuF	ëäpH¨0’L…éÿ§–\∂ º‚´	cπ?îå9®¿Q®bÜ-ÿ U¸)jÄÇﬂÅY≠sÅ÷ã0∫4í8"9±öË˙”ÂaÃçI0Ÿà◊«‘ÆhaÃçI0Ÿà◊«‘Æ40,9639
+˙Vzï°fC}—ä öÔ#jíb.<àx¨&úíj˘	Ê/MlŒŸÍ)ëﬁÖûhM°hÀVñ1M ç€^∆>y©ìe+3Ë∆øªnj£ÍÍÀík8©ı.N=N43,11067
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/000002.jpg,23
+Ã≤±9$Ä}˘üP=P67,1422
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/dog.jpg,114
+æÑæˇøzøı¿p¿Ï¡g¡zøı¿p¿Ï¡g21,7928
+ú∞uı«3·]œWø∑ÛÂéÓ⁄Vô#rπTPeçä}ÏdåÇzVT Œ+N§s¬WRKøcO√æ‘ÆØbπ—/§µ~]~36,10103
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/000006.jpg,349
+G”ß”Ø·Y‚ÕUÉ"OuˆÈ˛~µ’û€ªGG72,3827
+®&7ƒMmO=MmO73,3861
+F3ú˜Ì˝jƒWJ£F3ú˜Ì˝jƒWJ74,4130
+éG9¡Ë=ÎJï9µﬂ_√˙˘ôUíö]lévlé91,11016
+dóªxœÊÛØ~1P¡–ä_b?ä˛ëÚxg&ÁÆ“óÊŒÅ≠ƒuhﬁÓYô-H£pRH£p92,11454
+.⁄ÛoM6ìªÎ}/‹˜p’quÁó’ƒØ}ﬁ˛Íãv©$v©105,16085
+9œN=ª:˘∫iK3©oÊ©Ìa¥¡C”Ù>UÒÖ∏ó∆⁄≥ºõß Ç8˘QÕ~∞¡ØVk§¸]ΩﬁªZÀCÃYZÀCÃ160,34348
+üù]ÇC∞ÜC∞175,41814
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/horses.jpg,118
+æÑæˇøzøı¿p¿Ï¡g¡zøı¿p¿Ï¡g21,6626
+BôB39,8121
+≈pÉΩX⁄J.6C‰äó<‚ï¿H‚œZîCCaaí?ó”©§+ìú–ò N¨Á-VàÓI¶8´*	4ss55,11543
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/inspect_checkpoint.py,101
+def print_tensors_in_checkpoint_file(32,1051
+def parse_numpy_printoption(64,2301
+def main(96,3531
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_convert_data.py,18
+def main(47,1491
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/metrics.py,348
+def _create_local(36,1421
+def _safe_div(59,2334
+def _broadcast_weights(75,2849
+def precision_recall(100,3948
+def streaming_tp_fp_arrays(133,5318
+def average_precision_voc12(212,9102
+def average_precision_voc07(237,10188
+def precision_recall_values(261,11188
+def _precision_recall(289,12251
+def streaming_precision_recall_arrays(309,13051
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/tensors.pyc,61
+      offset: Offset to add on the dimension chosen;25,2041
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/math.py,44
+def safe_divide(25,931
+def cummax(41,1448
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/tensors.py,45
+def get_shape(34,1399
+def pad_axis(59,2311
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/bboxes.py,540
+def bboxes_sort_all_classes(27,1057
+        def fn_gather(44,1841
+def bboxes_sort(60,2421
+        def fn_gather(89,3609
+def bboxes_clip(103,4071
+def bboxes_resize(139,5423
+def bboxes_nms(166,6408
+def bboxes_nms_batch(192,7551
+def bboxes_matching(246,9774
+        def m_condition(285,11857
+        def m_body(289,11963
+def bboxes_matching_batch(337,14221
+def bboxes_filter_center(386,16556
+def bboxes_filter_overlap(408,17448
+def bboxes_filter_labels(431,18398
+def bboxes_jaccard(452,19276
+def bboxes_intersection(482,20466
+
+caffe_to_tensorflow.py,17
+def main(30,942
+
+eval_ssd_network.py,19
+def main(107,4359
+
+inspect_checkpoint.py,101
+def print_tensors_in_checkpoint_file(32,1051
+def parse_numpy_printoption(64,2301
+def main(96,3531
+
+tf_convert_data.py,18
+def main(47,1491
+
+tf_utils.py,294
+def reshape_list(29,1077
+def print_configuration(61,1894
+    def print_config(64,2016
+def configure_learning_rate(92,3436
+def configure_optimizer(126,5061
+def add_variables_summaries(174,6869
+def update_model_scope(182,7159
+def get_init_fn(186,7264
+def get_variables_to_train(238,9163
+
+train_ssd_network.py,51
+def main(184,7946
+        def clone_fn(263,11947
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/image.py,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/__init__.py,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/image.pyc,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/__init__.pyc,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/metrics.pyc,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/bboxes.pyc,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended/math.pyc,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/tf_extended,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/000001.jpg,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo/000008.jpg,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/demo,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/pictures/ex1.png,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/pictures,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/inception.py,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/__init__.py,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets/__init__.pyc,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/nets,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/deployment/__init__.py,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/deployment,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/notebooks/ssd_notebook.ipynb,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/notebooks/ssd_tests.ipynb,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/notebooks/visualization.pyc,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/notebooks/.ipynb_checkpoints/ssd_notebook-checkpoint.ipynb,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/notebooks/.ipynb_checkpoints,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/notebooks,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/README.md,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/preprocessing/ssd_vgg_preprocessing.pyc,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/preprocessing/__init__.py,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/preprocessing/__init__.pyc,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/preprocessing,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/datasets/__init__.py,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/datasets,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/.projectile,0
+
+/home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning/Object_Detection/SSD-Tensorflow/,0
