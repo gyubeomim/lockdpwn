@@ -34,11 +34,20 @@ np.savetxt('nozero_dyros_1.txt', dyros_np2, fmt='.2f')
 
 #START============================================
 # ed: dyros_#.txt 데이터에서 xyzi만 있는 데이터, rgb만 있는데이터, NULL 데이터는 몇개가 있는지 등등 확인하는 코드
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+dyros_np = np.loadtxt('./dyros_002_15.txt', delimiter=',')
+dyros_pd = pd.DataFrame(dyros_np)
+
 xyzi_only = np.empty(0)
 rgb_only = np.empty(0)
-null_only = np.empty(0)    # it means [0,0,0,0,0,0,0,1]
 label_count = np.empty(0)
-all_zero = 0               # it means [0,0,0,0,0,0,0,0]
+null_only = np.empty(0)    # null_only : [0,0,0,0,0,0,0,1]
+all_zero = 0               # all_zero  : [0,0,0,0,0,0,0,0]
+
 for i in range(dyros_np.shape[0]):
     if dyros_np[i][0:3].any() and not dyros_np[i][4:7].any():
         xyzi_only = np.append(xyzi_only, dyros_np[i]).reshape(-1,8)
@@ -50,7 +59,7 @@ for i in range(dyros_np.shape[0]):
         label_count = np.append(label_count, dyros_np[i]).reshape(-1,8)
     if not dyros_np[i].any():
         all_zero += 1
-print('\n[+] xyzi_only : {} \nrgb_list : {} \nnull_list : {} \nlabel count : {} \nall zero : {}'.format(xyzi_only.shape[0],rgb_only.shape[0],null_only.shape[0], label_count.shape[0], all_zero))
+print('\n[+] length : {:^18} \n[+] xyzi_only : {:^10} \n[+] rgb_only : {:^10} \n[+] null_only : {:^10} \n[+] label count : {:^8} \n[+] all zero : {:>10}'.format(dyros_np.shape[0],xyzi_only.shape[0],rgb_only.shape[0],null_only.shape[0], label_count.shape[0], all_zero))
 #END==============================================
 
 
