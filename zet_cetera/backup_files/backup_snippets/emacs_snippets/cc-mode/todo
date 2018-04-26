@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#cotributor: 
+#name: todo by edward
+#key: todo
+#group: todo
+# --
+// TODO(edward): $0
