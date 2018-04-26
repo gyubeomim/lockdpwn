@@ -30,7 +30,8 @@ dyros_np2 = np.delete(dyros_np, pop_list, 0)
 np.savetxt('nozero_dyros_1.txt', dyros_np2, fmt='.2f')
 #END==============================================
 
-
+for i in range(100):
+	test()
 
 #START============================================
 # ed: dyros_#.txt 데이터에서 xyzi만 있는 데이터, rgb만 있는데이터, NULL 데이터는 몇개가 있는지 등등 확인하는 코드
@@ -75,7 +76,3 @@ unique, counts = np.unique(dyros_np[:,:3], return_counts=True)
 (counts.sum()-counts.max()) / float(counts.sum())
 #END==============================================
 
-
-#START============================================
-
-#END==============================================

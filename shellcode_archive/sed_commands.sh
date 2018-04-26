@@ -35,3 +35,8 @@
 
 - find /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws -type f -print0 | xargs -0 sed -i 's/dbw_mkz_description/dyros_simulator/'
     - dbw_mkz_description --> dyros_simulator
+
+
+
+find ./ -type f -print0 | xargs -0 sed -i 's/home\/dyros-vehicle/media\/dyros-data/g'
+
