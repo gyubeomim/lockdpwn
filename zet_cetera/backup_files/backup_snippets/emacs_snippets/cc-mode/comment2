@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: comment block by edward
+# key: comment
+# --
+/*
+   c++ ==> $0
+*/
