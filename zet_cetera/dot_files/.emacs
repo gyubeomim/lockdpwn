@@ -981,6 +981,7 @@
             ;; (local-unset-key (kbd "C-y"))
             (define-key term-raw-map (kbd "C-b") nil)
             (define-key term-raw-map (kbd "C-y") nil)
+            (define-key term-raw-map (kbd "C-q") nil)
             (define-key term-raw-map (kbd "<S-insert>") nil)
 
             (define-key term-raw-map (kbd "C-v") 'term-paste)
