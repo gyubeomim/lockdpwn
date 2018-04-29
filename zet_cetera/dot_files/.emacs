@@ -988,27 +988,8 @@
 
             (define-key term-mode-map (kbd "C-v") 'term-paste)
             (define-key term-mode-map (kbd "C-b") 'helm-for-files)
-
-
             ))
 
-;; (with-eval-after-load "multi-term"
-;;   (dolist
-;;       (bind '(("C-v"       . term-paste)
-;;               ))
-;;     (add-to-list 'term-bind-key-alist bind))
-;;   )
-
-(defun my-term-mode-hook ()
-  ; (define-key term-raw-map (kbd "C-y") 'nil)
-
-  (define-key term-raw-map (kbd "C-v") 'term-paste)
-  (define-key term-raw-map (kbd "C-k")
-    (lambda ()
-      (interactive)
-      (term-send-raw-string "\C-k")
-      (kill-line))))
-(add-hook 'term-mode-hook 'my-term-mode-hook)
 
 ;; protobuf-mode를 활성화한다
 (require 'protobuf-mode)
