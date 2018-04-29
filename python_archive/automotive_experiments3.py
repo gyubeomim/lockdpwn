@@ -192,3 +192,4 @@ print("[*] 2A1 & 2B1 FRF 상호성 확인 \n[+] 2A1 mean:{:6}   std:{:5}   min:{
 
 
 
+
