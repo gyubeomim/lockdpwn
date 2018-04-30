@@ -516,7 +516,7 @@
           (lambda ()
             (jedi:setup)
             (jedi:ac-setup)
-            (local-set-key "\C-cd" 'jedi:show-doc)
+            ;; (local-set-key "\C-cd" 'jedi:show-doc)
             (local-set-key (kbd "M-,") 'jedi:goto-definition-pop-marker)
             (local-set-key (kbd "M-.") 'jedi:goto-definition)
 
@@ -647,6 +647,12 @@
                                    ("a" "Link" entry
                                     (file+headline "~/gitrepo/ims/org_files/index.org" "Link")
                                     "* %i%?")
+                                   ("s" "Note for SqueezeSeg" entry
+                                    (file+headline "~/gitrepo/ims/org_files/project_squeezeseg.org" "Note")
+                                    "* %i%?")
+                                   ("e" "Task for SqueezeSeg" entry
+                                    (file+headline "~/gitrepo/ims/org_files/project_squeezeseg.org" "SqueezeSeg")
+                                    "* TODO %i%?")
                                    ))
      (setq org-refile-targets '((org-agenda-files :level . 1)))
      (setq org-agenda-log-mode-items '(closed clock state))
@@ -995,18 +1001,8 @@
 ;;(global-helm-ros-mode t)
 
 ;;===========================================================================
-;;===========================================================================
-
-
-
-
-
-;;테마 켜기
+;; Variable Customizing
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
@@ -1046,6 +1042,7 @@
    (quote
     ("~/gitrepo/ims/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims/org_files/index.org" "~/gitrepo/ims/org_files/project_squeezeseg.org" "~/gitrepo/ims/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
+ '(org-hide-emphasis-markers t)
  '(org-scheduled-delay-days 0)
  '(package-selected-packages
    (quote
@@ -1134,7 +1131,7 @@
  '(sp-base-key-bindings nil))
 
 
-;;영어폰트 설정  (height 부분을 바꾸면 크기가 바뀝니다)
+;; Custom Face + 영어폰트 설정  (height 부분을 바꾸면 크기가 바뀝니다)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -1990,6 +1987,7 @@ Version 2017-04-19"
 
 ;; C-c + d 키로 두 파일을 비교하는 magit-diff-dwim을 수행합니다
 (global-set-key (kbd "C-c d") 'magit-diff-dwim)
+
 
 ;; C-c + t 키로 한 파일의 변경기록을 검사하는 magit-log-buffer-file 명령을 수행합니다
 (global-set-key (kbd "C-c t") 'magit-log-buffer-file)
