@@ -516,6 +516,7 @@
           (lambda ()
             (jedi:setup)
             (jedi:ac-setup)
+            (define-key jedi-mode-map (kbd "C-c /") nil)
             ;; (local-set-key "\C-cd" 'jedi:show-doc)
             (local-set-key (kbd "M-,") 'jedi:goto-definition-pop-marker)
             (local-set-key (kbd "M-.") 'jedi:goto-definition)
@@ -659,7 +660,8 @@
 
 ))
 
-
+;; C-c + / 키로 index.org 파일을 엽니다
+(global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims/org_files/index.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-c l") 'org-store-link)
 ;; C-c + a 키로 어느곳에서나 agenda view를 열게합니다
@@ -1003,6 +1005,10 @@
 ;;===========================================================================
 ;; Variable Customizing
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
@@ -1038,6 +1044,7 @@
  '(git-gutter:added-sign "+ ")
  '(git-gutter:deleted-sign "- ")
  '(git-gutter:modified-sign "▸ ")
+ '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
     ("~/gitrepo/ims/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims/org_files/index.org" "~/gitrepo/ims/org_files/project_squeezeseg.org" "~/gitrepo/ims/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims/org_files/project_cartographer.org")))
@@ -1992,8 +1999,13 @@ Version 2017-04-19"
 ;; C-c + t 키로 한 파일의 변경기록을 검사하는 magit-log-buffer-file 명령을 수행합니다
 (global-set-key (kbd "C-c t") 'magit-log-buffer-file)
 
+;; C-c + y 키로 다른 branch에 있는 파일의 내용을 확인합니다
+(global-set-key (kbd "C-c y") 'magit-find-file)
+
+
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
 (setq vc-handled-backends nil)
+
 
 
 ;; Alt + [ 키로 선택된 단어를 iedit 일괄편집합니다
