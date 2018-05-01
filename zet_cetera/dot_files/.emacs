@@ -1995,11 +1995,14 @@ Version 2017-04-19"
 ;; Alt + \ 키로 magit의 상태창을 실행합니다
 (global-set-key (kbd "M-\\") 'magit-status)
 
-;; C-c + e 키로 두 파일을 비교하는 magit-ediff-dwim을 수행합니다
+;; C-c + e 키로 git project에서 두 파일을 비교하는 magit-ediff-dwim을 수행합니다
 (global-set-key (kbd "C-c e") 'magit-ediff-dwim)
 
-;; C-c + d 키로 두 파일을 비교하는 magit-diff-dwim을 수행합니다
+;; C-c + d 키로 git project에서 두 파일을 비교하는 magit-diff-dwim을 수행합니다
 (global-set-key (kbd "C-c d") 'magit-diff-dwim)
+
+;; C-c + f키로 두 파일을 비교하는 diff 명령어를 실행합니다
+(global-set-key (kbd "C-c f") 'diff)
 
 
 ;; C-c + t 키로 한 파일의 변경기록을 검사하는 magit-log-buffer-file 명령을 수행합니다
