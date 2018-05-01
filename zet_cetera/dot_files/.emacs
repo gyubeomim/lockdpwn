@@ -458,19 +458,19 @@
 
 
 ;; show whitespace in diff-mode
-(add-hook 'diff-mode-hook (lambda ()
-                            (setq-local whitespace-style
-                                        '(face
-                                          tabs
-                                          tab-mark
-                                          spaces
-                                          space-mark
-                                          trailing
-                                          indentation::space
-                                          indentation::tab
-                                          newline
-                                          newline-mark))
-                            (whitespace-mode 1)))
+;; (add-hook 'diff-mode-hook (lambda ()
+;;                             (setq-local whitespace-style
+;;                                         '(face
+;;                                           tabs
+;;                                           tab-mark
+;;                                           spaces
+;;                                           space-mark
+;;                                           trailing
+;;                                           indentation::space
+;;                                           indentation::tab
+;;                                           newline
+;;                                           newline-mark))
+;;                             (whitespace-mode 1)))
 
 
 
@@ -1145,6 +1145,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
+ '(diff-added ((t (:background "dark olive green" :foreground "gray"))))
+ '(diff-refine-added ((t (:background "nil"))))
+ '(diff-refine-changed ((t (:background "nil"))))
+ '(diff-refine-removed ((t (:background "nil"))))
+ '(diff-removed ((t (:background "red4" :foreground "gray"))))
  '(ein:cell-input-area ((t (:background "black"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
  '(font-lock-comment-face ((t (:foreground "forest green"))))
@@ -1163,7 +1168,8 @@
  '(org-block-end-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
  '(org-link ((t (:foreground "#b58900" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
- '(org-tag ((t (:background "black" :weight bold :height 0.9)))))
+ '(org-tag ((t (:background "black" :weight bold :height 0.9))))
+ )
 
 
 
