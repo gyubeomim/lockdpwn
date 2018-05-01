@@ -1146,6 +1146,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
  '(diff-added ((t (:background "dark olive green" :foreground "gray"))))
+ '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
  '(diff-refine-added ((t (:background "nil"))))
  '(diff-refine-changed ((t (:background "nil"))))
  '(diff-refine-removed ((t (:background "nil"))))
@@ -1168,8 +1169,7 @@
  '(org-block-end-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
  '(org-link ((t (:foreground "#b58900" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
- '(org-tag ((t (:background "black" :weight bold :height 0.9))))
- )
+ '(org-tag ((t (:background "black" :weight bold :height 0.9)))))
 
 
 
