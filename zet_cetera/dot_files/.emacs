@@ -75,7 +75,8 @@
     git-gutter             ;; 수정된 파일의 변경된 라인을 하이라이팅해주는 패키지
     mic-paren              ;; 괄호로 닫혀진 구문이 너무 길어서 한쪽 끝이 안보일 경우 line, number를 알려주는 패키지
 
-    bm
+    company                ;; auto-complte와 유사한 코드 자동완성 패키지
+
 
 
 
@@ -91,7 +92,6 @@
     ;;helm-ros  ;; ROS용 emacs 패키지 (not used)
     ;; autopair
     ;; function-args
-    ;; company
     ;; comment-dwim-2
     ;; volatile-highlights
     ))
@@ -326,18 +326,14 @@
 ;;===========================================================================
 ;; 2. cedet에 관한 코드들 (auto-complete, cc-mode, semantic...)(단어 자동완성 관련된 코드들)
 
-
 ;;indent adjustment
 ;;(setq-default c-default-style "linux" c-basic-offset 4)
 ;;(setq-default tab-width 4 indent-tabs-mode t)
 ;;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-
-
 ;;autopair
 ;;(require 'autopair)
 ;;(autopair-global-mode 1)
 ;;(setq autopair-autowrap t)
-
 
 ;;auto-complete
 ;;start auto-complete with emacs
@@ -346,33 +342,34 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-
 (require 'cc-mode)
 (require 'cedet)
 (require 'semantic)
 (require 'semantic/ia)
 (require 'semantic/complete)
 
+
 ;; Enable EDE only in C/C++
 (require 'ede)
 (global-ede-mode)
 
-
 ;; 함수나 변수들을 찾아 이동할 때마다 로그를 기록합니다
 (global-semantic-mru-bookmark-mode)
 
+(global-company-mode)
 
 ;; CC-mode
 (add-hook 'c-mode-hook '(lambda ()
-                          (setq ac-sources (append '(ac-source-semantic) ac-sources))
+                          ; (setq ac-sources (append '(ac-source-semantic) ac-sources))
                           (local-set-key (kbd "RET") 'newline-and-indent)
                           (linum-mode t)
-                          (semantic-mode t)))
-
+                          (company-mode t)
+                          ; (semantic-mode t)
+                          ))
 
 
 ;; Semantic
-(global-semantic-idle-completions-mode t)
+;; (global-semantic-idle-completions-mode t)
 (semantic-mode 1)
 ;;(global-semantic-show-unmatched-syntax-mode t)
 ;;(global-semanticdb-minor-mode 1)
@@ -381,25 +378,24 @@
 ;;(global-semantic-decoration-mode t)
 ;;(global-semantic-highlight-func-mode t)
 
-
-
 ;; 자동완성에 쓸 헤더 파일 경로 적는 예
 ;; 이것이 있어야 #include 한 헤더파일의 내용도 자동완성에 나타납니다.
 (semantic-add-system-include "/usr/include" 'c-mode)
 (semantic-add-system-include "/usr/include" 'c++-mode)
-
-
+(semantic-add-system-include "/usr/include/c++/5" 'c-mode)
+(semantic-add-system-include "/usr/include/c++/5" 'c++-mode)
+(semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
 
 
 ;; 자동완성 단축키는 클래스나 변수 앞에서 ,,를 빠르게 2번 눌러주면 됩니다 (',,' ==> semantic-ia-fast-jump)
 ;; C-c\C-j로 특정 구문의 선언문이나 함수를 확인합니다, C-c\C-s는 특정 구문의 선언문을 확인만 합니다
-(defun alexott/cedet-hook ()
-  (local-set-key "\C-c\C-j" 'semantic-ia-fast-jump)
-  (local-set-key "\C-c\C-s" 'semantic-ia-show-summary))
+;; (defun alexott/cedet-hook ()
+;;   (local-set-key "\C-c\C-j" 'semantic-ia-fast-jump)
+;;   (local-set-key "\C-c\C-s" 'semantic-ia-show-summary))
 
-(add-hook 'c-mode-common-hook 'alexott/cedet-hook)
-(add-hook 'c-mode-hook 'alexott/cedet-hook)
-(add-hook 'c++-mode-hook 'alexott/cedet-hook)
+;; (add-hook 'c-mode-common-hook 'alexott/cedet-hook)
+;; (add-hook 'c-mode-hook 'alexott/cedet-hook)
+;; (add-hook 'c++-mode-hook 'alexott/cedet-hook)
 
 
 
@@ -718,7 +714,6 @@
 ;; PACKAGE : flycheck(구문 검사 패키지)를 사용합니다
 (require 'flycheck)
 
-
 ;; (setq flycheck-python-pycompile-executable
 ;;       (or (executable-find "python")
 ;;           (executable-find "/usr/bin/python")
@@ -734,6 +729,9 @@
 
 ;; c++11에 안맞는 문법이 있을경우(range-based loop 등) 경고 메세지를 띄우는데 이를 무시한다
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+
+;; ROS를 사용하는 경우 flycheck #include <ros/ros.h>가 나지 않도록 추가한 코드
+(setq flycheck-clang-include-path "/opt/ros/kinetic/include")
 
 ;; emacs syntax warning + error 들을 무시합니다
 (with-eval-after-load 'flycheck
@@ -1028,11 +1026,6 @@
  '(elpy-modules
    (quote
     (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
- '(flycheck-clang-include-path nil)
- '(flycheck-cppcheck-include-path nil)
- '(flycheck-gcc-include-path nil)
- '(flycheck-gcc-includes nil)
- '(flycheck-gcc-warnings nil)
  '(git-gutter:added-sign "+ ")
  '(git-gutter:deleted-sign "- ")
  '(git-gutter:modified-sign "▸ ")
@@ -1334,7 +1327,7 @@
 
 
 ;;줄 바꿈 칼럼수 설정.
-(setq-default fill-column 75)
+(setq-default fill-column 120)
 
 
 
@@ -1480,23 +1473,6 @@
   ;; 커서라인 표시
   ;;(global-hl-line-mode)
   )
-
-
-
-
-
-
-
-;;---------------------------------------------------------------
-
-;; gdb 다중창 설정
-(setq gdb-many-windows t)
-
-;; gdb 명령어 설정
-(setq gud-gdb-command-name "gdb -i=mi --args")
-
-;; compile 명령어 수정 (c++일 경우 g++, c일 경우 gcc로 해주면 됩니다)
-(setq compile-command "g++ -std=c++14 -g -o ")
 
 
 ;; ECB Emacs Code Browser 활성화
@@ -1662,8 +1638,8 @@ Version 2017-04-19"
 ;; f11 함수안으로 따라 들어간다
 (global-set-key [f11] 'gud-step)
 
-;; f12 소스창에서 바로 브레이크포인트 설정
-;; (global-set-key [f12] 'gud-)
+;; f12 현재 실행중인 함수 리턴후 멈춤
+(global-set-key [f12] 'gud-finish)
 
 ;; shift + f10 현재 커서까지 실행하고 멈춤
 (global-set-key [(shift f10)] '(lambda ()
@@ -1671,8 +1647,17 @@ Version 2017-04-19"
                                  (call-interactively 'gud-tbreak)
                                  (call-interactively 'gud-cont)))
 
-;; shift + f11 현재 실행중인 함수 리턴후 멈춤
-(global-set-key [(shift f11)] 'gud-finish)
+;; shift + f12 gdb 다중창 On/Off
+(global-set-key [(shift f12)] 'gdb-many-windows)
+
+;; gdb 다중창 설정
+(setq gdb-many-windows t)
+
+;; gdb 명령어 설정
+(setq gud-gdb-command-name "gdb -q -i=mi --args")
+
+;; compile 명령어 수정 (c++일 경우 g++, c일 경우 gcc로 해주면 됩니다)
+(setq compile-command "g++ -std=c++14 -g -o ")
 
 
 ;; eyebrowse 모드에서 C-1,2,3키로 워크스페이스를 변경합니다 (not used)
