@@ -1145,12 +1145,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
- '(diff-added ((t (:background "dark olive green" :foreground "gray"))))
+ '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
  '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
  '(diff-refine-added ((t (:background "nil"))))
  '(diff-refine-changed ((t (:background "nil"))))
  '(diff-refine-removed ((t (:background "nil"))))
- '(diff-removed ((t (:background "red4" :foreground "gray"))))
+ '(diff-removed ((t (:background "red4" :foreground "white smoke"))))
  '(ein:cell-input-area ((t (:background "black"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
  '(font-lock-comment-face ((t (:foreground "forest green"))))
@@ -1726,7 +1726,7 @@ Version 2017-04-19"
 
 ;; Alt + q 키로 현재 창을 닫습니다
 (global-set-key "\M-q" 'delete-window)
-
+(define-key c++-mode-map (kbd "M-q") 'delete-window)
 
 ;; Shift + Space 키를 한영키에서 해제한다.
 (global-unset-key (kbd "S-SPC"))
@@ -2001,8 +2001,11 @@ Version 2017-04-19"
 ;; C-c + d 키로 git project에서 두 파일을 비교하는 magit-diff-dwim을 수행합니다
 (global-set-key (kbd "C-c d") 'magit-diff-dwim)
 
-;; C-c + f키로 두 파일을 비교하는 diff 명령어를 실행합니다
+;; C-c + f키로 두 파일을 비교하는 diff 명령을 실행합니다
 (global-set-key (kbd "C-c f") 'diff)
+
+;; C-c + r키로 두 파일을 비교하는 ediff 명령을 실행합니다
+(global-set-key (kbd "C-c r") 'ediff)
 
 
 ;; C-c + t 키로 한 파일의 변경기록을 검사하는 magit-log-buffer-file 명령을 수행합니다
