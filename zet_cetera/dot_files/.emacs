@@ -763,14 +763,6 @@
 (setq eyebrowse-new-workspace nil)
 (setq eyebrowse-mode-line-style (quote always))
 
-;; eyebrowse 모드에서 C-1,2,3키로 워크스페이스를 변경합니다
-(global-set-key (kbd "C-1") 'eyebrowse-switch-to-window-config-0)
-(global-set-key (kbd "C-2") 'eyebrowse-switch-to-window-config-1)
-(global-set-key (kbd "C-3") 'eyebrowse-switch-to-window-config-2)
-
-
-
-
 
 ;; PACKAGE : solarized theme를 활성화합니다
 (require 'solarized-dark-theme)
@@ -1500,6 +1492,9 @@
 ;; gdb 다중창 설정
 (setq gdb-many-windows t)
 
+;; gdb 명령어 설정
+(setq gud-gdb-command-name "gdb -i=mi --args")
+
 ;; compile 명령어 수정 (c++일 경우 g++, c일 경우 gcc로 해주면 됩니다)
 (setq compile-command "g++ -std=c++14 -g -o ")
 
@@ -1658,9 +1653,8 @@ Version 2017-04-19"
 ;; 디버깅 단축키
 (global-set-key [f8] 'gdb)
 
-;; 주석을 감췄다 보여줬다 하는 단축키 F9
-(hide/show-comments)
-(global-set-key [f9] 'hide/show-comments-toggle)
+;; f9 소스창에서 바로 브레이크포인트 설정
+(global-set-key [f9] 'gud-break)
 
 ;; f10 라인 실행하고 다음 라인으로
 (global-set-key [f10] 'gud-next)
@@ -1669,12 +1663,7 @@ Version 2017-04-19"
 (global-set-key [f11] 'gud-step)
 
 ;; f12 소스창에서 바로 브레이크포인트 설정
-(global-set-key [f12] 'gud-break)
-
-
-
-;; shift + f11 현재 실행중인 함수 리턴후 멈춤
-(global-set-key [(shift f11)] 'gud-finish)
+;; (global-set-key [f12] 'gud-)
 
 ;; shift + f10 현재 커서까지 실행하고 멈춤
 (global-set-key [(shift f10)] '(lambda ()
@@ -1682,6 +1671,29 @@ Version 2017-04-19"
                                  (call-interactively 'gud-tbreak)
                                  (call-interactively 'gud-cont)))
 
+;; shift + f11 현재 실행중인 함수 리턴후 멈춤
+(global-set-key [(shift f11)] 'gud-finish)
+
+
+;; eyebrowse 모드에서 C-1,2,3키로 워크스페이스를 변경합니다 (not used)
+;; (global-set-key (kbd "C-1") 'eyebrowse-switch-to-window-config-0)
+;; (global-set-key (kbd "C-2") 'eyebrowse-switch-to-window-config-1)
+;; (global-set-key (kbd "C-3") 'eyebrowse-switch-to-window-config-2)
+
+;; Ctrl + 4 키로 .md 파일을 파이어폭스로 프리뷰합니다 (not used)
+;; (global-set-key (kbd "C-4") 'flymd-flyit)
+
+;; C-5 키로 다른 프로젝트로 스위치하는 명령어를 실행합니다
+(global-set-key (kbd "C-5") 'helm-projectile-switch-project)
+;; helm-projectile-switch-project (C-5) 로 프로젝트를 바꾼 다음 실행하는 명령어로
+;;                                         바뀐 프로젝트의 홈폴더에서 dired 모드를 실행합니다
+(setq projectile-switch-project-action 'projectile-dired)
+
+
+;; Ctrl + 6키로 jupyter notebook 서버를 실행합니다
+(global-set-key (kbd "C-6") 'ein:jupyter-server-start)
+;; Ctrl + 6키로 remote 접속을 위한 notebooklist-login 명령어를 설정합니다
+(global-set-key (kbd "C-^") 'ein:notebooklist-login)
 
 ;; Ctrl + 7 키로 선택한 버퍼를 닫습니다
 (global-set-key (kbd "C-7") 'buffer-menu)
@@ -1694,8 +1706,6 @@ Version 2017-04-19"
 
 ;; Ctrl + 0 키로 Customize Variable 명령어를 사용한다
 (global-set-key (kbd "C-0") 'customize-variable)
-
-
 
 ;; Alt + 1 키로 shell을 불러오는 커맨드를 실행합니다
 (global-set-key (kbd "M-1") 'shell-command)
@@ -1905,6 +1915,12 @@ Version 2017-04-19"
 ;; Ctrl + G 단축키로 구문을 fold 접거나 펼치거나 합니다
 (global-set-key "\C-g" 'hs-toggle-hiding)
 
+;; Ctrl + Alt + G 키로 주석을 감췄다 보여줬다 하는 단축키 설정
+(hide/show-comments)
+(global-set-key (kbd "C-M-g") 'hide/show-comments-toggle)
+
+
+
 ;; Ctrl + PageUp, Down 단축키로 첫째줄, 마지막줄로 바로 이동합니다. Ctrl + Home, End는 원래 가능
 (global-set-key (kbd "C-<prior>") 'beginning-of-buffer)
 (global-set-key (kbd "C-<next>") 'end-of-buffer)
@@ -2039,29 +2055,6 @@ Version 2017-04-19"
 
 ;; ESC키 2번으로 기존에 3번 ESC를 눌러야 작동하던 escape를 대신합니다
 (global-set-key (kbd "<escape> <escape>") 'keyboard-escape-quit)
-
-
-;; Ctrl + 4 키로 .md 파일을 파이어폭스로 프리뷰합니다 (not used)
-;; (global-set-key (kbd "C-4") 'flymd-flyit)
-
-
-;; C-5 키로 다른 프로젝트로 스위치하는 명령어를 실행합니다
-(global-set-key (kbd "C-5") 'helm-projectile-switch-project)
-
-
-;; Ctrl + 6키로 jupyter notebook 서버를 실행합니다
-(global-set-key (kbd "C-6") 'ein:jupyter-server-start)
-
-;; Ctrl + 6키로 remote 접속을 위한 notebooklist-login 명령어를 설정합니다
-(global-set-key (kbd "C-^") 'ein:notebooklist-login)
-
-
-
-;; helm-projectile-switch-project (C-5) 로 프로젝트를 바꾼 다음 실행하는 명령어로
-;;                                         바뀐 프로젝트의 홈폴더에서 dired 모드를 실행합니다
-(setq projectile-switch-project-action 'projectile-dired)
-
-
 
 
 ;;(add-to-list 'load-path "/opt/ros/kinetic/share/emacs/site-lisp")
