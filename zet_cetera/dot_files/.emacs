@@ -814,7 +814,8 @@
 (add-hook 'term-mode-hook
           (lambda ()
             ;; cua-mode에서 c-v 키를 바인딩하고 있어서 다른 키들이 안먹히고 있었다
-            (cua-mode -1)
+            ; (cua-mode -1)
+            (define-key cua--cua-keys-keymap (kbd "C-v") nil)
             (define-key term-raw-map (kbd "C-b") nil)
             (define-key term-raw-map (kbd "C-y") nil)
             (define-key term-raw-map (kbd "C-q") nil)
