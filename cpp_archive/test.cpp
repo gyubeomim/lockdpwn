@@ -1,42 +1,27 @@
-/*
-  c++ ==> emacs lisp 사용법 강좌에 나온 ceaser 암호화를 하는 간단한 예제 코드
+#include <functional>
+#include <iostream>
+#include <map>
 
-  http://tsgates.github.io/emacsbook/chap8.html
-*/
-#include <stdio.h>
-#include <string.h>
-#include <err.h>
-#include <stdlib.h>
-
-#define PRIME (17)
-#define SHIFT (11)
-
-/**
- * @plain: input text
- * @shift: an integer
- * @prime: a prime number
- */
-char* ceaser(const char *plain, int shift, int prime) {
-    const int len =strlen(plain);
-    char *cipher = (char *)malloc(len);
-
-    for (int i=0; i<len; i++) {
-        *(cipher + i) = (*(plain + i) - 'a' + shift) % prime + 'a';
-    }
-
-    *(cipher + len) = '\0';
-    return cipher;
-}
+using namespace std;
 
 int main(int argc, char **argv){
-    if(argc != 2){
-        err(1, "usage: %s [text]\n", argv[0]);
+    map<string, int> d={
+        {"black", 0}, {"brown", 1}, {"red", 2},
+        {"orange", 3}, {"yellow", 4}, {"green", 5},
+        {"blue", 6}, {"violet", 7}, {"grey", 8},
+        {"white", 9}
+    };
+
+    string a,b,c;
+    cout << "Input : ";
+    cin >> a >> b >> c;
+
+    long long ans = (long long)(d[a]*10 + d[b]);
+
+    for(int k=0; k<d[c]; k++){
+        ans *= 10LL;
     }
 
-    const char *encrypted = ceaser(argv[1], SHIFT, PRIME);
-    const char *decrypted = ceaser(encrypted, -SHIFT, PRIME);
-
-    printf("'%s' =enc->> '%s' =dec->> '%s'\n", argv[1], encrypted, decrypted);
-
+    cout << ans << '\n';
     return 0;
 }

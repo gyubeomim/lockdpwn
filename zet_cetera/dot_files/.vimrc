@@ -338,9 +338,9 @@ Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'gtags.vim'
 Plugin 'valloric/youcompleteme'   " C++, Python 등 언어의 자동완성 플러그인
+Plugin 'airblade/vim-gitgutter'   " git project에서 수정,추가,제거된 라인을 표시해주는 gitgutter for Vim
 
 
-""Plugin 'neocomplcache'    " 단어를 입력 도중 자동완성 구문들이 나타나게 해주는 플러그인입니다
 filetype plugin indent on
 
 
