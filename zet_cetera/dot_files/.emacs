@@ -1145,12 +1145,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
- '(diff-added ((t (:background "dark olive green" :foreground "gray"))))
+ '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
  '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
- '(diff-refine-added ((t (:background "nil"))))
+ '(diff-refine-added ((t (:background "olive drab"))))
  '(diff-refine-changed ((t (:background "nil"))))
- '(diff-refine-removed ((t (:background "nil"))))
- '(diff-removed ((t (:background "red4" :foreground "gray"))))
+ '(diff-refine-removed ((t (:background "firebrick"))))
+ '(diff-removed ((t (:background "red4" :foreground "white smoke"))))
  '(ein:cell-input-area ((t (:background "black"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
  '(font-lock-comment-face ((t (:foreground "forest green"))))
