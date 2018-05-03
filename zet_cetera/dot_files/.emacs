@@ -75,8 +75,9 @@
     git-gutter             ;; 수정된 파일의 변경된 라인을 하이라이팅해주는 패키지
     mic-paren              ;; 괄호로 닫혀진 구문이 너무 길어서 한쪽 끝이 안보일 경우 line, number를 알려주는 패키지
 
+    irony
     company                ;; auto-complte와 유사한 코드 자동완성 패키지
-
+    company-irony
 
 
 
@@ -324,53 +325,43 @@
 
 
 ;;===========================================================================
-;; 2. cedet에 관한 코드들 (auto-complete, cc-mode, semantic...)(단어 자동완성 관련된 코드들)
-
-;;indent adjustment
-;;(setq-default c-default-style "linux" c-basic-offset 4)
-;;(setq-default tab-width 4 indent-tabs-mode t)
-;;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-;;autopair
-;;(require 'autopair)
-;;(autopair-global-mode 1)
-;;(setq autopair-autowrap t)
+;; cedet에 관한 코드들 (auto-complete, cc-mode, semantic...)(단어 자동완성 관련된 코드들)
 
 ;;auto-complete
 ;;start auto-complete with emacs
 (require 'auto-complete)
-;;do default config for auto-complete
 (require 'auto-complete-config)
 (ac-config-default)
 
 (require 'cc-mode)
-(require 'cedet)
 (require 'semantic)
 (require 'semantic/ia)
 (require 'semantic/complete)
 
-
+;; (require 'cedet)
 ;; Enable EDE only in C/C++
-(require 'ede)
-(global-ede-mode)
+;; (require 'ede)
+;; (global-ede-mode)
 
 ;; 함수나 변수들을 찾아 이동할 때마다 로그를 기록합니다
 (global-semantic-mru-bookmark-mode)
 
+;; Company mode On
 (global-company-mode)
 
 ;; CC-mode
 (add-hook 'c-mode-hook '(lambda ()
-                          ; (setq ac-sources (append '(ac-source-semantic) ac-sources))
                           (local-set-key (kbd "RET") 'newline-and-indent)
                           (linum-mode t)
-                          (company-mode t)
-                          ; (semantic-mode t)
+                          (irony-mode t)
                           ))
 
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 ;; Semantic
-;; (global-semantic-idle-completions-mode t)
 (semantic-mode 1)
+;;(global-semantic-idle-completions-mode t)
 ;;(global-semantic-show-unmatched-syntax-mode t)
 ;;(global-semanticdb-minor-mode 1)
 ;;(global-semantic-idle-scheduler-mode 1)
@@ -387,39 +378,11 @@
 (semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
 
 
-;; 자동완성 단축키는 클래스나 변수 앞에서 ,,를 빠르게 2번 눌러주면 됩니다 (',,' ==> semantic-ia-fast-jump)
-;; C-c\C-j로 특정 구문의 선언문이나 함수를 확인합니다, C-c\C-s는 특정 구문의 선언문을 확인만 합니다
-;; (defun alexott/cedet-hook ()
-;;   (local-set-key "\C-c\C-j" 'semantic-ia-fast-jump)
-;;   (local-set-key "\C-c\C-s" 'semantic-ia-show-summary))
-
-;; (add-hook 'c-mode-common-hook 'alexott/cedet-hook)
-;; (add-hook 'c-mode-hook 'alexott/cedet-hook)
-;; (add-hook 'c++-mode-hook 'alexott/cedet-hook)
-
-
-
-(provide 'setup-cedet)
-
-
-;; ;; powerline 관련 코드
-;; (column-number-mode 1)
-;; (require 'powerline)
-;; (setq powerline-default-separator-dir '(left . right))
-;; (powerline-default-theme)
-
-
-
-
-
 
 ;;===========================================================================
-;; 3. 기타 초기값 설정 코드들
-
-
+;; 기타 초기값 설정 코드들
 
 ;; GROUP: Editing -> Editing Basics
-
 (setq global-mark-ring-max 5000         ; increase mark ring to contains 5000 entries
       mark-ring-max 5000                ; increase kill ring to contains 5000 entries
       mode-require-final-newline t      ; add a newline to end of file
@@ -428,7 +391,6 @@
 
 (add-hook 'sh-mode-hook (lambda ()
                           (setq tab-width 4)))
-
 
 
 ;; 한글폰트 설정 (size 부분을 바꾸면 크기가 바뀝니다)
@@ -1003,8 +965,14 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(async-bytecomp-allowed-packages (quote (async helm helm-core helm-ls-git helm-ls-hg magit)))
  '(auto-hscroll-mode t)
  '(column-number-mode t)
+ '(company-backends
+   (quote
+    (company-irony company-nxml company-css company-eclim company-clang company-xcode company-cmake company-capf company-files
+                   (company-dabbrev-code company-gtags company-etags company-keywords)
+                   company-oddmuse company-dabbrev)))
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (solarized)))
  '(custom-safe-themes
@@ -1038,7 +1006,7 @@
  '(org-scheduled-delay-days 0)
  '(package-selected-packages
    (quote
-    (mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
