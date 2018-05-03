@@ -32,7 +32,7 @@
     key-chord              ;; 여러 쉬운 단축키들을 등록해주 수 있는 패키지 ( '..'키를 등록했습니다 )( 클래스 자동완성으로 등록 )
     solarized-theme        ;; solarized 테마
     rainbow-delimiters     ;; 괄호를 색색깔있게 바꿔줍니다
-    jedi                   ;; 파이썬용 jedi 패키지 (terminal 창에서 pip install jedi epc pylint virtualenv 를 쳐줘야 정상작동하는듯 하다)
+    jedi                   ;; 파이썬용 jedi 패키지 (terminal 창에서 $ pip install jedi epc pylint virtualenv 를 쳐줘야 정상작동하는듯 하다)
     arduino-mode           ;; 만약 아두이노를 사용한다면 추가해줍니다
     highlight-indentation  ;; 파이썬용 들여쓰기 라인을 보여주는 패키지 (Alt + l로 설정했다)
     ess                    ;; R 언어 전용 패키지입니다
@@ -75,15 +75,14 @@
     git-gutter             ;; 수정된 파일의 변경된 라인을 하이라이팅해주는 패키지
     mic-paren              ;; 괄호로 닫혀진 구문이 너무 길어서 한쪽 끝이 안보일 경우 line, number를 알려주는 패키지
 
-    irony
     company                ;; auto-complte와 유사한 코드 자동완성 패키지
-    company-irony
+    irony                  ;; c++ 코드 자동완성 패키지 (M-x irony-install-server로 설치한다)
+    company-irony          ;; c++ 코드 자동완성 패키지
 
 
 
 
-
-    ;;flymd                  ;; markdown 구문을 preview 해주는 패키지 (.md 파일을 켠 다음 Ctrl + 4 단축키)
+    ;; flymd                  ;; markdown 구문을 preview 해주는 패키지 (.md 파일을 켠 다음 Ctrl + 4 단축키)
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
     ;; htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
     ;; smart-mode-line
@@ -220,7 +219,7 @@
 ;; If nil, you can slightly boost invoke speed in exchange for text color
 ;;(setq helm-swoop-speed-or-color t)
 
-(helm-mode 1)
+(helm-mode t)
 
 (provide 'setup-helm)
 (require 'helm-gtags)
@@ -257,7 +256,7 @@
 ;(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
 ;; gtags 관련해서 자동으로 파일 열고 저장할 때 gtags를 실행하도록 하는 함수들
-(gtags-mode 1)
+(gtags-mode t)
 (add-hook 'prog-mode-hook 'gtags-mode)
 
 
@@ -327,29 +326,35 @@
 ;;===========================================================================
 ;; cedet에 관한 코드들 (auto-complete, cc-mode, semantic...)(단어 자동완성 관련된 코드들)
 
-;;auto-complete
-;;start auto-complete with emacs
+;; PACKAGE: auto-complete
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
 
-(require 'cc-mode)
+;; PACKAGE: semantic
 (require 'semantic)
 (require 'semantic/ia)
 (require 'semantic/complete)
 
-;; (require 'cedet)
-;; Enable EDE only in C/C++
-;; (require 'ede)
-;; (global-ede-mode)
+;; Semantic ON
+(semantic-mode t)
 
 ;; 함수나 변수들을 찾아 이동할 때마다 로그를 기록합니다
 (global-semantic-mru-bookmark-mode)
 
+;; 자동완성에 쓸 헤더 파일 경로 적는 예
+;; 이것이 있어야 #include 한 헤더파일의 내용도 자동완성에 나타납니다.
+(semantic-add-system-include "/usr/include" 'c-mode)
+(semantic-add-system-include "/usr/include" 'c++-mode)
+(semantic-add-system-include "/usr/include/c++/5" 'c-mode)
+(semantic-add-system-include "/usr/include/c++/5" 'c++-mode)
+(semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
+
+
 ;; Company mode On
 (global-company-mode)
 
-;; CC-mode
+;; using company-irony
 (add-hook 'c-mode-hook '(lambda ()
                           (local-set-key (kbd "RET") 'newline-and-indent)
                           (linum-mode t)
@@ -359,23 +364,6 @@
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
-;; Semantic
-(semantic-mode 1)
-;;(global-semantic-idle-completions-mode t)
-;;(global-semantic-show-unmatched-syntax-mode t)
-;;(global-semanticdb-minor-mode 1)
-;;(global-semantic-idle-scheduler-mode 1)
-;;(global-semantic-stickyfunc-mode 1)
-;;(global-semantic-decoration-mode t)
-;;(global-semantic-highlight-func-mode t)
-
-;; 자동완성에 쓸 헤더 파일 경로 적는 예
-;; 이것이 있어야 #include 한 헤더파일의 내용도 자동완성에 나타납니다.
-(semantic-add-system-include "/usr/include" 'c-mode)
-(semantic-add-system-include "/usr/include" 'c++-mode)
-(semantic-add-system-include "/usr/include/c++/5" 'c-mode)
-(semantic-add-system-include "/usr/include/c++/5" 'c++-mode)
-(semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
 
 
 
@@ -414,34 +402,14 @@
 (add-hook 'after-make-frame-functions 'set_korean_font_after_loading)
 
 
-
-;; show whitespace in diff-mode
-;; (add-hook 'diff-mode-hook (lambda ()
-;;                             (setq-local whitespace-style
-;;                                         '(face
-;;                                           tabs
-;;                                           tab-mark
-;;                                           spaces
-;;                                           space-mark
-;;                                           trailing
-;;                                           indentation::space
-;;                                           indentation::tab
-;;                                           newline
-;;                                           newline-mark))
-;;                             (whitespace-mode 1)))
-
-
-
-
 ;; Package: clean-aindent-mode
 ;; GROUP: Editing -> Indent -> Clean Aindent
 (require 'clean-aindent-mode)
 (add-hook 'prog-mode-hook 'clean-aindent-mode)
 
-
 ;; PACKAGE: dtrt-indent
 (require 'dtrt-indent)
-(dtrt-indent-mode 1)
+(dtrt-indent-mode t)
 (setq dtrt-indent-verbosity 0)
 
 ;; PACKAGE: ws-butler
@@ -456,18 +424,12 @@
 (global-undo-tree-mode)
 
 
-
-
-;; ;; Jedi settings
+;; PACKAGE: jedi
+;; $ pip install jedi epc pylint virtualenv
 (require 'jedi)
-;; It's also required to run "pip install --user jedi" and "pip
-;; install --user epc" to get the Python side of the library work
-;; correctly.
-;; With the same interpreter you're using.
-
-;; if you need to change your python intepreter, if you want to change it
-;; (setq jedi:server-command
-;; '("python2" "/home/andrea/.emacs.d/elpa/jedi-0.1.2/jediepcserver.py"))
+;; python에서 클래스 이름에 .을 입력하면 자동으로 멤버함수들의 목록을 출력해준다
+(setq jedi:install-server t)
+(setq jedi:complete-on-dot t)
 
 ;; 파이썬 모드 단축키를 설정합니다
 (add-hook 'python-mode-hook
@@ -475,7 +437,6 @@
             (jedi:setup)
             (jedi:ac-setup)
             (define-key jedi-mode-map (kbd "C-c /") nil)
-            ;; (local-set-key "\C-cd" 'jedi:show-doc)
             (local-set-key (kbd "M-,") 'jedi:goto-definition-pop-marker)
             (local-set-key (kbd "M-.") 'jedi:goto-definition)
 
@@ -484,14 +445,12 @@
             (local-unset-key (kbd "C-c <"))
             (local-set-key (kbd "C-<") 'python-indent-shift-left)
             (local-set-key (kbd "C->") 'python-indent-shift-right)
-            ;;(local-set-key (kbd "C-;") 'highlight-indentation-mode)
             (setq indent-tabs-mode t)
             (setq python-indent-offset 4)
             (setq tab-width 4)
 
-            (elpy-mode)                        ;; elpy mode 추가 (elpy-rgrep으로 reference를 찾을 수 있습니다)
+            (elpy-mode)         ;; elpy mode 추가 ("M-r" : elpy-rgrep으로 reference를 찾을 수 있습니다)
             ))
-
 
 
 ;; elpy에서 사용하는 모든 keymap을 비활성화합니다
@@ -514,12 +473,8 @@
                           ))
 
 
-;; python에서 클래스 이름에 .을 입력하면 자동으로 멤버함수들의 목록을 출력해준다
-(setq jedi:install-server t)
-(setq jedi:complete-on-dot t)
 
-
-;;ORG MODE==================================================================
+;; PACKAGE : org mode
 ;; DONE 시에 CLOSED timestamp를 사용하는 함수
 (defun my/org-mode-hook ()
   (progn
@@ -540,7 +495,7 @@
   '(progn
      ;; ed: 단축키 해제
      (define-key org-mode-map (kbd "<M-right>") nil) ; erasing a keybinding.
-     (define-key org-mode-map (kbd "<M-left>") nil) ; erasing a keybinding.
+     (define-key org-mode-map (kbd "<M-left>") nil)
      (define-key org-mode-map (kbd "<S-right>") nil)
      (define-key org-mode-map (kbd "<S-left>") nil)
      (define-key org-mode-map (kbd "<S-up>") nil)
@@ -589,14 +544,17 @@
 
 
      ;; org-bullets 모드 활성화
-     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+     (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))
      ;; wrap line
      (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
      ;; header 크기 변하지 않게
      (add-hook 'org-mode-hook 'my/org-mode-hook)
 
+     ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims/org_files/*.org"))
+     ;; C-c c 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims/org_files/index.org")
+     ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '(("t" "Task" entry
                                     (file+headline "~/gitrepo/ims/org_files/index.org" "Task")
                                     "* TODO %i%? %^G")
@@ -626,69 +584,35 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 ;; C-c + r 키로 어느곳에서나 capture 기능을 열게합니다
 (global-set-key (kbd "C-c c") 'org-capture)
-;;ORGEND=================================================================
+;;org-END=================================================================
 
-
-
-
-
-;; python 단축키들 C-c,C-c 이나 C-c,C-z
 ;; PACKAGE: smartparens
 (require 'smartparens-config)
-;;(setq sp-base-key-bindings 'paredit)
-;;(setq sp-autoskip-closing-pair 'always)
-;;(setq sp-hybrid-kill-entire-symbol nil)
-;;(sp-use-paredit-bindings)
 (smartparens-global-mode t)
-; (show-smartparens-global-mode t)
-
 
 ;; PACKAGE: comment-dwim
 (global-set-key (kbd "M-'") 'comment-dwim)
 
-
-
 ;; Package: yasnippet
-;; GROUP: Editing -> Yasnippet
 ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
 (require 'yasnippet)
-(yas-global-mode 1)
-;;(yas-load-directory "~/.emacs.d/elpa/yasnippet-20180102.1824/snippets/")
-
-
+(yas-global-mode t)
 
 ;; PACKAGE: anzu
-;; GROUP: Editing -> Matching -> Isearch -> Anzu
 (require 'anzu)
 (global-anzu-mode)
 
 ;; M-% 키로 해당 buffer에서 특정 단어를 바꿉니다
 (global-set-key (kbd "M-%") 'anzu-query-replace)
+;; C-M-% 키로 정규표현식을 이용한 단어치환을 합니다
 (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
-
 
 ;; PACKAGE: duplicate-thing
 (require 'duplicate-thing)
 (global-set-key (kbd "M-c") 'duplicate-thing)
 
-
-
-;; PACKAGE : flycheck(구문 검사 패키지)를 사용합니다
+;; PACKAGE : flycheck
 (require 'flycheck)
-
-;; (setq flycheck-python-pycompile-executable
-;;       (or (executable-find "python")
-;;           (executable-find "/usr/bin/python")
-;;           (executable-find "/usr/local/bin/python")
-;;           "python"))
-;; (add-hook 'flycheck-python-pycompile-executable t)
-
-;; (setq flycheck-python-flake8-executable
-;;       (or (executable-find "flake8")
-;;           (executable-find "/usr/bin/flake8")
-;;           (executable-find "/usr/local/bin/flake8")
-;;           "flake8"))
-
 ;; c++11에 안맞는 문법이 있을경우(range-based loop 등) 경고 메세지를 띄우는데 이를 무시한다
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
@@ -700,83 +624,71 @@
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   )
 
-
-
-
-
-;; PAKCAGE : which-key 모드를 활성화합니다
+;; PAKCAGE: which-key
 (require 'which-key)
+;; 단축키 입력시 하단에서 목록을 보여주는 모드
 (which-key-mode)
 
-
+;; PACKAGE: avy
 (require 'avy)
 
-
+;; PACKGE: eyebrowse
 (require 'eyebrowse)
 (eyebrowse-mode t)
 
 ;; C + 1,2,3을 누를때마다 워크스테이션을 생성한다
 (setq eyebrowse-new-workspace t)
-
 (setq eyebrowse-wrap-around t)
 (setq eyebrowse-switch-back-and-forth t)
 (setq eyebrowse-new-workspace nil)
 (setq eyebrowse-mode-line-style (quote always))
 
 
-;; PACKAGE : solarized theme를 활성화합니다
+;; PACKAGE: solarized theme
 (require 'solarized-dark-theme)
 (provide 'solarized-dark-theme)
-
-(provide 'setup-editing)
-
 
 ;; rainbow-delimiters를 활성화합니다
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-
+;; PACKAGE: ein
 (require 'ein)
-;; jupyter notebook을 킨 상태에서 브라우저가 자동으로 켜지는 옵션을 끕니다
+;; jupyter notebook을 킨 상태에서 브라우저가 자동으로 켜지지 않도록 설정합니다
 (setq ein:jupyter-server-args (quote ("--no-browser")))
 (setq ein:use-auto-complete t)
-;; (setq ein:use-smartrep t)
-
 
 ;; ein 모드가 실행되고 난 후 세팅에 관한 코드
 (eval-after-load "ein"
   '(progn
      (ein:ipynb-mode)
+
      ;; ed: ein 단축키 해제
      (define-key ein:notebook-mode-map (kbd "C-c i") nil)
      (define-key ein:notebook-mode-map (kbd "C-x C-s") nil)
-
 
      ;; ed: ein 단축키 등록
      (define-key ein:notebook-mode-map (kbd "C-w") 'ein:notebook-save-notebook-command)
      ))
 
-
-
+;; PACKAGE: flymd
 ;; markdown 언어를 볼 수 있게 해주는 패키지 (not used)
 ;; (require 'flymd)
-
-;; ;; markdown을 파이어폭스에서 실행하도록 하는 코드
+;; markdown을 파이어폭스에서 실행하도록 하는 코드
 ;; (defun my-flymd-browser-function (url)
 ;;    (let ((browse-url-browser-function 'browse-url-firefox))
 ;;      (browse-url url)))
 ;;  (setq flymd-browser-open-function 'my-flymd-browser-function)
 
 
-;; highlight-indentation
+;; PACKAGE: highlight-indentation
 (require 'highlight-indentation)
 ;;(add-hook 'python-mode-hook 'highlight-indentation-mode)
 ;;(add-hook 'js2-mode-hook 'highlight-indentation-mode)
-(set-face-font 'highlight-indentation-face "Monospace")
-(set-face-background 'highlight-indentation-face "#0d0d0d")
-(set-face-attribute 'highlight-indentation-face nil :height 54)
+;; (set-face-font 'highlight-indentation-face "Monospace")
+;; (set-face-background 'highlight-indentation-face "#0d0d0d")
+;; (set-face-attribute 'highlight-indentation-face nil :height 54)
 
-
-;; Show the current function name in the header line
+;; PACKAGE: which-func
 ;; 현재 라인이 가리키고 있는 함수를 위에 상태창에 표시합니다
 (require 'which-func)
 ;;(add-to-list 'which-func-modes 'ruby-mode)
@@ -791,19 +703,25 @@
       ;; invisible here anyway.
       (assq-delete-all 'which-func-mode mode-line-misc-info))
 
+;; PACKAGE: git-gutter
+;; git gutter 모드를 사용해 수정된 라인을 하이라이팅한다
+(global-git-gutter-mode +1)
 
-;; iedit 패키지 활성화
+;; custom 모양 및 색상 추가
+(set-face-foreground 'git-gutter:modified "yellow")
+(set-face-foreground 'git-gutter:added "green")
+(set-face-foreground 'git-gutter:deleted "red")
+;; C-c + g 키로 git gutter에서 수정된 부분을 뒤로 돌릴건지 물어보는 명령어를 실행합니다
+(global-set-key (kbd "C-c g") 'git-gutter:revert-hunk)
+
+
+;; PACKAGE: iedit
 (require 'iedit)
 
-;; wgrep 패키지 활성화
+;; PACKAGE: wgrep
 (require 'wgrep)
 
-
-
-
-
-
-
+;; PACKAGE: rvm
 ;; Ruby 관련된 패키지 설정들
 ;; 1. 처음 루비 파일을 연 다음 C-c C-s를 누르면 inf-ruby (irb) 창이 열립니다
 ;; 2. 이 때 다시 한 번 C-c C-s를 눌러 robe start 명령어를 실행합니다
@@ -816,8 +734,7 @@
   (rvm-activate-corresponding-ruby))
 
 ;;(eval-after-load 'company
-;;  '(push 'company-robe company-backends))
-
+;; '(push 'company-robe company-backends))
 ;;(require 'rinari)
 ;;(require 'ido)
 ;;(ido-mode)
@@ -845,69 +762,37 @@
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'robe-mode-hook 'ac-robe-setup)
 
-
-
-
-
-
-;;===========================================================================
-;;===========================================================================
-
-;; function-args
-;; (require 'function-args)
-;; (fa-config-default)
-;; (define-key c-mode-map  [(tab)] 'company-complete)
-;; (define-key c++-mode-map  [(tab)] 'company-complete)
-
-;; company
-;;(require 'company)
-;;(add-hook 'after-init-hook 'global-company-mode)
-;;(delete 'company-semantic company-backends)
-;;(define-key c-mode-map  [(tab)] 'company-complete)
-;;(define-key c++-mode-map  [(tab)] 'company-complete)
-;; (define-key c-mode-map  [(control tab)] 'company-complete)
-;; (define-key c++-mode-map  [(control tab)] 'company-complete)
-
-;; company-c-headers
-;;(add-to-list 'company-backends 'company-c-headers)
-
-
 ;; Package: clean-aindent-mode
 (require 'clean-aindent-mode)
 (add-hook 'prog-mode-hook 'clean-aindent-mode)
 
 ;; Package: dtrt-indent
 (require 'dtrt-indent)
-(dtrt-indent-mode 1)
+(dtrt-indent-mode t)
 
 ;; Package: ws-butler
 (require 'ws-butler)
 (add-hook 'prog-mode-hook 'ws-butler-mode)
-
-
 
 ;; Package: projejctile
 (require 'projectile)
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 
+;; PACKAGE: helm-projectile
 (require 'helm-projectile)
 (helm-projectile-on)
 (setq projectile-completion-system 'helm)
 (setq projectile-indexing-method 'alien)
 
-
-
-
-;; emacs 25.1 버전에서는 왜그런지 모르지만 이 부분에서 에러난다
 ;; Package: arduino-mode
-;;(require 'arduino-mode)
+;; emacs 25.1 버전에서는 왜그런지 모르지만 이 부분에서 에러난다
+;; (require 'arduino-mode)
 ;; arduino 아두이노 모드에 자동완성 기능을 추가합니다
-;;(add-hook 'arduino-mode-hook 'auto-complete-mode)
-;;(add-hook 'arduino-mode-hook
+;; (add-hook 'arduino-mode-hook 'auto-complete-mode)
+;; (add-hook 'arduino-mode-hook
 ;;          (lambda ()
 ;;            (local-set-key (kbd "M-,") 'pop-tag-mark)))
-
 ;; 태그는 etags 기능을 써야하는듯 합니다 terminal >> etags *.ino
 
 ;; highlight symbol mode를 활성화합니다
@@ -917,23 +802,19 @@
 (add-hook 'python-mode-hook 'highlight-symbol-mode)
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
 
-
 ;; hs-minor-mode 를 활성화합니다. 코드를 접엇다 펼쳤다 하는 모드
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
-
-;; multi-term 패키지를 활성화한다
+;; PACKAGE: multi-term
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
 
 ;; C + v 키로 multi-term 모드에서 붙여넣기를 설정한다
 ;; multi-term은 term-mode를 사용하므로
-;; (term-mode)
 (add-hook 'term-mode-hook
           (lambda ()
             ;; cua-mode에서 c-v 키를 바인딩하고 있어서 다른 키들이 안먹히고 있었다
             (cua-mode -1)
-            ;; (local-unset-key (kbd "C-y"))
             (define-key term-raw-map (kbd "C-b") nil)
             (define-key term-raw-map (kbd "C-y") nil)
             (define-key term-raw-map (kbd "C-q") nil)
@@ -947,20 +828,11 @@
             ))
 
 
-;; protobuf-mode를 활성화한다
+;; PACKAGE: protobuf-mode
 (require 'protobuf-mode)
 
-
-;;(require 'helm-ros)
-;;(global-helm-ros-mode t)
-
-;;===========================================================================
 ;; Variable Customizing
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
@@ -1090,13 +962,8 @@
  '(sml/pre-modes-separator (propertize " " (quote face) (quote sml/modes)))
  '(sp-base-key-bindings nil))
 
-
 ;; Custom Face + 영어폰트 설정  (height 부분을 바꾸면 크기가 바뀝니다)
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
  '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
@@ -1125,7 +992,6 @@
  '(org-tag ((t (:background "black" :weight bold :height 0.9)))))
 
 
-
 ;; 다중모니터에서 C-x-5-2를 통해서 새로운 frame을 생성한 다음에 모니터가 작아서 폰트사이즈가 작은 경우 폰트크기를 크게하기 위해 설정한 함수
 ;; https://stackoverflow.com/questions/24705984/increase-decrease-font-size-in-an-emacs-frame-not-just-buffer
 (defun zoom-frame (&optional n frame amt)
@@ -1139,71 +1005,44 @@
     (set-face-attribute 'default frame :height height)
       (message "Set frame's default text height to %d." height)))
 
-;;(when (called-interactively-p)) 생략
-
 (defun zoom-frame-out (&optional n frame amt)
   "Call `zoom-frame' with -N."
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
-
 ;; C-c + i/o 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-c i") 'zoom-frame)
 (global-set-key (kbd "C-c o") 'zoom-frame-out)
-
-
-
-
-
-;; [+] Font Lists
-;; [+] 폰트 목록은 *scratch* 에서 (print (font-famliy-list)) 를 입력하고 C-x C-e를 입력하면 된다
-;; 1. Noto Mono for Powerline
-;; 2. DeJaVu Sans Mono
-
 
 ;;GUI 환경에서 시작 시 창 화면 최대화 하기
 (add-to-list 'default-frame-alist '(fullscreen . maximized))(add-to-list 'default-frame-alist '(height . 31))
 (add-to-list 'default-frame-alist '(width . 100))
 (set-frame-position (selected-frame) 0 0)
 
-
-
 ;; 매칭되는 괄호 강조하기
 ;;show paren mode
 (show-paren-mode 1)
 (setq show-paren-delay 0)
-;; (setq show-paren-style 'mixed)
 
 ;; 시작화면 스킵하고 기본 모드 설정하기
-;;skip startup screen and specify default mode
 (setq inhibit-startup-screen t)
-;;(setq initial-major-mode 'scheme-mode)
-
 
 ;; 상태표시줄에 시간표시하기
-;;show time on status bar
 (display-time)
 
-
 ;; 몇가지 유용한 설정
-;;#useful settings
 (transient-mark-mode t)
 (global-set-key [C-kanji] 'set-mark-command)
-
-
 
 ;;파일 편집 위치 기억
 (require 'saveplace)
 (setq-default save-place t)
 (setq save-place-file     "~/_places.sav")
 
-
 ;;최근 파일 접근
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 20) ; 최근 파일 목록 수
-
-
 
 ;;GUI 환경에서 줄 간격 조절
 (setq-default line-spacing 1)
@@ -1211,31 +1050,21 @@
 ;;파일이 수정되었을 때 자동으로 다시 읽어들이도록 하는 설정
 (global-auto-revert-mode t)
 
-
 ;;linum 모드 켜기 (줄번호 표시하기)
-(global-linum-mode 1)
-
+(global-linum-mode t)
 
 ;; 계산기 자릿수 분리기호 삽입 calc EMACS 기본 계산기 모드에서 자릿수 분리기호 삽입
 (setq calc-group-digits t)
-
-
-;;status bar에 시간 표시기능.
-(display-time)
-
 
 ;;시작 화면 메세지 끄기
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
 
-
 ;;시작 모드를 text모드로 시작하기. 보통은 LISP Interaction 상태.
 (setq initial-major-mode 'text-mode)
 
-
 ;;블럭 선택부분 색상 반전시키기
 (setq-default transient-mark-mode t)
-
 
 ;;status bar에 줄 번호, 칼럼 번호 표시
 (setq line-number-mode t)
@@ -1251,7 +1080,6 @@
 (setq create-lockfiles nil)
 
 ;; 모든 자동저장, 백업파일을 tmp 폴더에 만들기
-;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
@@ -1262,18 +1090,14 @@
 ;;보통은 스크롤이 맨 끝까지 가면 자동으로 빈 줄이 추가 된다.
 (setq next-line-add-newlines nil)
 
-
 ;;하단 스크롤시 1줄씩만 스크롤 되도록 하기.
 (setq scroll-step 1)
-
 
 ;;페이지 넘길 때 3줄은 포함.
 (setq next-screen-context-lines 3)
 
-
 ;;찾기 기능에서 하이라이트 설정
 (setq search-highlight t)
-
 
 ;;상단 메뉴 숨기기
 (menu-bar-mode 0)
@@ -1281,30 +1105,11 @@
 ;;도구 모음 숨기기
 (tool-bar-mode 0)
 
-;; scroll bar 끄기
+;;스크롤바 숨기기
 (scroll-bar-mode 0)
-
-
-
-;; word wrap 강제 줄바꿈 auto-fill-mode 이기능은 특정 칼럼 이상 넘어가면
-;; 자동으로 강제 줄바꿈 해주는 기능인데, 대량의 텍스트 문서를 워드프로세서로 편집 할 경우
-
-
-;;강제줄바꿈 기능이 오히려 편집의 불편함을 주기 때문에 지금은 사용하지 않는다.
-;; (setq-default auto-fill-function 'do-auto-fill)
-
 
 ;;줄 바꿈 칼럼수 설정.
 (setq-default fill-column 120)
-
-
-
-
-;;grep 기능 옵션 설정 리눅스 에서는 grep을 쓰고 윈도우 환경에서는 find를 쓴다.
-;;뒤에 붙여주는 인자도 수정 할 수 있다. 보통 텍스트 파일을 검색하므로 txt를 붙여 주었다.
-;;(setq grep-command "grep -n \"\" *.txt")
-;;(setq grep-command "find \"\" *.txt")
-
 
 ;;날짜 삽입하기. 편집 할 때
 (defun today ()
@@ -1312,18 +1117,14 @@
   (interactive)
   (insert (format-time-string "%Y-%m-%d")))
 
-
 ;;날짜 삽입 단축키 (편집 시)
 (global-set-key "\M-\pd" 'today)
-
 
 ;;날짜 삽입하기. 저장 할 때
 (defun today1 ()
   "Insert Date YYMMDD00"
   (interactive)
   (insert (format-time-string "%y%m%d00")))
-
-
 
 ;;Dired모드에서 디렉토리 우선 정렬로 보기 (기본은 지원 안함)
 (defun sof/dired-sort ()
@@ -1337,7 +1138,6 @@
        (dired-insert-set-properties (point-min) (point-max)))
   (set-buffer-modified-p nil))
 (add-hook 'dired-after-readin-hook 'sof/dired-sort)
-
 
 ;; dired mode에서 여러 단축키들을 설정하는 코드
 (eval-after-load "dired" '(progn
@@ -1365,65 +1165,33 @@
       (define-key dired-mode-map "/" 'isearch-forward)
 ))
 
-
-
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
 (load "cc-mode")
 (define-key c++-mode-map "\r" 'reindent-then-newline-and-indent)
 (define-key c-mode-map "\r" 'reindent-then-newline-and-indent)
 (define-key java-mode-map "\r" 'reindent-then-newline-and-indent)
 
-
-;; 엔터 입력시 자동 들여쓰기 다른 방법
-;;(require 'cc-mode)
-;;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-
-
-;; { , ; 입력시 자동 줄 추가
-;;(add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
-
-
-
 ;;emacs tab 설정
 (setq c-basic-offset 4
       tab-width 4
       indent-tabs-mode t)
-;;(add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
-
 
 ;; 탭 대신 공백 넣기
 (setq-default indent-tabs-mode nil)
 
-
-;; c-toggle-auto-state 기능에 backspace입력시 모든 공백(줄 바꿈 포함) 삭제
-;;(add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-hungry-state 1)))
-
-
-;;최근 사용된 word list를 가지고, 자동 완성구현, 3글자 이후에M-RET
+;;최근 사용된 word list를 가지고, 자동 완성구현, 3글자 이후에 M-RET
 (dynamic-completion-mode)
 
-
+;; PACKAGE: mic-paren
+;; 반대편 괄호의 line number를 알려주는 패키지
 (require 'mic-paren) ; loading
 (paren-activate)     ; activating
 ;; offscreen parenthesis의 경우 반대쪽 괄호의 라인정보를 알려준다
 (setq paren-message-show-linenumber "absolute")
 
-
-
-;;==============================================================================
-;; prog mode 설정하기(emacs 24+ only)
-;; (참조 : http://www.gnu.org/software/emacs/manual/html_node/elisp/Basic-Major-Modes.html)
-;;==============================================================================
-;; prog mode 에 설정을 해두면 각각의 언어에서 별도 설정을 하지 않아도 된다.
-;; prog mode 를 상속하지 않는 경우 별도로 설정해야 한다.
-
 (defun set-default-programming-style ()
-  ;; -------------------------------------------------------------------------
   ;; 엔터 입력시 들여쓰기
   (local-set-key (kbd "RET") 'newline-and-indent)
-  ;; -------------------------------------------------------------------------
-  ;; 탭키를 일반 에디터에서 작동하는 방식으로 변경
-  ;; (local-set-key (kbd "TAB") 'self-insert-command)
 
   ;; 탭키 입력시 영역지정되어 있으면 영역 들여쓰기. 영역없으면 탭키.
   (local-set-key (kbd "TAB") 'indent-block)
@@ -1433,17 +1201,12 @@
 
   ;; 탭 사이즈 4
   (setq tab-width 4)
-  ;; -------------------------------------------------------------------------
+
   ;; 줄번호 표시
   (linum-mode 1)
-
-  ;; -------------------------------------------------------------------------
-  ;; 커서라인 표시
-  ;;(global-hl-line-mode)
   )
 
-
-;; ECB Emacs Code Browser 활성화
+;; PACKAGE: ECB Emacs Code Browser
 (require 'ecb)
 
 ;; ECB tree view에서 F3 키가 ecb-show-help로 키바인딩되어있는 것을 해제해준다
@@ -1451,32 +1214,10 @@
           (lambda ()
             (local-unset-key [f3])
                              ))
-
 (add-hook 'ecb-directories-buffer-after-create-hook
           (lambda ()
             (local-unset-key [f3])
             ))
-
-
-;; etags 사용법
-;; 1. M-x compile RET etags *.cpp *.h RET해 주고
-;; 2. M-x visit-tags-table 해 주고
-;; 3. 원하는 함수명 위에 커서 놓고 M-. 해 주고 엔터치면 함수 정의로 이동한다.
-;; 4. 되돌아 가려면 M-*
-;; 5. 다른 디렉토리도 적용하면
-;; find . -name "*.[chCH]" -print | etags -
-;; 또 다른 명령어
-;; find /usr/include/ -name "*.[ch]" -print | etags - *.cpp *.h
-;; find /usr/include/ -name "*.[ch]" -print | etags - *.[ch]
-;; -------------------------------------------------------------
-;; gtags 사용 이후론 잘 안쓴다 gtags가 알아서 해주는듯
-
-
-;; 180122_월
-;; emacs 25.x 이후로 xref-find-definition을 (xx) 키로 key-chord 설정해놨다
-;;                  이를 사용하려면 TAGS 파일이 필요한데 이를 위해 또 etags를 써야하는듯 :-)
-;; find ./ -print | etags - *.{cpp,h,c,cc,hpp,py,el} 같이 쓰면 여러 확장자를 필터링할 수 있다
-
 
 
 ;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수
@@ -1488,16 +1229,12 @@
 
 
 ;; M-? 키를 이용해 TAGS file을 만든다.
-;;(define-key c++-mode-map "\M-e" nil)
-;;(define-key c-mode-map "\M-e" nil)
 (global-set-key (kbd "M-?") 'make_TAGS_file)
 
 ;; M-> 키를 이용해 GTAGS file을 만든다.
 (global-set-key (kbd "M->") 'helm-gtags-create-tags)
 
-
-
-
+;; PACKAGE: google-c-style
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
@@ -1517,18 +1254,10 @@
              (c-set-style "google")))
 
 
-
-;; completion-at-point를 비활성화합니다
-;; (setq helm-mode-completion-at-point nil)
-
-
-;; 단축키 지정===============================================================
-
 ;; 영어 대문자, 소문자를 토글해주는 함수
 (defun xah-toggle-letter-case ()
   "Toggle the letter case of current word or text selection.
 Always cycle in this order: Init Caps, ALL CAPS, all lower.
-
 URL `http://ergoemacs.org/emacs/modernization_upcase-word.html'
 Version 2017-04-19"
   (interactive)
@@ -1560,11 +1289,6 @@ Version 2017-04-19"
 ;; Alt + = 키로 region 영역에 영어단어를 대문자, 소문자, 앞에만 대문자 형식으로 토글해줍니다
 (global-set-key (kbd "M-u") 'xah-toggle-letter-case)
 
-
-;;최근 작업 파일 목록 열기
-;; (global-set-key "\M-\p1" 'recentf-open-files)
-
-
 ;;f1 이전 버퍼창 이동
 (global-set-key [f1] 'previous-buffer)
 
@@ -1573,6 +1297,7 @@ Version 2017-04-19"
 
 ;; f3, C-left, C-right  윈도우 창 이동
 (global-set-key [f3] 'next-multiframe-window)
+
 (global-set-key (kbd "<M-right>") 'next-multiframe-window)
 (global-set-key (kbd "<M-down>") 'next-multiframe-window)
 (global-set-key (kbd "<M-left>") 'previous-multiframe-window)
@@ -1580,7 +1305,6 @@ Version 2017-04-19"
 
 ;; F4 또는 M-] 키로 파일 탐색기 Dired 모드 켜기
 (global-set-key [f4] 'dired)
-;; (global-set-key (kbd "M-]") 'dired)
 
 ;; 단어 하이라이트(특정 단어만 색깔강조하기)
 (global-set-key [f5] 'highlight-symbol)
@@ -1632,7 +1356,6 @@ Version 2017-04-19"
 ;; (global-set-key (kbd "C-1") 'eyebrowse-switch-to-window-config-0)
 ;; (global-set-key (kbd "C-2") 'eyebrowse-switch-to-window-config-1)
 ;; (global-set-key (kbd "C-3") 'eyebrowse-switch-to-window-config-2)
-
 ;; Ctrl + 4 키로 .md 파일을 파이어폭스로 프리뷰합니다 (not used)
 ;; (global-set-key (kbd "C-4") 'flymd-flyit)
 
@@ -1642,10 +1365,10 @@ Version 2017-04-19"
 ;;                                         바뀐 프로젝트의 홈폴더에서 dired 모드를 실행합니다
 (setq projectile-switch-project-action 'projectile-dired)
 
-
 ;; Ctrl + 6키로 jupyter notebook 서버를 실행합니다
 (global-set-key (kbd "C-6") 'ein:jupyter-server-start)
-;; Ctrl + 6키로 remote 접속을 위한 notebooklist-login 명령어를 설정합니다
+
+;; Ctrl + ^키로 remote 접속을 위한 notebooklist-login 명령어를 설정합니다
 (global-set-key (kbd "C-^") 'ein:notebooklist-login)
 
 ;; Ctrl + 7 키로 선택한 버퍼를 닫습니다
@@ -1678,11 +1401,8 @@ Version 2017-04-19"
 ;; Alt + 6키로 remote 접속을 위한 notebooklist-open 명령어를 설정합니다
 (global-set-key (kbd "M-6") 'ein:notebooklist-open)
 
-
-
 ;; edebug defun을 ctrl + b로 설정한다
-(global-set-key "\C-b" 'edebug-defun)
-
+;; (global-set-key "\C-b" 'edebug-defun)
 
 ;; Ctrl + q 키로 현재 창 남기고 나머지 창 모두 닫기
 (global-set-key "\C-q" 'delete-other-windows)
@@ -1691,66 +1411,35 @@ Version 2017-04-19"
 (global-set-key "\M-q" 'delete-window)
 (define-key c++-mode-map (kbd "M-q") 'delete-window)
 
-;; Shift + Space 키를 한영키에서 해제한다.
-(global-unset-key (kbd "S-SPC"))
-
-
 ;; Ctrl + tab 키를 한/영키로
+(global-unset-key (kbd "S-SPC"))
 (global-unset-key (kbd "C-S-SPC"))
 (global-set-key [(control tab)] 'toggle-input-method)
 
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.
 (cua-mode)
 
-
 ;;북 마크에 저장 하기 Alt + m
 (global-set-key "\M-m" 'bookmark-set)
+
+;; 북마크 삭제 Ctrl + Alt + m
+(global-set-key (kbd "C-M-m") 'bookmark-delete)
 
 ;;북 마크 열기 Alt + v
 (global-set-key (kbd "M-v") 'bookmark-jump)
 (define-key cua--cua-keys-keymap (kbd "M-v") 'bookmark-jump)
 
-;; 북마크 삭제 Ctrl + Alt + m
-(global-set-key (kbd "C-M-m") 'bookmark-delete)
-
-;;버퍼 목록 열기
-;;(global-set-key "\M-\pl" 'electric-buffer-list)
-
-;;버퍼 메뉴 열기
-;;(global-set-key "\M-\pp" 'buffer-menu)
-
-;;grep 실행
-;;(global-set-key "\M-\pg" 'grep)
-
 ;;줄번호 이동(M-g)
 (global-set-key "\M-g" 'goto-line)
-
-;;커서에 위치한 문자열을 파일명으로 인식하여 열기.
-;;(global-set-key "\M-1" 'find-file-at-point)
-
-;;가로 분할 화면 위로 크기 조절
-;;(global-set-key "\M-\p[" 'shrink-window)
-
-;;가로 분할 화면 아래로 크기 조절
-;;(global-set-key "\M-\p]" 'enlarge-window)
-
-;;세로 화면 사이즈 좌측으로 크기 조절
-;;(global-set-key "\M-\p;" 'shrink-window-horizontally)
-
-;;세로 화면 사이즈 우측으로 크기 조절
-;;(global-set-key "\M-\p'" 'enlarge-window-horizontally)
 
 ;; Ctrl + k 키로 해당 커서의 한 줄 전체를 지웁니다
 (global-set-key "\C-k" 'kill-whole-line)
 
-
 ;; Alt + k 키로 해당 커서의 오른쪽부분만 삭제합니다
 (global-set-key "\M-k" 'kill-visual-line)
 
-
-;; Ctrl + A 키로 전체선택하게 합니다
+;; Ctrl + a 키로 전체선택하게 합니다
 (global-set-key "\C-a" 'mark-whole-buffer)
-
 
 ;; Ctrl + w 키로 해당 버퍼를 저장합니다
 (global-set-key "\C-w" 'save-buffer)
@@ -1770,7 +1459,6 @@ Version 2017-04-19"
              (local-set-key (kbd "C-M-e") 'move-beginning-of-line))
           )
 
-
 ;; Ctrl + p 키로 grep 명령어를 실행합니다
 (global-set-key (kbd "C-p") 'grep-find)
 
@@ -1779,8 +1467,6 @@ Version 2017-04-19"
 ;;"find . <X> -type f <F> -exec grep <C> -nH -ie <R> \\{\\} +")
 ;;"find . -type f -exec grep --exclude=*{ph.h, rviz, rst} --include={cpp,c,h,py} -nH -ie   {} +" 같이 확장자를 필터링할 수 있다
 (grep-apply-setting 'grep-find-command '("find . -type f -exec grep -nH -ie   {} +" . 35))
-;;(grep-apply-setting 'grep-find-command '("find . -type d \\( -name '.git' \\) -prune -o -type f  -exec grep -nH -e  \\{\\} +" . 72))
-
 
 ;; Ctrl + ; 키로 find file 파일이 존재하는지 검색합니다
 (global-set-key (kbd "C-;") 'helm-find)
@@ -1792,23 +1478,7 @@ Version 2017-04-19"
 (add-hook 'c++-mode-hook (lambda () (setq comment-start "/* "
                                           comment-end   "*/")))
 
-;; python 주석 처리 변경 코드 (# -> ''' ''' 로 변경한다) ( 사용안함 )
-;; (add-hook 'python-mode-hook (lambda () (setq comment-start "'\'' " ''''
-;;                                              comment-end   "'\''"))) ''''
-
-
 ;; 괄호 사이를 이동하는 코드
-;; (defun match-paren ()
-;;   "% command of vi."
-;;   (interactive)
-;;   (let ((char (char-after (point))))
-;;     (cond ((memq char '(?\( ?\{ ?\[))
-;;            (forward-sexp 1)
-;;            (backward-char 1))
-;;           ((memq char '(?\) ?\} ?\]))
-;;            (forward-char 1)
-;;            (backward-sexp 1))
-;;           (t (call-interactively 'self-insert-command)))))
 (defun match-paren (arg)
             "Go to the matching paren if on a paren; otherwise insert %."
             (interactive "p")
@@ -1818,8 +1488,6 @@ Version 2017-04-19"
 
 ;; Ctrl + ] 키를 누르면 해당 괄호의 끝부분으로 이동합니다
 (global-set-key (kbd "\C-]") 'match-paren)
-
-
 
 (defun newline-without-break-of-line ()
   "1. move to end of the line, 2. insert newline with index."
@@ -1873,18 +1541,15 @@ Version 2017-04-19"
 (global-set-key (kbd "C-M-g") 'hide/show-comments-toggle)
 
 
-
 ;; Ctrl + PageUp, Down 단축키로 첫째줄, 마지막줄로 바로 이동합니다. Ctrl + Home, End는 원래 가능
 (global-set-key (kbd "C-<prior>") 'beginning-of-buffer)
 (global-set-key (kbd "C-<next>") 'end-of-buffer)
-
 
 ;; Alt + z로 시각화된 undo tree를 봅니다
 (global-set-key "\M-z" 'undo-tree-visualize)
 
 ;; Ctrl + z로 뒤로가기 기능을 실행합니다
 (global-set-key "\C-z" 'undo-tree-undo)
-
 
 ;; Alt + h로 vim처럼 한칸씩 아래로 움직입니다
 (global-set-key "\M-h" 'next-line)
@@ -1894,11 +1559,11 @@ Version 2017-04-19"
 (define-key c-mode-map "\M-j" nil)
 (global-set-key "\M-j" 'previous-line)
 
-
 ;; C-c + C-c 로 window의 사이즈를 조절합니다
 (define-key c++-mode-map (kbd "C-c C-c") nil)
 (define-key c-mode-map (kbd "C-c C-c") nil)
 (global-set-key (kbd "C-c C-c") 'enlarge-window-horizontally)
+
 ;; python-mode에서도 같은 단축키가 동작하도록 설정한다
 (add-hook 'python-mode-hook
           '(lambda ()
@@ -1911,18 +1576,11 @@ Version 2017-04-19"
              (local-set-key (kbd "M-h") 'next-line)
           )
 
-
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
 (global-set-key (kbd "M-/") 'visit-tags-table)
 
-
-
-
 ;; M-l 키로 python 코드에서 들여쓰기를 보여줍니다
 (global-set-key (kbd "M-l") 'highlight-indentation-mode)
-
-
-
 
 (defun select-current-line ()
   "Select the current line"
@@ -1930,14 +1588,11 @@ Version 2017-04-19"
   (end-of-line) ; move to end of line
   (set-mark (line-beginning-position)))
 
-
 ;; Ctrl + y 키로 현재 커서의 라인을 선택합니다
 (global-set-key (kbd "C-y") 'select-current-line)
 
-
 ;; Ctrl + b 키로 helm 파일 브라우저를 실행합니다
 (global-set-key (kbd "C-b") 'helm-for-files)
-
 
 (defun select-current-line-and-comment ()
   "Select the current line"
@@ -1946,20 +1601,8 @@ Version 2017-04-19"
   (set-mark (line-beginning-position))
   (comment-dwim 1))
 
-
-;; Alt + ' 키로 현재 커서라인을 주석처리 Toggle ON/OFF 합니다
+;; Alt + ; 키로 현재 커서라인을 주석처리 Toggle ON/OFF 합니다
 (global-set-key (kbd "M-;") 'select-current-line-and-comment)
-
-
-;; Alt + w,e 키로 커서를 기준으로 한 구문을 선택할 수 있도록 합니다
-(define-key c-mode-map (kbd "M-e") nil)
-(define-key c-mode-map (kbd "M-w") nil)
-(define-key c++-mode-map (kbd "M-e") nil)
-(define-key c++-mode-map (kbd "M-w") nil)
-(global-set-key (kbd "M-e") 'forward-sentence)
-(global-set-key (kbd "M-w") 'backward-sentence)
-
-
 
 ;; Alt + \ 키로 magit의 상태창을 실행합니다
 (global-set-key (kbd "M-\\") 'magit-status)
@@ -1976,45 +1619,32 @@ Version 2017-04-19"
 ;; C-c + r키로 두 파일을 비교하는 ediff 명령을 실행합니다
 (global-set-key (kbd "C-c r") 'ediff)
 
-
 ;; C-c + t 키로 한 파일의 변경기록을 검사하는 magit-log-buffer-file 명령을 수행합니다
 (global-set-key (kbd "C-c t") 'magit-log-buffer-file)
 
 ;; C-c + y 키로 다른 branch에 있는 파일의 내용을 확인합니다
 (global-set-key (kbd "C-c y") 'magit-find-file)
 
-
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
 (setq vc-handled-backends nil)
 
-
-
 ;; Alt + [ 키로 선택된 단어를 iedit 일괄편집합니다
 (global-set-key (kbd "M-[") 'iedit-mode)
-
 
 ;; Ctrl + =,+키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
 (global-set-key (kbd "C-=") 'avy-goto-word-0)
 (global-set-key (kbd "C-+") 'avy-goto-word-1)
 
-
 ;; Ctrl + - 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다
 (global-set-key (kbd "C--") 'swiper-all)
 
-
-;; Alt + r 키로 해당 단어의 reference를 검색해줍니다
+;; Alt + e 키로 해당 단어의 reference를 검색해줍니다
 (global-set-key (kbd "M-e") 'helm-projectile-grep)
-
 
 ;; ESC키 2번으로 기존에 3번 ESC를 눌러야 작동하던 escape를 대신합니다
 (global-set-key (kbd "<escape> <escape>") 'keyboard-escape-quit)
 
-
-;;(add-to-list 'load-path "/opt/ros/kinetic/share/emacs/site-lisp")
-;; or whatever your install space is + "/share/emacs/site-lisp"
-;;(require 'rosemacs-config)
-
-;; Package: key-chord를 사용합니다
+;; Package: key-chord
 (require 'key-chord)
 ;; 두 키가 입력되는데 걸리는 시간 설정
 (setq key-chord-two-keys-delay 0.1) ; default 0.1
@@ -2033,17 +1663,12 @@ Version 2017-04-19"
 (key-chord-define-global "cc" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
-;;(key-chord-define-global "df" 'save-buffer)
-;;(key-chord-define-global "aa" 'helm-global-mark-ring)
 (key-chord-mode t)
-
-
 
 ;; .h header 파일을 c++ 모드로 설정합니다
 ;; 아니면 아래 라인을 적용하지 않고 헤더파일 맨 첫줄에 // -*-c++-*- 구문을 입력합니다
 ;; 아니면 .hpp 파일로 만들면 됩니다
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-
 
 ;; xml 구문을 folding해서 쉽게 보기 위해 아래와 같이 코드를 작성합니다.
 (require 'hideshow)
@@ -2058,12 +1683,10 @@ Version 2017-04-19"
                nil))
 (add-hook 'nxml-mode-hook 'hs-minor-mode)
 
-
 ;; Ctrl + g 키로 xml 파일 내에서 코드를 folding할 수 있습니다
 (define-key nxml-mode-map (kbd "C-g") 'hs-toggle-hiding)
 
-
-;; grep-find (ctrl-P) 명령어에서 새로운 grep 창이 열리지 않고 바로 현재창이 바뀌도록 하는 코드
+;; grep-find (C-p) 명령어에서 새로운 grep 창이 열리지 않고 바로 현재창이 바뀌도록 하는 코드
 (eval-when-compile (require 'cl))
 (defun kill-grep-window ()
   (destructuring-bind (window major-mode)
@@ -2073,20 +1696,6 @@ Version 2017-04-19"
       (delete-window window))))
 (add-hook 'next-error-hook 'kill-grep-window)
 
-
-
-;; git gutter 모드를 사용해 수정된 라인을 하이라이팅한다
-(global-git-gutter-mode +1)
-
-;; custom 모양 및 색상 추가
-
-
-(set-face-foreground 'git-gutter:modified "yellow")
-(set-face-foreground 'git-gutter:added "green")
-(set-face-foreground 'git-gutter:deleted "red")
-
-;; C-c + g 키로 git gutter에서 수정된 부분을 뒤로 돌릴건지 물어보는 명령어를 실행합니다
-(global-set-key (kbd "C-c g") 'git-gutter:revert-hunk)
 
 
 ;; ROS의 .launch 파일을 xml모드로 구문 하이라이팅하기 위해 설정합니다
