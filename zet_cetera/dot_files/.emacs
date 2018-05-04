@@ -620,7 +620,8 @@
             ))
 
 ;; ROS를 사용하는 경우 flycheck #include <ros/ros.h>가 나지 않도록 추가한 코드
-(setq flycheck-clang-include-path "/opt/ros/kinetic/include")
+(setq flycheck-clang-include-path (list (expand-file-name "/opt/ros/kinetic/include")))
+
 
 ;; emacs syntax warning + error 들을 무시합니다
 (with-eval-after-load 'flycheck
@@ -833,6 +834,10 @@
 
 ;; Variable Customizing
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
@@ -866,9 +871,9 @@
  '(elpy-modules
    (quote
     (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
- '(git-gutter:added-sign "+ ")
- '(git-gutter:deleted-sign "- ")
- '(git-gutter:modified-sign "▸ ")
+ '(git-gutter:added-sign "+")
+ '(git-gutter:deleted-sign "-")
+ '(git-gutter:modified-sign "▸")
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
@@ -964,6 +969,10 @@
 
 ;; Custom Face + 영어폰트 설정  (height 부분을 바꾸면 크기가 바뀝니다)
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
  '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
@@ -1696,6 +1705,12 @@ Version 2017-04-19"
       (delete-window window))))
 (add-hook 'next-error-hook 'kill-grep-window)
 
+;; *scratch* 버퍼를 새로 생성하는 함수
+(defun create-scratch-buffer nil
+  "create a scratch buffer"
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode))
 
 
 ;; ROS의 .launch 파일을 xml모드로 구문 하이라이팅하기 위해 설정합니다
