@@ -970,11 +970,7 @@
  '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
  '(diff-refine-added ((t (:background "olive drab"))))
  '(diff-refine-changed ((t (:background "nil"))))
-<<<<<<< HEAD
  '(diff-refine-removed ((t (:background "firebrick"))))
-=======
- '(diff-refine-removed ((t (:background "nil"))))
->>>>>>> 208e01c3f7c1bc889c790eccb7f575adf3614e5f
  '(diff-removed ((t (:background "red4" :foreground "white smoke"))))
  '(ein:cell-input-area ((t (:background "black"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
