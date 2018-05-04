@@ -1,45 +1,38 @@
+//START===========================================
+/*
+  c++ ==> 백준 2839, 설탕배달을 풀기 위한 코드 (미완성)
+*/
 #include <iostream>
-#include <algorithm>
-#include <sys/time.h>
-#include <map>
+#include <stdio.h>
 
 using namespace std;
 
-int a[10000000];
-int n;
+int main() {
+  int num;
+  cin >> num;
 
-long long currentepoch() {
-  struct timeval tp;
-  gettimeofday(&tp, NULL);
-  long long ms = tp.tv_sec * 1000LL + tp.tv_usec / 1000LL;
-  return ms;
-}
+  if(num <= 3 || num >= 5000)
+    return 0;
 
-int main(int argc, char **argv){
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
-  cin >> n;
-  map<int, int> d;
+  int five_count = 0;
+  int three_count = 0;
+  int five_mod = 0;
+  int three_mod = 0;
 
-  for (int i=0; i<n; i++) {
-    cin >> a[i];
-  }
+  five_count = num / 5;
+  five_mod = num % 5;
+  three_count = num / 3;
+  three_mod = num % 3;
 
-  int k=0;
-  long long start = currentepoch();
+  cout << five_count << ", " << three_count << endl;
 
-  for (int i=0; i<n; i++) {
-    d[a[i]] += 1;
-  }
+  // TODO(edward): make it complete
 
-  for (auto it = d.begin(); it != d.end(); it++) {
-    for (int j=0; j < it->second; j++) {
-      a[k++] = it->first;
-    }
-  }
-
-  long long end = currentepoch();
-  cerr << (end-start) << '\n';
+  if(num % 5 != 4)
+    printf("%d\n", five_count + three_count);
+  else
+    printf("-1");
 
   return 0;
 }
+//END=============================================

@@ -1,5 +1,44 @@
 //START===========================================
 /*
+  c++ ==> 백준 2839, 설탕배달을 풀기 위한 코드 (미완성)
+*/
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+int main() {
+  int num;
+  cin >> num;
+
+  if(num <= 3 || num >= 5000)
+    return 0;
+
+  int five_count = 0;
+  int three_count = 0;
+  int five_mod = 0;
+  int three_mod = 0;
+
+  five_count = num / 5;
+  five_mod = num % 5;
+  three_count = num / 3;
+  three_mod = num % 3;
+
+  cout << five_count << ", " << three_count << endl;
+
+  // TODO(edward): make it complete
+
+  if(num % 5 != 4)
+    printf("%d\n", five_count + three_count);
+  else
+    printf("-1");
+
+  return 0;
+}
+//END=============================================
+
+//START===========================================
+/*
   c++ ==> 백준 10825, 국영수 문제를 푼 코드2
 
 Input :
@@ -60,10 +99,10 @@ int main(int argc, char **argv){
     cout << p.name << '\n';
   }
 
-
   return 0;
 }
 //END=============================================
+
 //START===========================================
 /*
   c++ ==> 백준 1076, 저항 문제를 푼 코드
@@ -102,6 +141,7 @@ int main(int argc, char **argv) {
   return 0;
 }
 //END=============================================
+
 //START===========================================
 /*
   c++ ==> 백준 10825, 국영수 문제의 해답 코드
@@ -148,6 +188,7 @@ int main(int argc, char **argv) {
   return 0;
 }
 //END=============================================
+
 //START===========================================
 /*
   c++ ==> lambda로 사칙연산을 해본 예제 코드
