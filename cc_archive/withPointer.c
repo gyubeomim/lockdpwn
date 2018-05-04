@@ -5,17 +5,17 @@
 
 int inc(int *a)
 {
-	*a = *a + 1;
-	return *a;
+  *a = *a + 1;
+  return *a;
 }
 
 int main()
 {
-	int s, ret;
+  int s, ret;
 
-	s = 2;
-	ret = inc(&s);
-	printf("%d, %d\n", s, ret);
+  s = 2;
+  ret = inc(&s);
+  printf("%d, %d\n", s, ret);
 
-	return 0;
+  return 0;
 }

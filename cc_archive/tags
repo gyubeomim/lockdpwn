@@ -1,788 +1,0 @@
-
-160519_pr1.c,16
-void main(3,20
-
-160519_pr2.c,34
-int main(5,42
-long combi(19,190
-
-160519_pr3.c,40
-#define MAX_STRING 3,20
-int main(5,44
-
-160519_pr4.c,40
-#define MAX_SPRING 4,40
-int main(6,64
-
-160520_pr1.c,40
-#define MAX_STRING 3,39
-int main(7,65
-
-160520_pr2.c,40
-#define MAX_STRING 3,39
-int main(6,64
-
-160520_pr3.c,63
-#define MAX_STRING 4,40
-#define READ_CNT 5,63
-int main(7,85
-
-160520_pr4.c,15
-int main(4,40
-
-160524_pr1.c,37
-#define ARR_LEN 3,20
-int main(6,41
-
-160524_pr2.c,16
-void main(4,40
-
-160526_pr1.c,51
-#define SIZE 2,19
-int main(7,65
-int sang(35,374
-
-160701_pr1.c,15
-int main(3,20
-
-160701_pr2.c,16
-void main(4,21
-
-160702_p141.c,155
-#define STR_NUM 5,60
-#define EXT_SIZE 6,78
-void main(14,214
-int ExtendMemForString(38,497
-char *ReadString(ReadString60,833
-void SortString(89,1203
-
-160702_p47.c,16
-void main(4,51
-
-160702_p52.c,16
-void main(4,21
-
-160702_p61.c,16
-void main(4,21
-
-160702_p64.c,16
-void main(5,22
-
-160702_p68.c,16
-void main(4,21
-
-160702_p82.c,34
-#define LEN 4,40
-void main(6,57
-
-160702_p85.c,16
-void main(5,41
-
-160702_p93.c,38
-void main(5,45
-int factorial(30,310
-
-160702_p97.c,35
-void main(6,63
-int DivInt(34,443
-
-160704_p100.c,35
-void main(8,58
-int arrSum(27,382
-
-160704_p108.c,56
-#define LEN 3,20
-void main(8,73
-int searchArr(33,409
-
-160704_p120.c,45
-void main(7,93
-char* StringTokenize(24,308
-
-160704_p125.c,67
-void main(6,89
-void SortArr(18,221
-void ReadAndSortPrint(38,466
-
-160704_p133.c,72
-#define EXT_SIZE 6,61
-void main(11,132
-int ExtendMemForString(29,399
-
-160704_p151.c,248
-#define STR_LEN 3,20
-#define BOOK_INFO_NUM 4,39
-typedef struct __bookInfo6,64
-  char bookTitle[bookTitle8,92
-  char bookPub[bookPub9,119
-  int bookPrice;10,144
-} bookInfo;11,161
-bookInfo bookInfoList[bookInfoList13,174
-void main(15,213
-
-160705_p157.c,520
-#define STR_LEN 4,40
-#define BOOK_INFO_NUM 5,59
-typedef struct __bookInfo8,85
-  char bookTitle[bookTitle10,113
-  char bookPub[bookPub11,140
-  int bookPrice;12,165
-} bookInfo;13,182
-int numOfData 16,196
-bookInfo bookInfoList[bookInfoList17,215
-enum{SORT_TITLE=SORT_TITLE20,286
-enum{SORT_TITLE=1, SORT_PUB,20,286
-enum{SORT_TITLE=1, SORT_PUB, SORT_PRICE,20,286
-enum{SORT_TITLE=1, SORT_PUB, SORT_PRICE, EXIT}EXIT20,286
-bookInfo * bookSortList[bookSortList21,334
-void main(35,552
-int InsertList(79,1399
-
-160705_p204_2.c,36
-int strCpy(5,25
-int strCat(20,181
-
-160705_p204.c,35
-int strLen(1,0
-int strCmp(16,114
-
-160705_p204_main.c,16
-void main(3,23
-
-160705_p209.c,16
-void main(4,21
-
-160705_p211.c,16
-void main(4,21
-
-160705_p214.c,16
-void main(4,21
-
-160705_p218.c,15
-int main(5,22
-
-160705_p220.c,41
-#define MAX_STRING 3,20
-void main(4,43
-
-160705_p223.c,95
-#define MAX_STRING 3,20
-void main(8,112
-void printString(42,504
-void printAllString(57,695
-
-160705_p225.c,41
-#define MAX_STRING 5,41
-void main(6,64
-
-160706_p235.c,41
-#define MAX_STRING 5,41
-void main(8,66
-
-160706_p250.c,41
-#define MAX_STRING 4,40
-void main(6,64
-
-160711_jongki_homework.c,644
-#define MAX_LEN 10,152
-typedef struct student13,196
-  char name[name15,221
-  int mathScore;16,243
-  int koreanScore;17,260
-  int englishScore;18,279
-  int totalScore;19,299
-  double meanScore;20,317
-} STUDENT;21,337
-enum{NAME=NAME24,350
-enum{NAME=1, SCOREHIGH,24,350
-enum{NAME=1, SCOREHIGH, SCORELOW,24,350
-enum{NAME=1, SCOREHIGH, SCORELOW, QUIT}QUIT24,350
-STUDENT student[student26,392
-STUDENT tmp;27,418
-void main(45,733
-void getStudentScore(106,1920
-void getTotalScore(124,2227
-void getMeanScore(131,2390
-void sortStudentByScoreHigh(140,2502
-void sortStudentByScoreLow(168,3154
-void sortStudentByScoreName(196,3802
-
-1.c,15
-int main(5,60
-
-2.c,38
-#define MAX_LEN 4,40
-void main(7,60
-
-3.c,61
-#define MAX_LEN 6,61
-#define DIC_LEN 7,81
-void main(9,100
-
-4.c,641
-#define MAX_LEN 5,60
-typedef struct student9,105
-  char name[name11,130
-  int mathScore;12,152
-  int koreanScore;13,169
-  int englishScore;14,188
-  int totalScore;15,208
-  double meanScore;16,226
-} STUDENT;17,246
-enum{NAME=NAME20,259
-enum{NAME=1, SCOREHIGH,20,259
-enum{NAME=1, SCOREHIGH, SCORELOW,20,259
-enum{NAME=1, SCOREHIGH, SCORELOW, QUIT}QUIT20,259
-STUDENT student[student22,301
-STUDENT tmp;23,327
-void main(41,642
-void getStudentScore(115,2004
-void getTotalScore(133,2311
-void getMeanScore(140,2474
-void sortStudentByScoreHigh(149,2586
-void sortStudentByScoreLow(177,3238
-void sortStudentByScoreName(205,3886
-
-5.c,35
-void main(6,66
-void Power(28,412
-
-6.c,36
-void main(5,43
-int isPrime(31,410
-
-arrayBaseStack.c,98
-void stackInit(5,68
-int sIsEmpty(11,132
-void sPush(22,269
-Data sPop(30,389
-Data sPeek(48,634
-
-arrayBaseStackMain.c,16
-void main(5,49
-
-ArrayList.c,119
-void ListInit(4,46
-void LInsert(10,138
-int LFirst(22,338
-int LNext(32,503
-LData LRemove(42,703
-int LCount(57,980
-
-buggy.c,46
-  main(6,56
-  do_swap(19,232
-  swap(27,339
-
-CLinkedList.c,177
-void ListInit(7,67
-void LInsert(17,204
-void LInsertFront(43,750
-int LFirst(67,1189
-int LNext(83,1432
-LData LRemove(99,1672
-int LCount(115,1906
-void setSortRule(121,1965
-
-cusInfoAccess.c,180
-#define MAX_CUSTOMER 13,185
-static cusInfo *cusList[cusList15,211
-static int numOfCustomer 16,250
-int addCusInfo(19,282
-cusInfo * getCusPtrById(42,606
-int isRegistId(56,786
-
-cusManager.c,55
-void registCustomer(17,232
-void searchCusInfo(59,905
-
-DBLinkedList.c,177
-void ListInit(5,66
-void LInsert(13,185
-void LInsertFront(38,730
-int LFirst(60,1167
-int LNext(74,1405
-LData LRemove(88,1640
-int LCount(101,1876
-void setSortRule(106,1935
-
-DLinkedList.c,193
-void ListInit(7,67
-void FInsert(16,227
-void SInsert(28,446
-void LInsert(49,811
-int LFirst(62,1018
-int LNext(78,1261
-LData LRemove(94,1501
-int LCount(110,1735
-void setSortRule(116,1794
-
-DLinkedListMain.c,41
-int whoIsPrecede(5,46
-void main(17,177
-
-dodug.c,475
-#define Green 7,99
-#define White 8,180
-#define Yellow 9,258
-#define Red 10,338
-int totalscore[totalscore12,416
-#define line2doduge 26,938
-#define line3doduge 27,989
-#define getch 28,1039
-int main(30,1063
-void movement(130,3287
-void gotoxy(716,19683
-int  Input_KeyState 722,19816
-void eye_1(755,20585
-int score(783,21176
-int level(809,21848
-void intro_design(841,22482
-void design(882,23030
-void countdown(897,23208
-int random_duplication_remove(920,23546
-
-dvdInfoAccess.c,259
-#define MAX_DVD 14,234
-static dvdInfo *dvdList[dvdList16,255
-static int numOfDvd 17,289
-int addDvdInfo(20,316
-dvdInfo * getDvdPtrByISBN(47,701
-int isRegistISBN(62,907
-int setDVDRented(79,1057
-int setDVDReturned(100,1337
-int getDVDRentState(114,1499
-
-dvdManager.c,135
-void registDvd(19,305
-void searchDvdInfo(67,1123
-void rentDvd(88,1403
-void returnDvd(183,3178
-void showDVDRentAllCusInfo(236,3992
-
-echo_client.c,72
-#define BUF_SIZE 11,187
-void main(15,247
-void error_handling(67,1243
-
-echo_server.c,71
-#define BUF_SIZE 8,127
-void main(12,187
-void error_handling(71,1404
-
-fd_seri.c,16
-void main(6,83
-
-file_client.c,71
-#define BUF_SIZE 11,148
-void main(15,208
-void error_handling(53,816
-
-file_server.c,72
-#define BUF_SIZE 11,148
-void main(15,206
-void error_handling(66,1249
-
-fork.c,30
-int gval 4,40
-int main(6,56
-
-game.c,72
-int choiceOfCom(15,220
-int choiceOfMe(35,421
-int whoIsWinner(82,1292
-
-gameContinue.c,56
-void saveCurrentState(15,208
-int loadSavedFile(26,481
-
-gameMoney.c,305
-static int moneyCom;11,162
-static int moneyYou;12,183
-static int gamblingTableMoney;15,206
-void setComMoney(17,238
-int getCurrentComMoney(27,326
-void setYouMoney(32,375
-int getCurrentYouMoney(43,464
-void setGamblingTableMoney(48,513
-void comWinMoneyAccount(61,654
-void youWinMoneyAccount(68,754
-
-gameTimes.c,22
-int calcPercent(5,40
-
-gethostbyaddr.c,71
-#define BUF_SIZE 11,143
-void main(15,201
-void error_handling(52,960
-
-gethostbyname.c,71
-#define BUF_SIZE 11,143
-void main(15,201
-void error_handling(47,815
-
-hello_client.c,46
-void main(10,164
-void error_handling(49,953
-
-hello_server.c,47
-void main(10,164
-void error_handling(64,1216
-
-inet_addr.c,16
-void main(4,43
-
-infixToPostfix.c,70
-int getOpPrec(14,235
-int whoPrecOp(34,494
-void convToRPNExp(58,854
-
-infixToPostfixMain.c,17
-void main(8,121
-
-ListBaseStack.c,98
-void StackInit(5,71
-int SIsEmpty(10,134
-void SPush(18,239
-Data SPop(28,420
-Data SPeek(48,693
-
-ListBaseStackMain.c,15
-int main(4,50
-
-ListMain.c,15
-int main(4,46
-
-low_open.c,45
-void main(8,112
-void error_handling(30,449
-
-low_read.c,69
-#define BUF_SIZE 6,79
-void main(10,134
-void error_handling(34,472
-
-main2.c,17
-int main(13,218
-
-main3.c,691
-enum{CUS_REGIST=CUS_REGIST12,177
-enum{CUS_REGIST=1, CUS_SEARCH,12,177
-enum{CUS_REGIST=1, CUS_SEARCH, DVD_REGIST,12,177
-enum{CUS_REGIST=1, CUS_SEARCH, DVD_REGIST, DVD_SEARCH,12,177
-enum{CUS_REGIST=1, CUS_SEARCH, DVD_REGIST, DVD_SEARCH,DVD_RENT,12,177
-enum{CUS_REGIST=1, CUS_SEARCH, DVD_REGIST, DVD_SEARCH,DVD_RENT,DVD_RETURN,12,177
-enum{CUS_REGIST=1, CUS_SEARCH, DVD_REGIST, DVD_SEARCH,DVD_RENT,DVD_RETURN, DVD_RENT_PRINT,12,177
-enum{CUS_REGIST=1, CUS_SEARCH, DVD_REGIST, DVD_SEARCH,DVD_RENT,DVD_RETURN, DVD_RENT_PRINT,CUS_RENT_PRINT 12,177
-enum{CUS_REGIST=1, CUS_SEARCH, DVD_REGIST, DVD_SEARCH,DVD_RENT,DVD_RETURN, DVD_RENT_PRINT,CUS_RENT_PRINT ,QUIT}QUIT12,177
-void main(14,291
-
-main.c,275
-enum{INPUT=INPUT11,173
-enum{INPUT=1, SHOWALL,11,173
-enum{INPUT=1, SHOWALL, SEARCH,11,173
-enum{INPUT=1, SHOWALL, SEARCH, DELETE 11,173
-enum{INPUT=1, SHOWALL, SEARCH, DELETE ,CHANGE 11,173
-enum{INPUT=1, SHOWALL, SEARCH, DELETE ,CHANGE ,QUIT}QUIT11,173
-int main(13,228
-
-op_client.c,118
-#define BUF_SIZE 12,273
-#define OPSZ 13,295
-#define RLT_SIZE 14,310
-void main(18,367
-void error_handling(71,1433
-
-op_server.c,114
-#define BUF_SIZE 8,127
-#define OPSZ 9,149
-void main(15,250
-void error_handling(75,1544
-int calculate(82,1644
-
-phoneFunc.c,436
-#define LIST_NUM 11,185
-int numOfData 13,207
-phoneData *phoneList[phoneList14,226
-char name[name16,259
-int j 17,280
-void InputPhoneData(19,292
-void ShowAllData(53,859
-void SearchPhoneData(60,954
-void DeletePhoneData(77,1270
-int checkSameData(166,3016
-void changePhoneData(185,3332
-void storeDataToFile(242,4400
-void loadDataFromFile(271,4847
-void storeDataToFileInStruct(313,5487
-void loadDataFromFileInStruct(318,5526
-
-practice.c,16
-void main(4,44
-
-remove_zombie.c,45
-void read_childproc 10,123
-int main(22,347
-
-rentInfoAccess.c,199
-#define RENT_LEN 17,267
-static dvdRentInfo rentList[rentList19,289
-static int numOfRentCus 20,328
-void addRentList(24,360
-void printOutRentAllCusInfo(34,532
-void printOutCusAllRentInfo(56,948
-
-screenOut2.c,163
-int firstFlag 17,249
-void showMenu(19,269
-void showCustomerInfo(47,868
-void showDvdInfo(57,1125
-void showGenre(69,1396
-void showCustomerInfoContinue(92,1684
-
-screenOut.c,103
-int firstFlag 11,169
-void ShowMenu(13,189
-void ShowPhoneInfo(32,577
-void ShowPhoneInfoByPtr(40,790
-
-signal.c,60
-void timeout(5,60
-void keycontrol 14,150
-int main(22,241
-
-tcp_client.c,47
-void main(10,164
-void error_handling(55,1077
-
-test2.c,36
-void error(11,171
-int main(18,235
-
-test.c,16
-void main(5,63
-
-toupperlower.c,55
-int main(12,171
-int strupr(36,541
-int strlwr(54,720
-
-uecho_client.c,72
-#define BUF_SIZE 11,239
-void main(15,297
-void error_handling(63,1303
-
-uecho_con_client.c,72
-#define BUF_SIZE 11,196
-void main(15,256
-void error_handling(61,1149
-
-uecho_server.c,72
-#define BUF_SIZE 11,226
-void main(15,284
-void error_handling(61,1228
-
-arrayBaseStack.h,276
-#define __AB_STACK_H__2,23
-#define TRUE 4,47
-#define FALSE 5,62
-#define STACK_LEN 7,79
-typedef int Data;10,103
-typedef struct _arrayStack12,123
-     Data stackArr[stackArr14,152
-     int topIndex;15,183
-}ArrayStack;ArrayStack16,202
-typedef ArrayStack Stack;19,217
-
-ArrayList.h,274
-#define __ARRAY_LIST_H__2,26
-#define TRUE	4,54
-#define FALSE	5,70
-#define LIST_LEN	8,118
-typedef int LData;9,140
-typedef struct __ArrayList11,162
-	LData arr[arr13,193
-	int numOfData;14,216
-	int curPosition;15,233
-} ArrayList;16,252
-typedef ArrayList List;20,308
-
-circularQueue.h,271
-#define __C_QUEUE_H__7,93
-#define TRUE 9,116
-#define FALSE 10,131
-#define QUE_LEN 13,149
-typedef int Data;15,170
-typedef struct _cQueue18,190
-     int front;20,215
-     int rear;21,231
-     Data queArr[queArr22,246
-} CQueue;23,273
-typedef CQueue Queue;26,285
-
-CLinkedList.h,386
-#define __D_LINKED_LIST_H__2,28
-#define TRUE 4,57
-#define FALSE 5,72
-typedef int LData;9,91
-typedef struct _node11,111
-     LData data;13,134
-     struct _node *next;next14,151
-} Node;16,178
-typedef struct _CLL18,187
-     Node *tail;tail20,209
-     Node *cur;cur21,226
-     Node *before;before22,242
-     int numOfData;23,261
-} CList;24,281
-typedef CList List;27,292
-
-common.h,28
-#define __COMMON_H__10,139
-
-cusInfoAccess.h,31
-#define __CUSACCESS_H__10,171
-
-cusInfo.h,232
-#define __CUSINFO_H__10,138
-#define ID_LEN 12,161
-#define NAME_LEN 13,179
-#define PHONE_LEN 14,199
-typedef struct __cusInfo18,223
-  char ID[ID20,250
-  char name[name21,269
-  char phoneNum[phoneNum22,292
-} cusInfo;23,320
-
-cusManager.h,28
-#define __CUSMGR_H__10,157
-
-DBLinkedList.h,411
-#define __DB_LINKED_LIST_H__2,29
-#define TRUE 4,59
-#define FALSE 5,74
-typedef int Data;8,92
-typedef struct _node10,111
-     Data data;12,134
-     struct _node *next;next13,150
-     struct _node *prev;prev14,175
-} Node;15,200
-typedef struct _DLinkedList18,210
-     Node *head;head20,240
-     Node *cur;cur21,257
-     int numOfData;22,273
-} DBLinkedList;23,293
-typedef DBLinkedList List;25,310
-
-DLinkedList.h,411
-#define __D_LINKED_LIST_H__2,28
-#define TRUE 4,57
-#define FALSE 5,72
-typedef int LData;9,91
-typedef struct _node11,111
-  LData data;13,134
-  struct _node *next;next14,148
-} Node;16,172
-typedef struct _linkedList18,181
-  Node *head;head20,210
-  Node *cur;cur21,224
-  Node *before;before22,237
-  int numOfData;23,253
-  int (*comp)comp24,270
-} LinkedList;25,307
-typedef LinkedList List;28,323
-
-dvdInfoAccess.h,32
-#define __DVDCONTROL_H__11,167
-
-dvdInfo.h,439
-#define __DVDINFO_H__10,142
-#define ISBN_LEN 15,188
-#define TITLE_LEN 16,208
-enum{ACTION ACTION19,231
-enum{ACTION = 1, COMIC,19,231
-enum{ACTION = 1, COMIC, SF,19,231
-enum{ACTION = 1, COMIC, SF, ROMANTIC}ROMANTIC19,231
-enum{RENTED,RENTED20,270
-enum{RENTED, RETURNED}RETURNED20,270
-typedef struct __dvdInfo23,296
-  char ISBN[ISBN25,323
-  char title[title26,346
-  int genre;27,371
-  int rentState 29,385
-} dvdInfo;30,403
-
-dvdManager.h,28
-#define __DVDMGR_H__11,157
-
-gameContinue.h,34
-#define __GAMECONTINUE_H__10,154
-
-game.h,166
-#define __GAME_H__11,134
-enum{scissors=scissors14,155
-enum{scissors=1,rock,14,155
-enum{scissors=1,rock,paper,14,155
-enum{scissors=1,rock,paper,quit}quit14,155
-
-gameMoney.h,30
-#define __GAMEMONEY_H__9,147
-
-gameTimes.h,32
-#define __CALCPERCENT_H__9,147
-
-infixToPostfix.h,36
-#define __INFIX_TO_POSTFIX_H__2,31
-
-ListBaseStack.h,286
-#define __LB_STACK_H__2,24
-#define TRUE	4,50
-#define FALSE	5,66
-typedef int Data;7,85
-typedef struct _node9,106
-	Data data;11,131
-	struct _node * next;12,144
-} Node;13,167
-typedef struct _listStack15,178
-	Node * head;17,208
-} ListStack;18,223
-typedef ListStack Stack;21,241
-
-myString.h,50
-#define __MYSTRING_H__4,25
-#define STR_MAX 8,69
-
-phoneData.h,194
-#define __PHONEDATA_H__14,157
-#define NAME_LEN 16,182
-#define PHONE_LEN 17,202
-typedef struct __phoneData20,225
-  char name[name22,254
-  char phoneNum[phoneNum23,277
-} phoneData;24,305
-
-phoneFunc.h,31
-#define __PHONEFUNC_H__14,157
-
-printHW.h,34
-void printhw(4,21
-int main(9,69
-
-rentInfoAccess.h,36
-#define __RENTINFOACCESS_H__11,165
-
-rentInfo.h,171
-#define __RENTINFO_H__10,150
-typedef struct __dvdRentInfo16,218
-  char cusID[cusID18,249
-  char ISBN[ISBN19,271
-  unsigned int rentDay;20,294
-} dvdRentInfo;21,318
-
-screenOut2.h,31
-#define __SCREENOUT_H__10,151
-
-screenOut.h,31
-#define __SCREENOUT_H__11,151
-
-printHW.c,0
