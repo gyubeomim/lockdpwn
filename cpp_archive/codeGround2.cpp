@@ -11,53 +11,53 @@ using namespace std;
 
 int main(int argc, char** argv) 
 {
-	setbuf(stdout, NULL);
+  setbuf(stdout, NULL);
 
-	int T;
-	int test_case;
+  int T;
+  int test_case;
 
-	scanf("%d", &T);	
-	for (test_case = 1; test_case <= T; test_case++) 
-	{
-		vector<int> v;
-		v.clear();
+  scanf("%d", &T);
+  for (test_case = 1; test_case <= T; test_case++)
+  {
+    vector<int> v;
+    v.clear();
 
-		int n, s;
-		cin >> n >> s;
+    int n, s;
+    cin >> n >> s;
 
-		int a;
-		for (int i = 0; i < n; i++)
-		{
-			cin >> a;
-			v.push_back(a);
-		}
+    int a;
+    for (int i = 0; i < n; i++)
+    {
+      cin >> a;
+      v.push_back(a);
+    }
 
-		int count = 0;
-		int sum = 0;
-		vector<int> ans;
+    int count = 0;
+    int sum = 0;
+    vector<int> ans;
 
-		for (int i = 0; i < n; i++)
-		{
-			sum = v.at(i) + sum;
-			count++;
+    for (int i = 0; i < n; i++)
+    {
+      sum = v.at(i) + sum;
+      count++;
 
-			while (sum >= s)
-			{
-				ans.push_back(count);
-				sum = sum - v.at(i + 1 - count);
-				count--;
-			}
-		}
+      while (sum >= s)
+      {
+        ans.push_back(count);
+        sum = sum - v.at(i + 1 - count);
+        count--;
+      }
+    }
 
-		if (count == n)
-		{
-			ans.push_back(0);
-		}
+    if (count == n)
+    {
+      ans.push_back(0);
+    }
 
-		printf("#testcase%d\n", test_case);
-		sort(ans.begin(), ans.end());
-		cout << ans.at(0) << endl;
-	}
+    printf("#testcase%d\n", test_case);
+    sort(ans.begin(), ans.end());
+    cout << ans.at(0) << endl;
+  }
 
-	return 0;	
+  return 0;
 }

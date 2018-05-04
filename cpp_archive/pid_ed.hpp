@@ -1,5 +1,5 @@
 /*
- * c++ ==> PID 제어를 클래스화 해본 코드. pid_ed.cpp에 구현되어 있다
+  c++ ==> PID 제어를 클래스화 해본 코드. pid_ed.cpp에 구현되어 있다
  */
 class PID {
 	double Kp;

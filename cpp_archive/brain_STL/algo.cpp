@@ -11,8 +11,6 @@ int main()
 {
   vector<int> ve;
 
-
-
   ve.push_back(10);
   ve.push_back(20);
   ve.push_back(30);

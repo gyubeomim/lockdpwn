@@ -1,6 +1,7 @@
 /*
-  c++ project 행맨(hangman) 게임
-  http://www.codeincodeblock.com/2012/01/mini-project-hang-man-in-c-source-code.html
+  c++ ==> project 행맨(hangman) 게임
+
+  code from http://www.codeincodeblock.com/2012/01/mini-project-hang-man-in-c-source-code.html
 */
 #include <iostream>
 #include <cstdlib>

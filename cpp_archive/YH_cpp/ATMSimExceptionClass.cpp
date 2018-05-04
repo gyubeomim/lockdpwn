@@ -1,5 +1,5 @@
 /*
-  열혈 c++ p606 예외클래스와 예외객체에 관한 코드 throw (DepositException)
+  c++ ==> 열혈 c++ p606 예외클래스와 예외객체에 관한 코드 throw (DepositException)
   그리고 AccountException으로 예외처리를 상속관계로 해놓으면 훨씬 사용하기 좋다
 */
 #include "stdafx.h"

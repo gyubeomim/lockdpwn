@@ -1,5 +1,5 @@
 /*
-  c++ ==? prject 슈퍼마켓 상품 관리 프로그램 코드 for Windows OS
+  c++ ==> prject 슈퍼마켓 상품 관리 프로그램 코드 for Windows OS
 
   http://www.codeincodeblock.com/2012/01/mini-project-supermarket-billing-system.html
 */

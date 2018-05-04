@@ -3,7 +3,7 @@
 
   https://www.codeground.org/practice/practiceProbView.do?probId=46
   생각보다 졸라 어렵네..
- */
+*/
 #include <cstdio>
 #include <iostream>
 
@@ -49,8 +49,8 @@ int main(int argc, char** argv)
       //printf("infinite loop\n");
       break;
     }
-      int ABi[M][2];
-      int Ci[M];
+    int ABi[M][2];
+    int Ci[M];
 
 
 
@@ -109,9 +109,9 @@ int main(int argc, char** argv)
               if(find[k][1] == ABi[a][0])
               {
                 if(a != x)
-              {
-                Ci[a] += Ci[x];
-              }
+                {
+                  Ci[a] += Ci[x];
+                }
                 if(Ci[a] > kValue)
                 {
                   saleticket++;
