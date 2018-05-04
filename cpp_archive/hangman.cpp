@@ -10,45 +10,34 @@
 
 using namespace std;
 
-
 inline void type_of_word(char f);
 
-
-int main()
-{
+int main() {
   char c,h,ch,ch1,ch2;
   char word[25];
   char word2[25];
 
   int l,i,ng,n,k,x;
 
-  do
-  {
-    do
-    {
-
+  do {
+    do {
       c='\0';
       cout<<"\n\t\t    *********** HANGMAN IN C++ ***********\n\n";
       cout<<"(E) Enter a word\n\n(C) Computer chooses word\n\n(A)";
       cout<<" Add new word to list\n\n(Q) Quit\n\n\nEnter your choice (E - C - Q): ";
       cin>>ch2;
 
-    }while (ch2!='C' && ch2!='c' && ch2!='E' && ch2!= 'e' &&  ch2!='Q' && ch2!= 'q'&& ch2!='A' && ch2!= 'a');
-
-
+    } while (ch2!='C' && ch2!='c' && ch2!='E' && ch2!= 'e' &&  ch2!='Q' && ch2!= 'q'&& ch2!='A' && ch2!= 'a');
 
     // (Q) QuitÀ» ´­·¶À» °æ¿ì
     if (ch2 == 'Q' || ch2=='q')
       exit (0);
 
-
     // (C) Computer chooses word¸¦ ´­·¶À» °æ¿ì
-    if (ch2 == 'C' || ch2=='c')
-    {
+    if (ch2 == 'C' || ch2=='c') {
       ifstream fin("hangword.txt");
 
-      if(!fin)
-      {
+      if(!fin) {
         cout<<"File missing, aborting.\n\nYou are missing a file of name";
         cout<<"**hangword.txt**\n\nLocate it, then place it next to the" <<
             "program file.\n\n";
@@ -56,30 +45,22 @@ int main()
         return 0;
       }
 
-
       for (i=0;!fin.eof();i++)
         fin.getline(word,25);
 
-
       fin.close();
 
-
-      do
-      {
+      do {
         x=rand();
-      }while(x>i || x<0);
-
+      } while(x>i || x<0);
 
       ifstream finn("hangword.txt");
 
-
-      for (i=0;!finn.eof();i++)
-      {
+      for (i=0;!finn.eof();i++) {
         finn>>c;
         finn.getline(word,25);
 
-        if (x==i)
-        {
+        if (x==i) {
           break;
         }
       }
@@ -87,17 +68,13 @@ int main()
       finn.close();
     }
 
-
-
     // (A) Add new word to list¸¦ ´­·¶À» °æ¿ì
-    if (ch2 == 'A' || ch2=='a')
-    {
+    if (ch2 == 'A' || ch2=='a') {
       ofstream fout("hangword.txt",ios::app);
 
-      if(!fout)
-      {
+      if(!fout) {
         //clrscr();
-        cout<<"File missing, aborting.\n\nYou are missing a file of name"
+        cout << "File missing, aborting.\n\nYou are missing a file of name"
             " **hangword.txt**\n\nLocate it, then place it next to the program"
             " file.\n\n";
         system("pause");
@@ -120,53 +97,42 @@ int main()
       fout.close();
     }
 
-
     // (E) Enter a word¸¦ ´­·¶À» °æ¿ì
-    if (ch2 == 'E' || ch2=='e')
-    {
+    if (ch2 == 'E' || ch2=='e') {
       // clrscr();
       cin.get();
       cout<<"\t\t\t Type the word :  ";
       cin.getline (word, 25);
     }
 
-
     // (E) Enter a word¸¦ ´­·¶À» °æ¿ì2?
-    if (ch2 == 'E' || ch2=='e' || ch2 == 'C' || ch2=='c')
-    {
+    if (ch2 == 'E' || ch2=='e' || ch2 == 'C' || ch2=='c') {
       l=strlen(word);
       char choosen[25]="\0";
       n=0;
       k=0;
 
-      for(i=0;i<=24;i++)
-      {
-        if (word[i]=='\0')
-        {
+      for(i=0;i<=24;i++) {
+        if (word[i]=='\0') {
           word2[i]='\0';
           break;
         }
 
-        if (word[i]==' ')
-        {
+        if (word[i]==' ') {
           word2[i]=' ';
           n++;
         }
 
-        if (word[i]!=' ')
-        {
+        if (word[i]!=' ') {
           word2[i]='-';
         }
       }
 
       ng=l+2-n;     //only 2 guesses extra
 
-
-      do
-      {
+      do {
      there:  type_of_word(c);
-        if (k!=0)
-        {
+        if (k!=0) {
           cout<<"\n\n\t\t\tChoosen letters : "<<choosen<<"\n";
         }
 
@@ -174,16 +140,12 @@ int main()
         cin>>ch;
         cin.get();
 
-
         for (i=0;i<25;i++)
-          if (choosen[i]==ch)
-          {
+          if (choosen[i]==ch) {
             //clrscr();
             cout<<"\a\t\t     !!You have choosen "<<ch<<" already!!\n";
             goto there;
           }
-
-
         ng--;
 
         choosen [k]=ch;
@@ -191,22 +153,17 @@ int main()
 
         k+=2;
 
-
         for (i=0;i<=24;i++)
           if (word[i]==ch || word[i]==ch+32 || word[i]==ch-32)
             word2[i]=ch;
 
-        if (!strcmp(word2,word))
-        {
+        if (!strcmp(word2,word)) {
           cout<<"\n\t\t\t      "<< word <<"\n\n\t\t\tCongratulations  :-()\n";
           break;
         }
+      } while(ng > 0 || !strcmp (word2,word));
 
-      }while(ng > 0 || !strcmp (word2,word));
-
-
-      if (strcmp (word2,word))
-      {
+      if (strcmp (word2,word)) {
         cout<<"\nSorry, maybe next time.\n\nThe word was : " << word << endl;
       }
     }
@@ -215,7 +172,7 @@ int main()
     cin>>ch1;
     cin.get();
 
-  }while (ch1=='y' || ch1=='Y');
+  } while (ch1=='y' || ch1=='Y');
 
 
   system("PAUSE");
@@ -224,8 +181,7 @@ int main()
 
 
 
-inline void type_of_word(char f)
-{
+inline void type_of_word(char f) {
   if (f=='m') cout<<"\t\t\t\tMOVIE";
   if (f=='a') cout<<"\t\t\t\tANIMAL";
   if (f=='p') cout<<"\t\t\t\tSPORT";

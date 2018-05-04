@@ -1,6 +1,6 @@
 /*
-  열혈c++ string class 구현 코드
- */
+  c++ ==> 열혈c++ string class 구현 코드
+*/
 #include <iostream>
 #include <cstring>
 #include "String.h"

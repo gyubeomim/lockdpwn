@@ -1,5 +1,5 @@
 /*
-  c 자동제어 ==> x^2 + 3*x + 6 함수를 후퇴차분법으로 적분, 미분하는 예제 코드
+  c 자동제어 ==> x^2 + 3*x + 6 함수를 simpson법으로 적분하는 예제 코드
 */
 #include "stdafx.h"
 #include <math.h>
@@ -9,25 +9,24 @@
 #define MAX_NUM 5000
 
 int data_in(int *n, float *a, float *b);
-float chabun(int n, float a, float b, float *s, float *y);
-int solution_out(int n, float a, float b, float s,float y);
+float simpson(int n, float a, float b, float *s);
+int solution_out(int n, float a, float b, float s);
 float func(float x);
 int save(int n, float a, float b);
 
-float mibun[MAX_NUM];
 float jukbun[MAX_NUM];
 float function[MAX_NUM];
 
 int main()
 {
   int n;
-  float a, b, s, y;
+  float a, b, s;
 
   while (1)
   {
     data_in(&n, &a, &b);
-    chabun(n, a, b, &s, &y);
-    solution_out(n, a, b, s, y);
+    simpson(n, a, b, &s);
+    solution_out(n, a, b, s);
   }
   /// save(n, a, b);   /// 우선 저장할 일 없다
 
@@ -58,63 +57,16 @@ float func(float x)
   return fx;
 }
 
-
-float chabun(int n, float a, float b, float *s, float *y)
-{
-  float f1, f2, h, x;
-  int i = 0;
-  h = (b - a) / n;
-  x = a;
-  f1 = 0;
-  f2 = 0;
-
-  *y = 0.0;
-  *s = 0.0;
-  mibun[0] = 0;
-  jukbun[0] = 0;
-  function[0] = 0;
-
-  /// 미분 먼저하고
-  do{
-    f1 = func(x);
-    *y = (f1 - f2) / h;
-    x = x + h;
-    f2 = f1;
-    mibun[i] = *y;
-    function[i] = f1;
-    i++;
-  } while (x < b);
-
-
-  h = (b - a) / n;
-  x = a;
-  f1 = 0;
-  f2 = 0;
-  /// 적분을 수행한다
-  for (i = 0; i < MAX_NUM; i++)
-  {
-    f1 = func(x);
-    *s = *s + f1 * h + (f1 - f2)*h / 2;
-    x = x + h;
-    f2 = f1;
-    jukbun[i] = *s;
-    function[i] = f1;
-  }
-
-  return *s;
-}
-
-int solution_out(int n, float a, float b, float s, float y)
+int solution_out(int n, float a, float b, float s)
 {
   printf("\n");
-  printf("차분적분법 \n \n");
-  printf("적분[미분]영역 \n \n");
+  printf("심프슨법 \n \n");
+  printf("적분영역 \n \n");
   printf("하한경계 : %f \n", a);
   printf("상한경계 : %f \n", b);
   printf("분할수 : %d \n \n", n);
   printf("*** 해 *** \n");
-  printf("적분 s = %e \n", s);
-  printf("미분 y = %e \n", y);
+  printf("s = %e \n", s);
 
   return 0;
 }
@@ -144,4 +96,24 @@ int save(int n, float a, float b)
   printf("[*}데이터를 저장 완료했습니다");
 
   return 0;
+}
+
+float simpson(int n, float a, float b, float *s)
+{
+  float f1, f2, f3, h, sw, x;
+  h = (b - a) / n;
+  x = a;
+  *s = 0.0;
+
+  do {
+    f1 = func(x);
+    f2 = func(x + h);
+    f3 = func(x + 2.0 * h);
+    sw = f1 + 4.0 * f2 + f3;
+    *s += sw;
+    x = x + 2.0 * h;
+  } while (x < b);
+
+  *s = *s * h / 3.0;
+  return *s;
 }

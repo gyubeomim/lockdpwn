@@ -40,31 +40,31 @@
 using namespace std;
 
 int main(int argc, const char *argv[]){
-		int c = 0;
+  int c = 0;
 
-		cout << "dec      hexa    char     ";
-		cout << "dec      hexa    char     ";
-		cout << "dec      hexa    char     ";
+  cout << "dec      hexa    char     ";
+  cout << "dec      hexa    char     ";
+  cout << "dec      hexa    char     ";
 
-		cout << endl;
+  cout << endl;
 
-		cout << "----     ----     ----    ";
-		cout << "----     ----     ----    ";
-		cout << "----     ----     ----    ";
+  cout << "----     ----     ----    ";
+  cout << "----     ----     ----    ";
+  cout << "----     ----     ----    ";
 
-		cout << endl;
+  cout << endl;
 
-		while(c < 127){
-				for(int i = 0; i < 3; i++){
-						if(isprint(c))
-								cout << std::dec << c << "        " << std::hex << c << "        " << char(c) << "        " ;
-						else
-								cout << std::dec << c << "        " << std::hex << c << "        " << "." << "        " ;
-						c++;
-				}
-				cout << endl;
-		}
-		return 0;
+  while(c < 127){
+    for(int i = 0; i < 3; i++){
+      if(isprint(c))
+        cout << std::dec << c << "        " << std::hex << c << "        " << char(c) << "        " ;
+      else
+        cout << std::dec << c << "        " << std::hex << c << "        " << "." << "        " ;
+      c++;
+    }
+    cout << endl;
+  }
+  return 0;
 }
 
 
@@ -79,90 +79,90 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 class Circle {
-		string name;
-		int radius;
+  string name;
+  int radius;
 
-		public:
-		Circle() {}
-		Circle(int radius, string name){
-				this->radius = radius; 
-				this->name = name;
-		}
+ public:
+  Circle() {}
+  Circle(int radius, string name){
+    this->radius = radius;
+    this->name = name;
+  }
 
-		void set(int radius, string name){
-				this->radius = radius; 
-				this->name = name;
-		}
+  void set(int radius, string name){
+    this->radius = radius;
+    this->name = name;
+  }
 
-		double getArea() { return 3.14*radius*radius;}
-		string getName() { return name; } 
+  double getArea() { return 3.14*radius*radius;}
+  string getName() { return name; }
 };
 
 // 여기에 생성해주는게 최선인가 -o- 우선 솔루션은 CircleVectorManager 클래스를 생성해서 관리하니 훨씬 코드가 깔끔하지만 우선 이정도 수준으로만 만족해야징
 vector<Circle*> v;
 
 void create(){
-		int rad;
-		string name;
-		cout << "생성하고자 하는 원의 반지름과 이름은 >> ";
-		cin >> rad >> name;	
+  int rad;
+  string name;
+  cout << "생성하고자 하는 원의 반지름과 이름은 >> ";
+  cin >> rad >> name;
 
-		// 굳굳.. 이렇게 vector<Circle*>에 값을 넣는군
-		v.push_back(new Circle(rad, name));
+  // 굳굳.. 이렇게 vector<Circle*>에 값을 넣는군
+  v.push_back(new Circle(rad, name));
 }
 
 void remove(){
-		string name;
-		vector<Circle*>::iterator it = v.begin();
-		cout << "삭제하고자 하는 원의 이름은 >> ";
-		cin >> name;
+  string name;
+  vector<Circle*>::iterator it = v.begin();
+  cout << "삭제하고자 하는 원의 이름은 >> ";
+  cin >> name;
 
-		while(it != v.end()){
-				Circle *p = *it;
-				if(p->getName() == name){
-						it = v.erase(it);
-						delete p;
-				}
-				else
-						it++;
-		}
+  while(it != v.end()){
+    Circle *p = *it;
+    if(p->getName() == name){
+      it = v.erase(it);
+      delete p;
+    }
+    else
+      it++;
+  }
 }
 
 void showAll(){
-		vector<Circle*>::iterator it;
+  vector<Circle*>::iterator it;
 
-		for(it=v.begin() ; it != v.end() ; it++){
-				Circle* p = *it;
-				cout <<	p->getName() << endl;
-		}
+  for(it=v.begin() ; it != v.end() ; it++){
+    Circle* p = *it;
+    cout <<	p->getName() << endl;
+  }
 }
 
 int main(int argc, const char *argv[]){
-		int select;
-		cout << "원을 삽입하고 삭제하는 프로그램입니다." << endl;
+  int select;
+  cout << "원을 삽입하고 삭제하는 프로그램입니다." << endl;
 
-		while(true){
-				cout << "삽입:1, 삭제:2, 모두보기:3, 종료:4 >> ";
-				cin >> select;
+  while(true){
+    cout << "삽입:1, 삭제:2, 모두보기:3, 종료:4 >> ";
+    cin >> select;
 
-				// case 문 안에는 변수 생성이 안되는 듯하다. 따라서 아래와 같이 함수 호출문으로 바꿨다
-				switch(select){
-						case 1:
-								create();
-								break;
-						case 2:
-								remove();
-								break;
-						case 3:
-								showAll();
-								break;
-						case 4:
-								exit(0);
-						default:
-								break;
-				}
-		}
-		return 0;
+    // case 문 안에는 변수 생성이 안되는 듯하다. 따라서 아래와 같이 함수 호출문으로 바꿨다
+    switch(select){
+      case 1:
+        create();
+        break;
+      case 2:
+        remove();
+        break;
+      case 3:
+        showAll();
+        break;
+      case 4:
+        exit(0);
+      default:
+        break;
+    }
+  }
+  return 0;
 }
 
 ------------------------------------------------------
@@ -176,81 +176,81 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 class Book {
-	int year;
-	string title;
-	string author;
+  int year;
+  string title;
+  string author;
 
 
-public:
-	Book() {}
+ public:
+  Book() {}
 
-	void set(int year, string title, string author){
-		this->year = year;
-		this->title = title;
-		this->author = author;
-	}
+  void set(int year, string title, string author){
+    this->year = year;
+    this->title = title;
+    this->author = author;
+  }
 
-	void show() {
-			cout << year << "년도, " << title << ", " << author << endl;
-	}
+  void show() {
+    cout << year << "년도, " << title << ", " << author << endl;
+  }
 
-	string getAuthor() { return author; }
-	int getYear() { return year; } 
+  string getAuthor() { return author; }
+  int getYear() { return year; }
 };
 
 
 int main(int argc, const char *argv[]){
-		Book b;
-		vector<Book> v;
-		string author;
-		string title;
-		int year;
+  Book b;
+  vector<Book> v;
+  string author;
+  string title;
+  int year;
 
-		cout << "입고할 책을 입력하세요. 년도에 -1을 입력하면 입고를 종료합니다" << endl;
+  cout << "입고할 책을 입력하세요. 년도에 -1을 입력하면 입고를 종료합니다" << endl;
 
-		while(true){
-				cout << "년도>> ";
-				cin >> year; cin.ignore();
+  while(true){
+    cout << "년도>> ";
+    cin >> year; cin.ignore();
 
-				if(year == -1) break;
+    if(year == -1) break;
 
-				cout << "책이름>> ";
-				getline(cin, title);
+    cout << "책이름>> ";
+    getline(cin, title);
 
-				cout << "저자>> ";
-				getline(cin, author);
+    cout << "저자>> ";
+    getline(cin, author);
 
-				b.set(year, title, author);
-				v.push_back(b);
-		}
+    b.set(year, title, author);
+    v.push_back(b);
+  }
 
-	cout << "총 입고된 책은 " << v.size() << "권 입니다." << endl;
+  cout << "총 입고된 책은 " << v.size() << "권 입니다." << endl;
 
-	string searchAuthor;
-	int searchYear;
+  string searchAuthor;
+  int searchYear;
 	
-	cout << "검색하고자 하는 저자 이름을 입력하세요>> " ;
-	getline(cin, searchAuthor);
+  cout << "검색하고자 하는 저자 이름을 입력하세요>> " ;
+  getline(cin, searchAuthor);
 
-	for(int i = 0 ; i < v.size() ; i++){
-		Book b2 = v[i];
-		if(b2.getAuthor() == searchAuthor){
-			b2.show();
-		}
-	}
+  for(int i = 0 ; i < v.size() ; i++){
+    Book b2 = v[i];
+    if(b2.getAuthor() == searchAuthor){
+      b2.show();
+    }
+  }
 
-	cout << "검색하고자 하는 년도를 입력하세요>> " ;
-	cin >> searchYear;
-	cin.ignore();
+  cout << "검색하고자 하는 년도를 입력하세요>> " ;
+  cin >> searchYear;
+  cin.ignore();
 
-	for(int i = 0 ; i < v.size() ; i++){
-			Book b3 = v[i];
-			if(b3.getYear() == searchYear){
-					b3.show();
-			}
-	}
+  for(int i = 0 ; i < v.size() ; i++){
+    Book b3 = v[i];
+    if(b3.getYear() == searchYear){
+      b3.show();
+    }
+  }
 
-	return 0;
+  return 0;
 }
 
 
@@ -265,35 +265,35 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 double getMean(vector<int> ve){
-		double sum = 0;
+  double sum = 0;
 
-		for(vector<int>::iterator iter = ve.begin() ; iter < ve.end() ; iter++){
-			sum += *iter;
-		}
-		return sum / ve.size();
+  for(vector<int>::iterator iter = ve.begin() ; iter < ve.end() ; iter++){
+    sum += *iter;
+  }
+  return sum / ve.size();
 }
 
 int main(int argc, const char *argv[]){
-		vector<int> ve;
-		int a;
+  vector<int> ve;
+  int a;
 
-		while(true){
-				cout << "정수를 입력하세요 (0을 입력하면 종료)>> ";
-				cin >> a;
+  while(true){
+    cout << "정수를 입력하세요 (0을 입력하면 종료)>> ";
+    cin >> a;
 
-				if(a == 0) break; 
+    if(a == 0) break;
 
-				ve.push_back(a);
+    ve.push_back(a);
 
-				for(int i = 0; i < ve.size(); i++)
-						cout << ve.at(i) << " " ;
+    for(int i = 0; i < ve.size(); i++)
+      cout << ve.at(i) << " " ;
 
-				cout << endl << "평균 : " << getMean(ve) << endl;
+    cout << endl << "평균 : " << getMean(ve) << endl;
 
-		}
+  }
 
 
-	return 0;
+  return 0;
 }
 
 
@@ -307,40 +307,40 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 class Circle {
-	int radius;
-public:
-	Circle(int radius=1) { this->radius = radius; }
-	int getRadius() { return radius; }
-	bool operator>(Circle &c);
+  int radius;
+ public:
+  Circle(int radius=1) { this->radius = radius; }
+  int getRadius() { return radius; }
+  bool operator>(Circle &c);
 };
 
 // 와우.. 굳굳
 bool Circle::operator>(Circle &c){
-		if(this->radius > c.getRadius())
-			return true;
+  if(this->radius > c.getRadius())
+    return true;
 
-		return false;
+  return false;
 }
 
 template<class T>
 T bigger(T a, T b){
-		if(a > b) return a;
-		else return b;
+  if(a > b) return a;
+  else return b;
 }
 
 
 int main(int argc, const char *argv[]){
-		int a = 20, b = 50, c;
-		c = bigger(a, b);
+  int a = 20, b = 50, c;
+  c = bigger(a, b);
 
-		cout << "20과 50 중 큰 값은 " << c << endl;
+  cout << "20과 50 중 큰 값은 " << c << endl;
 
-		Circle waffle(10), pizza(20), y;
-		y = bigger(waffle, pizza);
+  Circle waffle(10), pizza(20), y;
+  y = bigger(waffle, pizza);
 		
-		cout << "waffle과 pizza 중 큰 것의 반지름은 " << y.getRadius() << endl;
+  cout << "waffle과 pizza 중 큰 것의 반지름은 " << y.getRadius() << endl;
 
-		return 0;
+  return 0;
 }
 
 
@@ -357,34 +357,34 @@ using namespace std;
 
 template<typename T>
 T *concat(T a[], int sizea, T b[], int sizeb){
-	T *con = new T[sizea + sizeb];
-	int i = 0;
+  T *con = new T[sizea + sizeb];
+  int i = 0;
 
-	for(; i < sizea ; i++){
-			con[i] = a[i];
-	}
+  for(; i < sizea ; i++){
+    con[i] = a[i];
+  }
 
-	for(; i < sizea + sizeb ; i++){
-			con[i] = b[i - sizea];
-	}
+  for(; i < sizea + sizeb ; i++){
+    con[i] = b[i - sizea];
+  }
 
-	return con;
+  return con;
 }
 
 int main(int argc, const char *argv[]){
-	int x[] = {1,2,3};
-	int y[] = {4,5,6};
-	int *z;
+  int x[] = {1,2,3};
+  int y[] = {4,5,6};
+  int *z;
 
-	z = concat(x,3,y,3);
+  z = concat(x,3,y,3);
 
-	for(int i = 0; i < 6 ; i++){
-			cout << z[i] << " ";
-	}
+  for(int i = 0; i < 6 ; i++){
+    cout << z[i] << " ";
+  }
 
 
 
-	return 0;
+  return 0;
 }
 
 
@@ -399,37 +399,37 @@ using namespace std;
 
 template<typename T>
 T biggest(T x[], int size){
-		T biggest = x[0];
+  T biggest = x[0];
 
-		for(int i = 0; i < size - 1 ; i++){
-			if(x[i] < x[i+1])
-					biggest = x[i+1];
-		}
+  for(int i = 0; i < size - 1 ; i++){
+    if(x[i] < x[i+1])
+      biggest = x[i+1];
+  }
 
-		return biggest;
+  return biggest;
 }
 
 template<typename T>
 void reverseArray(T *x, int size){
-		T rev[size] = {0};
+  T rev[size] = {0};
 
-		for(int i = 0; i < size ; i++){
-				rev[size - 1 - i]	= x[i];
-		}
+  for(int i = 0; i < size ; i++){
+    rev[size - 1 - i]	= x[i];
+  }
 
-		for(int i = 0; i < size ; i++){
-				x[i] = rev[i];
-		}
+  for(int i = 0; i < size ; i++){
+    x[i] = rev[i];
+  }
 }
 
 int main(int argc, const char *argv[]){
-	int x[] = {1, 10, 100, 5, 4};
+  int x[] = {1, 10, 100, 5, 4};
 
-	cout << biggest(x, 5) << endl;
+  cout << biggest(x, 5) << endl;
 
-	reverseArray(x,5);
-	for(int i = 0 ; i < 5 ; i++) cout << x[i] << ' ';
-	return 0;
+  reverseArray(x,5);
+  for(int i = 0 ; i < 5 ; i++) cout << x[i] << ' ';
+  return 0;
 }
 
 
@@ -445,126 +445,126 @@ using namespace std;
 
 class AbstractPrinter {
 	
-protected:
-	string model;
-	string manufacturer;
+ protected:
+  string model;
+  string manufacturer;
 
-public:
-	int availableCount;
-	int printedCount;
+ public:
+  int availableCount;
+  int printedCount;
 
-	AbstractPrinter(string model, string manufacturer, int availableCount)
-	: model(model), manufacturer(manufacturer), availableCount(availableCount)
-	{}
-	virtual void print(int pages) = 0;
-	virtual void show() = 0;
+  AbstractPrinter(string model, string manufacturer, int availableCount)
+      : model(model), manufacturer(manufacturer), availableCount(availableCount)
+  {}
+  virtual void print(int pages) = 0;
+  virtual void show() = 0;
 
 };
 
 
 class InkJetPrinter : public AbstractPrinter {
 
-public:
-	int availableInk;
+ public:
+  int availableInk;
 
-	InkJetPrinter(string model, string manufacturer, int availableCount, int availableInk)
-	: AbstractPrinter(model, manufacturer, availableCount), availableInk(availableInk)
-	{}
-	virtual void print(int pages);
-	virtual void show();
+  InkJetPrinter(string model, string manufacturer, int availableCount, int availableInk)
+      : AbstractPrinter(model, manufacturer, availableCount), availableInk(availableInk)
+  {}
+  virtual void print(int pages);
+  virtual void show();
 
 };
 
 
 class LaserPrinter : public AbstractPrinter {
 
-public:
-	int availableToner;
+ public:
+  int availableToner;
 
-	LaserPrinter(string model, string manufacturer, int availableCount, int availableToner)
-	: AbstractPrinter(model, manufacturer, availableCount), availableToner(availableToner)
-	{}
-	virtual void print(int pages);
-	virtual void show();
+  LaserPrinter(string model, string manufacturer, int availableCount, int availableToner)
+      : AbstractPrinter(model, manufacturer, availableCount), availableToner(availableToner)
+  {}
+  virtual void print(int pages);
+  virtual void show();
 	
 };
 
 void InkJetPrinter::print(int pages){
-		cout << "프린트하였습니다" << endl;
-		availableCount -= pages;
-		availableInk -= pages;
-		printedCount += pages;
+  cout << "프린트하였습니다" << endl;
+  availableCount -= pages;
+  availableInk -= pages;
+  printedCount += pages;
 }
 
 void InkJetPrinter::show(){
-	cout << "잉크젯 : " << this->model << ", " << this->manufacturer << ", 남은 종이 " << this->availableCount <<" 장, 남은 잉크 " << this->availableInk << endl;
+  cout << "잉크젯 : " << this->model << ", " << this->manufacturer << ", 남은 종이 " << this->availableCount <<" 장, 남은 잉크 " << this->availableInk << endl;
 
 }
 
 void LaserPrinter::print(int pages){
-		cout << "프린트하였습니다" << endl;
-		availableCount -= pages;
-		availableToner -= pages;
-		printedCount += pages;
+  cout << "프린트하였습니다" << endl;
+  availableCount -= pages;
+  availableToner -= pages;
+  printedCount += pages;
 }
 
 void LaserPrinter::show(){
-	cout << "레이저 : " << this->model << ", " << this->manufacturer << ", 남은 종이 " << this->availableCount <<" 장, 남은 잉크 " << this->availableToner << endl;
+  cout << "레이저 : " << this->model << ", " << this->manufacturer << ", 남은 종이 " << this->availableCount <<" 장, 남은 잉크 " << this->availableToner << endl;
 }
 
 
 
 int main(int argc, const char *argv[]){
-	InkJetPrinter ink("Officejet V40", "HP", 5, 10);
-	LaserPrinter laser("SCX-6x45", "삼성전자", 3 , 20);
+  InkJetPrinter ink("Officejet V40", "HP", 5, 10);
+  LaserPrinter laser("SCX-6x45", "삼성전자", 3 , 20);
 
-	cout << "현재 작동중인 2 대의 프린터는 아래와 같다" << endl;
+  cout << "현재 작동중인 2 대의 프린터는 아래와 같다" << endl;
 	
-	ink.show();
-	laser.show();
+  ink.show();
+  laser.show();
 
-	int a, b;
-	char answer;
+  int a, b;
+  char answer;
 
-	while(true){
-			cout << "프린터(1:잉크젯, 2:레이저)와 매수 입력 >> " ;
-			cin >> a >> b;
+  while(true){
+    cout << "프린터(1:잉크젯, 2:레이저)와 매수 입력 >> " ;
+    cin >> a >> b;
 
-			if(a == 1){
-					if(ink.availableCount < b){
-						cout <<	"용지가 부족하여 프린트할 수 없습니다" << endl;
-						continue;
-					}
-					else if(ink.availableInk < b){
-						cout <<	"잉크가 부족하여 프린트할 수 없습니다" << endl;
-						continue;
-					}
+    if(a == 1){
+      if(ink.availableCount < b){
+        cout <<	"용지가 부족하여 프린트할 수 없습니다" << endl;
+        continue;
+      }
+      else if(ink.availableInk < b){
+        cout <<	"잉크가 부족하여 프린트할 수 없습니다" << endl;
+        continue;
+      }
 
-					ink.print(b);
-			}
-			else if(a == 2){
-					if(laser.availableCount < b){
-						cout <<	"용지가 부족하여 프린트할 수 없습니다" << endl;
-						continue;
-					}
-					else if(laser.availableToner < b){
-						cout <<	"토너가 부족하여 프린트할 수 없습니다" << endl;
-						continue;
-					}
+      ink.print(b);
+    }
+    else if(a == 2){
+      if(laser.availableCount < b){
+        cout <<	"용지가 부족하여 프린트할 수 없습니다" << endl;
+        continue;
+      }
+      else if(laser.availableToner < b){
+        cout <<	"토너가 부족하여 프린트할 수 없습니다" << endl;
+        continue;
+      }
 
-					laser.print(b);
-			}
+      laser.print(b);
+    }
 	
-			ink.show();
-			laser.show();
+    ink.show();
+    laser.show();
 
 
-			cout << "계속 프린트하시겠습니까?(y/n)>> ";
-			cin >> answer;
-			if(answer == 'n')
-					break;
-	}
-	return 0;
+    cout << "계속 프린트하시겠습니까?(y/n)>> ";
+    cin >> answer;
+    if(answer == 'n')
+      break;
+  }
+  return 0;
 }
 
 
@@ -579,79 +579,79 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 class AbstractGate {
-protected:
-	bool x,y;
+ protected:
+  bool x,y;
 
-public:
-	void set(bool x, bool y) { this->x = x; this-> y = y; }
-	virtual bool operation() = 0;
+ public:
+  void set(bool x, bool y) { this->x = x; this-> y = y; }
+  virtual bool operation() = 0;
 };
 
 
 class ANDGate : public AbstractGate {
 
-public:
-	ANDGate() {}
-	virtual bool operation();
+ public:
+  ANDGate() {}
+  virtual bool operation();
 };
 
 
 class ORGate : public AbstractGate {
 
-public:
-	ORGate() {}
-	virtual bool operation();
+ public:
+  ORGate() {}
+  virtual bool operation();
 };
 
 
 class XORGate : public AbstractGate {
 
-public:
-	XORGate() {}
-	virtual bool operation();
+ public:
+  XORGate() {}
+  virtual bool operation();
 };
 
 bool ANDGate::operation(){
-		if(x == true && x == y)
-				return true;
-		else if(x == false && x == y)
-				return true;
+  if(x == true && x == y)
+    return true;
+  else if(x == false && x == y)
+    return true;
 
-		return false;
+  return false;
 }
 
 bool ORGate::operation(){
-		if(x == false && x == y)
-				return false;
+  if(x == false && x == y)
+    return false;
 
-		return true;
+  return true;
 }
 
 bool XORGate::operation(){
-		if(x == true && x != y)
-				return true;
-		else if(x == false && x != y)
-				return true;
+  if(x == true && x != y)
+    return true;
+  else if(x == false && x != y)
+    return true;
 
-		return false;
+  return false;
 }
 
 int main(int argc, const char *argv[]){
-	ANDGate aand;
-	ORGate oor;
-	XORGate xxor;
+  ANDGate aand;
+  ORGate oor;
+  XORGate xxor;
 
-	aand.set(true, false);
-	oor.set(true, false);
-	xxor.set(true, false);
+  aand.set(true, false);
+  oor.set(true, false);
+  xxor.set(true, false);
 
-	cout.setf(ios::boolalpha);   // 불린 값을 true, false로 출력한다
+  cout.setf(ios::boolalpha);   // 불린 값을 true, false로 출력한다
 
-	cout << aand.operation() << endl;
-	cout << oor.operation() << endl;
-	cout << xxor.operation() << endl;
+  cout << aand.operation() << endl;
+  cout << oor.operation() << endl;
+  cout << xxor.operation() << endl;
 
-	return 0;
+  return 0;
 }
 
 
@@ -666,102 +666,102 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 class LoopAdder {
-	string name;  // 루프의 이름
-	int x,y,sum;  
-	void read();
-	void write();
+  string name;  // 루프의 이름
+  int x,y,sum;
+  void read();
+  void write();
 
-protected:
-	LoopAdder(string name=""){  // 루프의 이름을 받는다
-		this->name = name;
-	}
-	int getX() {return x;}
-	int getY() {return y;}
+ protected:
+  LoopAdder(string name=""){  // 루프의 이름을 받는다
+    this->name = name;
+  }
+  int getX() {return x;}
+  int getY() {return y;}
 
-	virtual int calculate() = 0;  // 루프를 돌면서 합을 구하는 순수가상함수
+  virtual int calculate() = 0;  // 루프를 돌면서 합을 구하는 순수가상함수
 
-public:
-	void run();
+ public:
+  void run();
 };
 
 
 class ForLoopAdder : public LoopAdder {
 			
-public:
-	ForLoopAdder(string name) : LoopAdder(name) {}
-	virtual int calculate(); 
+ public:
+  ForLoopAdder(string name) : LoopAdder(name) {}
+  virtual int calculate();
 };
 
 class WhileLoopAdder : public LoopAdder{
-public:
-		WhileLoopAdder(string name) : LoopAdder(name) {}
-		virtual int calculate();
+ public:
+  WhileLoopAdder(string name) : LoopAdder(name) {}
+  virtual int calculate();
 };
 
 
 class DoWhileLoopAdder : public LoopAdder{
-public:
-		DoWhileLoopAdder(string name) : LoopAdder(name) {}
-		virtual int calculate();
+ public:
+  DoWhileLoopAdder(string name) : LoopAdder(name) {}
+  virtual int calculate();
 };
 
 void LoopAdder::read(){
-	cout << name << " : " << endl;
-	cout << "처음 수에서 두번째 수까지 더합니다. 두 수를 입력하세요>> ";
-	cin >> this->x >> this->y;
+  cout << name << " : " << endl;
+  cout << "처음 수에서 두번째 수까지 더합니다. 두 수를 입력하세요>> ";
+  cin >> this->x >> this->y;
 }
 
 void LoopAdder::write(){
-	cout << this->x << "에서 " << this->y << "까지의 합 = " << sum << " 입니다" << endl;
+  cout << this->x << "에서 " << this->y << "까지의 합 = " << sum << " 입니다" << endl;
 }
 
 void LoopAdder::run(){
-	read();
-	sum = calculate();
-	write();
+  read();
+  sum = calculate();
+  write();
 }
 
 int ForLoopAdder::calculate(){
-	int tmp = 0;
-	for(int i = getX() ; i <= getY() ; i++)
-			tmp += i;
+  int tmp = 0;
+  for(int i = getX() ; i <= getY() ; i++)
+    tmp += i;
 
-	return tmp;
+  return tmp;
 }
 
 int WhileLoopAdder::calculate(){
-		int tmp = 0;
-		int i = getX();
-		while(i <= getY()){
-			tmp += i;
-			i++;
-		}
+  int tmp = 0;
+  int i = getX();
+  while(i <= getY()){
+    tmp += i;
+    i++;
+  }
 
-		return tmp;
+  return tmp;
 }
 
 int DoWhileLoopAdder::calculate(){
-	int tmp = 0;
-	int i = getX();
+  int tmp = 0;
+  int i = getX();
 
-	do{
-		tmp += i;
-		i++;
-	} while(i <= getY());
-	return tmp;
+  do{
+    tmp += i;
+    i++;
+  } while(i <= getY());
+  return tmp;
 }
 
 int main(int argc, const char *argv[]){
-	ForLoopAdder forLoop("For Loop");
-	forLoop.run();
+  ForLoopAdder forLoop("For Loop");
+  forLoop.run();
 
-	WhileLoopAdder whileLoop("While Loop");
-	DoWhileLoopAdder doWhileLoop("Do While Loop");
+  WhileLoopAdder whileLoop("While Loop");
+  DoWhileLoopAdder doWhileLoop("Do While Loop");
 
-	whileLoop.run();
-	doWhileLoop.run();
+  whileLoop.run();
+  doWhileLoop.run();
 
-	return 0;
+  return 0;
 }
 
 
@@ -776,44 +776,44 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 class Converter {
-protected:
-	double ratio;
-	virtual double convert(double src) = 0;
-	virtual string getSourceString() = 0;
-	virtual string getDestString() = 0;
+ protected:
+  double ratio;
+  virtual double convert(double src) = 0;
+  virtual string getSourceString() = 0;
+  virtual string getDestString() = 0;
 
-public:
-	Converter(double ratio) { this->ratio = ratio; }
+ public:
+  Converter(double ratio) { this->ratio = ratio; }
 
-	void run(){
-		double src;
+  void run(){
+    double src;
 
-		cout << getSourceString() <<"을 " << getDestString() << "로 바꿉니다. " ;
-		cout << getSourceString() << "을 입력하세요 >> ";
-		cin >> src;
-		cout << "변환 결과 : " << convert(src) << getDestString() << endl;
-	}
+    cout << getSourceString() <<"을 " << getDestString() << "로 바꿉니다. " ;
+    cout << getSourceString() << "을 입력하세요 >> ";
+    cin >> src;
+    cout << "변환 결과 : " << convert(src) << getDestString() << endl;
+  }
 };
 
 class WonToDollar : public Converter{
 
-public:
-	WonToDollar(double ratio) : Converter(ratio) {}
-	virtual double convert(double src);
-	virtual string getSourceString() { return "원";}
-	virtual string getDestString() { return "달러";}
+ public:
+  WonToDollar(double ratio) : Converter(ratio) {}
+  virtual double convert(double src);
+  virtual string getSourceString() { return "원";}
+  virtual string getDestString() { return "달러";}
 };
 
 double WonToDollar::convert(double src){
-	return src / ratio;
+  return src / ratio;
 }
 
 
 int main(int argc, const char *argv[]){
-	WonToDollar wd(1010);
-	wd.run();
+  WonToDollar wd(1010);
+  wd.run();
 
-	return 0;
+  return 0;
 }
 
 
@@ -830,21 +830,21 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 int main(int argc, const char *argv[]){
-	string cmd;
+  string cmd;
 
-	cout << "cin.get(char*, int)로 문자열을 읽습니다." << endl;
+  cout << "cin.get(char*, int)로 문자열을 읽습니다." << endl;
 
-	while(true){
-		cout << "종료하려면 exit을 입력하세요 >> ";
-		getline(cin, cmd);
+  while(true){
+    cout << "종료하려면 exit을 입력하세요 >> ";
+    getline(cin, cmd);
 
-		if(cmd == "exit"){
-			cout << "프로그램을 종료합니다....";
-			return 0;
-		}
-	}
+    if(cmd == "exit"){
+      cout << "프로그램을 종료합니다....";
+      return 0;
+    }
+  }
 
-	return 0;
+  return 0;
 }
 
 
@@ -861,17 +861,17 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 int main(int argc, const char *argv[]){
-	int c;
+  int c;
 
-	cin.ignore(100, ';');
+  cin.ignore(100, ';');
 
-	while((c = cin.get()) != EOF){
-		cout << (char) c;
-		if(c == '\n')
-			cin.ignore(100, ';');
-	}
+  while((c = cin.get()) != EOF){
+    cout << (char) c;
+    if(c == '\n')
+      cin.ignore(100, ';');
+  }
 
-	return 0;
+  return 0;
 }
 
 
@@ -886,18 +886,18 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 int main(int argc, const char *argv[]){
-	int count = 0;
-	int ch;
+  int count = 0;
+  int ch;
 
-	while((ch = cin.get()) != EOF){
-		if(ch == 'a')
-			count++;
-		else if(ch == '\n')
-			break;
-	}
-	cout <<  "a 문자는 총 " << count << " 개 입니다." << endl;
+  while((ch = cin.get()) != EOF){
+    if(ch == 'a')
+      count++;
+    else if(ch == '\n')
+      break;
+  }
+  cout <<  "a 문자는 총 " << count << " 개 입니다." << endl;
 
-	return 0;
+  return 0;
 }
 
 
@@ -913,43 +913,43 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 int main(int argc, const char *argv[]){
-	string src = "C:\\windows\\system.ini";
-	string line;
-	int cnt = 0;
-	int num;
+  string src = "C:\\windows\\system.ini";
+  string line;
+  int cnt = 0;
+  int num;
 
-	vector<string> vs;
+  vector<string> vs;
 
-	ifstream fin(src);   // 파일 읽기
+  ifstream fin(src);   // 파일 읽기
 
-	if(!fin){
-		cout << src << " 열기 오류 " << endl;
-		return 0;
-	}
-	else
-		cout << src << " 파일 읽기 완료" << endl;
+  if(!fin){
+    cout << src << " 열기 오류 " << endl;
+    return 0;
+  }
+  else
+    cout << src << " 파일 읽기 완료" << endl;
 	
-	while(getline(fin, line)){
-		vs.push_back(line);
-		cnt++;
-	}
+  while(getline(fin, line)){
+    vs.push_back(line);
+    cnt++;
+  }
 
-	cout << "라인 번호를 입력하세요. 1보다 작은 값을 입력하면 종료" << endl;
+  cout << "라인 번호를 입력하세요. 1보다 작은 값을 입력하면 종료" << endl;
 
-	// num 값을 입력받아서 해당 줄의 내용을 출력한다
-	while(1){
-		cout << " : ";
-		cin >> num;
+  // num 값을 입력받아서 해당 줄의 내용을 출력한다
+  while(1){
+    cout << " : ";
+    cin >> num;
 
-		if(num <= 0) break;
-		else if(num > cnt) continue;
+    if(num <= 0) break;
+    else if(num > cnt) continue;
 
-		cout << vs.at(num - 1) << endl;
-	}
+    cout << vs.at(num - 1) << endl;
+  }
 
-	fin.close();
+  fin.close();
 
-	return 0;
+  return 0;
 }
 
 
@@ -966,38 +966,38 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 int main(int argc, const char *argv[]){
-	string src = "C:\\windows\\system.ini";
-	string dst = "C:\\system.txt";
-	string line;
-	char s[1024];
+  string src = "C:\\windows\\system.ini";
+  string dst = "C:\\system.txt";
+  string line;
+  char s[1024];
 
-	int fIndex;
+  int fIndex;
 
-	ifstream fin;   // 파일 읽기
-	ofstream fout;  // 파일 쓰기
+  ifstream fin;   // 파일 읽기
+  ofstream fout;  // 파일 쓰기
 
-	fin.open(src, ios::binary);
-	fout.open(dst);
+  fin.open(src, ios::binary);
+  fout.open(dst);
 
-	if(!fin){
-		cout << src << " 열기 오류 " << endl;
-		return 0;
-	}
+  if(!fin){
+    cout << src << " 열기 오류 " << endl;
+    return 0;
+  }
 		
-	// 파일을 읽고
-	fin.read(s, 1024);
-	// 실제 읽은 바이트 수를 계산하고
-	int len = fin.gcount();
+  // 파일을 읽고
+  fin.read(s, 1024);
+  // 실제 읽은 바이트 수를 계산하고
+  int len = fin.gcount();
 	
-	for(int i = len ; i > 0 ; i--)
-		line += s[i];
+  for(int i = len ; i > 0 ; i--)
+    line += s[i];
 
-	fout << line << endl;
+  fout << line << endl;
 
-	fin.close();
-	fout.close();
+  fin.close();
+  fout.close();
 
-	return 0;
+  return 0;
 }
 
 
@@ -1012,34 +1012,34 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 int main(int argc, const char *argv[]){
-	string src = "C:\\Users\\vdl\\Downloads\\test.cpp";
-	string dst = "C:\\Users\\vdl\\Downloads\\test2.cpp";
-	string line;
+  string src = "C:\\Users\\vdl\\Downloads\\test.cpp";
+  string dst = "C:\\Users\\vdl\\Downloads\\test2.cpp";
+  string line;
 
-	int fIndex;
+  int fIndex;
 
-	ifstream fin(src);   // 파일 읽기
-	ofstream fout(dst);  // 파일 쓰기
+  ifstream fin(src);   // 파일 읽기
+  ofstream fout(dst);  // 파일 쓰기
 
-	if(!fin){
-		cout << src << " 열기 오류 " << endl;
-		return 0;
-	}
+  if(!fin){
+    cout << src << " 열기 오류 " << endl;
+    return 0;
+  }
 
-	while(getline(fin, line)){
-		fIndex = line.find("//", 0);
+  while(getline(fin, line)){
+    fIndex = line.find("//", 0);
 		
-		if(fIndex != -1)
-			line.replace(fIndex, 2 , "");
+    if(fIndex != -1)
+      line.replace(fIndex, 2 , "");
 
-		cout << line << endl;
-		fout << line << endl;
-	}
-	cout << "Done Save! at : " << dst << endl;
-	fin.close();
-	fout.close();
+    cout << line << endl;
+    fout << line << endl;
+  }
+  cout << "Done Save! at : " << dst << endl;
+  fin.close();
+  fout.close();
 
-	return 0;
+  return 0;
 }
 
 
@@ -1056,26 +1056,26 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 int main(int argc, const char *argv[]){
-	char* file = "c:\\windows\\system.ini";
+  char* file = "c:\\windows\\system.ini";
 
-	ifstream fin(file);
-	if(!fin){
-		cout << file << " 열기 오류 " << endl;
-		return 0;
-	}
+  ifstream fin(file);
+  if(!fin){
+    cout << file << " 열기 오류 " << endl;
+    return 0;
+  }
 
-	int count = 0;
-	char c;
+  int count = 0;
+  char c;
 
-	while((c = fin.get()) != EOF){
-		cout << char(toupper(c));
-		count++;
-	}
+  while((c = fin.get()) != EOF){
+    cout << char(toupper(c));
+    count++;
+  }
 
-	cout << "읽은 바이트 수는 " << count << endl;
-	fin.close();
+  cout << "읽은 바이트 수는 " << count << endl;
+  fin.close();
 
-	return 0;
+  return 0;
 }
 
 
@@ -1091,28 +1091,28 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 int main(int argc, const char *argv[]){
-	char* file = "c:\\windows\\system.ini";
-	string line;
+  char* file = "c:\\windows\\system.ini";
+  string line;
 
-	ifstream fin(file);
-	if(!fin){
-		cout << file << " 열기 오류 " << endl;
-		return 0;
-	}
+  ifstream fin(file);
+  if(!fin){
+    cout << file << " 열기 오류 " << endl;
+    return 0;
+  }
 
-	int count = 0;
-	int lineNum = 1;
+  int count = 0;
+  int lineNum = 1;
 
-	// 이런식으로 getline을 while하고 같이 쓸 수 있구만 :-)
-	while(getline(fin, line)){
-		cout << lineNum++ << " : " << line << endl;
-	}
+  // 이런식으로 getline을 while하고 같이 쓸 수 있구만 :-)
+  while(getline(fin, line)){
+    cout << lineNum++ << " : " << line << endl;
+  }
 
 
-	cout << "읽은 바이트 수는 " << count << endl;
-	fin.close();
+  cout << "읽은 바이트 수는 " << count << endl;
+  fin.close();
 
-	return 0;
+  return 0;
 }
 
 
@@ -1129,25 +1129,25 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 int main(int argc, const char *argv[]){
-	char* file = "c:\\windows\\system.ini";
+  char* file = "c:\\windows\\system.ini";
 
-	ifstream fin(file);
-	if(!fin){
-		cout << file << " 열기 오류 " << endl;
-		return 0;
-	}
+  ifstream fin(file);
+  if(!fin){
+    cout << file << " 열기 오류 " << endl;
+    return 0;
+  }
 
-	int count = 0;
-	int c;
-	while((c=fin.get()) != EOF){
-		cout << (char)c;
-		count++;
-	}
+  int count = 0;
+  int c;
+  while((c=fin.get()) != EOF){
+    cout << (char)c;
+    count++;
+  }
 
-	cout << "읽은 바이트 수는 " << count << endl;
-	fin.close();
+  cout << "읽은 바이트 수는 " << count << endl;
+  fin.close();
 
-	return 0;
+  return 0;
 }
 
 
@@ -1164,28 +1164,28 @@ using namespace std;
 
 int main(int argc, const char *argv[]){
 	
-	char name[10], dept[20];
-	int sid;
+  char name[10], dept[20];
+  int sid;
 
-	cout << "이름>> ";
-	cin >> name;
-	cout << "학번>> ";
-	cin >> sid;
-	cout << "학과>> ";
-	cin >> dept;
+  cout << "이름>> ";
+  cin >> name;
+  cout << "학번>> ";
+  cin >> sid;
+  cout << "학과>> ";
+  cin >> dept;
 
-	ofstream fout("c:\\student.txt");
-	if(!fout){
-		cout << "student.txt 파일을 열 수 없다";
-	}
+  ofstream fout("c:\\student.txt");
+  if(!fout){
+    cout << "student.txt 파일을 열 수 없다";
+  }
 
-	fout << name << endl;
-	fout << sid << endl;
-	fout << dept << endl;
+  fout << name << endl;
+  fout << sid << endl;
+  fout << dept << endl;
 
-	fout.close();
+  fout.close();
 
-	return 0;
+  return 0;
 }
 
 
@@ -1202,79 +1202,79 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 class BaseArray {
-private:
-	int capacity;
-	int *mem;
+ private:
+  int capacity;
+  int *mem;
 
-protected:
-	BaseArray(int capacity=100){
-		this->capacity = capacity; 
-		mem = new int[capacity];
-	}
-	~BaseArray() { delete[] mem; }
+ protected:
+  BaseArray(int capacity=100){
+    this->capacity = capacity;
+    mem = new int[capacity];
+  }
+  ~BaseArray() { delete[] mem; }
 
-	void put(int index, int val) { mem[index] = val; }
-	int get(int index) { return mem[index]; }
-	int getCapacity() { return capacity; }
+  void put(int index, int val) { mem[index] = val; }
+  int get(int index) { return mem[index]; }
+  int getCapacity() { return capacity; }
 };
 
 class MyQueue : public BaseArray {
-	int count;
-public:
-	MyQueue(int cap) : BaseArray(cap) {
-		count = 0;
-	}
+  int count;
+ public:
+  MyQueue(int cap) : BaseArray(cap) {
+    count = 0;
+  }
 
-	int capacity();
-	void enqueue(int val);
-	int dequeue();
-	int length();
+  int capacity();
+  void enqueue(int val);
+  int dequeue();
+  int length();
 };
 
 int MyQueue::capacity(){
-	return getCapacity();
+  return getCapacity();
 }
 
 void MyQueue::enqueue(int val){
-	put(count++, val);
+  put(count++, val);
 }
 
 int MyQueue::dequeue(){
-	return get(--count);
+  return get(--count);
 }
 
 int MyQueue::length(){
-	return count;
+  return count;
 }
 
 class MyStack : public BaseArray {
 
-public:
+ public:
 		
 };
 
 int main(int argc, const char *argv[]){
-	MyQueue mQ(100);
+  MyQueue mQ(100);
 
-	int n;
-	cout << "큐에 삽입할 5개의 정수를 입력하라>> ";
+  int n;
+  cout << "큐에 삽입할 5개의 정수를 입력하라>> ";
 
-	for(int i =0 ; i< 5; i++){
-		cin >> n;
-		mQ.enqueue(n);
-	}
+  for(int i =0 ; i< 5; i++){
+    cin >> n;
+    mQ.enqueue(n);
+  }
 
-	cout << "큐의 용량: " << mQ.capacity() << ", 큐의 크기: " << mQ.length() << endl;
+  cout << "큐의 용량: " << mQ.capacity() << ", 큐의 크기: " << mQ.length() << endl;
 
-	cout << "큐의 원소를 순서대로 제거하여 출력한다>> ";
+  cout << "큐의 원소를 순서대로 제거하여 출력한다>> ";
 
-	while(mQ.length() != 0){
-		cout << mQ.dequeue() << ' ';
-	}
+  while(mQ.length() != 0){
+    cout << mQ.dequeue() << ' ';
+  }
 
-	cout << endl << "큐의 현재 크기 : " << mQ.length() << endl;
+  cout << endl << "큐의 현재 크기 : " << mQ.length() << endl;
 
-	return 0;
+  return 0;
 }
 
 
@@ -1292,60 +1292,60 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 class Point {
-	int x,y;
-public:
-	Point(int x, int y) { this->x = x; this->y = y;}
+  int x,y;
+ public:
+  Point(int x, int y) { this->x = x; this->y = y;}
 
-	int getX() { return x; }
-	int getY() { return y; }
+  int getX() { return x; }
+  int getY() { return y; }
 
-protected:
-	void move(int x, int y) { this->x = x; this->y = y; }
+ protected:
+  void move(int x, int y) { this->x = x; this->y = y; }
 };
 
 class ColorPoint : public Point {
-	string color;
+  string color;
 
-public:
-	ColorPoint()
-		: Point(0,0), color("BLACK")
-	{}
+ public:
+  ColorPoint()
+      : Point(0,0), color("BLACK")
+  {}
 	
-	ColorPoint(int x, int y, string color = "RED")
-		: Point(x,y), color(color) 
-	{}
+  ColorPoint(int x, int y, string color = "RED")
+      : Point(x,y), color(color)
+  {}
 
-	void setPoint(int x, int y);
-	void setColor(string color);
-	void show();
+  void setPoint(int x, int y);
+  void setColor(string color);
+  void show();
 };
 
 void ColorPoint::setPoint(int x, int y){
-	move(x,y);
+  move(x,y);
 }
 void ColorPoint::setColor(string color){
-	this->color = color;
+  this->color = color;
 }
 void ColorPoint::show(){
-	cout << color << "색으로 (" << getX() << ", " << getY() <<") 위치한 점입니다" << endl;
+  cout << color << "색으로 (" << getX() << ", " << getY() <<") 위치한 점입니다" << endl;
 }
 
 int main(int argc, const char *argv[]){
-	ColorPoint zeroPoint;
-	ColorPoint cp(5, 5, "RED");
-	ColorPoint cp2(5, 5);
+  ColorPoint zeroPoint;
+  ColorPoint cp(5, 5, "RED");
+  ColorPoint cp2(5, 5);
 
-	zeroPoint.show();
+  zeroPoint.show();
 
-	cp.setPoint(10, 20);
-	cp.setColor("BLUE");
-	cp.show();
+  cp.setPoint(10, 20);
+  cp.setColor("BLUE");
+  cp.show();
 
-	cp2.setPoint(10, 20);
-	cp2.setColor("BLUE");
-	cp2.show();
+  cp2.setPoint(10, 20);
+  cp2.setColor("BLUE");
+  cp2.show();
 
-	return 0;
+  return 0;
 }
 
 
@@ -1362,28 +1362,28 @@ int main(int argc, const char *argv[]){
 using namespace std;
 
 class Circle {
-	int radius;
+  int radius;
 
-public:
-	Circle(int radius=0) { this->radius = radius;}
+ public:
+  Circle(int radius=0) { this->radius = radius;}
 
-	int getRadius() { return radius;}
-	void setRadius(int radius) { this->radius = radius;}
-	double getArea() { return 3.14 * radius * radius;}
+  int getRadius() { return radius;}
+  void setRadius(int radius) { this->radius = radius;}
+  double getArea() { return 3.14 * radius * radius;}
 };
 
 
 class NamedCircle : public Circle{
-	string name;
-	string *nameArray;
+  string name;
+  string *nameArray;
 
-public:
-	NamedCircle();
-	NamedCircle(int radius, string name) : Circle(radius), name(name) {}	
-	~NamedCircle();
+ public:
+  NamedCircle();
+  NamedCircle(int radius, string name) : Circle(radius), name(name) {}
+  ~NamedCircle();
 
-	void show();
-	void getDataArray();
+  void show();
+  void getDataArray();
 };
 
 NamedCircle::NamedCircle(){
@@ -1395,20 +1395,20 @@ void NamedCircle::getDataArray(){
 }
 
 NamedCircle::~NamedCircle(){
-	delete[] nameArray;
+  delete[] nameArray;
 }
 
 void::show(){
-	cout << "반지름이 " << getRadius() << "인 " << this->name << endl;
+  cout << "반지름이 " << getRadius() << "인 " << this->name << endl;
 }
 
 
 int main(int argc, const char *argv[]){
-	NamedCircle waffle(3, "waffle");
-	NamedCircle pizza[5];
+  NamedCircle waffle(3, "waffle");
+  NamedCircle pizza[5];
 
-	waffle.show();
-	return 0;
+  waffle.show();
+  return 0;
 }
 
 
