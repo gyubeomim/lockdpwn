@@ -1,7 +1,7 @@
 /*
   c++ ==> emacs lisp 사용법 강좌에 나온 ceaser 암호화를 하는 간단한 예제 코드
 
-  http://tsgates.github.io/emacsbook/chap8.html
+  code from http://tsgates.github.io/emacsbook/chap8.html
 */
 #include <stdio.h>
 #include <string.h>

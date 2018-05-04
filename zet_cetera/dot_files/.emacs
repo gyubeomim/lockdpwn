@@ -614,7 +614,10 @@
 ;; PACKAGE : flycheck
 (require 'flycheck)
 ;; c++11에 안맞는 문법이 있을경우(range-based loop 등) 경고 메세지를 띄우는데 이를 무시한다
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (setq flycheck-gcc-language-standard "c++11")
+            ))
 
 ;; ROS를 사용하는 경우 flycheck #include <ros/ros.h>가 나지 않도록 추가한 코드
 (setq flycheck-clang-include-path "/opt/ros/kinetic/include")
@@ -705,7 +708,9 @@
 
 ;; PACKAGE: git-gutter
 ;; git gutter 모드를 사용해 수정된 라인을 하이라이팅한다
-(global-git-gutter-mode +1)
+(global-git-gutter-mode t)
+;; linum-mode와 겹쳐서 linum이 안보이는 문제를 해결하기 위해 코드 추가
+(git-gutter:linum-setup)
 
 ;; custom 모양 및 색상 추가
 (set-face-foreground 'git-gutter:modified "yellow")
@@ -766,10 +771,6 @@
 (require 'clean-aindent-mode)
 (add-hook 'prog-mode-hook 'clean-aindent-mode)
 
-;; Package: dtrt-indent
-(require 'dtrt-indent)
-(dtrt-indent-mode t)
-
 ;; Package: ws-butler
 (require 'ws-butler)
 (add-hook 'prog-mode-hook 'ws-butler-mode)
@@ -815,16 +816,14 @@
           (lambda ()
             ;; cua-mode에서 c-v 키를 바인딩하고 있어서 다른 키들이 안먹히고 있었다
             ; (cua-mode -1)
-            (define-key cua--cua-keys-keymap (kbd "C-v") nil)
+            ; (define-key cua--cua-keys-keymap (kbd "C-v") nil)
+            ; (define-key term-raw-map (kbd "C-y") nil)
+
             (define-key term-raw-map (kbd "C-b") nil)
-            (define-key term-raw-map (kbd "C-y") nil)
             (define-key term-raw-map (kbd "C-q") nil)
             (define-key term-raw-map (kbd "<S-insert>") nil)
 
-            (define-key term-raw-map (kbd "C-v") 'term-paste)
             (define-key term-raw-map (kbd "C-b") 'helm-for-files)
-
-            (define-key term-mode-map (kbd "C-v") 'term-paste)
             (define-key term-mode-map (kbd "C-b") 'helm-for-files)
             ))
 
@@ -1350,7 +1349,7 @@ Version 2017-04-19"
 (setq gud-gdb-command-name "gdb -q -i=mi --args")
 
 ;; compile 명령어 수정 (c++일 경우 g++, c일 경우 gcc로 해주면 됩니다)
-(setq compile-command "g++ -std=c++14 -g -o ")
+(setq compile-command "g++ -std=c++11 -g -o ")
 
 
 ;; eyebrowse 모드에서 C-1,2,3키로 워크스페이스를 변경합니다 (not used)

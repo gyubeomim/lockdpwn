@@ -1,6 +1,6 @@
 /*
   c tcpip ==> dup, dup2 함수를 사용해 파일디스크럽터를 복사해본 예제 코드
- */
+*/
 #include <stdio.h>
 #include <unistd.h>
 
