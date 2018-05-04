@@ -1,5 +1,109 @@
 //START===========================================
 /*
+  c++ ==> 백준 10825, 국영수 문제를 푼 코드2
+
+Input :
+12
+Junkyu 50 60 100
+Sangkeun 80 60 50
+Sunyoung 80 70 100
+Soong 50 60 90
+Haebin 50 60 100
+Kangsoo 60 80 100
+Donghyuk 80 60 100
+Sei 70 70 70
+Wonseob 70 70 90
+Sanghyun 70 70 80
+nsj 80 80 80
+Taewhan 50 60 90
+
+*/
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+struct Person {
+  string name;
+  int kor, eng, math;
+};
+
+int main(int argc, char **argv){
+  int n;
+  cin >> n;
+
+  vector<Person> a(n);
+
+  for (int i=0; i<n; i++) {
+    cin >> a[i].name >> a[i].kor >> a[i].eng >> a[i].math;
+  }
+
+  sort(a.begin(), a.end(), [](const Person &u, const Person &v){
+      if(u.kor > v.kor)
+        return true;
+      else if (u.kor == v.kor){
+        if(u.eng < v.eng)
+          return true;
+        else if(u.eng == v.eng){
+          if (u.math > v.math)
+            return true;
+          else if(u.math == v.math)
+            return u.name < v.name;
+        }
+      }
+      return false;
+    });
+
+  for (Person &p : a) {
+    cout << p.name << '\n';
+  }
+
+
+  return 0;
+}
+//END=============================================
+//START===========================================
+/*
+  c++ ==> 백준 1076, 저항 문제를 푼 코드
+
+          전자 제품에는 저항이 들어간다. 저항은 색 3개를 이용해서 그 저항이 몇 옴인지 나타낸다.
+          처음 색 2개는 저항의 값이고, 마지막 색은 곱해야 하는 값이다.
+          첫째 줄에 입력을 주어진 저항의 저항값을 출력한다.
+
+          Input  : yello violet red
+          Output : 4700
+*/
+#include <iostream>
+#include <string>
+#include <map>
+
+using namespace std;
+
+int main(int argc, char **argv) {
+  map<string, int> d = {
+    {"black", 0}, {"brown", 1}, {"red", 2},
+    {"orange", 3}, {"yellow", 4}, {"green", 5},
+    {"blue", 6}, {"violet", 7}, {"grey", 8},
+    {"white", 9}
+  };
+
+  string a,b,c;
+  cin >> a >> b >> c;
+
+  // ed: yellow violet red 입력을 처리하는 코드
+  long long ans = (long long)(d[a]*10 + d[b]);
+  for (int k=0; k<d[c]; k++) {
+    ans *= 10LL;
+  }
+
+  cout << ans << '\n';
+  return 0;
+}
+//END=============================================
+//START===========================================
+/*
   c++ ==> 백준 10825, 국영수 문제의 해답 코드
 
           도현이네 반 학생 N명의 이름과 국어, 영어, 수학 점수가 주어진다. 이 때, 다음과 같은 조건으로 학생의 성적을 정렬하는 프로그램을 작성하시오.

@@ -1,9 +1,11 @@
 # -*- mode: snippet -*-
-# name: class
+# name: class by edward
 # key: cls
 # --
 class ${1: }{
-
+private:
+        ${2: }
 public:
+        ${3: }
 };
 $0
