@@ -26,6 +26,10 @@ set guifont=Source\ Code\ Pro\ Semibold\ 13
 set guifontwide=Dotumche\ 13
 "set relativenumber
 
+" Toolbar, Menubar 숨기기
+set guioptions-=T
+set guioptions-=m
+
 
 "" F4키는 모든 마킹을 지우고 F5키는 해당 단어를 하이라이팅합니다
 map <F4> <Plug>MarkClear 
