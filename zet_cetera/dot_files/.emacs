@@ -530,7 +530,7 @@
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
      ;; org-mode에서 이미지를 보여주는 설정
-     (setq org-startup-with-inline-images t)
+     ;; (setq org-startup-with-inline-images t)
      ;; src block에 syntax highlighting을 해주는 패키지
      (setq org-src-fontify-natively t)
      ;; org-mode를 시작할 때 unfold all
