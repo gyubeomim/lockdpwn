@@ -238,7 +238,7 @@ alias cd...='cd ../..'
 alias cd....='cd ../../..'
 
 # for triple-monitors
-alias cvt='/home/dyros-vehicle/gitrepo/lockdpwn/shellcode_archive/cvt_1920_1080.sh'
+alias cvt='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/cvt_1920_1080.sh'
 
 # for systemctl
 alias stl='sudo systemctl'
@@ -280,8 +280,8 @@ alias ueditor='~/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
 export UE4_ROOT='/home/dyros-vehicle/gitrepo/UnrealEngine'
 
 # ipython qtconsole
-alias qt2='~/gitrepo/lockdpwn/shellcode_archive/qtipython_2.sh'
-alias qt3='~/gitrepo/lockdpwn/shellcode_archive/qtipython_3.sh'
+alias qt2='~/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
+alias qt3='~/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 
 
 # for chown to dyros-vehicle
