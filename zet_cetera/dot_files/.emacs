@@ -577,6 +577,18 @@
 
 ))
 
+
+;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
+(require 'org-gcal)
+(setq package-check-signature nil)
+(setq org-gcal-client-id "815785509878-3gn7mhcti240j6am59uk95s230n11172.apps.googleusercontent.com"
+      org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
+      org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo/ims/org_files/gcal.org")))
+;; (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
+;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
+
+;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
+(global-set-key (kbd "C-c s") 'org-gcal-sync)
 ;; C-c + / 키로 index.org 파일을 엽니다
 (global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims/org_files/index.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
@@ -878,13 +890,13 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims/org_files/index.org" "~/gitrepo/ims/org_files/project_squeezeseg.org" "~/gitrepo/ims/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims/org_files/gcal.org" "~/gitrepo/ims/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims/org_files/index.org" "~/gitrepo/ims/org_files/project_squeezeseg.org" "~/gitrepo/ims/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-hide-emphasis-markers t)
  '(org-scheduled-delay-days 0)
  '(package-selected-packages
    (quote
-    (company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
