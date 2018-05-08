@@ -363,7 +363,7 @@
 
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-
+(setq irony-additional-clang-options '("-std=c++11"))
 
 
 
