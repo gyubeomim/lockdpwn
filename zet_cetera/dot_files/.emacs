@@ -176,9 +176,9 @@
 ;;(define-key 'help-command (kbd "C-l") 'helm-locate-library)
 
 ;; use helm to list eshell history
-(add-hook 'eshell-mode-hook
-          #'(lambda ()
-              (define-key eshell-mode-map (kbd "M-l")  'helm-eshell-history)))
+;; (add-hook 'eshell-mode-hook
+;;           #'(lambda ()
+;;               (define-key eshell-mode-map (kbd "M-l")  'helm-eshell-history)))
 
 ;;; Save current position to mark ring
 (add-hook 'helm-goto-line-before-hook 'helm-save-current-pos-to-mark-ring)
@@ -238,7 +238,7 @@
 (add-hook 'dired-mode-hook 'helm-gtags-mode)
 
 ;; Enable helm-gtags-mode in Eshell for the same reason as above
-(add-hook 'eshell-mode-hook 'helm-gtags-mode)
+;; (add-hook 'eshell-mode-hook 'helm-gtags-mode)
 
 ;; Enable helm-gtags-mode in languages that GNU Global supports
 (add-hook 'c-mode-hook 'helm-gtags-mode)
