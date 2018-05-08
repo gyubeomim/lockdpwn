@@ -162,6 +162,7 @@ alias git1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
 alias git2='cd /home/dyros-vehicle/gitrepo/ims'
 alias git3='cd /home/dyros-vehicle/gitrepo/ims_ml'
 alias git4='cd /home/dyros-vehicle/gitrepo/ims_ml/SqueezeSeg'
+alias gito='cd /home/dyros-vehicle/gitrepo/ims_org'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
 
 
