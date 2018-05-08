@@ -72,13 +72,13 @@
     markdown-mode          ;; markdown 구문을 하이라이팅해주는 패키지
     ein                    ;; emacs에서 Ipython Notebook를 사용하게 해주는 패키지
     org-bullets            ;; org-mode에서 마크 모양을 bullet 모양으로 해주는 패키지
+    org-gcal               ;; org-mode와 google Calendar를 연동해주는 패키지
     git-gutter             ;; 수정된 파일의 변경된 라인을 하이라이팅해주는 패키지
     mic-paren              ;; 괄호로 닫혀진 구문이 너무 길어서 한쪽 끝이 안보일 경우 line, number를 알려주는 패키지
 
     company                ;; auto-complte와 유사한 코드 자동완성 패키지
     irony                  ;; c++ 코드 자동완성 패키지 (M-x irony-install-server로 설치한다)
     company-irony          ;; c++ 코드 자동완성 패키지
-
 
 
 
