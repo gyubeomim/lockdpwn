@@ -1,38 +1,36 @@
-//START===========================================
-/*
-  c++ ==> 백준 2839, 설탕배달을 풀기 위한 코드 (미완성)
-*/
 #include <iostream>
-#include <stdio.h>
+#include <algorithm>
+#include <cstring>
+#include <array>
 
-using namespace std;
+int main(int argc, char **argv){
+  int oldStyle[3] = {1, 4, 3};
+  int anotherOld[3];
 
-int main() {
-  int num;
-  cin >> num;
+  std::memcpy(anotherOld, oldStyle, sizeof(int)*3);
+  std::sort(oldStyle, oldStyle, 3);
 
-  if(num <= 3 || num >= 5000)
-    return 0;
+  for (auto i : oldStyle) {
+    std::cout << i << ' ';
+  }
 
-  int five_count = 0;
-  int three_count = 0;
-  int five_mod = 0;
-  int three_mod = 0;
+  bool dif = false;
+  for (int i=0 ; i<3 ; i) {
+    if (oldStyle[i] != anotherOld[i]) {
+      dif = true;
+      break;
+    }
+  }
 
-  five_count = num / 5;
-  five_mod = num % 5;
-  three_count = num / 3;
-  three_mod = num % 3;
+  std::array<int,3> c11Style = {1,4,3};
+  std::array<int,3> anotherC11;
 
-  cout << five_count << ", " << three_count << endl;
+  anotherC11 = c11Style;
 
-  // TODO(edward): make it complete
+  for (auto i : c11Style) {
+    std::cout << i << ' ';
+  }
 
-  if(num % 5 != 4)
-    printf("%d\n", five_count + three_count);
-  else
-    printf("-1");
-
+  bool diff = (c11Style != anotherC11);
   return 0;
 }
-//END=============================================
