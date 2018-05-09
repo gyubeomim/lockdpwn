@@ -578,7 +578,6 @@
 
 ))
 
-
 ;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
 (require 'org-gcal)
 (setq package-check-signature nil)
@@ -1007,8 +1006,8 @@
  '(highlight ((t (:background "grey"))))
  '(magit-diff-hunk-heading ((t (:background "black"))))
  '(magit-diff-hunk-heading-highlight ((t (:background "black"))))
- '(org-agenda-date ((t (:background "dark cyan" :foreground "white smoke" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
- '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "white smoke" :inverse-video nil :overline nil :underline t))))
+ '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
+ '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-block ((t (:background "gray13" :foreground "dark gray"))))
  '(org-block-begin-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
  '(org-block-end-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
