@@ -309,6 +309,8 @@ let g:ycm_show_diagnostics_ui = 0
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 
+" %s키로 단어를 바꾸던 기능을 커서 위에서 \s키를 누르면 동작하도록 설정합니다
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle 설정 (플러그인 설정)
