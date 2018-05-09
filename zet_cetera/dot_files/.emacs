@@ -363,6 +363,7 @@
 
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;; C++11 에서 추가된 코드들에 대한 자동완성을 하기 위해 추가한 코드
 (setq irony-additional-clang-options '("-std=c++11"))
 
 
