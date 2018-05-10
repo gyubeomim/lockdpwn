@@ -1,20 +1,19 @@
 #include <iostream>
+#include <vector>
 #include <algorithm>
-#include <cstring>
-#include <array>
 
 int main(int argc, char **argv){
-  std::array<int,10> c11Style = {1,4,3,123,5,2,6,62,24,1523};
-  std::array<int,10> anotherC11;
-  anotherC11 = c11Style;
+  std::vector<char> v;
+  v.push_back('c');
+  v.push_back('b');
+  v.push_back('e');
+  v.push_back('a');
+  v.push_back('g');
 
-  std::sort(c11Style.begin(), c11Style.end());
+  std::sort(v.begin(), v.end());
 
-  for (auto i : c11Style) {
-    std::cout << i << ' ';
+  for (int i=0; i<5 ; i++) {
+    std::cout << v[i] << std::endl;
   }
-  std::cout << std::endl;
-
-  bool diff = (c11Style != anotherC11);
   return 0;
 }

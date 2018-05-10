@@ -1383,6 +1383,9 @@ Version 2017-04-19"
 ;; Ctrl + 4 키로 .md 파일을 파이어폭스로 프리뷰합니다 (not used)
 ;; (global-set-key (kbd "C-4") 'flymd-flyit)
 
+;; C-4 키로 *scratch* buffer를 생성하고 이동합니다
+(global-set-key (kbd "C-4") 'create-scratch-buffer)
+
 ;; C-5 키로 다른 프로젝트로 스위치하는 명령어를 실행합니다
 (global-set-key (kbd "C-5") 'helm-projectile-switch-project)
 ;; helm-projectile-switch-project (C-5) 로 프로젝트를 바꾼 다음 실행하는 명령어로
@@ -1667,6 +1670,9 @@ Version 2017-04-19"
 
 ;; ESC키 2번으로 기존에 3번 ESC를 눌러야 작동하던 escape를 대신합니다
 (global-set-key (kbd "<escape> <escape>") 'keyboard-escape-quit)
+
+;; C-x C-z 키가 suspend-frame으로 되어있어서 잘못해서 emacs가 멈추는 경우가 생기므로 해제합니다
+(global-unset-key (kbd "C-x C-z"))
 
 ;; Package: key-chord
 (require 'key-chord)
