@@ -1,5 +1,111 @@
 //START===========================================
 /*
+  c++ ==> STL pair를 sort() 함수로 정렬하는 예제 코드
+*/
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+
+int main(int argc, char **argv){
+  vector<pair<int, string>> v;
+
+  v.push_back(pair<int, string>(20, "A_Jiwoo"));
+  v.push_back(pair<int, string>(21, "B_Songju"));
+  v.push_back(pair<int, string>(21, "C_Induk"));
+  v.push_back(pair<int, string>(21, "D_SeungHyun"));
+  v.push_back(pair<int, string>(20, "E_Soyen"));
+
+  sort(v.begin(), v.end());
+
+  for (int i=0; i<v.size(); i++) {
+    cout << v[i].first << ", " << v[i].second << endl;
+  }
+  return 0;
+}
+//END=============================================
+//START===========================================
+/*
+  c++ ==> 클래스 안에 operator < 를 추가해서 sort() 함수로 정렬하는 예제 코드
+*/
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
+class Person{
+ public:
+  std::string name;
+  int age;
+  Person(std::string name, int age){
+    this->name = name;
+    this->age = age;
+  }
+  bool operator <(const Person &a) const{
+    return this->age < a.age;
+  }
+};
+
+int main(int argc, char **argv){
+  std::vector<Person> v;
+  v.push_back(Person("MinJi", 22));
+  v.push_back(Person("Kangho", 28));
+  v.push_back(Person("Minho", 26));
+  v.push_back(Person("Strange Yun", 25));
+  v.push_back(Person("JunEun", 40));
+
+  std::sort(v.begin(), v.end());
+
+  for (int i=0; i<v.size(); i++) {
+    std::cout << v[i].age << ", " << v[i].name << std::endl;
+  }
+  return 0;
+}
+//END=============================================
+
+//START===========================================
+/*
+  c++ ==> global operator < 를 사용해 사용자 정의 class를 정렬하는 예제 코드
+*/
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
+class Person{
+ public:
+  std::string name;
+  int age;
+  Person(std::string name, int age){
+    this->name = name;
+    this->age = age;
+  }
+};
+
+bool operator <(const Person &a, const Person &b){
+  return a.age < b.age;
+}
+
+int main(int argc, char **argv){
+  std::vector<Person> v;
+  v.push_back(Person("MinJi", 22));
+  v.push_back(Person("Kangho", 28));
+  v.push_back(Person("Minho", 26));
+  v.push_back(Person("Strange Yun", 25));
+
+  std::sort(v.begin(), v.end());
+
+  for (int i=0; i<v.size(); i++) {
+    std::cout << v[i].age << ", " << v[i].name << std::endl;
+  }
+  return 0;
+}
+//END=============================================
+
+//START===========================================
+/*
   c++ ==> vector<char>를 sort() 함수로 정렬해 본 코드
 */
 #include <iostream>

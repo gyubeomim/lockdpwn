@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: class by edward
-# key: cls
+# key: class
 # --
 class ${1: }{
 private:

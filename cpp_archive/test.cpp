@@ -1,19 +1,34 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
+
+using namespace std;
+
+bool cmp(const vector<string> &a, const vector<string> &b){
+  if(a > b)
+    return true;
+  else
+    return a < b;
+}
 
 int main(int argc, char **argv){
-  std::vector<char> v;
-  v.push_back('c');
-  v.push_back('b');
-  v.push_back('e');
-  v.push_back('a');
-  v.push_back('g');
+  vector<string> vs;
 
-  std::sort(v.begin(), v.end());
+  int numString = 0;
+  string str;
+  cin >> numString;
 
-  for (int i=0; i<5 ; i++) {
-    std::cout << v[i] << std::endl;
+  for (int i=0; i<numString ; i++) {
+    cin >> str;
+    vs.push_back(str);
   }
+
+  sort(vs.begin(), vs.end());
+
+  for (auto i : vs) {
+    std::cout << i << std::endl;
+  }
+
   return 0;
 }

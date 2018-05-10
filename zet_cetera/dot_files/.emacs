@@ -1674,6 +1674,10 @@ Version 2017-04-19"
 ;; C-x C-z 키가 suspend-frame으로 되어있어서 잘못해서 emacs가 멈추는 경우가 생기므로 해제합니다
 (global-unset-key (kbd "C-x C-z"))
 
+;; C-c, C-v 키를 복사, 붙여넣기로 전역적으로 설정합니다
+;; (global-set-key (kbd "C-c") 'cua--prefix-override-handler)
+;; (global-set-key (kbd "C-v") 'cua-paste)
+
 ;; Package: key-chord
 (require 'key-chord)
 ;; 두 키가 입력되는데 걸리는 시간 설정

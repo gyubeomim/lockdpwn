@@ -318,6 +318,8 @@ export LD_LIBRARY_PATH=/usr/include/vtk-6.2/:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/home/dyros-vehicle/Documents/VTK-5.10.1/build:/home/dyros-vehicle/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
 
 
+# for cling with Jupyter
+export PATH=/home/dyros-vehicle/Documents/cling_2018-05-10_ubuntu16/bin:$PATH 
 
 
 #START NOT USED------------------------------------------------------
