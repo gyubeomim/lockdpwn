@@ -1,5 +1,69 @@
 //START===========================================
 /*
+  c++ ==> 백준 1001번, A-B 문제를 푼 코드
+*/
+#include <iostream>
+
+using namespace std;
+
+int main(){
+  int a,b;
+  cin >> a >> b;
+
+  if (a < 1 || a > 9)
+    return 0;
+  if (b < 1 || b > 9)
+    return 0;
+
+  cout << a - b;
+
+  return 0;
+}
+//END=============================================
+
+//START===========================================
+/*
+  c++ ==> 백준 2086번, 피보나치 수의 합을 푼 코드 (미완성)
+*/
+#include <iostream>
+
+using namespace std;
+
+int fibonacci(int n){
+  if (n <= 1) {
+    return n;
+  }
+  else {
+    return fibonacci(n-1) + fibonacci(n-2);
+  }
+}
+
+long long sum_fibo(int start, int end) {
+  long long sum = 0;
+
+  for(int i=start ; i <=end ; i++)
+    sum += fibonacci(i);
+
+  sum = sum % 1000000000;
+  return sum;
+}
+
+int main(int argc, char **argv) {
+  int start, end;
+  long long sum=0;
+
+  cin >> start >> end;
+
+  if(start < 1) return 0;
+  if(start > end) return 0;
+
+  std::cout << sum_fibo(start,end) << std::endl;
+  return 0;
+}
+//END=============================================
+
+//START===========================================
+/*
   c++ ==> 백준 1181번, 단어정렬 (미완성)
 */
 #include <iostream>

@@ -1,8 +1,7 @@
 # -*- mode: snippet -*-
 # name: function
-# key: fun
+# key: ffun
 # --
-${1:void }${2: } (${3: }){
+${1:}(${2:}){
     $0
 }
-

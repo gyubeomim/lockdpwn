@@ -1,18 +1,14 @@
-#include <iostream>
-#include <chrono>
-#include <unistd.h>
+#include <cstido>
 
-using namespace std;
+int x[100000];
+int y[100000];
+
+int dist(int x1, int y1, int x2, int y2) {
+  return (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2);
+}
 
 int main(int argc, char **argv){
-  unsigned int microsec = 1500000;
 
-  auto _start = chrono::system_clock::now();
-  usleep(microsec);
-  auto _end = chrono::system_clock::now();
 
-  long millisecs = chrono::duration_cast<chrono::milliseconds>(_end - _start).count();
-
-  cout << "It takes [" << millisecs << "] milliseconds" << endl;
   return 0;
 }

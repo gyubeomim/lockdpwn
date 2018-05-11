@@ -382,3 +382,13 @@
 		c++도 python같이 interpreter가 있다
 		인터프리터 성능은 별로 좋지 않은 것 같지만 (자동완성도 안되고)
 		그래도 간단한 코드 테스트해 볼 때 유용한 것 같다 굳굳 180511
+
+
+
+	48. Window Maximize 할 때 마다 다른 창으로 최대화되던 문제 해결
+		
+		$ ccsm
+		Windows Management ==> Grid ==> Maximize Key Disabled
+
+
+
