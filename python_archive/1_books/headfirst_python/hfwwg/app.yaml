@@ -1,0 +1,11 @@
+application: hfwwg
+version: 1
+runtime: python27
+threadsafe: false
+libraries:
+- name: django
+  version: "latest"
+api_version: 1
+handlers:
+- url: /.*
+  script: hfwwg.py

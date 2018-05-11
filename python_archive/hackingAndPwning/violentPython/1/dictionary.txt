@@ -1,9 +1,0 @@
-apple
-orange
-egg
-lemon
-grapes
-strawberry
-secret
-password
-

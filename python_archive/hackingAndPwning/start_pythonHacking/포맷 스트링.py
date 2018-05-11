@@ -1,8 +1,0 @@
-print("print string: [%s]" % "test")
-print("print string: [%10s]" % "test")
-print("print character: [%c]" % "t")
-print("print character: [%5c]" % "t")
-print("print Integer: [%d]" % 17)
-print("print Float: [%f]" % 17)
-print("print Octal: [%o]" % 17)
-print("print Hexadecimal: [%x]" % 17)                 

@@ -6,8 +6,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
   pid_t pid;
   char buf[16];
   int user_input;

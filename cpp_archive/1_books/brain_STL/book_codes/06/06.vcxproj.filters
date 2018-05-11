@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일%28기존%29">
+      <UniqueIdentifier>{0d55440f-728e-4bc7-a174-4d6ccaaa2f0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일%28기존2%29">
+      <UniqueIdentifier>{b39695ad-b778-497b-ab85-2098ec806952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일%28기존3%29">
+      <UniqueIdentifier>{9e573105-95f1-4efb-84f5-4b65a09853a9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ex06-01.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-17.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-02.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-03.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-04.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-05.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-06.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-07.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-08.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-09.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-10.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-11.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-12.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-13.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-14.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-15.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-16.cpp">
+      <Filter>소스 파일%28기존%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-18.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-26.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-19.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-20.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-21.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-22.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-23.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-24.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-25.cpp">
+      <Filter>소스 파일%28기존2%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-27.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-39.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-28.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-29.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-30.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-31.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-32.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-33.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-34.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-35.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-36.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-37.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-38.cpp">
+      <Filter>소스 파일%28기존3%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-40.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-41.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-42.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-43.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-44.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ex06-45.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
