@@ -49,7 +49,9 @@
 
 ;;; Configuration
 
-(defcustom ein:url-or-port '(http://dyros-vehicle.ddns.net:9999)
+
+; (defcustom ein:url-or-port '(http://dyros-vehicle.ddns.net:9999)
+(defcustom ein:url-or-port '(http://dyros-vehicle.ddns.net:9999 http://localhost:8888)
   "List of default url-or-port values.
 This will be used for completion. So put your IPython servers.
 You can connect to servers not in this list \(but you will need
@@ -232,7 +234,8 @@ Adapted from `slime-create-filename-translator'."
             (tramp-file-name-localname
              (tramp-dissect-file-name emacs-filename)))
           (lambda (python-filename)
-             (ein:make-tramp-file-name username remote-host python-filename)))))
+            (ein:make-tramp-file-name username remote-host python-filename)))
+    ))
 
 
 

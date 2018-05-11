@@ -1,34 +1,18 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <string>
+#include <chrono>
+#include <unistd.h>
 
 using namespace std;
 
-bool cmp(const vector<string> &a, const vector<string> &b){
-  if(a > b)
-    return true;
-  else
-    return a < b;
-}
-
 int main(int argc, char **argv){
-  vector<string> vs;
+  unsigned int microsec = 1500000;
 
-  int numString = 0;
-  string str;
-  cin >> numString;
+  auto _start = chrono::system_clock::now();
+  usleep(microsec);
+  auto _end = chrono::system_clock::now();
 
-  for (int i=0; i<numString ; i++) {
-    cin >> str;
-    vs.push_back(str);
-  }
+  long millisecs = chrono::duration_cast<chrono::milliseconds>(_end - _start).count();
 
-  sort(vs.begin(), vs.end());
-
-  for (auto i : vs) {
-    std::cout << i << std::endl;
-  }
-
+  cout << "It takes [" << millisecs << "] milliseconds" << endl;
   return 0;
 }

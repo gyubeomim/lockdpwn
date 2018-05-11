@@ -685,6 +685,7 @@
 
      ;; ed: ein 단축키 등록
      (define-key ein:notebook-mode-map (kbd "C-w") 'ein:notebook-save-notebook-command)
+     (define-key ein:notebook-mode-map (kbd "C-c C-d") 'ein:worksheet-delete-cell)
      ))
 
 ;; PACKAGE: flymd
@@ -894,6 +895,7 @@
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-hide-emphasis-markers t)
  '(org-scheduled-delay-days 0)
+ '(org-tags-column -180)
  '(package-selected-packages
    (quote
     (org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
@@ -994,6 +996,8 @@
  '(diff-refine-removed ((t (:background "firebrick"))))
  '(diff-removed ((t (:background "red4" :foreground "white smoke"))))
  '(ein:cell-input-area ((t (:background "black"))))
+ '(ein:cell-input-prompt ((t (:inherit header-line :foreground "deep sky blue"))))
+ '(ein:cell-output-prompt ((t (:inherit header-line :foreground "red"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
  '(font-lock-comment-face ((t (:foreground "forest green"))))
  '(hi-blue ((t (:background "blue" :foreground "#5c95b9"))))
