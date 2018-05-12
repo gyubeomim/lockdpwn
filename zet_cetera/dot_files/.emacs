@@ -605,7 +605,7 @@
 
 ;; Alt + a 키로 괄호를 한 번에 지워주는 키를 설정합니다
 (global-set-key (kbd "M-a") 'sp-splice-sexp)
-(define-key c++-mode-map (kbd "M-a") 'sp-splice-sexp)
+;;(define-key c++-mode-map (kbd "M-a") 'sp-splice-sexp)
 
 ;; PACKAGE: comment-dwim
 ;; Alt + ' 키로 comment-dwim 명령어를 수행합니다
@@ -671,8 +671,9 @@
 (require 'solarized-dark-theme)
 (provide 'solarized-dark-theme)
 
-;; rainbow-delimiters를 활성화합니다
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+;; elisp, lisp 모드에서만 rainbow-delimiters를 활성화합니다
+(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 
 ;; PACKAGE: ein
 (require 'ein)
@@ -1000,7 +1001,7 @@
  '(diff-refine-added ((t (:background "olive drab"))))
  '(diff-refine-changed ((t (:background "nil"))))
  '(diff-refine-removed ((t (:background "firebrick"))))
- '(diff-removed ((t (:background "red4" :foreground "white smoke"))))
+ '(diff-removed ((t (:background "brown" :foreground "white smoke"))))
  '(ein:cell-input-area ((t (:background "black"))))
  '(ein:cell-input-prompt ((t (:inherit header-line :foreground "deep sky blue"))))
  '(ein:cell-output-prompt ((t (:inherit header-line :foreground "red"))))

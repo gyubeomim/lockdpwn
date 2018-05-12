@@ -1,3 +1,11 @@
+/*
+  c++ ==> 백준 2086, 피보나치 수의 합 문제를 푼 정답 코드
+
+          # 1에서 N까지의 피보나치 수의 합 = N+2 번째 피보나치 수 -1
+          # A-B에서 음수가 나올 수 있으므로 (A%mod - B%mod + mod)%mod 를 사용했다.
+
+  code from [http://his130.tistory.com/145]
+*/
 #include <iostream>
 #include <vector>
 
