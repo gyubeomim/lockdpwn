@@ -133,9 +133,6 @@
 (global-unset-key (kbd "C-x c"))
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebihnd tab to do persistent action
-;;(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-;;(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
-
 (define-key helm-grep-mode-map (kbd "<return>")  'helm-grep-mode-jump-other-window)
 (define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
 (define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
@@ -688,6 +685,8 @@
 
      ;; ed: ein 단축키 해제
      (define-key ein:notebook-mode-map (kbd "C-c i") nil)
+     (define-key ein:notebook-mode-map (kbd "C-i") nil)
+     (define-key ein:notebook-mode-map (kbd "C-u") nil)
      (define-key ein:notebook-mode-map (kbd "C-x C-s") nil)
 
      ;; ed: ein 단축키 등록
@@ -836,10 +835,7 @@
 ;; multi-term은 term-mode를 사용하므로
 (add-hook 'term-mode-hook
           (lambda ()
-            ;; cua-mode에서 c-v 키를 바인딩하고 있어서 다른 키들이 안먹히고 있었다
-            ; (cua-mode -1)
-            ; (define-key cua--cua-keys-keymap (kbd "C-v") nil)
-            ; (define-key term-raw-map (kbd "C-y") nil)
+            (cua-mode)
 
             (define-key term-raw-map (kbd "C-b") nil)
             (define-key term-raw-map (kbd "C-q") nil)
@@ -848,7 +844,6 @@
             (define-key term-raw-map (kbd "C-b") 'helm-for-files)
             (define-key term-mode-map (kbd "C-b") 'helm-for-files)
             ))
-
 
 ;; PACKAGE: protobuf-mode
 (require 'protobuf-mode)
@@ -871,7 +866,7 @@
     (company-irony company-nxml company-css company-eclim company-clang company-xcode company-cmake company-capf company-files
                    (company-dabbrev-code company-gtags company-etags company-keywords)
                    company-oddmuse company-dabbrev)))
- '(cua-mode t nil (cua-base))
+'(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (solarized)))
  '(custom-safe-themes
    (quote
@@ -892,6 +887,9 @@
  '(elpy-modules
    (quote
     (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
+ '(gdb-show-main t)
+ '(gdb-speedbar-auto-raise t)
+ '(gdb-use-colon-colon-notation t)
  '(git-gutter:added-sign "+")
  '(git-gutter:deleted-sign "-")
  '(git-gutter:modified-sign "▸")
@@ -987,7 +985,8 @@
                    (quote powerline-active1))))
      (:propertize " " face powerline-active1))))
  '(sml/pre-modes-separator (propertize " " (quote face) (quote sml/modes)))
- '(sp-base-key-bindings nil))
+ '(sp-base-key-bindings nil)
+ '(speedbar-update-flag t))
 
 ;; Custom Face + 영어폰트 설정  (height 부분을 바꾸면 크기가 바뀝니다)
 (custom-set-faces
@@ -1046,8 +1045,10 @@
   (zoom-frame (- n) frame amt))
 
 ;; C-c + i/o 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
-(global-set-key (kbd "C-c i") 'zoom-frame)
-(global-set-key (kbd "C-c o") 'zoom-frame-out)
+(global-set-key (kbd "C-u") 'zoom-frame)
+(global-set-key (kbd "C-i") 'zoom-frame-out)
+(define-key c++-mode-map (kbd "C-u") 'zoom-frame)
+(define-key c++-mode-map (kbd "C-i") 'zoom-frame-out)
 
 ;;GUI 환경에서 시작 시 창 화면 최대화 하기
 (add-to-list 'default-frame-alist '(fullscreen . maximized))(add-to-list 'default-frame-alist '(height . 31))
@@ -1704,6 +1705,24 @@ Version 2017-04-19"
 (global-set-key (kbd "M-f") 'forward-paragraph)
 (define-key c++-mode-map (kbd "M-f") 'forward-paragraph)
 
+
+;; Horizontal <--> Vertical view를 토글해주는 함수
+(defun window-split-toggle ()
+  "Toggle between horizontal and vertical split with two windows."
+  (interactive)
+  (if (> (length (window-list)) 2)
+      (error "Can't toggle with more than 2 windows!")
+    (let ((func (if (window-full-height-p)
+                    #'split-window-vertically
+                  #'split-window-horizontally)))
+      (delete-other-windows)
+      (funcall func)
+      (save-selected-window
+        (other-window 1)
+        (switch-to-buffer (other-buffer))))))
+
+;; Alt + ] 키로 horizontal <--> vertical을 토글하는 키를 설정한다
+(global-set-key (kbd "M-]") 'window-split-toggle)
 
 ;; M-c, C-v 키를 복사, 붙여넣기로 전역적으로 설정합니다 (not used)
 ;; (global-set-key (kbd "C-c") 'cua--prefix-override-handler)

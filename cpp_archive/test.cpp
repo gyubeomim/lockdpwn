@@ -1,54 +1,32 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
-const long long mod = 1000000000;
-typedef vector<vector<long long>> matrix;
 
-matrix operator*(matrix a, matrix b) {
-  matrix ret(2, vector<long long>(2));
-
-  for(int i=0; i<2; i++) {
-    for(int j=0; j<2; j++) {
-      long long sum=0;
-      for(int m=0; m<2; m++) {
-        sum += ((a[i][m]%mod) * (b[m][j]%mod)) % mod;
-      }
-      ret[i][j] = sum % mod;
-    }
-  }
-  return ret;
+bool Greater(int left, int right) {
+  return left > right;
 }
 
-matrix calc(matrix a, long long b) {
-  if (b == 0) {
-    matrix ret(2, vector<long long>(2));
-    ret[0][0] = 1, ret[0][1] = 0, ret[1][0] = 0, ret[1][1] = 1;
-    return ret;
+int main(int argc, char **argv) {
+  int k=0, tmp=0;
+  int result = 0;
+  vector<int> rope;
+
+  cin >> k;
+
+  for(int i=0; i<k; i++) {
+    cin >> tmp;
+    rope.push_back(tmp);
   }
-  else if(b % 2 == 0) {
-    matrix temp = calc(a, b/2);
-    return temp * temp;
+
+  sort(rope.begin(), rope.end(), Greater);
+
+  for(auto i=1; i<=k; i++) {
+    result = std::max(result, rope.at(i-1)*i);
   }
-  else {
-    matrix temp = calc(a, b-1);
-    return a * temp;
-  }
-}
 
-int main(int argc, char **argv){
-  long long a,b;
-  long long ans = 0;
-  scanf("%lld %lld", &a, &b);
-
-  matrix F(2, vector<long long>(2));
-  F[0][0] = 1, F[0][1] = 1, F[1][0] = 1, F[1][1] = 0;
-
-  matrix B = calc(F, b+2);
-  matrix A = calc(F, (a-1) + 2);
-
-  ans = ((B[0][1] - 1)%mod - (A[0][1] - 1)%mod + mod) % mod;
-  printf("%lld\n", ans);
+  cout << result;
 
   return 0;
 }

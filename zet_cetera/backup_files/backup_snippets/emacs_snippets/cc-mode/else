@@ -1,8 +1,7 @@
 # -*- mode: snippet -*-
-# name : else { ... }
+# name : else { ... } by edward
 # key: else
 # --
 else {
    ${1: }
 }
-$0

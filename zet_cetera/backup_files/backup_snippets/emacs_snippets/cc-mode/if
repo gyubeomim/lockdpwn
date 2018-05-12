@@ -1,9 +1,7 @@
 # -*- mode: snippet -*-
-# name : if (...) { ... }
+# name : if (...) { ... } by edward
 # key: if
 # --
-if (${1: }) {
-	${2: }
+if(${1: }) {
+   ${2: }
 }
-$0
-
