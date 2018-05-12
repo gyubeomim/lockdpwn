@@ -603,8 +603,9 @@
 (require 'smartparens-config)
 (smartparens-global-mode t)
 
-;; Alt + w 키로 괄호를 한 번에 지워주는 키를 설정합니다
-(global-set-key (kbd "M-w") 'sp-splice-sexp)
+;; Alt + a 키로 괄호를 한 번에 지워주는 키를 설정합니다
+(global-set-key (kbd "M-a") 'sp-splice-sexp)
+(define-key c++-mode-map (kbd "M-a") 'sp-splice-sexp)
 
 ;; PACKAGE: comment-dwim
 ;; Alt + ' 키로 comment-dwim 명령어를 수행합니다
@@ -1694,12 +1695,13 @@ Version 2017-04-19"
           (re-search-forward "[ \t\r\n]+" nil t)
           (replace-match "" nil nil))))))
 
-;; Alt + f 키로 white-space를 제거하는 기능을 설정합니다
-(global-set-key (kbd "M-f") 'kill-whitespace)
+;; Alt + w 키로 white-space를 제거하는 기능을 설정합니다
+(global-set-key (kbd "M-w") 'kill-whitespace)
+(define-key c++-mode-map (kbd "M-w") 'kill-whitespace)
 
-;; Alt + e 키로 forward paragraph (C-<down>) 과 같은 명령을 실행합니다
-(global-set-key (kbd "M-e") 'forward-paragraph)
-(define-key c++-mode-map (kbd "M-e") 'forward-paragraph)
+;; Alt + f 키로 forward paragraph (C-<down>) 과 같은 명령을 실행합니다
+(global-set-key (kbd "M-f") 'forward-paragraph)
+(define-key c++-mode-map (kbd "M-f") 'forward-paragraph)
 
 
 ;; M-c, C-v 키를 복사, 붙여넣기로 전역적으로 설정합니다 (not used)

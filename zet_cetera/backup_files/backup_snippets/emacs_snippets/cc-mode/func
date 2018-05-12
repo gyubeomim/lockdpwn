@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # name: function
-# key: ffun
+# key: qq
 # --
-${1:}(${2:}){
+${1:}(${2:}) {
     $0
 }
