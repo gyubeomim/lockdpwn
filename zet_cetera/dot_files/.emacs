@@ -111,7 +111,6 @@
 ;; you can change to any prefix key of your choice
 ;; (setq helm-gtags-prefix-key "\C-cg")
 
-
 ;;===========================================================================
 ;;===========================================================================
 
@@ -353,7 +352,7 @@
 
 ;; using company-irony
 (add-hook 'c-mode-hook '(lambda ()
-                          (local-set-key (kbd "RET") 'newline-and-indent)
+                          (local-set-key (kbd "<return>") 'newline-and-indent)
                           (linum-mode t)
                           (irony-mode t)
                           ))
@@ -685,7 +684,7 @@
 
      ;; ed: ein 단축키 해제
      (define-key ein:notebook-mode-map (kbd "C-c i") nil)
-     (define-key ein:notebook-mode-map (kbd "C-i") nil)
+     (define-key ein:notebook-mode-map (kbd "H-i") nil)
      (define-key ein:notebook-mode-map (kbd "C-u") nil)
      (define-key ein:notebook-mode-map (kbd "C-x C-s") nil)
 
@@ -773,7 +772,7 @@
 
 (add-hook 'ruby-mode-hook
           (lambda ()
-;;(local-set-key (kbd "TAB") 'company-robe)
+;;(local-set-key (kbd "<tab>") 'company-robe)
             (local-set-key (kbd "C-c C-s") 'inf-ruby-console-auto)))
 
 (add-hook 'inf-ruby-mode-hook
@@ -866,7 +865,7 @@
     (company-irony company-nxml company-css company-eclim company-clang company-xcode company-cmake company-capf company-files
                    (company-dabbrev-code company-gtags company-etags company-keywords)
                    company-oddmuse company-dabbrev)))
-'(cua-mode t nil (cua-base))
+ '(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (solarized)))
  '(custom-safe-themes
    (quote
@@ -1044,11 +1043,20 @@
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
+;; 모든 환경에서 C-i <==> TAB 키를 따로 사용하기 위한 훅 코드
+;; C-i <==> TAB 이 같은 키로 인식되므로 아래 코드를 추가해준다
+(add-hook 'prog-mode-hook '(lambda()
+                        (keyboard-translate ?\C-i ?\H-i)
+                        (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
+                        ))
+
 ;; C-c + i/o 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-u") 'zoom-frame)
-(global-set-key (kbd "C-i") 'zoom-frame-out)
+(global-set-key (kbd "H-i") 'zoom-frame-out)
 (define-key c++-mode-map (kbd "C-u") 'zoom-frame)
-(define-key c++-mode-map (kbd "C-i") 'zoom-frame-out)
+(define-key c++-mode-map (kbd "H-i") 'zoom-frame-out)
+
+
 
 ;;GUI 환경에서 시작 시 창 화면 최대화 하기
 (add-to-list 'default-frame-alist '(fullscreen . maximized))(add-to-list 'default-frame-alist '(height . 31))
@@ -1093,11 +1101,10 @@
 (setq calc-group-digits t)
 
 ;;시작 화면 메세지 끄기
-(setq inhibit-startup-message t)
 (setq initial-scratch-message "")
 
 ;;시작 모드를 text모드로 시작하기. 보통은 LISP Interaction 상태.
-(setq initial-major-mode 'text-mode)
+(setq initial-major-mode 'emacs-lisp-mode)
 
 ;;블럭 선택부분 색상 반전시키기
 (setq-default transient-mark-mode t)
@@ -1227,10 +1234,10 @@
 
 (defun set-default-programming-style ()
   ;; 엔터 입력시 들여쓰기
-  (local-set-key (kbd "RET") 'newline-and-indent)
+  (local-set-key (kbd "<return>") 'newline-and-indent)
 
   ;; 탭키 입력시 영역지정되어 있으면 영역 들여쓰기. 영역없으면 탭키.
-  (local-set-key (kbd "TAB") 'indent-block)
+  (local-set-key (kbd "<tab>") 'indent-block)
 
   ;; 들여쓰기 할 때 실제 탭문자 입력
   (setq indent-tabs-mode t)
@@ -1821,3 +1828,4 @@ Version 2017-04-19"
 (setq auto-mode-alist
       (append '((".*\\.cu\\'" . c++-mode))
               auto-mode-alist))
+
