@@ -630,6 +630,7 @@
 (add-hook 'c++-mode-hook
           (lambda ()
             (setq flycheck-gcc-language-standard "c++11")
+            (setq flycheck-clang-language-standard "c++11")
             ))
 
 ;; ROS를 사용하는 경우 flycheck #include <ros/ros.h>가 나지 않도록 추가한 코드
