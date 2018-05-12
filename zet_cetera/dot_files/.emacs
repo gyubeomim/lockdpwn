@@ -603,7 +603,11 @@
 (require 'smartparens-config)
 (smartparens-global-mode t)
 
+;; Alt + w 키로 괄호를 한 번에 지워주는 키를 설정합니다
+(global-set-key (kbd "M-w") 'sp-splice-sexp)
+
 ;; PACKAGE: comment-dwim
+;; Alt + ' 키로 comment-dwim 명령어를 수행합니다
 (global-set-key (kbd "M-'") 'comment-dwim)
 
 ;; Package: yasnippet
@@ -1679,7 +1683,26 @@ Version 2017-04-19"
 ;; C-x C-z 키가 suspend-frame으로 되어있어서 잘못해서 emacs가 멈추는 경우가 생기므로 해제합니다
 (global-unset-key (kbd "C-x C-z"))
 
-;; C-c, C-v 키를 복사, 붙여넣기로 전역적으로 설정합니다
+;; White space를 없애주는 함수
+(defun kill-whitespace ()
+  "Kill the whitespace between two non-whitespace characters"
+  (interactive "*")
+  (save-excursion
+    (save-restriction
+      (save-match-data
+        (progn
+          (re-search-forward "[ \t\r\n]+" nil t)
+          (replace-match "" nil nil))))))
+
+;; Alt + f 키로 white-space를 제거하는 기능을 설정합니다
+(global-set-key (kbd "M-f") 'kill-whitespace)
+
+;; Alt + e 키로 forward paragraph (C-<down>) 과 같은 명령을 실행합니다
+(global-set-key (kbd "M-e") 'forward-paragraph)
+(define-key c++-mode-map (kbd "M-e") 'forward-paragraph)
+
+
+;; M-c, C-v 키를 복사, 붙여넣기로 전역적으로 설정합니다 (not used)
 ;; (global-set-key (kbd "C-c") 'cua--prefix-override-handler)
 ;; (global-set-key (kbd "C-v") 'cua-paste)
 
