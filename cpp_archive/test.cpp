@@ -1,32 +1,27 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <cstdio>
 
 using namespace std;
 
-bool Greater(int left, int right) {
-  return left > right;
+int A,B,C;
+
+// 0이 아닌 n에 대해 n^k를 구하는 재귀함수
+int power(int n, int k) {
+  // 기저 사례: n^0 = 1
+  if(k==0) return 0;
+
+  int temp = power(n, k/2);
+  int result = 1LL * temp * temp % C;
+
+  // 홀수이면 n을 한 번 더 곱해준다
+  if(k%2) result = 1LL * result * n % C;
+
+  return result;
 }
 
 int main(int argc, char **argv) {
-  int k=0, tmp=0;
-  int result = 0;
-  vector<int> rope;
-
-  cin >> k;
-
-  for(int i=0; i<k; i++) {
-    cin >> tmp;
-    rope.push_back(tmp);
-  }
-
-  sort(rope.begin(), rope.end(), Greater);
-
-  for(auto i=1; i<=k; i++) {
-    result = std::max(result, rope.at(i-1)*i);
-  }
-
-  cout << result;
+  scanf("%d %d %d", &A, &B, &C);
+  printf("%d\n", power(A,B));
 
   return 0;
 }
