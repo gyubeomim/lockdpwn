@@ -1582,9 +1582,9 @@ Version 2017-04-19"
 ;; Ctrl + G 단축키로 구문을 fold 접거나 펼치거나 합니다
 (global-set-key "\C-g" 'hs-toggle-hiding)
 
-;; Ctrl + Alt + G 키로 주석을 감췄다 보여줬다 하는 단축키 설정
+;; Ctrl + Shift + G 키로 주석을 감췄다 보여줬다 하는 단축키 설정
 (hide/show-comments)
-(global-set-key (kbd "C-M-g") 'hide/show-comments-toggle)
+(global-set-key (kbd "C-S-g") 'hide/show-comments-toggle)
 
 
 ;; Ctrl + PageUp, Down 단축키로 첫째줄, 마지막줄로 바로 이동합니다. Ctrl + Home, End는 원래 가능
@@ -1708,9 +1708,14 @@ Version 2017-04-19"
 (global-set-key (kbd "M-w") 'kill-whitespace)
 (define-key c++-mode-map (kbd "M-w") 'kill-whitespace)
 
+
 ;; Alt + f 키로 forward paragraph (C-<down>) 과 같은 명령을 실행합니다
 (global-set-key (kbd "M-f") 'forward-paragraph)
 (define-key c++-mode-map (kbd "M-f") 'forward-paragraph)
+
+;; Alt + r 키로 backward paragraph (C-<up>) 과 같은 명령을 실행합니다
+(global-set-key (kbd "M-r") 'backward-paragraph)
+(define-key c++-mode-map (kbd "M-r") 'backward-paragraph)
 
 
 ;; Horizontal <--> Vertical view를 토글해주는 함수

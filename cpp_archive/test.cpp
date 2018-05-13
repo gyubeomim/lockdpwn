@@ -1,27 +1,57 @@
 #include <iostream>
 #include <cstdio>
+#include <queue>
 
 using namespace std;
 
-int A,B,C;
-
-// 0이 아닌 n에 대해 n^k를 구하는 재귀함수
-int power(int n, int k) {
-  // 기저 사례: n^0 = 1
-  if(k==0) return 0;
-
-  int temp = power(n, k/2);
-  int result = 1LL * temp * temp % C;
-
-  // 홀수이면 n을 한 번 더 곱해준다
-  if(k%2) result = 1LL * result * n % C;
-
-  return result;
-}
+const int roff[4] = {-1, 1, 0, 0};
+const int coff[4] = {0, 0, -1, 1};
 
 int main(int argc, char **argv) {
-  scanf("%d %d %d", &A, &B, &C);
-  printf("%d\n", power(A,B));
+  int N,M;
+  cin >> N >> M;
+  bool map[100][100];
 
+  for(int i=0; i<N; i++) {
+    for(int j=0; j<M; j++) {
+      scanf("%1d", &map[i][j]);
+    }
+  }
+
+  bool visited[100][100] = {0};
+  visited[0][0] = true;
+
+  queue<int> Q;
+  Q.push(0);
+
+  int result = 1;
+
+  while(true) {
+    int qSize = Q.size();
+    for(int i=0; i<qSize; i++) {
+      int r = Q.front() / 100;
+      int c = Q.front() % 100;
+      Q.pop();
+
+      if(r == N-1 && c == M-1) {
+        cout << result;
+        return 0;
+      }
+
+      for(int d=0; d<4; d++) {
+        int nr = r + roff[d];
+        int nc = c + coff[d];
+
+        if(nr<0 || nr>=N || nc<0 || nc>=M) continue;
+
+        if(!map[nr][nc]) continue;
+        if(visited[nr][nc]) continue;
+
+        visited[nr][nc] = true;
+        Q.push(nr*100 + nc);
+      }
+    }
+    result++;
+  }
   return 0;
 }
