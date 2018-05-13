@@ -1481,8 +1481,8 @@ Version 2017-04-19"
 ;; Ctrl + k 키로 해당 커서의 한 줄 전체를 지웁니다
 (global-set-key "\C-k" 'kill-whole-line)
 
-;; Alt + k 키로 해당 커서의 오른쪽부분만 삭제합니다
-(global-set-key "\M-k" 'kill-visual-line)
+;; Ctrl + Shift + k 키로 해당 커서의 오른쪽부분만 삭제합니다
+(global-set-key (kbd "C-S-k") 'kill-visual-line)
 
 ;; Ctrl + a 키로 전체선택하게 합니다
 (global-set-key "\C-a" 'mark-whole-buffer)
@@ -1597,13 +1597,13 @@ Version 2017-04-19"
 ;; Ctrl + z로 뒤로가기 기능을 실행합니다
 (global-set-key "\C-z" 'undo-tree-undo)
 
-;; Alt + h로 vim처럼 한칸씩 아래로 움직입니다
-(global-set-key "\M-h" 'next-line)
-
-;; Alt + j로 vim처럼 한칸씩 위로 올라갑니다
+;; Alt + j로 vim처럼 한칸씩 아래로 움직입니다
 (define-key c++-mode-map "\M-j" nil)
 (define-key c-mode-map "\M-j" nil)
-(global-set-key "\M-j" 'previous-line)
+(global-set-key "\M-j" 'next-line)
+
+;; Alt + k로 vim처럼 한칸씩 위로 올라갑니다
+(global-set-key "\M-k" 'previous-line)
 
 ;; C-c + C-c 로 window의 사이즈를 조절합니다
 (define-key c++-mode-map (kbd "C-c C-c") nil)
@@ -1617,9 +1617,9 @@ Version 2017-04-19"
           )
 (add-hook 'org-mode-hook
           '(lambda ()
-             (local-unset-key (kbd "M-h"))
+             (local-unset-key (kbd "M-j"))
              (local-set-key (kbd "C-c C-c") 'enlarge-window-horizontally))
-             (local-set-key (kbd "M-h") 'next-line)
+             (local-set-key (kbd "M-j") 'next-line)
           )
 
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
