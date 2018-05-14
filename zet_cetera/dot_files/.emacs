@@ -446,7 +446,7 @@
             (setq python-indent-offset 4)
             (setq tab-width 4)
 
-            (elpy-mode)         ;; elpy mode 추가 ("M-r" : elpy-rgrep으로 reference를 찾을 수 있습니다)
+            (elpy-mode)         ;; elpy mode 추가 ("M-t" : elpy-rgrep으로 reference를 찾을 수 있습니다)
             ))
 
 
@@ -455,8 +455,8 @@
 
 ;; elpy 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
 (eval-after-load "elpy" (lambda ()
-                          ;; Alt + r 키로 reference를 찾아준다 (grep -r 명령어와 비슷하다고 한다)
-                          (local-set-key (kbd "M-r") 'elpy-rgrep-symbol)
+                          ;; Alt + t 키로 reference를 찾아준다 (grep -r 명령어와 비슷하다고 한다)
+                          (local-set-key (kbd "M-t") 'elpy-rgrep-symbol)
 
                           ;; elpy-mode에서 부가적으로 실행되는 모든 모듈들을 해제한다
                           (remove-hook 'elpy-modules 'elpy-module-flymake)
@@ -1716,6 +1716,7 @@ Version 2017-04-19"
 ;; Alt + r 키로 backward paragraph (C-<up>) 과 같은 명령을 실행합니다
 (global-set-key (kbd "M-r") 'backward-paragraph)
 (define-key c++-mode-map (kbd "M-r") 'backward-paragraph)
+(define-key python-mode-map (kbd "M-r") 'backward-paragraph)
 
 
 ;; Horizontal <--> Vertical view를 토글해주는 함수
