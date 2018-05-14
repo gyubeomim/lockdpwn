@@ -1716,7 +1716,6 @@ Version 2017-04-19"
 ;; Alt + r 키로 backward paragraph (C-<up>) 과 같은 명령을 실행합니다
 (global-set-key (kbd "M-r") 'backward-paragraph)
 (define-key c++-mode-map (kbd "M-r") 'backward-paragraph)
-(define-key python-mode-map (kbd "M-r") 'backward-paragraph)
 
 
 ;; Horizontal <--> Vertical view를 토글해주는 함수
@@ -1834,4 +1833,3 @@ Version 2017-04-19"
 (setq auto-mode-alist
       (append '((".*\\.cu\\'" . c++-mode))
               auto-mode-alist))
-
