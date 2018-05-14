@@ -523,6 +523,8 @@
      (define-key org-mode-map (kbd "C-c q") 'org-toggle-inline-images)
      ;; org  ==> markdown export 단축키
      (define-key org-mode-map (kbd "C-c m") 'org-md-export-to-markdown)
+     ;; Shift + Enter 키로 현재 링크를 엽니다
+     (define-key org-mode-map (kbd "<S-return>") 'org-open-at-point)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -573,6 +575,7 @@
      (setq org-agenda-log-mode-items '(closed clock state))
 
 ))
+;; (add-to-ordered-list 'emulation-mode-map-alists '((org-mode . ,my-org-mode-map)) 0)
 
 ;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
 (require 'org-gcal)
