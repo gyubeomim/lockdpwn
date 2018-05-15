@@ -3,4 +3,3 @@
 # key: printf
 # --
 printf(${1:  });
-$0
