@@ -898,7 +898,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/index.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims_org/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/180515_algorithm.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/index.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims_org/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-hide-emphasis-markers t)
  '(org-scheduled-delay-days 0)
@@ -1385,8 +1385,196 @@ Version 2017-04-19"
                                  (call-interactively 'gud-tbreak)
                                  (call-interactively 'gud-cont)))
 
+;; custom gdb 창을 바꿔주는 함수들
+(defun my-gdb-setup-windows1 ()
+  "Restore GUD buffer, IO buffer and source buffer next to each other.
+;; http://dschrempf.github.io/posts/Emacs/2015-06-24-Debugging-with-Emacs-and-GDB.html#orgb894a48
+"
+  (interactive)
+  ;; Select dedicated GUD buffer.
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (set-window-dedicated-p (get-buffer-window) t)
+  (when (or gud-last-last-frame gdb-show-main)
+    (let ((side-win (split-window nil nil t))
+          (bottom-win (split-window)))
+      ;; Put source to the right.
+      (set-window-buffer
+       side-win
+       (if gud-last-last-frame
+           (gud-find-file (car gud-last-last-frame))
+         (gud-find-file gdb-main-file)))
+      (setq gdb-source-window side-win)
+      ;; Show dedicated IO buffer below.
+      (set-window-buffer
+       bottom-win
+       (gdb-get-buffer-create 'gdb-inferior-io))
+      (set-window-dedicated-p bottom-win t)
+      )))
+
+(defun my-gdb-setup-windows2 ()
+  (interactive)
+  "Layout the window pattern for option `gdb-many-windows'.
+;; https://github.com/saogog123456/.emacs.d/blob/e065ad86fa548d67a114f222154e6e2f399ad4c8/core/neoclear-window.el
+"
+  (gdb-get-buffer-create 'gdb-locals-buffer)
+  (gdb-get-buffer-create 'gdb-stack-buffer)
+  (gdb-get-buffer-create 'gdb-breakpoints-buffer)
+  (gdb-get-buffer-create 'gdb-inferior-io)
+  (set-window-dedicated-p (selected-window) nil)
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (let ((win0 (selected-window))
+        (win1 (split-window nil (/ (* (window-height) 3) 4)))
+        (win2 (split-window-right (/ (* (window-width) 2) 3))))
+    (gdb-set-window-buffer (gdb-locals-buffer-name) nil win1)
+    (set-window-buffer win0
+                       (if gud-last-last-frame
+                           (gud-find-file (car gud-last-last-frame))
+                         (if gdb-main-file
+                             (gud-find-file gdb-main-file)
+                           ;; Put buffer list in window if we
+                           ;; can't find a source file.
+                           (list-buffers-noselect))))
+    (select-window win1)
+    (let ((win3 (split-window-right (/ (* (window-width) 2) 5)))
+          (win4 (split-window-right (/ (* (window-width) 2) 5))))
+      (gdb-set-window-buffer (gdb-breakpoints-buffer-name) nil win3)
+      (gdb-set-window-buffer (gdb-stack-buffer-name) nil win4))
+    (select-window win0)
+    (setq gdb-source-window (selected-window))
+    (select-window win2)
+    (let ((win5 (split-window nil (/ (* (window-height) 3) 5))))
+      (gdb-set-window-buffer (gdb-inferior-io-name) nil win5))
+    (select-window win0)))
+
+(defun my-gdb-setup-windows3 ()
+  (interactive)
+  "my gdb ui,fix sizes of every buffer
+;; https://github.com/shanhaiying/.emacs.d-1/blob/b5e126649887f9099b0320c3432f719c52278e02/lisp/init-cc-mode.el
+"
+  (gdb-get-buffer-create 'gdb-locals-buffer)
+  (gdb-get-buffer-create 'gdb-stack-buffer)
+  (gdb-get-buffer-create 'gdb-breakpoints-buffer)
+  (set-window-dedicated-p (selected-window) nil)
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (setq gud-gdb-buffer-width (/ (* (window-width) 3) 4)) ;for input/output buffer and locals buffer of gud mode
+  (let ((win0 (selected-window))
+        (win1 (split-window nil (/ (* (window-height) 8) 10)))
+        (win2 (split-window nil (/ (* (window-height) 3) 8)))
+        ;; (win3 (split-window nil (- (/ (* (window-width) 2) 3) 1) 'right))
+        (win3 (split-window nil gud-gdb-buffer-width 'right)) ;input/output
+	)
+    (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-inferior-io) nil win3)
+    (select-window win2)
+    (set-window-buffer
+     win2
+     (if gud-last-last-frame
+         (gud-find-file (car gud-last-last-frame))
+       (if gdb-main-file
+           (gud-find-file gdb-main-file)
+         ;; Put buffer list in window if we
+         ;; can't find a source file.
+         (list-buffers-noselect))))
+    (setq gdb-source-window (selected-window))
+    (let ((win4 (split-window nil gud-gdb-buffer-width 'right))) ;locals
+      (gdb-set-window-buffer (gdb-locals-buffer-name) nil win4))
+    (select-window win1)
+    (gdb-set-window-buffer (gdb-stack-buffer-name))
+    (let ((win5 (split-window-right)))
+      (gdb-set-window-buffer (if gdb-show-threads-by-default
+                                 (gdb-threads-buffer-name)
+                               (gdb-breakpoints-buffer-name))
+                             nil win5))
+    (select-window win0)))
+
+(defun my-gdb-setup-windows4 ()
+  (interactive)
+  "my gdb ui, just source,gdb,io,stack buffers"
+  (gdb-get-buffer-create 'gdb-locals-buffer)
+  (gdb-get-buffer-create 'gdb-stack-buffer)
+  (set-window-dedicated-p (selected-window) nil)
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (let ((win0 (selected-window))
+        (win1 (split-window nil (/ (* (window-width) 1) 2) 'left))                     ;code and output
+        (win2 (split-window-below (/ (* (window-height) 3) 4))) ;stack
+        )
+    (select-window win2)
+    (gdb-set-window-buffer (gdb-stack-buffer-name))
+    (select-window win1)
+    (set-window-buffer
+     win1
+     (if gud-last-last-frame
+         (gud-find-file (car gud-last-last-frame))
+       (if gdb-main-file
+           (gud-find-file gdb-main-file)
+         ;; Put buffer list in window if we
+         ;; can't find a source file.
+         (list-buffers-noselect))))
+    (setq gdb-source-window (selected-window))
+    (let ((win3 (split-window nil (/ (* (window-height) 3) 4)))) ;io
+      (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-inferior-io) nil win3)) ;gdb-inferior-io
+      ;; (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-locals-buffer) nil win3)
+    (select-window win0)
+    ))
+
+(defun my-gdb-settings-toggle ()
+  "처음으로 직접 만들어 본 elips defun
+gdb-setup-windows 함수들을 순차적으로 불러온다
+created by edward 180515"
+  (interactive)
+  (let ()
+    (when (not (eq last-command this-command))
+      (put this-command 'state 0))
+    (cond
+     ((equal 0 (get this-command 'state))
+      (gdb-setup-windows)
+      (message "[+] Setting my-gdb-setup-default...")
+      (put this-command 'state 1))
+     ((equal 1 (get this-command 'state))
+      (my-gdb-setup-windows1)
+      (message "[+] Setting my-gdb-setup-windows1...")
+      (put this-command 'state 2))
+     ((equal 2  (get this-command 'state))
+      (my-gdb-setup-windows2)
+      (message "[+] Setting my-gdb-setup-windows2...")
+      (put this-command 'state 3))
+     ((equal 3 (get this-command 'state))
+      (my-gdb-setup-windows3)
+      (message "[+] Setting my-gdb-setup-windows3...")
+      (put this-command 'state 4))
+     ((equal 4 (get this-command 'state))
+      (my-gdb-setup-windows4)
+      (message "[+] Setting my-gdb-setup-windows4...")
+      (put this-command 'state 0))
+     )))
+
+;; gdb를 쓸 때 my-gdb-setup-window3로 기본 설정을 잡아주고 toggle을 해주는 함수
+(defun gdb-many-windows-edward ()
+  (interactive)
+   (let ()
+    (when (not (eq last-command this-command))
+      (put this-command 'state 0))
+    (cond
+     ((equal 0 (get this-command 'state))
+      (gdb-many-windows t)
+      (my-gdb-setup-windows3)
+      (message "[+] my-gdb-setup-window3 layout!")
+      (put this-command 'state 1))
+     ((equal 1 (get this-command 'state))
+      (gdb-many-windows -1)
+      (message "[-] Turn off gdb-many-windows")
+      (put this-command 'state 0))
+     )
+    ))
+
 ;; shift + f12 gdb 다중창 On/Off
-(global-set-key [(shift f12)] 'gdb-many-windows)
+(global-set-key [(shift f12)] 'gdb-many-windows-edward)
+
+;; shift + f11 키로 gdb의 layout을 변경합니다
+(global-set-key [(shift f11)] 'my-gdb-settings-toggle)
 
 ;; gdb 다중창 설정
 (setq gdb-many-windows t)
@@ -1763,6 +1951,7 @@ Version 2017-04-19"
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
+
 
 ;; .h header 파일을 c++ 모드로 설정합니다
 ;; 아니면 아래 라인을 적용하지 않고 헤더파일 맨 첫줄에 // -*-c++-*- 구문을 입력합니다
