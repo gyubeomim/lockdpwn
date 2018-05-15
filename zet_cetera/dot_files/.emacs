@@ -82,6 +82,7 @@
 
 
 
+
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지 (.md 파일을 켠 다음 Ctrl + 4 단축키)
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
     ;; htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
@@ -905,7 +906,7 @@
  '(org-tags-column -180)
  '(package-selected-packages
    (quote
-    (org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
@@ -1370,6 +1371,9 @@ Version 2017-04-19"
 ;; f9 소스창에서 바로 브레이크포인트 설정
 (global-set-key [f9] 'gud-break)
 
+;; shift + f9 키로 gud를 실행한다
+(global-set-key [(shift f9)] 'gud-run)
+
 ;; f10 라인 실행하고 다음 라인으로
 (global-set-key [f10] 'gud-next)
 
@@ -1384,6 +1388,42 @@ Version 2017-04-19"
                                  (interactive)
                                  (call-interactively 'gud-tbreak)
                                  (call-interactively 'gud-cont)))
+
+(defun gdb-setup-windows-default ()
+  "Layout the window pattern for option `gdb-many-windows'."
+  (gdb-get-buffer-create 'gdb-locals-buffer)
+  (gdb-get-buffer-create 'gdb-stack-buffer)
+  (gdb-get-buffer-create 'gdb-breakpoints-buffer)
+  (set-window-dedicated-p (selected-window) nil)
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (let ((win0 (selected-window))
+        (win1 (split-window nil ( / ( * (window-height) 3) 4)))
+        (win2 (split-window nil ( / (window-height) 3)))
+        (win3 (split-window-right)))
+    (gdb-set-window-buffer (gdb-locals-buffer-name) nil win3)
+    (select-window win2)
+    (set-window-buffer
+     win2
+     (if gud-last-last-frame
+         (gud-find-file (car gud-last-last-frame))
+       (if gdb-main-file
+           (gud-find-file gdb-main-file)
+         ;; Put buffer list in window if we
+         ;; can't find a source file.
+         (list-buffers-noselect))))
+    (setq gdb-source-window (selected-window))
+    (let ((win4 (split-window-right)))
+      (gdb-set-window-buffer
+       (gdb-get-buffer-create 'gdb-inferior-io) nil win4))
+    (select-window win1)
+    (gdb-set-window-buffer (gdb-stack-buffer-name))
+    (let ((win5 (split-window-right)))
+      (gdb-set-window-buffer (if gdb-show-threads-by-default
+                                 (gdb-threads-buffer-name)
+                               (gdb-breakpoints-buffer-name))
+                             nil win5))
+    (select-window win0)))
 
 ;; custom gdb 창을 바꿔주는 함수들
 (defun my-gdb-setup-windows1 ()
@@ -1520,6 +1560,49 @@ Version 2017-04-19"
     (select-window win0)
     ))
 
+(defun my-gdb-setup-windows5 ()
+"
+https://stackoverflow.com/questions/39762833/emacsgdb-customization-how-to-display-source-buffer-in-one-window
+"
+  (set-window-dedicated-p (selected-window) nil)
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (let
+      ((win0 (selected-window))             ; breakpoints ==> Speedbar Watch Expression
+       (win1 (split-window-horizontally
+              (floor (* 0.5 (window-width)))))   ; source + i/o
+       (win2 (split-window-vertically
+              (floor (* 0.5 (window-body-height))))) ; gdb
+       (win3 (split-window-vertically
+              (floor (* 0.5 (window-body-height))))) ; locals
+       ;; (win4 (split-window-vertically
+       ;;     (floor (* 0.6 (window-body-height))))) ; stack
+    )
+    (select-window win1)
+    ; configurating right window
+    (let
+    ((winSrc (selected-window)) ; source
+     (winIO (split-window-vertically (floor (* 0.9 (window-body-height))))) ; I/O
+     )
+      (set-window-buffer winIO (gdb-get-buffer-create 'gdb-inferior-io))
+      (set-window-buffer
+    winSrc
+    (if gud-last-last-frame
+     (gud-find-file (car gud-last-last-frame))
+      (if gdb-main-file
+       (gud-find-file gdb-main-file)
+     (list-buffers-noselect))))
+      (setq gdb-source-window winSrc)
+      (set-window-dedicated-p winIO t)
+   )
+    ; (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
+    (set-window-buffer win0 " SPEEDBAR")  ;; ed: " SPEEDBAR"" 추가!
+    (set-window-buffer win3 (gdb-get-buffer-create 'gdb-locals-buffer))
+    (set-window-buffer win4 (gdb-get-buffer-create 'gdb-stack-buffer))
+    (select-window win2)
+    )
+)
+
 (defun my-gdb-settings-toggle ()
   "처음으로 직접 만들어 본 elips defun
 gdb-setup-windows 함수들을 순차적으로 불러온다
@@ -1530,7 +1613,7 @@ created by edward 180515"
       (put this-command 'state 0))
     (cond
      ((equal 0 (get this-command 'state))
-      (gdb-setup-windows)
+      (gdb-setup-windows-default)
       (message "[+] Setting my-gdb-setup-default...")
       (put this-command 'state 1))
      ((equal 1 (get this-command 'state))
@@ -1548,13 +1631,19 @@ created by edward 180515"
      ((equal 4 (get this-command 'state))
       (my-gdb-setup-windows4)
       (message "[+] Setting my-gdb-setup-windows4...")
+      (put this-command 'state 5))
+     ((equal 5 (get this-command 'state))
+      (my-gdb-setup-windows5)
+      (message "[+] Setting my-gdb-setup-windows5...")
       (put this-command 'state 0))
      )))
+
+
 
 ;; 처음 F8로 시작할 때 생성되는 창을 설정하는 함수 (my-gdb-setup-windows3) 로 설정했다
 ;; defadvice로 설정하는 것인듯
 (defadvice gdb-setup-windows (around setup-more-gdb-windows activate)
-  (my-gdb-setup-windows2)
+  (my-gdb-setup-windows5)
 )
 
 ;; shift + f12 gdb 다중창 On/Off
@@ -1562,6 +1651,13 @@ created by edward 180515"
 
 ;; shift + f11 키로 gdb의 layout을 변경합니다
 (global-set-key [(shift f11)] 'my-gdb-settings-toggle)
+
+;; gdb variables
+(setq gdb-show-changed-values t)
+(setq gdb-use-colon-colon-notation t)
+(setq gdb-use-separate-io-buffer nil)
+(setq gdb-delete-out-of-scope t)
+(setq gdb-speedbar-auto-raise t)
 
 ;; gdb 다중창 설정
 (setq gdb-many-windows t)
