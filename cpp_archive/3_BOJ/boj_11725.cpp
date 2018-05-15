@@ -13,6 +13,7 @@ using namespace std;
 vector<int> adj[100000];
 int parent[100000];
 
+// 아직 탐색하지 않은 이웃 노드만을 DFS하며 부모를 자신으로 결정
 void DFS(int cur) {
   for(int next: adj[cur]) {
     if(parent[next] == -1) {
@@ -32,10 +33,11 @@ int main(int argc, char **argv) {
     adj[a-1].push_back(b-1);
     adj[b-1].push_back(a-1);
   }
-  // parent 배열을 -1로 초기화
+  // parent 배열을 -1로 초기화한 후 DFS 1회 실행
   memset(parent, -1, sizeof(parent));
   DFS(0);
 
+  // 결과 출력
   std::cout << "------------------------" << endl;;
   for(int i=1; i<N; i++) {
     std::cout << parent[i]+1 << endl;
