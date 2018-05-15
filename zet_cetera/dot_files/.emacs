@@ -1570,6 +1570,48 @@ created by edward 180515"
      )
     ))
 
+;; 처음 F8로 시작할 때 생성되는 창을 설정하는 함수 (my-gdb-setup-windows3) 로 설정했다
+(defadvice gdb-setup-windows (around setup-more-gdb-windows activate)
+  "my gdb ui,fix sizes of every buffer
+;; https://github.com/shanhaiying/.emacs.d-1/blob/b5e126649887f9099b0320c3432f719c52278e02/lisp/init-cc-mode.el
+"
+  (gdb-get-buffer-create 'gdb-locals-buffer)
+  (gdb-get-buffer-create 'gdb-stack-buffer)
+  (gdb-get-buffer-create 'gdb-breakpoints-buffer)
+  (set-window-dedicated-p (selected-window) nil)
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (setq gud-gdb-buffer-width (/ (* (window-width) 3) 4)) ;for input/output buffer and locals buffer of gud mode
+  (let ((win0 (selected-window))
+        (win1 (split-window nil (/ (* (window-height) 8) 10)))
+        (win2 (split-window nil (/ (* (window-height) 3) 8)))
+        ;; (win3 (split-window nil (- (/ (* (window-width) 2) 3) 1) 'right))
+        (win3 (split-window nil gud-gdb-buffer-width 'right)) ;input/output
+	)
+    (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-inferior-io) nil win3)
+    (select-window win2)
+    (set-window-buffer
+     win2
+     (if gud-last-last-frame
+         (gud-find-file (car gud-last-last-frame))
+       (if gdb-main-file
+           (gud-find-file gdb-main-file)
+         ;; Put buffer list in window if we
+         ;; can't find a source file.
+         (list-buffers-noselect))))
+    (setq gdb-source-window (selected-window))
+    (let ((win4 (split-window nil gud-gdb-buffer-width 'right))) ;locals
+      (gdb-set-window-buffer (gdb-locals-buffer-name) nil win4))
+    (select-window win1)
+    (gdb-set-window-buffer (gdb-stack-buffer-name))
+    (let ((win5 (split-window-right)))
+      (gdb-set-window-buffer (if gdb-show-threads-by-default
+                                 (gdb-threads-buffer-name)
+                               (gdb-breakpoints-buffer-name))
+                             nil win5))
+    (select-window win0)))
+
+
 ;; shift + f12 gdb 다중창 On/Off
 (global-set-key [(shift f12)] 'gdb-many-windows-edward)
 
