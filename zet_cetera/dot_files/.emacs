@@ -591,6 +591,7 @@
 (global-set-key (kbd "C-c s") 'org-gcal-sync)
 ;; C-c + / 키로 index.org 파일을 엽니다
 (global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/index.org")))
+(define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/index.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-c l") 'org-store-link)
 ;; C-c + a 키로 어느곳에서나 agenda view를 열게합니다
@@ -1871,13 +1872,15 @@ created by edward 180515"
 ;; Ctrl + z로 뒤로가기 기능을 실행합니다
 (global-set-key "\C-z" 'undo-tree-undo)
 
-;; Alt + j로 vim처럼 한칸씩 아래로 움직입니다
+;; Alt + j & END 키로 vim처럼 한칸씩 아래로 움직입니다
 (define-key c++-mode-map "\M-j" nil)
 (define-key c-mode-map "\M-j" nil)
 (global-set-key "\M-j" 'next-line)
+(global-set-key (kbd "<end>") 'next-line)
 
-;; Alt + k로 vim처럼 한칸씩 위로 올라갑니다
+;; Alt + k & HOME 키로 vim처럼 한칸씩 위로 올라갑니다
 (global-set-key "\M-k" 'previous-line)
+(global-set-key (kbd "<home>") 'previous-line)
 
 ;; C-c + C-c 로 window의 사이즈를 조절합니다
 (define-key c++-mode-map (kbd "C-c C-c") nil)
