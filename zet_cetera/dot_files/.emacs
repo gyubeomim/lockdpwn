@@ -591,7 +591,6 @@
 (global-set-key (kbd "C-c s") 'org-gcal-sync)
 ;; C-c + / 키로 index.org 파일을 엽니다
 (global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/index.org")))
-(define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/index.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-c l") 'org-store-link)
 ;; C-c + a 키로 어느곳에서나 agenda view를 열게합니다
@@ -2059,6 +2058,8 @@ created by edward 180515"
 
 ;; Ctrl + g 키로 xml 파일 내에서 코드를 folding할 수 있습니다
 (define-key nxml-mode-map (kbd "C-g") 'hs-toggle-hiding)
+;; nxml(.launch file) 모드에서도 C-c + / 키로 index.org 파일을 엽니다
+(define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/index.org")))
 
 ;; grep-find (C-p) 명령어에서 새로운 grep 창이 열리지 않고 바로 현재창이 바뀌도록 하는 코드
 (eval-when-compile (require 'cl))
