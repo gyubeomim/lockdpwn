@@ -1559,8 +1559,7 @@ Version 2017-04-19"
     ))
 
 (defun my-gdb-setup-windows5 ()
-"
-https://stackoverflow.com/questions/39762833/emacsgdb-customization-how-to-display-source-buffer-in-one-window
+"https://stackoverflow.com/questions/39762833/emacsgdb-customization-how-to-display-source-buffer-in-one-window
 "
   (set-window-dedicated-p (selected-window) nil)
   (switch-to-buffer gud-comint-buffer)
@@ -1593,8 +1592,12 @@ https://stackoverflow.com/questions/39762833/emacsgdb-customization-how-to-displ
       (setq gdb-source-window winSrc)
       (set-window-dedicated-p winIO t)
    )
-    ; (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
-    (set-window-buffer win0 " SPEEDBAR")  ;; ed: " SPEEDBAR"" 추가!
+    ;; (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
+    (if (get-buffer " SPEEDBAR")
+        (set-window-buffer win0 " SPEEDBAR")
+      (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
+      )
+  ;; ed: " SPEEDBAR"" 추가!
     (set-window-buffer win3 (gdb-get-buffer-create 'gdb-locals-buffer))
     (set-window-buffer win4 (gdb-get-buffer-create 'gdb-stack-buffer))
     (select-window win2)

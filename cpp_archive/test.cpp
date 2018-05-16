@@ -3,35 +3,41 @@
 
 using namespace std;
 
-int N,C,x[100],limit;
-
-bool possible(int current, int remain) {
-  if(remain==0) return true;
-
-  for(int i=current+1; i<N; i++) {
-    if(x[i]-x[current] >= limit)
-      return possible(i, remain-1);
-  }
-  return false;
-}
-
+int n,c;
 int main(int argc, char **argv) {
-  cin >> N >> C;
-  for(int i=0; i<N; i++) {
-    cin >> *(x+i);
-  }
+  cin >> n >> c;
+  vector<int> v(n);
 
-  int upper=x[N-1]+1;
-  int lower=1;
-  while(lower+1 < upper) {
-    limit = (lower+upper)/2;
-    if(possible(0, C-1))
-      lower = limit;
+  for(int i=0; i<n; i++) {
+    cin >> v[i];
+  }
+  sort(v.begin(), v.end());
+  int left = 1;
+  int right = v.back() + 1;
+  int ans = 1;
+
+  while(left <= right) {
+    int mid = (left+right)/2;
+    int cnt = 1;
+    int current = 0;
+
+    for(int i=0; i<n; i++) {
+      if(v[i]-v[current] >= mid) {
+        current = i;
+        cnt++;
+      }
+    }
+
+    if(cnt >= c) {
+     if(ans < mid) {
+       ans = mid;
+     }
+     left = mid+1;
+    }
     else
-      upper = limit;
+      right = mid-1;
   }
-  cout << lower << endl;
 
-
+  cout << ans << endl;
   return 0;
 }
