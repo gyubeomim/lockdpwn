@@ -1749,8 +1749,8 @@ created by edward 180515"
 (global-set-key (kbd "M-v") 'bookmark-jump)
 (define-key cua--cua-keys-keymap (kbd "M-v") 'bookmark-jump)
 
-;;줄번호 이동(M-g)
-(global-set-key "\M-g" 'goto-line)
+;;줄번호 이동(C-g)
+(global-set-key "\C-g" 'goto-line)
 
 ;; Ctrl + k 키로 해당 커서의 한 줄 전체를 지웁니다
 (global-set-key "\C-k" 'kill-whole-line)
@@ -1853,12 +1853,12 @@ created by edward 180515"
 (global-set-key (kbd "M-p") 'highlight-symbol-prev)
 
 
-;; Ctrl + G 단축키로 구문을 fold 접거나 펼치거나 합니다
-(global-set-key "\C-g" 'hs-toggle-hiding)
+;; Alt + G 단축키로 구문을 fold 접거나 펼치거나 합니다
+(global-set-key "\M-g" 'hs-toggle-hiding)
 
-;; Ctrl + Shift + G 키로 주석을 감췄다 보여줬다 하는 단축키 설정
+;; Alt + Shift + G 키로 주석을 감췄다 보여줬다 하는 단축키 설정
 (hide/show-comments)
-(global-set-key (kbd "C-S-g") 'hide/show-comments-toggle)
+(global-set-key (kbd "M-S-g") 'hide/show-comments-toggle)
 
 
 ;; Ctrl + PageUp, Down 단축키로 첫째줄, 마지막줄로 바로 이동합니다. Ctrl + Home, End는 원래 가능
