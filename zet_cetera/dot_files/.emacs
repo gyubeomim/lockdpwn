@@ -1856,9 +1856,9 @@ created by edward 180515"
 ;; Alt + G 단축키로 구문을 fold 접거나 펼치거나 합니다
 (global-set-key "\M-g" 'hs-toggle-hiding)
 
-;; Alt + Shift + G 키로 주석을 감췄다 보여줬다 하는 단축키 설정
+;; Ctrl + Alt + G 키로 주석을 감췄다 보여줬다 하는 단축키 설정
 (hide/show-comments)
-(global-set-key (kbd "M-S-g") 'hide/show-comments-toggle)
+(global-set-key (kbd "C-M-g") 'hide/show-comments-toggle)
 
 
 ;; Ctrl + PageUp, Down 단축키로 첫째줄, 마지막줄로 바로 이동합니다. Ctrl + Home, End는 원래 가능
