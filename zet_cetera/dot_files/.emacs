@@ -1898,6 +1898,11 @@ created by edward 180515"
 (global-set-key "\M-k" 'previous-line)
 (global-set-key (kbd "<home>") 'previous-line)
 
+;; vim 처럼 M-h,l 키를 좌우로 움직이도록 설정합니다
+(global-set-key (kbd "M-h") 'left-char)
+(global-set-key (kbd "M-l") 'right-char)
+
+
 ;; C-c + C-c 로 window의 사이즈를 조절합니다
 (define-key c++-mode-map (kbd "C-c C-c") nil)
 (define-key c-mode-map (kbd "C-c C-c") nil)
@@ -1918,8 +1923,9 @@ created by edward 180515"
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
 (global-set-key (kbd "M-/") 'visit-tags-table)
 
-;; M-l 키로 python 코드에서 들여쓰기를 보여줍니다
-(global-set-key (kbd "M-l") 'highlight-indentation-mode)
+;; C-S-l 키로 python 코드에서 들여쓰기를 보여줍니다
+(global-set-key (kbd "C-S-l") 'highlight-indentation-mode)
+
 
 (defun select-current-line ()
   "Select the current line"
