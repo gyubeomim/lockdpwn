@@ -857,12 +857,16 @@
                                 (message "[+] cua-mode restarted..")
                                 ))
 
-;; Ctrl + ] 키로 현재 버퍼를 업데이트합니다
-(global-set-key (kbd "C-]") (lambda ()
-                              (interactive)
-                              (revert-buffer t t t)
-                              (message "[+] this buffer reverted..")
-                                ))
+;; revert buffer를 파라미터와 같이 함수화한 코드
+(defun my-revert-buffer()
+    (interactive)
+  (revert-buffer t t t)
+  (message "[+] this buffer reverted..")
+)
+
+;; Ctrl + / 키로 현재 버퍼를 업데이트합니다
+(global-set-key (kbd "C-/") 'my-revert-buffer)
+(define-key undo-tree-map (kbd "C-/") 'my-revert-buffer)
 
 ;; PACKAGE: protobuf-mode
 (require 'protobuf-mode)
@@ -906,7 +910,6 @@
  '(elpy-modules
    (quote
     (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
- '(gdb-show-main t)
  '(git-gutter:added-sign "+")
  '(git-gutter:deleted-sign "-")
  '(git-gutter:modified-sign "▸")
@@ -1678,9 +1681,16 @@ created by edward 180515"
 
 ;; gdb 다중창 설정
 (setq gdb-many-windows t)
+(setq gdb-show-main t)
 
 ;; gdb 명령어 설정
 (setq gud-gdb-command-name "gdb -q -i=mi --args")
+
+;; gdb를 실행하고 나서 환경설정 코드
+(eval-after-load "gud"
+  '(progn
+     (define-key gud-minor-mode-map (kbd "M-w") 'gud-watch)
+     ))
 
 ;; compile 명령어 수정 (c++일 경우 g++, c일 경우 gcc로 해주면 됩니다)
 (setq compile-command "g++ -std=c++11 -g -o ")
@@ -1702,11 +1712,11 @@ created by edward 180515"
 ;;                                         바뀐 프로젝트의 홈폴더에서 dired 모드를 실행합니다
 (setq projectile-switch-project-action 'projectile-dired)
 
-;; Ctrl + 6키로 jupyter notebook 서버를 실행합니다
-(global-set-key (kbd "C-6") 'ein:jupyter-server-start)
+;; Ctrl + ^키로 jupyter notebook 서버를 실행합니다
+(global-set-key (kbd "C-^") 'ein:jupyter-server-start)
 
-;; Ctrl + ^키로 remote 접속을 위한 notebooklist-login 명령어를 설정합니다
-(global-set-key (kbd "C-^") 'ein:notebooklist-login)
+;; Ctrl + 6키로 remote 접속을 위한 notebooklist-login 명령어를 설정합니다
+(global-set-key (kbd "C-6") 'ein:notebooklist-login)
 
 ;; Ctrl + 7 키로 선택한 버퍼를 닫습니다
 (global-set-key (kbd "C-7") 'buffer-menu)
@@ -1898,9 +1908,13 @@ created by edward 180515"
 (global-set-key "\M-k" 'previous-line)
 (global-set-key (kbd "<home>") 'previous-line)
 
-;; vim 처럼 M-h,l 키를 좌우로 움직이도록 설정합니다
+;; vim 처럼 M-h,l 키를 좌우로 글자 단위로 움직이도록 설정합니다
 (global-set-key (kbd "M-h") 'left-char)
 (global-set-key (kbd "M-l") 'right-char)
+
+;; vim 처럼 M-h,l 키를 좌우로 단어 단위로 움직이도록 설정합니다
+(global-set-key (kbd "M-i") 'left-word)
+(global-set-key (kbd "M-o") 'right-word)
 
 
 ;; C-c + C-c 로 window의 사이즈를 조절합니다
