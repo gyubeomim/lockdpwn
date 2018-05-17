@@ -857,6 +857,13 @@
                                 (message "[+] cua-mode restarted..")
                                 ))
 
+;; Ctrl + ] 키로 현재 버퍼를 업데이트합니다
+(global-set-key (kbd "C-]") (lambda ()
+                              (interactive)
+                              (revert-buffer t t t)
+                              (message "[+] this buffer reverted..")
+                                ))
+
 ;; PACKAGE: protobuf-mode
 (require 'protobuf-mode)
 
