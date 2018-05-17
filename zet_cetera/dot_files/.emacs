@@ -1856,6 +1856,9 @@ created by edward 180515"
 ;; Ctrl + O 키를 누르면 자동으로 한 줄 위에 빈 라인이 하나 만들어집니다
 (global-set-key "\C-o" 'newline-without-break-of-line-upper)
 
+;; Alt + Enter 키로 현재 커서는 멈춘 상태에서 newline을 생성합니다
+(global-set-key (kbd "M-<return>") 'open-line)
+
 
 (defun increment-number-at-point ()
   "."
