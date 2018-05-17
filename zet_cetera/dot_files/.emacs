@@ -848,6 +848,15 @@
             (define-key term-mode-map (kbd "C-b") 'helm-for-files)
             ))
 
+;; C-c u 키로 cua-mode를 껐다 켰다 합니다
+;; multi-term을 사용하면 .cpp 버퍼에서 C-c : copy(cua-mode)가 안먹히는 버그가 있는데 이 때 사용하기 위한 단축키
+(global-set-key (kbd "C-C u") (lambda ()
+                                (interactive)
+                                (cua-mode -1)
+                                (cua-mode 1)
+                                (message "[+] cua-mode restarted..")
+                                ))
+
 ;; PACKAGE: protobuf-mode
 (require 'protobuf-mode)
 
