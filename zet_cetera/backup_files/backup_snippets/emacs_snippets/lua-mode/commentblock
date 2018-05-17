@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: commentblock
+# key: --
+# --
+--[[
+   lua ==> $1
+]]--
+$0

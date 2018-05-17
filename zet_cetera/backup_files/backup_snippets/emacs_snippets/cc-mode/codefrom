@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : code from by edward
+# key: from
+# --
+code from [${1:}]$0
