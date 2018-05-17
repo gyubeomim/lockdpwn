@@ -27,13 +27,10 @@ int main(int argc, char **argv) {
     int t=x[0];
 
     for(int i=1; i<N; i++) {
-      if(x[i]-t >= limit) {
-        t = x[i];
-        cnt++;
-      }
+      if(x[i]-t >= limit)
+        t = x[i], cnt++;
     }
-    // ed: 삼항연산자 사용
-    C > cnt ? upper=limit-1 : lower=limit+1;
+    cnt < C ? upper=limit-1 : lower=limit+1; // ed: 삼항연산자 사용
   }
   cout << upper << endl;
 
