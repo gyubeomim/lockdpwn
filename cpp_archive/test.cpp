@@ -18,8 +18,12 @@ int main(int argc, char **argv) {
   sort(x, x+N);
 
   int lower=1;
+
   int upper=x[N-1]+1;
+
   int limit;
+
+
 
   while(lower <= upper) {
     limit = (lower+upper)/2;
