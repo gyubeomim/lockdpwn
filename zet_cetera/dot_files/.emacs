@@ -526,6 +526,9 @@
      (define-key org-mode-map (kbd "C-c m") 'org-md-export-to-markdown)
      ;; Shift + Enter 키로 현재 링크를 엽니다
      (define-key org-mode-map (kbd "<S-return>") 'org-open-at-point)
+     ;; Alt + Enter 키
+     (define-key org-mode-map (kbd "<M-return>") 'org-meta-return)
+
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
