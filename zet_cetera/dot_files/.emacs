@@ -1925,22 +1925,25 @@ created by edward 180515"
 (global-set-key (kbd "M-o") 'right-word)
 
 
-;; C-c + C-c 로 window의 사이즈를 조절합니다
+;; C-c + C-c (or C-v) 로 window의 사이즈를 조절합니다
 (define-key c++-mode-map (kbd "C-c C-c") nil)
 (define-key c-mode-map (kbd "C-c C-c") nil)
 (global-set-key (kbd "C-c C-c") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-c C-v") 'enlarge-window)
 
-;; python-mode에서도 같은 단축키가 동작하도록 설정한다
+;; python-mode, org-mode에서도 같은 단축키가 동작하도록 설정한다
 (add-hook 'python-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-c C-c") 'enlarge-window-horizontally))
-          )
+             (local-set-key (kbd "C-c C-c") 'enlarge-window-horizontally)
+             (local-set-key (kbd "C-c C-v") 'enlarge-window)
+             ))
 (add-hook 'org-mode-hook
           '(lambda ()
              (local-unset-key (kbd "M-j"))
-             (local-set-key (kbd "C-c C-c") 'enlarge-window-horizontally))
+             (local-set-key (kbd "C-c C-c") 'enlarge-window-horizontally)
+             (local-set-key (kbd "C-c C-v") 'enlarge-window)
              (local-set-key (kbd "M-j") 'next-line)
-          )
+          ))
 
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
 (global-set-key (kbd "M-/") 'visit-tags-table)
