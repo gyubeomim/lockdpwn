@@ -156,6 +156,9 @@ PS1="$C_LIGHTGREEN\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 PATH=$PATH:/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
 ida=/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
 msf=/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15
+
+alias ida='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq.exe'
+alias ida64='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe'
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
 alias git1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
@@ -181,6 +184,8 @@ alias pull='git pull'
 alias gc='git checkout'
 alias gb='git branch'
 
+alias cpp='cd /home/dyros-vehicle/gitrepo/lockdpwn/cpp_archive'
+alias py='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive'
 alias ipy='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive/ipython'
 alias ml='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning'
 

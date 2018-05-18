@@ -526,7 +526,7 @@
      (define-key org-mode-map (kbd "C-c m") 'org-md-export-to-markdown)
      ;; Shift + Enter 키로 현재 링크를 엽니다
      (define-key org-mode-map (kbd "<S-return>") 'org-open-at-point)
-     ;; Alt + Enter 키
+     ;; Alt + Enter 키로 org-meta-return키를 설정합니다 (원래 open-line으로 overriding됨)
      (define-key org-mode-map (kbd "<M-return>") 'org-meta-return)
 
 
@@ -587,7 +587,8 @@
 (setq org-gcal-client-id "815785509878-3gn7mhcti240j6am59uk95s230n11172.apps.googleusercontent.com"
       org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
       org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo/ims_org/org_files/gcal.org")))
-;; (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
+;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
+(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 
 ;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
@@ -1039,6 +1040,7 @@
  '(highlight ((t (:background "grey"))))
  '(magit-diff-hunk-heading ((t (:background "black"))))
  '(magit-diff-hunk-heading-highlight ((t (:background "black"))))
+ '(org-agenda-calendar-event ((t (:foreground "dark orange"))))
  '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-block ((t (:background "gray13" :foreground "dark gray"))))

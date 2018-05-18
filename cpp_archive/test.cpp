@@ -4,7 +4,7 @@
   다차원배열의 동적할당을 사용해서 직접 푼 코드
 */
 #include <iostream>
-#include <iomanip>
+#include <cstdio>
 using namespace std;
 
 int main() {

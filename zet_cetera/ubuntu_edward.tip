@@ -172,7 +172,7 @@
 		sudo sysctl -w kernel.randomize_va_space=2 (다시 활성화)
 
 
-	25. gcc 컴파일러 옵션 
+	25. gcc, g++ 컴파일러 옵션 
 		gcc -fno-stack-protector -mpreferred-stack-boundary=2 -m32 -o test test.c
 		32비트 환경에 스택보호 없이 하려면 위와 같이 컴파일해야 한다
 
@@ -391,4 +391,13 @@
 		Windows Management ==> Grid ==> Maximize Key Disabled
 
 
+	49. g++ -m32 (32bit로 컴파일) 옵션이 에러가 나는 경우
+		$ sudo apt-get install gcc-multilib g++-multilib 
 
+
+	50. ida pro 6.8 
+		- Linux x64는 remote GDB server를 사용한다
+			$ gdbserver --multi localhost:23946
+			$ idaq64.exe에서 접속한다 (경로를 /home/user/test 같이 Linux 형식으로 해줘야 동작한다)
+
+		- Linux x86은 ida6.8/dbgsrv/linux_server 를 시작해야 동작한다
