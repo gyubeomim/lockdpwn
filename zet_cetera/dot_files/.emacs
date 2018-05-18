@@ -699,6 +699,7 @@
      ;; ed: ein 단축키 등록
      (define-key ein:notebook-mode-map (kbd "C-w") 'ein:notebook-save-notebook-command)
      (define-key ein:notebook-mode-map (kbd "C-c C-d") 'ein:worksheet-delete-cell)
+     (define-key ein:notebook-mode-map (kbd "M-<return>") 'ein:worksheet-execute-cell-and-goto-next)
      ))
 
 ;; PACKAGE: flymd
