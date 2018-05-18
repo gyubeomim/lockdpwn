@@ -193,7 +193,7 @@ alias ml='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning
 alias notebook='jupyter notebook --no-browser'
 
 # for counting files
-alias len='tree | tail -1'
+alias len='tree | tail -1 && du -sh ./'
 
 # for tmux 
 alias t='tmux'
