@@ -1698,7 +1698,7 @@ created by edward 180515"
      ))
 
 ;; compile 명령어 수정 (c++일 경우 g++, c일 경우 gcc로 해주면 됩니다)
-(setq compile-command "g++ -std=c++11 -g -o ")
+(setq compile-command "g++ -m64 -std=c++11 -g -o ")
 
 
 ;; eyebrowse 모드에서 C-1,2,3키로 워크스페이스를 변경합니다 (not used)
