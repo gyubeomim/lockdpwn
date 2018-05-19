@@ -1866,14 +1866,18 @@ created by edward 180515"
 (global-set-key (kbd "M-<return>") 'open-line)
 
 
+;; vim과 같이 앞에 있는 단어 중 숫자의 크기를 증가시키는 함수
 (defun increment-number-at-point ()
-  "."
+  "customized by ewdard"
   (interactive)
   (skip-chars-backward "0-9")
-  (or (looking-at "[0-9]+")
-      (error "No number at point"))
-  (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
+  (or (search-forward-regexp "[0-9]+"))  ;; 여기 코드를 수정하니 정상적으로 작동한다
+  (replace-match (number-to-string
+                  (1+ (string-to-number
+                       (match-string 0)))))
+  )
 
+           100
 ;; Ctrl + t 를 누르면 커서의 숫자가 증가합니다
 (global-set-key (kbd "C-t") 'increment-number-at-point)
 
