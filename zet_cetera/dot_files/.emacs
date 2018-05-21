@@ -2017,11 +2017,12 @@ created by edward 180515"
 (add-hook 'prog-mode-hook '(lambda()
                         (keyboard-translate ?\C-i ?\H-i)
                         (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
+                        (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
                         ))
 
 ;; Ctrl + i키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
 (global-set-key (kbd "H-i") 'avy-goto-word-0)
-;; (global-set-key (kbd "C-+") 'avy-goto-word-1)
+(global-set-key (kbd "H-S-i") 'avy-goto-word-1)
 
 ;; Ctrl + u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다
 (global-set-key (kbd "C-u") 'swiper-all)
