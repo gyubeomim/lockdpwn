@@ -1070,18 +1070,12 @@
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
-;; 모든 환경에서 C-i <==> TAB 키를 따로 사용하기 위한 훅 코드
-;; C-i <==> TAB 이 같은 키로 인식되므로 아래 코드를 추가해준다
-(add-hook 'prog-mode-hook '(lambda()
-                        (keyboard-translate ?\C-i ?\H-i)
-                        (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
-                        ))
 
-;; C-c + i/o 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
-(global-set-key (kbd "C-u") 'zoom-frame)
-(global-set-key (kbd "H-i") 'zoom-frame-out)
-(define-key c++-mode-map (kbd "C-u") 'zoom-frame)
-(define-key c++-mode-map (kbd "H-i") 'zoom-frame-out)
+;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
+(global-set-key (kbd "C-=") 'zoom-frame)
+(global-set-key (kbd "C--") 'zoom-frame-out)
+(define-key c++-mode-map (kbd "C-=") 'zoom-frame)
+(define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
 
 
@@ -1877,7 +1871,7 @@ created by edward 180515"
                        (match-string 0)))))
   )
 
-           100
+
 ;; Ctrl + t 를 누르면 커서의 숫자가 증가합니다
 (global-set-key (kbd "C-t") 'increment-number-at-point)
 
@@ -2018,12 +2012,19 @@ created by edward 180515"
 ;; Alt + [ 키로 선택된 단어를 iedit 일괄편집합니다
 (global-set-key (kbd "M-[") 'iedit-mode)
 
-;; Ctrl + =,+키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
-(global-set-key (kbd "C-=") 'avy-goto-word-0)
-(global-set-key (kbd "C-+") 'avy-goto-word-1)
+;; 모든 환경에서 C-i <==> TAB 키를 따로 사용하기 위한 훅 코드
+;; C-i <==> TAB 이 같은 키로 인식되므로 아래 코드를 추가해준다
+(add-hook 'prog-mode-hook '(lambda()
+                        (keyboard-translate ?\C-i ?\H-i)
+                        (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
+                        ))
 
-;; Ctrl + - 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다
-(global-set-key (kbd "C--") 'swiper-all)
+;; Ctrl + i키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
+(global-set-key (kbd "H-i") 'avy-goto-word-0)
+;; (global-set-key (kbd "C-+") 'avy-goto-word-1)
+
+;; Ctrl + u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다
+(global-set-key (kbd "C-u") 'swiper-all)
 
 ;; Alt + e 키로 해당 단어의 reference를 검색해줍니다
 (global-set-key (kbd "M-e") 'helm-projectile-grep)
