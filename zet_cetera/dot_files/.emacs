@@ -526,8 +526,11 @@
      (define-key org-mode-map (kbd "C-c m") 'org-md-export-to-markdown)
      ;; Shift + Enter 키로 현재 링크를 엽니다
      (define-key org-mode-map (kbd "<S-return>") 'org-open-at-point)
-     ;; Alt + Enter 키로 org-meta-return키를 설정합니다 (원래 open-line으로 overriding됨)
+     ;; Alt + Enter 키로 org-meta-return키를 설정합니다 (원래 open-line으로 overriding 되어 있었다)
      (define-key org-mode-map (kbd "<M-return>") 'org-meta-return)
+     ;; C-c v,b 키로 org-table 모드에서 열과 행을 추가합니다
+     (define-key org-mode-map (kbd "C-c b") 'org-table-insert-row)
+     (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
 
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
@@ -923,6 +926,7 @@
    (quote
     ("~/gitrepo/ims_org/org_files/180515_algorithm.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/index.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims_org/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
+ '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
  '(org-scheduled-delay-days 0)
  '(org-tags-column -180)
@@ -1011,7 +1015,8 @@
      (:propertize " " face powerline-active1))))
  '(sml/pre-modes-separator (propertize " " (quote face) (quote sml/modes)))
  '(sp-base-key-bindings nil)
- '(speedbar-update-flag t))
+ '(speedbar-update-flag t)
+ '(vc-follow-symlinks t))
 
 ;; Custom Face + 영어폰트 설정  (height 부분을 바꾸면 크기가 바뀝니다)
 (custom-set-faces
