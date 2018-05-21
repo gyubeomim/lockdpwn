@@ -1,3 +1,10 @@
+/*
+  c++ ==> 백준 5052, 전화번호 목록 문제를 푼 정답 코드
+
+  TRIE (유사 tree 구조) 라는 구조체를 선언해서 문제를 풀었다
+
+  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220576143081&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList]
+*/
 #include <iostream>
 #include <cstring>
 #include <cstdio>
