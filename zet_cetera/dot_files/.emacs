@@ -920,6 +920,7 @@
  '(elpy-modules
    (quote
     (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
+ '(find-file-visit-truename t)
  '(git-gutter:added-sign "+")
  '(git-gutter:deleted-sign "-")
  '(git-gutter:modified-sign "▸")
@@ -1824,6 +1825,7 @@ created by edward 180515"
     (set-visited-file-name nil)
     (rename-buffer bufname)))
 
+;; C-c + ' 키를 사용해 현재 버퍼를 /tmp 폴더에 임의의 5개 랜덤글자 파일로 저장한다
 (global-set-key (kbd "C-c '") 'copy-buffer-to-file)
 
 
