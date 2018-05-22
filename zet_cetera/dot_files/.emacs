@@ -1811,21 +1811,19 @@ created by edward 180515"
          (i (% (abs (random)) (length alnum))))
     (substring alnum i (1+ i))))
 
-;; 임의로 /tmp/ 폴더에 파일을 저장하는 함수
+;; 현재 버퍼의 파일을 임의로 /tmp 폴더에 저장하는 함수
 (defun copy-buffer-to-file ()
   (interactive)
-  (let ((bufname (buffer-name)))
-    (set-visited-file-name (concat "/tmp/" (concat (random-alpha)
-                                                   (random-alpha)
-                                                   (random-alpha)
-                                                   (random-alpha)
-                                                   (random-alpha)
-                                                   "_"
-                                                   (buffer-name)
-                                                   )))
-    (save-buffer)
-    (set-visited-file-name nil)
-    (rename-buffer bufname)))
+  (let ((bufname (concat "/tmp/" (concat (random-alpha)
+                                          (random-alpha)
+                                          (random-alpha)
+                                          (random-alpha)
+                                          (random-alpha)
+                                          "_"
+                                          (buffer-name)
+                                          ))))
+    (write-region (point-min) (point-max) bufname t)
+    (message (concat "[+] saving temp file in " bufname))))
 
 ;; C-c + ' 키를 사용해 현재 버퍼를 /tmp 폴더에 임의의 5개 랜덤글자 파일로 저장한다
 (global-set-key (kbd "C-c '") 'copy-buffer-to-file)
