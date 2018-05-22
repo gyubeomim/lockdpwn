@@ -254,9 +254,9 @@ alias cl='clear'
 
 # Cartographer Settings
 alias soc='source install_isolated/setup.bash'
-alias cwc='cd /home/dyros-vehicle/gitrepo/ims/ROS/cartographer_ws_kinetic'
-alias csc='cd /home/dyros-vehicle/gitrepo/ims/ROS/cartographer_ws_kinetic/src'
-alias cmc='cd /home/dyros-vehicle/gitrepo/ims/ROS/cartographer_ws_kinetic && catkin_make_isolated --install --use-ninja'
+alias cwc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_180522'
+alias csc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_180522/src'
+alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_180522 && catkin_make_isolated --install --use-ninja'
 
 # V-Rep Settings
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/

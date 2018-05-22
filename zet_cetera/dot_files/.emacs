@@ -531,6 +531,8 @@
      ;; C-c v,b 키로 org-table 모드에서 열과 행을 추가합니다
      (define-key org-mode-map (kbd "C-c b") 'org-table-insert-row)
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
+     ;; C + | 키로 영역을 table화 합니다
+     (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
 
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정

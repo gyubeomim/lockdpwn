@@ -1,64 +1,36 @@
 #include <iostream>
-#include <cstring>
-#include <cstdio>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-struct Trie {
-  Trie* go[10];
-  // output:  이 노드에서 끝나는 전화번호가 있으면 true
-  // goexist: 이 노드에서 이어지는 전화번호가 있으면 true
-  bool output, goexist;
+int main() {
+  int t,n;
+  vector<string> vs;
+  cin >> t;
 
-  Trie() {
-    memset(go, 0, sizeof(go));
-    output = goexist = false;
-  }
-  ~Trie() {
-    for(int i=0; i<10; i++)
-      if(go[i]) delete go[i];
-  }
+  while(t--) {
+    cin >> n;
+    vs = vector<string>(n);
 
-  /*
-    문자열 key를 현재 노드에 삽입하는 동시에
-    이 삽입 과정에서 일관성이 깨졌는지를 리턴하는 함수
-  */
-  bool insert(const char* key) {
-    if(*key == '\0') {
-      output = true;
-      // 이 노드에서 이어지는 다른 전화번호가 있으면 일관성 깨짐
-      return goexist;
+    for(int i=0; i<n; i++) {
+      cin >> vs[i];
     }
 
-    int next = *key - '0';
-    if(!go[next])
-      go[next] = new Trie;
-
-    goexist = true;
-    // 이 노드에서 끝나는 다른 번호가 있으면 일관성 깨짐
-    return output || go[next]->insert(key+1);
-  }
-};
-
-int main() {
-  int T;
-  cin >> T;
-
-  for(int t=0; t<T; t++) {
-    int N;
-    cin >> N;
-    Trie *root = new Trie;
+    sort(vs.begin(), vs.end());
     bool result = true;
 
-    for(int i=0; i<N; i++) {
-      char tel[11];
-      scanf("%s", tel);
-      if(result && root->insert(tel))
-        result = false;
-    }
-    puts(result ? "YES" : "NO");
-    delete root;
-  }
+    for(int i=1; i<n; i++) {
+      string& a = vs[i-1];
+      string& b = vs[i];
 
+      if(a.size() > b.size()) continue;
+      if(a == b.substr(0, a.size())) {
+        result = false;
+        break;
+      }
+    }
+    puts(result ? "YES":"NO");
+  }
   return 0;
 }
