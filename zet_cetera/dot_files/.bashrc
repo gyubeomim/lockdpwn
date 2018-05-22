@@ -163,8 +163,9 @@ alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
 alias git1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
 alias git2='cd /home/dyros-vehicle/gitrepo/ims'
-alias git3='cd /home/dyros-vehicle/gitrepo/ims_ml'
+alias git3='cd /home/dyros-vehicle/gitrepo/ims_carto'
 alias git4='cd /home/dyros-vehicle/gitrepo/ims_ml/SqueezeSeg'
+alias git5='cd /home/dyros-vehicle/gitrepo/ims_ml'
 alias gito='cd /home/dyros-vehicle/gitrepo/ims_org'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
 
@@ -254,9 +255,13 @@ alias cl='clear'
 
 # Cartographer Settings
 alias soc='source install_isolated/setup.bash'
-alias cwc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_180522'
-alias csc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_180522/src'
-alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_180522 && catkin_make_isolated --install --use-ninja'
+alias cwc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws'
+alias csc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws/src'
+alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws && catkin_make_isolated --install --use-ninja'
+alias cwcc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_ed'
+alias cscc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_ed/src'
+alias cmcc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_ed && catkin_make_isolated --install --use-ninja'
+
 
 # V-Rep Settings
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/

@@ -1799,8 +1799,33 @@ created by edward 180515"
 (global-set-key "\C-w" 'save-buffer)
 
 ;; Ctrl + Shift + w 키로 모든 버퍼를 저장합니다
-(defun save-all () (interactive) (save-some-buffers t))
+(defun save-all () (interactive)
+       (save-some-buffers t)
+       (message "[+] saving all buffers..."))
 (global-set-key (kbd "C-S-w") 'save-all)
+
+;; 랜덤한 string을 생성하는 함수
+(defun random-alpha ()
+  (let* ((alnum "abcdefghijklmnopqrstuvwxyz")
+         (i (% (abs (random)) (length alnum))))
+    (substring alnum i (1+ i))))
+
+;; 임의로 /tmp/ 폴더에 파일을 저장하는 함수
+(defun copy-buffer-to-file ()
+  (interactive)
+  (let ((bufname (buffer-name)))
+    (set-visited-file-name (concat "/tmp/" (concat
+                                            (random-alpha)
+                                            (random-alpha)
+                                            (random-alpha)
+                                            (random-alpha)
+                                            (random-alpha))))
+    (save-buffer)
+    (set-visited-file-name nil)
+    (rename-buffer bufname)))
+
+(global-set-key (kbd "C-c '") 'copy-buffer-to-file)
+
 
 ;; Ctrl + Alt + e 키로 현재 커서의 라인 맨 앞칸으로 이동합니다
 (global-set-key (kbd "C-M-e") 'move-beginning-of-line)
