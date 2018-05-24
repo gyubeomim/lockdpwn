@@ -1745,8 +1745,17 @@ created by edward 180515"
 ;; Ctrl + 7 키로 선택한 버퍼를 닫습니다
 (global-set-key (kbd "C-7") 'buffer-menu)
 
+;; kill-this-buffer가 가끔 menu-bar-mode 때문에 실행되지 않는 경우가 있는데
+;; 이를 방지하기 위해 직접 제작한 함수
+(defun my-kill-this-buffer ()
+  (interactive)
+  (menu-bar-mode 1)
+  (kill-this-buffer)
+  (menu-bar-mode -1)
+  )
+
 ;; Ctrl + 8 키로 현재 버퍼를 닫습니다
-(global-set-key (kbd "C-8") 'kill-this-buffer)
+(global-set-key (kbd "C-8") 'my-kill-this-buffer)
 
 ;; Ctrl + 9 키로 Customize Variable 명령어를 사용한다
 (global-set-key (kbd "C-9") 'pwd)
