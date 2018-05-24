@@ -1823,7 +1823,7 @@ created by edward 180515"
                                           (buffer-name)
                                           ))))
     (write-region (point-min) (point-max) bufname t)
-    (message (concat "[+] saving temp file in " bufname))))
+    (message (concat "[+] saving a temp file in " bufname))))
 
 ;; C-c + ' 키를 사용해 현재 버퍼를 /tmp 폴더에 임의의 5개 랜덤글자 파일로 저장한다
 (global-set-key (kbd "C-c '") 'copy-buffer-to-file)
