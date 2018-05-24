@@ -904,6 +904,10 @@
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(async-bytecomp-allowed-packages (quote (async helm helm-core helm-ls-git helm-ls-hg magit)))
  '(auto-hscroll-mode t)
+ '(avy-keys
+   (quote
+    (97 115 100 102 103 104 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
+ '(avy-style (quote at-full))
  '(column-number-mode t)
  '(company-backends
    (quote
@@ -1041,6 +1045,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
+ '(avy-lead-face ((t (:background "#6c71b0"))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "#6c71b0"))))
+ '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
+ '(avy-lead-face-2 ((t (:inherit isearch :background "orange"))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
  '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
  '(diff-refine-added ((t (:background "olive drab"))))
