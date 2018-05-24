@@ -620,10 +620,15 @@
 ;; Alt + ' 키로 comment-dwim 명령어를 수행합니다
 (global-set-key (kbd "M-'") 'comment-dwim)
 
+
 ;; Package: yasnippet
 ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
 (require 'yasnippet)
 (yas-global-mode t)
+(setq warning-suppress-types nil)
+;; yasnippet에 elisp 함수를 쓰면 나타나는 경고문을 무시합니다
+(add-to-list 'warning-suppress-types '(yasnippet backquote-change))
+
 
 ;; PACKAGE: anzu
 (require 'anzu)
@@ -881,6 +886,7 @@
 ;; PACKAGE: protobuf-mode
 (require 'protobuf-mode)
 
+
 ;; Variable Customizing
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -1019,7 +1025,9 @@
  '(sml/pre-modes-separator (propertize " " (quote face) (quote sml/modes)))
  '(sp-base-key-bindings nil)
  '(speedbar-update-flag t)
- '(vc-follow-symlinks t))
+ '(vc-follow-symlinks t)
+ '(yas-also-auto-indent-first-line t)
+ '(yas-also-indent-empty-lines t))
 
 ;; Custom Face + 영어폰트 설정  (height 부분을 바꾸면 크기가 바뀝니다)
 (custom-set-faces
@@ -1058,6 +1066,9 @@
  '(org-link ((t (:foreground "#b58900" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-tag ((t (:background "black" :weight bold :height 0.9)))))
+
+
+
 
 
 ;; 다중모니터에서 C-x-5-2를 통해서 새로운 frame을 생성한 다음에 모니터가 작아서 폰트사이즈가 작은 경우 폰트크기를 크게하기 위해 설정한 함수
@@ -1814,14 +1825,10 @@ created by edward 180515"
 ;; 현재 버퍼의 파일을 임의로 /tmp 폴더에 저장하는 함수
 (defun copy-buffer-to-file ()
   (interactive)
-  (let ((bufname (concat "/tmp/" (concat (random-alpha)
-                                          (random-alpha)
-                                          (random-alpha)
-                                          (random-alpha)
-                                          (random-alpha)
-                                          "_"
-                                          (buffer-name)
-                                          ))))
+  (let ((bufname (concat "/tmp/" (concat (format-time-string "%Y%m%d-%T")
+                                         "_"
+                                         (buffer-name)
+                                         ))))
     (write-region (point-min) (point-max) bufname t)
     (message (concat "[+] saving a temp file in " bufname))))
 
@@ -2213,3 +2220,4 @@ created by edward 180515"
 (setq auto-mode-alist
       (append '((".*\\.cu\\'" . c++-mode))
               auto-mode-alist))
+
