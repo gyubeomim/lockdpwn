@@ -883,6 +883,11 @@
 (global-set-key (kbd "C-/") 'my-revert-buffer)
 (define-key undo-tree-map (kbd "C-/") 'my-revert-buffer)
 
+;; Ctrl + . > 키로 새로운 frame을 만들고 제거합니다
+(global-set-key (kbd "C-.") 'make-frame-command)
+(global-set-key (kbd "C->") 'delete-frame)
+
+
 ;; PACKAGE: protobuf-mode
 (require 'protobuf-mode)
 
@@ -1816,7 +1821,7 @@ created by edward 180515"
        (message "[+] saving all buffers..."))
 (global-set-key (kbd "C-S-w") 'save-all)
 
-;; 랜덤한 string을 생성하는 함수
+;; 랜덤한 string을 생성하는 함수 (not used)
 (defun random-alpha ()
   (let* ((alnum "abcdefghijklmnopqrstuvwxyz")
          (i (% (abs (random)) (length alnum))))
@@ -1825,7 +1830,7 @@ created by edward 180515"
 ;; 현재 버퍼의 파일을 임의로 /tmp 폴더에 저장하는 함수
 (defun copy-buffer-to-file ()
   (interactive)
-  (let ((bufname (concat "/tmp/" (concat (format-time-string "%Y%m%d-%T")
+  (let ((bufname (concat "/tmp/" (concat (format-time-string "%Y%m%d_%T")
                                          "_"
                                          (buffer-name)
                                          ))))
