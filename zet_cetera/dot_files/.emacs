@@ -1721,7 +1721,8 @@ created by edward 180515"
 ;; gdb를 실행하고 나서 환경설정 코드
 (eval-after-load "gud"
   '(progn
-     (define-key gud-minor-mode-map (kbd "M-w") 'gud-watch)
+     ;; C-M-w 키로 gud-watch 명령을 실행합니다
+     (define-key gud-minor-mode-map (kbd "C-M-w") 'gud-watch)
      ))
 
 ;; compile 명령어 수정 (c++일 경우 g++, c일 경우 gcc로 해주면 됩니다)
