@@ -1045,8 +1045,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
- '(avy-lead-face ((t (:background "#6c71b0"))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "#6c71b0"))))
+ '(avy-lead-face ((t (:inherit isearch :background "gold"))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "gold"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
  '(avy-lead-face-2 ((t (:inherit isearch :background "orange"))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
