@@ -4,3 +4,4 @@
 # --
 {
 $0
+}`(delete-forward-char 1)`
