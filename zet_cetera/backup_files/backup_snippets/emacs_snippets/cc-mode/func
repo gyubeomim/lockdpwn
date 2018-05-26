@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: function
-# key: qq
+# name: function by edward
+# key: q
 # --
 ${1:}(${2:}) {
     $0
