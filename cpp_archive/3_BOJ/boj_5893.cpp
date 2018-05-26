@@ -1,3 +1,12 @@
+/*
+  c++ ==> 백준 5893, 17배 문제를 푼 정답코드
+
+           c++에서 string으로 이진수를 받아서 처리한다
+           17배 = 16배 + 1배와 같다
+
+
+  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220693068520&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList]
+*/
 #include <iostream>
 #include <string>
 #include <algorithm>
