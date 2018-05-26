@@ -1619,7 +1619,7 @@ Version 2017-04-19"
   (let
       ((win0 (selected-window))             ; breakpoints ==> Speedbar Watch Expression
        (win1 (split-window-horizontally
-              (floor (* 0.5 (window-width)))))   ; source + i/o
+              (floor (* 0.4 (window-width)))))   ; source + i/o
        (win2 (split-window-vertically
               (floor (* 0.5 (window-body-height))))) ; gdb
        (win3 (split-window-vertically
@@ -1645,7 +1645,7 @@ Version 2017-04-19"
       ;; ed: Stack Frame added
       (select-window winIO)
       (let
-          ((winStack (split-window-horizontally (floor (* 10 (window-body-height))))) ;; ed: Stack buffer added
+          ((winStack (split-window-horizontally (floor (* 15 (window-body-height))))) ;; ed: Stack buffer added
            )
         (set-window-buffer winStack (gdb-get-buffer-create 'gdb-stack-buffer)) ;; ed: Stack buffer added
       ))
