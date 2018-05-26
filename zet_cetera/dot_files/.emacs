@@ -1634,8 +1634,7 @@ Version 2017-04-19"
      (winIO (split-window-vertically (floor (* 0.9 (window-body-height))))) ; I/O
      )
       (set-window-buffer winIO (gdb-get-buffer-create 'gdb-inferior-io))
-      (set-window-buffer
-    winSrc
+      (set-window-buffer winSrc
     (if gud-last-last-frame
      (gud-find-file (car gud-last-last-frame))
       (if gdb-main-file
@@ -1643,7 +1642,13 @@ Version 2017-04-19"
      (list-buffers-noselect))))
       (setq gdb-source-window winSrc)
       (set-window-dedicated-p winIO t)
-   )
+      ;; ed: Stack Frame added
+      (select-window winIO)
+      (let
+          ((winStack (split-window-horizontally (floor (* 10 (window-body-height))))) ;; ed: Stack buffer added
+           )
+        (set-window-buffer winStack (gdb-get-buffer-create 'gdb-stack-buffer)) ;; ed: Stack buffer added
+      ))
     ;; (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
     (if (get-buffer " SPEEDBAR")
         (set-window-buffer win0 " SPEEDBAR")
@@ -1693,7 +1698,7 @@ created by edward 180515"
 
 
 
-;; 처음 F8로 시작할 때 생성되는 창을 설정하는 함수 (my-gdb-setup-windows3) 로 설정했다
+;; 처음 F8로 시작할 때 생성되는 창을 설정하는 함수 (my-gdb-setup-windows5) 로 설정했다
 ;; defadvice로 설정하는 것인듯
 (defadvice gdb-setup-windows (around setup-more-gdb-windows activate)
   (my-gdb-setup-windows5)
