@@ -80,6 +80,7 @@
     irony                  ;; c++ 코드 자동완성 패키지 (M-x irony-install-server로 설치한다)
     company-irony          ;; c++ 코드 자동완성 패키지
 
+    image+                 ;; .jpg, .png 같은 이미지들의 크기를 조정할 수 있는 패키지
 
 
 
@@ -621,6 +622,16 @@
 ;; Alt + ' 키로 comment-dwim 명령어를 수행합니다
 (global-set-key (kbd "M-'") 'comment-dwim)
 
+;; PACKAGE: image+
+(require 'image+)
+(imagex-global-sticky-mode t)
+(eval-after-load "image+" (lambda ()
+                            ;; C-c = 키로 이미지를 확대한다
+                            (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
+                            ;; C-+ 키로 이미지 크기를 자동조정한다
+                            (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
+                          ))
+
 
 ;; Package: yasnippet
 ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
@@ -951,7 +962,7 @@
  '(org-tags-column -180)
  '(package-selected-packages
    (quote
-    (sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
