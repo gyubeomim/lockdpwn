@@ -909,9 +909,9 @@
 (global-set-key (kbd "C-/") 'my-revert-buffer)
 (define-key undo-tree-map (kbd "C-/") 'my-revert-buffer)
 
-;; Ctrl + . > 키로 새로운 frame을 만들고 제거합니다
+;; C-. C-M-. 키로 새로운 frame을 만들고 제거합니다
 (global-set-key (kbd "C-.") 'make-frame-command)
-(global-set-key (kbd "C->") 'delete-frame)
+(global-set-key (kbd "C-M-.") 'delete-frame)
 
 
 ;; PACKAGE: protobuf-mode
