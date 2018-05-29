@@ -1854,7 +1854,7 @@ created by edward 180515"
 (defun save-all () (interactive)
        (save-some-buffers t)
        (message "[+] saving all buffers..."))
-(global-set-key (kbd "C-S-w") 'save-all)
+(global-set-key (kbd "C-M-w") 'save-all)
 
 ;; 랜덤한 string을 생성하는 함수 (not used)
 (defun random-alpha ()
