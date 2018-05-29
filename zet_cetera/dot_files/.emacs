@@ -553,11 +553,12 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "PENDING" "CANCELLED" "|" "DONE")))
+           '((sequence "TODO" "DOING" "PENDING" "CANCELLED" "|" "DONE")))
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
            '(("CANCELLED" . "red")
              ("PENDING" . "orange")
+             ("DOING" . "yellow")
              ))
 
      ;; org-bullets 모드 활성화
@@ -575,15 +576,21 @@
      (setq org-capture-templates '(("1" "index.org: Task" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/index.org" "Task")
                                     "* TODO %i%?")
-                                   ("2" "index.org: Note" entry
+                                   ("2" "index.org: dyros" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/index.org" "dyros")
+                                    "* TODO %i%?")
+                                   ("3" "index.org: Note" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/index.org" "Note")
-                                    "* %i%?")
-                                   ("3" "project_squeezeseg.org: Note" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Note")
                                     "* %i%?")
                                    ("4" "project_squeezeseg.org: Task" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "SqueezeSeg")
                                     "* TODO %i%?")
+                                   ("5" "project_squeezeseg.org: Issues" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Issues")
+                                    "* %i%?")
+                                   ("6" "project_squeezeseg.org: Note" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Note")
+                                    "* %i%?")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -2099,6 +2106,26 @@ created by edward 180515"
 
 ;; Alt + [ 키로 선택된 단어를 iedit 일괄편집합니다
 (global-set-key (kbd "M-[") 'iedit-mode)
+
+;; git merge 도중 conflict가 난 파일은 <<<< HEAD 같은 코드가 생기는데
+;; 이 때 smerge-mode를 사용해서 conflict를 관리하는 함수
+(global-set-key (kbd "C-c v") 'smerge-mode)
+
+;; smerge mode가 시작되고 실행되는 코드
+(eval-after-load "smerge-mode" (lambda()
+                                 ;; merge conflict를 효율적으로 관리하기 위해 단축키를 변경한다
+                                 ;; e 키로 ediff 모드를 사용한다 (a,b로 내 코드, 다른 코드를 선택 가능)
+                                 (define-key smerge-mode-map (kbd "e") 'smerge-ediff)
+
+                                 ;; n,p 키로 움직입니다
+                                 (define-key smerge-mode-map (kbd "n") 'smerge-next)
+                                 (define-key smerge-mode-map (kbd "p") 'smerge-prev)
+
+                                 ;; a,b 키로 어느 conflict를 선택할지 결정합니다
+                                 (define-key smerge-mode-map (kbd "a") 'smerge-keep-mine)
+                                 (define-key smerge-mode-map (kbd "b") 'smerge-keep-other)
+                            ))
+
 
 ;; 모든 환경에서 C-i <==> TAB 키를 따로 사용하기 위한 훅 코드
 ;; C-i <==> TAB 이 같은 키로 인식되므로 아래 코드를 추가해준다
