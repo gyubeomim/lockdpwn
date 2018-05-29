@@ -2268,3 +2268,5 @@ created by edward 180515"
       (append '((".*\\.cu\\'" . c++-mode))
               auto-mode-alist))
 
+;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다
+(setq x-alt-keysym 'meta)
