@@ -553,11 +553,10 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "DOING" "CANCELLED" "PENDING" "|" "DONE")))
+           '((sequence "TODO" "PENDING" "CANCELLED" "|" "DONE")))
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
-           '(("DOING" . "yellow")
-             ("CANCELLED" . "red")
+           '(("CANCELLED" . "red")
              ("PENDING" . "orange")
              ))
 
@@ -607,6 +606,9 @@
 (global-set-key (kbd "C-c s") 'org-gcal-sync)
 ;; C-c + / 키로 index.org 파일을 엽니다
 (global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/index.org")))
+;; C-c + # 키로 특정 .org 파일을 엽니다
+(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_squeezeseg.org")))
+(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_cartographer.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-c l") 'org-store-link)
 ;; C-c + a 키로 어느곳에서나 agenda view를 열게합니다
