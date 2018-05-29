@@ -552,7 +552,14 @@
      (setq org-startup-indented nil)
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
-
+     (setq org-todo-keywords
+           '((sequence "TODO" "DOING" "CANCELLED" "PENDING" "|" "DONE")))
+     ;; Setting Colours (faces) for todo states to give clearer view of work
+     (setq org-todo-keyword-faces
+           '(("DOING" . "yellow")
+             ("CANCELLED" . "red")
+             ("PENDING" . "orange")
+             ))
 
      ;; org-bullets 모드 활성화
      (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))
@@ -566,22 +573,20 @@
      ;; C-c c 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/index.org")
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates '(("t" "Task" entry
+     (setq org-capture-templates '(("1" "index.org: Task" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/index.org" "Task")
-                                    "* TODO %i%? %^G")
-                                   ("n" "Note" entry
+                                    "* TODO %i%?")
+                                   ("2" "index.org: Note" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/index.org" "Note")
                                     "* %i%?")
-                                   ("a" "Link" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/index.org" "Link")
-                                    "* %i%?")
-                                   ("s" "Note for SqueezeSeg" entry
+                                   ("3" "project_squeezeseg.org: Note" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Note")
                                     "* %i%?")
-                                   ("e" "Task for SqueezeSeg" entry
+                                   ("4" "project_squeezeseg.org: Task" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "SqueezeSeg")
                                     "* TODO %i%?")
                                    ))
+
      (setq org-refile-targets '((org-agenda-files :level . 1)))
      (setq org-agenda-log-mode-items '(closed clock state))
 
