@@ -787,6 +787,12 @@
 
 ;; PACKAGE: iedit
 (require 'iedit)
+;; smerge mode가 시작되고 실행되는 코드
+(eval-after-load "iedit" (lambda()
+                           ;; iedit 모드에서 `키로 선택 해제를 합니다 (default: M-;)
+                           (define-key iedit-mode-keymap (kbd "\`") 'iedit-toggle-selection)
+                           ))
+
 
 ;; PACKAGE: wgrep
 (require 'wgrep)
