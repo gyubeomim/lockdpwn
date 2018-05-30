@@ -553,7 +553,7 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "DOING" "PENDING" "CANCELLED" "|" "DONE")))
+           '((sequence "TODO" "DOING" "PENDING" "|" "CANCELLED"  "DONE")))
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
            '(("CANCELLED" . "red")
@@ -608,6 +608,16 @@
 ;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
 (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
+
+;; org-agenda-view에서 gcal.org의 색깔만 변경하는 코드
+(add-hook 'org-agenda-finalize-hook
+    (lambda ()
+      (save-excursion
+        (goto-char (point-min))
+        (while (re-search-forward "gcal:" nil t)
+          (add-text-properties (match-beginning 0) (point-at-eol)
+                               '(face (:foreground "dark orange"))
+                               )))))
 
 ;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
 (global-set-key (kbd "C-c s") 'org-gcal-sync)
@@ -974,6 +984,7 @@
  '(org-hide-emphasis-markers t)
  '(org-scheduled-delay-days 0)
  '(org-tags-column -180)
+ '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
     (image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
@@ -1096,14 +1107,17 @@
  '(highlight ((t (:background "grey"))))
  '(magit-diff-hunk-heading ((t (:background "black"))))
  '(magit-diff-hunk-heading-highlight ((t (:background "black"))))
- '(org-agenda-calendar-event ((t (:foreground "dark orange"))))
+ '(org-agenda-calendar-event ((t (:foreground "#586e75"))))
  '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-block ((t (:background "gray13" :foreground "dark gray"))))
  '(org-block-begin-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
  '(org-block-end-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
+ '(org-date ((t (:foreground "dark gray" :underline nil :weight normal))))
  '(org-link ((t (:foreground "#b58900" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
+ '(org-scheduled-previously ((t (:foreground "#586e75"))))
+ '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:background "black" :weight bold :height 0.9)))))
 
 
