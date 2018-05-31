@@ -153,7 +153,7 @@ PS1="$C_LIGHTRED\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 PATH=$PATH:/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
 ida=/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
 alias git1='cd /media/dyros-data/gitrepo/lockdpwn'
-alias git2='cd /media/dyros-data/gitrepo/ims'
+alias git2='cd /media/dyros-data/gitrepo/ims_ros'
 alias git3='cd /media/dyros-data/gitrepo/ims_carto'
 alias git4='cd /media/dyros-data/gitrepo/ims_ml/SqueezeSeg'
 alias git5='cd /media/dyros-data/gitrepo/ims_ml'
@@ -227,7 +227,7 @@ alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --inst
 #export ROS_HOSTNAME=127.0.0.1
 
 alias cl='clear'
-alias cr='cd /media/dyros-data/gitrepo/ims/ROS/'
+alias cr='cd /media/dyros-data/gitrepo/ims_ros/'
 alias so='source devel/setup.bash'
 
 if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
@@ -239,7 +239,7 @@ fi
 alias emacs='/home/dyros-vehicle/Downloads/emacs-25.2/lib-src/emacsclient -a '"''"' -c'
 
 # for stockroom_bot
-#alias sb='source ~/gitrepo/ims/ROS/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims/ROS/stockroombot_ws/src/stockroom_bot'/models
+#alias sb='source ~/gitrepo/ims_ros/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims_ros/stockroombot_ws/src/stockroom_bot'/models
 
 
 # for source gazebo config
@@ -249,7 +249,7 @@ alias sog2='source /usr/share/gazebo/setup.sh'
 # for source .bashrc
 alias sob='source /home/dyros-vehicle/.bashrc'
 
-alias cdb='cd ~/gitrepo/ims/ROS/rosbook_ws'
+alias cdb='cd ~/gitrepo/ims_ros/rosbook_ws'
 alias cb='cd /media/dyros-data/bag_files'
 alias cdd='cd /media/dyros-data/'
 alias down='cd ~/Downloads'
@@ -263,7 +263,7 @@ alias cmca='catkin_make_isolated --install --use-ninja'
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /media/dyros-data/gitrepo/ims/ROS/vrep_ws/dyros_simulator5.ttt'
+alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /media/dyros-data/gitrepo/ims_ros/vrep_ws/dyros_simulator5.ttt'
 
 alias vrepjw='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /home/dyros-vehicle/JW/toyCarIRL-master_JW/vrep/JW1.ttt'
 
