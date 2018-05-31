@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cin2 by edward
+# key: cins
+# --
+std::cin >> $0;
