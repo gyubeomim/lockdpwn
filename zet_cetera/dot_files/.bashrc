@@ -162,7 +162,7 @@ alias ida64='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
 alias git1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
-alias git2='cd /home/dyros-vehicle/gitrepo/ims'
+alias git2='cd /home/dyros-vehicle/gitrepo/ims_ros'
 alias git3='cd /home/dyros-vehicle/gitrepo/ims_carto'
 alias git4='cd /home/dyros-vehicle/gitrepo/ims_ml/SqueezeSeg'
 alias git5='cd /home/dyros-vehicle/gitrepo/ims_ml'
@@ -171,7 +171,7 @@ alias gr='cd /home/dyros-vehicle/gitrepo/'
 
 
 git1='/home/dyros-vehicle/gitrepo/lockdpwn'
-git2='/home/dyros-vehicle/gitrepo/ims'
+git2='/home/dyros-vehicle/gitrepo/ims_ros'
 git3='/home/dyros-vehicle/gitrepo/ims_ml'
 git4='/home/dyros-vehicle/gitrepo/ims_ml/SqueezeSeg'
 gr='/home/dyros-vehicle/gitrepo/'
@@ -224,10 +224,10 @@ alias rm='trash-put'
 #export ROS_HOSTNAME=127.0.0.1
 
 # set ROS alias command
-alias cw='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic'
-alias cs='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic/src'
-alias cm='cd /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic && catkin_make'
-alias cr='cd /home/dyros-vehicle/gitrepo/ims/ROS/'
+alias cw='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic'
+alias cs='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/src'
+alias cm='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic && catkin_make'
+alias cr='cd /home/dyros-vehicle/gitrepo/ims_ros/'
 alias cb='cd /media/dyros-vehicle/edward_6/bag_files'
 alias cbb='cd ~/bag_files'
 alias cma='catkin_make'
@@ -270,11 +270,11 @@ alias cmcc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_ed && catki
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/gitrepo/ims/ROS/vrep_ws/dyros_simulator_v5.ttt'
+alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/gitrepo/ims_ros/vrep_ws/dyros_simulator_v5.ttt'
 
 # source ROS PATH
 source /opt/ros/kinetic/setup.bash
-source /home/dyros-vehicle/gitrepo/ims/ROS/catkin_ws_kinetic/devel/setup.bash
+source /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/devel/setup.bash
 
 # source .bashrc
 alias sob='source /home/dyros-vehicle/.bashrc'
@@ -341,10 +341,10 @@ export PATH=/home/dyros-vehicle/Documents/cling_2018-05-10_ubuntu16/bin:$PATH
 # for source gazebo config
 # alias sog='source /usr/share/gazebo-2.2/setup.sh'
 # alias sog2='source /usr/share/gazebo/setup.sh'
-# alias cmb='cd ~/gitrepo/ims/ROS/rosbook_ws && catkin_make'
-# alias cdb='cd ~/gitrepo/ims/ROS/rosbook_ws'
+# alias cmb='cd ~/gitrepo/ims_ros/rosbook_ws && catkin_make'
+# alias cdb='cd ~/gitrepo/ims_ros/rosbook_ws'
 # # for stockroom_bot
-# #alias sb='source ~/gitrepo/ims/ROS/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims/ROS/stockroombot_ws/src/stockroom_bot'/models
+# #alias sb='source ~/gitrepo/ims_ros/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims_ros/stockroombot_ws/src/stockroom_bot'/models
 # PERL5LIB="/home/dyros-vehicle/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 # PERL_LOCAL_LIB_ROOT="/home/dyros-vehicle/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 # PERL_MB_OPT="--install_base \"/home/dyros-vehicle/perl5\""; export PERL_MB_OPT;

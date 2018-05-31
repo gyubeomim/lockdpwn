@@ -1,45 +1,47 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
-
+#include <cstdio>
 using namespace std;
 
 int main() {
-  // B=N 일 때, 17N = B + 16B(=A) 이므로 A+B의 연산을 수행하면 된다
-  string A,B;
-  cin >> B;
+  int N,K, use[100]={0}, plan[100]={0};
+  cin >> N >> K;
+  for(int i=0; i<K; i++)
+    cin >> *(plan+i);
 
-  // 계산의 편의를 위해 제일 왼쪽 자리를 LSB로 맞춘다
-  reverse(B.begin(), B.end());
-  A = "0000" + B;
+  int result=0;
+  for(int i=0; i<K; i++) {
+    bool inUse = false;
 
-  bool carry = false;
-  int i;
-  // B의 length만큼 계산한다
-  for(i=0; i<B.size(); i++) {
-    int val = A[i]-'0' + B[i]-'0' + carry;
-    if(val >= 2) {
-      val -= 2;
-      carry = true;
+    for(int j=0; j<N; j++)
+      if(plan[i] == use[j]) {
+        inUse = true;
+        break;
+      }
+    if(inUse) continue;
+
+    inUse = false;
+    for(int j=0; j<N; j++)
+      if(use[j] == 0) {
+        use[j] = plan[i];
+        inUse = true;
+        break;
+      }
+    if(inUse) continue;
+
+    int swap, val = -1;
+    for(int j=0; j<N; j++) {
+      int term = 0;
+
+      for(int k=i+1; k<K && use[j]!=plan[k]; k++) term++;
+
+      if(term > val) {
+        swap = j;
+        val = term;
+      }
     }
-    else carry = false;
-    A[i] = val + '0';
+    result++;
+    use[swap] = plan[i];
   }
-  // B의 범위를 넘어가는 A의 4자리 계산
-  for(; i<A.size(); i++) {
-    int val = A[i]-'0' + carry;
-    if(val == 2) {
-      val = 0;
-      carry = true;
-    }
-    else carry = false;
-    A[i] = val + '0';
-  }
-
-  if(carry) A.push_back('1');
-  reverse(A.begin(), A.end());
-  cout << A << endl;
-
+  cout << result << endl;
   return 0;
-
 }
