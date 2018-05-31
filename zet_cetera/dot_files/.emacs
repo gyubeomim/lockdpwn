@@ -798,10 +798,11 @@
 ;; PACKAGE: iedit
 (require 'iedit)
 ;; smerge mode가 시작되고 실행되는 코드
-(eval-after-load "iedit" (lambda()
-                           ;; iedit 모드에서 `키로 선택 해제를 합니다 (default: M-;)
-                           (define-key iedit-mode-keymap (kbd "\`") 'iedit-toggle-selection)
-                           ))
+(eval-after-load "iedit"
+  (lambda()
+    ;; iedit 모드에서 `키로 선택 해제를 합니다 (default: M-;)
+    (define-key iedit-mode-keymap (kbd "`") 'iedit-toggle-selection)
+    ))
 
 
 ;; PACKAGE: wgrep
@@ -956,6 +957,7 @@
     (company-irony company-nxml company-css company-eclim company-clang company-xcode company-cmake company-capf company-files
                    (company-dabbrev-code company-gtags company-etags company-keywords)
                    company-oddmuse company-dabbrev)))
+ '(company-idle-delay 0.3)
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (solarized)))
  '(custom-safe-themes
