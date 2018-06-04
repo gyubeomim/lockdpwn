@@ -2119,6 +2119,9 @@ created by edward 180515"
 ;; C-c + r키로 두 파일을 비교하는 ediff 명령을 실행합니다
 (global-set-key (kbd "C-c r") 'ediff)
 
+;; C-c + w키로 region 영역 단위로 ediff를 실행하는 명령을 설정합니다
+(global-set-key (kbd "C-c r") 'ediff-region-linewise)
+
 ;; C-c + t 키로 한 파일의 변경기록을 검사하는 magit-log-buffer-file 명령을 수행합니다
 (global-set-key (kbd "C-c t") 'magit-log-buffer-file)
 
