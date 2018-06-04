@@ -573,23 +573,32 @@
      ;; C-c c 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/index.org")
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates '(("1" "index.org: Task" entry
+     (setq org-capture-templates '(("1" "index.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/index.org" "Task")
                                     "* TODO %i%?")
-                                   ("2" "index.org: dyros" entry
+                                   ("2" "index.org: [dyros]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/index.org" "dyros")
                                     "* TODO %i%?")
-                                   ("3" "index.org: Note" entry
+                                   ("3" "index.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/index.org" "Note")
                                     "* %i%?")
-                                   ("4" "project_squeezeseg.org: Task" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "SqueezeSeg")
+                                   ("4" "squeezeseg.org: [Task]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Tasks")
                                     "* TODO %i%?")
-                                   ("5" "project_squeezeseg.org: Issues" entry
+                                   ("5" "squeezeseg.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Issues")
                                     "* %i%?")
-                                   ("6" "project_squeezeseg.org: Note" entry
+                                   ("6" "squeezeseg.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Note")
+                                    "* %i%?")
+                                   ("7" "cartographer.org: [Task]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
+                                    "* TODO %i%?")
+                                   ("8" "cartographer.org: [Issues]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
+                                    "* %i%?")
+                                   ("9" "cartographer.org: [Note]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Note")
                                     "* %i%?")
                                    ))
 
