@@ -1888,8 +1888,8 @@ created by edward 180515"
 ;; Ctrl + k 키로 해당 커서의 한 줄 전체를 지웁니다
 (global-set-key "\C-k" 'kill-whole-line)
 
-;; Ctrl + Shift + k 키로 해당 커서의 오른쪽부분만 삭제합니다
-(global-set-key (kbd "C-S-k") 'kill-visual-line)
+;; Ctrl + j 키로 해당 커서의 오른쪽부분만 삭제합니다
+(global-set-key (kbd "C-j") 'kill-visual-line)
 
 ;; Ctrl + a 키로 전체선택하게 합니다
 (global-set-key "\C-a" 'mark-whole-buffer)
@@ -2202,6 +2202,8 @@ created by edward 180515"
 (global-set-key (kbd "M-w") 'kill-whitespace)
 (define-key c++-mode-map (kbd "M-w") 'kill-whitespace)
 
+;; Alt + s 키로 공백들을 제거합니다
+(global-set-key (kbd "M-s") 'delete-blank-lines)
 
 ;; Alt + f 키로 forward paragraph (C-<down>) 과 같은 명령을 실행합니다
 (global-set-key (kbd "M-f") 'forward-paragraph)
