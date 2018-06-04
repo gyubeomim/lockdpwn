@@ -1124,7 +1124,9 @@
  '(org-date ((t (:foreground "dark gray" :underline nil :weight normal))))
  '(org-link ((t (:foreground "#b58900" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
+ '(org-scheduled ((t (:foreground "#268bd2"))))
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
+ '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:background "black" :weight bold :height 0.9)))))
 
