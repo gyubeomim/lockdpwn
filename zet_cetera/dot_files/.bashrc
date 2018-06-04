@@ -261,9 +261,10 @@ alias soc='source install_isolated/setup.bash'
 alias cwc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws'
 alias csc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws/src'
 alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws && catkin_make_isolated --install --use-ninja'
-alias cwcc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_ed'
-alias cscc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_ed/src'
-alias cmcc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_ed && catkin_make_isolated --install --use-ninja'
+alias cwcc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_before_180522'
+alias cscc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_before_180522/src'
+alias cmcc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_before_180522 && catkin_make_isolated --install --use-ninja'
+alias cmca='catkin_make_isolated --install --use-ninja'
 
 
 # V-Rep Settings

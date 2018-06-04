@@ -573,23 +573,32 @@
      ;; C-c c 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/index.org")
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates '(("1" "index.org: Task" entry
+     (setq org-capture-templates '(("1" "index.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/index.org" "Task")
                                     "* TODO %i%?")
-                                   ("2" "index.org: dyros" entry
+                                   ("2" "index.org: [dyros]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/index.org" "dyros")
                                     "* TODO %i%?")
-                                   ("3" "index.org: Note" entry
+                                   ("3" "index.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/index.org" "Note")
                                     "* %i%?")
-                                   ("4" "project_squeezeseg.org: Task" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "SqueezeSeg")
+                                   ("4" "squeezeseg.org: [Task]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Tasks")
                                     "* TODO %i%?")
-                                   ("5" "project_squeezeseg.org: Issues" entry
+                                   ("5" "squeezeseg.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Issues")
                                     "* %i%?")
-                                   ("6" "project_squeezeseg.org: Note" entry
+                                   ("6" "squeezeseg.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Note")
+                                    "* %i%?")
+                                   ("7" "cartographer.org: [Task]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
+                                    "* TODO %i%?")
+                                   ("8" "cartographer.org: [Issues]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
+                                    "* %i%?")
+                                   ("9" "cartographer.org: [Note]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Note")
                                     "* %i%?")
                                    ))
 
@@ -1879,8 +1888,8 @@ created by edward 180515"
 ;; Ctrl + k 키로 해당 커서의 한 줄 전체를 지웁니다
 (global-set-key "\C-k" 'kill-whole-line)
 
-;; Ctrl + Shift + k 키로 해당 커서의 오른쪽부분만 삭제합니다
-(global-set-key (kbd "C-S-k") 'kill-visual-line)
+;; Ctrl + j 키로 해당 커서의 오른쪽부분만 삭제합니다
+(global-set-key (kbd "C-j") 'kill-visual-line)
 
 ;; Ctrl + a 키로 전체선택하게 합니다
 (global-set-key "\C-a" 'mark-whole-buffer)
@@ -2119,6 +2128,9 @@ created by edward 180515"
 ;; C-c + r키로 두 파일을 비교하는 ediff 명령을 실행합니다
 (global-set-key (kbd "C-c r") 'ediff)
 
+;; C-c + w키로 region 영역 단위로 ediff를 실행하는 명령을 설정합니다
+(global-set-key (kbd "C-c r") 'ediff-region-linewise)
+
 ;; C-c + t 키로 한 파일의 변경기록을 검사하는 magit-log-buffer-file 명령을 수행합니다
 (global-set-key (kbd "C-c t") 'magit-log-buffer-file)
 
@@ -2190,6 +2202,8 @@ created by edward 180515"
 (global-set-key (kbd "M-w") 'kill-whitespace)
 (define-key c++-mode-map (kbd "M-w") 'kill-whitespace)
 
+;; Alt + s 키로 공백들을 제거합니다
+(global-set-key (kbd "M-s") 'delete-blank-lines)
 
 ;; Alt + f 키로 forward paragraph (C-<down>) 과 같은 명령을 실행합니다
 (global-set-key (kbd "M-f") 'forward-paragraph)
