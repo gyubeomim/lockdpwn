@@ -4,7 +4,7 @@ last modified by Edward 180115_Mon
 # --------------------- 시스템 정보 ---------------------------------------
 # Ubuntu 16.04 LTS
 # CPU     : Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
-# GPU     : Geforce GTX 1080 ti Jet Stream 11Gb
+# GPU     : emTek XENONGeforce GTX 1080 ti Super Jet Stream D5X 11Gb
 # RAM     : 16Gb
 # Storage : 256Gb SDD & 3Tb HDD
 
