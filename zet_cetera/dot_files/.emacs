@@ -508,6 +508,7 @@
      (define-key org-mode-map (kbd "<C-S-right>") nil)
      (define-key org-mode-map (kbd "C-a") nil)
      (define-key org-mode-map (kbd "C-C /") nil)
+     (define-key org-mode-map (kbd "C-,") nil)
 
      ;; orgm
      ;; ed: 단축키 등록
@@ -535,6 +536,8 @@
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
      ;; C + | 키로 영역을 table화 합니다
      (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
+     ;; C + . 키로 agenda를 실행합니다
+     (define-key org-mode-map (kbd "C-.") 'org-agenda)
 
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
@@ -637,8 +640,8 @@
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_cartographer.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-c l") 'org-store-link)
-;; C-c + a 키로 어느곳에서나 agenda view를 열게합니다
-(global-set-key (kbd "C-c a") 'org-agenda)
+;; C-. 키로 어느곳에서나 agenda view를 열게합니다
+(global-set-key (kbd "C-.") 'org-agenda)
 ;; C-c + r 키로 어느곳에서나 capture 기능을 열게합니다
 (global-set-key (kbd "C-c c") 'org-capture)
 ;;org-END=================================================================
@@ -935,9 +938,9 @@
 (global-set-key (kbd "C-/") 'my-revert-buffer)
 (define-key undo-tree-map (kbd "C-/") 'my-revert-buffer)
 
-;; C-. C-M-. 키로 새로운 frame을 만들고 제거합니다
-(global-set-key (kbd "C-.") 'make-frame-command)
-(global-set-key (kbd "C-M-.") 'delete-frame)
+;; C-, C-< 키로 새로운 frame을 만들고 제거합니다
+(global-set-key (kbd "C-,") 'make-frame-command)
+(global-set-key (kbd "C-<") 'delete-frame)
 
 
 ;; PACKAGE: protobuf-mode
