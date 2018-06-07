@@ -539,7 +539,7 @@
      ;; C + | 키로 영역을 table화 합니다
      (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
      ;; C + . 키로 agenda를 실행합니다
-     (define-key org-mode-map (kbd "C-.") 'org-agenda)
+     (define-key org-mode-map (kbd "C-/") 'org-agenda)
 
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
@@ -649,8 +649,9 @@
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/dyros.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-c l") 'org-store-link)
-;; C-. 키로 어느곳에서나 agenda view를 열게합니다
-(global-set-key (kbd "C-.") 'org-agenda)
+;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
+(global-set-key (kbd "C-/") 'org-agenda)
+(define-key undo-tree-map (kbd "C-/") 'org-agenda)
 ;; C-c + r 키로 어느곳에서나 capture 기능을 열게합니다
 (global-set-key (kbd "C-c c") 'org-capture)
 ;;org-END=================================================================
@@ -943,9 +944,9 @@
   (message "[+] this buffer reverted..")
 )
 
-;; Ctrl + / 키로 현재 버퍼를 업데이트합니다
-(global-set-key (kbd "C-/") 'my-revert-buffer)
-(define-key undo-tree-map (kbd "C-/") 'my-revert-buffer)
+;; Ctrl + . 키로 현재 버퍼를 업데이트합니다
+(global-set-key (kbd "C-.") 'my-revert-buffer)
+(define-key undo-tree-map (kbd "C-.") 'my-revert-buffer)
 
 ;; C-, C-< 키로 새로운 frame을 만들고 제거합니다
 (global-set-key (kbd "C-,") 'make-frame-command)
@@ -1009,6 +1010,7 @@
    (quote
     ("~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/180515_algorithm.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims_org/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
+ '(org-capture-bookmark nil)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
  '(org-scheduled-delay-days 0)
