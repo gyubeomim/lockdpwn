@@ -508,6 +508,10 @@
      (define-key org-mode-map (kbd "<C-S-right>") nil)
      (define-key org-mode-map (kbd "C-a") nil)
      (define-key org-mode-map (kbd "C-C /") nil)
+     (define-key org-mode-map (kbd "C-,") nil)
+     (define-key org-mode-map (kbd "C-c <up>") nil)
+     (define-key org-mode-map (kbd "C-c <down>") nil)
+     (define-key org-mode-map (kbd "C-c a") nil)
 
      ;; orgm
      ;; ed: 단축키 등록
@@ -517,7 +521,6 @@
      (define-key org-mode-map (kbd "<M-S-down>") 'org-shiftdown)
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
-     (define-key org-mode-map (kbd "C-c a") 'org-agenda)
      ;; org capture 기능 단축키
      (define-key org-mode-map (kbd "C-c c") 'org-capture)
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
@@ -535,6 +538,8 @@
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
      ;; C + | 키로 영역을 table화 합니다
      (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
+     ;; C + . 키로 agenda를 실행합니다
+     (define-key org-mode-map (kbd "C-/") 'org-agenda)
 
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
@@ -571,34 +576,40 @@
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
      ;; C-c c 키로 사용할 note 파일
-     (setq org-default-notes-file "~/gitrepo/ims_org/org_files/index.org")
+     (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates '(("1" "index.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/index.org" "Task")
+     (setq org-capture-templates '(("1" "edward.org: [Task]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Task")
                                     "* TODO %i%?")
-                                   ("2" "index.org: [dyros]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/index.org" "dyros")
-                                    "* TODO %i%?")
-                                   ("3" "index.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/index.org" "Note")
+                                   ("2" "edward.org: [Note]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Note")
                                     "* %i%?")
-                                   ("4" "squeezeseg.org: [Task]" entry
+                                   ("3" "squeezeseg.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Tasks")
                                     "* TODO %i%?")
-                                   ("5" "squeezeseg.org: [Issues]" entry
+                                   ("4" "squeezeseg.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Issues")
                                     "* %i%?")
-                                   ("6" "squeezeseg.org: [Note]" entry
+                                   ("5" "squeezeseg.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Note")
                                     "* %i%?")
-                                   ("7" "cartographer.org: [Task]" entry
+                                   ("6" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
                                     "* TODO %i%?")
-                                   ("8" "cartographer.org: [Issues]" entry
+                                   ("7" "cartographer.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
                                     "* %i%?")
-                                   ("9" "cartographer.org: [Note]" entry
+                                   ("8" "cartographer.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Note")
+                                    "* %i%?")
+                                   ("a" "dyros.org: [Task]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
+                                    "* TODO %i%?")
+                                   ("s" "dyros.org: [Issues]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
+                                    "* %i%?")
+                                   ("d" "dyros.org: [Note]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Note")
                                     "* %i%?")
                                    ))
 
@@ -630,15 +641,17 @@
 
 ;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
 (global-set-key (kbd "C-c s") 'org-gcal-sync)
-;; C-c + / 키로 index.org 파일을 엽니다
-(global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/index.org")))
+;; C-c + / 키로 edward.org 파일을 엽니다
+(global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_squeezeseg.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/dyros.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-c l") 'org-store-link)
-;; C-c + a 키로 어느곳에서나 agenda view를 열게합니다
-(global-set-key (kbd "C-c a") 'org-agenda)
+;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
+(global-set-key (kbd "C-/") 'org-agenda)
+(define-key undo-tree-map (kbd "C-/") 'org-agenda)
 ;; C-c + r 키로 어느곳에서나 capture 기능을 열게합니다
 (global-set-key (kbd "C-c c") 'org-capture)
 ;;org-END=================================================================
@@ -931,13 +944,13 @@
   (message "[+] this buffer reverted..")
 )
 
-;; Ctrl + / 키로 현재 버퍼를 업데이트합니다
-(global-set-key (kbd "C-/") 'my-revert-buffer)
-(define-key undo-tree-map (kbd "C-/") 'my-revert-buffer)
+;; Ctrl + . 키로 현재 버퍼를 업데이트합니다
+(global-set-key (kbd "C-.") 'my-revert-buffer)
+(define-key undo-tree-map (kbd "C-.") 'my-revert-buffer)
 
-;; C-. C-M-. 키로 새로운 frame을 만들고 제거합니다
-(global-set-key (kbd "C-.") 'make-frame-command)
-(global-set-key (kbd "C-M-.") 'delete-frame)
+;; C-, C-< 키로 새로운 frame을 만들고 제거합니다
+(global-set-key (kbd "C-,") 'make-frame-command)
+(global-set-key (kbd "C-<") 'delete-frame)
 
 
 ;; PACKAGE: protobuf-mode
@@ -995,8 +1008,9 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/180515_algorithm.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/index.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims_org/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/180515_algorithm.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims_org/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
+ '(org-capture-bookmark nil)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
  '(org-scheduled-delay-days 0)
@@ -1845,11 +1859,11 @@ created by edward 180515"
 ;; Alt + 3 키로 flycheck 기능을 ON/OFF합니다
 (global-set-key (kbd "M-3") 'global-flycheck-mode)
 
-;; Alt + 4 키로 projectile에 project를 제거합니다
-(global-set-key (kbd "M-4") 'projectile-remove-known-project)
+;; Alt + 4 키로 projectile에 project를 추가합니다
+(global-set-key (kbd "M-4") 'projectile-add-known-project)
 
-;; Alt + 5 키로 projectile에 project를 추가합니다
-(global-set-key (kbd "M-5") 'projectile-add-known-project)
+;; Alt + 5 키로 projectile에 project를 제거합니다
+(global-set-key (kbd "M-5") 'projectile-remove-known-project)
 
 ;; Alt + 6키로 remote 접속을 위한 notebooklist-open 명령어를 설정합니다
 (global-set-key (kbd "M-6") 'ein:notebooklist-open)
@@ -2278,8 +2292,8 @@ created by edward 180515"
 
 ;; Ctrl + g 키로 xml 파일 내에서 코드를 folding할 수 있습니다
 (define-key nxml-mode-map (kbd "C-g") 'hs-toggle-hiding)
-;; nxml(.launch file) 모드에서도 C-c + / 키로 index.org 파일을 엽니다
-(define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/index.org")))
+;; nxml(.launch file) 모드에서도 C-c + / 키로 edward.org 파일을 엽니다
+(define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
 
 ;; grep-find (C-p) 명령어에서 새로운 grep 창이 열리지 않고 바로 현재창이 바뀌도록 하는 코드
 (eval-when-compile (require 'cl))
