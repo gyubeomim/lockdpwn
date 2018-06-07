@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: header description for c++ by edward
+# key: ''
+# --
+/*
+ * description:  
+ *  ${1:}
+ *  
+ * author: ${2:Edward Im (gyurse@gmail.com)}
+ */

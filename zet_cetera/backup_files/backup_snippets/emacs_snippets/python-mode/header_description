@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: header descrption for python by edward
+# key: ''
+# group : descrption
+# --
+'''
+   descrition:
+	${1:}
+
+   author: ${2:Edward Im (gyurse@gmail.com)} 
+'''
