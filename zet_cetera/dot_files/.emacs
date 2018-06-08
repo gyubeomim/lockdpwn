@@ -581,37 +581,37 @@
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '(("1" "edward.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Tasks")
-                                    "*** TODO #%i\nSCHEDULED: <%(org-read-date nil nil \"\")>\n***** %?")
+                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("2" "edward.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
+                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("3" "squeezeseg.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Tasks")
-                                    "*** TODO #%i\nSCHEDULED: <%(org-read-date nil nil \"\")>\n***** %?")
+                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("4" "squeezeseg.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Issues")
-                                    "*** #%i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
+                                    "*** #%i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("5" "squeezeseg.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
+                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("6" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
-                                    "*** TODO #%i\nSCHEDULED: <%(org-read-date nil nil \"\")>\n***** %?")
+                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("7" "cartographer.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
-                                    "*** #%i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
+                                    "*** #%i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("8" "cartographer.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Note")
-                                   "*** %i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
+                                   "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("a" "dyros.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
-                                    "*** TODO #%i\nSCHEDULED: <%(org-read-date nil nil \"\")>\n***** %?")
+                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("s" "dyros.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
-                                    "*** #%i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
+                                    "*** #%i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("d" "dyros.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
+                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
