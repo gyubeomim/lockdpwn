@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
 #cotributor: 
 #name: Function description modified by edward
-#key: desc
-#group: desc
+#key: fdesc
+#group: descrption
 # --
 /*
  *  ${1:}

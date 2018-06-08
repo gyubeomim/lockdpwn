@@ -1,6 +1,7 @@
 /*
  * description:
- *  테스트용 코드
+ *  백준 2262, 토너먼트 만들기 문제를 푼 정답코드
+ *             DP를 사용해서 풀었다
  *
  * author: Edward Im (gyurse@gmail.com)
  */
