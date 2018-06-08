@@ -522,8 +522,8 @@
      (define-key org-mode-map (kbd "<M-S-down>") 'org-shiftdown)
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
-     ;; org capture 기능 단축키
-     (define-key org-mode-map (kbd "C-m") 'org-capture)
+     ;; org capture 기능 단축키 (C-m 이 <return>과 충돌나므로 H-m 으로 변경했다)
+     (define-key org-mode-map (kbd "H-m") 'org-capture)
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
      (define-key org-mode-map (kbd "C-c w") 'org-preview-html/preview)
      ;; code ==> image Update 단축키
@@ -576,7 +576,7 @@
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
-     ;; C-m 키로 사용할 note 파일
+     ;; H-m 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '(("1" "edward.org: [Task]" entry
@@ -654,7 +654,7 @@
 (global-set-key (kbd "C-/") 'org-agenda)
 (define-key undo-tree-map (kbd "C-/") 'org-agenda)
 ;; C-c + r 키로 어느곳에서나 capture 기능을 열게합니다
-(global-set-key (kbd "C-m") 'org-capture)
+(global-set-key (kbd "H-m") 'org-capture)
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
@@ -2186,6 +2186,7 @@ created by edward 180515"
 (add-hook 'prog-mode-hook '(lambda()
                         (keyboard-translate ?\C-i ?\H-i)
                         (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
+                        (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
                         (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
                         ))
 
