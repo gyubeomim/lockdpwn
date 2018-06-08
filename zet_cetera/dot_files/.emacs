@@ -512,6 +512,7 @@
      (define-key org-mode-map (kbd "C-c <up>") nil)
      (define-key org-mode-map (kbd "C-c <down>") nil)
      (define-key org-mode-map (kbd "C-c a") nil)
+     (define-key org-mode-map (kbd "C-m") nil)
 
      ;; orgm
      ;; ed: 단축키 등록
@@ -522,7 +523,7 @@
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
      ;; org capture 기능 단축키
-     (define-key org-mode-map (kbd "C-c c") 'org-capture)
+     (define-key org-mode-map (kbd "C-m") 'org-capture)
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
      (define-key org-mode-map (kbd "C-c w") 'org-preview-html/preview)
      ;; code ==> image Update 단축키
@@ -575,7 +576,7 @@
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
-     ;; C-c c 키로 사용할 note 파일
+     ;; C-m 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '(("1" "edward.org: [Task]" entry
@@ -653,7 +654,7 @@
 (global-set-key (kbd "C-/") 'org-agenda)
 (define-key undo-tree-map (kbd "C-/") 'org-agenda)
 ;; C-c + r 키로 어느곳에서나 capture 기능을 열게합니다
-(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-m") 'org-capture)
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
@@ -1011,8 +1012,10 @@
     ("~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/180515_algorithm.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims_org/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-bookmark nil)
+ '(org-default-priority 67)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
+ '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
  '(org-tags-column -180)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
@@ -1147,6 +1150,7 @@
  '(org-date ((t (:foreground "dark gray" :underline nil :weight normal))))
  '(org-link ((t (:foreground "#b58900" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
+ '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "#268bd2"))))
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
