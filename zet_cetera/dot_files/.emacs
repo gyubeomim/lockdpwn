@@ -580,38 +580,38 @@
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '(("1" "edward.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Task")
-                                    "* TODO %i%?")
+                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Tasks")
+                                    "*** TODO #%i\nSCHEDULED: <%(org-read-date nil nil \"\")>\n***** %?")
                                    ("2" "edward.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Note")
-                                    "* %i%?")
+                                    "*** %i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
                                    ("3" "squeezeseg.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Tasks")
-                                    "* TODO %i%?")
+                                    "*** TODO #%i\nSCHEDULED: <%(org-read-date nil nil \"\")>\n***** %?")
                                    ("4" "squeezeseg.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Issues")
-                                    "* %i%?")
+                                    "*** #%i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
                                    ("5" "squeezeseg.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Note")
-                                    "* %i%?")
+                                    "*** %i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
                                    ("6" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
-                                    "* TODO %i%?")
+                                    "*** TODO #%i\nSCHEDULED: <%(org-read-date nil nil \"\")>\n***** %?")
                                    ("7" "cartographer.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
-                                    "* %i%?")
+                                    "*** #%i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
                                    ("8" "cartographer.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Note")
-                                    "* %i%?")
+                                   "*** %i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
                                    ("a" "dyros.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
-                                    "* TODO %i%?")
+                                    "*** TODO #%i\nSCHEDULED: <%(org-read-date nil nil \"\")>\n***** %?")
                                    ("s" "dyros.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
-                                    "* %i%?")
+                                    "*** #%i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
                                    ("d" "dyros.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Note")
-                                    "* %i%?")
+                                    "*** %i%?%i\nSCHEDULED: <%(org-read-date nil nil \"\")>")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -1011,7 +1011,19 @@
    (quote
     ("~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/180515_algorithm.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims_org/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
+ '(org-capture-after-finalize-hook nil)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
+ ;; ed: org-capture에서 heading이 level 3가 안되는 문제를 아래 스크립트를 사용해서 해결했다
+ '(org-capture-prepare-finalize-hook
+   (quote
+    ((lambda nil
+       (goto-line
+        (+
+         (line-number-at-pos)
+         -2))
+       (beginning-of-line)
+       (insert "*")))))
  '(org-default-priority 67)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
