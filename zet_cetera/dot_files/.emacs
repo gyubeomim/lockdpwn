@@ -669,6 +669,12 @@
 ;; Alt + ' 키로 comment-dwim 명령어를 수행합니다
 (global-set-key (kbd "M-'") 'comment-dwim)
 
+;; (require 'evernote-mode)
+;; (setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8"))
+;; (setq evernote-username "gyurse")
+;; (setq evernote-developer-token "S=s1:U=94ad7:E=16b3c61dabe:C=163e4b0ad30:P=1cd:A=en-devtoken:V=2:H=25f588edfdb5ff0df834f685efa0e75b")
+
+
 ;; PACKAGE: image+
 (require 'image+)
 (imagex-global-sticky-mode t)
@@ -1012,7 +1018,7 @@
     ("~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/note/deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/note/deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/note/deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/note/cmake_commands.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -2363,5 +2369,5 @@ created by edward 180515"
       (append '((".*\\.cu\\'" . c++-mode))
               auto-mode-alist))
 
-;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다
+;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다 (vnc에서 emacs를 사용하는 경우)
 (setq x-alt-keysym 'meta)
