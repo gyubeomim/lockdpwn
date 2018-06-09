@@ -512,6 +512,7 @@
      (define-key org-mode-map (kbd "C-c <up>") nil)
      (define-key org-mode-map (kbd "C-c <down>") nil)
      (define-key org-mode-map (kbd "C-c a") nil)
+     (define-key org-mode-map (kbd "C-m") nil)
 
      ;; orgm
      ;; ed: 단축키 등록
@@ -521,8 +522,8 @@
      (define-key org-mode-map (kbd "<M-S-down>") 'org-shiftdown)
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
-     ;; org capture 기능 단축키
-     (define-key org-mode-map (kbd "C-c c") 'org-capture)
+     ;; org capture 기능 단축키 (C-m 이 <return>과 충돌나므로 H-m 으로 변경했다)
+     (define-key org-mode-map (kbd "H-m") 'org-capture)
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
      (define-key org-mode-map (kbd "C-c w") 'org-preview-html/preview)
      ;; code ==> image Update 단축키
@@ -575,42 +576,42 @@
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
-     ;; C-c c 키로 사용할 note 파일
+     ;; H-m 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '(("1" "edward.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Task")
-                                    "* TODO %i%?")
+                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Tasks")
+                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("2" "edward.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Note")
-                                    "* %i%?")
+                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("3" "squeezeseg.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Tasks")
-                                    "* TODO %i%?")
+                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("4" "squeezeseg.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Issues")
-                                    "* %i%?")
+                                    "*** #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("5" "squeezeseg.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Note")
-                                    "* %i%?")
+                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("6" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
-                                    "* TODO %i%?")
+                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("7" "cartographer.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
-                                    "* %i%?")
+                                    "*** #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("8" "cartographer.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Note")
-                                    "* %i%?")
+                                   "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("a" "dyros.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
-                                    "* TODO %i%?")
+                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("s" "dyros.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
-                                    "* %i%?")
+                                    "*** #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("d" "dyros.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Note")
-                                    "* %i%?")
+                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -653,7 +654,7 @@
 (global-set-key (kbd "C-/") 'org-agenda)
 (define-key undo-tree-map (kbd "C-/") 'org-agenda)
 ;; C-c + r 키로 어느곳에서나 capture 기능을 열게합니다
-(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "H-m") 'org-capture)
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
@@ -1008,11 +1009,24 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/180515_algorithm.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/180327_emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/180318_deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/180407_deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/180423_cmake_for_edward.org" "~/gitrepo/ims_org/org_files/180427_jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/note/deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/note/deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/note/deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/note/cmake_commands.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
+ '(org-capture-after-finalize-hook nil)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
+ '(org-capture-prepare-finalize-hook
+   (quote
+    ((lambda nil
+       (goto-line
+        (+
+         (line-number-at-pos)
+         -2))
+       (beginning-of-line)
+       (insert "*")))))
+ '(org-default-priority 67)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
+ '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
  '(org-tags-column -180)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
@@ -1147,6 +1161,7 @@
  '(org-date ((t (:foreground "dark gray" :underline nil :weight normal))))
  '(org-link ((t (:foreground "#b58900" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
+ '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "#268bd2"))))
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
@@ -2182,6 +2197,7 @@ created by edward 180515"
 (add-hook 'prog-mode-hook '(lambda()
                         (keyboard-translate ?\C-i ?\H-i)
                         (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
+                        (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
                         (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
                         ))
 
