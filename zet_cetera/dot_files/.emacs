@@ -514,7 +514,6 @@
      (define-key org-mode-map (kbd "C-c a") nil)
      (define-key org-mode-map (kbd "C-m") nil)
 
-     ;; orgm
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
      (define-key org-mode-map (kbd "<M-S-left>") 'org-shiftleft)
@@ -578,6 +577,7 @@
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
      ;; H-m 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
+     ;; orgm
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '(("1" "edward.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Tasks")
