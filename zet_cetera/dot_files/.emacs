@@ -1018,7 +1018,7 @@
     ("~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/note/deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/note/deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/note/deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/note/cmake_commands.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1034,7 +1034,7 @@
  '(org-hide-emphasis-markers t)
  '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
- '(org-tags-column -180)
+ '(org-tags-column 50)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
@@ -1172,7 +1172,7 @@
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:background "black" :weight bold :height 0.9)))))
+ '(org-tag ((t (:foreground "dim gray" :weight bold :height 0.8)))))
 
 
 
