@@ -3,8 +3,8 @@
 # key: ''
 # --
 /*
- * description:  
+ * +description:  
  *  ${1:}
  *  
- * author: ${2:Edward Im (gyurse@gmail.com)}
+ * +author: ${2:Edward Im (gyurse@gmail.com)}
  */

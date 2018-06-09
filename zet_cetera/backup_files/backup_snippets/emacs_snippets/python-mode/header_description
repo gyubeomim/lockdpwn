@@ -4,8 +4,8 @@
 # group : descrption
 # --
 '''
-   descrition:
+   +descrition:
 	${1:}
 
-   author: ${2:Edward Im (gyurse@gmail.com)} 
+   +author: ${2:Edward Im (gyurse@gmail.com)} 
 '''
