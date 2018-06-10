@@ -627,7 +627,7 @@
       org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
       org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo/ims_org/org_files/gcal.org")))
 ;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
-(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
+(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync nil nil t) ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 
 ;; org-agenda-view에서 gcal.org의 색깔만 변경하는 코드
@@ -641,7 +641,7 @@
                                )))))
 
 ;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
-(global-set-key (kbd "C-c s") 'org-gcal-sync)
+(global-set-key (kbd "C-c s") (lambda () (interactive)(org-gcal-sync nil nil t) ))
 ;; C-c + / 키로 edward.org 파일을 엽니다
 (global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
