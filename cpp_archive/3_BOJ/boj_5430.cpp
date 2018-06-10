@@ -1,10 +1,11 @@
 /*
-  c++ ==> 백준 5430, AC 문제를 푼 정답 코드
-
-          deque를 사용해서 문제를 풀었다
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220613867339&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 5430, AC 문제를 푼 정답 코드
+ * #+CATEGORY:     DEQUE
+ * #+LEVEL:        **
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220613867339&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cstdio>
 #include <deque>

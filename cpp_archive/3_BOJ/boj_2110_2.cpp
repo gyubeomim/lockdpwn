@@ -1,9 +1,11 @@
 /*
-  c++ ==> 백준 2110, 공유기 설치 문제를 푼 정답코드
-
-
-  code from [http://codersbrunch.blogspot.kr/2016/11/2110.html]
-*/
+ * #+DESCRIPTION:  백준 2110, 공유기 설치 문제를 푼 정답코드
+ * #+CATEGORY:
+ * #+LEVEL:        -
+ * #+FROM:         http://codersbrunch.blogspot.kr/2016/11/2110.html
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <algorithm>
 

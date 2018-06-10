@@ -1,10 +1,11 @@
 /*
-  c++ ==> 백준 2096, 내려가기 문제를 푼 정답코드
-                    Dynamic Programming (DP)를 사용해서 푼 코드
-
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220554100838&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 2096, 내려가기 문제를 푼 정답코드
+ * #+CATEGORY:     DP
+ * #+LEVEL:        -
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220554100838&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cstdio>
 #include <cstring>

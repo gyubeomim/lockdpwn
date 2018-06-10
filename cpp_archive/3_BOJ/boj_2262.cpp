@@ -1,10 +1,10 @@
 /*
- * description:
- *  백준 2262, 토너먼트 만들기 문제를 푼 정답코드
- *             DP를 사용해서 풀었다
- *             전체 시간복잡도는 O(N^3) (DP를 사용 안 할 경우 O(N^4))
- *
- * author: Edward Im (gyurse@gmail.com)
+ * #+DESCRIPTION:  백준 2262, 토너먼트 만들기 문제를 푼 정답코드
+ * #+CATEGORY:     DP
+ * #+LEVEL:        -
+ * #+FROM:         -
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <cstdio>
 #include <cstring>

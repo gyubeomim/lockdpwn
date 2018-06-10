@@ -1,10 +1,11 @@
 /*
-  c++ ==> 백준 5052, 전화번호 목록 문제를 푼 정답코드
-
-          substr() 함수를 사용해서 간단하게 풀었다. 이 방식이 조금 더 직관적인듯
-
-  code from [https://fatc.club/2017/03/01/889]
-*/
+ * #+DESCRIPTION:  백준 5052, 전화번호 목록 문제를 푼 정답코드
+ * #+CATEGORY:     string, substr()
+ * #+LEVEL:        -
+ * #+FROM:         https://fatc.club/2017/03/01/889
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <vector>
 #include <algorithm>

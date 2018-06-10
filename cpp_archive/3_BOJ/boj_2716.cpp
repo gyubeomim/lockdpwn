@@ -1,9 +1,11 @@
 /*
-  c++ ==> 백준 2716, 원숭이 매달기 문제를 푼 정답코드
-
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220444375611&parentCategoryNo=271&categoryNo=302&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 2716, 원숭이 매달기 문제를 푼 정답코드
+ * #+CATEGORY:
+ * #+LEVEL:        -
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220444375611&parentCategoryNo=271&categoryNo=302&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cmath>
 #include <cstdio>

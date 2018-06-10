@@ -1,11 +1,10 @@
 /*
- * +description:
- *  백준 9012, 괄호 문제를 푼 정답 코드
- *            스택의 성격을 이용해 푼 코드
- *
- *  code from [boj 알고리즘기초 스택]
- *
- * +author: Edward Im (gyurse@gmail.com)
+ * #+DESCRIPTION:  백준 9012, 괄호 문제를 푼 정답 코드
+ * #+CATEGORY:     STACK
+ * #+LEVEL:        -
+ * #+FROM:         알고리즘기초 스택
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <cstdio>
 #include <iostream>

@@ -1,9 +1,11 @@
 /*
-  c++ ==> 백준 2086, 피보나치 수의 합을 푼 정답 코드
-
-
-  code from [https://github.com/kesakiyo/Problem-Solving/blob/master/BOJ/math%20-%202086.cpp]
-*/
+ * #+DESCRIPTION:  백준 2086, 피보나치 수의 합을 푼 정답 코드
+ * #+CATEGORY:
+ * #+LEVEL:        -
+ * #+FROM:         https://github.com/kesakiyo/Problem-Solving/blob/master/BOJ/math%20-%202086.cpp
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <cstdio>
 
 typedef long long LL;

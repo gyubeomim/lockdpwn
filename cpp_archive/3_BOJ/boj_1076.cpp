@@ -1,13 +1,11 @@
 /*
-  c++ ==> 백준 1076, 저항 문제를 푼 코드
-
-          전자 제품에는 저항이 들어간다. 저항은 색 3개를 이용해서 그 저항이 몇 옴인지 나타낸다.
-          처음 색 2개는 저항의 값이고, 마지막 색은 곱해야 하는 값이다.
-          첫째 줄에 입력을 주어진 저항의 저항값을 출력한다.
-
-          Input  : yello violet red
-          Output : 4700
-*/
+ * #+DESCRIPTION:  백준 1076, 저항 문제를 푼 코드
+ * #+CATEGORY:
+ * #+LEVEL:        -
+ * #+FROM:         -
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <string>
 #include <map>

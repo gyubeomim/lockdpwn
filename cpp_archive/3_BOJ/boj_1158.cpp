@@ -1,10 +1,10 @@
 /*
- * +description:
- *  백준 1158, 조세퍼스 문제를 푼 정답 코드
- *             큐를 사용해 문제를 풀었다
- *
- * code from [boj 알고리즘기초, 큐덱문자열]
- * +author: Edward Im (gyurse@gmail.com)
+ * #+DESCRIPTION:  백준 1158, 조세퍼스 문제를 푼 정답 코드
+ * #+CATEGORY:     Queue
+ * #+LEVEL:        -
+ * #+FROM:         알고리즘기초, 큐덱문자열
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <iostream>
 #include <queue>

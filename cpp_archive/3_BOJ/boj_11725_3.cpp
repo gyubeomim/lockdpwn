@@ -1,9 +1,11 @@
 /*
-  c++ ==> 백준 11725, 트리의 부모 찾기 문제를 푼 정답 코드
-
-
-  code from [http://debuglog.tistory.com/86]
-*/
+ * #+DESCRIPTION: 백준 11725, 트리의 부모 찾기 문제를 푼 정답 코드
+ * #+CATEGORY:
+ * #+LEVEL:        -
+ * #+FROM:         http://debuglog.tistory.com/86
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <stack>
 

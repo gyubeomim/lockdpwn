@@ -1,11 +1,11 @@
 /*
-  c++ ==> 백준 1644, 소수의 연속합을 푼 정답 코드
-
-          에라토스테네스의 체로 소수뽑기 + 투포인터를 사용해서 풀었다
-
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220553180497&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 1644, 소수의 연속합을 푼 정답 코드
+ * #+CATEGORY:     에라토스테네스의 체 + 투포인터
+ * #+LEVEL:        -
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220553180497&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cstdio>
 #include <vector>

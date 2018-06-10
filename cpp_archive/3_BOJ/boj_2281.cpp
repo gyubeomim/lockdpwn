@@ -1,9 +1,11 @@
 /*
-  c++ ==> 백준 2281, 데스노트 문제를 푼 정답 코드
-                     다이나믹프로그래밍(DP)을 적용해서 풀었다
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220547614387&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 2281, 데스노트 문제를 푼 정답 코드
+ * #+CATEGORY:     DP
+ * #+LEVEL:        -
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220547614387&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cstdio>
 #include <cstring>

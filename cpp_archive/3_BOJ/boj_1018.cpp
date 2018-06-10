@@ -1,9 +1,11 @@
 /*
-  c++ ==> 백준 1018, 체스판 문제를 푼 정답 코드
-          Brute force 방식으로 모든 경우의수를 돌면서 정답을 계산하는 방식
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220613894923&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 1018, 체스판 문제를 푼 정답 코드
+ * #+CATEGORY:     brute force
+ * #+LEVEL:        -
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220613894923&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cstdio>
 using namespace std;

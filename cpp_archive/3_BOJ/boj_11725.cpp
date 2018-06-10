@@ -1,9 +1,11 @@
 /*
-  c++ ==> boj 11725, 트리의 부모 찾기를 푼 정답 코드
-
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220576195670&parentCategoryNo=271&categoryNo=302&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 11725, 트리의 부모 찾기 문제를 푼 정답 코드
+ * #+CATEGORY:     BFS
+ * #+LEVEL:        -
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220576195670&parentCategoryNo=271&categoryNo=302&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cstring>
 #include <vector>

@@ -1,10 +1,11 @@
 /*
-  c++ ==> 백준 1700, 멀티탭 스케쥴링 문제를 푼 정답코드
-                     greedy 그리디 알고리즘을 사용해 문제를 풀었다
-
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220735252997&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 1700, 멀티탭 스케쥴링 문제를 푼 정답코드
+ * #+CATEGORY:     greedy
+ * #+LEVEL:        **
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220735252997&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cstdio>
 using namespace std;

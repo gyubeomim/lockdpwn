@@ -1,8 +1,11 @@
 /*
-  c++ ==> 백준 1629, 곱셈 문제를 푼 정답 코드
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220583413569&parentCategoryNo=271&categoryNo=302&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 1629, 곱셈 문제를 푼 정답 코드
+ * #+CATEGORY:
+ * #+LEVEL:        -
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220583413569&parentCategoryNo=271&categoryNo=302&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <cstdio>
 
 using namespace std;

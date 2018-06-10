@@ -1,9 +1,11 @@
 /*
-  c++ ==> 백준 2086번, 피보나치 수의 합을 푼 정답 코드
-
-
-  code from [https://fatc.club/2017/03/01/534]
-*/
+ * #+DESCRIPTION:  백준 2086번, 피보나치 수의 합을 푼 정답 코드
+ * #+CATEGORY:
+ * #+LEVEL:        -
+ * #+FROM:         https://fatc.club/2017/03/01/534
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <cstdio>
 
 const int MOD = 1000000000;

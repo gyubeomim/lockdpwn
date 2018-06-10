@@ -1,10 +1,10 @@
 /*
- * +description:
- *  백준 10799, 쇠막대기 문제를 푼 정답 코드
- *             스택의 index를 사용해서 레이저와 아닌것을 구분하는 방법을 사용함
- *
- *  code from [boj 알고리즘기초, 스택]
- * +author: Edward Im (gyurse@gmail.com)
+ * #+DESCRIPTION:  백준 10799, 쇠막대기 문제를 푼 정답 코드
+ * #+CATEGORY:     stack
+ * #+LEVEL:        -
+ * #+FROM:         알고리즘기초, 스택
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <iostream>
 #include <stack>

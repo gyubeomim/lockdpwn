@@ -1,10 +1,11 @@
 /*
-  c++ ==> 백준 2096, 내려가기 문제를 푼 정답 코드
-
-  이 코드가 좀 더 직관적이다. cache를 활용함
-
-  code from [https://github.com/simjaemun2/BaekJoon/blob/7e1e8fa7ca3f040ecabc41ea9954532166dc81ca/BOJ2096/BOJ2096.cpp]
-*/
+ * #+DESCRIPTION:  백준 2096, 내려가기 문제를 푼 정답 코드
+ * #+CATEGORY:
+ * #+LEVEL:        -
+ * #+FROM:         https://github.com/simjaemun2/BaekJoon/blob/7e1e8fa7ca3f040ecabc41ea9954532166dc81ca/BOJ2096/BOJ2096.cpp
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cstring>
 #include <algorithm>

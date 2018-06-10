@@ -1,22 +1,11 @@
 /*
-  c++ ==> 백준 10825, 국영수 문제를 푼 코드2
-
-Input :
-12
-Junkyu 50 60 100
-Sangkeun 80 60 50
-Sunyoung 80 70 100
-Soong 50 60 90
-Haebin 50 60 100
-Kangsoo 60 80 100
-Donghyuk 80 60 100
-Sei 70 70 70
-Wonseob 70 70 90
-Sanghyun 70 70 80
-nsj 80 80 80
-Taewhan 50 60 90
-
-*/
+ * #+DESCRIPTION:  백준 10825, 국영수 문제를 푼 코드
+ * #+CATEGORY:
+ * #+LEVEL:        -
+ * #+FROM:         -
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <algorithm>
 #include <iostream>
 #include <string>
