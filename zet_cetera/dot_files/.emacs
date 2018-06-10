@@ -514,7 +514,6 @@
      (define-key org-mode-map (kbd "C-c a") nil)
      (define-key org-mode-map (kbd "C-m") nil)
 
-     ;; orgm
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
      (define-key org-mode-map (kbd "<M-S-left>") 'org-shiftleft)
@@ -578,6 +577,7 @@
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
      ;; H-m 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
+     ;; orgm
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '(("1" "edward.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Tasks")
@@ -668,6 +668,12 @@
 ;; PACKAGE: comment-dwim
 ;; Alt + ' 키로 comment-dwim 명령어를 수행합니다
 (global-set-key (kbd "M-'") 'comment-dwim)
+
+;; (require 'evernote-mode)
+;; (setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8"))
+;; (setq evernote-username "gyurse")
+;; (setq evernote-developer-token "S=s1:U=94ad7:E=16b3c61dabe:C=163e4b0ad30:P=1cd:A=en-devtoken:V=2:H=25f588edfdb5ff0df834f685efa0e75b")
+
 
 ;; PACKAGE: image+
 (require 'image+)
@@ -1028,7 +1034,7 @@
  '(org-hide-emphasis-markers t)
  '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
- '(org-tags-column -180)
+ '(org-tags-column 50)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
@@ -1166,7 +1172,7 @@
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:background "black" :weight bold :height 0.9)))))
+ '(org-tag ((t (:foreground "dim gray" :weight bold :height 0.8)))))
 
 
 
@@ -2363,5 +2369,5 @@ created by edward 180515"
       (append '((".*\\.cu\\'" . c++-mode))
               auto-mode-alist))
 
-;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다
+;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다 (vnc에서 emacs를 사용하는 경우)
 (setq x-alt-keysym 'meta)

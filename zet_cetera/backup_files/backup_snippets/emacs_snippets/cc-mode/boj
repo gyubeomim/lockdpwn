@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: boj by edward
+# key: boj
+# --
+/*
+ * #+DESCRIPTION:  ${1: }
+ * #+CATEGORY:     ${2: }
+ * #+LEVEL:        ${3: }
+ * #+DATE:         `(format-time-string "%Y-%m-%d-%a")`
+ * #+AUTHOR:       ${4:Edward Im (gyurse@gmail.com)}
+ */
