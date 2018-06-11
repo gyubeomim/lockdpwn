@@ -1,9 +1,11 @@
 /*
-  c++ ==> 백준 5427, 불 문제를 푼 정답 코드
-                     Q, FQ로 상태 큐를 상근이와 불로 나눈다
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220710219683&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 5427, 불 문제를 푼 정답 코드
+ * #+CATEGORY:     BFS, Queue
+ * #+LEVEL:        **
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220710219683&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cstdio>
 #include <queue>

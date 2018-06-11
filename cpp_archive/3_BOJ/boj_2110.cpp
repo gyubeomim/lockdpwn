@@ -1,11 +1,11 @@
 /*
-  c++ ==> 백준 2110, 공유기 설치 문제를 푼 정답 코드
-
-                    Greedy 알고리즘과 이분 탐색 알고리즘을 사용했다
-
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220444432628&parentCategoryNo=271&categoryNo=302&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 2110, 공유기 설치 문제를 푼 정답 코드
+ * #+CATEGORY:     Greedy, 이분탐색
+ * #+LEVEL:        -
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220444432628&parentCategoryNo=271&categoryNo=302&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <algorithm>
 

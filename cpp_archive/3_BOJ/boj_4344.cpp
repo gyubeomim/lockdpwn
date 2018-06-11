@@ -1,9 +1,11 @@
 /*
-  c++ ==> 백준 4344, 평균은 넘겠지 문제를 벡터를 사용해서 푼 정답코드
-
-
-  code from [http://zong.tistory.com/2]
-*/
+ * #+DESCRIPTION:  백준 4344, 평균은 넘겠지 문제를 벡터를 사용해서 푼 정답코드
+ * #+CATEGORY:     vector
+ * #+LEVEL:        -
+ * #+FROM:         http://zong.tistory.com/2
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <numeric>
 #include <vector>

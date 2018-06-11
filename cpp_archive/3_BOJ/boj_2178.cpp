@@ -1,10 +1,11 @@
 /*
-  c++ ==> 백준 2178, 미로 탐색 문제를 BFS로 푼 코드
-
-
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220574993422&parentCategoryNo=271&categoryNo=302&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 2178, 미로 탐색을 푼 정답코드
+ * #+CATEGORY:     BFS
+ * #+LEVEL:        -
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220574993422&parentCategoryNo=271&categoryNo=302&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cstdio>
 #include <queue>

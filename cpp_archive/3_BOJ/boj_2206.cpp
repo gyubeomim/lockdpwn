@@ -1,11 +1,11 @@
 /*
-  c++ ==> 백준 2206, 벽 부수고 이동하기를 푼 정답 코드
-
-          BFS + 벽 부수는 것을 감지하는 crash 변수를 사용해 문제를 풀었다
-
-
-  code from [http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220573411336&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList]
-*/
+ * #+DESCRIPTION:  백준 2206, 벽 부수고 이동하기를 푼 정답 코드
+ * #+CATEGORY:     BFS
+ * #+LEVEL:        -
+ * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220573411336&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <cstdio>
 #include <queue>

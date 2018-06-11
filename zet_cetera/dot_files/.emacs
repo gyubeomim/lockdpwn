@@ -494,7 +494,7 @@
 (eval-after-load "org"
   '(progn
      ;; ed: 단축키 해제
-     (define-key org-mode-map (kbd "<M-right>") nil) ; erasing a keybinding.
+     (define-key org-mode-map (kbd "<M-right>") nil)
      (define-key org-mode-map (kbd "<M-left>") nil)
      (define-key org-mode-map (kbd "<S-right>") nil)
      (define-key org-mode-map (kbd "<S-left>") nil)
@@ -513,6 +513,8 @@
      (define-key org-mode-map (kbd "C-c <down>") nil)
      (define-key org-mode-map (kbd "C-c a") nil)
      (define-key org-mode-map (kbd "C-m") nil)
+     (define-key org-mode-map (kbd "M-f") nil)
+     (define-key org-mode-map (kbd "<C-down>") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -540,7 +542,10 @@
      (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
      ;; C + . 키로 agenda를 실행합니다
      (define-key org-mode-map (kbd "C-/") 'org-agenda)
-
+     ;; C-down + M-f 키를 기본 cpp,python 파일에서와 같이 구문단위로 이동하도록 설정합니다
+     ;; org.el에서 remap이 되어있던 코드를 주석처리하니 아래 두 코드가 정상작동한다
+     (define-key org-mode-map (kbd "<C-down>") 'forward-paragraph)
+     (define-key org-mode-map (kbd "M-f") 'forward-paragraph)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -585,6 +590,7 @@
                                    ("2" "edward.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Note")
                                     "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
                                    ("3" "squeezeseg.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Tasks")
                                     "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
@@ -594,6 +600,7 @@
                                    ("5" "squeezeseg.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Note")
                                     "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
                                    ("6" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
                                     "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
@@ -602,7 +609,8 @@
                                     "*** #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("8" "cartographer.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Note")
-                                   "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
                                    ("a" "dyros.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
                                     "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
@@ -612,11 +620,17 @@
                                    ("d" "dyros.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Note")
                                     "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
+                                   ("w" "emacs.org: [Task]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Tasks")
+                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("e" "emacs.org: [Issues]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Issues")
+                                    "*** #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
      (setq org-agenda-log-mode-items '(closed clock state))
-
 ))
 ;; (add-to-ordered-list 'emulation-mode-map-alists '((org-mode . ,my-org-mode-map)) 0)
 
@@ -627,21 +641,21 @@
       org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
       org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo/ims_org/org_files/gcal.org")))
 ;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
-(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
+(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync nil nil t) ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 
 ;; org-agenda-view에서 gcal.org의 색깔만 변경하는 코드
 (add-hook 'org-agenda-finalize-hook
-    (lambda ()
-      (save-excursion
-        (goto-char (point-min))
-        (while (re-search-forward "gcal:" nil t)
-          (add-text-properties (match-beginning 0) (point-at-eol)
-                               '(face (:foreground "dark orange"))
-                               )))))
+          (lambda ()
+            (save-excursion
+              (goto-char (point-min))
+              (while (re-search-forward "gcal:" nil t)
+                (add-text-properties (match-beginning 0) (point-at-eol)
+                                     '(face (:foreground "dark orange"))
+                                     )))))
 
 ;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
-(global-set-key (kbd "C-c s") 'org-gcal-sync)
+(global-set-key (kbd "C-c s") (lambda () (interactive)(org-gcal-sync nil nil t) ))
 ;; C-c + / 키로 edward.org 파일을 엽니다
 (global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
@@ -653,7 +667,7 @@
 ;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
 (global-set-key (kbd "C-/") 'org-agenda)
 (define-key undo-tree-map (kbd "C-/") 'org-agenda)
-;; C-c + r 키로 어느곳에서나 capture 기능을 열게합니다
+;; H-m 키로 어느곳에서나 capture 기능을 열게합니다
 (global-set-key (kbd "H-m") 'org-capture)
 ;;org-END=================================================================
 
@@ -1015,7 +1029,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/emacs_useful_functions.org" "~/gitrepo/ims_org/org_files/note/deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/note/deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/note/deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/note/cmake_commands.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/note/deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/note/deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/note/cmake_commands.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1925,6 +1939,7 @@ created by edward 180515"
 
 ;; Ctrl + j 키로 해당 커서의 오른쪽부분만 삭제합니다
 (global-set-key (kbd "C-j") 'kill-visual-line)
+(define-key org-mode-map (kbd "C-j") 'kill-visual-line)
 
 ;; Ctrl + a 키로 전체선택하게 합니다
 (global-set-key "\C-a" 'mark-whole-buffer)

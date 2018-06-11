@@ -1,9 +1,11 @@
 /*
-  c++ ==> 백준 11725, 트리의 부모 찾기를 BFS로 푼 정답 코드
-
-
-  code from [http://hellogohn.com/post_one230]
-*/
+ * #+DESCRIPTION:  백준 11725, 트리의 부모 찾기 문제를 푼 정답 코드
+ * #+CATEGORY:     BFS
+ * #+LEVEL:        -
+ * #+FROM:         http://hellogohn.com/post_one230
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <vector>
 #include <queue>

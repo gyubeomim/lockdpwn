@@ -5,7 +5,8 @@
 /*
  * #+DESCRIPTION:  ${1: }
  * #+CATEGORY:     ${2: }
- * #+LEVEL:        ${3: }
+ * #+LEVEL:        ${3:-}
+ * #+FROM:         ${4:-}
  * #+DATE:         `(format-time-string "%Y-%m-%d-%a")`
- * #+AUTHOR:       ${4:Edward Im (gyurse@gmail.com)}
+ * #+AUTHOR:       ${5:Edward Im (gyurse@gmail.com)}
  */

@@ -1,26 +1,36 @@
 #include <iostream>
-#include <cstdio>
 using namespace std;
 
-int d[11];
+typedef long long ll;
+
+ll d[101][10];
+ll mod = 1000000000;
 
 int main() {
-  int T,n;
-  cin >> T;
+  int n;
+  cin >> n;
 
-  d[0] = 1;
-  d[1] = 1;
-  d[2] = 2;
-  d[3] = 4;
-
-  while(T--) {
-    cin >> n;
-
-    for(int i=4; i<=n; i++) {
-      d[i] = d[i-1] + d[i-2] + d[i-3];
-    }
-    cout << d[n] << endl;
+  for(int i=1; i<=9; i++) {
+    d[1][i] = 1;
   }
+
+  for(int i=2; i<=n; i++) {
+    for(int j=0; j<=9; j++) {
+      d[i][j] = 0;
+
+      if(j-1>=0) d[i][j] += d[i-1][j-1];
+      if(j+1<=9) d[i][j] += d[i-1][j+1];
+
+      d[i][j] %= mod;
+    }
+  }
+
+  ll ans = 0;
+  for(int i=0; i<=9; i++) {
+    ans += d[n][i];
+  }
+  ans %= mod;
+  cout << ans << endl;
 
   return 0;
 }

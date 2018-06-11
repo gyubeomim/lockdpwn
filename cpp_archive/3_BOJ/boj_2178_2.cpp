@@ -1,9 +1,11 @@
 /*
-  c++ ==> 백준 2178, 미로 탐색을 푼 정답코드
-
-
-  code from [http://gnujoow.github.io/boj/2016/10/15/BOJ6-2178/]
-*/
+ * #+DESCRIPTION:  백준 2178, 미로 탐색을 푼 정답코드
+ * #+CATEGORY:     BFS
+ * #+LEVEL:        -
+ * #+FROM:         http://gnujoow.github.io/boj/2016/10/15/BOJ6-2178/
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <iostream>
 #include <queue>
 #include <cstdio>

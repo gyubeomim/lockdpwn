@@ -1,11 +1,10 @@
 /*
- * +description:
- *  백준 1463, 1로 만들기 문제를 푼 정답 코드
- *             DP를 사용해서 문제를 풀었다
- *
- *  code from [boj 알고리즘기초, 다이나믹프로그래밍1 문제풀이1]
- *
- * +author: Edward Im (gyurse@gmail.com)
+ * #+DESCRIPTION:  백준 1463, 1로 만들기 문제를 푼 정답 코드
+ * #+CATEGORY:     DP
+ * #+LEVEL:        -
+ * #+FROM:         알고리즘기초, 다이나믹프로그래밍1 문제풀이1
+ * #+DATE:         2018-06-10-일
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <iostream>
 using namespace std;
