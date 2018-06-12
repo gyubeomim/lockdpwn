@@ -523,8 +523,8 @@
      (define-key org-mode-map (kbd "<M-S-down>") 'org-shiftdown)
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
-     ;; org capture 기능 단축키 (C-m 이 <return>과 충돌나므로 H-m 으로 변경했다)
-     (define-key org-mode-map (kbd "H-m") 'org-capture)
+     ;; org capture 기능 단축키 (C-m 이 <return>과 충돌나므로 C-. 으로 변경했다)
+     (define-key org-mode-map (kbd "C-.") 'org-capture)
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
      (define-key org-mode-map (kbd "C-c w") 'org-preview-html/preview)
      ;; code ==> image Update 단축키
@@ -582,7 +582,7 @@
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/note/*.org"))
-     ;; H-m 키로 사용할 note 파일
+     ;; C-. 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
@@ -672,15 +672,15 @@
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_cartographer.org")))
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/dyros.org")))
 (global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/emacs.org")))
-;; C-n 키로 link.opg 파일을 엽니다
-(global-set-key (kbd "C-n") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/link.org")))
+;; C-, 키로 link.opg 파일을 엽니다
+(global-set-key (kbd "C-,") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/link.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-c l") 'org-store-link)
 ;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
 (global-set-key (kbd "C-/") 'org-agenda)
 (define-key undo-tree-map (kbd "C-/") 'org-agenda)
-;; H-m 키로 어느곳에서나 capture 기능을 열게합니다
-(global-set-key (kbd "H-m") 'org-capture)
+;; C-. 키로 어느곳에서나 capture 기능을 열게합니다
+(global-set-key (kbd "C-.") 'org-capture)
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
@@ -977,13 +977,13 @@
   (message "[+] this buffer reverted..")
 )
 
-;; Ctrl + . 키로 현재 버퍼를 업데이트합니다
-(global-set-key (kbd "C-.") 'my-revert-buffer)
-(define-key undo-tree-map (kbd "C-.") 'my-revert-buffer)
+;; Ctrl + m 키로 현재 버퍼를 업데이트합니다
+(global-set-key (kbd "H-m") 'my-revert-buffer)
+(define-key undo-tree-map (kbd "H-m") 'my-revert-buffer)
 
-;; C-, C-< 키로 새로운 frame을 만들고 제거합니다
-(global-set-key (kbd "C-,") 'make-frame-command)
-(global-set-key (kbd "C-<") 'delete-frame)
+;; C-n C-S-n 키로 새로운 frame을 만들고 제거합니다
+(global-set-key (kbd "C-n") 'make-frame-command)
+(global-set-key (kbd "C-S-n") 'delete-frame)
 
 
 ;; PACKAGE: protobuf-mode
