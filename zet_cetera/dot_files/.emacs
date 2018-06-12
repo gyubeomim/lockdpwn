@@ -581,6 +581,7 @@
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
+     (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/note/*.org"))
      ;; H-m 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
      ;; orgm
@@ -588,9 +589,9 @@
      (setq org-capture-templates '(("1" "edward.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("2" "edward.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   ("2" "edward.org: [Issues]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Issues")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("3" "parkable.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Tasks")
@@ -628,6 +629,10 @@
                                    ("e" "emacs.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+
+                                   ("r" "ubuntu_tips.org: [Ubuntu]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -642,7 +647,10 @@
       org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
       org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo/ims_org/org_files/gcal.org")))
 ;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
-(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync nil nil t) ))
+(add-hook 'org-agenda-mode-hook (lambda ()
+                                  (org-gcal-sync nil nil t)
+                                  (define-key org-agenda-mode-map (kbd "C-n") nil)
+                                  ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 
 ;; org-agenda-view에서 gcal.org의 색깔만 변경하는 코드
@@ -664,6 +672,8 @@
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_cartographer.org")))
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/dyros.org")))
 (global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/emacs.org")))
+;; C-n 키로 link.opg 파일을 엽니다
+(global-set-key (kbd "C-n") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/link.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-c l") 'org-store-link)
 ;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
@@ -1031,7 +1041,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/note/parking_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/note/deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/note/deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/note/cmake_commands.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/parking_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/note/deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/note/deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
