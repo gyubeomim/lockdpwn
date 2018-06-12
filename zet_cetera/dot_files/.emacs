@@ -563,10 +563,11 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "DOING" "PENDING" "|" "CANCELLED"  "DONE")))
+           '((sequence "TODO" "DOING" "PENDING" "|" "REPLACED" "CANCELLED"  "DONE")))
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
            '(("CANCELLED" . "red")
+             ("REPLACED" . "purple")
              ("PENDING" . "orange")
              ("DOING" . "yellow")
              ))
@@ -580,53 +581,58 @@
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
+     (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/note/*.org"))
      ;; H-m 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '(("1" "edward.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Tasks")
-                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("2" "edward.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("2" "edward.org: [Issues]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Issues")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
-                                   ("3" "squeezeseg.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Tasks")
-                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("4" "squeezeseg.org: [Issues]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Issues")
-                                    "*** #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("5" "squeezeseg.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "Note")
+                                   ("3" "parkable.org: [Task]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Tasks")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("4" "parkable.org: [Issues]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Issues")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("5" "parkable.org: [Note]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Note")
                                     "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("6" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
-                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("7" "cartographer.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
-                                    "*** #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("8" "cartographer.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Note")
                                     "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("a" "dyros.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
-                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("s" "dyros.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
-                                    "*** #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("d" "dyros.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Note")
                                     "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("w" "emacs.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Tasks")
-                                    "*** TODO #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("e" "emacs.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Issues")
-                                    "*** #%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+
+                                   ("r" "ubuntu_tips.org: [Ubuntu]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -641,7 +647,10 @@
       org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
       org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo/ims_org/org_files/gcal.org")))
 ;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
-(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync nil nil t) ))
+(add-hook 'org-agenda-mode-hook (lambda ()
+                                  (org-gcal-sync nil nil t)
+                                  (define-key org-agenda-mode-map (kbd "C-n") nil)
+                                  ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 
 ;; org-agenda-view에서 gcal.org의 색깔만 변경하는 코드
@@ -659,9 +668,12 @@
 ;; C-c + / 키로 edward.org 파일을 엽니다
 (global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
-(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_squeezeseg.org")))
+(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_parkable.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_cartographer.org")))
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/dyros.org")))
+(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/emacs.org")))
+;; C-n 키로 link.opg 파일을 엽니다
+(global-set-key (kbd "C-n") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/link.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-c l") 'org-store-link)
 ;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
@@ -1029,7 +1041,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/note/deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/note/deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/note/cmake_commands.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_squeezeseg.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/parking_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/note/deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/note/deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1042,7 +1054,37 @@
          (line-number-at-pos)
          -2))
        (beginning-of-line)
-       (insert "*")))))
+       (insert "*"))
+     (lambda nil
+       (progn
+         (setq num 1)
+         (loop
+          (< num 500)
+          (let
+              ((numbering
+                (concat "#"
+                        (number-to-string num)))
+               (content
+                (with-current-buffer
+                    (cadr
+                     (split-string
+                      (buffer-name)
+                      "-"))
+                  (buffer-substring-no-properties
+                   (point-min)
+                   (point-max)))))
+            (if
+                (save-excursion
+                  (goto-char
+                   (point-min))
+                  (string-match numbering content))
+                nil
+              (return
+               (progn
+                 (end-of-line)
+                 (insert numbering)))))
+          (setq num
+                (1+ num))))))))
  '(org-default-priority 67)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
@@ -2132,6 +2174,9 @@ created by edward 180515"
                                   ))
              (local-set-key (kbd "C-c C-v") 'enlarge-window)
              (local-set-key (kbd "M-j") 'next-line)
+
+             (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
+             (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
           ))
 
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
