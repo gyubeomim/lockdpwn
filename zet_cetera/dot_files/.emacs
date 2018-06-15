@@ -593,34 +593,34 @@
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
-                                   ("3" "parkable.org: [Task]" entry
+                                   ("3" "dyros.org: [Task]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("4" "dyros.org: [Issues]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("5" "dyros.org: [Note]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Note")
+                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
+                                   ("6" "parkable.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("4" "parkable.org: [Issues]" entry
+                                   ("7" "parkable.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("5" "parkable.org: [Note]" entry
+                                   ("8" "parkable.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Note")
                                     "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("6" "cartographer.org: [Task]" entry
+                                   ("a" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("7" "cartographer.org: [Issues]" entry
+                                   ("s" "cartographer.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("8" "cartographer.org: [Note]" entry
+                                   ("d" "cartographer.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
-
-                                   ("a" "dyros.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("s" "dyros.org: [Issues]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("d" "dyros.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Note")
                                     "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("w" "emacs.org: [Task]" entry
@@ -688,7 +688,7 @@
 (smartparens-global-mode t)
 
 ;; Alt + a 키로 괄호를 한 번에 지워주는 키를 설정합니다
-(global-set-key (kbd "M-a") 'sp-splice-sexp)
+;; (global-set-key (kbd "M-a") 'sp-splice-sexp)
 ;;(define-key c++-mode-map (kbd "M-a") 'sp-splice-sexp)
 
 ;; PACKAGE: comment-dwim
@@ -2015,15 +2015,15 @@ created by edward 180515"
 (global-set-key (kbd "C-c '") 'copy-buffer-to-file)
 
 
-;; Ctrl + Alt + e 키로 현재 커서의 라인 맨 앞칸으로 이동합니다
-(global-set-key (kbd "C-M-e") 'move-beginning-of-line)
+;; Alt + e 키로 현재 커서의 라인 맨 앞칸으로 이동합니다
+(global-set-key (kbd "M-e") 'move-beginning-of-line)
 (add-hook 'c-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-M-e") 'move-beginning-of-line))
+             (local-set-key (kbd "M-e") 'move-beginning-of-line))
           )
 (add-hook 'c++-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-M-e") 'move-beginning-of-line))
+             (local-set-key (kbd "M-e") 'move-beginning-of-line))
           )
 
 ;; Ctrl + p 키로 grep 명령어를 실행합니다
@@ -2274,8 +2274,9 @@ created by edward 180515"
 ;; Ctrl + u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다
 (global-set-key (kbd "C-u") 'swiper-all)
 
-;; Alt + e 키로 해당 단어의 reference를 검색해줍니다
-(global-set-key (kbd "M-e") 'helm-projectile-grep)
+;; Alt + a 키로 해당 단어의 reference를 검색해줍니다
+(global-set-key (kbd "M-a") 'helm-projectile-grep)
+(define-key c++-mode-map (kbd "M-a") 'helm-projectile-grep)
 
 ;; ESC키 2번으로 기존에 3번 ESC를 눌러야 작동하던 escape를 대신합니다
 (global-set-key (kbd "<escape> <escape>") 'keyboard-escape-quit)
