@@ -1,9 +1,7 @@
-'''
-   descrition:
-	테스트용 코드
-
-   author: Edward Im
-   email : gyurse@gmail.com
+macs'''
+   #+DESCRITION:
+   #+DATE:        2018-06-15-금
+   #+AUTHOR:      Edward Im (gyurse@gmail.com)
 '''
 from pythonds.graphs import Graph
 
