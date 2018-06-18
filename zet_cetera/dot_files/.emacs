@@ -2189,6 +2189,7 @@ created by edward 180515"
              (local-set-key (kbd "C-c C-v") 'enlarge-window)
              (local-set-key (kbd "M-j") 'next-line)
 
+             (define-key input-decode-map (kbd "C-[") (kbd "H-["))
              (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
              (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
              ))
@@ -2276,6 +2277,7 @@ created by edward 180515"
 ;; C-i <==> TAB 이 같은 키로 인식되므로 아래 코드를 추가해준다
 (add-hook 'prog-mode-hook '(lambda()
                              (keyboard-translate ?\C-i ?\H-i)
+                             (define-key input-decode-map (kbd "C-[") (kbd "H-["))
                              (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
                              (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
                              (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
@@ -2312,8 +2314,8 @@ created by edward 180515"
 (global-set-key (kbd "M-w") 'kill-whitespace)
 (define-key c++-mode-map (kbd "M-w") 'kill-whitespace)
 
-;; Alt + s 키로 공백들을 제거합니다
-(global-set-key (kbd "M-s") 'delete-blank-lines)
+;; Ctrl + [ 키로 공백들을 제거합니다
+(global-set-key (kbd "H-[") 'delete-blank-lines)
 
 ;; Alt + f 키로 forward paragraph (C-<down>) 과 같은 명령을 실행합니다
 (global-set-key (kbd "M-f") 'forward-paragraph)
