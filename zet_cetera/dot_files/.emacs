@@ -2058,9 +2058,11 @@ created by edward 180515"
 (defun match-paren (arg)
   "Go to the matching paren if on a paren; otherwise insert %."
   (interactive "p")
-  (cond ((looking-at "\\s(") (forward-list 1) (backward-char 1))
-        ((looking-at "\\s)") (forward-char 1) (backward-list 1))
-        (t (self-insert-command (or arg 1)))))
+  (cond ((looking-at "\\s(")
+         (forward-list 1) (backward-char 1))
+        ((looking-at "\\s)")
+         (forward-char 1) (backward-list 1))
+        (t nil)))
 
 ;; Ctrl + ] 키를 누르면 해당 괄호의 끝부분으로 이동합니다
 (global-set-key (kbd "\C-]") 'match-paren)
@@ -2276,12 +2278,11 @@ created by edward 180515"
                              (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
                              ))
 
-;; C-\ (or C-S-\)키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
+;; C-\ 키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
 (global-set-key (kbd "C-\\") 'avy-goto-word-0)
-(global-set-key (kbd "C-S-\\") 'avy-goto-word-1)
 
-;; Ctrl + u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다
-(global-set-key (kbd "C-u") 'swiper-all)
+;; C-i 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다
+(global-set-key (kbd "H-i") 'swiper-all)
 
 ;; Alt + a 키로 해당 단어의 reference를 검색해줍니다
 (global-set-key (kbd "M-a") 'helm-projectile-grep)
