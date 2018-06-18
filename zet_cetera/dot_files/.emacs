@@ -517,6 +517,7 @@
      (define-key org-mode-map (kbd "<C-down>") nil)
      (define-key org-mode-map (kbd "M-e") nil)
      (define-key org-mode-map (kbd "C-'") nil)
+     (define-key org-mode-map (kbd "C-c C-q") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
