@@ -2159,6 +2159,8 @@ created by edward 180515"
 (global-set-key (kbd "M-o") 'right-word)
 
 
+
+
 ;; C-c + C-c (or C-v) 로 window의 사이즈를 조절합니다
 (define-key c++-mode-map (kbd "C-c C-c") nil)
 (define-key c-mode-map (kbd "C-c C-c") nil)
@@ -2326,6 +2328,11 @@ created by edward 180515"
 (global-set-key (kbd "M-r") 'backward-paragraph)
 (define-key c++-mode-map (kbd "M-r") 'backward-paragraph)
 
+;; C-M-j,k 키로 forward, backward paragraph 명령을 수행합니다
+(global-set-key (kbd "C-M-j") 'forward-paragraph)
+(define-key c++-mode-map (kbd "C-M-j") 'forward-paragraph)
+(global-set-key (kbd "C-M-k") 'backward-paragraph)
+(define-key c++-mode-map (kbd "C-M-k") 'backward-paragraph)
 
 ;; Horizontal <--> Vertical view를 토글해주는 함수
 (defun window-split-toggle ()
