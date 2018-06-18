@@ -1465,20 +1465,29 @@
             (local-unset-key [f3])
             ))
 
-
-;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수
+;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수 (NOT USED)
 (defun make_TAGS_file (&optional path)
   "make TAGS file"
   (interactive (list (read-file-name "path to make TAGS : " default-directory)))
   (with-temp-buffer
-    (shell-command (concat "find " (concat path) (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t)))
+    (shell-command (concat "find " (concat path) (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
+  )
 
+;; 현재 위치에서 TAGS 파일을 생성해주는 함수
+(defun make_TAGS_file_auto (&optional path)
+  "make TAGS file automatically"
+  (interactive)
+  (with-temp-buffer
+    (shell-command (concat "find " default-directory (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
+  )
 
-;; M-? 키를 이용해 TAGS file을 만든다.
-(global-set-key (kbd "M-?") 'make_TAGS_file)
+;; M-? 키를 이용해 자동으로 GTAGS && TAGS file을 만든다.
+(global-set-key (kbd "M-?") '(lambda ()
+                               (interactive)
+                               (make_TAGS_file_auto)
+                               (helm-gtags-create-tags default-directory "default")
+                               ))
 
-;; M-> 키를 이용해 GTAGS file을 만든다.
-(global-set-key (kbd "M->") 'helm-gtags-create-tags)
 
 ;; PACKAGE: google-c-style
 (require 'google-c-style)
