@@ -596,24 +596,27 @@
                                    ("2" "edward.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("3" "edward.org: [Note]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Note")
+                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("3" "dyros.org: [Task]" entry
+                                   ("4" "dyros.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("4" "dyros.org: [Issues]" entry
+                                   ("5" "dyros.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("5" "dyros.org: [Note]" entry
+                                   ("6" "dyros.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Note")
                                     "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("6" "parkable.org: [Task]" entry
+                                   ("7" "parkable.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("7" "parkable.org: [Issues]" entry
+                                   ("8" "parkable.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("8" "parkable.org: [Note]" entry
+                                   ("9" "parkable.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Note")
                                     "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
