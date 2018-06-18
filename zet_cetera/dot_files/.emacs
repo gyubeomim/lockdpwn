@@ -38,11 +38,11 @@
     ess                    ;; R 언어 전용 패키지입니다
     gtags                  ;; 함수나 여러 변수들의 선언을 찾아볼 수 있게 해주는 패키지
     highlight-symbol       ;; 같은 단어들 하이라이팅 해주는 패키지 (보기 좋게 글자를 색상을 칠해준다)
-                           ;; highlight-symbol.el 파일에서
-                           ;; highlight-symbol-colors ==> highlight-symbol-color로 수정한다 (색깔을 제대로 표시하지 못한다)
-                           ;; 바로 적용이 안되므로 .elc 파일을 삭제하던지 아니면 M-x : byte-compile-file을 실시한다
+    ;; highlight-symbol.el 파일에서
+    ;; highlight-symbol-colors ==> highlight-symbol-color로 수정한다 (색깔을 제대로 표시하지 못한다)
+    ;; 바로 적용이 안되므로 .elc 파일을 삭제하던지 아니면 M-x : byte-compile-file을 실시한다
     yasnippet              ;; 여러가지 자주 사용하는 구문들을 쉽게 사용할 수 있게 템플릿 형식으로 제공해주는 패키지
-                           ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
+    ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
     hide-comnt             ;; 주석을 감췄다 보여줬다 하는 패키지 (F9 단축키)
     php-mode               ;; php 모드를 활성화합니다 (~/.emacs.d/elpa/php-mode.../php-mode.elc 파일이 잘못된 듯 합니다 이걸 삭제해주면 정상적으로 실행됩니다)
     flycheck               ;; 코드의 오류를 검사해주는 패키지
@@ -247,12 +247,12 @@
 (add-hook 'python-mode-hook 'helm-gtags-mode)
 
 ;; key bindings
-;(define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
-;(define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
-;(define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
-;(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-;(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-;(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+;;(define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
+;;(define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
+;;(define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+;;(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+;;(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+;;(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
 ;; gtags 관련해서 자동으로 파일 열고 저장할 때 gtags를 실행하도록 하는 함수들
 (gtags-mode t)
@@ -295,7 +295,7 @@
   "Update Gtags database for changes in a single file"
   (interactive)
   (with-temp-buffer
-      (shell-command "global -u" t))
+    (shell-command "global -u" t))
   (start-process "update-gtags" "update-gtags" "bash" "-c" (concat "cd " (gtags-root-dir) " ; gtags --single-update " filename )))
 
 
@@ -479,15 +479,15 @@
 (defun my/org-mode-hook ()
   (progn
     "Stop the org-level headers from increasing in height relative to the other text."
-      (dolist (face '(org-level-1))
-        (set-face-attribute face nil :weight 'normal :height 1.2))
+    (dolist (face '(org-level-1))
+      (set-face-attribute face nil :weight 'normal :height 1.2))
 
-      (dolist (face '(org-level-2
-                      org-level-3
-                      org-level-4
-                      org-level-5))
-        (set-face-attribute face nil :weight 'normal :height 0.98))
-  ))
+    (dolist (face '(org-level-2
+                    org-level-3
+                    org-level-4
+                    org-level-5))
+      (set-face-attribute face nil :weight 'normal :height 0.98))
+    ))
 
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
 ;; "org" because C-h f org-mode RET says that org-mode is defined in org.el
@@ -515,6 +515,8 @@
      (define-key org-mode-map (kbd "C-m") nil)
      (define-key org-mode-map (kbd "M-f") nil)
      (define-key org-mode-map (kbd "<C-down>") nil)
+     (define-key org-mode-map (kbd "M-e") nil)
+     (define-key org-mode-map (kbd "C-'") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -546,6 +548,8 @@
      ;; org.el에서 remap이 되어있던 코드를 주석처리하니 아래 두 코드가 정상작동한다
      (define-key org-mode-map (kbd "<C-down>") 'forward-paragraph)
      (define-key org-mode-map (kbd "M-f") 'forward-paragraph)
+     ;; C-' 키로 태그를 설정합니다
+     (define-key org-mode-map (kbd "C-'") 'org-set-tags-command)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -637,7 +641,7 @@
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
      (setq org-agenda-log-mode-items '(closed clock state))
-))
+     ))
 ;; (add-to-ordered-list 'emulation-mode-map-alists '((org-mode . ,my-org-mode-map)) 0)
 
 ;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
@@ -709,7 +713,7 @@
                             (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
                             ;; C-+ 키로 이미지 크기를 자동조정한다
                             (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
-                          ))
+                            ))
 
 
 ;; Package: yasnippet
@@ -889,7 +893,7 @@
 
 (add-hook 'ruby-mode-hook
           (lambda ()
-;;(local-set-key (kbd "<tab>") 'company-robe)
+            ;;(local-set-key (kbd "<tab>") 'company-robe)
             (local-set-key (kbd "C-c C-s") 'inf-ruby-console-auto)))
 
 (add-hook 'inf-ruby-mode-hook
@@ -972,10 +976,10 @@
 
 ;; revert buffer를 파라미터와 같이 함수화한 코드
 (defun my-revert-buffer()
-    (interactive)
+  (interactive)
   (revert-buffer t t t)
   (message "[+] this buffer reverted..")
-)
+  )
 
 ;; Ctrl + m 키로 현재 버퍼를 업데이트합니다
 (global-set-key (kbd "H-m") 'my-revert-buffer)
@@ -1041,7 +1045,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/parking_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/deeplearning_tensorflow.org" "~/gitrepo/ims_org/org_files/note/deeplearning_network_models.org" "~/gitrepo/ims_org/org_files/note/deeplearning_core_concept.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1056,35 +1060,31 @@
        (beginning-of-line)
        (insert "*"))
      (lambda nil
-       (progn
-         (setq num 1)
-         (loop
-          (< num 500)
-          (let
-              ((numbering
-                (concat "#"
-                        (number-to-string num)))
-               (content
-                (with-current-buffer
-                    (cadr
-                     (split-string
-                      (buffer-name)
-                      "-"))
-                  (buffer-substring-no-properties
-                   (point-min)
-                   (point-max)))))
-            (if
-                (save-excursion
-                  (goto-char
-                   (point-min))
-                  (string-match numbering content))
-                nil
-              (return
-               (progn
-                 (end-of-line)
-                 (insert numbering)))))
-          (setq num
-                (1+ num))))))))
+  (progn
+    (setq num 1)
+    (loop (< num 500)
+          (let ((numbering (concat "#" (number-to-string num)))
+                (content (with-current-buffer (cadr (split-string (buffer-name) "-"))
+                           (buffer-substring-no-properties (point-min) (point-max))))
+                (capture_content (with-current-buffer (buffer-name)
+                           (buffer-substring-no-properties (point-min) (point-max))))
+                )
+            (if (string-match "[*][*][*][*]" capture_content)
+                (if (save-excursion
+                      (goto-char (point-min))
+                      (string-match numbering content))
+                    nil
+                  (return
+                   (progn
+                     (end-of-line)
+                     (insert numbering))))
+              (return)
+            )
+          (setq num (1+ num))
+          )
+    )
+  ))
+     )))
  '(org-default-priority 67)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
@@ -1245,7 +1245,7 @@
   (let ((frame (or frame (selected-frame)))
         (height (+ (face-attribute 'default :height frame) (* n (or amt 5)))))
     (set-face-attribute 'default frame :height height)
-      (message "Set frame's default text height to %d." height)))
+    (message "Set frame's default text height to %d." height)))
 
 (defun zoom-frame-out (&optional n frame amt)
   "Call `zoom-frame' with -N."
@@ -1387,29 +1387,29 @@
 
 ;; dired mode에서 여러 단축키들을 설정하는 코드
 (eval-after-load "dired" '(progn
-      ;; dired mode : Move to the parent directory
-      (define-key dired-mode-map "a"
-        (lambda ()
-          (interactive)
-          (find-alternate-file "..")))
+                            ;; dired mode : Move to the parent directory
+                            (define-key dired-mode-map "a"
+                              (lambda ()
+                                (interactive)
+                                (find-alternate-file "..")))
 
-      ;; dired mode 관련 단축키들을 추가했다
-      ;; dired mode : Emacs's adaption of find
-      (define-key dired-mode-map "F" 'find-name-dired);
+                            ;; dired mode 관련 단축키들을 추가했다
+                            ;; dired mode : Emacs's adaption of find
+                            (define-key dired-mode-map "F" 'find-name-dired);
 
-      ;; dired mode : Move up and down
-      (define-key dired-mode-map "j" 'dired-next-line)
-      (define-key dired-mode-map "k" 'dired-previous-line);
+                            ;; dired mode : Move up and down
+                            (define-key dired-mode-map "j" 'dired-next-line)
+                            (define-key dired-mode-map "k" 'dired-previous-line);
 
-      ;; dired mode : Jump to a file with ido
-      (define-key dired-mode-map "i" 'ido-find-file)
+                            ;; dired mode : Jump to a file with ido
+                            (define-key dired-mode-map "i" 'ido-find-file)
 
-      ;; dired mode 에서 chmod를 바로 수행하고 싶을 경우 M키를 눌러서 합니다
-      (define-key dired-mode-map "M" 'chmod)
+                            ;; dired mode 에서 chmod를 바로 수행하고 싶을 경우 M키를 눌러서 합니다
+                            (define-key dired-mode-map "M" 'chmod)
 
-      ;; dired mode 에서 /키를 검색키로 설정합니다
-      (define-key dired-mode-map "/" 'isearch-forward)
-))
+                            ;; dired mode 에서 /키를 검색키로 설정합니다
+                            (define-key dired-mode-map "/" 'isearch-forward)
+                            ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
 (load "cc-mode")
@@ -1459,7 +1459,7 @@
 (add-hook 'ecb-common-tree-buffer-after-create-hook
           (lambda ()
             (local-unset-key [f3])
-                             ))
+            ))
 (add-hook 'ecb-directories-buffer-after-create-hook
           (lambda ()
             (local-unset-key [f3])
@@ -1471,7 +1471,7 @@
   "make TAGS file"
   (interactive (list (read-file-name "path to make TAGS : " default-directory)))
   (with-temp-buffer
-  (shell-command (concat "find " (concat path) (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t)))
+    (shell-command (concat "find " (concat path) (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t)))
 
 
 ;; M-? 키를 이용해 TAGS file을 만든다.
@@ -1755,12 +1755,12 @@ Version 2017-04-19"
     (setq gdb-source-window (selected-window))
     (let ((win3 (split-window nil (/ (* (window-height) 3) 4)))) ;io
       (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-inferior-io) nil win3)) ;gdb-inferior-io
-      ;; (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-locals-buffer) nil win3)
+    ;; (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-locals-buffer) nil win3)
     (select-window win0)
     ))
 
 (defun my-gdb-setup-windows5 ()
-"https://stackoverflow.com/questions/39762833/emacsgdb-customization-how-to-display-source-buffer-in-one-window
+  "https://stackoverflow.com/questions/39762833/emacsgdb-customization-how-to-display-source-buffer-in-one-window
 "
   (set-window-dedicated-p (selected-window) nil)
   (switch-to-buffer gud-comint-buffer)
@@ -1775,20 +1775,20 @@ Version 2017-04-19"
               (floor (* 0.5 (window-body-height))))) ; locals
        ;; (win4 (split-window-vertically
        ;;     (floor (* 0.6 (window-body-height))))) ; stack
-    )
+       )
     (select-window win1)
-    ; configurating right window
+                                        ; configurating right window
     (let
-    ((winSrc (selected-window)) ; source
-     (winIO (split-window-vertically (floor (* 0.9 (window-body-height))))) ; I/O
-     )
+        ((winSrc (selected-window)) ; source
+         (winIO (split-window-vertically (floor (* 0.9 (window-body-height))))) ; I/O
+         )
       (set-window-buffer winIO (gdb-get-buffer-create 'gdb-inferior-io))
       (set-window-buffer winSrc
-    (if gud-last-last-frame
-     (gud-find-file (car gud-last-last-frame))
-      (if gdb-main-file
-       (gud-find-file gdb-main-file)
-     (list-buffers-noselect))))
+                         (if gud-last-last-frame
+                             (gud-find-file (car gud-last-last-frame))
+                           (if gdb-main-file
+                               (gud-find-file gdb-main-file)
+                             (list-buffers-noselect))))
       (setq gdb-source-window winSrc)
       (set-window-dedicated-p winIO t)
       ;; ed: Stack Frame added
@@ -1797,18 +1797,18 @@ Version 2017-04-19"
           ((winStack (split-window-horizontally (floor (* 15 (window-body-height))))) ;; ed: Stack buffer added
            )
         (set-window-buffer winStack (gdb-get-buffer-create 'gdb-stack-buffer)) ;; ed: Stack buffer added
-      ))
+        ))
     ;; (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
     (if (get-buffer " SPEEDBAR")
         (set-window-buffer win0 " SPEEDBAR")
       (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
       )
-  ;; ed: " SPEEDBAR"" 추가!
+    ;; ed: " SPEEDBAR"" 추가!
     (set-window-buffer win3 (gdb-get-buffer-create 'gdb-locals-buffer))
     (set-window-buffer win4 (gdb-get-buffer-create 'gdb-stack-buffer))
     (select-window win2)
     )
-)
+  )
 
 (defun my-gdb-settings-toggle ()
   "처음으로 직접 만들어 본 elips defun
@@ -1851,7 +1851,7 @@ created by edward 180515"
 ;; defadvice로 설정하는 것인듯
 (defadvice gdb-setup-windows (around setup-more-gdb-windows activate)
   (my-gdb-setup-windows5)
-)
+  )
 
 ;; shift + f12 gdb 다중창 On/Off
 (global-set-key [(shift f12)] 'gdb-many-windows)
@@ -2047,11 +2047,11 @@ created by edward 180515"
 
 ;; 괄호 사이를 이동하는 코드
 (defun match-paren (arg)
-            "Go to the matching paren if on a paren; otherwise insert %."
-            (interactive "p")
-            (cond ((looking-at "\\s(") (forward-list 1) (backward-char 1))
-                  ((looking-at "\\s)") (forward-char 1) (backward-list 1))
-                  (t (self-insert-command (or arg 1)))))
+  "Go to the matching paren if on a paren; otherwise insert %."
+  (interactive "p")
+  (cond ((looking-at "\\s(") (forward-list 1) (backward-char 1))
+        ((looking-at "\\s)") (forward-char 1) (backward-list 1))
+        (t (self-insert-command (or arg 1)))))
 
 ;; Ctrl + ] 키를 누르면 해당 괄호의 끝부분으로 이동합니다
 (global-set-key (kbd "\C-]") 'match-paren)
@@ -2158,26 +2158,26 @@ created by edward 180515"
 (add-hook 'python-mode-hook
           '(lambda ()
              (local-set-key (kbd "C-c C-c") (lambda ()
-                                  (interactive)
-                                  (enlarge-window-horizontally 2)
-                                  (enlarge-window 2)
-                                  ))
+                                              (interactive)
+                                              (enlarge-window-horizontally 2)
+                                              (enlarge-window 2)
+                                              ))
              (local-set-key (kbd "C-c C-v") 'enlarge-window)
              ))
 (add-hook 'org-mode-hook
           '(lambda ()
              (local-unset-key (kbd "M-j"))
              (local-set-key (kbd "C-c C-c") (lambda ()
-                                  (interactive)
-                                  (enlarge-window-horizontally 2)
-                                  (enlarge-window 2)
-                                  ))
+                                              (interactive)
+                                              (enlarge-window-horizontally 2)
+                                              (enlarge-window 2)
+                                              ))
              (local-set-key (kbd "C-c C-v") 'enlarge-window)
              (local-set-key (kbd "M-j") 'next-line)
 
              (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
              (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
-          ))
+             ))
 
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
 (global-set-key (kbd "M-/") 'visit-tags-table)
@@ -2255,17 +2255,17 @@ created by edward 180515"
                                  ;; a,b 키로 어느 conflict를 선택할지 결정합니다
                                  (define-key smerge-mode-map (kbd "a") 'smerge-keep-mine)
                                  (define-key smerge-mode-map (kbd "b") 'smerge-keep-other)
-                            ))
+                                 ))
 
 
 ;; 모든 환경에서 C-i <==> TAB 키를 따로 사용하기 위한 훅 코드
 ;; C-i <==> TAB 이 같은 키로 인식되므로 아래 코드를 추가해준다
 (add-hook 'prog-mode-hook '(lambda()
-                        (keyboard-translate ?\C-i ?\H-i)
-                        (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
-                        (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
-                        (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
-                        ))
+                             (keyboard-translate ?\C-i ?\H-i)
+                             (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
+                             (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
+                             (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
+                             ))
 
 ;; Ctrl + i키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
 (global-set-key (kbd "H-i") 'avy-goto-word-0)
