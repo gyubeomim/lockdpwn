@@ -1987,8 +1987,8 @@ created by edward 180515"
 (global-set-key (kbd "M-v") 'bookmark-jump)
 (define-key cua--cua-keys-keymap (kbd "M-v") 'bookmark-jump)
 
-;;줄번호 이동(C-g)
-(global-set-key "\C-g" 'goto-line)
+;;줄번호 이동(C-u)
+(global-set-key "\C-u" 'goto-line)
 
 ;; Ctrl + k 키로 해당 커서의 한 줄 전체를 지웁니다
 (global-set-key "\C-k" 'kill-whole-line)
@@ -2401,8 +2401,8 @@ created by edward 180515"
                nil))
 (add-hook 'nxml-mode-hook 'hs-minor-mode)
 
-;; Ctrl + g 키로 xml 파일 내에서 코드를 folding할 수 있습니다
-(define-key nxml-mode-map (kbd "C-g") 'hs-toggle-hiding)
+;; Alt + g 키로 xml 파일 내에서 코드를 folding할 수 있습니다
+(define-key nxml-mode-map (kbd "M-g") 'hs-toggle-hiding)
 ;; nxml(.launch file) 모드에서도 C-c + / 키로 edward.org 파일을 엽니다
 (define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
 
