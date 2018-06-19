@@ -1,8 +1,8 @@
 /*
- * #+DESCRIPTION:  백준 10825, 국영수 문제를 푼 코드
- * #+CATEGORY:
+ * #+DESCRIPTION:  백준 10825, 국영수 문제를 푼 코드, lambda를 사용해 문제를 풀었다
+ * #+CATEGORY:     sort
  * #+LEVEL:        -
- * #+FROM:         -
+ * #+FROM:         알고리즘기초 정렬
  * #+DATE:         2018-06-10-일
  * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */

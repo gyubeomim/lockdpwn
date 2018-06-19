@@ -1,8 +1,8 @@
 /*
- * #+DESCRIPTION:  백준 10825, 국영수 문제의 해답 코드
- * #+CATEGORY:
+ * #+DESCRIPTION:  백준 10825, 국영수 문제의 해답 코드, make_tuple 함수를 이용해 문제를 풀었다
+ * #+CATEGORY:     sort
  * #+LEVEL:        -
- * #+FROM:         https://www.acmicpc.net/blog/view/10
+ * #+FROM:         알고리즘기초 정렬
  * #+DATE:         2018-06-10-일
  * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
@@ -16,7 +16,9 @@ using namespace std;
 
 struct Person {
   string name;
-  int kor, eng, math;
+  int kor;
+  int eng;
+  int math;
 };
 
 int main(int argc, char **argv) {
