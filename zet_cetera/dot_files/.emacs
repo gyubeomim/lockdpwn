@@ -518,6 +518,7 @@
      (define-key org-mode-map (kbd "M-e") nil)
      (define-key org-mode-map (kbd "C-'") nil)
      (define-key org-mode-map (kbd "C-c C-q") nil)
+     (define-key org-mode-map (kbd "M-h") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -985,9 +986,9 @@
   (message "[+] this buffer reverted..")
   )
 
-;; Ctrl + m 키로 현재 버퍼를 업데이트합니다
-(global-set-key (kbd "H-m") 'my-revert-buffer)
-(define-key undo-tree-map (kbd "H-m") 'my-revert-buffer)
+;; Ctrl + \ 키로 현재 버퍼를 업데이트합니다
+(global-set-key (kbd "C-\\") 'my-revert-buffer)
+(define-key undo-tree-map (kbd "C-\\") 'my-revert-buffer)
 
 ;; C-n C-S-n 키로 새로운 frame을 만들고 제거합니다
 (global-set-key (kbd "C-n") 'make-frame-command)
@@ -2286,8 +2287,8 @@ created by edward 180515"
                              (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
                              ))
 
-;; C-\ 키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
-(global-set-key (kbd "C-\\") 'avy-goto-word-0)
+;; C-m 키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
+(global-set-key (kbd "H-m") 'avy-goto-word-0)
 
 ;; C-i 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다
 (global-set-key (kbd "H-i") 'swiper-all)
@@ -2327,6 +2328,10 @@ created by edward 180515"
 ;; Alt + r 키로 backward paragraph (C-<up>) 과 같은 명령을 실행합니다
 (global-set-key (kbd "M-r") 'backward-paragraph)
 (define-key c++-mode-map (kbd "M-r") 'backward-paragraph)
+
+;; C-M-r,f 키로 buffer의 맨 처음과 끝으로 이동합니다
+(global-set-key (kbd "C-M-r") 'beginning-of-buffer)
+(global-set-key (kbd "C-M-f") 'end-of-buffer)
 
 ;; C-M-j,k 키로 forward, backward paragraph 명령을 수행합니다
 (global-set-key (kbd "C-M-j") 'forward-paragraph)
