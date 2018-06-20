@@ -2318,8 +2318,8 @@ created by edward 180515"
 (global-set-key (kbd "M-w") 'kill-whitespace)
 (define-key c++-mode-map (kbd "M-w") 'kill-whitespace)
 
-;; Ctrl + [ 키로 공백들을 제거합니다
-(global-set-key (kbd "H-[") 'delete-blank-lines)
+;; Ctrl + g 키로 공백들을 제거합니다
+(global-set-key (kbd "C-g") 'delete-blank-lines)
 
 ;; Alt + f 키로 forward paragraph (C-<down>) 과 같은 명령을 실행합니다
 (global-set-key (kbd "M-f") 'forward-paragraph)
