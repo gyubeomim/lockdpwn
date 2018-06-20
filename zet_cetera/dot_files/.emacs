@@ -30,7 +30,6 @@
     google-c-style         ;; 들여쓰기 형식을 google style (구글 엔지니어들 스타일인듯)로 해주는 패키지
     etags                  ;; 함수나 여러 변수들의 선언을 찾아볼 수 있게 해주는 패키지
     key-chord              ;; 여러 쉬운 단축키들을 등록해주 수 있는 패키지 ( '..'키를 등록했습니다 )( 클래스 자동완성으로 등록 )
-    solarized-theme        ;; solarized 테마
     rainbow-delimiters     ;; 괄호를 색색깔있게 바꿔줍니다
     jedi                   ;; 파이썬용 jedi 패키지 (terminal 창에서 $ pip install jedi epc pylint virtualenv 를 쳐줘야 정상작동하는듯 하다)
     arduino-mode           ;; 만약 아두이노를 사용한다면 추가해줍니다
@@ -82,12 +81,17 @@
 
     image+                 ;; .jpg, .png 같은 이미지들의 크기를 조정할 수 있는 패키지
 
+    solarized-theme        ;; solarized 테마
 
 
 
 
 
+    ;; ample-theme            ;; ample 테마
     ;; arjen-grey-theme       ;; grey 테마를 설정할 수 있는 패키지
+
+
+
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지 (.md 파일을 켠 다음 Ctrl + 4 단축키)
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
     ;; htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
@@ -523,6 +527,7 @@
      (define-key org-mode-map (kbd "C-'") nil)
      (define-key org-mode-map (kbd "C-c C-q") nil)
      (define-key org-mode-map (kbd "M-h") nil)
+     (define-key org-mode-map (kbd "C-c \\") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -556,6 +561,9 @@
      (define-key org-mode-map (kbd "M-f") 'forward-paragraph)
      ;; C-' 키로 태그를 설정합니다
      (define-key org-mode-map (kbd "C-'") 'org-set-tags-command)
+     ;; C-` 키로 org-tags-sparse-tree 명령을 실행합니다
+     (define-key org-mode-map (kbd "C-`") 'org-tags-sparse-tree)
+
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -789,6 +797,7 @@
 (require 'solarized-dark-theme)
 (provide 'solarized-dark-theme)
 ;; (load-theme 'arjen-grey t)
+;; (load-theme 'ample-light t)
 
 ;; elisp, lisp 모드에서만 rainbow-delimiters를 활성화합니다
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
@@ -1031,7 +1040,7 @@
  '(custom-enabled-themes (quote (solarized)))
  '(custom-safe-themes
    (quote
-    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+    ("c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(display-time-mode t)
  '(ecb-layout-name "right1")
  '(ecb-layout-window-sizes
@@ -1058,7 +1067,7 @@
     ("~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
