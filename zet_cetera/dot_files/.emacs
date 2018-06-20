@@ -2180,13 +2180,13 @@ created by edward 180515"
 (global-set-key "\M-k" 'previous-line)
 (global-set-key (kbd "<home>") 'previous-line)
 
-;; vim 처럼 M-h,l 키를 좌우로 글자 단위로 움직이도록 설정합니다
-(global-set-key (kbd "M-h") 'left-char)
-(global-set-key (kbd "M-l") 'right-char)
-
 ;; vim 처럼 M-h,l 키를 좌우로 단어 단위로 움직이도록 설정합니다
-(global-set-key (kbd "M-i") 'left-word)
-(global-set-key (kbd "M-o") 'right-word)
+(global-set-key (kbd "M-h") 'left-word)
+(global-set-key (kbd "M-l") 'right-word)
+
+;; vim 처럼 M-h,l 키를 좌우로 글자 단위로 움직이도록 설정합니다
+(global-set-key (kbd "M-i") 'left-char)
+(global-set-key (kbd "M-o") 'right-char)
 
 
 
