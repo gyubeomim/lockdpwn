@@ -1,5 +1,5 @@
 /*
- * #+DESCRIPTION:  백준 1260, DFS와 BFS 문제를 푼 정답코드, 인접리스트를 사용해 문제를 풀었다
+ * #+DESCRIPTION:  백준 1260, DFS와 BFS 문제를 푼 정답코드, 비재귀적으로 문제를 풀었다
  * #+CATEGORY:     GRAPH, SEARCH
  * #+LEVEL:        -
  * #+FROM:         알고리즘기초 그래프1 그래프의 표현
@@ -9,8 +9,8 @@
 #include <cstdio>
 #include <iostream>
 #include <cstring>
-#include <vector>
 #include <queue>
+#include <vector>
 #include <algorithm>
 using namespace std;
 
@@ -18,13 +18,25 @@ vector<int> a[1001];
 bool check[1001];
 
 void dfs(int node) {
+  stack<pair<int, int>> s;
+  s.push(make_pair(node,0));
   check[node] = true;
   cout << node << " ";
 
-  for(int i=0; i<a[node].size(); i++) {
-    int next = a[node][i];
-    if(check[next] == false) {
-      dfs(next);
+  while(!s.empty()) {
+    int node = s.top().first;
+    int start = s.top().second;
+    s.pop();
+
+    for(int i=start; i<a[node].size(); i++) {
+      int next = a[node][i];
+      if(check[next] == false) {
+        cout << next << " ";
+        check[next] = true;
+        s.push(make_pair(node, i+1));
+        s.push(make_pair(next, 0));
+        break;
+      }
     }
   }
 }
@@ -51,9 +63,8 @@ void bfs(int start) {
 }
 
 int main() {
-  int n,m, start;
+  int n,m,start;
   cin >> n >> m >> start;
-
   for(int i=0; i<m; i++) {
     int u,v;
     cin >> u >> v;
@@ -67,7 +78,7 @@ int main() {
 
   dfs(start);
   puts("");
-  bfs(start);
+  bfs(strat);
   puts("");
 
   return 0;

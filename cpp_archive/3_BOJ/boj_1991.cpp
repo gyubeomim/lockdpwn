@@ -1,9 +1,18 @@
+/*
+ * #+DESCRIPTION:  백준 1991, 트리 순회 문제를 푼 코드, 재귀함수를 사용해 preorder, inorder, postorder 를 구현했다
+ * #+CATEGORY:     TREE
+ * #+LEVEL:        -
+ * #+FROM:         알고리즘기초 트리1 트리의 순회
+ * #+DATE:         2018-06-20-수
+ * #+AUTHOR:       Edward Im (gyurse@gmail.com)
+ */
 #include <cstdio>
 #include <iostream>
 using namespace std;
 
 int a[50][2];
 
+// ed: 전위순회
 void preorder(int x) {
   if(x==-1) return;
 
@@ -12,6 +21,7 @@ void preorder(int x) {
   preorder(a[x][1]);
 }
 
+// ed: 중위순회
 void inorder(int x) {
   if(x==-1) return;
 
@@ -20,6 +30,7 @@ void inorder(int x) {
   inorder(a[x][1]);
 }
 
+// ed: 후위순회
 void postorder(int x) {
   if(x==-1) return;
 

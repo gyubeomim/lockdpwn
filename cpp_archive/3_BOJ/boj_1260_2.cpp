@@ -1,6 +1,6 @@
 /*
  * #+DESCRIPTION:  백준 1260, DFS와 BFS 문제를 푼 정답코드, 간선리스트를 사용해서 문제를 풀었다
- * #+CATEGORY:     sort
+ * #+CATEGORY:     GRAPH, SEARCH
  * #+LEVEL:        -
  * #+FROM:         알고리즘기초 그래프1 그래프의 표현
  * #+DATE:         2018-06-19-화
