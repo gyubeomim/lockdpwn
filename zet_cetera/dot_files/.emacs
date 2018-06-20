@@ -84,6 +84,10 @@
 
 
 
+
+
+
+    ;; arjen-grey-theme       ;; grey 테마를 설정할 수 있는 패키지
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지 (.md 파일을 켠 다음 Ctrl + 4 단축키)
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
     ;; htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
@@ -784,6 +788,7 @@
 ;; PACKAGE: solarized theme
 (require 'solarized-dark-theme)
 (provide 'solarized-dark-theme)
+;; (load-theme 'arjen-grey t)
 
 ;; elisp, lisp 모드에서만 rainbow-delimiters를 활성화합니다
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
@@ -1065,31 +1070,44 @@
        (beginning-of-line)
        (insert "*"))
      (lambda nil
-  (progn
-    (setq num 1)
-    (loop (< num 500)
-          (let ((numbering (concat "#" (number-to-string num)))
-                (content (with-current-buffer (cadr (split-string (buffer-name) "-"))
-                           (buffer-substring-no-properties (point-min) (point-max))))
-                (capture_content (with-current-buffer (buffer-name)
-                           (buffer-substring-no-properties (point-min) (point-max))))
-                )
-            (if (string-match "[*][*][*][*]" capture_content)
-                (if (save-excursion
-                      (goto-char (point-min))
+       (progn
+         (setq num 1)
+         (loop
+          (< num 500)
+          (let
+              ((numbering
+                (concat "#"
+                        (number-to-string num)))
+               (content
+                (with-current-buffer
+                    (cadr
+                     (split-string
+                      (buffer-name)
+                      "-"))
+                  (buffer-substring-no-properties
+                   (point-min)
+                   (point-max))))
+               (capture_content
+                (with-current-buffer
+                    (buffer-name)
+                  (buffer-substring-no-properties
+                   (point-min)
+                   (point-max)))))
+            (if
+                (string-match "[*][*][*][*]" capture_content)
+                (if
+                    (save-excursion
+                      (goto-char
+                       (point-min))
                       (string-match numbering content))
                     nil
                   (return
                    (progn
                      (end-of-line)
                      (insert numbering))))
-              (return)
-            )
-          (setq num (1+ num))
-          )
-    )
-  ))
-     )))
+              (return))
+            (setq num
+                  (1+ num)))))))))
  '(org-default-priority 67)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
@@ -1987,11 +2005,22 @@ created by edward 180515"
 (global-set-key (kbd "M-v") 'bookmark-jump)
 (define-key cua--cua-keys-keymap (kbd "M-v") 'bookmark-jump)
 
-;;줄번호 이동(C-u)
-(global-set-key "\C-u" 'goto-line)
+;;줄번호 이동(C-i)
+(global-set-key (kbd "H-i") 'goto-line)
 
 ;; Ctrl + k 키로 해당 커서의 한 줄 전체를 지웁니다
 (global-set-key "\C-k" 'kill-whole-line)
+
+;; 현재 커서로부터 맨 아래까지 라인을 지우는 함수
+(defun kill-to-end-of-buffer() "Deletes all lines after the current line"
+  (interactive)
+  (progn
+    (forward-line 1)
+    (delete-region (point) (point-max))))
+
+;; Ctrl + Shift + k 키로 현재 커서부터 아래 라인을 모두 지웁니다
+(global-set-key (kbd "C-S-k") 'kill-to-end-of-buffer)
+
 
 ;; Ctrl + j 키로 해당 커서의 오른쪽부분만 삭제합니다
 (global-set-key (kbd "C-j") 'kill-visual-line)
@@ -2261,6 +2290,12 @@ created by edward 180515"
 ;; 이 때 smerge-mode를 사용해서 conflict를 관리하는 함수
 (global-set-key (kbd "C-c v") 'smerge-mode)
 
+;; Ctrl + \ - 키로 창을 가로,세로로 분할합니다
+(global-set-key (kbd "C-c \\") 'split-window-right)
+(global-set-key (kbd "C-c -") 'split-window-vertically)
+(define-key imagex-sticky-mode-map (kbd "C-c -") 'split-window-vertically)
+
+
 ;; smerge mode가 시작되고 실행되는 코드
 (eval-after-load "smerge-mode" (lambda()
                                  ;; merge conflict를 효율적으로 관리하기 위해 단축키를 변경한다
@@ -2284,14 +2319,16 @@ created by edward 180515"
                              (define-key input-decode-map (kbd "C-[") (kbd "H-["))
                              (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
                              (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
+                             (define-key input-decode-map (kbd "C-S-m") (kbd "H-S-m"))
                              (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
                              ))
 
-;; C-m 키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
+;; C-m , C-S-m 키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
 (global-set-key (kbd "H-m") 'avy-goto-word-0)
+(global-set-key (kbd "H-S-m") 'avy-goto-word-1)
 
-;; C-i 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다
-(global-set-key (kbd "H-i") 'swiper-all)
+;; C-u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다
+(global-set-key (kbd "C-u") 'swiper-all)
 
 ;; Alt + a 키로 해당 단어의 reference를 검색해줍니다
 (global-set-key (kbd "M-a") 'helm-projectile-grep)
@@ -2369,10 +2406,7 @@ created by edward 180515"
 (setq key-chord-one-key-delay 0.17) ; default 0.2
 (key-chord-define-global "66" 'ein:jupyter-server-stop)        ;; jupyter notebook 서버 종료
 (key-chord-define-global "``" 'helm-find-files)                ;; 파일 열기
-(key-chord-define-global "??" 'split-window-right)             ;; 오른쪽에 새창 만들기
-(key-chord-define-global ">>" 'split-window-below)             ;; 아래쪽에 새창 만들기
 (key-chord-define-global ",," 'ac-complete-semantic)           ;; 코드 자동완성
-(key-chord-define-global "<<" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
 (key-chord-define-global "mm" 'jedi:complete)                  ;; 코드 자동완성 for python
 (key-chord-define-global "zz" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
 (key-chord-define-global "aa" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
@@ -2381,6 +2415,9 @@ created by edward 180515"
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
+;;(key-chord-define-global "??" 'split-window-right)             ;; 오른쪽에 새창 만들기 (NOT USED)
+;;(key-chord-define-global ">>" 'split-window-below)             ;; 아래쪽에 새창 만들기 (NOT USED)
+;;(key-chord-define-global "<<" 'ac-complete-semantic-raw)       ;; 코드 자동완성2 (NOT USED)
 
 
 ;; .h header 파일을 c++ 모드로 설정합니다
