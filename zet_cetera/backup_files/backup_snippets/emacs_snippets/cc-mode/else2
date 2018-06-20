@@ -3,4 +3,4 @@
 # key: elsee
 # --
 else
-   ${1: }
+   $0
