@@ -2327,8 +2327,8 @@ created by edward 180515"
 (global-set-key (kbd "H-m") 'avy-goto-word-0)
 (global-set-key (kbd "H-S-m") 'avy-goto-word-1)
 
-;; C-u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다
-(global-set-key (kbd "C-u") 'swiper-all)
+;; C-u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다 (NOT USED)
+;; (global-set-key (kbd "C-u") 'swiper-all)
 
 ;; Alt + a 키로 해당 단어의 reference를 검색해줍니다
 (global-set-key (kbd "M-a") 'helm-projectile-grep)
