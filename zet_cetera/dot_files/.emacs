@@ -1571,8 +1571,8 @@ Version 2017-04-19"
       (put this-command 'state 0)))))
 
 
-;; Alt + = 키로 region 영역에 영어단어를 대문자, 소문자, 앞에만 대문자 형식으로 토글해줍니다
-(global-set-key (kbd "M-u") 'xah-toggle-letter-case)
+;; Alt + l 키로 region 영역에 영어단어를 대문자, 소문자, 앞에만 대문자 형식으로 토글해줍니다
+(global-set-key (kbd "M-l") 'xah-toggle-letter-case)
 
 ;;f1 이전 버퍼창 이동
 (global-set-key [f1] 'previous-buffer)
@@ -2043,7 +2043,7 @@ created by edward 180515"
 (defun save-all () (interactive)
        (save-some-buffers t)
        (message "[+] saving all buffers..."))
-(global-set-key (kbd "C-M-w") 'save-all)
+(global-set-key (kbd "C-S-w") 'save-all)
 
 ;; 랜덤한 string을 생성하는 함수 (not used)
 (defun random-alpha ()
@@ -2195,10 +2195,12 @@ created by edward 180515"
 (global-set-key (kbd "M-u") 'left-char)
 (global-set-key (kbd "M-i") 'right-char)
 
-;; Alt + h,l,t key unbinding
+;; global key unbinding for not using keys
 (global-set-key (kbd "M-h") nil)
 (global-set-key (kbd "M-l") nil)
 (global-set-key (kbd "M-t") nil)
+(global-set-key (kbd "C-u") nil)
+
 
 
 ;; C-c + C-c (or C-v) 로 window의 사이즈를 조절합니다
