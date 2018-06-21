@@ -12,7 +12,7 @@ using namespace std;
 int d[10000001];
 
 /*
-   d[n] = min(d[n%3]+1, d[n%2]+1, d[n-1]+1)
+   d[n] = min(d[n/3]+1, d[n/2]+1, d[n-1]+1)
  */
 int go(int n) {
   if(n == 1) return 0;
