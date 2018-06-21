@@ -2195,7 +2195,10 @@ created by edward 180515"
 (global-set-key (kbd "M-u") 'left-char)
 (global-set-key (kbd "M-i") 'right-char)
 
-
+;; Alt + h,l,t key unbinding
+(global-set-key (kbd "M-h") nil)
+(global-set-key (kbd "M-l") nil)
+(global-set-key (kbd "M-t") nil)
 
 
 ;; C-c + C-c (or C-v) 로 window의 사이즈를 조절합니다
@@ -2333,6 +2336,7 @@ created by edward 180515"
 ;; C-g , C-S-g 키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
 (global-set-key (kbd "C-g") 'avy-goto-word-0)
 (global-set-key (kbd "C-S-g") 'avy-goto-word-1)
+
 
 ;; C-u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다 (NOT USED)
 ;; (global-set-key (kbd "C-u") 'swiper-all)
