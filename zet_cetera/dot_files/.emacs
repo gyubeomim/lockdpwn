@@ -796,8 +796,10 @@
 ;; PACKAGE: solarized theme
 (require 'solarized-dark-theme)
 (provide 'solarized-dark-theme)
+
 ;; (load-theme 'arjen-grey t)
 ;; (load-theme 'ample-light t)
+
 
 ;; elisp, lisp 모드에서만 rainbow-delimiters를 활성화합니다
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
@@ -1037,7 +1039,7 @@
                    company-oddmuse company-dabbrev)))
  '(company-idle-delay 0.3)
  '(cua-mode t nil (cua-base))
- '(custom-enabled-themes (quote (solarized)))
+ '(custom-enable-theme (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
     ("c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
@@ -2004,11 +2006,11 @@ created by edward 180515"
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.
 (cua-mode)
 
-;;북 마크에 저장 하기 Alt + m
-(global-set-key "\M-m" 'bookmark-set)
+;;북 마크에 저장 하기 Alt + b
+(global-set-key (kbd "M-b") 'bookmark-set)
 
-;; 북마크 삭제 Ctrl + Alt + m
-(global-set-key (kbd "C-M-m") 'bookmark-delete)
+;; 북마크 삭제 Ctrl + Alt + b
+(global-set-key (kbd "C-M-b") 'bookmark-delete)
 
 ;;북 마크 열기 Alt + v
 (global-set-key (kbd "M-v") 'bookmark-jump)
@@ -2332,9 +2334,9 @@ created by edward 180515"
                              (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
                              ))
 
-;; C-m , C-S-m 키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
-(global-set-key (kbd "H-m") 'avy-goto-word-0)
-(global-set-key (kbd "H-S-m") 'avy-goto-word-1)
+;; C-g , C-S-g 키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
+(global-set-key (kbd "C-g") 'avy-goto-word-0)
+(global-set-key (kbd "C-S-g") 'avy-goto-word-1)
 
 ;; C-u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다 (NOT USED)
 ;; (global-set-key (kbd "C-u") 'swiper-all)
@@ -2364,8 +2366,8 @@ created by edward 180515"
 (global-set-key (kbd "M-w") 'kill-whitespace)
 (define-key c++-mode-map (kbd "M-w") 'kill-whitespace)
 
-;; Ctrl + g 키로 공백들을 제거합니다
-(global-set-key (kbd "C-g") 'delete-blank-lines)
+;; Alt + m 키로 공백들을 제거합니다
+(global-set-key (kbd "M-m") 'delete-blank-lines)
 
 ;; Alt + f 키로 forward paragraph (C-<down>) 과 같은 명령을 실행합니다
 (global-set-key (kbd "M-f") 'forward-paragraph)
