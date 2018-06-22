@@ -1684,8 +1684,8 @@ Version 2017-04-19"
       (downcase-region $p1 $p2)
       (put this-command 'state 0)))))
 
-;; Alt + h 키로 region 영역에 영어단어를 대문자, 소문자, 앞에만 대문자 형식으로 토글해줍니다
-(global-set-key (kbd "M-h") 'xah-toggle-letter-case)
+;; Alt + u 키로 region 영역에 영어단어를 대문자, 소문자, 앞에만 대문자 형식으로 토글해줍니다
+(global-set-key (kbd "M-u") 'xah-toggle-letter-case)
 
 ;;f1 이전 버퍼창 이동
 (global-set-key [f1] 'previous-buffer)
@@ -2262,6 +2262,10 @@ created by edward 180515"
 ;; vim 처럼 M-i,o 키를 좌우로 단어 단위로 움직이도록 설정합니다
 (global-set-key (kbd "M-i") 'left-word)
 (global-set-key (kbd "M-o") 'right-word)
+
+;; vim 처럼 M-h,l 키를 좌우로 글자 단위로 움직이도록 설정합니다
+(global-set-key (kbd "M-h") 'left-char)
+(global-set-key (kbd "M-l") 'right-char)
 
 
 ;; C-c + C-c (or C-v) 로 window의 사이즈를 조절합니다
