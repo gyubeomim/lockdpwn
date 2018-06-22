@@ -775,13 +775,63 @@
 ;; Ctrl
 (global-set-key (kbd "C-d") nil)
 (global-set-key (kbd "C-u") nil)
-(global-set-key (kbd "C-f") nil)
-(global-set-key (kbd "C-e") nil)
 (global-set-key (kbd "C-w") nil)
 ;; Alt
-(global-set-key (kbd "M-e") nil)
 (global-set-key (kbd "M-l") nil)
 (global-set-key (kbd "M-t") nil)
+
+
+(defun newline-without-break-of-line ()
+  "1. move to end of the line, 2. insert newline with index."
+  (interactive)
+  (let ((oldpos (point)))
+    (end-of-line)
+    (newline-and-indent)))
+
+(defun newline-without-break-of-line-upper ()
+  "1. move to end of the line, 2. insert newline with index above."
+  (interactive)
+  (let ((oldpos (point)))
+    (beginning-of-line)
+    (open-line 1)))
+
+;; Ctrl + F 키를 누르면 자동으로 빈 라인이 하나 만들어집니다 (vim의 o키와 동일합니다)
+(global-set-key "\C-f" 'newline-without-break-of-line)
+
+;; Ctrl + O 키를 누르면 자동으로 한 줄 위에 빈 라인이 하나 만들어집니다
+(global-set-key "\C-o" 'newline-without-break-of-line-upper)
+
+
+;; Crtl + e 키로 현재 커서의 라인 맨 앞칸으로 이동합니다
+(global-set-key (kbd "C-e") 'move-beginning-of-line)
+(add-hook 'c-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-e") 'move-beginning-of-line))
+          )
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-e") 'move-beginning-of-line))
+          )
+
+;; Alt + e 키로 현재 커서의 라인 맨 뒤칸으로 이동합니다
+(global-set-key (kbd "M-e") 'move-end-of-line)
+(add-hook 'c-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "M-e") 'move-end-of-line))
+          )
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "M-e") 'move-end-of-line))
+          )
+
+;; Ctrl + w 키로 helm-find-files 명령을 실행합니다
+(global-set-key (kbd "C-w") 'helm-find-files)
+
+;; Ctrl + i 키로 단어 하이라이트(특정 단어만 색깔강조하기)
+(global-set-key (kbd "H-i") 'highlight-symbol)
+
+;; Ctrl + Shift + i 키로 단어 하이라이트 모두 지우기
+(global-set-key (kbd "H-S-i") 'highlight-symbol-remove-all)
 
 
 
@@ -1503,9 +1553,6 @@
 
                             ;; dired mode 에서 chmod를 바로 수행하고 싶을 경우 M키를 눌러서 합니다
                             (define-key dired-mode-map "M" 'chmod)
-
-                            ;; dired mode 에서 /키를 검색키로 설정합니다
-                            (define-key dired-mode-map "/" 'isearch-forward)
                             ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
@@ -1656,12 +1703,6 @@ Version 2017-04-19"
 
 ;; F4 또는 M-] 키로 파일 탐색기 Dired 모드 켜기
 (global-set-key [f4] 'dired)
-
-;; 단어 하이라이트(특정 단어만 색깔강조하기)
-(global-set-key [f5] 'highlight-symbol)
-
-;; 단어 하이라이트 모두 지우기
-(global-set-key (kbd "<C-f5>") 'highlight-symbol-remove-all)
 
 ;; ECB 시작
 (global-set-key [f6] 'ecb-minor-mode)
@@ -2438,7 +2479,6 @@ created by edward 180515"
 ;; 1개의 키가 입력되는데 걸리는 시간 설정
 (setq key-chord-one-key-delay 0.17) ; default 0.2
 (key-chord-define-global "66" 'ein:jupyter-server-stop)        ;; jupyter notebook 서버 종료
-(key-chord-define-global "``" 'helm-find-files)                ;; 파일 열기
 (key-chord-define-global ",," 'ac-complete-semantic)           ;; 코드 자동완성
 (key-chord-define-global "mm" 'jedi:complete)                  ;; 코드 자동완성 for python
 (key-chord-define-global "zz" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
