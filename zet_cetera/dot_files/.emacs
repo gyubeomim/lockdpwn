@@ -524,6 +524,7 @@
      (define-key org-mode-map (kbd "C-c C-q") nil)
      (define-key org-mode-map (kbd "M-h") nil)
      (define-key org-mode-map (kbd "C-c \\") nil)
+     (define-key org-mode-map (kbd "C-e") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -557,8 +558,10 @@
      (define-key org-mode-map (kbd "M-f") 'forward-paragraph)
      ;; C-' 키로 태그를 설정합니다
      (define-key org-mode-map (kbd "C-'") 'org-set-tags-command)
-     ;; C-` 키로 org-tags-sparse-tree 명령을 실행합니다
-     (define-key org-mode-map (kbd "C-`") 'org-tags-sparse-tree)
+     ;; C-\ 키로 org-tags-sparse-tree 명령을 실행합니다
+     (define-key org-mode-map (kbd "C-\\") 'org-tags-sparse-tree)
+
+     (define-key org-mode-map (kbd "M-l") 'org-insert-link)
 
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
@@ -998,9 +1001,9 @@
   (message "[+] this buffer reverted..")
   )
 
-;; Ctrl + \ 키로 현재 버퍼를 업데이트합니다
-(global-set-key (kbd "C-\\") 'my-revert-buffer)
-(define-key undo-tree-map (kbd "C-\\") 'my-revert-buffer)
+;; Ctrl + ` 키로 현재 버퍼를 업데이트합니다
+(global-set-key (kbd "C-`") 'my-revert-buffer)
+(define-key undo-tree-map (kbd "C-`") 'my-revert-buffer)
 
 ;; C-n C-S-n 키로 새로운 frame을 만들고 제거합니다
 (global-set-key (kbd "C-n") 'make-frame-command)
@@ -2065,16 +2068,28 @@ created by edward 180515"
 (global-set-key (kbd "C-c '") 'copy-buffer-to-file)
 
 
-;; Alt + e 키로 현재 커서의 라인 맨 앞칸으로 이동합니다
-(global-set-key (kbd "M-e") 'move-beginning-of-line)
+;; Crtl + e 키로 현재 커서의 라인 맨 앞칸으로 이동합니다
+(global-set-key (kbd "C-e") 'move-beginning-of-line)
 (add-hook 'c-mode-hook
           '(lambda ()
-             (local-set-key (kbd "M-e") 'move-beginning-of-line))
+             (local-set-key (kbd "C-e") 'move-beginning-of-line))
           )
 (add-hook 'c++-mode-hook
           '(lambda ()
-             (local-set-key (kbd "M-e") 'move-beginning-of-line))
+             (local-set-key (kbd "C-e") 'move-beginning-of-line))
           )
+
+;; Alt + e 키로 현재 커서의 라인 맨 뒤칸으로 이동합니다
+(global-set-key (kbd "M-e") 'move-end-of-line)
+(add-hook 'c-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "M-e") 'move-end-of-line))
+          )
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "M-e") 'move-end-of-line))
+          )
+
 
 ;; Ctrl + p 키로 grep 명령어를 실행합니다
 (global-set-key (kbd "C-p") 'grep-find)
