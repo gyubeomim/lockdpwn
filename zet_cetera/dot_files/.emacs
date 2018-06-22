@@ -728,13 +728,12 @@
 
 ;; PACKAGE: evil
 (require 'evil)
-(evil-mode 1)
+(evil-mode t)
 
 ;; evil 모드를 로딩한 후 설정
 (eval-after-load "evil"  (lambda ()
                            ;; 키바인딩 해제 ESC MODE
                            (define-key evil-motion-state-map (kbd "C-b") nil)
-                           (define-key evil-motion-state-map (kbd "C-d") nil)
                            (define-key evil-motion-state-map (kbd "C-w") nil)
                            (define-key evil-motion-state-map (kbd "C-f") nil)
                            (define-key evil-motion-state-map (kbd "C-o") nil)
@@ -767,8 +766,17 @@
                            (define-key evil-normal-state-map (kbd "C-p") nil)
                            (define-key evil-normal-state-map (kbd "H-[") nil)
                            (define-key evil-normal-state-map (kbd "C-.") nil)
+
+                           ;; 키바인딩 설정 ESC MODE
+                           (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
                            ))
 
+
+;; evil-mode로 인해 사용하지 않는 전역 키바인딩을 해제합니다
+(global-set-key (kbd "C-d") nil)
+(global-set-key (kbd "C-u") nil)
+(global-set-key (kbd "M-l") nil)
+(global-set-key (kbd "M-t") nil)
 
 
 ;; PACKAGE: image+
@@ -2080,7 +2088,6 @@ created by edward 180515"
 ;; Ctrl + Shift + k 키로 현재 커서부터 아래 라인을 모두 지웁니다
 (global-set-key (kbd "C-S-k") 'kill-to-end-of-buffer)
 
-
 ;; Ctrl + j 키로 해당 커서의 오른쪽부분만 삭제합니다
 (global-set-key (kbd "C-j") 'kill-visual-line)
 (define-key org-mode-map (kbd "C-j") 'kill-visual-line)
@@ -2088,14 +2095,14 @@ created by edward 180515"
 ;; Ctrl + a 키로 전체선택하게 합니다
 (global-set-key "\C-a" 'mark-whole-buffer)
 
-;; Ctrl + w 키로 해당 버퍼를 저장합니다
-(global-set-key "\C-w" 'save-buffer)
+;; Ctrl + s 키로 해당 버퍼를 저장합니다
+(global-set-key "\C-s" 'save-buffer)
 
-;; Ctrl + Shift + w 키로 모든 버퍼를 저장합니다
+;; Ctrl + Shift + s 키로 모든 버퍼를 저장합니다
 (defun save-all () (interactive)
        (save-some-buffers t)
        (message "[+] saving all buffers..."))
-(global-set-key (kbd "C-S-w") 'save-all)
+(global-set-key (kbd "C-S-s") 'save-all)
 
 ;; 랜덤한 string을 생성하는 함수 (not used)
 (defun random-alpha ()
@@ -2258,11 +2265,6 @@ created by edward 180515"
 ;; vim 처럼 M-u,i 키를 좌우로 글자 단위로 움직이도록 설정합니다
 (global-set-key (kbd "M-u") 'left-char)
 (global-set-key (kbd "M-i") 'right-char)
-
-;; global key unbinding for not using keys
-(global-set-key (kbd "M-l") nil)
-(global-set-key (kbd "M-t") nil)
-(global-set-key (kbd "C-u") nil)
 
 
 ;; C-c + C-c (or C-v) 로 window의 사이즈를 조절합니다
