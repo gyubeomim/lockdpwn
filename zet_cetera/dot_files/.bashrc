@@ -303,6 +303,9 @@ alias qt3='~/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
 
 
+# for foxit reader
+alias foxit='/home/dyros-vehicle/opt/foxitsoftware/foxitreader/FoxitReader'
+
 # setting for Tensorflow GPU version
 # Using CUDA 8.0 & cuDNN 6.0
 export CUDA_HOME=/usr/local/cuda-8.0
