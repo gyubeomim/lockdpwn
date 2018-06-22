@@ -49,7 +49,6 @@
     inf-ruby               ;; Ruby 관련된 패키지들 : ruby shell (irb)를 사용할 수 있는 패키지
     rvm                    ;; Ruby 관련된 패키지들 : ruby version 관리해주는 패키지
 
-
     yaml-mode              ;; .yaml 구문을 하이라이팅해주는 패키지
     nxml                   ;; xml 구문들을 folding하기 위한 패키지
     lua-mode               ;; lua 언어를 하이라이팅해주는 패키지
@@ -83,15 +82,11 @@
 
     solarized-theme        ;; solarized 테마
 
-
-
+    evil                   ;; emacs for vim layout emacs에서 vim과 같은 레이아웃을 사용할 수 있도록 해주는 패키지
 
 
     ;; ample-theme            ;; ample 테마
     ;; arjen-grey-theme       ;; grey 테마를 설정할 수 있는 패키지
-
-
-
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지 (.md 파일을 켠 다음 Ctrl + 4 단축키)
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
     ;; htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
@@ -427,6 +422,9 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+(eval-after-load "undo-tree" (lambda ()
+                               (define-key undo-tree-map (kbd "C-r") nil)
+                               ))
 
 ;; PACKAGE: jedi
 ;; $ pip install jedi epc pylint virtualenv
@@ -525,6 +523,7 @@
      (define-key org-mode-map (kbd "M-h") nil)
      (define-key org-mode-map (kbd "C-c \\") nil)
      (define-key org-mode-map (kbd "C-e") nil)
+     (define-key org-mode-map (kbd "C-c C-l") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -560,7 +559,7 @@
      (define-key org-mode-map (kbd "C-'") 'org-set-tags-command)
      ;; C-\ 키로 org-tags-sparse-tree 명령을 실행합니다
      (define-key org-mode-map (kbd "C-\\") 'org-tags-sparse-tree)
-
+     ;; M-l 키로 link를 삽입합니다
      (define-key org-mode-map (kbd "M-l") 'org-insert-link)
 
 
@@ -595,6 +594,13 @@
      (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
      ;; header 크기 변하지 않게
      (add-hook 'org-mode-hook 'my/org-mode-hook)
+
+     ;; org-link 에서 .pdf 파일은 foxit reader로 열도록 설정한다
+     (setq org-file-apps
+      '((auto-mode . emacs)
+        ("\\.pdf\\'" . "~/opt/foxitsoftware/foxitreader/FoxitReader \"%s\"")
+        ("\\.pdf::\\([0-9]+\\)\\'" . "~/opt/foxitsoftware/foxitreader/FoxitReader \"%s\" -p %1")
+        ))
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
@@ -719,6 +725,50 @@
 ;; (setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8"))
 ;; (setq evernote-username "gyurse")
 ;; (setq evernote-developer-token "S=s1:U=94ad7:E=16b3c61dabe:C=163e4b0ad30:P=1cd:A=en-devtoken:V=2:H=25f588edfdb5ff0df834f685efa0e75b")
+
+;; PACKAGE: evil
+(require 'evil)
+(evil-mode 1)
+
+;; evil 모드를 로딩한 후 설정
+(eval-after-load "evil"  (lambda ()
+                           ;; 키바인딩 해제 ESC MODE
+                           (define-key evil-motion-state-map (kbd "C-b") nil)
+                           (define-key evil-motion-state-map (kbd "C-d") nil)
+                           (define-key evil-motion-state-map (kbd "C-w") nil)
+                           (define-key evil-motion-state-map (kbd "C-f") nil)
+                           (define-key evil-motion-state-map (kbd "C-o") nil)
+                           (define-key evil-motion-state-map (kbd "C-z") nil)
+                           (define-key evil-motion-state-map (kbd "C-y") nil)
+                           (define-key evil-motion-state-map (kbd "C-e") nil)
+                           (define-key evil-motion-state-map (kbd "C-m") nil)
+                           (define-key evil-motion-state-map (kbd "C-p") nil)
+                           (define-key evil-motion-state-map (kbd "C-]") nil)
+                           (define-key evil-motion-state-map (kbd "C-6") nil)
+
+                           ;; 키바인딩 해제 INSERT MODE
+                           (define-key evil-insert-state-map (kbd "C-b") nil)
+                           (define-key evil-insert-state-map (kbd "C-d") nil)
+                           (define-key evil-insert-state-map (kbd "C-w") nil)
+                           (define-key evil-insert-state-map (kbd "C-f") nil)
+                           (define-key evil-insert-state-map (kbd "C-o") nil)
+                           (define-key evil-insert-state-map (kbd "C-z") nil)
+                           (define-key evil-insert-state-map (kbd "C-t") nil)
+                           (define-key evil-insert-state-map (kbd "C-y") nil)
+                           (define-key evil-insert-state-map (kbd "C-e") nil)
+                           (define-key evil-insert-state-map (kbd "C-a") nil)
+                           (define-key evil-insert-state-map (kbd "C-n") nil)
+                           (define-key evil-insert-state-map (kbd "C-k") nil)
+                           (define-key evil-insert-state-map (kbd "C-p") nil)
+
+                           ;; 키바인딩 해제 NORMAL MODE
+                           (define-key evil-normal-state-map (kbd "C-t") nil)
+                           (define-key evil-normal-state-map (kbd "C-n") nil)
+                           (define-key evil-normal-state-map (kbd "C-p") nil)
+                           (define-key evil-normal-state-map (kbd "H-[") nil)
+                           (define-key evil-normal-state-map (kbd "C-.") nil)
+                           ))
+
 
 
 ;; PACKAGE: image+
@@ -1337,7 +1387,7 @@
 (setq calc-group-digits t)
 
 ;;시작 화면 메세지 끄기
-(setq initial-scratch-message "")
+(setq initial-scratc-message "")
 
 ;;시작 모드를 text모드로 시작하기. 보통은 LISP Interaction 상태.
 (setq initial-major-mode 'emacs-lisp-mode)
@@ -1573,9 +1623,8 @@ Version 2017-04-19"
       (downcase-region $p1 $p2)
       (put this-command 'state 0)))))
 
-
-;; Alt + l 키로 region 영역에 영어단어를 대문자, 소문자, 앞에만 대문자 형식으로 토글해줍니다
-(global-set-key (kbd "M-l") 'xah-toggle-letter-case)
+;; Alt + h 키로 region 영역에 영어단어를 대문자, 소문자, 앞에만 대문자 형식으로 토글해줍니다
+(global-set-key (kbd "M-h") 'xah-toggle-letter-case)
 
 ;;f1 이전 버퍼창 이동
 (global-set-key [f1] 'previous-buffer)
@@ -2211,11 +2260,9 @@ created by edward 180515"
 (global-set-key (kbd "M-i") 'right-char)
 
 ;; global key unbinding for not using keys
-(global-set-key (kbd "M-h") nil)
 (global-set-key (kbd "M-l") nil)
 (global-set-key (kbd "M-t") nil)
 (global-set-key (kbd "C-u") nil)
-
 
 
 ;; C-c + C-c (or C-v) 로 window의 사이즈를 조절합니다
