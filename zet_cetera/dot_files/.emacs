@@ -80,9 +80,9 @@
 
     image+                 ;; .jpg, .png 같은 이미지들의 크기를 조정할 수 있는 패키지
 
-    solarized-theme        ;; solarized 테마
+    evil                   ;; Extended Vim Layout Emacs에서 vim과 같은 레이아웃을 사용할 수 있도록 해주는 패키지
 
-    evil                   ;; emacs for vim layout emacs에서 vim과 같은 레이아웃을 사용할 수 있도록 해주는 패키지
+    solarized-theme        ;; solarized 테마
 
 
     ;; ample-theme            ;; ample 테마
@@ -771,12 +771,18 @@
                            (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
                            ))
 
-
 ;; evil-mode로 인해 사용하지 않는 전역 키바인딩을 해제합니다
+;; Ctrl
 (global-set-key (kbd "C-d") nil)
 (global-set-key (kbd "C-u") nil)
+(global-set-key (kbd "C-f") nil)
+(global-set-key (kbd "C-e") nil)
+(global-set-key (kbd "C-w") nil)
+;; Alt
+(global-set-key (kbd "M-e") nil)
 (global-set-key (kbd "M-l") nil)
 (global-set-key (kbd "M-t") nil)
+
 
 
 ;; PACKAGE: image+
@@ -2072,9 +2078,6 @@ created by edward 180515"
 (global-set-key (kbd "M-v") 'bookmark-jump)
 (define-key cua--cua-keys-keymap (kbd "M-v") 'bookmark-jump)
 
-;;줄번호 이동(C-i)
-(global-set-key (kbd "H-i") 'goto-line)
-
 ;; Ctrl + k 키로 해당 커서의 한 줄 전체를 지웁니다
 (global-set-key "\C-k" 'kill-whole-line)
 
@@ -2123,30 +2126,6 @@ created by edward 180515"
 ;; C-c + ' 키를 사용해 현재 버퍼를 /tmp 폴더에 임의의 5개 랜덤글자 파일로 저장한다
 (global-set-key (kbd "C-c '") 'copy-buffer-to-file)
 
-
-;; Crtl + e 키로 현재 커서의 라인 맨 앞칸으로 이동합니다
-(global-set-key (kbd "C-e") 'move-beginning-of-line)
-(add-hook 'c-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "C-e") 'move-beginning-of-line))
-          )
-(add-hook 'c++-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "C-e") 'move-beginning-of-line))
-          )
-
-;; Alt + e 키로 현재 커서의 라인 맨 뒤칸으로 이동합니다
-(global-set-key (kbd "M-e") 'move-end-of-line)
-(add-hook 'c-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "M-e") 'move-end-of-line))
-          )
-(add-hook 'c++-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "M-e") 'move-end-of-line))
-          )
-
-
 ;; Ctrl + p 키로 grep 명령어를 실행합니다
 (global-set-key (kbd "C-p") 'grep-find)
 
@@ -2179,25 +2158,6 @@ created by edward 180515"
 ;; Ctrl + ] 키를 누르면 해당 괄호의 끝부분으로 이동합니다
 (global-set-key (kbd "\C-]") 'match-paren)
 
-(defun newline-without-break-of-line ()
-  "1. move to end of the line, 2. insert newline with index."
-  (interactive)
-  (let ((oldpos (point)))
-    (end-of-line)
-    (newline-and-indent)))
-
-(defun newline-without-break-of-line-upper ()
-  "1. move to end of the line, 2. insert newline with index above."
-  (interactive)
-  (let ((oldpos (point)))
-    (beginning-of-line)
-    (open-line 1)))
-
-;; Ctrl + F 키를 누르면 자동으로 빈 라인이 하나 만들어집니다 (vim의 o키와 동일합니다)
-(global-set-key "\C-f" 'newline-without-break-of-line)
-
-;; Ctrl + O 키를 누르면 자동으로 한 줄 위에 빈 라인이 하나 만들어집니다
-(global-set-key "\C-o" 'newline-without-break-of-line-upper)
 
 ;; Alt + Enter 키로 현재 커서는 멈춘 상태에서 newline을 생성합니다
 (global-set-key (kbd "M-<return>") 'open-line)
@@ -2258,13 +2218,9 @@ created by edward 180515"
 (global-set-key "\M-k" 'previous-line)
 (global-set-key (kbd "<home>") 'previous-line)
 
-;; vim 처럼 M-y,o 키를 좌우로 단어 단위로 움직이도록 설정합니다
-(global-set-key (kbd "M-y") 'left-word)
+;; vim 처럼 M-i,o 키를 좌우로 단어 단위로 움직이도록 설정합니다
+(global-set-key (kbd "M-i") 'left-word)
 (global-set-key (kbd "M-o") 'right-word)
-
-;; vim 처럼 M-u,i 키를 좌우로 글자 단위로 움직이도록 설정합니다
-(global-set-key (kbd "M-u") 'left-char)
-(global-set-key (kbd "M-i") 'right-char)
 
 
 ;; C-c + C-c (or C-v) 로 window의 사이즈를 조절합니다
