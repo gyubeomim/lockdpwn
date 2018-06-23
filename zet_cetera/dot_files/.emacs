@@ -401,11 +401,6 @@
 (add-hook 'after-make-frame-functions 'set_korean_font_after_loading)
 
 
-;; Package: clean-aindent-mode
-;; GROUP: Editing -> Indent -> Clean Aindent
-(require 'clean-aindent-mode)
-(add-hook 'prog-mode-hook 'clean-aindent-mode)
-
 ;; PACKAGE: dtrt-indent
 (require 'dtrt-indent)
 (dtrt-indent-mode t)
@@ -787,8 +782,8 @@
 
 ;; evil-mode로 인해 사용하지 않는 전역 키바인딩을 해제합니다
 ;; Ctrl
-(global-set-key (kbd "C-d") 'evil-scroll-down)
-(global-set-key (kbd "C-u") 'evil-scroll-up)
+;; (global-set-key (kbd "C-d") 'evil-scroll-down)
+(global-set-key (kbd "C-u") nil)
 ;; Alt
 (global-set-key (kbd "M-l") nil)
 (global-set-key (kbd "M-t") nil)
@@ -1056,8 +1051,8 @@
 (add-hook 'robe-mode-hook 'ac-robe-setup)
 
 ;; Package: clean-aindent-mode
-(require 'clean-aindent-mode)
-(add-hook 'prog-mode-hook 'clean-aindent-mode)
+;; (require 'clean-aindent-mode)
+;; (add-hook 'prog-mode-hook 'clean-aindent-mode)
 
 ;; Package: ws-butler
 (require 'ws-butler)
