@@ -559,8 +559,8 @@
      (define-key org-mode-map (kbd "C-'") 'org-set-tags-command)
      ;; C-\ 키로 org-tags-sparse-tree 명령을 실행합니다
      (define-key org-mode-map (kbd "C-\\") 'org-tags-sparse-tree)
-     ;; M-l 키로 link를 삽입합니다
-     (define-key org-mode-map (kbd "M-l") 'org-insert-link)
+     ;; C-[ 키로 link를 삽입합니다
+     (define-key org-mode-map (kbd "H-[") 'org-insert-link)
 
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
@@ -739,6 +739,9 @@
 
 ;; evil 모드를 로딩한 후 설정
 (eval-after-load "evil"  (lambda ()
+                           ;; h,l 키로 단어를 이동할 때 커서가 맨 끝에 있는 경우 다음 라인으로 넘어가도록 설정한다
+                           (setq evil-cross-lines t)
+
                            ;; 키바인딩 해제 ESC MODE
                            (define-key evil-motion-state-map (kbd "C-b") nil)
                            (define-key evil-motion-state-map (kbd "C-w") nil)
@@ -751,6 +754,7 @@
                            (define-key evil-motion-state-map (kbd "C-p") nil)
                            (define-key evil-motion-state-map (kbd "C-]") nil)
                            (define-key evil-motion-state-map (kbd "C-6") nil)
+                           (define-key evil-motion-state-map (kbd "`") nil)
 
                            ;; 키바인딩 해제 INSERT MODE
                            (define-key evil-insert-state-map (kbd "C-b") nil)
