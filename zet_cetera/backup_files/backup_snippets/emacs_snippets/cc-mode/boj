@@ -3,10 +3,11 @@
 # key: boj
 # --
 /*
- * #+DESCRIPTION:  ${1: }
- * #+CATEGORY:     ${2:-}
- * #+LEVEL:        ${3:-}
- * #+FROM:         ${4:-}
- * #+DATE:         `(format-time-string "%Y-%m-%d-%a")`
- * #+AUTHOR:       ${5:Edward Im (gyurse@gmail.com)}
+ * #+DESCRIPTION:       ${1: }
+ * #+CATEGORY:          ${2:-}
+ * #+TIME_COMPLEXITY:   ${3:-}
+ * #+LEVEL:             ${4:-}
+ * #+FROM:              ${5:-}
+ * #+DATE:              `(format-time-string "%Y-%m-%d-%a")`
+ * #+AUTHOR:            ${6:Edward Im (gyurse@gmail.com)}
  */
