@@ -675,7 +675,14 @@
 ;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
 (add-hook 'org-agenda-mode-hook (lambda ()
                                   (org-gcal-sync nil nil t)
+
+                                  ;; 키바인딩 해제
                                   (define-key org-agenda-mode-map (kbd "C-n") nil)
+
+                                  ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
+                                  (define-key org-agenda-mode-map (kbd "j") 'evil-next-line)
+                                  (define-key org-agenda-mode-map (kbd "k") 'evil-previous-line)
+
                                   ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 
@@ -766,6 +773,9 @@
                            (define-key evil-normal-state-map (kbd "C-p") nil)
                            (define-key evil-normal-state-map (kbd "H-[") nil)
                            (define-key evil-normal-state-map (kbd "C-.") nil)
+                           (define-key evil-normal-state-map (kbd "z") nil)
+                           (define-key evil-normal-state-map (kbd "x") nil)
+                           (define-key evil-normal-state-map (kbd "c") nil)
 
                            ;; 키바인딩 설정 ESC MODE
                            (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
@@ -773,9 +783,8 @@
 
 ;; evil-mode로 인해 사용하지 않는 전역 키바인딩을 해제합니다
 ;; Ctrl
-(global-set-key (kbd "C-d") nil)
-(global-set-key (kbd "C-u") nil)
-(global-set-key (kbd "C-w") nil)
+(global-set-key (kbd "C-d") 'evil-scroll-down)
+(global-set-key (kbd "C-u") 'evil-scroll-up)
 ;; Alt
 (global-set-key (kbd "M-l") nil)
 (global-set-key (kbd "M-t") nil)
@@ -1707,9 +1716,6 @@ Version 2017-04-19"
 ;; ECB 시작
 (global-set-key [f6] 'ecb-minor-mode)
 
-;; 컴파일 단축키
-(global-set-key [f7] 'compile)
-
 ;; 디버깅 단축키
 (global-set-key [f8] 'gdb)
 
@@ -2091,6 +2097,10 @@ created by edward 180515"
 ;; Alt + 6키로 remote 접속을 위한 notebooklist-open 명령어를 설정합니다
 (global-set-key (kbd "M-6") 'ein:notebooklist-open)
 
+;; Alt + 0 키로 컴파일 단축키를 설정합니다
+(global-set-key (kbd "M-0") 'compile)
+
+
 ;; edebug defun을 ctrl + b로 설정한다
 ;; (global-set-key "\C-b" 'edebug-defun)
 
@@ -2356,6 +2366,16 @@ created by edward 180515"
 
 ;; C-c + y 키로 다른 branch에 있는 파일의 내용을 확인합니다
 (global-set-key (kbd "C-c y") 'magit-find-file)
+
+(eval-after-load "magit" (lambda ()
+                           ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
+                           (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
+                           (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-branch-section-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-unstaged-section-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
+
+                           ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
 (setq vc-handled-backends nil)
