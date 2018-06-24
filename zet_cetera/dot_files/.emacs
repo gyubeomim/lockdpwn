@@ -1,4 +1,11 @@
 ;;; MELPA와 MARMALADE 저장소를 package list에 추가합니다
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (require 'package)
 
 (add-to-list 'package-archives'("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -7,7 +14,7 @@
 (add-to-list 'package-archives '("melpa" . "http://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives'("melpa" . "http://melpa.org/packages/") t)
 
-(package-initialize) ;; You might already have this line
+
 (setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -779,8 +786,6 @@
                            ;; 키바인딩 설정 ESC MODE
                            ;; C-u 키로 page up 키를 설정합니다
                            (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
-                           ;; c 키로 윈도우 창들을 이동합니다
-                           (define-key evil-motion-state-map (kbd "c") 'next-multiframe-window)
                            ))
 
 ;; evil-mode로 인해 사용하지 않는 전역 키바인딩을 해제합니다
@@ -1118,16 +1123,6 @@
                                 (message "[+] cua-mode restarted..")
                                 ))
 
-;; revert buffer를 파라미터와 같이 함수화한 코드
-(defun my-revert-buffer()
-  (interactive)
-  (revert-buffer t t t)
-  (message "[+] this buffer reverted..")
-  )
-
-;; Ctrl + ` 키로 현재 버퍼를 업데이트합니다
-(global-set-key (kbd "C-`") 'my-revert-buffer)
-(define-key undo-tree-map (kbd "C-`") 'my-revert-buffer)
 
 ;; C-n C-S-n 키로 새로운 frame을 만들고 제거합니다
 (global-set-key (kbd "C-n") 'make-frame-command)
@@ -1152,7 +1147,7 @@
  '(auto-hscroll-mode t)
  '(avy-keys
    (quote
-    (97 115 100 102 103 104 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
+    (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
  '(avy-style (quote at-full))
  '(column-number-mode t)
  '(company-backends
@@ -2037,6 +2032,23 @@ created by edward 180515"
 ;; Ctrl + 4 키로 .md 파일을 파이어폭스로 프리뷰합니다 (not used)
 ;; (global-set-key (kbd "C-4") 'flymd-flyit)
 
+;; revert buffer를 파라미터와 같이 함수화한 코드
+(defun my-revert-buffer()
+  (interactive)
+  (revert-buffer t t t)
+  (message "[+] this buffer reverted..")
+  )
+
+;; Ctrl + 1 키로 현재 버퍼를 업데이트합니다
+(global-set-key (kbd "C-1") 'my-revert-buffer)
+(define-key undo-tree-map (kbd "C-1") 'my-revert-buffer)
+
+;; C-2 키로 find file 파일이 존재하는지 검색합니다
+(global-set-key (kbd "C-2") 'helm-find)
+
+;; C-3 키로 find dir 폴더가 존재하는지 검색합니다
+(global-set-key (kbd "C-3") 'helm-projectile-find-dir)
+
 ;; C-4 키로 *scratch* buffer를 생성하고 이동합니다
 (global-set-key (kbd "C-4") 'create-scratch-buffer)
 
@@ -2094,6 +2106,8 @@ created by edward 180515"
 ;; Alt + 0 키로 컴파일 단축키를 설정합니다
 (global-set-key (kbd "M-0") 'compile)
 
+;; Ctrl + ; 키로 다음 윈도우 창으로 이동합니다
+(global-set-key (kbd "C-;") 'next-multiframe-window)
 ;; Alt + right left up down  윈도우 창 이동
 (global-set-key (kbd "<M-right>") 'next-multiframe-window)
 (global-set-key (kbd "<M-down>") 'next-multiframe-window)
@@ -2185,11 +2199,6 @@ created by edward 180515"
 ;;"find . -type f -exec grep --exclude=*{ph.h, rviz, rst} --include={cpp,c,h,py} -nH -ie   {} +" 같이 확장자를 필터링할 수 있다
 (grep-apply-setting 'grep-find-command '("find . -type f -exec grep -nH -ie   {} +" . 35))
 
-;; Ctrl + ; 키로 find file 파일이 존재하는지 검색합니다
-(global-set-key (kbd "C-;") 'helm-find)
-
-;; Ctrl + ' 키로 find dir 폴더가 존재하는지 검색합니다
-(global-set-key (kbd "C-'") 'helm-projectile-find-dir)
 
 ;; c++ 주석 처리 변경 코드 (// -> /* */ 로 변경한다)
 (add-hook 'c++-mode-hook (lambda () (setq comment-start "/* "
