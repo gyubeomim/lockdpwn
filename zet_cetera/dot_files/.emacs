@@ -80,7 +80,7 @@
 
     image+                 ;; .jpg, .png 같은 이미지들의 크기를 조정할 수 있는 패키지
 
-    evil                   ;; Extended Vim Layout Emacs에서 vim과 같은 레이아웃을 사용할 수 있도록 해주는 패키지
+    evil                   ;; Extensible Vim Layout Emacs에서 vim과 같은 레이아웃을 사용할 수 있도록 해주는 패키지
 
     solarized-theme        ;; solarized 테마
 
