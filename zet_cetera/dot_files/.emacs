@@ -2370,10 +2370,15 @@ created by edward 180515"
                            ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
                            (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
                            (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
+
                            (define-key magit-branch-section-map (kbd "k") 'evil-previous-line)
+
                            (define-key magit-unstaged-section-map (kbd "k") 'evil-previous-line)
+
                            (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
 
+                           (define-key magit-diff-mode-map (kbd "j") 'evil-next-line)
+                           (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
                            ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.

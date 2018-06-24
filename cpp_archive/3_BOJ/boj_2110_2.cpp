@@ -1,6 +1,6 @@
 /*
  * #+DESCRIPTION:  백준 2110, 공유기 설치 문제를 푼 정답코드
- * #+CATEGORY:
+ * #+CATEGORY:     Binary Search
  * #+LEVEL:        -
  * #+FROM:         http://codersbrunch.blogspot.kr/2016/11/2110.html
  * #+DATE:         2018-06-10-일
