@@ -749,7 +749,6 @@
                            (define-key evil-motion-state-map (kbd "C-p") nil)
                            (define-key evil-motion-state-map (kbd "C-]") nil)
                            (define-key evil-motion-state-map (kbd "C-6") nil)
-                           (define-key evil-motion-state-map (kbd "`") nil)
 
                            ;; 키바인딩 해제 INSERT MODE
                            (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -765,6 +764,7 @@
                            (define-key evil-insert-state-map (kbd "C-n") nil)
                            (define-key evil-insert-state-map (kbd "C-k") nil)
                            (define-key evil-insert-state-map (kbd "C-p") nil)
+                           (define-key evil-insert-state-map (kbd "C-v") nil)
 
                            ;; 키바인딩 해제 NORMAL MODE
                            (define-key evil-normal-state-map (kbd "C-t") nil)
@@ -777,7 +777,10 @@
                            (define-key evil-normal-state-map (kbd "c") nil)
 
                            ;; 키바인딩 설정 ESC MODE
+                           ;; C-u 키로 page up 키를 설정합니다
                            (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
+                           ;; c 키로 윈도우 창들을 이동합니다
+                           (define-key evil-motion-state-map (kbd "c") 'next-multiframe-window)
                            ))
 
 ;; evil-mode로 인해 사용하지 않는 전역 키바인딩을 해제합니다
@@ -786,7 +789,6 @@
 (global-set-key (kbd "C-u") nil)
 ;; Alt
 (global-set-key (kbd "M-l") nil)
-(global-set-key (kbd "M-t") nil)
 
 
 (defun newline-without-break-of-line ()
@@ -1701,13 +1703,6 @@ Version 2017-04-19"
 ;;f2 다음 버퍼창 이동
 (global-set-key [f2] 'next-buffer)
 
-;; f3, C-left, C-right  윈도우 창 이동
-(global-set-key [f3] 'next-multiframe-window)
-
-(global-set-key (kbd "<M-right>") 'next-multiframe-window)
-(global-set-key (kbd "<M-down>") 'next-multiframe-window)
-(global-set-key (kbd "<M-left>") 'previous-multiframe-window)
-(global-set-key (kbd "<M-up>") 'previous-multiframe-window)
 
 ;; F4 또는 M-] 키로 파일 탐색기 Dired 모드 켜기
 (global-set-key [f4] 'dired)
@@ -2099,6 +2094,11 @@ created by edward 180515"
 ;; Alt + 0 키로 컴파일 단축키를 설정합니다
 (global-set-key (kbd "M-0") 'compile)
 
+;; Alt + right left up down  윈도우 창 이동
+(global-set-key (kbd "<M-right>") 'next-multiframe-window)
+(global-set-key (kbd "<M-down>") 'next-multiframe-window)
+(global-set-key (kbd "<M-left>") 'previous-multiframe-window)
+(global-set-key (kbd "<M-up>") 'previous-multiframe-window)
 
 ;; edebug defun을 ctrl + b로 설정한다
 ;; (global-set-key "\C-b" 'edebug-defun)
