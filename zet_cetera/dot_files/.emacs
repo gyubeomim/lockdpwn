@@ -2080,7 +2080,7 @@ created by edward 180515"
 ;; Alt + 1 키로 multi terminal을 실행합니다
 (global-set-key (kbd "M-1") 'multi-term)
 
-;; Alt + 2 키로 multi-term 이 켜져있으면 이동하도록 설정합니다
+;; Alt + 2 키로 multi-term으로 화면분할 후 자동으로 이동하도록 설정합니다
 (global-set-key (kbd "M-2") (lambda ()
                               (interactive)
                               (progn
@@ -2089,9 +2089,13 @@ created by edward 180515"
                                       (let ((terminal_name (concat "*terminal<" (number-to-string num) ">*")))
                                         (if (get-buffer terminal_name)
                                             (return (progn
+                                                      (split-window-vertically)
+                                                      (next-multiframe-window)
                                                       (switch-to-buffer terminal_name)
                                                       ))
                                           (progn
+                                            (split-window-vertically)
+                                            (next-multiframe-window)
                                             (multi-term)
                                             (switch-to-buffer terminal_name)
                                             (return))
