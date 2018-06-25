@@ -917,7 +917,7 @@
 ;; PACKAGE: solarized theme
 (require 'solarized-dark-theme)
 (provide 'solarized-dark-theme)
-
+(load-theme 'solarized-dark t)
 ;; (load-theme 'arjen-grey t)
 ;; (load-theme 'ample-light t)
 
