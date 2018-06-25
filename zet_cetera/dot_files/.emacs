@@ -675,8 +675,8 @@
                                   (define-key org-agenda-mode-map (kbd "C-n") nil)
 
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
-                                  (define-key org-agenda-mode-map (kbd "j") 'evil-next-line)
-                                  (define-key org-agenda-mode-map (kbd "k") 'evil-previous-line)
+                                  (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
+                                  (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line)
 
                                   ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
