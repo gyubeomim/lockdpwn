@@ -785,8 +785,6 @@
 ;; Ctrl
 ;; (global-set-key (kbd "C-d") 'evil-scroll-down)
 (global-set-key (kbd "C-u") nil)
-;; Alt
-(global-set-key (kbd "M-l") nil)
 
 
 (defun newline-without-break-of-line ()
@@ -918,6 +916,7 @@
 (require 'solarized-dark-theme)
 (provide 'solarized-dark-theme)
 (load-theme 'solarized-dark t)
+;;(load-theme 'solarized-light t)
 ;; (load-theme 'arjen-grey t)
 ;; (load-theme 'ample-light t)
 
@@ -2078,14 +2077,32 @@ created by edward 180515"
 ;; Ctrl + 0 키로 Customize Variable 명령어를 사용한다
 (global-set-key (kbd "C-0") 'customize-variable)
 
-;; Alt + 1 키로 shell을 불러오는 커맨드를 실행합니다
-(global-set-key (kbd "M-1") 'shell-command)
+;; Alt + 1 키로 multi terminal을 실행합니다
+(global-set-key (kbd "M-1") 'multi-term)
 
-;; Alt + 2 키로 multi terminal을 실행합니다
-(global-set-key (kbd "M-2") 'multi-term)
+;; Alt + 2 키로 multi-term 이 켜져있으면 이동하도록 설정합니다
+(global-set-key (kbd "M-2") (lambda ()
+                              (interactive)
+                              (progn
+                                (setq num 1)
+                                (loop (< num 10)
+                                      (let ((terminal_name (concat "*terminal<" (number-to-string num) ">*")))
+                                        (if (get-buffer terminal_name)
+                                            (return (progn
+                                                      (switch-to-buffer terminal_name)
+                                                      ))
+                                          (progn
+                                            (multi-term)
+                                            (switch-to-buffer terminal_name)
+                                            (return))
+                                          )
+                                        )
+                                      (setq num (1+ num))
+                                      ))))
 
-;; Alt + 3 키로 flycheck 기능을 ON/OFF합니다
-(global-set-key (kbd "M-3") 'global-flycheck-mode)
+
+;; Alt + 3 키로 다음 윈도우 창으로 이동합니다
+(global-set-key (kbd "M-3") 'next-multiframe-window)
 
 ;; Alt + 4 키로 projectile에 project를 추가합니다
 (global-set-key (kbd "M-4") 'projectile-add-known-project)
@@ -2096,11 +2113,15 @@ created by edward 180515"
 ;; Alt + 6키로 remote 접속을 위한 notebooklist-open 명령어를 설정합니다
 (global-set-key (kbd "M-6") 'ein:notebooklist-open)
 
+;; Alt + 8 키로 flycheck 기능을 ON/OFF합니다
+(global-set-key (kbd "M-8") 'global-flycheck-mode)
+
+;; Alt + 9 키로 shell을 불러오는 커맨드를 실행합니다
+(global-set-key (kbd "M-9") 'shell-command)
+
 ;; Alt + 0 키로 컴파일 단축키를 설정합니다
 (global-set-key (kbd "M-0") 'compile)
 
-;; Ctrl + ; 키로 다음 윈도우 창으로 이동합니다
-(global-set-key (kbd "C-;") 'next-multiframe-window)
 ;; Alt + right left up down  윈도우 창 이동
 (global-set-key (kbd "<M-right>") 'next-multiframe-window)
 (global-set-key (kbd "<M-down>") 'next-multiframe-window)
@@ -2360,7 +2381,7 @@ created by edward 180515"
 (global-set-key (kbd "C-c r") 'ediff)
 
 ;; C-c + w키로 region 영역 단위로 ediff를 실행하는 명령을 설정합니다
-(global-set-key (kbd "C-c r") 'ediff-region-linewise)
+(global-set-key (kbd "C-c w") 'ediff-regions-linewise)
 
 ;; C-c + t 키로 한 파일의 변경기록을 검사하는 magit-log-buffer-file 명령을 수행합니다
 (global-set-key (kbd "C-c t") 'magit-log-buffer-file)
@@ -2561,7 +2582,7 @@ created by edward 180515"
   "create a scratch buffer"
   (interactive)
   (switch-to-buffer (get-buffer-create "*scratch*"))
-  (lisp-interaction-mode))
+  )
 
 
 ;; ROS의 .launch 파일을 xml모드로 구문 하이라이팅하기 위해 설정합니다
