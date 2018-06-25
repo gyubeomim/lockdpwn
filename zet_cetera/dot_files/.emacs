@@ -1,11 +1,4 @@
 ;;; MELPA와 MARMALADE 저장소를 package list에 추가합니다
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (require 'package)
 
 (add-to-list 'package-archives'("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -14,7 +7,7 @@
 (add-to-list 'package-archives '("melpa" . "http://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives'("melpa" . "http://melpa.org/packages/") t)
 
-
+(package-initialize) ;; You might already have this line
 (setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -87,7 +80,7 @@
 
     image+                 ;; .jpg, .png 같은 이미지들의 크기를 조정할 수 있는 패키지
 
-    evil                   ;; Extended Vim Layout Emacs에서 vim과 같은 레이아웃을 사용할 수 있도록 해주는 패키지
+    evil                   ;; Extensible Vim Layout Emacs에서 vim과 같은 레이아웃을 사용할 수 있도록 해주는 패키지
 
     solarized-theme        ;; solarized 테마
 
