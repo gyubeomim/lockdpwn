@@ -82,6 +82,8 @@
 
     evil                   ;; Extensible Vim Layout Emacs에서 vim과 같은 레이아웃을 사용할 수 있도록 해주는 패키지
 
+    pomodoro               ;; 일정관리를 위한 Podomoro Timer 패키지
+
     solarized-theme        ;; solarized 테마
 
 
@@ -486,6 +488,31 @@
       (set-face-attribute face nil :weight 'normal :height 0.98))
     ))
 
+;; pomodoro 시간관리를 위해 timestamp에 +25분을 더한 구문을 출력하는 함수
+;; ex) <2018-01-01 수 1:00-1:25>
+(defun org-capture-pomodoro (date)
+  (interactive (list (org-read-date nil t)))
+  (let ((start-time (format-time-string "%Y-%m-%d %a %H:%M" date))
+        (pomodoro-time (format-time-string "%H:%M" (time-add
+                                                    (date-to-time
+                                                     (format-time-string "%Y-%m-%d %H:%M" date))
+                                                    (seconds-to-time (* 25 60))))
+                      ))
+  (save-excursion
+    (insert "<" (concat start-time "-" pomodoro-time) ">")
+    )
+  ))
+
+;; pomodoro에서 하루동안 발생한 POMO를 #1 ==> 오늘날짜_1 같이 변경해주는 함수
+(defun org-pomodoro-1day-done ()
+  (interactive)
+  (let ((string_regex (concat "%s/#/" (format-time-string "%y%m%d") "_POMO_/g")))
+    (if (equal (buffer-name) "pomodoro.org")
+        (evil-ex string_regex)
+      (message "[-] you are not in pomorodo.org!")
+    )
+  ))
+
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
 ;; "org" because C-h f org-mode RET says that org-mode is defined in org.el
 (eval-after-load "org"
@@ -519,6 +546,8 @@
      (define-key org-mode-map (kbd "C-c \\") nil)
      (define-key org-mode-map (kbd "C-e") nil)
      (define-key org-mode-map (kbd "C-c C-l") nil)
+     (define-key org-mode-map (kbd "C-c C-o") nil)
+     (define-key org-mode-map (kbd "C-c C-p") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -556,6 +585,8 @@
      (define-key org-mode-map (kbd "C-\\") 'org-tags-sparse-tree)
      ;; C-[ 키로 link를 삽입합니다
      (define-key org-mode-map (kbd "H-[") 'org-insert-link)
+     ;; C-c C-[ 키로 org-pomodoro-1day-done 함수를 실행합니다
+     (define-key org-mode-map (kbd "C-c H-[") 'org-pomodoro-1day-done)
 
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
@@ -654,6 +685,10 @@
                                    ("r" "ubuntu_tips.org: [Ubuntu]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+
+                                   ("t" "pomodoro.org: [GTD]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
+                                    "*** %i\n***** %?         %(org-capture-pomodoro (org-read-date nil t))")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -700,6 +735,7 @@
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_cartographer.org")))
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/dyros.org")))
 (global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/emacs.org")))
+(global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/pomodoro.org")))
 ;; C-, 키로 link.opg 파일을 엽니다
 (global-set-key (kbd "C-,") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/link.org")))
 ;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
@@ -749,6 +785,7 @@
                            (define-key evil-motion-state-map (kbd "C-p") nil)
                            (define-key evil-motion-state-map (kbd "C-]") nil)
                            (define-key evil-motion-state-map (kbd "C-6") nil)
+                           (define-key evil-motion-state-map (kbd "K") nil)
 
                            ;; 키바인딩 해제 INSERT MODE
                            (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -839,7 +876,16 @@
 ;; Ctrl + Shift + i 키로 단어 하이라이트 모두 지우기
 (global-set-key (kbd "H-S-i") 'highlight-symbol-remove-all)
 
+;; 일정관리를 위한 Pomodoro Timer 패키지
+(require 'pomodoro)
+(pomodoro-add-to-mode-line)
 
+;; C-c C-o,p 키로 타이머를 시작, 중지합니다
+(global-set-key (kbd "C-c C-o") 'pomodoro-start)
+(global-set-key (kbd "C-c C-p") 'pomodoro-stop)
+(define-key c++-mode-map (kbd "C-c C-o") 'pomodoro-start)
+(define-key c++-mode-map (kbd "C-c C-p") 'pomodoro-stop)
+(define-key python-mode-map (kbd "C-c C-p") 'pomodoro-stop)
 
 ;; PACKAGE: image+
 (require 'image+)
@@ -917,7 +963,7 @@
 (provide 'solarized-dark-theme)
 (load-theme 'solarized-dark t)
 ;;(load-theme 'solarized-light t)
-;; (load-theme 'arjen-grey t)
+;;(load-theme 'arjen-grey t)
 ;; (load-theme 'ample-light t)
 
 
@@ -1152,7 +1198,7 @@
  '(custom-enable-theme (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
-    ("c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+    ("bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(display-time-mode t)
  '(ecb-layout-name "right1")
  '(ecb-layout-window-sizes
@@ -1176,10 +1222,10 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1238,7 +1284,8 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+ '(pomodoro-play-sounds nil)
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
@@ -2602,6 +2649,7 @@ created by edward 180515"
   "create a scratch buffer"
   (interactive)
   (switch-to-buffer (get-buffer-create "*scratch*"))
+  (emacs-lisp-mode)
   )
 
 
