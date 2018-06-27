@@ -1173,7 +1173,7 @@
  '(find-file-visit-truename t)
  '(git-gutter:added-sign "+")
  '(git-gutter:deleted-sign "-")
- '(git-gutter:modified-sign "\342\345젆\265")
+ '(git-gutter:modified-sign ">")
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
