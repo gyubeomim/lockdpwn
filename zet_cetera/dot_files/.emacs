@@ -708,6 +708,8 @@
 
                                   ;; 키바인딩 해제
                                   (define-key org-agenda-mode-map (kbd "C-n") nil)
+                                  (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
+                                  (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
 
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
@@ -876,16 +878,6 @@
 ;; Ctrl + Shift + i 키로 단어 하이라이트 모두 지우기
 (global-set-key (kbd "H-S-i") 'highlight-symbol-remove-all)
 
-;; 일정관리를 위한 Pomodoro Timer 패키지
-(require 'pomodoro)
-(pomodoro-add-to-mode-line)
-
-;; C-c C-o,p 키로 타이머를 시작, 중지합니다
-(global-set-key (kbd "C-c C-o") 'pomodoro-start)
-(global-set-key (kbd "C-c C-p") 'pomodoro-stop)
-(define-key c++-mode-map (kbd "C-c C-o") 'pomodoro-start)
-(define-key c++-mode-map (kbd "C-c C-p") 'pomodoro-stop)
-(define-key python-mode-map (kbd "C-c C-p") 'pomodoro-stop)
 
 ;; PACKAGE: image+
 (require 'image+)
@@ -1471,6 +1463,19 @@
 ;; 몇가지 유용한 설정
 (transient-mark-mode t)
 (global-set-key [C-kanji] 'set-mark-command)
+
+;; PACKAGE: pomodoro
+;; 일정관리를 위한 Pomodoro Timer 패키지
+(require 'pomodoro)
+(pomodoro-add-to-mode-line)
+
+;; C-c C-o,p 키로 타이머를 시작, 중지합니다
+(global-set-key (kbd "C-c C-o") 'pomodoro-start)
+(global-set-key (kbd "C-c C-p") 'pomodoro-stop)
+;;(define-key c++-mode-map (kbd "C-c C-o") 'pomodoro-start)
+;;(define-key c++-mode-map (kbd "C-c C-p") 'pomodoro-stop)
+;;(define-key python-mode-map (kbd "C-c C-p") 'pomodoro-stop)
+
 
 ;;파일 편집 위치 기억
 (require 'saveplace)
