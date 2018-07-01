@@ -506,7 +506,7 @@
 ;; pomodoro에서 하루동안 발생한 POMO를 #1 ==> 오늘날짜_1 같이 변경해주는 함수
 (defun org-pomodoro-1day-done ()
   (interactive)
-  (let ((string_regex (concat "%s/#/" (format-time-string "%y%m%d") "_POMO_/g")))
+  (let ((string_regex (concat "%s/#/" (format-time-string "%y%m%d") "_/g")))
     (if (equal (buffer-name) "pomodoro.org")
         (evil-ex string_regex)
       (message "[-] you are not in pomorodo.org!")
@@ -688,7 +688,7 @@
 
                                    ("t" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
-                                    "*** %i\n***** %?         %(org-capture-pomodoro (org-read-date nil t))")
+                                    "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t))")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -964,7 +964,7 @@
 (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 
 ;; PACKAGE: ein
-(require 'ein)
+;; (require 'ein)
 ;; jupyter notebook을 킨 상태에서 브라우저가 자동으로 켜지지 않도록 설정합니다
 (setq ein:jupyter-server-args (quote ("--no-browser")))
 (setq ein:use-auto-complete t)
@@ -979,6 +979,8 @@
      (define-key ein:notebook-mode-map (kbd "H-i") nil)
      (define-key ein:notebook-mode-map (kbd "C-u") nil)
      (define-key ein:notebook-mode-map (kbd "C-x C-s") nil)
+     (define-key ein:ipynb-mode-map (kbd "C-c C-o") nil)
+     (define-key ein:ipynb-mode-map (kbd "C-c C-p") nil)
 
      ;; ed: ein 단축키 등록
      (define-key ein:notebook-mode-map (kbd "C-w") 'ein:notebook-save-notebook-command)
@@ -1472,9 +1474,13 @@
 ;; C-c C-o,p 키로 타이머를 시작, 중지합니다
 (global-set-key (kbd "C-c C-o") 'pomodoro-start)
 (global-set-key (kbd "C-c C-p") 'pomodoro-stop)
-;;(define-key c++-mode-map (kbd "C-c C-o") 'pomodoro-start)
-;;(define-key c++-mode-map (kbd "C-c C-p") 'pomodoro-stop)
-;;(define-key python-mode-map (kbd "C-c C-p") 'pomodoro-stop)
+(add-hook 'c++-mode-hook (lambda ()
+                           (define-key c++-mode-map (kbd "C-c C-o") 'pomodoro-start)
+                           (define-key c++-mode-map (kbd "C-c C-p") 'pomodoro-stop)
+                           ))
+(add-hook 'python-mode-hook (lambda ()
+                             (define-key python-mode-map (kbd "C-c C-p") 'pomodoro-stop)
+                             ))
 
 
 ;;파일 편집 위치 기억
