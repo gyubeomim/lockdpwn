@@ -788,6 +788,7 @@
                            (define-key evil-motion-state-map (kbd "C-]") nil)
                            (define-key evil-motion-state-map (kbd "C-6") nil)
                            (define-key evil-motion-state-map (kbd "K") nil)
+                           (define-key evil-motion-state-map (kbd "TAB") nil)
 
                            ;; 키바인딩 해제 INSERT MODE
                            (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -1471,9 +1472,11 @@
 (require 'pomodoro)
 (pomodoro-add-to-mode-line)
 
-;; C-c C-o,p 키로 타이머를 시작, 중지합니다
+;; C-c C-o,p 키로 타이머를 시작, 중지합니다, C-c C-9,0 키로 중지, 재개합니다
 (global-set-key (kbd "C-c C-o") 'pomodoro-start)
 (global-set-key (kbd "C-c C-p") 'pomodoro-stop)
+(global-set-key (kbd "C-c C-9") 'pomodoro-pause)
+(global-set-key (kbd "C-c C-0") 'pomodoro-resume)
 (add-hook 'c++-mode-hook (lambda ()
                            (define-key c++-mode-map (kbd "C-c C-o") 'pomodoro-start)
                            (define-key c++-mode-map (kbd "C-c C-p") 'pomodoro-stop)
