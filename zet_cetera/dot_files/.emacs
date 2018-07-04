@@ -789,6 +789,7 @@
                            (define-key evil-motion-state-map (kbd "C-6") nil)
                            (define-key evil-motion-state-map (kbd "K") nil)
                            (define-key evil-motion-state-map (kbd "TAB") nil)
+                           (define-key evil-motion-state-map (kbd "`") nil)
 
                            ;; 키바인딩 해제 INSERT MODE
                            (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -815,6 +816,7 @@
                            (define-key evil-normal-state-map (kbd "z") nil)
                            (define-key evil-normal-state-map (kbd "x") nil)
                            (define-key evil-normal-state-map (kbd "c") nil)
+                           (define-key evil-normal-state-map (kbd "J") nil)
 
                            ;; 키바인딩 설정 ESC MODE
                            ;; C-u 키로 page up 키를 설정합니다
@@ -823,8 +825,8 @@
 
 ;; evil-mode로 인해 사용하지 않는 전역 키바인딩을 해제합니다
 ;; Ctrl
-;; (global-set-key (kbd "C-d") 'evil-scroll-down)
 (global-set-key (kbd "C-u") nil)
+(global-set-key (kbd "C-j") nil)
 
 
 (defun newline-without-break-of-line ()
@@ -1217,7 +1219,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1475,8 +1477,16 @@
 ;; C-c C-o,p 키로 타이머를 시작, 중지합니다, C-c C-9,0 키로 중지, 재개합니다
 (global-set-key (kbd "C-c C-o") 'pomodoro-start)
 (global-set-key (kbd "C-c C-p") 'pomodoro-stop)
-(global-set-key (kbd "C-c C-9") 'pomodoro-pause)
-(global-set-key (kbd "C-c C-0") 'pomodoro-resume)
+(global-set-key (kbd "C-c C-9") '(lambda ()
+                                   (interactive)
+                                   (pomodoro-pause)
+                                   (message "[+] Pomodoro Paused!")
+                                   ))
+(global-set-key (kbd "C-c C-0") '(lambda ()
+                                   (interactive)
+                                   (pomodoro-resume)
+                                   (message "[+] Pomodoro Resumed!")
+                                   ))
 (add-hook 'c++-mode-hook (lambda ()
                            (define-key c++-mode-map (kbd "C-c C-o") 'pomodoro-start)
                            (define-key c++-mode-map (kbd "C-c C-p") 'pomodoro-stop)
@@ -2248,9 +2258,10 @@ created by edward 180515"
 ;; Ctrl + Shift + k 키로 현재 커서부터 아래 라인을 모두 지웁니다
 (global-set-key (kbd "C-S-k") 'kill-to-end-of-buffer)
 
-;; Ctrl + j 키로 해당 커서의 오른쪽부분만 삭제합니다
-(global-set-key (kbd "C-j") 'kill-visual-line)
-(define-key org-mode-map (kbd "C-j") 'kill-visual-line)
+;; Ctrl + h 키로 해당 커서의 오른쪽부분만 삭제합니다
+(global-set-key (kbd "H-m") 'kill-visual-line)
+(define-key org-mode-map (kbd "H-m") 'kill-visual-line)
+
 
 ;; Ctrl + a 키로 전체선택하게 합니다
 (global-set-key "\C-a" 'mark-whole-buffer)
@@ -2291,6 +2302,11 @@ created by edward 180515"
 ;;"find . <X> -type f <F> -exec grep <C> -nH -ie <R> \\{\\} +")
 ;;"find . -type f -exec grep --exclude=*{ph.h, rviz, rst} --include={cpp,c,h,py} -nH -ie   {} +" 같이 확장자를 필터링할 수 있다
 (grep-apply-setting 'grep-find-command '("find . -type f -exec grep -nH -ie   {} +" . 35))
+
+;; (eval-after-load "helm-grep" (lambda ()
+;;                           ;; 키바인딩 해제
+;;                           (define-key grep-mode-map (kbd "n") nil)
+;;                           )
 
 
 ;; c++ 주석 처리 변경 코드 (// -> /* */ 로 변경한다)
@@ -2468,7 +2484,11 @@ created by edward 180515"
 ;; C-c + y 키로 다른 branch에 있는 파일의 내용을 확인합니다
 (global-set-key (kbd "C-c y") 'magit-find-file)
 
+;; magit 패키지가 로딩되면 같이 실행되는 코드
 (eval-after-load "magit" (lambda ()
+                           ;; ed: 키바인딩 해제
+                           (define-key magit-status-mode-map (kbd "C-w") nil)
+
                            ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
                            (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
                            (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
@@ -2611,8 +2631,9 @@ created by edward 180515"
 ;; 1개의 키가 입력되는데 걸리는 시간 설정
 (setq key-chord-one-key-delay 0.17) ; default 0.2
 (key-chord-define-global "66" 'ein:jupyter-server-stop)        ;; jupyter notebook 서버 종료
-(key-chord-define-global ",," 'ac-complete-semantic)           ;; 코드 자동완성
-(key-chord-define-global "mm" 'jedi:complete)                  ;; 코드 자동완성 for python
+(key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
+(key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
+(key-chord-define-global ",," 'jedi:complete)                  ;; 코드 자동완성 for python
 (key-chord-define-global "zz" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
 (key-chord-define-global "aa" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
 (key-chord-define-global "xx" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
