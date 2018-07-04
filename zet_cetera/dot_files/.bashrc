@@ -164,7 +164,7 @@ alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 alias git1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
 alias git2='cd /home/dyros-vehicle/gitrepo/ims_ros'
 alias git3='cd /home/dyros-vehicle/gitrepo/ims_carto'
-alias git4='cd /home/dyros-vehicle/gitrepo/ims_ml/SqueezeSeg'
+alias git4='cd /home/dyros-vehicle/gitrepo/ims_dyros'
 alias git5='cd /home/dyros-vehicle/gitrepo/ims_ml'
 alias gito='cd /home/dyros-vehicle/gitrepo/ims_org'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
@@ -182,6 +182,7 @@ alias add='git add'
 alias commit='git commit'
 alias push='git push'
 alias pull='git pull'
+alias clone='git clone'
 alias gc='git checkout'
 alias gb='git branch'
 
@@ -271,7 +272,7 @@ alias cmca='catkin_make_isolated --install --use-ninja'
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/gitrepo/ims_ros/vrep_ws/dyros_simulator_v5.ttt'
+alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/gitrepo/ims_ros/vrep_ws/dyros_simulator_v7.ttt'
 
 # source ROS PATH
 source /opt/ros/kinetic/setup.bash
@@ -339,6 +340,7 @@ export LD_LIBRARY_PATH=/usr/local/include/opencv2/:$LD_LIBRARY_PATH
 
 # for cling with Jupyter
 export PATH=/home/dyros-vehicle/Documents/cling_2018-05-10_ubuntu16/bin:$PATH 
+
 
 
 #START NOT USED------------------------------------------------------
