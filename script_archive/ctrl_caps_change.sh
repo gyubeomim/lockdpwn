@@ -1,7 +1,7 @@
 # bash ==> Ctrl <--> Caps Lock 
 
 case $1 in
-    original)
+    o)
         dconf write /org/gnome/desktop/input-sources/xkb-options "['']"
         dconf read /org/gnome/desktop/input-sources/xkb-options
         ;;
