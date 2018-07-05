@@ -506,7 +506,7 @@
 ;; pomodoro에서 하루동안 발생한 POMO를 #1 ==> 오늘날짜_1 같이 변경해주는 함수
 (defun org-pomodoro-1day-done ()
   (interactive)
-  (let ((string_regex (concat "%s/#/" (format-time-string "%y%m%d") "_/g")))
+  (let ((string_regex (concat "%s/#/$/g")))
     (if (equal (buffer-name) "pomodoro.org")
         (evil-ex string_regex)
       (message "[-] you are not in pomorodo.org!")
@@ -641,9 +641,6 @@
                                    ("2" "edward.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("3" "edward.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("4" "dyros.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
@@ -651,9 +648,6 @@
                                    ("5" "dyros.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("6" "dyros.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("7" "parkable.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Tasks")
@@ -661,9 +655,6 @@
                                    ("8" "parkable.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("9" "parkable.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("a" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
@@ -671,9 +662,6 @@
                                    ("s" "cartographer.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("d" "cartographer.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("w" "emacs.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Tasks")
@@ -689,6 +677,10 @@
                                    ("t" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
                                     "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t))")
+
+                                   ("n" "note.org: [Note]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/note.org" "Note")
+                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -733,6 +725,7 @@
 ;; C-c + / 키로 edward.org 파일을 엽니다
 (global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
+(global-set-key (kbd "C-c 0") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/note.org")))
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_parkable.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_cartographer.org")))
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/dyros.org")))
@@ -1219,7 +1212,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/note.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
