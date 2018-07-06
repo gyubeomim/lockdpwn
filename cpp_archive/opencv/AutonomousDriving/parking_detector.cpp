@@ -1,16 +1,21 @@
-#include<iostream>//c++ files
-#include<opencv2\opencv.hpp>//opencv library function
-#include<opencv2\imgproc\imgproc.hpp>//image processing
+/*
+ * #+DESCRIPTION: AVM with parking detector
+ * #+DATE:        2018-07-06-금
+ * #+AUTHOR:      Kyu Jin Park
+ */
+#include<iostream>
+#include<opencv2/opencv.hpp>
+#include<opencv2/imgproc/imgproc.hpp>
 using namespace cv;
 using namespace std;
+
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
-//#define filename             "AVM.mp4"
 #define filename             "../pictures/avm.png"
-//#define filename             "rose.jpg"
 #define SaveFileName         "result.png"
 #define video 0
 #define image 1
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
 #if video
 int main(int argc, char** argv) {
     Mat src, gray;
@@ -105,6 +110,7 @@ int main(int argc, char** argv) {
     }
     return 0;
 }
+
 # elif image
 /// Trackbar strings
 char* window_name = "DST";
