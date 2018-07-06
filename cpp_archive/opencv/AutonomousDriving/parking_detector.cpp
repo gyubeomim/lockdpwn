@@ -16,102 +16,6 @@ using namespace std;
 #define image 1
 /*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
-#if video
-int main(int argc, char** argv) {
-    Mat src, gray;
-    // video reading
-    VideoCapture cap(filename);
-    if (!cap.isOpened()) {
-        cout << "Video can't be read" << endl;
-    }
-    //--- GRAB AND WRITE LOOP
-    cout << "Start grabbing" << endl
-        << "Press any key to terminate" << endl;
-
-    // harris corner detection
-    int thresh = 150;
-    Mat dst, dst_norm, dst_norm_scaled;
-    dst = Mat::zeros(src.size(), CV_32FC1);
-    Mat roi_gray;
-    int blockSize = 5;
-    int apertureSize = 5;
-    double k = 0.06;
-    for (;;)
-    {
-        // wait for a new frame from camera and store it into 'src'
-        cap.read(src);
-        cvtColor(src, gray, CV_BGR2GRAY);
-        Mat src2 = src.clone();
-        //cvtColor(src2, src2, CV_RGB2HSV);
-        src2 = src2(Rect(src.cols * 1 / 3, src.rows * 1 / 5, src.cols * 1 / 3, src.rows * 3 / 5));
-        Mat src3 = src2.clone();
-
-        Mat image_r(src2.rows, src2.cols, CV_8UC1);
-        Mat image_g(src2.rows, src2.cols, CV_8UC1);
-        Mat image_b(src2.rows, src2.cols, CV_8UC1);
-        Mat out[] = { image_r, image_g, image_b };
-        int from_to[] = { 0,0, 1,1, 2,2 }; mixChannels(&src2, 1, out, 3, from_to, 3);
-        Mat imageROI = src(Rect(src.cols * 1 / 3, src.rows * 1 / 5, src.cols * 1 / 3, src.rows * 3 / 5));
-        //cvtColor(imageROI, roi_gray, CV_BGR2GRAY);
-
-        //cvtColor(imageROI, imageROI, CV_BGR2HSV);
-        cvtColor(imageROI, roi_gray, CV_BGR2GRAY);
-        //morphologyEx(roi_gray, roi_gray, CV_MOP_CLOSE, getStructuringElement(MORPH_RECT, Size(3, 3)));
-        //morphologyEx(roi_gray, roi_gray, CV_MOP_CLOSE, getStructuringElement(MORPH_RECT, Size(3, 3)));
-        //morphologyEx(roi_gray, roi_gray, CV_MOP_CLOSE, getStructuringElement(MORPH_RECT, Size(3, 3)));
-        //morphologyEx(roi_gray, roi_gray, CV_MOP_CLOSE, getStructuringElement(MORPH_RECT, Size(3, 3)));
-        //morphologyEx(roi_gray, roi_gray, CV_MOP_CLOSE, getStructuringElement(MORPH_RECT, Size(5, 5)));
-        //threshold(image_g, image_g, 120, 255, THRESH_BINARY);
-        /// Detecting corners
-        cornerHarris(roi_gray, dst, blockSize, apertureSize, k, BORDER_DEFAULT);
-        /// Normalizing
-        normalize(dst, dst_norm, 0, 255, NORM_MINMAX, CV_32FC1, Mat());
-        convertScaleAbs(dst_norm, dst_norm_scaled);
-        /// Drawing a circle around corners
-        for (int j = 0; j < dst_norm.rows; j++)
-        {
-            for (int i = 0; i < dst_norm.cols; i++)
-            {
-                if ((int)dst_norm.at<float>(j, i) > thresh)
-                {
-                    circle(src2, Point(i, j), 5, Scalar(0, 0, 255), 1, 8, 0);
-                    //circle(imageROI, Point(i, j), 5, Scalar(0, 0, 255), 1, 8, 0);
-                }
-            }
-        }
-        /// Showing the result
-        //imshow("corners_windo", gray);
-        // check if we succeeded
-        if (src.empty()) {
-            cerr << "ERROR! blank frame grabbed\n";
-            break;
-        }
-        // show live and wait for a key with timeout long enough to show images
-        //imshow("src", src);
-        //imshow("gray", gray);
-        /* ----------------- hough line transform ------------------- */
-        Mat dst, cdst;
-        Canny(src3, dst, 200, 250, 3);
-        cvtColor(dst, cdst, CV_GRAY2BGR);
-        vector<Vec4i> lines;
-        HoughLinesP(dst, lines, 1, CV_PI / 180, 50, 50, 10);
-        for (size_t i = 0; i < lines.size(); i++)
-        {
-            Vec4i l = lines[i];
-            line(cdst, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0, 0, 255), 3, CV_AA);
-        }
-        /* ---------------------------------------------------------- */
-        //imshow("roi", imageROI);
-        //imshow("roi_gray", roi_gray);
-        imshow("dst", src2);
-        imshow("cdst", cdst);
-        if (waitKey(5) >= 0)
-                break;
-    }
-    return 0;
-}
-
-# elif image
 /// Trackbar strings
 char* window_name = "DST";
 int main() {
@@ -302,4 +206,3 @@ int main() {
 
     return 0;
 }
-# endif
