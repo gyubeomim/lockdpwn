@@ -26,10 +26,11 @@ int main() {
     cvtColor(src, HSV, CV_BGR2HSV);
     cvtColor(src, gray, CV_BGR2GRAY);
     cvtColor(src, LAB, CV_BGR2Lab);
-    /// Create a window to display results
 
+    /// Create a window to display results
     namedWindow(window_name, 0);
     resizeWindow(window_name, 1000, 700);
+
     // BGR, HSV
     Mat B(BGR.rows, BGR.cols, CV_8UC1);
     Mat G(BGR.rows, BGR.cols, CV_8UC1);
@@ -46,124 +47,89 @@ int main() {
     Mat b(LAB.rows, LAB.cols, CV_8UC1);
     Mat outLAB[] = { L, a, b };
     int from_toLAB[] = { 0,0, 1,1, 2,2 }; mixChannels(&LAB, 1, outLAB, 3, from_toLAB, 3);
+
     // Harris corner variables
     int thresh = 150;
     int blockSize = 6; //5
     int apertureSize = 5; //5
     double k = 0.06;
-    for (;;)
-    {
+
+    for (;;) {
         // save, quit operate
         int input_key = waitKey(30);
         imshow(window_name, src);
         adaptiveThreshold(gray, test, 250, CV_ADAPTIVE_THRESH_MEAN_C, CV_THRESH_BINARY, 3, 5);
 
-        /* -------------- Detecting corners -------------------- */
-        //Mat dst_norm, dst_norm_scaled;
-        //cornerHarris(test, dst, blockSize, apertureSize, k, BORDER_DEFAULT);
-        ///// Normalizing
-        //normalize(dst, dst_norm, 0, 255, NORM_MINMAX, CV_32FC1, Mat());
-        //convertScaleAbs(dst_norm, dst_norm_scaled);
-        ///// Drawing a circle around corners
-        //for (int j = 0; j < dst_norm.rows; j++)
-        //{
-        //  for (int i = 0; i < dst_norm.cols; i++)
-        //  {
-        //      if ((int)dst_norm.at<float>(j, i) > thresh)
-        //      {
-        //          circle(src, Point(i, j), 5, Scalar(0, 0, 255), 1, 8, 0);
-        //      }
-        //  }
-        //}
-        /* ---------------------------------------------------------- */
-        // ROI Image operation
-        Mat roi_gray = Mat::zeros(src.rows, src.cols, CV_8UC1);
-        /* ----------------- Condition -------------------------------- */
-        for (int j = 0; j < src.rows; j++)
-        {
-            for (int i = 0; i < src.cols; i++)
-            {
-                // BGR, HSV condition
-                if ((int)S.at<uchar>(j, i) <= 80 && (int)V.at<uchar>(j, i) >= 100 && (int)H.at<uchar>(j, i) <= 200
-                    && (int)B.at<uchar>(j, i) >= 200)
-                {
-                    //circle(src, Point(i, j), 5, Scalar(255, 0, 0), 1, 8, 0);
-                    roi_gray.at<uchar>(j, i) = 255;
-                }
-            }
-        }
-        /* -------------------------------------------------------------- */
-        /* ------------------------- ROI -------------------------------- */
-        Mat roi = src(Rect(src.cols * 1 / 3, src.rows * 1 / 5, src.cols * 1 / 3, src.rows * 3 / 5));
-        roi_gray = roi_gray(Rect(src.cols * 1 / 3, src.rows * 1 / 5, src.cols * 1 / 3, src.rows * 3 / 5));
-        /* -------------------------------------------------------------- */
-
         /* ----------------- hough line transform ------------------- */
         Mat dst, cdst;
-        Canny(roi_gray, dst, 200, 250, 3);
+        Canny(test, dst, 200, 250, 3);
         cvtColor(dst, cdst, CV_GRAY2BGR);
 
         morphologyEx(cdst, cdst, CV_MOP_CLOSE, getStructuringElement(MORPH_RECT, Size(15, 15)));
         morphologyEx(cdst, cdst, CV_MOP_CLOSE, getStructuringElement(MORPH_RECT, Size(15, 15)));
         morphologyEx(cdst, cdst, CV_MOP_CLOSE, getStructuringElement(MORPH_RECT, Size(15, 15)));
+
         vector<Vec4i> lines;
         HoughLinesP(dst, lines, 1, CV_PI / 180, 50, 50, 10);
-        for (size_t i = 0; i < lines.size(); i++)
-        {
+
+        for (size_t i = 0; i < lines.size(); i++) {
             Vec4i l = lines[i];
             line(cdst, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0, 0, 255), 3, CV_AA);
         }
         /* ---------------------------------------------------------- */
+
         /* -------------- Detecting corners -------------------- */
         Mat dst_norm2, dst_norm_scaled2, dst2;
         //int thresh = 150;
         //int blockSize = 5;
         //int apertureSize = 5;
         //double k = 0.06;
-        cornerHarris(roi_gray, dst2, blockSize, apertureSize, k, BORDER_DEFAULT);
+        cornerHarris(test, dst2, blockSize, apertureSize, k, BORDER_DEFAULT);
         /// Normalizing
         normalize(dst2, dst_norm2, 0, 255, NORM_MINMAX, CV_32FC1, Mat());
         convertScaleAbs(dst_norm2, dst_norm_scaled2);
+
         /// Drawing a circle around corners
-        for (int j = 0; j < dst_norm2.rows; j++)
-        {
-            for (int i = 0; i < dst_norm2.cols; i++)
-            {
-                if ((int)dst_norm2.at<float>(j, i) > thresh)
-                {
-                    circle(roi, Point(i, j), 5, Scalar(255, 0, 0), 1, 8, 0);
+        for (int j = 0; j < dst_norm2.rows; j++) {
+            for (int i = 0; i < dst_norm2.cols; i++) {
+                if ((int)dst_norm2.at<float>(j, i) > thresh) {
+                    circle(test, Point(i, j), 5, Scalar(255, 0, 0), 1, 8, 0);
                 }
             }
         }
+
         /* ---------------------------------------------------------- */
         /* ----------------------Contour region making --------------- */
-        Mat img_temp = roi_gray.clone();
+        Mat img_temp = test.clone();
         Mat img_contour, check, img2;
         vector<vector<Point>> contours;
         img2 = 255 - img_temp;
         img_contour = img2.clone();
         Mat hierarchy;
         findContours(img_contour, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
+
         vector<vector<Point>> contours_poly(contours.size());
         vector<Rect> bound(contours.size());
         int contour_num = 0;
         check = img_temp.clone();
         vector<Rect> bound2(contours.size());
-        for (int i = 0; i < contours.size(); i++)
-        {
+
+        for (int i = 0; i < contours.size(); i++) {
             approxPolyDP(Mat(contours[i]), contours_poly[i], 1, true); // approximate of contour
             bound[i] = boundingRect(Mat(contours_poly[i]));      // Make rectangular boundary
         }
+
         // Contour limitation for detecting license
-        Mat drawing = roi.clone();
-        Mat drawing2 = roi.clone();
+        Mat drawing = test.clone();
+        Mat drawing2 = test.clone();
         int refinery_count = 0;
-        for (int i = 0; i < contours.size(); i++)
-        {
+
+        for (int i = 0; i < contours.size(); i++) {
             double ratio = abs((double)bound[i].height / bound[i].width);
             Point contour_WH = (bound[i].tl() - bound[i].br());
             drawContours(drawing, contours, i, Scalar(0, 0, 255), 2, 8, hierarchy, 0, Point());
         }
+
         /* ---------------------------------------------------------- */
         // morphology operation
         morphologyEx(check, check, CV_MOP_DILATE, getStructuringElement(MORPH_RECT, Size(10, 10)));
@@ -183,13 +149,11 @@ int main() {
         /// Normalizing
         normalize(dst3, dst_norm3, 0, 255, NORM_MINMAX, CV_32FC1, Mat());
         convertScaleAbs(dst_norm3, dst_norm_scaled3);
+
         /// Drawing a circle around corners
-        for (int j = 0; j < dst_norm3.rows; j++)
-        {
-            for (int i = 0; i < dst_norm3.cols; i++)
-            {
-                if ((int)dst_norm3.at<float>(j, i) > thresh)
-                {
+        for (int j = 0; j < dst_norm3.rows; j++) {
+            for (int i = 0; i < dst_norm3.cols; i++) {
+                if ((int)dst_norm3.at<float>(j, i) > thresh) {
                     circle(drawing, Point(i, j), 5, Scalar(0, 255, 0), 1, 8, 0);
                 }
             }
@@ -199,7 +163,8 @@ int main() {
             cout << "Program Termination" << endl;
             break;
         }
-        else if (input_key == 'c' || input_key == 'C') imwrite(SaveFileName, dst);
+        else if (input_key == 'c' || input_key == 'C')
+          imwrite(SaveFileName, dst);
         //else if (input_key == 's' || input_key == 'S') cout << "T_val =  " << T_val << endl;
         input_key = 0;
     }
