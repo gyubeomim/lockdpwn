@@ -548,6 +548,7 @@
      (define-key org-mode-map (kbd "C-c C-l") nil)
      (define-key org-mode-map (kbd "C-c C-o") nil)
      (define-key org-mode-map (kbd "C-c C-p") nil)
+     (define-key org-mode-map (kbd "C-c l") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -585,6 +586,8 @@
      (define-key org-mode-map (kbd "C-\\") 'org-tags-sparse-tree)
      ;; C-[ 키로 link를 삽입합니다
      (define-key org-mode-map (kbd "H-[") 'org-insert-link)
+     ;; C-S-[ (C-{) 키로 link를 저장합니다
+     (define-key org-mode-map (kbd "C-{") 'org-store-link)
      ;; C-c C-[ 키로 org-pomodoro-1day-done 함수를 실행합니다
      (define-key org-mode-map (kbd "C-c H-[") 'org-pomodoro-1day-done)
 
@@ -642,36 +645,39 @@
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
-                                   ("4" "dyros.org: [Task]" entry
+                                   ("3" "dyros.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("5" "dyros.org: [Issues]" entry
+                                   ("4" "dyros.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("m" "dyros.org: [TeamMeeting]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "TeamMeeting")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
-                                   ("7" "parkable.org: [Task]" entry
+                                   ("5" "parkable.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("8" "parkable.org: [Issues]" entry
+                                   ("6" "parkable.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
-                                   ("a" "cartographer.org: [Task]" entry
+                                   ("7" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("s" "cartographer.org: [Issues]" entry
+                                   ("8" "cartographer.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
-                                   ("w" "emacs.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("e" "emacs.org: [Issues]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Issues")
+                                   ("9" "ubuntu_tips.org: [Ubuntu]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
-                                   ("r" "ubuntu_tips.org: [Ubuntu]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
+                                   ("a" "emacs.org: [Task]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Tasks")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("s" "emacs.org: [Issues]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Issues")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("t" "pomodoro.org: [GTD]" entry
