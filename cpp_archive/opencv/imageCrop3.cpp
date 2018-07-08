@@ -16,8 +16,7 @@ int main(int argc, const char *argv[]) {
 	Mat image = imread("hangeulSample.png");
 	if (!image.data) return 0;
 
-	// grid 격자의 크기를 입력한다
-    // 그림판에서 해당 파일을 연 다음 한 격자의 크기를 pixel 단위로 알아내서 입력한 값입니다 . 따라서 사진마다 달라집니다 
+	// 이미지 크기를 입력한다
 	int horizontal = 55;
 	int vertical = 77;
 	Mat tile;
@@ -53,5 +52,4 @@ int main(int argc, const char *argv[]) {
 	waitKey(0);
 	return 0;
 }
-
 

@@ -22,8 +22,8 @@ int main() {
 	cvtColor(src, HSV, CV_BGR2HSV);
 	cvtColor(src, gray, CV_BGR2GRAY);
 	cvtColor(src, LAB, CV_BGR2Lab);
-	/// Create a window to display results
 
+	/// Create a window to display results
 	namedWindow(window_name, 0);
 	resizeWindow(window_name, 1000, 700);
 
@@ -54,6 +54,7 @@ int main() {
 	int blockSize = 6; //5
 	int apertureSize = 5; //5 
 	double k = 0.06;
+
 	for (;;) {
 		// save, quit operate
 		int input_key = waitKey(30);
