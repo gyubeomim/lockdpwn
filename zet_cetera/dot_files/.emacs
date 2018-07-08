@@ -682,11 +682,11 @@
 
                                    ("t" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
-                                    "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t))")
+                                    "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
 
                                    ("n" "note.org: [Note]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/note.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
