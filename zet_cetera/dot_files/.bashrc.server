@@ -175,6 +175,7 @@ alias add='git add'
 alias commit='git commit'
 alias push='git push'
 alias pull='git pull'
+alias clone='git clone'
 alias gc='git checkout'
 alias gb='git branch'
 
@@ -330,3 +331,5 @@ alias ctrlorig='/media/dyros-data/gitrepo/lockdpwn/shellcode_archive/ctrl_caps_c
 
 # for chown
 alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
+
+alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
