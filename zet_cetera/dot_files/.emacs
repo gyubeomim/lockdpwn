@@ -712,6 +712,9 @@
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
                                   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line)
+                                  ;; evil-scroll-down & up 을 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "C-u") 'evil-scroll-up)
+                                  (define-key org-agenda-mode-map (kbd "C-d") 'evil-scroll-down)
 
                                   ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
@@ -827,6 +830,18 @@
 (global-set-key (kbd "C-u") nil)
 (global-set-key (kbd "C-j") nil)
 
+;; customize mode와 같이 실행되는 hook 코드
+(add-hook 'custom-mode-hook '(lambda ()
+                               ;; evil 모드 키바인딩을 설정합니다
+                               (define-key custom-mode-map (kbd "j") 'evil-next-line)
+                               (define-key custom-mode-map (kbd "k") 'evil-previous-line)
+                               (define-key custom-mode-map (kbd "l") 'evil-forward-char)
+                               (define-key custom-mode-map (kbd "h") 'evil-backward-char)
+                               (define-key custom-mode-map (kbd "g g") 'evil-goto-first-line)
+                               (define-key custom-mode-map (kbd "G") 'evil-goto-line)
+                               (define-key custom-mode-map (kbd "C-u") 'evil-scroll-up)
+                               (define-key custom-mode-map (kbd "C-d") 'evil-scroll-down)
+                               ))
 
 (defun newline-without-break-of-line ()
   "1. move to end of the line, 2. insert newline with index."
@@ -2094,6 +2109,9 @@ created by edward 180515"
 ;; Ctrl + 4 키로 .md 파일을 파이어폭스로 프리뷰합니다 (not used)
 ;; (global-set-key (kbd "C-4") 'flymd-flyit)
 
+;; C-c 9 키로 .emacs 파일을 열도록 설정합니다
+(global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/.emacs")))
+
 ;; revert buffer를 파라미터와 같이 함수화한 코드
 (defun my-revert-buffer()
   (interactive)
@@ -2491,15 +2509,25 @@ created by edward 180515"
                            ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
                            (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
                            (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-status-mode-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-status-mode-map (kbd "C-d") 'evil-scroll-down)
 
                            (define-key magit-branch-section-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-branch-section-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-branch-section-map (kbd "C-d") 'evil-scroll-down)
 
                            (define-key magit-unstaged-section-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-unstaged-section-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-unstaged-section-map (kbd "C-d") 'evil-scroll-down)
 
                            (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-file-mode-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-file-mode-map (kbd "C-d") 'evil-scroll-down)
 
                            (define-key magit-diff-mode-map (kbd "j") 'evil-next-line)
                            (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
                            ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
@@ -2618,6 +2646,8 @@ created by edward 180515"
 
 ;; Alt + ] 키로 horizontal <--> vertical을 토글하는 키를 설정한다
 (global-set-key (kbd "M-]") 'window-split-toggle)
+
+
 
 ;; M-c, C-v 키를 복사, 붙여넣기로 전역적으로 설정합니다 (not used)
 ;; (global-set-key (kbd "C-c") 'cua--prefix-override-handler)
