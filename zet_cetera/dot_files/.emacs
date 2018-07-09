@@ -586,11 +586,12 @@
      (define-key org-mode-map (kbd "C-\\") 'org-tags-sparse-tree)
      ;; C-[ 키로 link를 삽입합니다
      (define-key org-mode-map (kbd "H-[") 'org-insert-link)
-     ;; C-S-[ (C-{) 키로 link를 저장합니다
-     (define-key org-mode-map (kbd "C-{") 'org-store-link)
+     ;; C-c [ 키로 link를 저장합니다
+     (define-key org-mode-map (kbd "C-c \[") 'org-store-link)
      ;; C-c C-[ 키로 org-pomodoro-1day-done 함수를 실행합니다
      (define-key org-mode-map (kbd "C-c H-[") 'org-pomodoro-1day-done)
-
+     ;; C-c C-Enter 키로 체크박스를 ON/OFF 합니다
+     (define-key org-mode-map (kbd "C-c C-RET") 'org-toggle-checkbox)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -742,8 +743,8 @@
 (global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/pomodoro.org")))
 ;; C-, 키로 link.opg 파일을 엽니다
 (global-set-key (kbd "C-,") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/link.org")))
-;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
-(global-set-key (kbd "C-c l") 'org-store-link)
+;; C-c + [ 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
+(global-set-key (kbd "C-c \[") 'org-store-link)
 ;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
 (global-set-key (kbd "C-/") 'org-agenda)
 (define-key undo-tree-map (kbd "C-/") 'org-agenda)

@@ -1,25 +1,36 @@
 #include <iostream>
-#include <queue>
+#include <string>
+#include <set>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
-bool ans[201];
-bool check[201][201];
-
 int main() {
-  int a,b,c;
-  cin >> a >> b >> c;
+  set<string> s;
+  vector<string> ans;
+  int n,m;
+  cin >> n >> m;
 
-  int sum = c;
-  queue<pair<int,int>> q;
-  q.push(make_pair(0,0));
-
-  check[0][0] = true;
-  ans[c] = true;
-
-  while(!q.empty()) {
-
+  while(n--) {
+    string name;
+    cin >> name;
+    s.insert(name);
   }
 
+  while(m--) {
+    string name;
+    cin >> name;
+    if(s.count(name)) {
+      ans.push_back(name);
+    }
+  }
+
+  sort(ans.begin(), ans.end());
+  cout << ans.size() << '\n';
+
+  for(auto &name : ans) {
+    cout << name << '\n';
+  }
 
   return 0;
 }

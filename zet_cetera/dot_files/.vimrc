@@ -215,7 +215,7 @@ filetype plugin on
 
 " 파이썬 관련 설정들
 let python_version_2 = 1              " python 2 문법을 따른다고 옵션을 설정합니다.
-let python_highlight_all = 1          " 모든 강조(색상) 기능을 켭니다.
+" let python_highlight_all = 1          " 모든 강조(색상) 기능을 켭니다.
 let g:pydiction_location='/home/edward/.vim/pydiction/complete-dict'
 let g:neocomplcache_enable_at_startup = 1
 
@@ -327,7 +327,6 @@ Bundle 'git://git.wincent.com/command-t.git'
 " 여러가지 플러그인들입니다 자세한 사용법은 구글링으로 알아보세요~~
 Plugin 'The-NERD-tree'    " 유명한 플러그인으로 디렉토리간 이동을 쉽게 해주는 플러그인입니다 (파일탐색기 플러그인)
 Plugin 'minibufexpl.vim'  " 버퍼를 보기 쉽게 만들어주는 플러그인  (gvim에서 Ctrl + Tab 으로 버퍼르 이동합니다)
-Plugin 'matchparenpp'     " 괄호에 커서를 가져다 대면 반대쪽 커서가 깜빡거리게 해주는 플러그인
 Plugin 'ctags.vim'        " 함수나 구조체 클래스 변수 선언들을 참조하고 싶을 때 사용하는 플러그인입니다
 Plugin 'snipMate'         " 명령어 자동완성 플러그인입니다 (inc + <tab> : #include <>)
 Plugin 'tComment'         " visual 모드로 블록(구간)을 만든 뒤 Ctrl + _ + Ctrl + _ 키를 누르면 자동으로 주석이 입혀지는 플러그인
@@ -346,7 +345,7 @@ Plugin 'gtags.vim'
 Plugin 'valloric/youcompleteme'   " C++, Python 등 언어의 자동완성 플러그인
 Plugin 'airblade/vim-gitgutter'   " git project에서 수정,추가,제거된 라인을 표시해주는 gitgutter for Vim
 
-
+" Plugin 'matchparenpp'     " 괄호에 커서를 가져다 대면 반대쪽 커서가 깜빡거리게 해주는 플러그인 (NOT USED)
 filetype plugin indent on
 
 
