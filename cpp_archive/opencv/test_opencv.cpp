@@ -9,7 +9,8 @@ using namespace std;
 #define filename             "AVM.png"
 //#define filename           "rose.jpg"
 #define SaveFileName         "result.png"
-#define video 0 #define image 1
+#define video 0 
+#define image 1
 /*�ѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤ�*/
 
 /// Trackbar strings
