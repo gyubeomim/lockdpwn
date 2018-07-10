@@ -98,7 +98,7 @@ g_odd_complete = create_complete_graph(odd_node_pairs_shortest_paths, flip_weigh
 odd_matching_dupes = set()
 odd_matching_dupes = nx.algorithms.max_weight_matching(g_odd_complete, True)
 odd_matching = list()
-odd_matching = list(pd.unique([tuple(sorted([k, v])) for k, v in odd_matching_dupes]))
+odd_matching = list(pd.unique([tuple(sorted([k, v])) for k, v in odd_matching_dupes.items()]))
 
 g_aug = add_augmenting_path_to_graph(g, odd_matching)
 
@@ -128,7 +128,7 @@ h_odd_complete = create_complete_graph(odd_node_pairs_shortest_paths, flip_weigh
 odd_matching_dupes = set()
 odd_matching_dupes = nx.algorithms.max_weight_matching(h_odd_complete, True)
 odd_matching = list()
-odd_matching = list(pd.unique([tuple(sorted([k, v])) for k, v in odd_matching_dupes]))
+odd_matching = list(pd.unique([tuple(sorted([k, v])) for k, v in odd_matching_dupes.items()]))
 h_aug = add_augmenting_path_to_graph(h, odd_matching)
 
 
