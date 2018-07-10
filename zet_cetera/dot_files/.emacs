@@ -1776,9 +1776,8 @@ Version 2017-04-19"
 ;;f2 다음 버퍼창 이동
 (global-set-key [f2] 'next-buffer)
 
-
-;; F4 또는 M-] 키로 파일 탐색기 Dired 모드 켜기
-(global-set-key [f4] 'dired)
+;; f3 키로 다음 창으로 이동
+(global-set-key [f3] 'next-multiframe-window)
 
 ;; ECB 시작
 (global-set-key [f6] 'ecb-minor-mode)
