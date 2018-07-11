@@ -820,6 +820,7 @@
                            (define-key evil-normal-state-map (kbd "x") nil)
                            (define-key evil-normal-state-map (kbd "c") nil)
                            (define-key evil-normal-state-map (kbd "J") nil)
+                           (define-key evil-normal-state-map (kbd "M-.") nil)
 
                            ;; 키바인딩 설정 ESC MODE
                            ;; C-u 키로 page up 키를 설정합니다
