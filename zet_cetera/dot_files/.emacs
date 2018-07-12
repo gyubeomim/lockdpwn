@@ -332,23 +332,23 @@
 (ac-config-default)
 
 ;; PACKAGE: semantic
-(require 'semantic)
-(require 'semantic/ia)
-(require 'semantic/complete)
+;; (require 'semantic)
+;; (require 'semantic/ia)
+;; (require 'semantic/complete)
 
 ;; Semantic ON
-(semantic-mode t)
+;; (semantic-mode t)
 
 ;; 함수나 변수들을 찾아 이동할 때마다 로그를 기록합니다
-(global-semantic-mru-bookmark-mode)
+;; (global-semantic-mru-bookmark-mode)
 
 ;; 자동완성에 쓸 헤더 파일 경로 적는 예
 ;; 이것이 있어야 #include 한 헤더파일의 내용도 자동완성에 나타납니다.
-(semantic-add-system-include "/usr/include" 'c-mode)
-(semantic-add-system-include "/usr/include" 'c++-mode)
-(semantic-add-system-include "/usr/include/c++/5" 'c-mode)
-(semantic-add-system-include "/usr/include/c++/5" 'c++-mode)
-(semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
+;; (semantic-add-system-include "/usr/include" 'c-mode)
+;; (semantic-add-system-include "/usr/include" 'c++-mode)
+;; (semantic-add-system-include "/usr/include/c++/5" 'c-mode)
+;; (semantic-add-system-include "/usr/include/c++/5" 'c++-mode)
+;; (semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
 
 
 ;; Company mode On
@@ -2366,9 +2366,8 @@ created by edward 180515"
 
 
 ;; 함수나 변수로 이동하는 단축키를 Alt + . , 로 설정한다
-;; semantic이 gtags보다 좋네 gtags는 zz,aa로 설정했다
-(global-set-key (kbd "M-.") 'semantic-ia-fast-jump)
-(global-set-key (kbd "M-,") 'pop-global-mark)
+(global-set-key (kbd "M-.") 'xref-find-definitions)
+(global-set-key (kbd "M-,") 'xref-pop-marker-stack)
 
 
 ;; 변수나 함수 하이라이팅한 구문을 빠르게 이동합니다 higlight-symbol 패키지
@@ -2661,16 +2660,16 @@ created by edward 180515"
 ;; 1개의 키가 입력되는데 걸리는 시간 설정
 (setq key-chord-one-key-delay 0.17) ; default 0.2
 (key-chord-define-global "66" 'ein:jupyter-server-stop)        ;; jupyter notebook 서버 종료
-(key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
-(key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
 (key-chord-define-global ",," 'jedi:complete)                  ;; 코드 자동완성 for python
 (key-chord-define-global "zz" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
 (key-chord-define-global "aa" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
-(key-chord-define-global "xx" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
-(key-chord-define-global "cc" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
+;; (key-chord-define-global "xx" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
+;; (key-chord-define-global "cc" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
+;; (key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
+;; (key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
 ;;(key-chord-define-global "??" 'split-window-right)             ;; 오른쪽에 새창 만들기 (NOT USED)
 ;;(key-chord-define-global ">>" 'split-window-below)             ;; 아래쪽에 새창 만들기 (NOT USED)
 ;;(key-chord-define-global "<<" 'ac-complete-semantic-raw)       ;; 코드 자동완성2 (NOT USED)
