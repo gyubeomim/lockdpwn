@@ -1683,6 +1683,7 @@
 ;; PACKAGE: ECB Emacs Code Browser
 (require 'ecb)
 
+
 ;; ECB tree view에서 F3 키가 ecb-show-help로 키바인딩되어있는 것을 해제해준다
 (add-hook 'ecb-common-tree-buffer-after-create-hook
           (lambda ()
@@ -1692,6 +1693,11 @@
           (lambda ()
             (local-unset-key [f3])
             ))
+
+;; ecb symboldef 버퍼에서 semantic mode가 필요하기 때문에 ecb를 로딩하는 순간 같이 실행해준다
+(eval-after-load "ecb" (lambda ()
+                         (semantic-mode t)
+                         ))
 
 ;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수 (NOT USED)
 (defun make_TAGS_file (&optional path)
@@ -2504,6 +2510,7 @@ created by edward 180515"
 (eval-after-load "magit" (lambda ()
                            ;; ed: 키바인딩 해제
                            (define-key magit-status-mode-map (kbd "C-w") nil)
+                           (define-key magit-status-mode-map (kbd "M-3") nil)
                            (define-key magit-diff-mode-map (kbd "M-3") nil)
 
                            ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
