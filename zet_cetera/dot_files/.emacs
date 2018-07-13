@@ -592,6 +592,8 @@
      (define-key org-mode-map (kbd "C-c H-[") 'org-pomodoro-1day-done)
      ;; C-c C-Enter 키로 체크박스를 ON/OFF 합니다
      (define-key org-mode-map (kbd "C-c C-RET") 'org-toggle-checkbox)
+     ;; C-c ] 키로 .org 파일을 agenda에 추가합니다
+     (define-key org-mode-map (kbd "C-c ]") 'org-agenda-file-to-front)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -1235,10 +1237,10 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/note.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/note/computer_spec.org" "~/gitrepo/ims_org/org_files/note.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1694,10 +1696,10 @@
             (local-unset-key [f3])
             ))
 
-;; ecb symboldef 버퍼에서 semantic mode가 필요하기 때문에 ecb를 로딩하는 순간 같이 실행해준다
-(eval-after-load "ecb" (lambda ()
-                         (semantic-mode t)
-                         ))
+;; ecb symboldef 버퍼에서 semantic mode가 필요하기 때문에 ecb를 로딩하는 순간 같이 실행해준다 (NOT USED)
+;; (eval-after-load "ecb" (lambda ()
+;;                          (semantic-mode t)
+;;                          ))
 
 ;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수 (NOT USED)
 (defun make_TAGS_file (&optional path)
