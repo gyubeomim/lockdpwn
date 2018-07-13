@@ -2139,6 +2139,9 @@ created by edward 180515"
 ;;                                         바뀐 프로젝트의 홈폴더에서 dired 모드를 실행합니다
 (setq projectile-switch-project-action 'projectile-dired)
 
+;; Ctrl + Shift + 5 (C-%) 키로 projectile에 project를 추가합니다
+(global-set-key (kbd "C-%") 'projectile-add-known-project)
+
 ;; Ctrl + ^키로 jupyter notebook 서버를 실행합니다
 (global-set-key (kbd "C-^") 'ein:jupyter-server-start)
 
@@ -2207,12 +2210,8 @@ created by edward 180515"
 ;; Alt + 2 키로 multi-term으로 화면분할 후 자동으로 이동하도록 설정합니다
 (global-set-key (kbd "M-2") 'my-multi-term)
 
-
 ;; Alt + 3 키로 다음 윈도우 창으로 이동합니다
 (global-set-key (kbd "M-3") 'next-multiframe-window)
-
-;; Alt + 4 키로 projectile에 project를 추가합니다
-(global-set-key (kbd "M-4") 'projectile-add-known-project)
 
 ;; Alt + 5 키로 projectile에 project를 제거합니다
 (global-set-key (kbd "M-5") 'projectile-remove-known-project)
@@ -2505,6 +2504,7 @@ created by edward 180515"
 (eval-after-load "magit" (lambda ()
                            ;; ed: 키바인딩 해제
                            (define-key magit-status-mode-map (kbd "C-w") nil)
+                           (define-key magit-diff-mode-map (kbd "M-3") nil)
 
                            ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
                            (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
