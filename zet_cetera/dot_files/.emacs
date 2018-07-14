@@ -89,6 +89,7 @@
     smart-mode-line
     smart-mode-line-powerline-theme  ;; mode-line을 커스터마이징해주는 패키지
 
+
     ;; ample-theme            ;; ample 테마
     ;; arjen-grey-theme       ;; grey 테마를 설정할 수 있는 패키지
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지 (.md 파일을 켠 다음 Ctrl + 4 단축키)
@@ -834,18 +835,6 @@
 (global-set-key (kbd "C-u") nil)
 (global-set-key (kbd "C-j") nil)
 
-;; customize mode와 같이 실행되는 hook 코드
-(add-hook 'custom-mode-hook '(lambda ()
-                               ;; evil 모드 키바인딩을 설정합니다
-                               (define-key custom-mode-map (kbd "j") 'evil-next-line)
-                               (define-key custom-mode-map (kbd "k") 'evil-previous-line)
-                               (define-key custom-mode-map (kbd "l") 'evil-forward-char)
-                               (define-key custom-mode-map (kbd "h") 'evil-backward-char)
-                               (define-key custom-mode-map (kbd "g g") 'evil-goto-first-line)
-                               (define-key custom-mode-map (kbd "G") 'evil-goto-line)
-                               (define-key custom-mode-map (kbd "C-u") 'evil-scroll-up)
-                               (define-key custom-mode-map (kbd "C-d") 'evil-scroll-down)
-                               ))
 
 (defun newline-without-break-of-line ()
   "1. move to end of the line, 2. insert newline with index."
@@ -1324,13 +1313,16 @@
  '(sml/modified-char "* ")
  '(sml/numbers-separator "")
  '(sml/position-percentage-format "")
- '(sml/prefix-regexp (quote ("\\[.*]" ":\\(.*:\\)" "~/")))
+ '(sml/prefix-face-list (quote ((":SU:" sml/sudo) (":G" sml/git) ("" sml/prefix))))
+ '(sml/prefix-regexp (quote (":\\(.*:\\)" "\\[.*]" "~/")))
+ '(sml/projectile-replacement-format "[%s] ")
  '(sml/read-only-char "R ")
  '(sml/shorten-directory nil)
  '(sml/show-client t)
  '(sml/show-remote nil)
  '(sml/show-trailing-N nil)
  '(sml/size-indication-format "")
+ '(sml/use-projectile-p (quote before-prefixes))
  '(sml/vc-mode-show-backend nil)
  '(sp-base-key-bindings nil)
  '(speedbar-update-flag t)
@@ -1384,7 +1376,8 @@
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "dim gray" :weight bold :height 0.8)))))
+ '(org-tag ((t (:foreground "dim gray" :weight bold :height 0.8))))
+ '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold)))))
 
 
 
@@ -2538,6 +2531,18 @@ created by edward 180515"
 (global-set-key (kbd "C-g") 'avy-goto-word-0)
 (global-set-key (kbd "C-S-g") 'avy-goto-word-1)
 
+;; customize mode와 같이 실행되는 hook 코드
+(add-hook 'custom-mode-hook (lambda ()
+                               ;; evil 모드 키바인딩을 설정합니다
+                               (define-key custom-mode-map (kbd "j") 'evil-next-line)
+                               (define-key custom-mode-map (kbd "k") 'evil-previous-line)
+                               (define-key custom-mode-map (kbd "l") 'evil-forward-char)
+                               (define-key custom-mode-map (kbd "h") 'evil-backward-char)
+                               (define-key custom-mode-map (kbd "g g") 'evil-goto-first-line)
+                               (define-key custom-mode-map (kbd "G") 'evil-goto-line)
+                               (define-key custom-mode-map (kbd "C-u") 'evil-scroll-up)
+                               (define-key custom-mode-map (kbd "C-d") 'evil-scroll-down)
+                              ))
 
 ;; C-u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다 (NOT USED)
 ;; (global-set-key (kbd "C-u") 'swiper-all)
