@@ -4,6 +4,8 @@
 # --
 /*
  * #+DESCRIPTION: ${1: }
+ *
+ *
  * #+DATE:        `(format-time-string "%Y-%m-%d-%a")`
  * #+AUTHOR:      ${2:Edward Im (gyurse@gmail.com)}
  */
