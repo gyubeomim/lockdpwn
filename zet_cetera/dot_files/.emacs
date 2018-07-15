@@ -507,7 +507,7 @@
 ;; pomodoro에서 하루동안 발생한 POMO를 #1 ==> 오늘날짜_1 같이 변경해주는 함수
 (defun org-pomodoro-1day-done ()
   (interactive)
-  (let ((string_regex (concat "%s/#/$/g")))
+  (let ((string_regex (concat "%s/#/" (format-time-string "%y%m%d") "_/g")))
     (if (equal (buffer-name) "pomodoro.org")
         (evil-ex string_regex)
       (message "[-] you are not in pomorodo.org!")
@@ -612,7 +612,7 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "DOING" "PENDING" "|" "REPLACED" "CANCELLED"  "DONE")))
+           '((sequence "TODO" "DOING" "|" "PENDING" "REPLACED" "CANCELLED"  "DONE")))
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
            '(("CANCELLED" . "red")
