@@ -155,9 +155,9 @@ ida=/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
 alias g1='cd /media/dyros-data/gitrepo/lockdpwn'
 alias g2='cd /media/dyros-data/gitrepo/ims_ros'
 alias g3='cd /media/dyros-data/gitrepo/ims_carto'
-alias g4='cd /media/dyros-data/gitrepo/ims_ml/SqueezeSeg'
+alias g4='cd /media/dyros-data/gitrepo/ims_dyros'
 alias g5='cd /media/dyros-data/gitrepo/ims_ml'
-alias sq='cd /media/dyros-data/gitrepo/ims_ml/SqueezeSeg'
+alias sq='cd /media/dyros-data/gitrepo/ims_ml/projects/SqueezeSeg'
 alias gr='cd /media/dyros-data/gitrepo/'
 alias qt2='/media/dyros-data/gitrepo/lockdpwn/shellcode_archive/qtipython_2.sh'
 alias qt3='/media/dyros-data/gitrepo/lockdpwn/shellcode_archive/qtipython_3.sh'
@@ -266,7 +266,7 @@ export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
 alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /media/dyros-data/gitrepo/ims_ros/vrep_ws/dyros_simulator_v5.ttt'
 
-alias vrepjw='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /home/dyros-vehicle/JW/IRL_JW/vrep/JW1.ttt'
+alias vrepjw='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /home/dyros-vehicle/JW/vrep_ttt/ParkingSimulator.ttt'
 
 alias co='cd /opt/ros/kinetic/share/'
 
@@ -323,13 +323,15 @@ alias cd..='cd ..'
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
 
-
-
 # for ctrl <==> caps lock
-alias ctrl='/media/dyros-data/gitrepo/lockdpwn/shellcode_archive/ctrl_caps_change.sh'
-alias ctrlorig='/media/dyros-data/gitrepo/lockdpwn/shellcode_archive/ctrl_caps_change.sh original'
+alias ccc='/media/dyros-data/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
 
 # for chown
 alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
 
+# for REAL vncviwer 
 alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
+
+# for hed git repository (pycaffe)
+export PYTHONPATH=/media/dyros-data/gitrepo/hed/python:$PYTHONPATH
+export CAFFE_ROOT=/media/dyros-data/gitrepo/hed
