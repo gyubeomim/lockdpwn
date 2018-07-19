@@ -344,6 +344,13 @@ export PATH=/home/dyros-vehicle/Documents/cling_2018-05-10_ubuntu16/bin:$PATH
 # for caps lock <==> ctrl swapping
 alias ccc='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
 
+
+# for hed gitrepository (pycaffe)
+export PYTHONPATH=~/gitrepo/hed/python:$PYTHONPATH
+export CAFFE_ROOT=~/gitrepo/hed/caffe
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'
 # alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/directorPython'
