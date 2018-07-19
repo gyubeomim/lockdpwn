@@ -1291,8 +1291,10 @@
  '(package-selected-packages
    (quote
     (smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+ '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
+ '(pomodoro-work-time 25)
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
