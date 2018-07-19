@@ -2165,6 +2165,16 @@ created by edward 180515"
 ;; Alt + 3 키로 다음 윈도우 창으로 이동합니다
 (global-set-key (kbd "M-3") 'next-multiframe-window)
 
+;; 현재 경로를 projectile project로 추가하는 함수 by edward
+(defun add-current-project-to-projectile ()
+  (interactive)
+  (write-region "" "" ".projectile")
+  (projectile-add-known-project default-directory)
+  (message (concat "[+] This Project has added to projectile!: " default-directory)
+  )
+;; Alt + 4 키로 현재 경로를 projectile project로 추가합니다
+(global-set-key (kbd "M-4") 'add-current-project-to-projectile)
+
 ;; Alt + 5 키로 projectile에 project를 제거합니다
 (global-set-key (kbd "M-5") 'projectile-remove-known-project)
 
@@ -2253,7 +2263,7 @@ created by edward 180515"
 ;; 현재 버퍼의 파일을 임의로 /tmp 폴더에 저장하는 함수
 (defun copy-buffer-to-file ()
   (interactive)
-  (let ((bufname (concat "/tmp/" (concat (format-time-string "%Y%m%d_%T")
+  (let ((bufname (concat "~/.cache/" (concat (format-time-string "%Y%m%d_%T")
                                          "_"
                                          (buffer-name)
                                          ))))
@@ -2626,8 +2636,8 @@ created by edward 180515"
 (setq key-chord-one-key-delay 0.17) ; default 0.2
 (key-chord-define-global "66" 'ein:jupyter-server-stop)        ;; jupyter notebook 서버 종료
 (key-chord-define-global ",," 'jedi:complete)                  ;; 코드 자동완성 for python
-(key-chord-define-global "zz" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
-(key-chord-define-global "aa" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
+(key-chord-define-global "xx" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
+(key-chord-define-global "zz" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
