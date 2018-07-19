@@ -2468,12 +2468,18 @@ created by edward 180515"
                            (define-key magit-status-mode-map (kbd "C-w") nil)
                            (define-key magit-status-mode-map (kbd "M-3") nil)
                            (define-key magit-diff-mode-map (kbd "M-3") nil)
+                           (define-key magit-process-mode-map (kbd "M-3") nil)
 
                            ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
                            (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
                            (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
                            (define-key magit-status-mode-map (kbd "C-u") 'evil-scroll-up)
                            (define-key magit-status-mode-map (kbd "C-d") 'evil-scroll-down)
+
+                           (define-key magit-process-mode-map (kbd "j") 'evil-next-line)
+                           (define-key magit-process-mode-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-process-mode-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-process-mode-map (kbd "C-d") 'evil-scroll-down)
 
                            (define-key magit-branch-section-map (kbd "k") 'evil-previous-line)
                            (define-key magit-branch-section-map (kbd "C-u") 'evil-scroll-up)
