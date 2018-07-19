@@ -1436,8 +1436,14 @@
 (require 'pomodoro)
 (pomodoro-add-to-mode-line)
 
+(defun pomodoro-start-edward ()
+  (interactive)
+  (pomodoro-start nil)
+  (org-capture nil "t")
+  )
+
 ;; C-c C-o,p 키로 타이머를 시작, 중지합니다, C-c C-9,0 키로 중지, 재개합니다
-(global-set-key (kbd "C-c C-o") 'pomodoro-start)
+(global-set-key (kbd "C-c C-o") 'pomodoro-start-edward)
 (global-set-key (kbd "C-c C-p") 'pomodoro-stop)
 (global-set-key (kbd "C-c C-9") '(lambda ()
                                    (interactive)
@@ -1450,7 +1456,7 @@
                                    (message "[+] Pomodoro Resumed!")
                                    ))
 (add-hook 'c++-mode-hook (lambda ()
-                           (define-key c++-mode-map (kbd "C-c C-o") 'pomodoro-start)
+                           (define-key c++-mode-map (kbd "C-c C-o") 'pomodoro-start-edward)
                            (define-key c++-mode-map (kbd "C-c C-p") 'pomodoro-stop)
                            ))
 (add-hook 'python-mode-hook (lambda ()
@@ -2170,7 +2176,7 @@ created by edward 180515"
   (interactive)
   (write-region "" "" ".projectile")
   (projectile-add-known-project default-directory)
-  (message (concat "[+] This Project has added to projectile!: " default-directory)
+  (message (concat "[+] This Project has added to projectile!: " default-directory))
   )
 ;; Alt + 4 키로 현재 경로를 projectile project로 추가합니다
 (global-set-key (kbd "M-4") 'add-current-project-to-projectile)
