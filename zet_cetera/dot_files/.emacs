@@ -719,7 +719,8 @@
                                   ;; evil-scroll-down & up 을 설정합니다
                                   (define-key org-agenda-mode-map (kbd "C-u") 'evil-scroll-up)
                                   (define-key org-agenda-mode-map (kbd "C-d") 'evil-scroll-down)
-
+                                  ;; C-' 키로 tag를 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "C-'") 'org-agenda-set-tags)
                                   ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 
@@ -1228,7 +1229,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/note/computer_device_spec.org" "~/gitrepo/ims_org/org_files/note.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo/ims_org/org_files/note/computer_device_spec.org" "~/gitrepo/ims_org/org_files/note.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1284,6 +1285,8 @@
  '(org-default-priority 67)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
+ '(org-keep-stored-link-after-insertion t)
+ '(org-link-parameters nil)
  '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
  '(org-tags-column 50)
@@ -2268,15 +2271,22 @@ created by edward 180515"
          (i (% (abs (random)) (length alnum))))
     (substring alnum i (1+ i))))
 
-;; 현재 버퍼의 파일을 임의로 /tmp 폴더에 저장하는 함수
+;; 현재 버퍼의 파일을 임의로 /.emacs.d/.temporary/ 폴더에 저장하는 함수
 (defun copy-buffer-to-file ()
   (interactive)
-  (let ((bufname (concat "~/.cache/" (concat (format-time-string "%Y%m%d_%T")
+  (let ((bufname (concat "~/.emacs.d/.temporary/" (concat (format-time-string "%Y%m%d_%T")
                                          "_"
                                          (buffer-name)
                                          ))))
-    (write-region (point-min) (point-max) bufname t)
-    (message (concat "[+] saving a temp file in " bufname))))
+    (if (file-directory-p "~/.emacs.d/.temporary")
+        (progn
+          (write-region (point-min) (point-max) bufname t)
+          (message (concat "[+] saving a temp file in " bufname)))
+      (progn
+        (make-directory "~/.emacs.d/.temporary")
+        (write-region (point-min) (point-max) bufname t)
+        (message (concat "[+] created folder && saving a temp file in " bufname)))
+      )))
 
 ;; C-c + ' 키를 사용해 현재 버퍼를 /tmp 폴더에 임의의 5개 랜덤글자 파일로 저장한다
 (global-set-key (kbd "C-c '") 'copy-buffer-to-file)
