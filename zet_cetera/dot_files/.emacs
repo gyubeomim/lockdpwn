@@ -1677,6 +1677,7 @@
                                (interactive)
                                (make_TAGS_file_auto)
                                (helm-gtags-create-tags default-directory "default")
+                               (revert-buffer)
                                ))
 
 
