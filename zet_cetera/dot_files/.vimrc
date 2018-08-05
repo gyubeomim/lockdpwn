@@ -21,7 +21,7 @@ set bs=indent,eol,start
 set enc=utf8
 set fenc=utf-8
 set fencs=ucs-bom,utf-8,cp949,latin1
-" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 13
+" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
 set guifont=Source\ Code\ Pro\ Semibold\ 13
 set guifontwide=Dotumche\ 13
 "set relativenumber
