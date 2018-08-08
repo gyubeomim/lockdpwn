@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: debug2 by edward
+# key: debugg
+# --
+cout << ${1:} << endl;  // ed: DEBUG$0
