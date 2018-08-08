@@ -267,6 +267,7 @@ alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
 alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /media/dyros-data/gitrepo/ims_ros/vrep_ws/dyros_simulator_v5.ttt'
 
 alias vrepjw='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /home/dyros-vehicle/JW/vrep_ttt/ParkingSimulator.ttt'
+alias vreptracker='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /home/dyros-vehicle/JW/vrep_ttt/Path_tracking.ttt'
 
 alias co='cd /opt/ros/kinetic/share/'
 
@@ -332,13 +333,19 @@ alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
 # for REAL vncviwer 
 alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 
-# for hed git repository (pycaffe)
-export PYTHONPATH=/media/dyros-data/gitrepo/hed/python:$PYTHONPATH
-export CAFFE_ROOT=/media/dyros-data/gitrepo/hed
+
+#for nvidia-smi
+alias nv='nvidia-smi -l'
+
+
+# for MV3D git repo
+export PYTHONPATH=/media/dyros-data/gitrepo/MV3D/external_modules/didi-competition:$PYTHONPATH
+
+# for hed git repo (pycaffe)
+export PYTHONPATH=/media/dyros-data/gitrepo/ims_ml/projects/hed/python:$PYTHONPATH
+export CAFFE_ROOT=/media/dyros-data/gitrepo/ims_ml/projects/hed
 
 # fro avod git repo 
 export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod
 export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod/wavedata
 
-#for nvidia-smi
-alias nv='nvidia-smi -l'

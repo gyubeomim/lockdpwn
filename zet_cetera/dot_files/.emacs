@@ -1048,7 +1048,7 @@
 
 ;; PACKAGE: iedit
 (require 'iedit)
-;; smerge mode가 시작되고 실행되는 코드
+;; iedit mode가 시작되고 실행되는 코드
 (eval-after-load "iedit"
   (lambda()
     ;; iedit 모드에서 `키로 선택 해제를 합니다 (default: M-;)
@@ -2529,12 +2529,6 @@ created by edward 180515"
 ;; 이 때 smerge-mode를 사용해서 conflict를 관리하는 함수
 (global-set-key (kbd "C-c v") 'smerge-mode)
 
-;; Ctrl + \ - 키로 창을 가로,세로로 분할합니다
-(global-set-key (kbd "C-c \\") 'split-window-right)
-(global-set-key (kbd "C-c -") 'split-window-vertically)
-(define-key imagex-sticky-mode-map (kbd "C-c -") 'split-window-vertically)
-
-
 ;; smerge mode가 시작되고 실행되는 코드
 (eval-after-load "smerge-mode" (lambda()
                                  ;; merge conflict를 효율적으로 관리하기 위해 단축키를 변경한다
@@ -2550,6 +2544,10 @@ created by edward 180515"
                                  (define-key smerge-mode-map (kbd "b") 'smerge-keep-other)
                                  ))
 
+;; Ctrl + \ - 키로 창을 가로,세로로 분할합니다
+(global-set-key (kbd "C-c \\") 'split-window-right)
+(global-set-key (kbd "C-c -") 'split-window-vertically)
+(define-key imagex-sticky-mode-map (kbd "C-c -") 'split-window-vertically)
 
 ;; 모든 환경에서 C-i <==> TAB 키를 따로 사용하기 위한 훅 코드
 ;; C-i <==> TAB 이 같은 키로 인식되므로 아래 코드를 추가해준다
