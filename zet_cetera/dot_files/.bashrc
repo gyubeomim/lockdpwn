@@ -228,6 +228,9 @@ alias rm='trash-put'
 alias cw='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic'
 alias cs='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/src'
 alias cm='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic && catkin_make'
+# alias cw='cd /home/dyros-vehicle/catkin_ws'
+# alias cs='cd /home/dyros-vehicle/catkin_ws/src'
+# alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make'
 alias cr='cd /home/dyros-vehicle/gitrepo/ims_ros/'
 alias cb='cd /media/dyros-vehicle/edward_6/bag_files'
 alias cbb='cd ~/bag_files'
@@ -274,9 +277,6 @@ export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
 alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/gitrepo/ims_ros/vrep_ws/dyros_simulator_v7.ttt'
 
-# source ROS PATH
-source /opt/ros/kinetic/setup.bash
-source /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/devel/setup.bash
 
 # source .bashrc
 alias sob='source /home/dyros-vehicle/.bashrc'
@@ -350,6 +350,9 @@ export PYTHONPATH=~/gitrepo/hed/python:$PYTHONPATH
 export CAFFE_ROOT=~/gitrepo/hed/caffe
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
+
+source /opt/ros/kinetic/setup.bash
+source /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/devel/setup.bash
 
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'
