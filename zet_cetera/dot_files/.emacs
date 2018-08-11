@@ -1229,10 +1229,10 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo/ims_org/org_files/note/computer_device_spec.org" "~/gitrepo/ims_org/org_files/note.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/note/ip_list.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo/ims_org/org_files/note/computer_device_spec.org" "~/gitrepo/ims_org/org_files/note.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1286,7 +1286,28 @@
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
  '(org-keep-stored-link-after-insertion t)
- '(org-link-parameters nil)
+ '(org-link-parameters
+   (quote
+    (("docview" :follow org-docview-open :export org-docview-export :store org-docview-store-link)
+     ("bibtex" :follow org-bibtex-open :store org-bibtex-store-link)
+     ("elisp" :follow org--open-elisp-link)
+     ("file" :complete org-file-complete-link)
+     ("http" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "http:" path))))
+     ("https" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "https:" path))))
+     ("mailto" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "mailto:" path))))
+     ("shell" :follow org--open-shell-link))))
  '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
  '(org-tags-column 50)
