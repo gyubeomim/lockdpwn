@@ -86,7 +86,7 @@
 
     solarized-theme        ;; solarized 테마
 
-    smart-mode-line
+    smart-mode-line                  ;; emacs의 mode-line (하단상태바)를 커스터마이징해주는 패키지
     smart-mode-line-powerline-theme  ;; mode-line을 커스터마이징해주는 패키지
 
 
