@@ -230,6 +230,7 @@ alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --inst
 alias cl='clear'
 alias cr='cd /media/dyros-data/gitrepo/ims_ros/'
 alias so='source devel/setup.bash'
+alias so2='rospack profile && source devel/setup.bash'
 
 if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
     source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
@@ -261,12 +262,12 @@ alias cma='catkin_make'
 alias cmca='catkin_make_isolated --install --use-ninja'
 
 
-export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /media/dyros-data/gitrepo/ims_ros/vrep_ws/dyros_simulator_v5.ttt'
+export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/
+export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/
+alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
+alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh /media/dyros-data/gitrepo/ims_ros/vrep_ws/dyros_simulator_v5.ttt'
 
-alias vrepjw='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /home/dyros-vehicle/JW/vrep_ttt/ParkingSimulator.ttt'
+alias vrepjw='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh /home/dyros-vehicle/JW/vrep_ttt/ParkingSimulator.ttt'
 
 alias co='cd /opt/ros/kinetic/share/'
 
