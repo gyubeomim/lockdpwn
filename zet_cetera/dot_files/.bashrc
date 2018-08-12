@@ -94,7 +94,7 @@ alias l='ls -CFh'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -115,6 +115,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# CUSTOMIZING START-------------------------------------
 
 # define colors
 C_DEFAULT="\[\033[m\]"
@@ -144,30 +146,35 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-# PS1="$C_LIGHTRED[$C_LIGHTRED\u@$C_LIGHTRED\h]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
-PS1="$C_LIGHTRED\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTGREEN\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+#"
 
+# LANG=ko_KR.utf-8
+# LANGUAGE=ko_KR
 
-#LANG=ko_KR.utf-8
-#LANGUAGE=ko_KR
+# ida & msfconsole aliases
 PATH=$PATH:/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
 ida=/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
-alias g1='cd /media/dyros-data/gitrepo/lockdpwn'
-alias g2='cd /media/dyros-data/gitrepo/ims_ros'
-alias g3='cd /media/dyros-data/gitrepo/ims_carto'
-alias g4='cd /media/dyros-data/gitrepo/ims_dyros'
-alias g5='cd /media/dyros-data/gitrepo/ims_ml'
-alias sq='cd /media/dyros-data/gitrepo/ims_ml/projects/SqueezeSeg'
-alias gr='cd /media/dyros-data/gitrepo/'
-alias qt2='/media/dyros-data/gitrepo/lockdpwn/shellcode_archive/qtipython_2.sh'
-alias qt3='/media/dyros-data/gitrepo/lockdpwn/shellcode_archive/qtipython_3.sh'
 msf=/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15
 
-alias ipy='cd /media/dyros-data/gitrepo/lockdpwn/python_archive/ipython'
-alias ml='cd /media/dyros-data/gitrepo/lockdpwn/python_archive/machineLearning'
+alias ida='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq.exe'
+alias ida64='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe'
+alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
-alias notebook='jupyter notebook --no-browser'
+alias g1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
+alias g2='cd /home/dyros-vehicle/gitrepo/ims_ros'
+alias g3='cd /home/dyros-vehicle/gitrepo/ims_carto'
+alias g4='cd /home/dyros-vehicle/gitrepo/ims_dyros'
+alias g5='cd /home/dyros-vehicle/gitrepo/ims_ml'
+alias gito='cd /home/dyros-vehicle/gitrepo/ims_org'
+alias gr='cd /home/dyros-vehicle/gitrepo/'
 
+
+git1='/home/dyros-vehicle/gitrepo/lockdpwn'
+git2='/home/dyros-vehicle/gitrepo/ims_ros'
+git3='/home/dyros-vehicle/gitrepo/ims_ml'
+git4='/home/dyros-vehicle/gitrepo/ims_ml/SqueezeSeg'
+gr='/home/dyros-vehicle/gitrepo/'
 
 # for git command
 alias gg='git add . && git commit -m '"'updated'"' && git push '
@@ -179,29 +186,29 @@ alias clone='git clone'
 alias gc='git checkout'
 alias gb='git branch'
 
+alias cpp='cd /home/dyros-vehicle/gitrepo/lockdpwn/cpp_archive'
+alias py='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive'
+alias ipy='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive/ipython'
+alias ml='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning'
+
+# for jupyter notebook
+alias notebook='jupyter notebook --no-browser'
+
 # for counting files
 function len(){
-	tree $1 | tail -1
-	du -sh $1
+    tree $1 | tail -1
+    du -sh $1
 }
 
-
-
-PATH="/home/dyros-vehicle/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/dyros-vehicle/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/dyros-vehicle/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/dyros-vehicle/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/dyros-vehicle/perl5"; export PERL_MM_OPT;
-
-
+# for tmux 
 alias t='tmux'
 alias tmux='TERM=xterm-256color tmux -2 -u'
-alias tmls='tmux ls'
-alias tm='tmux switch -t '
-alias tma='tmux attach -t '
-alias tmd='tmux detach'
-alias tmk='tmux kill-session -t '
-alias tm4='tmux -u new-session -d
+alias tmls='tmux ls'                   # session list 확인
+alias tm='tmux switch -t '             # 원하는 session으로 이동
+alias tma='tmux attach -t '            # 원하는 session으로 붙음 (tmux를 실행하고 있지 않은 경우)
+alias tmd='tmux detach'                # 해당 session에서 detach 합니다
+alias tmk='tmux kill-session -t '      # 해당 session에서 kill 합니다
+alias tm4='tmux -u new-session -d    
 tmux split-window -v
 tmux split-window -h
 tmux select-pane -U
@@ -210,114 +217,32 @@ tmux select-pane -L
 tmux attach-session -d'
 
 
-# sudo apt-get install trash-cli
-# for rm, make files go to trashbin
+# sudo apt-get install trash-cli -y
+# for rm to put files to Trash folder
 alias rm='trash-put'
-
-
-# set ROS alias command
-alias cw='cd /home/dyros-vehicle/catkin_ws'
-alias cs='cd /home/dyros-vehicle/catkin_ws/src'
-alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make'
-
-alias cwc='cd /home/dyros-vehicle/cartographer_ws'
-alias csc='cd /home/dyros-vehicle/cartographer_ws/src'
-alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --install --use-ninja '
 
 #export ROS_MASTER_URI=http://192.168.137.2:11311
 #export ROS_HOSTNAME=127.0.0.1
 
-alias cl='clear'
-alias cr='cd /media/dyros-data/gitrepo/ims_ros/'
+# set ROS alias command
+alias cw='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic'
+alias cs='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/src'
+alias cm='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic && catkin_make'
+# alias cw='cd /home/dyros-vehicle/catkin_ws'
+# alias cs='cd /home/dyros-vehicle/catkin_ws/src'
+# alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make'
+alias cr='cd /home/dyros-vehicle/gitrepo/ims_ros/'
+alias cb='cd /media/dyros-vehicle/edward_6/bag_files'
+alias cbb='cd ~/bag_files'
+alias cma='catkin_make'
+alias cmac='catkin_make_isolated --install --use-ninja'
 alias so='source devel/setup.bash'
 alias so2='rospack profile && source devel/setup.bash'
 alias cdd='cd /media/dyros-vehicle/edward_6'
 alias down='cd ~/Downloads'
 alias docu='cd ~/Documents'
 
-if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
-    source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
-fi
-
-
-# alias emacs='/home/dyros-vehicle/Downloads/emacs-25.2/src/emacs'
-alias emacs='/home/dyros-vehicle/Downloads/emacs-25.2/lib-src/emacsclient -a '"''"' -c'
-
-# for stockroom_bot
-#alias sb='source ~/gitrepo/ims_ros/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims_ros/stockroombot_ws/src/stockroom_bot'/models
-
-
-# for source gazebo config
-alias sog='source /usr/share/gazebo-2.2/setup.sh'
-alias sog2='source /usr/share/gazebo/setup.sh'
-
-# for source .bashrc
-alias sob='source /home/dyros-vehicle/.bashrc'
-
-alias cdb='cd ~/gitrepo/ims_ros/rosbook_ws'
-alias cb='cd /media/dyros-data/bag_files'
-alias cdd='cd /media/dyros-data/'
-alias down='cd ~/Downloads'
-alias docu='cd ~/Documents'
-alias downd='cd /media/dyros-data/Download_d'
-
-alias cma='catkin_make'
-alias cmca='catkin_make_isolated --install --use-ninja'
-
-
-export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /media/dyros-data/gitrepo/ims_ros/vrep_ws/dyros_simulator_v5.ttt'
-
-alias vrepjw='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /home/dyros-vehicle/JW/vrep_ttt/ParkingSimulator.ttt'
-
-alias co='cd /opt/ros/kinetic/share/'
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
-
-
-alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/directorPython'
-
-
-# setting for Tensorflow GPU version 
-# Using CUDA 8.0 & cuDNN 6.0
-# export CUDA_HOME=/usr/local/cuda-8.0
-# export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
-# export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
-# Using CUDA 9.0 & cuDNN 7.0
-export CUDA_HOME=/usr/local/cuda-9.0
-export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
-alias soc='source install_isolated/setup.bash'
-
-
-#UE4Editor-------------
-alias ueditor='/media/dyros-data/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
-export UE4_ROOT='/media/dyros-data/gitrepo/UnrealEngine'
-
-
-# set ROS
-source /opt/ros/kinetic/setup.bash
-source /home/dyros-vehicle/catkin_ws/devel/setup.bash
-
-alias ti='cd /home/dyros-vehicle/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
-
-# for reverse-i-search
-stty -ixon
-
-
-# if [[ -s "$HOME/.bashrc.d/autocomplete.sh" ]]; then
-#     source "$HOME/.bashrc.d/autocomplete.sh" 
-#     bind -x '"\t" : autocomplete_wrapper'
-# fi
-
-# for cd
+# for cd command 
 alias cd='cd '
 alias ..='..'
 alias ...='../..'
@@ -327,22 +252,127 @@ alias cd..='cd ..'
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
 
-# for ctrl <==> caps lock
-alias ccc='/media/dyros-data/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
+# for triple-monitors
+alias cvt='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/cvt_1920_1080.sh'
 
-# for chown
-alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
+# for systemctl
+alias stl='sudo systemctl'
 
-# for REAL vncviwer 
+# clear screen
+alias cl='clear'
+
+# Cartographer Settings
+alias soc='source install_isolated/setup.bash'
+alias cwc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws'
+alias csc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws/src'
+alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws && catkin_make_isolated --install --use-ninja'
+alias cwcc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_before_180522'
+alias cscc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_before_180522/src'
+alias cmcc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_before_180522 && catkin_make_isolated --install --use-ninja'
+alias cmca='catkin_make_isolated --install --use-ninja'
+
+
+# V-Rep Settings
+export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
+alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/gitrepo/ims_ros/vrep_ws/dyros_simulator_v7.ttt'
+
+
+# source .bashrc
+alias sob='source /home/dyros-vehicle/.bashrc'
+
+# vnc viewer
 alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 
-# for hed git repository (pycaffe)
-export PYTHONPATH=/media/dyros-data/gitrepo/hed/python:$PYTHONPATH
-export CAFFE_ROOT=/media/dyros-data/gitrepo/hed
+# emacs 25.2
+# alias emacs='sudo /home/dyros-vehicle/Downloads/emacs-25.2/src/emacs'
+alias emacs='/home/dyros-vehicle/Downloads/emacs-25.2/lib-src/emacsclient -a '"''"' -c'
 
-# fro avod git repo 
-export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod
-export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod/wavedata
+# Ti-Nspire CX CAS emulator
+alias ti='cd /home/dyros-vehicle/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
 
-#for nvidia-smi
-alias nv='nvidia-smi -l'
+# UE4Editor
+alias ueditor='~/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
+export UE4_ROOT='/home/dyros-vehicle/gitrepo/UnrealEngine'
+
+# ipython qtconsole
+alias qt2='~/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
+alias qt3='~/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
+
+
+# for chown to dyros-vehicle
+alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
+
+
+# for foxit reader
+alias foxit='/home/dyros-vehicle/opt/foxitsoftware/foxitreader/FoxitReader'
+
+# setting for Tensorflow GPU version
+# Using CUDA 8.0 & cuDNN 6.0
+export CUDA_HOME=/usr/local/cuda-8.0
+export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+
+# variables for point-cloud-viewer from googlecartographer
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# for reverse-i-search
+stty -ixon
+
+
+# for caffe
+export PYTHONPATH=/home/dyros-vehicle/gitrepo/fast-rcnn/caffe-fast-rcnn/python:$PYTHONPATH
+# for Fast R-CNN
+export FRCN_ROOT=/home/dyros-vehicle/gitrepo/fast-rcnn
+# for simdat
+export PYTHONPATH=/home/dyros-vehicle/gitrepo:$PYTHONPATH
+# for vtk 6.2
+export LD_LIBRARY_PATH=/usr/include/vtk-6.2/:$LD_LIBRARY_PATH 
+# for vtk 5.xx
+export LD_LIBRARY_PATH=/home/dyros-vehicle/Documents/VTK-5.10.1/build:/home/dyros-vehicle/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
+
+# for opencv 3.3.1
+export LD_LIBRARY_PATH=/usr/local/include/opencv2/:$LD_LIBRARY_PATH 
+
+# for cling with Jupyter
+export PATH=/home/dyros-vehicle/Documents/cling_2018-05-10_ubuntu16/bin:$PATH 
+
+# for caps lock <==> ctrl swapping
+alias ccc='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
+
+
+# for hed gitrepository (pycaffe)
+export PYTHONPATH=~/gitrepo/hed/python:$PYTHONPATH
+export CAFFE_ROOT=~/gitrepo/hed/caffe
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+
+source /opt/ros/kinetic/setup.bash
+source /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/devel/setup.bash
+
+#START NOT USED------------------------------------------------------
+# alias co='cd /opt/ros/kinetic/share/'
+# alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/directorPython'
+# for source gazebo config
+# alias sog='source /usr/share/gazebo-2.2/setup.sh'
+# alias sog2='source /usr/share/gazebo/setup.sh'
+# alias cmb='cd ~/gitrepo/ims_ros/rosbook_ws && catkin_make'
+# alias cdb='cd ~/gitrepo/ims_ros/rosbook_ws'
+# # for stockroom_bot
+# #alias sb='source ~/gitrepo/ims_ros/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims_ros/stockroombot_ws/src/stockroom_bot'/models
+# PERL5LIB="/home/dyros-vehicle/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+# PERL_LOCAL_LIB_ROOT="/home/dyros-vehicle/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+# PERL_MB_OPT="--install_base \"/home/dyros-vehicle/perl5\""; export PERL_MB_OPT;
+# PERL_MM_OPT="INSTALL_BASE=/home/dyros-vehicle/perl5"; export PERL_MM_OPT;
+# PATH="/home/dyros-vehicle/perl5/bin${PATH:+:${PATH}}"; export PATH;
+# if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
+#     source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
+# fi
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# export PATH="$PATH:$HOME/.rvm/bin"
+#END------------------------------------------------------
