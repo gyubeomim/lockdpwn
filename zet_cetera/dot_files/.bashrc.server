@@ -230,6 +230,7 @@ alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --inst
 alias cl='clear'
 alias cr='cd /media/dyros-data/gitrepo/ims_ros/'
 alias so='source devel/setup.bash'
+alias so2='rospack profile && source devel/setup.bash'
 
 if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
     source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
