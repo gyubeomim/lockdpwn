@@ -295,8 +295,11 @@ alias soc='source install_isolated/setup.bash'
 
 
 #UE4Editor-------------
-alias ueditor='/media/dyros-data/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
-export UE4_ROOT='/media/dyros-data/gitrepo/UnrealEngine'
+alias ueditor='/home/dyros-vehicle/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
+export UE4_ROOT='/home/dyros-vehicle/UnrealEngine'
+
+# for carla
+alias carla='cd /media/dyros-data/gitrepo/CARLA_0.8.4 && ./CarlaUE4.sh -windowed -resx=400 -resy=300 -carla-settings=./Example.CarlaSettings.ini'
 
 
 # set ROS
