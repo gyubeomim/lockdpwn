@@ -719,8 +719,11 @@
                                   ;; evil-scroll-down & up 을 설정합니다
                                   (define-key org-agenda-mode-map (kbd "C-u") 'evil-scroll-up)
                                   (define-key org-agenda-mode-map (kbd "C-d") 'evil-scroll-down)
+
                                   ;; C-' 키로 tag를 설정합니다
                                   (define-key org-agenda-mode-map (kbd "C-'") 'org-agenda-set-tags)
+                                  (define-key org-agenda-mode-map (kbd "<M-S-right>") 'org-shiftright)
+                                  (define-key org-agenda-mode-map (kbd "<M-S-left>") 'org-shiftleft)
                                   ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 
