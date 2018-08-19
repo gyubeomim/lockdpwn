@@ -151,7 +151,7 @@ Formatted with `format-seconds'."
             (setq pomodoro-current-cycle pomodoro-work-cycle)
             (progn  ;; ed: code modified to run org-capture
               (pomodoro-set-end-time pomodoro-work-time)
-              (org-capture nil "t")
+              (org-capture nil "o")
               )
             )))
     (setq pomodoro-mode-line-string

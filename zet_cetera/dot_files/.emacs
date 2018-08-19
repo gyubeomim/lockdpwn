@@ -748,6 +748,7 @@
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/dyros.org")))
 (global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/emacs.org")))
 (global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/pomodoro.org")))
+(global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/plan.org")))
 ;; C-, 키로 link.opg 파일을 엽니다
 (global-set-key (kbd "C-,") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/link.org")))
 ;; C-c + [ 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
@@ -1235,7 +1236,7 @@
     ("~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/note/ip_list.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo/ims_org/org_files/note/computer_device_spec.org" "~/gitrepo/ims_org/org_files/note.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1468,7 +1469,7 @@
 (defun pomodoro-start-edward ()
   (interactive)
   (pomodoro-start nil)
-  (org-capture nil "t")
+  (org-capture nil "o")
   )
 
 ;; C-c C-o,p 키로 타이머를 시작, 중지합니다, C-c C-9,0 키로 중지, 재개합니다
