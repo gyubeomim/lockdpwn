@@ -863,25 +863,25 @@
 
 
 ;; Crtl + e 키로 현재 커서의 라인 맨 앞칸으로 이동합니다
-(global-set-key (kbd "C-e") 'move-beginning-of-line)
+(global-set-key (kbd "C-e") 'move-end-of-line)
 (add-hook 'c-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-e") 'move-beginning-of-line))
+             (local-set-key (kbd "C-e") 'move-end-of-line))
           )
 (add-hook 'c++-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-e") 'move-beginning-of-line))
+             (local-set-key (kbd "C-e") 'move-end-of-line))
           )
 
 ;; Alt + e 키로 현재 커서의 라인 맨 뒤칸으로 이동합니다
-(global-set-key (kbd "M-e") 'move-end-of-line)
+(global-set-key (kbd "M-e") 'move-beginning-of-line)
 (add-hook 'c-mode-hook
           '(lambda ()
-             (local-set-key (kbd "M-e") 'move-end-of-line))
+             (local-set-key (kbd "M-e") 'move-beginning-of-line))
           )
 (add-hook 'c++-mode-hook
           '(lambda ()
-             (local-set-key (kbd "M-e") 'move-end-of-line))
+             (local-set-key (kbd "M-e") 'move-beginning-of-line))
           )
 
 ;; Ctrl + w 키로 helm-find-files 명령을 실행합니다
