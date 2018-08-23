@@ -612,13 +612,17 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "DOING" "|" "PENDING" "REPLACED" "CANCELLED"  "DONE")))
+           '((sequence "TODO" "DOING" "|" "PENDING" "REPLACED" "CANCELLED"  "DONE")
+             (sequence "|" "OPEN" "CLOSED"))
+           )
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
-           '(("CANCELLED" . "red")
+           '(("CANCELLED" . "firebrick")
              ("REPLACED" . "purple")
              ("PENDING" . "orange")
              ("DOING" . "yellow")
+             ("OPEN" . "green")
+             ("CLOSED" . "firebrick")
              ))
 
      ;; org-bullets 모드 활성화
