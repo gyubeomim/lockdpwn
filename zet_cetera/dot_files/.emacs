@@ -1408,7 +1408,7 @@
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
- '(org-link ((t (:foreground "#b58900" :box nil :underline t :weight bold))))
+ '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "#268bd2"))))
