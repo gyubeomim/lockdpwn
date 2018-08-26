@@ -651,14 +651,14 @@
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("2" "edward.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("3" "dyros.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("4" "dyros.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("m" "dyros.org: [TeamMeeting]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "TeamMeeting")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
@@ -668,14 +668,14 @@
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("6" "parkable.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("7" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("8" "cartographer.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("9" "ubuntu_tips.org: [Ubuntu]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
@@ -686,7 +686,7 @@
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("i" "emacs.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
