@@ -612,13 +612,17 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "DOING" "|" "PENDING" "REPLACED" "CANCELLED"  "DONE")))
+           '((sequence "TODO" "DOING" "|" "PENDING" "REPLACED" "CANCELLED"  "DONE")
+             (sequence "|" "OPEN" "CLOSED"))
+           )
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
-           '(("CANCELLED" . "red")
+           '(("CANCELLED" . "firebrick")
              ("REPLACED" . "purple")
              ("PENDING" . "orange")
              ("DOING" . "yellow")
+             ("OPEN" . "green")
+             ("CLOSED" . "firebrick")
              ))
 
      ;; org-bullets 모드 활성화
@@ -647,14 +651,14 @@
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("2" "edward.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("3" "dyros.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("4" "dyros.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("m" "dyros.org: [TeamMeeting]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "TeamMeeting")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
@@ -664,14 +668,14 @@
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("6" "parkable.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("7" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("8" "cartographer.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("9" "ubuntu_tips.org: [Ubuntu]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
@@ -682,7 +686,7 @@
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("i" "emacs.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
@@ -1400,7 +1404,11 @@
  '(org-block-begin-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
  '(org-block-end-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
  '(org-date ((t (:foreground "dark gray" :underline nil :weight normal))))
- '(org-link ((t (:foreground "#b58900" :box nil :underline t :weight bold))))
+ '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
+ '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
+ '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
+ '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
+ '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "#268bd2"))))
