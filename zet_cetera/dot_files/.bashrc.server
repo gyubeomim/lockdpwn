@@ -348,7 +348,10 @@ export PYTHONPATH=/media/dyros-data/gitrepo/MV3D/external_modules/didi-competiti
 export PYTHONPATH=/media/dyros-data/gitrepo/ims_ml/projects/hed/python:$PYTHONPATH
 export CAFFE_ROOT=/media/dyros-data/gitrepo/ims_ml/projects/hed
 
-# fro avod git repo 
+# for avod git repo 
 export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod
 export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod/wavedata
 
+# for x11vnc && TeamViewer connected user
+alias vuser='netstat -tapno | grep 5902'
+alias tuser='netstat -tapno | grep Team'
