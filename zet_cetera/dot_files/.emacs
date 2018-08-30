@@ -2777,3 +2777,4 @@ created by edward 180515"
 ;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다 (vnc에서 emacs를 사용하는 경우)
 (setq x-alt-keysym 'meta)
 
+(message "[+] All Settings are loaded!")

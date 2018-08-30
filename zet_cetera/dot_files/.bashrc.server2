@@ -299,7 +299,7 @@ alias ueditor='/home/dyros-vehicle/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
 export UE4_ROOT='/home/dyros-vehicle/UnrealEngine'
 
 # for carla
-alias carla='cd /media/dyros-data/gitrepo/CARLA_0.8.4 && ./CarlaUE4.sh -windowed -resx=400 -resy=300 -carla-settings=./Example.CarlaSettings.ini'
+alias carla='cd /media/dyros-data/gitrepo/CARLA_0.8.4 && ./CarlaUE4.sh -windowed -resx=600 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
 alias carla_UE4='ueditor /media/dyros-data/gitrepo/carla-0.8.4_source/Unreal/CarlaUE4/CarlaUE4.uproject'
 
 
