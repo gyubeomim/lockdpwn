@@ -349,5 +349,5 @@ export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod/wavedata
 alias nv='nvidia-smi -l'
 
 #for x11vnc && TeamViewer connected user
-alias vuser='netstat -tapno | grep 5902'
-alias tuser='netstat -tapno | grep Team'
+alias vu='netstat -tapno | grep 5902'
+alias tu='netstat -tapno | grep Team'
