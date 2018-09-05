@@ -1412,7 +1412,7 @@
  '(org-block ((t (:background "gray13" :foreground "dark gray"))))
  '(org-block-begin-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
  '(org-block-end-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
- '(org-date ((t (:foreground "dark gray" :underline nil :weight normal))))
+ '(org-date ((t (:background "black" :foreground "#839496" :underline nil :weight bold :height 0.75))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
