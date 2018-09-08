@@ -70,7 +70,6 @@
     markdown-mode          ;; markdown 구문을 하이라이팅해주는 패키지
     ein                    ;; emacs에서 Ipython Notebook를 사용하게 해주는 패키지
     org-bullets            ;; org-mode에서 마크 모양을 bullet 모양으로 해주는 패키지
-    org-gcal               ;; org-mode와 google Calendar를 연동해주는 패키지
     git-gutter             ;; 수정된 파일의 변경된 라인을 하이라이팅해주는 패키지
     mic-paren              ;; 괄호로 닫혀진 구문이 너무 길어서 한쪽 끝이 안보일 경우 line, number를 알려주는 패키지
 
@@ -661,15 +660,8 @@
      ))
 ;; (add-to-ordered-list 'emulation-mode-map-alists '((org-mode . ,my-org-mode-map)) 0)
 
-;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
-(require 'org-gcal)
-(setq package-check-signature nil)
-(setq org-gcal-client-id "815785509878-3gn7mhcti240j6am59uk95s230n11172.apps.googleusercontent.com"
-      org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
-      org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo/ims_org/org_files/gcal.org")))
 ;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
 (add-hook 'org-agenda-mode-hook (lambda ()
-                                  (org-gcal-sync nil nil t)
 
                                   ;; 키바인딩 해제
                                   (define-key org-agenda-mode-map (kbd "C-n") nil)
@@ -679,20 +671,7 @@
                                   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line)
 
                                   ))
-;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 
-;; org-agenda-view에서 gcal.org의 색깔만 변경하는 코드
-(add-hook 'org-agenda-finalize-hook
-          (lambda ()
-            (save-excursion
-              (goto-char (point-min))
-              (while (re-search-forward "gcal:" nil t)
-                (add-text-properties (match-beginning 0) (point-at-eol)
-                                     '(face (:foreground "dark orange"))
-                                     )))))
-
-;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
-(global-set-key (kbd "C-c s") (lambda () (interactive)(org-gcal-sync nil nil t) ))
 ;; C-c + / 키로 edward.org 파일을 엽니다
 (global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
@@ -1177,10 +1156,9 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org"  "~/gitrepo/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("\342肉\210" "\342肉\201" "\342堉\265" "\342\354몯")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1231,7 +1209,6 @@
             (setq num
                   (1+ num)))))))))
  '(org-default-priority 67)
- '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
  '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
@@ -1239,7 +1216,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (image+ sr-speedbar company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
@@ -2150,7 +2127,7 @@ created by edward 180515"
 
 ;; Ctrl + j 키로 해당 커서의 오른쪽부분만 삭제합니다
 (global-set-key (kbd "C-j") 'kill-visual-line)
-(define-key org-mode-map (kbd "C-j") 'kill-visual-line)
+;;(define-key org-mode-map (kbd "C-j") 'kill-visual-line)
 
 ;; Ctrl + a 키로 전체선택하게 합니다
 (global-set-key "\C-a" 'mark-whole-buffer)
