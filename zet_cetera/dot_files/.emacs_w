@@ -67,7 +67,6 @@
     elpy                   ;; jedi 모드 같이 python code navigation을 해주는 패키지
     markdown-mode          ;; markdown 구문을 하이라이팅해주는 패키지
     ein                    ;; emacs에서 Ipython Notebook를 사용하게 해주는 패키지
-    org-bullets            ;; org-mode에서 마크 모양을 bullet 모양으로 해주는 패키지
     git-gutter             ;; 수정된 파일의 변경된 라인을 하이라이팅해주는 패키지
     mic-paren              ;; 괄호로 닫혀진 구문이 너무 길어서 한쪽 끝이 안보일 경우 line, number를 알려주는 패키지
 
@@ -583,8 +582,6 @@
              ("CLOSED" . "firebrick")
              ))
 
-     ;; org-bullets 모드 활성화
-     (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))
      ;; wrap line
      (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
      ;; header 크기 변하지 않게
@@ -597,9 +594,6 @@
         ("\\.pdf::\\([0-9]+\\)\\'" . "~/opt/foxitsoftware/foxitreader/FoxitReader \"%s\" -p %1")
         ))
 
-     ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
-     (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
-     (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/note/*.org"))
      ;; C-. 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
      ;; orgm
@@ -1180,12 +1174,11 @@
  '(find-file-visit-truename t)
  '(git-gutter:added-sign "+")
  '(git-gutter:deleted-sign "-")
- '(git-gutter:modified-sign "▸")
+ '(git-gutter:modified-sign ">")
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/SNU.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/note/ip_list.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo/ims_org/org_files/note/computer_device_spec.org" "~/gitrepo/ims_org/org_files/note.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org"  "~/gitrepo/ims_org/org_files/project_cartographer.org")))
- '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
+    ("~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/project_cartographer.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/computer_device_spec.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/ip_list.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/snu_rules.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/vs2017.org" "~/gitrepo/ims_org/org_files/note/working_log.org")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -1267,7 +1260,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    ( pomodoro tea-time image+ sr-speedbar company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (pomodoro tea-time image+ sr-speedbar company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
@@ -1316,7 +1309,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
+ '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 121 :width normal))))
  '(avy-lead-face ((t (:inherit isearch :background "gold"))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "gold"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
@@ -2725,6 +2718,11 @@ created by edward 180515"
 ;; .cu 같은 CUDA 확장자를 c++ 환경으로 인식하도록 설정합니다
 (setq auto-mode-alist
       (append '((".*\\.cu\\'" . c++-mode))
+              auto-mode-alist))
+
+;; .emacs_w 
+(setq auto-mode-alist
+      (append '((".*\\.emacs_w\\'" . elisp-byte-code-mode))
               auto-mode-alist))
 
 ;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다 (vnc에서 emacs를 사용하는 경우)
