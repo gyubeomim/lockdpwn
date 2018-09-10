@@ -814,6 +814,8 @@
                            (define-key evil-motion-state-map (kbd "K") nil)
                            (define-key evil-motion-state-map (kbd "TAB") nil)
                            (define-key evil-motion-state-map (kbd "`") nil)
+                           (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
+                           (define-key evil-motion-state-map (kbd "T") 'org-shiftleft)
 
                            ;; 키바인딩 해제 INSERT MODE
                            (define-key evil-insert-state-map (kbd "C-b") nil)
