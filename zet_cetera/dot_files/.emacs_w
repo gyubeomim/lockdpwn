@@ -35,14 +35,12 @@
     arduino-mode           ;; 만약 아두이노를 사용한다면 추가해줍니다
     highlight-indentation  ;; 파이썬용 들여쓰기 라인을 보여주는 패키지 (Alt + l로 설정했다)
     ess                    ;; R 언어 전용 패키지입니다
-    ;;gtags                  ;; 함수나 여러 변수들의 선언을 찾아볼 수 있게 해주는 패키지
     highlight-symbol       ;; 같은 단어들 하이라이팅 해주는 패키지 (보기 좋게 글자를 색상을 칠해준다)
     ;; highlight-symbol.el 파일에서
     ;; highlight-symbol-colors ==> highlight-symbol-color로 수정한다 (색깔을 제대로 표시하지 못한다)
     ;; 바로 적용이 안되므로 .elc 파일을 삭제하던지 아니면 M-x : byte-compile-file을 실시한다
     yasnippet              ;; 여러가지 자주 사용하는 구문들을 쉽게 사용할 수 있게 템플릿 형식으로 제공해주는 패키지
     ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
-    ;;hide-comnt             ;; 주석을 감췄다 보여줬다 하는 패키지 (F9 단축키)
     php-mode               ;; php 모드를 활성화합니다 (~/.emacs.d/elpa/php-mode.../php-mode.elc 파일이 잘못된 듯 합니다 이걸 삭제해주면 정상적으로 실행됩니다)
     flycheck               ;; 코드의 오류를 검사해주는 패키지
     robe                   ;; Ruby 관련된 패키지들 : 변수, 함수로 이동할 수 있는 패키지 : robe start를 입력해줘야 합니다
@@ -69,8 +67,6 @@
     elpy                   ;; jedi 모드 같이 python code navigation을 해주는 패키지
     markdown-mode          ;; markdown 구문을 하이라이팅해주는 패키지
     ein                    ;; emacs에서 Ipython Notebook를 사용하게 해주는 패키지
-    org-bullets            ;; org-mode에서 마크 모양을 bullet 모양으로 해주는 패키지
-    org-gcal               ;; org-mode와 google Calendar를 연동해주는 패키지
     git-gutter             ;; 수정된 파일의 변경된 라인을 하이라이팅해주는 패키지
     mic-paren              ;; 괄호로 닫혀진 구문이 너무 길어서 한쪽 끝이 안보일 경우 line, number를 알려주는 패키지
 
@@ -82,7 +78,12 @@
 
     evil                   ;; Extensible Vim Layout Emacs에서 vim과 같은 레이아웃을 사용할 수 있도록 해주는 패키지
 
+    pomodoro               ;; 일정관리를 위한 Podomoro Timer 패키지
+
     solarized-theme        ;; solarized 테마
+
+    ;;smart-mode-line                  ;; emacs의 mode-line (하단상태바)를 커스터마이징해주는 패키지
+    ;;smart-mode-line-powerline-theme  ;; mode-line을 커스터마이징해주는 패키지
 
 
     ;; ample-theme            ;; ample 테마
@@ -90,8 +91,6 @@
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지 (.md 파일을 켠 다음 Ctrl + 4 단축키)
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
     ;; htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
-    ;; smart-mode-line
-    ;; smart-mode-line-powerline-theme
     ;; powerline              ;; emacs 상태창을 예쁘게 꾸며주는 패키지
     ;; anaconda-mode ;; jedi 모드 같이 python code navigation을 해주는 패키지2
     ;;helm-ros  ;; ROS용 emacs 패키지 (not used)
@@ -127,7 +126,6 @@
 ;;(require 'setup-helm-gtags)
 ;;(require 'setup-cedet)
 ;;(require 'setup-editing)
-
 
 
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
@@ -220,30 +218,30 @@
 (helm-mode t)
 
 (provide 'setup-helm)
-;; (require 'helm-gtags)
+(require 'helm-gtags)
 
-;; (setq
-;;  helm-gtags-ignore-case t
-;;  helm-gtags-auto-update t
-;;  helm-gtags-use-input-at-cursor t
-;;  helm-gtags-pulse-at-cursor t
-;;  helm-gtags-prefix-key "\C-cg"
-;;  helm-gtags-suggested-key-mapping t
-;;  )
+(setq
+ helm-gtags-ignore-case t
+ helm-gtags-auto-update t
+ helm-gtags-use-input-at-cursor t
+ helm-gtags-pulse-at-cursor t
+ helm-gtags-prefix-key "\C-cg"
+ helm-gtags-suggested-key-mapping t
+ )
 
 ;; Enable helm-gtags-mode in Dired so you can jump to any tag
 ;; when navigate project tree with Dired
-;;(add-hook 'dired-mode-hook 'helm-gtags-mode)
+(add-hook 'dired-mode-hook 'helm-gtags-mode)
 
 ;; Enable helm-gtags-mode in Eshell for the same reason as above
 ;; (add-hook 'eshell-mode-hook 'helm-gtags-mode)
 
 ;; Enable helm-gtags-mode in languages that GNU Global supports
-;; (add-hook 'c-mode-hook 'helm-gtags-mode)
-;; (add-hook 'c++-mode-hook 'helm-gtags-mode)
-;; (add-hook 'java-mode-hook 'helm-gtags-mode)
-;; (add-hook 'asm-mode-hook 'helm-gtags-mode)
-;; (add-hook 'python-mode-hook 'helm-gtags-mode)
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'java-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode-hook 'helm-gtags-mode)
+(add-hook 'python-mode-hook 'helm-gtags-mode)
 
 ;; key bindings
 ;;(define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
@@ -254,72 +252,33 @@
 ;;(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
 ;; gtags 관련해서 자동으로 파일 열고 저장할 때 gtags를 실행하도록 하는 함수들
-;; (gtags-mode t)
-;; (add-hook 'prog-mode-hook 'gtags-mode)
+;;(gtags-mode t)
+;;(add-hook 'prog-mode-hook 'gtags-mode)
 
 
-;; (defun gtags-create-or-update ()
-;;   "create or update the gnu global tag file"
-;;   (interactive)
-;;   (if (not (= 0 (call-process "global" nil nil nil " -p"))) ; tagfile doesn't exist?
-;;       (let ((olddir default-directory)
-;;             (topdir (read-directory-name
-;;                      "gtags: top of source tree:" default-directory)))
-;;         (cd topdir)
-;;         (shell-command "gtags -q && echo 'created tagfile'")
-;;         (cd olddir)) ; restore
-;;     ;;  tagfile already exists; update it
-;;     (with-temp-buffer
-;;       (shell-command "global -u && echo 'updated tagfile'" t))))
+(defun gtags-create-or-update ()
+  "create or update the gnu global tag file"
+  (interactive)
+  (if (not (= 0 (call-process "global" nil nil nil " -p"))) ; tagfile doesn't exist?
+      (let ((olddir default-directory)
+            (topdir (read-directory-name
+                     "gtags: top of source tree:" default-directory)))
+        (cd topdir)
+        (shell-command "gtags -q && echo 'created tagfile'")
+        (cd olddir)) ; restore
+    ;;  tagfile already exists; update it
+    (with-temp-buffer
+      (shell-command "global -u && echo 'updated tagfile'" t))))
 
 
-;; ;; (add-hook 'c-mode-common-hook
-;; ;;           (lambda ()
-;; ;;             (gtags-create-or-update)))
-;; ;; (add-hook 'c++-mode-common-hook
-;; ;;           (lambda ()
-;; ;;             (gtags-create-or-update)))
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;             (gtags-create-or-update)))
+;; (add-hook 'c++-mode-common-hook
+;;           (lambda ()
+;;             (gtags-create-or-update)))
 
-
-;; (defun gtags-root-dir ()
-;;   "Return GTAGS Root directory or nil if doesn't exist"
-;;   (with-temp-buffer
-;;     (if (zerop (call-process "global" nil t nil "-pr"))
-;;         (buffer-substring (point-min) (1- (point-max)))
-;;       nil)))
-
-
-;; ;; gtags를 매번 저장할 때마다 업데이트하는 함수인듯, global -u 커맨드가 핵심커맨드인듯하다
-;; (defun gtags-update-single (filename)
-;;   "Update Gtags database for changes in a single file"
-;;   (interactive)
-;;   (with-temp-buffer
-;;     (shell-command "global -u" t))
-;;   (start-process "update-gtags" "update-gtags" "bash" "-c" (concat "cd " (gtags-root-dir) " ; gtags --single-update " filename )))
-
-
-;; (defun gtags-update-current-file()
-;;   (interactive)
-;;   (defvar filename)
-;;   (setq filename (replace-regexp-in-string (gtags-root-dir) "." (buffer-file-name (current-buffer))))
-;;   (gtags-update-single filename)
-;;   (message "Gtags updated for %s" filename)
-;;   )
-
-
-;; (defun gtags-update-hook()
-;;   "Update GTAGS file incrementally upon saving a file"
-;;   (when gtags-mode
-;;     (when (gtags-root-dir)
-;;       (gtags-update-current-file))))
-
-
-;; (add-hook 'after-save-hook 'gtags-update-hook)
-
-
-;;(provide 'setup-helm-gtags)
-
-
+(provide 'setup-helm-gtags)
 
 ;;===========================================================================
 ;; cedet에 관한 코드들 (auto-complete, cc-mode, semantic...)(단어 자동완성 관련된 코드들)
@@ -330,23 +289,23 @@
 (ac-config-default)
 
 ;; PACKAGE: semantic
-(require 'semantic)
-(require 'semantic/ia)
-(require 'semantic/complete)
+;; (require 'semantic)
+;; (require 'semantic/ia)
+;; (require 'semantic/complete)
 
 ;; Semantic ON
-(semantic-mode t)
+;; (semantic-mode t)
 
 ;; 함수나 변수들을 찾아 이동할 때마다 로그를 기록합니다
-(global-semantic-mru-bookmark-mode)
+;; (global-semantic-mru-bookmark-mode)
 
 ;; 자동완성에 쓸 헤더 파일 경로 적는 예
 ;; 이것이 있어야 #include 한 헤더파일의 내용도 자동완성에 나타납니다.
-(semantic-add-system-include "/usr/include" 'c-mode)
-(semantic-add-system-include "/usr/include" 'c++-mode)
-(semantic-add-system-include "/usr/include/c++/5" 'c-mode)
-(semantic-add-system-include "/usr/include/c++/5" 'c++-mode)
-(semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
+;; (semantic-add-system-include "/usr/include" 'c-mode)
+;; (semantic-add-system-include "/usr/include" 'c++-mode)
+;; (semantic-add-system-include "/usr/include/c++/5" 'c-mode)
+;; (semantic-add-system-include "/usr/include/c++/5" 'c++-mode)
+;; (semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
 
 
 ;; Company mode On
@@ -381,7 +340,7 @@
 
 
 ;; 한글폰트 설정 (size 부분을 바꾸면 크기가 바뀝니다)
-(set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 16))
+(set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 20))
 ;; (set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("NanumGothicCoding" . "unicode-bmp") )
 ;; (set-fontset-font "fontset-default" '(#xe0bc . #xf66e)  '("NanumGothicCoding" . "unicode-bmp") )
 
@@ -486,6 +445,31 @@
       (set-face-attribute face nil :weight 'normal :height 0.98))
     ))
 
+;; pomodoro 시간관리를 위해 timestamp에 +25분을 더한 구문을 출력하는 함수
+;; ex) <2018-01-01 수 1:00-1:25>
+(defun org-capture-pomodoro (date)
+  (interactive (list (org-read-date nil t)))
+  (let ((start-time (format-time-string "%Y-%m-%d %a %H:%M" date))
+        (pomodoro-time (format-time-string "%H:%M" (time-add
+                                                    (date-to-time
+                                                     (format-time-string "%Y-%m-%d %H:%M" date))
+                                                    (seconds-to-time (* 25 60))))
+                      ))
+  (save-excursion
+    (insert "<" (concat start-time "-" pomodoro-time) ">")
+    )
+  ))
+
+;; pomodoro에서 하루동안 발생한 POMO를 #1 ==> 오늘날짜_1 같이 변경해주는 함수
+(defun org-pomodoro-1day-done ()
+  (interactive)
+  (let ((string_regex (concat "%s/#/" (format-time-string "%y%m%d") "_/g")))
+    (if (equal (buffer-name) "pomodoro.org")
+        (evil-ex string_regex)
+      (message "[-] you are not in pomorodo.org!")
+    )
+  ))
+
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
 ;; "org" because C-h f org-mode RET says that org-mode is defined in org.el
 (eval-after-load "org"
@@ -519,6 +503,10 @@
      (define-key org-mode-map (kbd "C-c \\") nil)
      (define-key org-mode-map (kbd "C-e") nil)
      (define-key org-mode-map (kbd "C-c C-l") nil)
+     (define-key org-mode-map (kbd "C-c C-o") nil)
+     (define-key org-mode-map (kbd "C-c C-p") nil)
+     (define-key org-mode-map (kbd "C-c l") nil)
+     (define-key org-mode-map (kbd "C-c '") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -556,7 +544,14 @@
      (define-key org-mode-map (kbd "C-\\") 'org-tags-sparse-tree)
      ;; C-[ 키로 link를 삽입합니다
      (define-key org-mode-map (kbd "H-[") 'org-insert-link)
-
+     ;; C-c [ 키로 link를 저장합니다
+     (define-key org-mode-map (kbd "C-c \[") 'org-store-link)
+     ;; C-c C-[ 키로 org-pomodoro-1day-done 함수를 실행합니다
+     (define-key org-mode-map (kbd "C-c H-[") 'org-pomodoro-1day-done)
+     ;; C-c C-Enter 키로 체크박스를 ON/OFF 합니다
+     (define-key org-mode-map (kbd "C-c C-RET") 'org-toggle-checkbox)
+     ;; C-c ] 키로 .org 파일을 agenda에 추가합니다
+     (define-key org-mode-map (kbd "C-c ]") 'org-agenda-file-to-front)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -574,17 +569,19 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "DOING" "PENDING" "|" "REPLACED" "CANCELLED"  "DONE")))
+           '((sequence "TODO" "DOING" "|" "PENDING" "REPLACED" "CANCELLED"  "DONE")
+             (sequence "|" "OPEN" "CLOSED"))
+           )
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
-           '(("CANCELLED" . "red")
+           '(("CANCELLED" . "firebrick")
              ("REPLACED" . "purple")
              ("PENDING" . "orange")
              ("DOING" . "yellow")
+             ("OPEN" . "green")
+             ("CLOSED" . "firebrick")
              ))
 
-     ;; org-bullets 모드 활성화
-     ;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))
      ;; wrap line
      (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
      ;; header 크기 변하지 않게
@@ -597,9 +594,6 @@
         ("\\.pdf::\\([0-9]+\\)\\'" . "~/opt/foxitsoftware/foxitreader/FoxitReader \"%s\" -p %1")
         ))
 
-     ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
-     (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
-     (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/note/*.org"))
      ;; C-. 키로 사용할 note 파일
      (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
      ;; orgm
@@ -609,50 +603,56 @@
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("2" "edward.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("3" "edward.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
-                                   ("4" "dyros.org: [Task]" entry
+                                   ("3" "dyros.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("5" "dyros.org: [Issues]" entry
+                                   ("4" "dyros.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("m" "dyros.org: [TeamMeeting]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "TeamMeeting")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("6" "dyros.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("7" "parkable.org: [Task]" entry
+                                   ("5" "parkable.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("8" "parkable.org: [Issues]" entry
+                                   ("6" "parkable.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("9" "parkable.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
-                                   ("a" "cartographer.org: [Task]" entry
+                                   ("7" "cartographer.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("s" "cartographer.org: [Issues]" entry
+                                   ("8" "cartographer.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("d" "cartographer.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Note")
-                                    "*** %i%?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
-                                   ("w" "emacs.org: [Task]" entry
+                                   ("9" "ubuntu_tips.org: [Ubuntu]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+
+                                   ("g" "SNU.org: [Task]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/SNU.org" "Tasks")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("h" "SNU.org: [Issues]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/SNU.org" "Issues")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+
+                                   ("u" "emacs.org: [Task]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("e" "emacs.org: [Issues]" entry
+                                   ("i" "emacs.org: [Issues]" entry
                                     (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Issues")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
-                                   ("r" "ubuntu_tips.org: [Ubuntu]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
+                                   ("o" "pomodoro.org: [GTD]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
+                                    "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
+
+                                   ("n" "note.org: [Note]" entry
+                                    (file+headline "~/gitrepo/ims_org/org_files/note.org" "Note")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
@@ -661,49 +661,43 @@
      ))
 ;; (add-to-ordered-list 'emulation-mode-map-alists '((org-mode . ,my-org-mode-map)) 0)
 
-;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
-(require 'org-gcal)
-(setq package-check-signature nil)
-(setq org-gcal-client-id "815785509878-3gn7mhcti240j6am59uk95s230n11172.apps.googleusercontent.com"
-      org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
-      org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo/ims_org/org_files/gcal.org")))
 ;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
 (add-hook 'org-agenda-mode-hook (lambda ()
-                                  (org-gcal-sync nil nil t)
 
                                   ;; 키바인딩 해제
                                   (define-key org-agenda-mode-map (kbd "C-n") nil)
+                                  (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
+                                  (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
 
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
                                   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line)
+                                  ;; evil-scroll-down & up 을 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "C-u") 'evil-scroll-up)
+                                  (define-key org-agenda-mode-map (kbd "C-d") 'evil-scroll-down)
 
+                                  ;; C-' 키로 tag를 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "C-'") 'org-agenda-set-tags)
+                                  (define-key org-agenda-mode-map (kbd "<M-S-right>") 'org-shiftright)
+                                  (define-key org-agenda-mode-map (kbd "<M-S-left>") 'org-shiftleft)
                                   ))
-;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
 
-;; org-agenda-view에서 gcal.org의 색깔만 변경하는 코드
-(add-hook 'org-agenda-finalize-hook
-          (lambda ()
-            (save-excursion
-              (goto-char (point-min))
-              (while (re-search-forward "gcal:" nil t)
-                (add-text-properties (match-beginning 0) (point-at-eol)
-                                     '(face (:foreground "dark orange"))
-                                     )))))
 
-;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
-(global-set-key (kbd "C-c s") (lambda () (interactive)(org-gcal-sync nil nil t) ))
 ;; C-c + / 키로 edward.org 파일을 엽니다
 (global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
+(global-set-key (kbd "C-c 0") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/note.org")))
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_parkable.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_cartographer.org")))
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/dyros.org")))
 (global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/emacs.org")))
+(global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/pomodoro.org")))
+(global-set-key (kbd "C-c 6") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/SNU.org")))
+(global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/plan.org")))
 ;; C-, 키로 link.opg 파일을 엽니다
 (global-set-key (kbd "C-,") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/link.org")))
-;; C-c + l 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
-(global-set-key (kbd "C-c l") 'org-store-link)
+;; C-c + [ 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
+(global-set-key (kbd "C-c \[") 'org-store-link)
 ;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
 (global-set-key (kbd "C-/") 'org-agenda)
 (define-key undo-tree-map (kbd "C-/") 'org-agenda)
@@ -749,6 +743,9 @@
                            (define-key evil-motion-state-map (kbd "C-p") nil)
                            (define-key evil-motion-state-map (kbd "C-]") nil)
                            (define-key evil-motion-state-map (kbd "C-6") nil)
+                           (define-key evil-motion-state-map (kbd "K") nil)
+                           (define-key evil-motion-state-map (kbd "TAB") nil)
+                           (define-key evil-motion-state-map (kbd "`") nil)
 
                            ;; 키바인딩 해제 INSERT MODE
                            (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -775,6 +772,8 @@
                            (define-key evil-normal-state-map (kbd "z") nil)
                            (define-key evil-normal-state-map (kbd "x") nil)
                            (define-key evil-normal-state-map (kbd "c") nil)
+                           (define-key evil-normal-state-map (kbd "J") nil)
+                           (define-key evil-normal-state-map (kbd "M-.") nil)
 
                            ;; 키바인딩 설정 ESC MODE
                            ;; C-u 키로 page up 키를 설정합니다
@@ -783,10 +782,8 @@
 
 ;; evil-mode로 인해 사용하지 않는 전역 키바인딩을 해제합니다
 ;; Ctrl
-;; (global-set-key (kbd "C-d") 'evil-scroll-down)
 (global-set-key (kbd "C-u") nil)
-;; Alt
-(global-set-key (kbd "M-l") nil)
+(global-set-key (kbd "C-j") nil)
 
 
 (defun newline-without-break-of-line ()
@@ -811,25 +808,25 @@
 
 
 ;; Crtl + e 키로 현재 커서의 라인 맨 앞칸으로 이동합니다
-(global-set-key (kbd "C-e") 'move-beginning-of-line)
+(global-set-key (kbd "C-e") 'move-end-of-line)
 (add-hook 'c-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-e") 'move-beginning-of-line))
+             (local-set-key (kbd "C-e") 'move-end-of-line))
           )
 (add-hook 'c++-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-e") 'move-beginning-of-line))
+             (local-set-key (kbd "C-e") 'move-end-of-line))
           )
 
 ;; Alt + e 키로 현재 커서의 라인 맨 뒤칸으로 이동합니다
-(global-set-key (kbd "M-e") 'move-end-of-line)
+(global-set-key (kbd "M-e") 'move-beginning-of-line)
 (add-hook 'c-mode-hook
           '(lambda ()
-             (local-set-key (kbd "M-e") 'move-end-of-line))
+             (local-set-key (kbd "M-e") 'move-beginning-of-line))
           )
 (add-hook 'c++-mode-hook
           '(lambda ()
-             (local-set-key (kbd "M-e") 'move-end-of-line))
+             (local-set-key (kbd "M-e") 'move-beginning-of-line))
           )
 
 ;; Ctrl + w 키로 helm-find-files 명령을 실행합니다
@@ -840,7 +837,6 @@
 
 ;; Ctrl + Shift + i 키로 단어 하이라이트 모두 지우기
 (global-set-key (kbd "H-S-i") 'highlight-symbol-remove-all)
-
 
 
 ;; PACKAGE: image+
@@ -917,8 +913,9 @@
 ;; PACKAGE: solarized theme
 (require 'solarized-dark-theme)
 (provide 'solarized-dark-theme)
-
-;; (load-theme 'arjen-grey t)
+(load-theme 'solarized-dark t)
+;;(load-theme 'solarized-light t)
+;;(load-theme 'arjen-grey t)
 ;; (load-theme 'ample-light t)
 
 
@@ -927,7 +924,7 @@
 (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 
 ;; PACKAGE: ein
-(require 'ein)
+;; (require 'ein)
 ;; jupyter notebook을 킨 상태에서 브라우저가 자동으로 켜지지 않도록 설정합니다
 (setq ein:jupyter-server-args (quote ("--no-browser")))
 (setq ein:use-auto-complete t)
@@ -942,6 +939,8 @@
      (define-key ein:notebook-mode-map (kbd "H-i") nil)
      (define-key ein:notebook-mode-map (kbd "C-u") nil)
      (define-key ein:notebook-mode-map (kbd "C-x C-s") nil)
+     (define-key ein:ipynb-mode-map (kbd "C-c C-o") nil)
+     (define-key ein:ipynb-mode-map (kbd "C-c C-p") nil)
 
      ;; ed: ein 단축키 등록
      (define-key ein:notebook-mode-map (kbd "C-w") 'ein:notebook-save-notebook-command)
@@ -998,7 +997,7 @@
 
 ;; PACKAGE: iedit
 (require 'iedit)
-;; smerge mode가 시작되고 실행되는 코드
+;; iedit mode가 시작되고 실행되는 코드
 (eval-after-load "iedit"
   (lambda()
     ;; iedit 모드에서 `키로 선택 해제를 합니다 (default: M-;)
@@ -1125,6 +1124,8 @@
 ;; PACKAGE: protobuf-mode
 (require 'protobuf-mode)
 
+;; PACKAGE: smart-mode-line
+;;(sml/setup)
 
 ;; Variable Customizing
 (custom-set-variables
@@ -1153,8 +1154,7 @@
  '(custom-enable-theme (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
-    ("c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
- '(display-time-mode t)
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(ecb-layout-name "right1")
  '(ecb-layout-window-sizes
    (quote
@@ -1170,6 +1170,7 @@
  '(elpy-modules
    (quote
     (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
+ '(evil-mode-line-format (quote (after)))
  '(find-file-visit-truename t)
  '(git-gutter:added-sign "+")
  '(git-gutter:deleted-sign "-")
@@ -1177,10 +1178,8 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remote.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
- '(org-bullets-bullet-list (quote ("\342肉\210" "\342肉\201" "\342堉\265" "\342\354몯")))
+    ("~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/project_cartographer.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/computer_device_spec.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/ip_list.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/snu_rules.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/vs2017.org" "~/gitrepo/ims_org/org_files/note/working_log.org")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1231,15 +1230,41 @@
             (setq num
                   (1+ num)))))))))
  '(org-default-priority 67)
- '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
+ '(org-keep-stored-link-after-insertion t)
+ '(org-link-parameters
+   (quote
+    (("docview" :follow org-docview-open :export org-docview-export :store org-docview-store-link)
+     ("bibtex" :follow org-bibtex-open :store org-bibtex-store-link)
+     ("elisp" :follow org--open-elisp-link)
+     ("file" :complete org-file-complete-link)
+     ("http" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "http:" path))))
+     ("https" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "https:" path))))
+     ("mailto" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "mailto:" path))))
+     ("shell" :follow org--open-shell-link))))
  '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
  '(org-tags-column 50)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (pomodoro tea-time image+ sr-speedbar company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+ '(pomodoro-break-time 5)
+ '(pomodoro-extra-time 5)
+ '(pomodoro-play-sounds nil)
+ '(pomodoro-work-time 25)
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
@@ -1253,74 +1278,25 @@
                        "\\_>"))
               1
               (quote font-lock-variable-name-face))))))))
- '(sml/mode-width
-   (if
-       (eq
-        (powerline-current-separator)
-        (quote arrow))
-       (quote right)
-     (quote full)))
- '(sml/pos-id-separator
-   (quote
-    (""
-     (:propertize " " face powerline-active1)
-     (:eval
-      (propertize " "
-                  (quote display)
-                  (funcall
-                   (intern
-                    (format "powerline-%s-%s"
-                            (powerline-current-separator)
-                            (car powerline-default-separator-dir)))
-                   (quote powerline-active1)
-                   (quote powerline-active2))))
-     (:propertize " " face powerline-active2))))
- '(sml/pos-minor-modes-separator
-   (quote
-    (""
-     (:propertize " " face powerline-active1)
-     (:eval
-      (propertize " "
-                  (quote display)
-                  (funcall
-                   (intern
-                    (format "powerline-%s-%s"
-                            (powerline-current-separator)
-                            (cdr powerline-default-separator-dir)))
-                   (quote powerline-active1)
-                   (quote sml/global))))
-     (:propertize " " face sml/global))))
- '(sml/pre-id-separator
-   (quote
-    (""
-     (:propertize " " face sml/global)
-     (:eval
-      (propertize " "
-                  (quote display)
-                  (funcall
-                   (intern
-                    (format "powerline-%s-%s"
-                            (powerline-current-separator)
-                            (car powerline-default-separator-dir)))
-                   (quote sml/global)
-                   (quote powerline-active1))))
-     (:propertize " " face powerline-active1))))
- '(sml/pre-minor-modes-separator
-   (quote
-    (""
-     (:propertize " " face powerline-active2)
-     (:eval
-      (propertize " "
-                  (quote display)
-                  (funcall
-                   (intern
-                    (format "powerline-%s-%s"
-                            (powerline-current-separator)
-                            (cdr powerline-default-separator-dir)))
-                   (quote powerline-active2)
-                   (quote powerline-active1))))
-     (:propertize " " face powerline-active1))))
- '(sml/pre-modes-separator (propertize " " (quote face) (quote sml/modes)))
+ '(sml/battery-format "")
+ '(sml/col-number-format "")
+ '(sml/full-mode-string " ")
+ '(sml/line-number-format "")
+ '(sml/mode-width 2)
+ '(sml/modified-char "* ")
+ '(sml/numbers-separator "")
+ '(sml/position-percentage-format "")
+ '(sml/prefix-face-list (quote ((":SU:" sml/sudo) (":G" sml/git) ("" sml/prefix))))
+ '(sml/prefix-regexp (quote (":\\(.*:\\)" "\\[.*]" "~/")))
+ '(sml/projectile-replacement-format "[%s] ")
+ '(sml/read-only-char "R ")
+ '(sml/shorten-directory nil)
+ '(sml/show-client t)
+ '(sml/show-remote nil)
+ '(sml/show-trailing-N nil)
+ '(sml/size-indication-format "")
+ '(sml/use-projectile-p (quote before-prefixes))
+ '(sml/vc-mode-show-backend nil)
  '(sp-base-key-bindings nil)
  '(speedbar-update-flag t)
  '(vc-follow-symlinks t)
@@ -1333,7 +1309,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 115 :width normal))))
+ '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 121 :width normal))))
  '(avy-lead-face ((t (:inherit isearch :background "gold"))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "gold"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
@@ -1365,15 +1341,20 @@
  '(org-block ((t (:background "gray13" :foreground "dark gray"))))
  '(org-block-begin-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
  '(org-block-end-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
- '(org-date ((t (:foreground "dark gray" :underline nil :weight normal))))
- '(org-link ((t (:foreground "#b58900" :box nil :underline t :weight bold))))
+ '(org-date ((t (:background "black" :foreground "#839496" :underline nil :weight bold :height 0.75))))
+ '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
+ '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
+ '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
+ '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
+ '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "#268bd2"))))
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "dim gray" :weight bold :height 0.8)))))
+ '(org-tag ((t (:foreground "dim gray" :weight bold :height 0.8))))
+ '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold)))))
 
 
 
@@ -1420,11 +1401,44 @@
 (setq inhibit-startup-screen t)
 
 ;; 상태표시줄에 시간표시하기
-(display-time)
+;; (display-time)
 
 ;; 몇가지 유용한 설정
 (transient-mark-mode t)
 (global-set-key [C-kanji] 'set-mark-command)
+
+;; PACKAGE: pomodoro
+;; 일정관리를 위한 Pomodoro Timer 패키지
+(require 'pomodoro)
+(pomodoro-add-to-mode-line)
+
+(defun pomodoro-start-edward ()
+  (interactive)
+  (pomodoro-start nil)
+  (org-capture nil "o")
+  )
+
+;; C-c C-o,p 키로 타이머를 시작, 중지합니다, C-c C-9,0 키로 중지, 재개합니다
+(global-set-key (kbd "C-c C-o") 'pomodoro-start-edward)
+(global-set-key (kbd "C-c C-p") 'pomodoro-stop)
+(global-set-key (kbd "C-c C-9") '(lambda ()
+                                   (interactive)
+                                   (pomodoro-pause)
+                                   (message "[+] Pomodoro Paused!")
+                                   ))
+(global-set-key (kbd "C-c C-0") '(lambda ()
+                                   (interactive)
+                                   (pomodoro-resume)
+                                   (message "[+] Pomodoro Resumed!")
+                                   ))
+(add-hook 'c++-mode-hook (lambda ()
+                           (define-key c++-mode-map (kbd "C-c C-o") 'pomodoro-start-edward)
+                           (define-key c++-mode-map (kbd "C-c C-p") 'pomodoro-stop)
+                           ))
+(add-hook 'python-mode-hook (lambda ()
+                             (define-key python-mode-map (kbd "C-c C-p") 'pomodoro-stop)
+                             ))
+
 
 ;;파일 편집 위치 기억
 (require 'saveplace)
@@ -1597,6 +1611,7 @@
 ;; PACKAGE: ECB Emacs Code Browser
 (require 'ecb)
 
+
 ;; ECB tree view에서 F3 키가 ecb-show-help로 키바인딩되어있는 것을 해제해준다
 (add-hook 'ecb-common-tree-buffer-after-create-hook
           (lambda ()
@@ -1606,6 +1621,11 @@
           (lambda ()
             (local-unset-key [f3])
             ))
+
+;; ecb symboldef 버퍼에서 semantic mode가 필요하기 때문에 ecb를 로딩하는 순간 같이 실행해준다 (NOT USED)
+;; (eval-after-load "ecb" (lambda ()
+;;                          (semantic-mode t)
+;;                          ))
 
 ;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수 (NOT USED)
 (defun make_TAGS_file (&optional path)
@@ -1628,6 +1648,7 @@
                                (interactive)
                                (make_TAGS_file_auto)
                                (helm-gtags-create-tags default-directory "default")
+                               (revert-buffer)
                                ))
 
 
@@ -1691,9 +1712,8 @@ Version 2017-04-19"
 ;;f2 다음 버퍼창 이동
 (global-set-key [f2] 'next-buffer)
 
-
-;; F4 또는 M-] 키로 파일 탐색기 Dired 모드 켜기
-(global-set-key [f4] 'dired)
+;; f3 키로 다음 창으로 이동
+(global-set-key [f3] 'next-multiframe-window)
 
 ;; ECB 시작
 (global-set-key [f6] 'ecb-minor-mode)
@@ -2025,6 +2045,9 @@ created by edward 180515"
 ;; Ctrl + 4 키로 .md 파일을 파이어폭스로 프리뷰합니다 (not used)
 ;; (global-set-key (kbd "C-4") 'flymd-flyit)
 
+;; C-c 9 키로 .emacs 파일을 열도록 설정합니다
+(global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/.emacs")))
+
 ;; revert buffer를 파라미터와 같이 함수화한 코드
 (defun my-revert-buffer()
   (interactive)
@@ -2050,6 +2073,9 @@ created by edward 180515"
 ;; helm-projectile-switch-project (C-5) 로 프로젝트를 바꾼 다음 실행하는 명령어로
 ;;                                         바뀐 프로젝트의 홈폴더에서 dired 모드를 실행합니다
 (setq projectile-switch-project-action 'projectile-dired)
+
+;; Ctrl + Shift + 5 (C-%) 키로 projectile에 project를 추가합니다
+(global-set-key (kbd "C-%") 'projectile-add-known-project)
 
 ;; Ctrl + ^키로 jupyter notebook 서버를 실행합니다
 (global-set-key (kbd "C-^") 'ein:jupyter-server-start)
@@ -2078,17 +2104,59 @@ created by edward 180515"
 ;; Ctrl + 0 키로 Customize Variable 명령어를 사용한다
 (global-set-key (kbd "C-0") 'customize-variable)
 
-;; Alt + 1 키로 shell을 불러오는 커맨드를 실행합니다
-(global-set-key (kbd "M-1") 'shell-command)
+;; Alt + 1 키로 multi terminal을 실행합니다
+(global-set-key (kbd "M-1") 'multi-term)
 
-;; Alt + 2 키로 multi terminal을 실행합니다
-(global-set-key (kbd "M-2") 'multi-term)
+;; multi-term + 화면분할 및 이동을 자동으로 해주는 함수 by edward
+(defun my-multi-term ()
+  (interactive)
+  (setq num 1)
+  (loop (< num 10)
+        (let ((terminal_name (concat "*terminal<" (number-to-string num) ">*")))
+          (if (get-buffer terminal_name)
+              (if (eq (count-windows) 1)
+                  (return (progn
+                            (split-window-vertically)
+                            (next-multiframe-window)
+                            (switch-to-buffer terminal_name)
+                            ))
+                (return (progn
+                          (next-multiframe-window)
+                          (switch-to-buffer terminal_name)
+                          ))
+                )
+            (if (eq (count-windows) 1)
+                (progn
+                  (split-window-vertically)
+                  (next-multiframe-window)
+                  (multi-term)
+                  (switch-to-buffer terminal_name)
+                  (return))
+              (progn
+                (next-multiframe-window)
+                (multi-term)
+                (switch-to-buffer terminal_name)
+                (return))
+              ))
+          )
+        (setq num (1+ num))
+        ))
 
-;; Alt + 3 키로 flycheck 기능을 ON/OFF합니다
-(global-set-key (kbd "M-3") 'global-flycheck-mode)
+;; Alt + 2 키로 multi-term으로 화면분할 후 자동으로 이동하도록 설정합니다
+(global-set-key (kbd "M-2") 'my-multi-term)
 
-;; Alt + 4 키로 projectile에 project를 추가합니다
-(global-set-key (kbd "M-4") 'projectile-add-known-project)
+;; Alt + 3 키로 다음 윈도우 창으로 이동합니다
+(global-set-key (kbd "M-3") 'next-multiframe-window)
+
+;; 현재 경로를 projectile project로 추가하는 함수 by edward
+(defun add-current-project-to-projectile ()
+  (interactive)
+  (write-region "" "" ".projectile")
+  (projectile-add-known-project default-directory)
+  (message (concat "[+] This Project has added to projectile!: " default-directory))
+  )
+;; Alt + 4 키로 현재 경로를 projectile project로 추가합니다
+(global-set-key (kbd "M-4") 'add-current-project-to-projectile)
 
 ;; Alt + 5 키로 projectile에 project를 제거합니다
 (global-set-key (kbd "M-5") 'projectile-remove-known-project)
@@ -2096,11 +2164,15 @@ created by edward 180515"
 ;; Alt + 6키로 remote 접속을 위한 notebooklist-open 명령어를 설정합니다
 (global-set-key (kbd "M-6") 'ein:notebooklist-open)
 
+;; Alt + 8 키로 flycheck 기능을 ON/OFF합니다
+(global-set-key (kbd "M-8") 'global-flycheck-mode)
+
+;; Alt + 9 키로 shell을 불러오는 커맨드를 실행합니다
+(global-set-key (kbd "M-9") 'shell-command)
+
 ;; Alt + 0 키로 컴파일 단축키를 설정합니다
 (global-set-key (kbd "M-0") 'compile)
 
-;; Ctrl + ; 키로 다음 윈도우 창으로 이동합니다
-(global-set-key (kbd "C-;") 'next-multiframe-window)
 ;; Alt + right left up down  윈도우 창 이동
 (global-set-key (kbd "<M-right>") 'next-multiframe-window)
 (global-set-key (kbd "<M-down>") 'next-multiframe-window)
@@ -2148,9 +2220,10 @@ created by edward 180515"
 ;; Ctrl + Shift + k 키로 현재 커서부터 아래 라인을 모두 지웁니다
 (global-set-key (kbd "C-S-k") 'kill-to-end-of-buffer)
 
-;; Ctrl + j 키로 해당 커서의 오른쪽부분만 삭제합니다
-(global-set-key (kbd "C-j") 'kill-visual-line)
-(define-key org-mode-map (kbd "C-j") 'kill-visual-line)
+;; Ctrl + h 키로 해당 커서의 오른쪽부분만 삭제합니다
+(global-set-key (kbd "H-m") 'kill-visual-line)
+;;(define-key org-mode-map (kbd "H-m") 'kill-visual-line)
+
 
 ;; Ctrl + a 키로 전체선택하게 합니다
 (global-set-key "\C-a" 'mark-whole-buffer)
@@ -2170,15 +2243,22 @@ created by edward 180515"
          (i (% (abs (random)) (length alnum))))
     (substring alnum i (1+ i))))
 
-;; 현재 버퍼의 파일을 임의로 /tmp 폴더에 저장하는 함수
+;; 현재 버퍼의 파일을 임의로 /.emacs.d/.temporary/ 폴더에 저장하는 함수
 (defun copy-buffer-to-file ()
   (interactive)
-  (let ((bufname (concat "/tmp/" (concat (format-time-string "%Y%m%d_%T")
+  (let ((bufname (concat "~/.emacs.d/.temporary/" (concat (format-time-string "%Y%m%d_%T")
                                          "_"
                                          (buffer-name)
                                          ))))
-    (write-region (point-min) (point-max) bufname t)
-    (message (concat "[+] saving a temp file in " bufname))))
+    (if (file-directory-p "~/.emacs.d/.temporary")
+        (progn
+          (write-region (point-min) (point-max) bufname t)
+          (message (concat "[+] saving a temp file in " bufname)))
+      (progn
+        (make-directory "~/.emacs.d/.temporary")
+        (write-region (point-min) (point-max) bufname t)
+        (message (concat "[+] created folder && saving a temp file in " bufname)))
+      )))
 
 ;; C-c + ' 키를 사용해 현재 버퍼를 /tmp 폴더에 임의의 5개 랜덤글자 파일로 저장한다
 (global-set-key (kbd "C-c '") 'copy-buffer-to-file)
@@ -2191,6 +2271,11 @@ created by edward 180515"
 ;;"find . <X> -type f <F> -exec grep <C> -nH -ie <R> \\{\\} +")
 ;;"find . -type f -exec grep --exclude=*{ph.h, rviz, rst} --include={cpp,c,h,py} -nH -ie   {} +" 같이 확장자를 필터링할 수 있다
 (grep-apply-setting 'grep-find-command '("find . -type f -exec grep -nH -ie   {} +" . 35))
+
+;; (eval-after-load "helm-grep" (lambda ()
+;;                           ;; 키바인딩 해제
+;;                           (define-key grep-mode-map (kbd "n") nil)
+;;                           )
 
 
 ;; c++ 주석 처리 변경 코드 (// -> /* */ 로 변경한다)
@@ -2232,9 +2317,8 @@ created by edward 180515"
 
 
 ;; 함수나 변수로 이동하는 단축키를 Alt + . , 로 설정한다
-;; semantic이 gtags보다 좋네 gtags는 zz,aa로 설정했다
-(global-set-key (kbd "M-.") 'semantic-ia-fast-jump)
-(global-set-key (kbd "M-,") 'pop-global-mark)
+(global-set-key (kbd "M-.") 'xref-find-definitions)
+(global-set-key (kbd "M-,") 'xref-pop-marker-stack)
 
 
 ;; 변수나 함수 하이라이팅한 구문을 빠르게 이동합니다 higlight-symbol 패키지
@@ -2246,8 +2330,8 @@ created by edward 180515"
 (global-set-key "\M-g" 'hs-toggle-hiding)
 
 ;; Ctrl + Alt + G 키로 주석을 감췄다 보여줬다 하는 단축키 설정
-;; (hide/show-comments)
-;; (global-set-key (kbd "C-M-g") 'hide/show-comments-toggle)
+;;(hide/show-comments)
+;;(global-set-key (kbd "C-M-g") 'hide/show-comments-toggle)
 
 
 ;; Ctrl + PageUp, Down 단축키로 첫째줄, 마지막줄로 바로 이동합니다. Ctrl + Home, End는 원래 가능
@@ -2360,7 +2444,7 @@ created by edward 180515"
 (global-set-key (kbd "C-c r") 'ediff)
 
 ;; C-c + w키로 region 영역 단위로 ediff를 실행하는 명령을 설정합니다
-(global-set-key (kbd "C-c r") 'ediff-region-linewise)
+(global-set-key (kbd "C-c w") 'ediff-regions-linewise)
 
 ;; C-c + t 키로 한 파일의 변경기록을 검사하는 magit-log-buffer-file 명령을 수행합니다
 (global-set-key (kbd "C-c t") 'magit-log-buffer-file)
@@ -2368,19 +2452,41 @@ created by edward 180515"
 ;; C-c + y 키로 다른 branch에 있는 파일의 내용을 확인합니다
 (global-set-key (kbd "C-c y") 'magit-find-file)
 
+;; magit 패키지가 로딩되면 같이 실행되는 코드
 (eval-after-load "magit" (lambda ()
+                           ;; ed: 키바인딩 해제
+                           (define-key magit-status-mode-map (kbd "C-w") nil)
+                           (define-key magit-status-mode-map (kbd "M-3") nil)
+                           (define-key magit-diff-mode-map (kbd "M-3") nil)
+                           (define-key magit-process-mode-map (kbd "M-3") nil)
+
                            ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
                            (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
                            (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-status-mode-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-status-mode-map (kbd "C-d") 'evil-scroll-down)
+
+                           (define-key magit-process-mode-map (kbd "j") 'evil-next-line)
+                           (define-key magit-process-mode-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-process-mode-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-process-mode-map (kbd "C-d") 'evil-scroll-down)
 
                            (define-key magit-branch-section-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-branch-section-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-branch-section-map (kbd "C-d") 'evil-scroll-down)
 
                            (define-key magit-unstaged-section-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-unstaged-section-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-unstaged-section-map (kbd "C-d") 'evil-scroll-down)
 
                            (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-file-mode-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-file-mode-map (kbd "C-d") 'evil-scroll-down)
 
                            (define-key magit-diff-mode-map (kbd "j") 'evil-next-line)
                            (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
+                           (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
+                           (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
                            ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
@@ -2388,16 +2494,12 @@ created by edward 180515"
 
 ;; Alt + [ 키로 선택된 단어를 iedit 일괄편집합니다
 (global-set-key (kbd "M-[") 'iedit-mode)
+;; 원래 C-; 가 iedit-mode로 키바인딩 되어있는 것을 해제합니다
+(global-set-key (kbd "C-;") nil)
 
 ;; git merge 도중 conflict가 난 파일은 <<<< HEAD 같은 코드가 생기는데
 ;; 이 때 smerge-mode를 사용해서 conflict를 관리하는 함수
 (global-set-key (kbd "C-c v") 'smerge-mode)
-
-;; Ctrl + \ - 키로 창을 가로,세로로 분할합니다
-(global-set-key (kbd "C-c \\") 'split-window-right)
-(global-set-key (kbd "C-c -") 'split-window-vertically)
-(define-key imagex-sticky-mode-map (kbd "C-c -") 'split-window-vertically)
-
 
 ;; smerge mode가 시작되고 실행되는 코드
 (eval-after-load "smerge-mode" (lambda()
@@ -2414,6 +2516,10 @@ created by edward 180515"
                                  (define-key smerge-mode-map (kbd "b") 'smerge-keep-other)
                                  ))
 
+;; Ctrl + \ - 키로 창을 가로,세로로 분할합니다
+(global-set-key (kbd "C-c \\") 'split-window-right)
+(global-set-key (kbd "C-c -") 'split-window-vertically)
+(define-key imagex-sticky-mode-map (kbd "C-c -") 'split-window-vertically)
 
 ;; 모든 환경에서 C-i <==> TAB 키를 따로 사용하기 위한 훅 코드
 ;; C-i <==> TAB 이 같은 키로 인식되므로 아래 코드를 추가해준다
@@ -2430,6 +2536,18 @@ created by edward 180515"
 (global-set-key (kbd "C-g") 'avy-goto-word-0)
 (global-set-key (kbd "C-S-g") 'avy-goto-word-1)
 
+;; customize mode와 같이 실행되는 hook 코드
+(add-hook 'custom-mode-hook (lambda ()
+                               ;; evil 모드 키바인딩을 설정합니다
+                               (define-key custom-mode-map (kbd "j") 'evil-next-line)
+                               (define-key custom-mode-map (kbd "k") 'evil-previous-line)
+                               (define-key custom-mode-map (kbd "l") 'evil-forward-char)
+                               (define-key custom-mode-map (kbd "h") 'evil-backward-char)
+                               (define-key custom-mode-map (kbd "g g") 'evil-goto-first-line)
+                               (define-key custom-mode-map (kbd "G") 'evil-goto-line)
+                               (define-key custom-mode-map (kbd "C-u") 'evil-scroll-up)
+                               (define-key custom-mode-map (kbd "C-d") 'evil-scroll-down)
+                              ))
 
 ;; C-u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다 (NOT USED)
 ;; (global-set-key (kbd "C-u") 'swiper-all)
@@ -2498,6 +2616,8 @@ created by edward 180515"
 ;; Alt + ] 키로 horizontal <--> vertical을 토글하는 키를 설정한다
 (global-set-key (kbd "M-]") 'window-split-toggle)
 
+
+
 ;; M-c, C-v 키를 복사, 붙여넣기로 전역적으로 설정합니다 (not used)
 ;; (global-set-key (kbd "C-c") 'cua--prefix-override-handler)
 ;; (global-set-key (kbd "C-v") 'cua-paste)
@@ -2509,15 +2629,16 @@ created by edward 180515"
 ;; 1개의 키가 입력되는데 걸리는 시간 설정
 (setq key-chord-one-key-delay 0.17) ; default 0.2
 (key-chord-define-global "66" 'ein:jupyter-server-stop)        ;; jupyter notebook 서버 종료
-(key-chord-define-global ",," 'ac-complete-semantic)           ;; 코드 자동완성
-(key-chord-define-global "mm" 'jedi:complete)                  ;; 코드 자동완성 for python
-(key-chord-define-global "zz" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
-(key-chord-define-global "aa" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
-(key-chord-define-global "xx" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
-(key-chord-define-global "cc" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
+(key-chord-define-global ",," 'jedi:complete)                  ;; 코드 자동완성 for python
+(key-chord-define-global "xx" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
+(key-chord-define-global "zz" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
+;; (key-chord-define-global "xx" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
+;; (key-chord-define-global "cc" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
+;; (key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
+;; (key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
 ;;(key-chord-define-global "??" 'split-window-right)             ;; 오른쪽에 새창 만들기 (NOT USED)
 ;;(key-chord-define-global ">>" 'split-window-below)             ;; 아래쪽에 새창 만들기 (NOT USED)
 ;;(key-chord-define-global "<<" 'ac-complete-semantic-raw)       ;; 코드 자동완성2 (NOT USED)
@@ -2561,7 +2682,8 @@ created by edward 180515"
   "create a scratch buffer"
   (interactive)
   (switch-to-buffer (get-buffer-create "*scratch*"))
-  (lisp-interaction-mode))
+  (emacs-lisp-mode)
+  )
 
 
 ;; ROS의 .launch 파일을 xml모드로 구문 하이라이팅하기 위해 설정합니다
@@ -2598,13 +2720,12 @@ created by edward 180515"
       (append '((".*\\.cu\\'" . c++-mode))
               auto-mode-alist))
 
-;; emacs_w 확장자 파일을 lisp mode 로 엽니다
+;; .emacs_w 
 (setq auto-mode-alist
-      (append '((".*\\.emacs_w\\'" . lisp-mode))
+      (append '((".*\\.emacs_w\\'" . elisp-byte-code-mode))
               auto-mode-alist))
 
 ;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다 (vnc에서 emacs를 사용하는 경우)
 (setq x-alt-keysym 'meta)
 
-;; beeping 소리를 제거합니다
-(setq visible-bell 1)
+(message "[+] All Settings are loaded!")

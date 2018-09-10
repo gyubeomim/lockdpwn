@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\edward\\Anaconda3\\envs\\tf\\python.exe",
+    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\tf\\python.exe",
     "files.associations": {
         "random": "cpp",
         "queue": "cpp",
