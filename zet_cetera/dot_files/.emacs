@@ -415,14 +415,6 @@
 (add-hook 'text-mode 'ws-butler-mode)
 (add-hook 'fundamental-mode 'ws-butler-mode)
 
-;; Package: undo-tree
-;; GROUP: Editing -> Undo -> Undo Tree
-(require 'undo-tree)
-(global-undo-tree-mode)
-
-(eval-after-load "undo-tree" (lambda ()
-                               (define-key undo-tree-map (kbd "C-r") nil)
-                               ))
 
 ;; PACKAGE: jedi
 ;; $ pip install jedi epc pylint virtualenv
@@ -768,7 +760,6 @@
 (global-set-key (kbd "C-c \[") 'org-store-link)
 ;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
 (global-set-key (kbd "C-/") 'org-agenda)
-(define-key undo-tree-map (kbd "C-/") 'org-agenda)
 ;; C-. 키로 어느곳에서나 capture 기능을 열게합니다
 (global-set-key (kbd "C-.") 'org-capture)
 ;;org-END=================================================================
@@ -789,6 +780,17 @@
 ;; (setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8"))
 ;; (setq evernote-username "gyurse")
 ;; (setq evernote-developer-token "S=s1:U=94ad7:E=16b3c61dabe:C=163e4b0ad30:P=1cd:A=en-devtoken:V=2:H=25f588edfdb5ff0df834f685efa0e75b")
+
+;; Package: undo-tree
+;; GROUP: Editing -> Undo -> Undo Tree
+(require 'undo-tree)
+(global-undo-tree-mode)
+
+(eval-after-load "undo-tree" (lambda ()
+                               (define-key undo-tree-map (kbd "C-r") nil)
+
+			       (define-key undo-tree-map (kbd "C-/") 'org-agenda)
+                               ))
 
 ;; PACKAGE: evil
 (require 'evil)
@@ -814,6 +816,8 @@
                            (define-key evil-motion-state-map (kbd "K") nil)
                            (define-key evil-motion-state-map (kbd "TAB") nil)
                            (define-key evil-motion-state-map (kbd "`") nil)
+                           (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
+                           (define-key evil-motion-state-map (kbd "T") 'org-shiftleft)
 
                            ;; 키바인딩 해제 INSERT MODE
                            (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -1412,7 +1416,7 @@
  '(org-block ((t (:background "gray13" :foreground "dark gray"))))
  '(org-block-begin-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
  '(org-block-end-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
- '(org-date ((t (:foreground "dark gray" :underline nil :weight normal))))
+ '(org-date ((t (:background "black" :foreground "#839496" :underline nil :weight bold :height 0.75))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
@@ -2793,5 +2797,8 @@ created by edward 180515"
 
 ;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다 (vnc에서 emacs를 사용하는 경우)
 (setq x-alt-keysym 'meta)
+
+;; Disable Beeping when using VNC
+(setq visible-bell 1)
 
 (message "[+] All Settings are loaded!")

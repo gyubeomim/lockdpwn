@@ -276,7 +276,7 @@ alias cmca='catkin_make_isolated --install --use-ninja'
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh ~/gitrepo/ims_ros/vrep_ws/dyros_simulator_v7.ttt'
+alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh ~/gitrepo/ims_ros/vrep_ws/dyros_simulator2_parking.ttt'
 
 
 # source .bashrc
