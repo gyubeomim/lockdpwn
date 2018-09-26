@@ -351,6 +351,10 @@ export PYTHONPATH=~/gitrepo/hed/python:$PYTHONPATH
 export CAFFE_ROOT=~/gitrepo/hed/caffe
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
+# for tmux command history
+export HISTCONTROL=ignoredups:erasedups
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/devel/setup.bash
