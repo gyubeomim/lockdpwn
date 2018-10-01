@@ -415,14 +415,6 @@
 (add-hook 'text-mode 'ws-butler-mode)
 (add-hook 'fundamental-mode 'ws-butler-mode)
 
-;; Package: undo-tree
-;; GROUP: Editing -> Undo -> Undo Tree
-(require 'undo-tree)
-(global-undo-tree-mode)
-
-(eval-after-load "undo-tree" (lambda ()
-                               (define-key undo-tree-map (kbd "C-r") nil)
-                               ))
 
 ;; PACKAGE: jedi
 ;; $ pip install jedi epc pylint virtualenv
@@ -641,67 +633,67 @@
         ))
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
-     (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org"))
-     (setq org-agenda-files (file-expand-wildcards "~/gitrepo/ims_org/org_files/note/*.org"))
+     (setq org-agenda-files (file-expand-wildcards "~/CloudStation/gitrepo_sync/ims_org/org_files/*.org"))
+     (setq org-agenda-files (file-expand-wildcards "~/CloudStation/gitrepo_sync/ims_org/org_files/note/*.org"))
      ;; C-. 키로 사용할 note 파일
-     (setq org-default-notes-file "~/gitrepo/ims_org/org_files/edward.org")
+     (setq org-default-notes-file "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '(("1" "edward.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Tasks")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("2" "edward.org: [Issues]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/edward.org" "Issues")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("3" "dyros.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Tasks")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("4" "dyros.org: [Issues]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "Issues")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("m" "dyros.org: [TeamMeeting]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/dyros.org" "TeamMeeting")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "TeamMeeting")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("5" "parkable.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Tasks")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("6" "parkable.org: [Issues]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_parkable.org" "Issues")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("7" "cartographer.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Tasks")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("8" "cartographer.org: [Issues]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/project_cartographer.org" "Issues")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("9" "ubuntu_tips.org: [Ubuntu]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("g" "SNU.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/SNU.org" "Tasks")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("h" "SNU.org: [Issues]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/SNU.org" "Issues")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("u" "emacs.org: [Task]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Tasks")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("i" "emacs.org: [Issues]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/emacs.org" "Issues")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
                                     "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
 
                                    ("n" "note.org: [Note]" entry
-                                    (file+headline "~/gitrepo/ims_org/org_files/note.org" "Note")
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "Note")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
@@ -715,7 +707,7 @@
 (setq package-check-signature nil)
 (setq org-gcal-client-id "815785509878-3gn7mhcti240j6am59uk95s230n11172.apps.googleusercontent.com"
       org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
-      org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo/ims_org/org_files/gcal.org")))
+      org-gcal-file-alist '(("gyurse@gmail.com" .  "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
 ;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
 (add-hook 'org-agenda-mode-hook (lambda ()
                                   (org-gcal-sync nil nil t)
@@ -752,23 +744,22 @@
 ;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
 (global-set-key (kbd "C-c s") (lambda () (interactive)(org-gcal-sync nil nil t) ))
 ;; C-c + / 키로 edward.org 파일을 엽니다
-(global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
+(global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
-(global-set-key (kbd "C-c 0") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/note.org")))
-(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_parkable.org")))
-(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/project_cartographer.org")))
-(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/dyros.org")))
-(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/emacs.org")))
-(global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/pomodoro.org")))
-(global-set-key (kbd "C-c 6") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/SNU.org")))
-(global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/plan.org")))
+(global-set-key (kbd "C-c 0") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org")))
+(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
+(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org")))
+(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org")))
+(global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+(global-set-key (kbd "C-c 6") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org")))
+(global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/plan.org")))
 ;; C-, 키로 link.opg 파일을 엽니다
-(global-set-key (kbd "C-,") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/link.org")))
+(global-set-key (kbd "C-,") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org")))
 ;; C-c + [ 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-c \[") 'org-store-link)
 ;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
 (global-set-key (kbd "C-/") 'org-agenda)
-(define-key undo-tree-map (kbd "C-/") 'org-agenda)
 ;; C-. 키로 어느곳에서나 capture 기능을 열게합니다
 (global-set-key (kbd "C-.") 'org-capture)
 ;;org-END=================================================================
@@ -789,6 +780,17 @@
 ;; (setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8"))
 ;; (setq evernote-username "gyurse")
 ;; (setq evernote-developer-token "S=s1:U=94ad7:E=16b3c61dabe:C=163e4b0ad30:P=1cd:A=en-devtoken:V=2:H=25f588edfdb5ff0df834f685efa0e75b")
+
+;; Package: undo-tree
+;; GROUP: Editing -> Undo -> Undo Tree
+(require 'undo-tree)
+(global-undo-tree-mode)
+
+(eval-after-load "undo-tree" (lambda ()
+                               (define-key undo-tree-map (kbd "C-r") nil)
+
+			       (define-key undo-tree-map (kbd "C-/") 'org-agenda)
+                               ))
 
 ;; PACKAGE: evil
 (require 'evil)
@@ -1248,7 +1250,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/SNU.org" "~/gitrepo/ims_org/org_files/note/paper_research.org" "~/gitrepo/ims_org/org_files/note/ip_list.org" "~/gitrepo/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo/ims_org/org_files/note/computer_device_spec.org" "~/gitrepo/ims_org/org_files/note.org" "~/gitrepo/ims_org/org_files/project_parkable.org" "~/gitrepo/ims_org/org_files/emacs.org" "~/gitrepo/ims_org/org_files/pomodoro.org" "~/gitrepo/ims_org/org_files/note/dl_tensorflow.org" "~/gitrepo/ims_org/org_files/note/dl_network_model.org" "~/gitrepo/ims_org/org_files/note/dl_core_concept.org" "~/gitrepo/ims_org/org_files/link.org" "~/gitrepo/ims_org/org_files/note/cmake.org" "~/gitrepo/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/note/snu_interviews.org" "~/gitrepo/ims_org/org_files/note/algorithm.org" "~/gitrepo/ims_org/org_files/edward.org" "~/gitrepo/ims_org/org_files/dyros.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/project_cartographer.org")))
+    ("~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -2738,7 +2740,7 @@ created by edward 180515"
 ;; Alt + g 키로 xml 파일 내에서 코드를 folding할 수 있습니다
 (define-key nxml-mode-map (kbd "M-g") 'hs-toggle-hiding)
 ;; nxml(.launch file) 모드에서도 C-c + / 키로 edward.org 파일을 엽니다
-(define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
+(define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")))
 
 ;; grep-find (C-p) 명령어에서 새로운 grep 창이 열리지 않고 바로 현재창이 바뀌도록 하는 코드
 (eval-when-compile (require 'cl))
@@ -2795,5 +2797,8 @@ created by edward 180515"
 
 ;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다 (vnc에서 emacs를 사용하는 경우)
 (setq x-alt-keysym 'meta)
+
+;; Disable Beeping when using VNC
+(setq visible-bell 1)
 
 (message "[+] All Settings are loaded!")

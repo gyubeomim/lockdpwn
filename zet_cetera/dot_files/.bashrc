@@ -166,7 +166,7 @@ alias g2='cd /home/dyros-vehicle/gitrepo/ims_ros'
 alias g3='cd /home/dyros-vehicle/gitrepo/ims_carto'
 alias g4='cd /home/dyros-vehicle/gitrepo/ims_dyros'
 alias g5='cd /home/dyros-vehicle/gitrepo/ims_ml'
-alias gito='cd /home/dyros-vehicle/gitrepo/ims_org'
+alias g6='cd /home/dyros-vehicle/CloudStation/gitrepo_sync/ims_org'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
 
 
@@ -345,12 +345,18 @@ export PATH=/home/dyros-vehicle/Documents/cling_2018-05-10_ubuntu16/bin:$PATH
 # for caps lock <==> ctrl swapping
 alias ccc='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
 
+# for 3 Monitors Toggle ON/OFF
+alias mon='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/monitors_toggle.sh'
 
 # for hed gitrepository (pycaffe)
 export PYTHONPATH=~/gitrepo/hed/python:$PYTHONPATH
 export CAFFE_ROOT=~/gitrepo/hed/caffe
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
+# for tmux command history
+export HISTCONTROL=ignoredups:erasedups
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/devel/setup.bash
