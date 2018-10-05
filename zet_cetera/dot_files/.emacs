@@ -756,8 +756,8 @@
 (global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/plan.org")))
 ;; C-, 키로 link.opg 파일을 엽니다
 (global-set-key (kbd "C-,") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org")))
-;; C-c + [ 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
-(global-set-key (kbd "C-c \[") 'org-store-link)
+;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
+(global-set-key (kbd "C-;") 'org-store-link)
 ;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
 (global-set-key (kbd "C-/") 'org-agenda)
 ;; C-. 키로 어느곳에서나 capture 기능을 열게합니다
@@ -1421,6 +1421,7 @@
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
+ '(org-level-6 ((t (:inherit variable-pitch :foreground "#839496"))))
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
@@ -2570,7 +2571,7 @@ created by edward 180515"
 ;; Alt + [ 키로 선택된 단어를 iedit 일괄편집합니다
 (global-set-key (kbd "M-[") 'iedit-mode)
 ;; 원래 C-; 가 iedit-mode로 키바인딩 되어있는 것을 해제합니다
-(global-set-key (kbd "C-;") nil)
+;; (global-set-key (kbd "C-;") nil)
 
 ;; git merge 도중 conflict가 난 파일은 <<<< HEAD 같은 코드가 생기는데
 ;; 이 때 smerge-mode를 사용해서 conflict를 관리하는 함수
