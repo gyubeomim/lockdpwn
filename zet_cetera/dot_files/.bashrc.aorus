@@ -144,7 +144,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_WHITE\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_WHITE\u(@aorus)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 
 #LANG=ko_KR.utf-8
