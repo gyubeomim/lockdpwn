@@ -144,8 +144,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_WHITE\u(@aorus)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
-
+PS1="$C_PURPLE\u(@aorus)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 #LANG=ko_KR.utf-8
 #LANGUAGE=ko_KR
@@ -285,10 +284,6 @@ alias ueditor='~/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
 export UE4_ROOT='/home/dyros-vehicle/gitrepo/UnrealEngine'
 
 
-# set ROS
-source /opt/ros/kinetic/setup.bash
-source /home/dyros-vehicle/catkin_ws/devel/setup.bash
-source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash  # for cartographer
 
 alias ti='cd /home/dyros-vehicle/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
 alias cdd='cd /media/dyros-data/'
@@ -373,3 +368,7 @@ export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
+# set ROS
+source /opt/ros/kinetic/setup.bash
+source /home/dyros-vehicle/catkin_ws/devel/setup.bash
+source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash  # for cartographer
