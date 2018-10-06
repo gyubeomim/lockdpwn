@@ -89,6 +89,7 @@
     smart-mode-line                  ;; emacs의 mode-line (하단상태바)를 커스터마이징해주는 패키지
     smart-mode-line-powerline-theme  ;; mode-line을 커스터마이징해주는 패키지
 
+    use-package                ;; package를 관리해주는 패키지
 
     ;; ample-theme            ;; ample 테마
     ;; arjen-grey-theme       ;; grey 테마를 설정할 수 있는 패키지
@@ -1263,7 +1264,7 @@
     ("~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1345,7 +1346,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
@@ -2592,17 +2593,21 @@ created by edward 180515"
 ;; smerge mode가 시작되고 실행되는 코드
 (eval-after-load "smerge-mode"
   (lambda()
+    ;; evil-mode-map을 smerge-mode-map이 오버라이딩하려고 했지만 실패함 <2018-10-6 18:00>
+    ;; (add-to-ordered-list 'emulation-mode-map-alists '(smerge-mode smerge-mode-map) 0)
+    ;; (message "%S" emulation-mode-map-alists)
+                                        ;
     ;; merge conflict를 효율적으로 관리하기 위해 단축키를 변경한다
-    ;; e 키로 ediff 모드를 사용한다 (a,b로 내 코드, 다른 코드를 선택 가능)
-    (define-key smerge-mode-map (kbd "e") 'smerge-ediff)
+    ;; C-c e 키로 ediff 모드를 사용한다 (a,b로 내 코드, 다른 코드를 선택 가능)
+    (define-key smerge-mode-map (kbd "C-c e") 'smerge-ediff)
 
-    ;; n,p 키로 움직입니다
-    (define-key smerge-mode-map (kbd "n") 'smerge-next)
-    (define-key smerge-mode-map (kbd "p") 'smerge-prev)
+    ;; C-c n,p 키로 움직입니다
+    (define-key smerge-mode-map (kbd "C-c n") 'smerge-next)
+    (define-key smerge-mode-map (kbd "C-c p") 'smerge-prev)
 
-    ;; a,b 키로 어느 conflict를 선택할지 결정합니다
-    (define-key smerge-mode-map (kbd "a") 'smerge-keep-mine)
-    (define-key smerge-mode-map (kbd "b") 'smerge-keep-other)
+    ;; C-c a,b 키로 어느 conflict를 선택할지 결정합니다
+    (define-key smerge-mode-map (kbd "C-c a") 'smerge-keep-mine)
+    (define-key smerge-mode-map (kbd "C-c b") 'smerge-keep-other)
     ))
 
 ;; Ctrl + \ - 키로 창을 가로,세로로 분할합니다
