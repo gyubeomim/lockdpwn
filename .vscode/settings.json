@@ -1,8 +1,0 @@
-{
-    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\tf\\python.exe",
-    "files.associations": {
-        "random": "cpp",
-        "queue": "cpp",
-        "stack": "cpp"
-    }
-}
