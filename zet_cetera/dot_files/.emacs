@@ -566,10 +566,12 @@
      ;; C-c v,b 키로 org-table 모드에서 열과 행을 추가합니다
      (define-key org-mode-map (kbd "C-c b") 'org-table-insert-row)
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
-     ;; C + | 키로 영역을 table화 합니다
+     ;; C+| 키로 영역을 table화 합니다
      (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
-     ;; C + . 키로 agenda를 실행합니다
-     (define-key org-mode-map (kbd "C-/") 'org-agenda)
+     ;; C+/ 키로 org todo list를 실행합니다
+     (define-key org-mode-map (kbd "C-/") 'org-todo-list)
+     ;; C+? 키로 agenda를 실행합니다
+     (define-key org-mode-map (kbd "C-?") 'org-agenda)
      ;; C-down + M-f 키를 기본 cpp,python 파일에서와 같이 구문단위로 이동하도록 설정합니다
      ;; org.el에서 remap이 되어있던 코드를 주석처리하니 아래 두 코드가 정상작동한다
      (define-key org-mode-map (kbd "<C-down>") 'forward-paragraph)
@@ -758,8 +760,10 @@
 (global-set-key (kbd "C-,") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
-;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
-(global-set-key (kbd "C-/") 'org-agenda)
+;; C-? 키로 어느곳에서나 agenda view를 열게합니다
+(global-set-key (kbd "C-?") 'org-agenda)
+;; C-/ 키로 어느곳에서나 org todo list를 열게합니다
+(global-set-key (kbd "C-/") 'org-todo-list)
 ;; C-. 키로 어느곳에서나 capture 기능을 열게합니다
 (global-set-key (kbd "C-.") 'org-capture)
 ;;org-END=================================================================
@@ -788,8 +792,10 @@
 
 (eval-after-load "undo-tree" (lambda ()
                                (define-key undo-tree-map (kbd "C-r") nil)
+                               (define-key undo-tree-map (kbd "C-?") nil)
 
-			       (define-key undo-tree-map (kbd "C-/") 'org-agenda)
+			       (define-key undo-tree-map (kbd "C-?") 'org-agenda)
+			       (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
                                ))
 
 ;; PACKAGE: evil
