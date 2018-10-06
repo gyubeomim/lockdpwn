@@ -2603,7 +2603,7 @@ created by edward 180515"
     ;; a,b 키로 어느 conflict를 선택할지 결정합니다
     (define-key smerge-mode-map (kbd "a") 'smerge-keep-mine)
     (define-key smerge-mode-map (kbd "b") 'smerge-keep-other)
-                                 ))
+    ))
 
 ;; Ctrl + \ - 키로 창을 가로,세로로 분할합니다
 (global-set-key (kbd "C-c \\") 'split-window-right)
