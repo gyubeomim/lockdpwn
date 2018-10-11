@@ -145,7 +145,7 @@ C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
 # PS1="$C_LIGHTRED[$C_LIGHTRED\u@$C_LIGHTRED\h]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
-PS1="$C_LIGHTYELLOW\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTYELLOW\u(@server2)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 
 #LANG=ko_KR.utf-8
@@ -161,7 +161,11 @@ alias sq='cd /media/dyros-data/gitrepo/ims_ml/projects/SqueezeSeg'
 alias gr='cd /media/dyros-data/gitrepo/'
 alias qt2='/media/dyros-data/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
 alias qt3='/media/dyros-data/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
-msf=/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15
+
+alias cpp='cd /media/dyros-data/gitrepo/lockdpwn/cpp_archive'
+alias py='cd /media/dyros-data/gitrepo/lockdpwn/python_archive'
+
+# msf=/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15
 
 alias ipy='cd /media/dyros-data/gitrepo/lockdpwn/python_archive/ipython'
 alias ml='cd /media/dyros-data/gitrepo/lockdpwn/python_archive/machineLearning'

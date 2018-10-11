@@ -89,6 +89,7 @@
     smart-mode-line                  ;; emacs의 mode-line (하단상태바)를 커스터마이징해주는 패키지
     smart-mode-line-powerline-theme  ;; mode-line을 커스터마이징해주는 패키지
 
+    use-package                ;; package를 관리해주는 패키지
 
     ;; ample-theme            ;; ample 테마
     ;; arjen-grey-theme       ;; grey 테마를 설정할 수 있는 패키지
@@ -449,19 +450,20 @@
 (setq elpy-mode-map nil)
 
 ;; elpy 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
-(eval-after-load "elpy" (lambda ()
-                          ;; Alt + t 키로 reference를 찾아준다 (grep -r 명령어와 비슷하다고 한다)
-                          (local-set-key (kbd "M-t") 'elpy-rgrep-symbol)
+(eval-after-load "elpy"
+  (lambda ()
+    ;; Alt + t 키로 reference를 찾아준다 (grep -r 명령어와 비슷하다고 한다)
+    (local-set-key (kbd "M-t") 'elpy-rgrep-symbol)
 
-                          ;; elpy-mode에서 부가적으로 실행되는 모든 모듈들을 해제한다
-                          (remove-hook 'elpy-modules 'elpy-module-flymake)
-                          (remove-hook 'elpy-modules 'elpy-module-yasnippet)
-                          (remove-hook 'elpy-modules 'elpy-module-highlight-indentation)
-                          (remove-hook 'elpy-modules 'elpy-module-django)
-                          (remove-hook 'elpy-modules 'elpy-module-company)
-                          (remove-hook 'elpy-modules 'elpy-module-eldoc)
-                          (remove-hook 'elpy-modules 'elpy-module-pyvenv)
-                          (remove-hook 'elpy-modules 'elpy-module-sane-defaults)
+    ;; elpy-mode에서 부가적으로 실행되는 모든 모듈들을 해제한다
+    (remove-hook 'elpy-modules 'elpy-module-flymake)
+    (remove-hook 'elpy-modules 'elpy-module-yasnippet)
+    (remove-hook 'elpy-modules 'elpy-module-highlight-indentation)
+    (remove-hook 'elpy-modules 'elpy-module-django)
+    (remove-hook 'elpy-modules 'elpy-module-company)
+    (remove-hook 'elpy-modules 'elpy-module-eldoc)
+    (remove-hook 'elpy-modules 'elpy-module-pyvenv)
+    (remove-hook 'elpy-modules 'elpy-module-sane-defaults)
                           ))
 
 
@@ -566,10 +568,12 @@
      ;; C-c v,b 키로 org-table 모드에서 열과 행을 추가합니다
      (define-key org-mode-map (kbd "C-c b") 'org-table-insert-row)
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
-     ;; C + | 키로 영역을 table화 합니다
+     ;; C+| 키로 영역을 table화 합니다
      (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
-     ;; C + . 키로 agenda를 실행합니다
-     (define-key org-mode-map (kbd "C-/") 'org-agenda)
+     ;; C+/ 키로 org todo list를 실행합니다
+     (define-key org-mode-map (kbd "C-/") 'org-todo-list)
+     ;; C+? 키로 agenda를 실행합니다
+     (define-key org-mode-map (kbd "C-?") 'org-agenda)
      ;; C-down + M-f 키를 기본 cpp,python 파일에서와 같이 구문단위로 이동하도록 설정합니다
      ;; org.el에서 remap이 되어있던 코드를 주석처리하니 아래 두 코드가 정상작동한다
      (define-key org-mode-map (kbd "<C-down>") 'forward-paragraph)
@@ -756,10 +760,12 @@
 (global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/plan.org")))
 ;; C-, 키로 link.opg 파일을 엽니다
 (global-set-key (kbd "C-,") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org")))
-;; C-c + [ 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
-(global-set-key (kbd "C-c \[") 'org-store-link)
-;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
-(global-set-key (kbd "C-/") 'org-agenda)
+;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
+(global-set-key (kbd "C-;") 'org-store-link)
+;; C-? 키로 어느곳에서나 agenda view를 열게합니다
+(global-set-key (kbd "C-?") 'org-agenda)
+;; C-/ 키로 어느곳에서나 org todo list를 열게합니다
+(global-set-key (kbd "C-/") 'org-todo-list)
 ;; C-. 키로 어느곳에서나 capture 기능을 열게합니다
 (global-set-key (kbd "C-.") 'org-capture)
 ;;org-END=================================================================
@@ -786,71 +792,75 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
-(eval-after-load "undo-tree" (lambda ()
-                               (define-key undo-tree-map (kbd "C-r") nil)
+(eval-after-load "undo-tree"
+  (lambda ()
+    (define-key undo-tree-map (kbd "C-r") nil)
+    (define-key undo-tree-map (kbd "C-?") nil)
 
-			       (define-key undo-tree-map (kbd "C-/") 'org-agenda)
-                               ))
+    (define-key undo-tree-map (kbd "C-?") 'org-agenda)
+    (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
+    ))
 
 ;; PACKAGE: evil
 (require 'evil)
 (evil-mode t)
 
 ;; evil 모드를 로딩한 후 설정
-(eval-after-load "evil"  (lambda ()
-                           ;; h,l 키로 단어를 이동할 때 커서가 맨 끝에 있는 경우 다음 라인으로 넘어가도록 설정한다
-                           (setq evil-cross-lines t)
+(eval-after-load "evil"
+  (lambda ()
+    ;; h,l 키로 단어를 이동할 때 커서가 맨 끝에 있는 경우 다음 라인으로 넘어가도록 설정한다
+    (setq evil-cross-lines t)
 
-                           ;; 키바인딩 해제 ESC MODE
-                           (define-key evil-motion-state-map (kbd "C-b") nil)
-                           (define-key evil-motion-state-map (kbd "C-w") nil)
-                           (define-key evil-motion-state-map (kbd "C-f") nil)
-                           (define-key evil-motion-state-map (kbd "C-o") nil)
-                           (define-key evil-motion-state-map (kbd "C-z") nil)
-                           (define-key evil-motion-state-map (kbd "C-y") nil)
-                           (define-key evil-motion-state-map (kbd "C-e") nil)
-                           (define-key evil-motion-state-map (kbd "C-m") nil)
-                           (define-key evil-motion-state-map (kbd "C-p") nil)
-                           (define-key evil-motion-state-map (kbd "C-]") nil)
-                           (define-key evil-motion-state-map (kbd "C-6") nil)
-                           (define-key evil-motion-state-map (kbd "K") nil)
-                           (define-key evil-motion-state-map (kbd "TAB") nil)
-                           (define-key evil-motion-state-map (kbd "`") nil)
-                           (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
-                           (define-key evil-motion-state-map (kbd "T") 'org-shiftleft)
+    ;; 키바인딩 해제 ESC MODE
+    (define-key evil-motion-state-map (kbd "C-b") nil)
+    (define-key evil-motion-state-map (kbd "C-w") nil)
+    (define-key evil-motion-state-map (kbd "C-f") nil)
+    (define-key evil-motion-state-map (kbd "C-o") nil)
+    (define-key evil-motion-state-map (kbd "C-z") nil)
+    (define-key evil-motion-state-map (kbd "C-y") nil)
+    (define-key evil-motion-state-map (kbd "C-e") nil)
+    (define-key evil-motion-state-map (kbd "C-m") nil)
+    (define-key evil-motion-state-map (kbd "C-p") nil)
+    (define-key evil-motion-state-map (kbd "C-]") nil)
+    (define-key evil-motion-state-map (kbd "C-6") nil)
+    (define-key evil-motion-state-map (kbd "K") nil)
+    (define-key evil-motion-state-map (kbd "TAB") nil)
+    (define-key evil-motion-state-map (kbd "`") nil)
+    (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
+    (define-key evil-motion-state-map (kbd "T") 'org-shiftleft)
 
-                           ;; 키바인딩 해제 INSERT MODE
-                           (define-key evil-insert-state-map (kbd "C-b") nil)
-                           (define-key evil-insert-state-map (kbd "C-d") nil)
-                           (define-key evil-insert-state-map (kbd "C-w") nil)
-                           (define-key evil-insert-state-map (kbd "C-f") nil)
-                           (define-key evil-insert-state-map (kbd "C-o") nil)
-                           (define-key evil-insert-state-map (kbd "C-z") nil)
-                           (define-key evil-insert-state-map (kbd "C-t") nil)
-                           (define-key evil-insert-state-map (kbd "C-y") nil)
-                           (define-key evil-insert-state-map (kbd "C-e") nil)
-                           (define-key evil-insert-state-map (kbd "C-a") nil)
-                           (define-key evil-insert-state-map (kbd "C-n") nil)
-                           (define-key evil-insert-state-map (kbd "C-k") nil)
-                           (define-key evil-insert-state-map (kbd "C-p") nil)
-                           (define-key evil-insert-state-map (kbd "C-v") nil)
+    ;; 키바인딩 해제 INSERT MODE
+    (define-key evil-insert-state-map (kbd "C-b") nil)
+    (define-key evil-insert-state-map (kbd "C-d") nil)
+    (define-key evil-insert-state-map (kbd "C-w") nil)
+    (define-key evil-insert-state-map (kbd "C-f") nil)
+    (define-key evil-insert-state-map (kbd "C-o") nil)
+    (define-key evil-insert-state-map (kbd "C-z") nil)
+    (define-key evil-insert-state-map (kbd "C-t") nil)
+    (define-key evil-insert-state-map (kbd "C-y") nil)
+    (define-key evil-insert-state-map (kbd "C-e") nil)
+    (define-key evil-insert-state-map (kbd "C-a") nil)
+    (define-key evil-insert-state-map (kbd "C-n") nil)
+    (define-key evil-insert-state-map (kbd "C-k") nil)
+    (define-key evil-insert-state-map (kbd "C-p") nil)
+    (define-key evil-insert-state-map (kbd "C-v") nil)
 
-                           ;; 키바인딩 해제 NORMAL MODE
-                           (define-key evil-normal-state-map (kbd "C-t") nil)
-                           (define-key evil-normal-state-map (kbd "C-n") nil)
-                           (define-key evil-normal-state-map (kbd "C-p") nil)
-                           (define-key evil-normal-state-map (kbd "H-[") nil)
-                           (define-key evil-normal-state-map (kbd "C-.") nil)
-                           (define-key evil-normal-state-map (kbd "z") nil)
-                           (define-key evil-normal-state-map (kbd "x") nil)
-                           (define-key evil-normal-state-map (kbd "c") nil)
-                           (define-key evil-normal-state-map (kbd "J") nil)
-                           (define-key evil-normal-state-map (kbd "M-.") nil)
+    ;; 키바인딩 해제 NORMAL MODE
+    (define-key evil-normal-state-map (kbd "C-t") nil)
+    (define-key evil-normal-state-map (kbd "C-n") nil)
+    (define-key evil-normal-state-map (kbd "C-p") nil)
+    (define-key evil-normal-state-map (kbd "H-[") nil)
+    (define-key evil-normal-state-map (kbd "C-.") nil)
+    (define-key evil-normal-state-map (kbd "z") nil)
+    (define-key evil-normal-state-map (kbd "x") nil)
+    (define-key evil-normal-state-map (kbd "c") nil)
+    (define-key evil-normal-state-map (kbd "J") nil)
+    (define-key evil-normal-state-map (kbd "M-.") nil)
 
-                           ;; 키바인딩 설정 ESC MODE
-                           ;; C-u 키로 page up 키를 설정합니다
-                           (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
-                           ))
+    ;; 키바인딩 설정 ESC MODE
+    ;; C-u 키로 page up 키를 설정합니다
+    (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
+    ))
 
 ;; evil-mode로 인해 사용하지 않는 전역 키바인딩을 해제합니다
 ;; Ctrl
@@ -914,12 +924,13 @@
 ;; PACKAGE: image+
 (require 'image+)
 (imagex-global-sticky-mode t)
-(eval-after-load "image+" (lambda ()
-                            ;; C-c = 키로 이미지를 확대한다
-                            (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
-                            ;; C-+ 키로 이미지 크기를 자동조정한다
-                            (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
-                            ))
+(eval-after-load "image+"
+  (lambda ()
+    ;; C-c = 키로 이미지를 확대한다
+    (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
+    ;; C-+ 키로 이미지 크기를 자동조정한다
+    (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
+    ))
 
 
 ;; Package: yasnippet
@@ -1253,7 +1264,7 @@
     ("~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1335,7 +1346,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
@@ -1421,6 +1432,7 @@
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
+ '(org-level-6 ((t (:inherit variable-pitch :foreground "#839496"))))
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight bold))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
@@ -1620,27 +1632,28 @@
 (add-hook 'dired-after-readin-hook 'sof/dired-sort)
 
 ;; dired mode에서 여러 단축키들을 설정하는 코드
-(eval-after-load "dired" '(progn
-                            ;; dired mode : Move to the parent directory
-                            (define-key dired-mode-map "a"
-                              (lambda ()
-                                (interactive)
-                                (find-alternate-file "..")))
+(eval-after-load "dired"
+  '(progn
+     ;; dired mode : Move to the parent directory
+     (define-key dired-mode-map "a"
+       (lambda ()
+         (interactive)
+         (find-alternate-file "..")))
 
-                            ;; dired mode 관련 단축키들을 추가했다
-                            ;; dired mode : Emacs's adaption of find
-                            (define-key dired-mode-map "F" 'find-name-dired);
+     ;; dired mode 관련 단축키들을 추가했다
+     ;; dired mode : Emacs's adaption of find
+     (define-key dired-mode-map "F" 'find-name-dired);
 
-                            ;; dired mode : Move up and down
-                            (define-key dired-mode-map "j" 'dired-next-line)
-                            (define-key dired-mode-map "k" 'dired-previous-line);
+     ;; dired mode : Move up and down
+     (define-key dired-mode-map "j" 'dired-next-line)
+     (define-key dired-mode-map "k" 'dired-previous-line);
 
-                            ;; dired mode : Jump to a file with ido
-                            (define-key dired-mode-map "i" 'ido-find-file)
+     ;; dired mode : Jump to a file with ido
+     (define-key dired-mode-map "i" 'ido-find-file)
 
-                            ;; dired mode 에서 chmod를 바로 수행하고 싶을 경우 M키를 눌러서 합니다
-                            (define-key dired-mode-map "M" 'chmod)
-                            ))
+     ;; dired mode 에서 chmod를 바로 수행하고 싶을 경우 M키를 눌러서 합니다
+     (define-key dired-mode-map "M" 'chmod)
+     ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
 (load "cc-mode")
@@ -2528,41 +2541,42 @@ created by edward 180515"
 (global-set-key (kbd "C-c y") 'magit-find-file)
 
 ;; magit 패키지가 로딩되면 같이 실행되는 코드
-(eval-after-load "magit" (lambda ()
-                           ;; ed: 키바인딩 해제
-                           (define-key magit-status-mode-map (kbd "C-w") nil)
-                           (define-key magit-status-mode-map (kbd "M-3") nil)
-                           (define-key magit-diff-mode-map (kbd "M-3") nil)
-                           (define-key magit-process-mode-map (kbd "M-3") nil)
+(eval-after-load "magit"
+  (lambda ()
+    ;; ed: 키바인딩 해제
+    (define-key magit-status-mode-map (kbd "C-w") nil)
+    (define-key magit-status-mode-map (kbd "M-3") nil)
+    (define-key magit-diff-mode-map (kbd "M-3") nil)
+    (define-key magit-process-mode-map (kbd "M-3") nil)
 
-                           ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
-                           (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
-                           (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
-                           (define-key magit-status-mode-map (kbd "C-u") 'evil-scroll-up)
-                           (define-key magit-status-mode-map (kbd "C-d") 'evil-scroll-down)
+    ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
+    (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
+    (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
+    (define-key magit-status-mode-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-status-mode-map (kbd "C-d") 'evil-scroll-down)
 
-                           (define-key magit-process-mode-map (kbd "j") 'evil-next-line)
-                           (define-key magit-process-mode-map (kbd "k") 'evil-previous-line)
-                           (define-key magit-process-mode-map (kbd "C-u") 'evil-scroll-up)
-                           (define-key magit-process-mode-map (kbd "C-d") 'evil-scroll-down)
+    (define-key magit-process-mode-map (kbd "j") 'evil-next-line)
+    (define-key magit-process-mode-map (kbd "k") 'evil-previous-line)
+    (define-key magit-process-mode-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-process-mode-map (kbd "C-d") 'evil-scroll-down)
 
-                           (define-key magit-branch-section-map (kbd "k") 'evil-previous-line)
-                           (define-key magit-branch-section-map (kbd "C-u") 'evil-scroll-up)
-                           (define-key magit-branch-section-map (kbd "C-d") 'evil-scroll-down)
+    (define-key magit-branch-section-map (kbd "k") 'evil-previous-line)
+    (define-key magit-branch-section-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-branch-section-map (kbd "C-d") 'evil-scroll-down)
 
-                           (define-key magit-unstaged-section-map (kbd "k") 'evil-previous-line)
-                           (define-key magit-unstaged-section-map (kbd "C-u") 'evil-scroll-up)
-                           (define-key magit-unstaged-section-map (kbd "C-d") 'evil-scroll-down)
+    (define-key magit-unstaged-section-map (kbd "k") 'evil-previous-line)
+    (define-key magit-unstaged-section-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-unstaged-section-map (kbd "C-d") 'evil-scroll-down)
 
-                           (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
-                           (define-key magit-file-mode-map (kbd "C-u") 'evil-scroll-up)
-                           (define-key magit-file-mode-map (kbd "C-d") 'evil-scroll-down)
+    (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
+    (define-key magit-file-mode-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-file-mode-map (kbd "C-d") 'evil-scroll-down)
 
-                           (define-key magit-diff-mode-map (kbd "j") 'evil-next-line)
-                           (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
-                           (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
-                           (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
-                           ))
+    (define-key magit-diff-mode-map (kbd "j") 'evil-next-line)
+    (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
+    (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
+    ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
 (setq vc-handled-backends nil)
@@ -2570,26 +2584,31 @@ created by edward 180515"
 ;; Alt + [ 키로 선택된 단어를 iedit 일괄편집합니다
 (global-set-key (kbd "M-[") 'iedit-mode)
 ;; 원래 C-; 가 iedit-mode로 키바인딩 되어있는 것을 해제합니다
-(global-set-key (kbd "C-;") nil)
+;; (global-set-key (kbd "C-;") nil)
 
 ;; git merge 도중 conflict가 난 파일은 <<<< HEAD 같은 코드가 생기는데
 ;; 이 때 smerge-mode를 사용해서 conflict를 관리하는 함수
 (global-set-key (kbd "C-c v") 'smerge-mode)
 
 ;; smerge mode가 시작되고 실행되는 코드
-(eval-after-load "smerge-mode" (lambda()
-                                 ;; merge conflict를 효율적으로 관리하기 위해 단축키를 변경한다
-                                 ;; e 키로 ediff 모드를 사용한다 (a,b로 내 코드, 다른 코드를 선택 가능)
-                                 (define-key smerge-mode-map (kbd "e") 'smerge-ediff)
+(eval-after-load "smerge-mode"
+  (lambda()
+    ;; evil-mode-map을 smerge-mode-map이 오버라이딩하려고 했지만 실패함 <2018-10-6 18:00>
+    ;; (add-to-ordered-list 'emulation-mode-map-alists '(smerge-mode smerge-mode-map) 0)
+    ;; (message "%S" emulation-mode-map-alists)
+                                        ;
+    ;; merge conflict를 효율적으로 관리하기 위해 단축키를 변경한다
+    ;; C-c e 키로 ediff 모드를 사용한다 (a,b로 내 코드, 다른 코드를 선택 가능)
+    (define-key smerge-mode-map (kbd "C-c e") 'smerge-ediff)
 
-                                 ;; n,p 키로 움직입니다
-                                 (define-key smerge-mode-map (kbd "n") 'smerge-next)
-                                 (define-key smerge-mode-map (kbd "p") 'smerge-prev)
+    ;; C-c n,p 키로 움직입니다
+    (define-key smerge-mode-map (kbd "C-c n") 'smerge-next)
+    (define-key smerge-mode-map (kbd "C-c p") 'smerge-prev)
 
-                                 ;; a,b 키로 어느 conflict를 선택할지 결정합니다
-                                 (define-key smerge-mode-map (kbd "a") 'smerge-keep-mine)
-                                 (define-key smerge-mode-map (kbd "b") 'smerge-keep-other)
-                                 ))
+    ;; C-c a,b 키로 어느 conflict를 선택할지 결정합니다
+    (define-key smerge-mode-map (kbd "C-c a") 'smerge-keep-mine)
+    (define-key smerge-mode-map (kbd "C-c b") 'smerge-keep-other)
+    ))
 
 ;; Ctrl + \ - 키로 창을 가로,세로로 분할합니다
 (global-set-key (kbd "C-c \\") 'split-window-right)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <iostream>
 
 using namespace std;
@@ -62,3 +63,18 @@ int main() {
 
     return 0;
 }
+=======
+/*
+ * #+DESCRIPTION:
+ *
+ *
+ * #+DATE:        2018-07-14-토
+ * #+AUTHOR:      Edward Im (gyurse@gmail.com)
+ */
+Beautiful World
+c
+c
+c
+c
+c
+>>>>>>> 8205acab38c3bf999ab1e6f63751ba829f6e4d56
