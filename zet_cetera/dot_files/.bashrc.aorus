@@ -364,9 +364,9 @@ export ROS_HOSTNAME=127.0.0.1
 alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.18.907-Linux-x64'
 
 # for tmux command history
-export HISTCONTROL=ignoredups:erasedups
-shopt -s histappend
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# export HISTCONTROL=ignoredups:erasedups
+# shopt -s histappend
+# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # set ROS
 source /opt/ros/kinetic/setup.bash
