@@ -221,8 +221,6 @@ alias cwc='cd /home/dyros-vehicle/cartographer_ws'
 alias csc='cd /home/dyros-vehicle/cartographer_ws/src'
 alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --install --use-ninja '
 
-#export ROS_MASTER_URI=http://192.168.137.2:11311
-#export ROS_HOSTNAME=127.0.0.1
 
 #alias cl='cd /home/dyros-vehicle/gitrepo/ims'
 #alias cr='cd /home/dyros-vehicle/gitrepo/ims/ROS/'
@@ -355,6 +353,8 @@ alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
 # for ccc
 alias ccc='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
 
+#export ROS_MASTER_URI=http://192.168.137.2:11311
+#export ROS_HOSTNAME=127.0.0.1
 # export ROS_MASTER_URI=http://192.168.4.102:11311
 # export ROS_HOSTNAME=192.168.4.102
 export ROS_MASTER_URI=http://127.0.0.1:11311
