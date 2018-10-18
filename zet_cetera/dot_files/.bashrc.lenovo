@@ -147,7 +147,7 @@ C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
 PS1="$C_LIGHTGREEN\u(@lenovo)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
-#"
+# PS1="$C_LIGHTGREEN(@user)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
 # LANGUAGE=ko_KR
@@ -185,6 +185,7 @@ alias pull='git pull'
 alias clone='git clone'
 alias gc='git checkout'
 alias gb='git branch'
+alias gs='git status'
 
 alias cpp='cd /home/dyros-vehicle/gitrepo/lockdpwn/cpp_archive'
 alias py='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive'
@@ -223,6 +224,8 @@ alias rm='trash-put'
 
 #export ROS_MASTER_URI=http://192.168.137.2:11311
 #export ROS_HOSTNAME=127.0.0.1
+export ROS_MASTER_URI=http://localhost:11311
+export ROS_HOSTNAME=127.0.0.1
 
 # set ROS alias command
 alias cw='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic'
@@ -263,12 +266,9 @@ alias cl='clear'
 
 # Cartographer Settings
 alias soc='source install_isolated/setup.bash'
-alias cwc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws'
-alias csc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws/src'
-alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws && catkin_make_isolated --install --use-ninja'
-alias cwcc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_before_180522'
-alias cscc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_before_180522/src'
-alias cmcc='cd /home/dyros-vehicle/gitrepo/ims_carto/cartographer_ws_before_180522 && catkin_make_isolated --install --use-ninja'
+alias cwc='cd /home/dyros-vehicle/gitrepo/ims_carto'
+alias csc='cd /home/dyros-vehicle/gitrepo/ims_carto/src'
+alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja'
 alias cmca='catkin_make_isolated --install --use-ninja'
 
 
@@ -354,9 +354,9 @@ export CAFFE_ROOT=~/gitrepo/hed/caffe
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 # for tmux command history
-export HISTCONTROL=ignoredups:erasedups
-shopt -s histappend
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# export HISTCONTROL=ignoredups:erasedups
+# shopt -s histappend
+# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/devel/setup.bash
