@@ -255,6 +255,7 @@ alias cmb='cd ~/gitrepo/ims/ROS/rosbook_ws && catkin_make'
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
+alias vrepjw='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /home/dyros-vehicle/gitrepo/ims_ros/vrep_ws/JW/ParkingSimulator.ttt'
 
 alias co='cd /opt/ros/kinetic/share/'
 
