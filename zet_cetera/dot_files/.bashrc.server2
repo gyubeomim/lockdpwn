@@ -257,6 +257,7 @@ alias sob='source /home/dyros-vehicle/.bashrc'
 
 alias cdb='cd ~/gitrepo/ims_ros/rosbook_ws'
 alias cb='cd /media/dyros-data/bag_files'
+alias cbb='cd /home/dyros-vehicle/bag_files'
 alias cdd='cd /media/dyros-data/'
 alias down='cd ~/Downloads'
 alias docu='cd ~/Documents'
@@ -356,6 +357,6 @@ alias vu='netstat -tapno | grep 5902'
 alias tu='netstat -tapno | grep Team'
 
 # for tmux history
-export HISTCONTROL=ignoredups:erasedups
-shopt -s histappend
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# export HISTCONTROL=ignoredups:erasedups
+# shopt -s histappend
+# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
