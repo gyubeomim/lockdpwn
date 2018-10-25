@@ -363,7 +363,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/devel/setup.bash
-source /home/dyros-vehicle/gitrepo/ims_carto/install_isolated/setup.bash
+source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash
 
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'
