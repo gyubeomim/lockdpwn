@@ -365,6 +365,11 @@ source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/devel/setup.bash
 source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash
 
+# for x11vnc && TeamViewer connected user
+alias vu='netstat -tapno | grep 5902'
+alias tu='netstat -tapno | grep Team'
+
+
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'
 # alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/directorPython'
