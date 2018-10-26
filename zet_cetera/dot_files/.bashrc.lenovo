@@ -182,6 +182,9 @@ alias add='git add'
 alias commit='git commit'
 alias push='git push'
 alias pull='git pull'
+alias pull_a='git pull origin aorus_ws'
+alias pull_1='git pull origin server1_ws'
+alias pull_2='git pull origin server2_ws'
 alias clone='git clone'
 alias gc='git checkout'
 alias gb='git branch'
@@ -360,6 +363,12 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/devel/setup.bash
+source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash
+
+# for x11vnc && TeamViewer connected user
+alias vu='netstat -tapno | grep 5902'
+alias tu='netstat -tapno | grep Team'
+
 
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'
