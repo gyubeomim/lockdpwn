@@ -355,6 +355,4 @@ export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod/wavedata
 # for x11vnc && TeamViewer connected user
 alias vu='netstat -tapno | grep 5902'
 alias tu='netstat -tapno | grep Team'
-
-# added by Anaconda3 installer
-export PATH="/home/dyros-vehicle/anaconda3/bin:$PATH"
+=
