@@ -189,6 +189,7 @@ alias clone='git clone'
 alias gc='git checkout'
 alias gb='git branch'
 alias gs='git status'
+alias dy='cd /home/dyros-vehicle/gitrepo/dyros_ws'
 
 alias cpp='cd /home/dyros-vehicle/gitrepo/lockdpwn/cpp_archive'
 alias py='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive'

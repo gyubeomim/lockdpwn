@@ -703,6 +703,9 @@
                                    ("'" "todo.org: [Issues]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("[" "todo.org: [Note]" entry
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Note")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
@@ -759,17 +762,9 @@
 
 ;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
 (global-set-key (kbd "C-c s") (lambda() (interactive)(org-agenda nil "s")))
-;; C-c + / 키로 edward.org 파일을 엽니다
-(global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
-(global-set-key (kbd "C-c 0") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
-(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org")))
-(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
-(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org")))
-(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org")))
-(global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
-(global-set-key (kbd "C-c 6") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org")))
-(global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/plan.org")))
+(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org")))
+(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
 ;; C-m 키로 link.opg 파일을 엽니다
 (global-set-key (kbd "H-m") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
@@ -780,10 +775,12 @@
 (global-set-key (kbd "C-/") 'org-todo-list)
 ;; C-> 키로 어느곳에서나 capture 기능을 열게합니다
 (global-set-key (kbd "C->") 'org-capture)
-;; C-. 키로 어느곳에서나 todo.org capture 기능을 열게합니다
+;; C-. 키로 어느곳에서나 todo.org Tasks 기능을 열게합니다
 (global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ";")))
-;; C-, 키로 어느곳에서나 todo.org capture 기능을 열게합니다
+;; C-, 키로 어느곳에서나 todo.org Issues 기능을 열게합니다
 (global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "'")))
+;; C-c n 키로 어느곳에서나 todo.org Note 기능을 열게합니다
+(global-set-key (kbd "C-c n") (lambda () (interactive)(org-capture nil "[")))
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
@@ -1295,7 +1292,7 @@
        (progn
          (setq num 1)
          (loop
-          (< num 500)
+          (< num 2000)
           (let
               ((numbering
                 (concat "#"
@@ -1714,7 +1711,6 @@
 ;; PACKAGE: ECB Emacs Code Browser
 (require 'ecb)
 
-
 ;; ECB tree view에서 F3 키가 ecb-show-help로 키바인딩되어있는 것을 해제해준다
 (add-hook 'ecb-common-tree-buffer-after-create-hook
           (lambda ()
@@ -1725,6 +1721,7 @@
             (local-unset-key [f3])
             ))
 
+;; ecb는 semantic-mode를 켜야지 정상적으로 function, variable list를 보여준다
 ;; ecb symboldef 버퍼에서 semantic mode가 필요하기 때문에 ecb를 로딩하는 순간 같이 실행해준다 (NOT USED)
 ;; (eval-after-load "ecb" (lambda ()
 ;;                          (semantic-mode t)
