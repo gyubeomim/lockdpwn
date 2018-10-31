@@ -159,6 +159,7 @@ alias g4='cd /media/dyros-data/gitrepo/ims_dyros'
 alias g5='cd /media/dyros-data/gitrepo/ims_ml'
 alias sq='cd /media/dyros-data/gitrepo/ims_ml/projects/SqueezeSeg'
 alias gr='cd /media/dyros-data/gitrepo/'
+alias dy='cd /media/dyros-data/gitrepo/dyros_ws'
 alias qt2='/media/dyros-data/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
 alias qt3='/media/dyros-data/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 
@@ -179,6 +180,9 @@ alias add='git add'
 alias commit='git commit'
 alias push='git push'
 alias pull='git pull'
+alias pull_a='git pull origin aorus_ws'
+alias pull_1='git pull origin server1_ws'
+alias pull_2='git pull origin server2_ws'
 alias clone='git clone'
 alias gc='git checkout'
 alias gb='git branch'
@@ -257,6 +261,7 @@ alias sob='source /home/dyros-vehicle/.bashrc'
 
 alias cdb='cd ~/gitrepo/ims_ros/rosbook_ws'
 alias cb='cd /media/dyros-data/bag_files'
+alias cbb='cd /home/dyros-vehicle/bag_files'
 alias cdd='cd /media/dyros-data/'
 alias down='cd ~/Downloads'
 alias docu='cd ~/Documents'
@@ -356,6 +361,6 @@ alias vu='netstat -tapno | grep 5902'
 alias tu='netstat -tapno | grep Team'
 
 # for tmux history
-export HISTCONTROL=ignoredups:erasedups
-shopt -s histappend
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# export HISTCONTROL=ignoredups:erasedups
+# shopt -s histappend
+# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"

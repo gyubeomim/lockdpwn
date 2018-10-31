@@ -553,8 +553,10 @@
      (define-key org-mode-map (kbd "<M-S-down>") 'org-shiftdown)
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
-     ;; org capture 기능 단축키 (C-m 이 <return>과 충돌나므로 C-. 으로 변경했다)
-     (define-key org-mode-map (kbd "C-.") 'org-capture)
+     ;; org capture 기능 단축키 (C-m 이 <return>과 충돌나므로 C-> 으로 변경했다)
+     (define-key org-mode-map (kbd "C->") 'org-capture)
+     ;; org capture 기능 단축키 for todo.org
+     (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ";")))
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
      (define-key org-mode-map (kbd "C-c w") 'org-preview-html/preview)
      ;; code ==> image Update 단축키
@@ -609,14 +611,17 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "DOING" "|" "PENDING" "REPLACED" "CANCELLED"  "DONE")
+           '((sequence "TODO" "DOING"
+                       "|"
+                       "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE")
              (sequence "|" "OPEN" "CLOSED"))
            )
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
            '(("CANCELLED" . "firebrick")
              ("REPLACED" . "purple")
-             ("PENDING" . "orange")
+             ("DELAYED" . "forest green")
+             ("PENDING" . "dark orange")
              ("DOING" . "yellow")
              ("OPEN" . "green")
              ("CLOSED" . "firebrick")
@@ -692,6 +697,16 @@
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
+                                   (";" "todo.org: [Task]" entry
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("'" "todo.org: [Issues]" entry
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Issues")
+                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   ("[" "todo.org: [Note]" entry
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Note")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
                                     "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
@@ -746,28 +761,26 @@
                                      )))))
 
 ;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
-(global-set-key (kbd "C-c s") (lambda () (interactive)(org-gcal-sync nil nil t) ))
-;; C-c + / 키로 edward.org 파일을 엽니다
-(global-set-key (kbd "C-c /") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")))
+(global-set-key (kbd "C-c s") (lambda() (interactive)(org-agenda nil "s")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
-(global-set-key (kbd "C-c 0") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
-(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org")))
-(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
-(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org")))
-(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org")))
-(global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
-(global-set-key (kbd "C-c 6") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org")))
-(global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/plan.org")))
-;; C-, 키로 link.opg 파일을 엽니다
-(global-set-key (kbd "C-,") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org")))
+(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org")))
+(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+;; C-m 키로 link.opg 파일을 엽니다
+(global-set-key (kbd "H-m") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; C-? 키로 어느곳에서나 agenda view를 열게합니다
 (global-set-key (kbd "C-?") 'org-agenda)
 ;; C-/ 키로 어느곳에서나 org todo list를 열게합니다
 (global-set-key (kbd "C-/") 'org-todo-list)
-;; C-. 키로 어느곳에서나 capture 기능을 열게합니다
-(global-set-key (kbd "C-.") 'org-capture)
+;; C-> 키로 어느곳에서나 capture 기능을 열게합니다
+(global-set-key (kbd "C->") 'org-capture)
+;; C-. 키로 어느곳에서나 todo.org Tasks 기능을 열게합니다
+(global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ";")))
+;; C-, 키로 어느곳에서나 todo.org Issues 기능을 열게합니다
+(global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "'")))
+;; C-c n 키로 어느곳에서나 todo.org Note 기능을 열게합니다
+(global-set-key (kbd "C-c n") (lambda () (interactive)(org-capture nil "[")))
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
@@ -1261,7 +1274,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
+    ("~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1279,7 +1292,7 @@
        (progn
          (setq num 1)
          (loop
-          (< num 500)
+          (< num 2000)
           (let
               ((numbering
                 (concat "#"
@@ -1346,7 +1359,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
@@ -1439,7 +1452,7 @@
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "dim gray" :weight bold :height 0.8))))
+ '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.7))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold)))))
 
 
@@ -1698,7 +1711,6 @@
 ;; PACKAGE: ECB Emacs Code Browser
 (require 'ecb)
 
-
 ;; ECB tree view에서 F3 키가 ecb-show-help로 키바인딩되어있는 것을 해제해준다
 (add-hook 'ecb-common-tree-buffer-after-create-hook
           (lambda ()
@@ -1709,6 +1721,7 @@
             (local-unset-key [f3])
             ))
 
+;; ecb는 semantic-mode를 켜야지 정상적으로 function, variable list를 보여준다
 ;; ecb symboldef 버퍼에서 semantic mode가 필요하기 때문에 ecb를 로딩하는 순간 같이 실행해준다 (NOT USED)
 ;; (eval-after-load "ecb" (lambda ()
 ;;                          (semantic-mode t)
@@ -2298,18 +2311,17 @@ created by edward 180515"
 (global-set-key "\C-k" 'kill-whole-line)
 
 ;; 현재 커서로부터 맨 아래까지 라인을 지우는 함수
-(defun kill-to-end-of-buffer() "Deletes all lines after the current line"
-  (interactive)
-  (progn
-    (forward-line 1)
-    (delete-region (point) (point-max))))
+;; (defun kill-to-end-of-buffer() "Deletes all lines after the current line"
+;;   (interactive)
+;;   (progn
+;;     (forward-line 1)
+;;     (delete-region (point) (point-max))))
+;; ;; Ctrl + Shift + k 키로 현재 커서부터 아래 라인을 모두 지웁니다
+;; (global-set-key (kbd "C-S-k") 'kill-to-end-of-buffer)
 
-;; Ctrl + Shift + k 키로 현재 커서부터 아래 라인을 모두 지웁니다
-(global-set-key (kbd "C-S-k") 'kill-to-end-of-buffer)
-
-;; Ctrl + h 키로 해당 커서의 오른쪽부분만 삭제합니다
-(global-set-key (kbd "H-m") 'kill-visual-line)
-(define-key org-mode-map (kbd "H-m") 'kill-visual-line)
+;; Ctrl + Shift + k 키로 해당 커서의 오른쪽부분만 삭제합니다
+(global-set-key (kbd "C-S-k") 'kill-visual-line)
+(define-key org-mode-map (kbd "C-S-k") 'kill-visual-line)
 
 
 ;; Ctrl + a 키로 전체선택하게 합니다
