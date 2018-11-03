@@ -6,10 +6,10 @@
 #   remove_definitions(-DCERES_BUILDING_SHARED_LIBRARY)
 # endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
-
+find_package(Ceres REQUIRED)
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 add_executable(helloworld helloworld.cc)
-target_link_libraries(helloworld ceres glog)
+target_link_libraries(helloworld ceres)
 
 # Force CMake to link curve_fitting_c using the C linker, this is important
 # when Ceres was compiled using C++11 to ensure that -std=c++11 is not passed

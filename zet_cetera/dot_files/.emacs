@@ -703,9 +703,6 @@
                                    ("'" "todo.org: [Issues]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("[" "todo.org: [Note]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Note")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
@@ -780,7 +777,7 @@
 ;; C-, 키로 어느곳에서나 todo.org Issues 기능을 열게합니다
 (global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "'")))
 ;; C-c n 키로 어느곳에서나 todo.org Note 기능을 열게합니다
-(global-set-key (kbd "C-c n") (lambda () (interactive)(org-capture nil "[")))
+(global-set-key (kbd "C-c n") (lambda () (interactive)(org-capture nil "n")))
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens

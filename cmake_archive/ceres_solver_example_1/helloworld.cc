@@ -34,7 +34,7 @@
 // automatic differentiation.
 
 #include "ceres/ceres.h"
-// #include "glog/logging.h"
+#include "glog/logging.h"
 
 using ceres::AutoDiffCostFunction;
 using ceres::CostFunction;
@@ -54,7 +54,7 @@ struct CostFunctor {
 };
 
 int main(int argc, char** argv) {
-  // google::InitGoogleLogging(argv[0]);
+  google::InitGoogleLogging(argv[0]);
 
   // The variable to solve for with its initial value. It will be
   // mutated in place by the solver.
