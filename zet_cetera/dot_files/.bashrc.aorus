@@ -151,10 +151,12 @@ PS1="$C_PURPLE\u(@aorus)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 PATH=$PATH:/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
 ida=/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
 
+alias cpp='cd /home/dyros-vehicle/gitrepo/lockdpwn/cpp_archive'
+alias py='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive'
 
 alias g1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
 alias g2='cd /home/dyros-vehicle/gitrepo/ims_ros'
-alias g3='cd /home/dyros-vehicle/gitrepo/ims_carto'
+alias g3='cd /home/dyros-vehicle/cartographer_ws'
 alias g4='cd /home/dyros-vehicle/gitrepo/ims_ml'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
 
@@ -173,6 +175,8 @@ alias add='git add'
 alias commit='git commit'
 alias push='git push'
 alias pull='git pull'
+alias pull_1='git pull origin server1_ws'
+alias pull_2='git pull origin server2_ws'
 alias clone='git clone'
 alias gc='git checkout'
 alias gb='git branch'
@@ -270,9 +274,14 @@ alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/d
 
 # setting for Tensorflow GPU version 
 # Using CUDA 8.0 & cuDNN 6.0
-export CUDA_HOME=/usr/local/cuda-8.0
-export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+# export CUDA_HOME=/usr/local/cuda-8.0
+# export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
+# export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+# Using CUDA 9.0 & cuDNN 7.0
+export CUDA_HOME=/usr/local/cuda-9.0
+export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
 
 alias soc='source install_isolated/setup.bash'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
@@ -280,7 +289,7 @@ alias dy='cd /home/dyros-vehicle/gitrepo/dyros_ws'
 
 
 #UE4Editor-------------
-alias ueditor='~/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
+alias ueditor='/media/dyros-data/gitrepo/UnrealEngine_4.18/Engine/Binaries/Linux/UE4Editor'
 export UE4_ROOT='/home/dyros-vehicle/gitrepo/UnrealEngine'
 
 
@@ -374,3 +383,15 @@ alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.18.907-Linux-x64'
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/catkin_ws/devel/setup.bash
 source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash  # for cartographer
+
+# for x11vnc && TeamViewer connected user
+alias vu='netstat -tapno | grep 5902'
+alias tu='netstat -tapno | grep Team'
+
+# for carla
+alias carla='cd /media/dyros-data/gitrepo/CARLA_0.8.4 && ./CarlaUE4.sh -windowed -resx=600 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
+alias carla_UE4='ueditor /media/dyros-data/gitrepo/carla-0.8.4_source/Unreal/CarlaUE4/CarlaUE4.uproject'
+
+#for nvidia-smi
+alias nv='nvidia-smi -l'
+

@@ -6,3 +6,5 @@ zet_cetera/backup_files/backup_theme/Ultra-Flat-light/apps/scalable/flareGet.svg
 cpp_archive/test
 .vs/
 .vscode/
+bin/
+build/
