@@ -286,6 +286,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY
 alias soc='source install_isolated/setup.bash'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
 alias dy='cd /home/dyros-vehicle/gitrepo/dyros_ws'
+alias downd='cd /media/dyros-data/Download_d'
 
 
 #UE4Editor-------------
