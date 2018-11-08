@@ -565,6 +565,8 @@
      (define-key org-mode-map (kbd "C-c m") 'org-md-export-to-markdown)
      ;; Shift + Enter 키로 현재 링크를 엽니다
      (define-key org-mode-map (kbd "<S-return>") 'org-open-at-point)
+     ;; Ctrl + Shift + Enter 키로 원래 위치로 돌아갑니다
+     (define-key org-mode-map (kbd "<C-S-return>") 'org-mark-ring-goto)
      ;; Alt + Enter 키로 org-meta-return키를 설정합니다 (원래 open-line으로 overriding 되어 있었다)
      (define-key org-mode-map (kbd "<M-return>") 'org-meta-return)
      ;; C-c v,b 키로 org-table 모드에서 열과 행을 추가합니다
@@ -611,7 +613,7 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "DOING"
+           '((sequence "TODO" "LIST" "DOING"
                        "|"
                        "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE")
              (sequence "|" "OPEN" "CLOSED"))
@@ -620,6 +622,7 @@
      (setq org-todo-keyword-faces
            '(("CANCELLED" . "firebrick")
              ("REPLACED" . "purple")
+             ("LIST" . "deep pink")
              ("DELAYED" . "forest green")
              ("PENDING" . "dark orange")
              ("DOING" . "yellow")
@@ -762,6 +765,7 @@
 ;; C-c + # 키로 특정 .org 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
 ;; C-m 키로 link.opg 파일을 엽니다
 (global-set-key (kbd "H-m") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
@@ -778,6 +782,39 @@
 (global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "'")))
 ;; C-c n 키로 어느곳에서나 todo.org Note 기능을 열게합니다
 (global-set-key (kbd "C-c n") (lambda () (interactive)(org-capture nil "n")))
+;; org-mode용 strike-through를 구현한 함수
+(defun strike-through-for-org-mode ()
+  (interactive)
+  (beginning-of-line)  ;; 커서를 맨 앞으로 이동한다
+  (save-excursion      ;; 아래 명령들이 실행하고 현재 커서 위치를 유지한다
+    (if (string-match "[-*]" (thing-at-point 'line t))  ;; 현재 커서가 있는 라인에 -,* 문자가 있는지 검사한다
+        (progn
+          (setq go_char (string-match "[-*]" (thing-at-point 'line t)))  ;; 있으면 그 문자가 있는 커서의 좌표를 구한다
+          (forward-char (+ go_char 2))  ;; 그 좌표로부터 2칸 앞으로 커서를 이동한다
+          (insert "+")   ;; + 키를 삽입한다
+          (end-of-line)  ;; 문장의 맨 뒤로 이동한다
+          (insert "+")   ;; + 키를 삽입한다
+          )
+      (message "[-] Not Proper Position!")
+      )
+    )
+  )
+(defun strike-through-for-org-mode-undo ()
+  (interactive)
+  (beginning-of-line)  ;; 커서를 맨 앞으로 이동한다
+  (save-excursion      ;; 아래 명령들이 실행하고 현재 커서 위치를 유지한다
+    (if (string-match "[+]" (thing-at-point 'line t))  ;; 현재 커서가 있는 라인에 + 문자가 있는지 검사한다
+        (progn
+          (setq go_char (string-match "[+]" (thing-at-point 'line t)))  ;; + 있으면 그 문자가 있는 커서의 좌표를 구한다
+          (forward-char go_char)
+          (delete-char 1)  ;; 앞에 + 지우고
+          (end-of-line)
+          (delete-char -1) ;; 뒤에 + 지운다
+          )
+      nil
+      )
+    )
+  )
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
@@ -836,8 +873,13 @@
     (define-key evil-motion-state-map (kbd "K") nil)
     (define-key evil-motion-state-map (kbd "TAB") nil)
     (define-key evil-motion-state-map (kbd "`") nil)
+    ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
     (define-key evil-motion-state-map (kbd "T") 'org-shiftleft)
+    ;; org-mode에서 , . 키로 strike-through를 설정합니다
+    (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
+    (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
+    (define-key evil-normal-state-map (kbd ".") 'strike-through-for-org-mode-undo)
 
     ;; 키바인딩 해제 INSERT MODE
     (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -1271,7 +1313,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
+    ("~/CloudStation/gitrepo_sync/ims_org/org_files/note/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))

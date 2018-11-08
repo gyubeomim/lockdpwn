@@ -2,7 +2,7 @@
 #include "glog/logging.h"
 
 using ceres::AutoDiffCostFunction;
-using ceres::ConstFunction;
+using ceres::CostFunction;
 using ceres::Problem;
 using ceres::Solver;
 using ceres::Solve;
@@ -10,7 +10,7 @@ using ceres::Solve;
 struct CostFunctor {
   template <typename T>
   bool operator()(const T* const x, T* residual) const {
-    residual[0] = T(10.0) - x[0];
+    residual[0] = T(1000.0) - x[0];
     return true;
   }
 };
