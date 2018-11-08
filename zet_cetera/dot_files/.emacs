@@ -467,7 +467,6 @@
                           ))
 
 
-
 ;; PACKAGE : org mode
 ;; DONE 시에 CLOSED timestamp를 사용하는 함수
 (defun my/org-mode-hook ()
@@ -1321,10 +1320,10 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/CloudStation/gitrepo_sync/ims_org/org_files/note/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
+    ("~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1862,10 +1861,13 @@ Version 2017-04-19"
 ;; f3 키로 다음 창으로 이동
 (global-set-key [f3] 'next-multiframe-window)
 
-;; ECB 시작
+;; f4 키로 org-sparse-tree 명령어 실행 (for org-mode)
+(global-set-key [f4] 'org-sparse-tree)
+
+;; f6 키로 ECB 시작
 (global-set-key [f6] 'ecb-minor-mode)
 
-;; 디버깅 단축키
+;; f8 키로 디버깅 단축키
 (global-set-key [f8] 'gdb)
 
 ;; f9 소스창에서 바로 브레이크포인트 설정
@@ -2543,6 +2545,10 @@ created by edward 180515"
              (define-key input-decode-map (kbd "C-[") (kbd "H-["))
              (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
              (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
+
+             ;; C-z 키는 undo-tree 의 undo 명령어가 실행되도록 합니다 (for org-mode)
+             (undo-tree-mode t)
+             (define-key cua--cua-keys-keymap (kbd "C-z") 'undo-tree-undo)
              ))
 
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
