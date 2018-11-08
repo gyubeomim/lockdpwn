@@ -613,7 +613,7 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "LIST" "DOING"
+           '((sequence "TODO" "LIST"
                        "|"
                        "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE")
              (sequence "|" "OPEN" "CLOSED"))
@@ -625,7 +625,6 @@
              ("LIST" . "deep pink")
              ("DELAYED" . "forest green")
              ("PENDING" . "dark orange")
-             ("DOING" . "yellow")
              ("OPEN" . "green")
              ("CLOSED" . "firebrick")
              ))
@@ -787,15 +786,24 @@
   (interactive)
   (beginning-of-line)  ;; 커서를 맨 앞으로 이동한다
   (save-excursion      ;; 아래 명령들이 실행하고 현재 커서 위치를 유지한다
-    (if (string-match "[-*]" (thing-at-point 'line t))  ;; 현재 커서가 있는 라인에 -,* 문자가 있는지 검사한다
+    (if (string-prefix-p "*" (thing-at-point 'line t))  ;; 현재 커서 라인에 맨 앞에 * 가 있는 경우
         (progn
-          (setq go_char (string-match "[-*]" (thing-at-point 'line t)))  ;; 있으면 그 문자가 있는 커서의 좌표를 구한다
-          (forward-char (+ go_char 2))  ;; 그 좌표로부터 2칸 앞으로 커서를 이동한다
+          (setq go_char (string-match "[ ]" (thing-at-point 'line t)))  ;; *가 있으면 빈칸까지 이동한 후 한 칸 앞에서 +를 추가해야한다
+          (forward-char (+ go_char 1))
           (insert "+")   ;; + 키를 삽입한다
           (end-of-line)  ;; 문장의 맨 뒤로 이동한다
           (insert "+")   ;; + 키를 삽입한다
           )
-      (message "[-] Not Proper Position!")
+      (if (string-match "[^ ]" (thing-at-point 'line t))  ;; 현재 커서가 있는 라인에 -,* 문자가 있는지 검사한다
+          (progn
+            (setq go_char (string-match "[^ ]" (thing-at-point 'line t)))  ;; 있으면 그 문자가 있는 커서의 좌표를 구한다
+            (forward-char (+ go_char 2))  ;; 그 좌표로부터 2칸 앞으로 커서를 이동한다
+            (insert "+")   ;; + 키를 삽입한다
+            (end-of-line)  ;; 문장의 맨 뒤로 이동한다
+            (insert "+")   ;; + 키를 삽입한다
+            )
+        (message "[-] Not Proper Position!")
+        )
       )
     )
   )
@@ -811,7 +819,7 @@
           (end-of-line)
           (delete-char -1) ;; 뒤에 + 지운다
           )
-      nil
+      (message "[-] Not Proper Position!")
       )
     )
   )
