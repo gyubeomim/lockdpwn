@@ -89,16 +89,19 @@
     smart-mode-line                  ;; emacs의 mode-line (하단상태바)를 커스터마이징해주는 패키지
     smart-mode-line-powerline-theme  ;; mode-line을 커스터마이징해주는 패키지
 
-    
-    ;;use-package                ;; package를 관리해주는 패키지
+    flymd                  ;; markdown 구문을 preview 해주는 패키지
+
+
+
+
+    ;; use-package                ;; package를 관리해주는 패키지
     ;; ample-theme            ;; ample 테마
     ;; arjen-grey-theme       ;; grey 테마를 설정할 수 있는 패키지
-    ;; flymd                  ;; markdown 구문을 preview 해주는 패키지 (.md 파일을 켠 다음 Ctrl + 4 단축키)
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
     ;; htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
     ;; powerline              ;; emacs 상태창을 예쁘게 꾸며주는 패키지
     ;; anaconda-mode ;; jedi 모드 같이 python code navigation을 해주는 패키지2
-    ;;helm-ros  ;; ROS용 emacs 패키지 (not used)
+    ;; helm-ros  ;; ROS용 emacs 패키지 (not used)
     ;; autopair
     ;; function-args
     ;; comment-dwim-2
@@ -1491,7 +1494,7 @@
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
- '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight bold))))
+ '(org-link ((t (:foreground "orange" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "#268bd2"))))
