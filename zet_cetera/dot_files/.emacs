@@ -52,11 +52,8 @@
     yaml-mode              ;; .yaml 구문을 하이라이팅해주는 패키지
     nxml                   ;; xml 구문들을 folding하기 위한 패키지
     lua-mode               ;; lua 언어를 하이라이팅해주는 패키지
-
     protobuf-mode          ;; .proto (google protocol buffer) 하이라이팅해주는 패키지
-
     csharp-mode            ;; C# 구문을 하이라이팅해주는 패키지
-
     multi-term             ;; 여러 터미널을 emacs에서 실행하 수 있게 해주는 패키지
     which-key              ;; 단축키들의 목록을 보여주는 패키지
     magit                  ;; emacs용 git 패키지 (Alt + \ 단축키)
@@ -65,7 +62,6 @@
     avy                    ;; 편집중 버퍼상의 빠른 이동   (Ctrl + = 단축키)
     swiper                 ;; 편집중 버퍼상의 빠른 이동2  (Ctrl + - 단축키)
     eyebrowse              ;; 워크 스페이스 관리 패키지 (다중 윈도우)
-
     elpy                   ;; jedi 모드 같이 python code navigation을 해주는 패키지
     markdown-mode          ;; markdown 구문을 하이라이팅해주는 패키지
     ein                    ;; emacs에서 Ipython Notebook를 사용하게 해주는 패키지
@@ -73,23 +69,18 @@
     org-gcal               ;; org-mode와 google Calendar를 연동해주는 패키지
     git-gutter             ;; 수정된 파일의 변경된 라인을 하이라이팅해주는 패키지
     mic-paren              ;; 괄호로 닫혀진 구문이 너무 길어서 한쪽 끝이 안보일 경우 line, number를 알려주는 패키지
-
     company                ;; auto-complte와 유사한 코드 자동완성 패키지
     irony                  ;; c++ 코드 자동완성 패키지 (M-x irony-install-server로 설치한다)
     company-irony          ;; c++ 코드 자동완성 패키지
-
     image+                 ;; .jpg, .png 같은 이미지들의 크기를 조정할 수 있는 패키지
-
     evil                   ;; Extensible Vim Layout Emacs에서 vim과 같은 레이아웃을 사용할 수 있도록 해주는 패키지
-
     pomodoro               ;; 일정관리를 위한 Podomoro Timer 패키지
-
     solarized-theme        ;; solarized 테마
-
     smart-mode-line                  ;; emacs의 mode-line (하단상태바)를 커스터마이징해주는 패키지
     smart-mode-line-powerline-theme  ;; mode-line을 커스터마이징해주는 패키지
-
-    easy-jekyll             ;; emacs for jekyll mode
+    easy-jekyll            ;; emacs for jekyll mode
+    wrap-region            ;; region 단위로 *,+ 를 입력할 수 있게 해주는 패키지
+                           ;; org 모드에서 +{...}+ 을 사용하기 위해 설치한 패키지
 
 
 
@@ -508,7 +499,15 @@
         (evil-ex string_regex)
       (message "[-] you are not in pomorodo.org!")
     )
-  ))
+    ))
+
+;; org 모드에서 latex을 쓰기 위한 prefix \[ {...} \] 을 입력해주는 함수
+(defun create_latex_prefix ()
+  (interactive)
+  (insert "\\[  ")
+  (insert "\\]")
+  (forward-char -3)
+  )
 
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
 ;; "org" because C-h f org-mode RET says that org-mode is defined in org.el
@@ -598,6 +597,10 @@
      (define-key org-mode-map (kbd "C-c C-RET") 'org-toggle-checkbox)
      ;; C-c ] 키로 .org 파일을 agenda에 추가합니다
      (define-key org-mode-map (kbd "C-c ]") 'org-agenda-file-to-front)
+     ;; C-c l 키로 .org 파일에서 latex 수식을 변환합니다 (토글 형식)
+     (define-key org-mode-map (kbd "C-c l") 'org-toggle-latex-fragment)
+     ;; C-c C-l 키로 .org 파일에서 latex 수식용 prefix를 생성합니더
+     (define-key org-mode-map (kbd "C-c C-l") 'create_latex_prefix)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -637,6 +640,8 @@
      (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
      ;; header 크기 변하지 않게
      (add-hook 'org-mode-hook 'my/org-mode-hook)
+     ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
+     (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.3))
 
      ;; org-link 에서 .pdf 파일은 foxit reader로 열도록 설정한다
      (setq org-file-apps
@@ -1111,6 +1116,13 @@
 ;;    (let ((browse-url-browser-function 'browse-url-firefox))
 ;;      (browse-url url)))
 ;; (setq flymd-browser-open-function 'my-flymd-browser-function)
+
+
+;; PACKAGE: wrap-region
+(require 'wrap-region)
+(wrap-region-global-mode t)
+;; org 모드에서 + wrapping을 해준다
+(wrap-region-add-wrapper "+" "+" nil 'org-mode)  ; strikethrough
 
 
 ;; PACKAGE: highlight-indentation
