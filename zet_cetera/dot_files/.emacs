@@ -81,7 +81,7 @@
     easy-jekyll            ;; emacs for jekyll mode
     wrap-region            ;; region 단위로 *,+ 를 입력할 수 있게 해주는 패키지
                            ;; org 모드에서 +{...}+ 을 사용하기 위해 설치한 패키지
-
+    org2jekyll
 
 
     ;; use-package                ;; package를 관리해주는 패키지
@@ -508,6 +508,8 @@
   (insert "\\]")
   (forward-char -3)
   )
+
+(require 'org2jekyll)
 
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
 ;; "org" because C-h f org-mode RET says that org-mode is defined in org.el
@@ -1425,9 +1427,52 @@
          (concat "mailto:" path))))
      ("shell" :follow org--open-shell-link))))
  '(org-lowest-priority 69)
+ '(org-publish-project-alist
+   (\`
+    (("default" :base-directory
+      (\,
+       (org2jekyll-input-directory))
+      :base-extension "org" :publishing-directory
+      (\,
+       (org2jekyll-output-directory))
+      :publishing-function org-html-publish-to-html :headline-levels 4 :section-numbers nil :with-toc nil :html-head "<link rel=\"stylesheet\" href=\"./css/style.css\" type=\"text/css\"/>" :html-preamble t :recursive t :make-index t :html-extension "html" :body-only t)
+     ("post" :base-directory
+      (\,
+       (org2jekyll-input-directory))
+      :base-extension "org" :publishing-directory
+      (\,
+       (org2jekyll-output-directory org2jekyll-jekyll-posts-dir))
+      :publishing-function org-html-publish-to-html :headline-levels 4 :section-numbers nil :with-toc nil :html-head "<link rel=\"stylesheet\" href=\"./css/style.css\" type=\"text/css\"/>" :html-preamble t :recursive t :make-index t :html-extension "html" :body-only t)
+     ("images" :base-directory
+      (\,
+       (org2jekyll-input-directory "img"))
+      :base-extension "jpg\\|gif\\|png" :publishing-directory
+      (\,
+       (org2jekyll-output-directory "img"))
+      :publishing-function org-publish-attachment :recursive t)
+     ("js" :base-directory
+      (\,
+       (org2jekyll-input-directory "js"))
+      :base-extension "js" :publishing-directory
+      (\,
+       (org2jekyll-output-directory "js"))
+      :publishing-function org-publish-attachment :recursive t)
+     ("css" :base-directory
+      (\,
+       (org2jekyll-input-directory "css"))
+      :base-extension "css\\|el" :publishing-directory
+      (\,
+       (org2jekyll-output-directory "css"))
+      :publishing-function org-publish-attachment :recursive t)
+     ("web" :components
+      ("images" "js" "css")))))
  '(org-scheduled-delay-days 0)
  '(org-tags-column 50)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
+ '(org2jekyll-blog-author "Edward Im" nil (org2jekyll))
+ '(org2jekyll-jekyll-directory (expand-file-name "~/gitrepo/tigerk0430.github.io/_posts/") nil (org2jekyll))
+ '(org2jekyll-jekyll-drafts-dir "" nil (org2jekyll))
+ '(org2jekyll-jekyll-posts-dir "_posts/" nil (org2jekyll))
  '(package-selected-packages
    (quote
     (use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
@@ -1508,9 +1553,9 @@
  '(org-agenda-calendar-event ((t (:foreground "#586e75"))))
  '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
- '(org-block ((t (:background "gray13" :foreground "dark gray"))))
- '(org-block-begin-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
- '(org-block-end-line ((t (:background "gray13" :foreground "gray13" :weight bold))))
+ '(org-block ((t (:foreground "dark gray"))))
+ '(org-block-begin-line ((t (:background "dim gray" :foreground "dark gray" :weight normal))))
+ '(org-block-end-line ((t (:background "dim gray" :foreground "dark gray" :weight normal))))
  '(org-date ((t (:background "black" :foreground "#839496" :underline nil :weight bold :height 0.75))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
