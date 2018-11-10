@@ -89,12 +89,12 @@
     smart-mode-line                  ;; emacs의 mode-line (하단상태바)를 커스터마이징해주는 패키지
     smart-mode-line-powerline-theme  ;; mode-line을 커스터마이징해주는 패키지
 
-    flymd                  ;; markdown 구문을 preview 해주는 패키지
-
+    easy-jekyll             ;; emacs for jekyll mode
 
 
 
     ;; use-package                ;; package를 관리해주는 패키지
+    ;; flymd                  ;; markdown 구문을 preview 해주는 패키지
     ;; ample-theme            ;; ample 테마
     ;; arjen-grey-theme       ;; grey 테마를 설정할 수 있는 패키지
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
@@ -858,6 +858,16 @@
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
     ))
 
+;; for easy-jekyll mode
+(setq easy-jekyll-basedir "~/gitrepo/tigerk0430.github.io/")
+(setq easy-jekyll-url "https://tigerk0430.github.io")
+(setq easy-jekyll-root "/home/dyros-vehicle/")
+(setq easy-jekyll-previewtime "300")
+
+;;
+(define-key global-map (kbd "C-c C-e") 'easy-jekyll)
+; (setq easy-jekyll-sshdomain "blogdomain")
+
 ;; PACKAGE: evil
 (require 'evil)
 (evil-mode t)
@@ -1100,7 +1110,7 @@
 ;; (defun my-flymd-browser-function (url)
 ;;    (let ((browse-url-browser-function 'browse-url-firefox))
 ;;      (browse-url url)))
-;;  (setq flymd-browser-open-function 'my-flymd-browser-function)
+;; (setq flymd-browser-open-function 'my-flymd-browser-function)
 
 
 ;; PACKAGE: highlight-indentation
@@ -2194,8 +2204,9 @@ created by edward 180515"
 ;; (global-set-key (kbd "C-1") 'eyebrowse-switch-to-window-config-0)
 ;; (global-set-key (kbd "C-2") 'eyebrowse-switch-to-window-config-1)
 ;; (global-set-key (kbd "C-3") 'eyebrowse-switch-to-window-config-2)
-;; Ctrl + 4 키로 .md 파일을 파이어폭스로 프리뷰합니다 (not used)
-;; (global-set-key (kbd "C-4") 'flymd-flyit)
+;; Ctrl + 1 키로 현재 버퍼를 업데이트합니다
+;; (global-set-key (kbd "C-1") 'my-revert-buffer)
+;; (define-key undo-tree-map (kbd "C-1") 'my-revert-buffer)
 
 ;; C-c 9 키로 .emacs 파일을 열도록 설정합니다
 (global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/.emacs")))
@@ -2207,9 +2218,8 @@ created by edward 180515"
   (message "[+] this buffer reverted..")
   )
 
-;; Ctrl + 1 키로 현재 버퍼를 업데이트합니다
-(global-set-key (kbd "C-1") 'my-revert-buffer)
-(define-key undo-tree-map (kbd "C-1") 'my-revert-buffer)
+;; Ctrl + 1 키로 jekyll 블로그의 .md 포스트를 preview 합니다
+(global-set-key (kbd "C-1") 'easy-jekyll-preview)
 
 ;; C-2 키로 find file 파일이 존재하는지 검색합니다
 (global-set-key (kbd "C-2") 'helm-find)
