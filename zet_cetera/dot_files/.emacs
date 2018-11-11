@@ -81,12 +81,13 @@
     easy-jekyll            ;; emacs for jekyll mode
     wrap-region            ;; region 단위로 *,+ 를 입력할 수 있게 해주는 패키지
                            ;; org 모드에서 +{...}+ 을 사용하기 위해 설치한 패키지
-    org2jekyll
+    per-buffer-theme  ;; buffer 별로 다른 theme을 적용할 수 있도록 해주는 패키지
 
 
     ;; use-package                ;; package를 관리해주는 패키지
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지
     ;; ample-theme            ;; ample 테마
+    ;; org2jekyll             ;; .org 파일을 github page(jekyll)에서 볼 수 있도록 변환해주는 패키지 (NOT USED)
     ;; arjen-grey-theme       ;; grey 테마를 설정할 수 있는 패키지
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
     ;; htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
@@ -509,7 +510,11 @@
   (forward-char -3)
   )
 
-(require 'org2jekyll)
+;; PACKAGE: per-buffer-theme
+(require 'per-buffer-theme)
+
+;; PACKAGE: org2jekyll
+;; (require 'org2jekyll)
 
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
 ;; "org" because C-h f org-mode RET says that org-mode is defined in org.el
@@ -1347,7 +1352,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
@@ -1427,55 +1432,22 @@
          (concat "mailto:" path))))
      ("shell" :follow org--open-shell-link))))
  '(org-lowest-priority 69)
- '(org-publish-project-alist
-   (\`
-    (("default" :base-directory
-      (\,
-       (org2jekyll-input-directory))
-      :base-extension "org" :publishing-directory
-      (\,
-       (org2jekyll-output-directory))
-      :publishing-function org-html-publish-to-html :headline-levels 4 :section-numbers nil :with-toc nil :html-head "<link rel=\"stylesheet\" href=\"./css/style.css\" type=\"text/css\"/>" :html-preamble t :recursive t :make-index t :html-extension "html" :body-only t)
-     ("post" :base-directory
-      (\,
-       (org2jekyll-input-directory))
-      :base-extension "org" :publishing-directory
-      (\,
-       (org2jekyll-output-directory org2jekyll-jekyll-posts-dir))
-      :publishing-function org-html-publish-to-html :headline-levels 4 :section-numbers nil :with-toc nil :html-head "<link rel=\"stylesheet\" href=\"./css/style.css\" type=\"text/css\"/>" :html-preamble t :recursive t :make-index t :html-extension "html" :body-only t)
-     ("images" :base-directory
-      (\,
-       (org2jekyll-input-directory "img"))
-      :base-extension "jpg\\|gif\\|png" :publishing-directory
-      (\,
-       (org2jekyll-output-directory "img"))
-      :publishing-function org-publish-attachment :recursive t)
-     ("js" :base-directory
-      (\,
-       (org2jekyll-input-directory "js"))
-      :base-extension "js" :publishing-directory
-      (\,
-       (org2jekyll-output-directory "js"))
-      :publishing-function org-publish-attachment :recursive t)
-     ("css" :base-directory
-      (\,
-       (org2jekyll-input-directory "css"))
-      :base-extension "css\\|el" :publishing-directory
-      (\,
-       (org2jekyll-output-directory "css"))
-      :publishing-function org-publish-attachment :recursive t)
-     ("web" :components
-      ("images" "js" "css")))))
  '(org-scheduled-delay-days 0)
  '(org-tags-column 50)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
- '(org2jekyll-blog-author "Edward Im" nil (org2jekyll))
- '(org2jekyll-jekyll-directory (expand-file-name "~/gitrepo/tigerk0430.github.io/_posts/") nil (org2jekyll))
- '(org2jekyll-jekyll-drafts-dir "" nil (org2jekyll))
- '(org2jekyll-jekyll-posts-dir "_posts/" nil (org2jekyll))
  '(package-selected-packages
    (quote
-    (use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+ '(per-buffer-theme/default-theme (quote solarized-dark))
+ '(per-buffer-theme/ignored-buffernames-regex
+   (quote
+    ("*[Mm]ini" "*[Hh]elm" "*[Cc]alendar" "*[Cc]alc" "*SPEEDBAR*" "*NeoTree*")))
+ '(per-buffer-theme/themes-alist
+   (quote
+    (((:theme . solarized-light)
+      (:buffernames "dl_network_model.org")
+      (:modes nil)))))
+ '(per-buffer-theme/timer-idle-delay 0.1)
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
