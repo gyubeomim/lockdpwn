@@ -737,6 +737,22 @@
      ))
 ;; (add-to-ordered-list 'emulation-mode-map-alists '((org-mode . ,my-org-mode-map)) 0)
 
+;; org-mode export에 관련된 설정
+;; org-publish 명령을 통해 아래 경로의 파일들을 원하는 경로(html/) 같은 곳에 변환할 수 있다
+(setq org-publish-project-alist
+      '(("paper"
+         :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/paper"
+         :base-extension "org"
+         :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/html/"
+         :publishing-function org-twbs-publish-to-html)
+      ("note"
+         :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/note"
+         :base-extension "org"
+         :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/html/"
+         :publishing-function org-twbs-publish-to-html)
+      ("all" :components ("paper" "note"))))
+
+
 ;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
 (require 'org-gcal)
 (setq package-check-signature nil)
@@ -2254,8 +2270,8 @@ created by edward 180515"
 ;; Ctrl + Alt + 1 키로 jekyll 블로그의 .md 포스트를 preview 합니다
 (global-set-key (kbd "C-M-1") 'easy-jekyll-preview)
 
-;; Ctrl + 1 키로 .org 파일을 twitter bootstrap 스타일의 html 파일로 저장합니다
-(global-set-key (kbd "C-1") 'org-twbs-export-to-html)
+;; Ctrl + 1 키로 .org 파일을 (org-publish) 명령어로 twitter bootstrap 스타일의 html 파일로 저장합니다
+(global-set-key (kbd "C-1") (lambda() (interactive)(org-publish "all")))
 
 ;; C-2 키로 find file 파일이 존재하는지 검색합니다
 (global-set-key (kbd "C-2") 'helm-find)
