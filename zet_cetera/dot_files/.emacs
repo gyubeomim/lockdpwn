@@ -556,6 +556,7 @@
      (define-key org-mode-map (kbd "C-c C-p") nil)
      (define-key org-mode-map (kbd "C-c l") nil)
      (define-key org-mode-map (kbd "C-c '") nil)
+     (define-key org-mode-map (kbd "C-c ;") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -599,8 +600,6 @@
      (define-key org-mode-map (kbd "C-\\") 'org-tags-sparse-tree)
      ;; C-[ 키로 link를 삽입합니다
      (define-key org-mode-map (kbd "H-[") 'org-insert-link)
-     ;; C-c [ 키로 link를 저장합니다
-     (define-key org-mode-map (kbd "C-c \[") 'org-store-link)
      ;; C-c C-[ 키로 org-pomodoro-1day-done 함수를 실행합니다
      (define-key org-mode-map (kbd "C-c H-[") 'org-pomodoro-1day-done)
      ;; C-c C-Enter 키로 체크박스를 ON/OFF 합니다
@@ -743,14 +742,29 @@
       '(("paper"
          :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/paper"
          :base-extension "org"
-         :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/html/"
+         :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/"
          :publishing-function org-twbs-publish-to-html)
       ("note"
          :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/note"
          :base-extension "org"
-         :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/html/"
+         :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/note/"
          :publishing-function org-twbs-publish-to-html)
-      ("all" :components ("paper" "note"))))
+      ("emacs"
+       :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs"
+       :base-extension "org"
+       :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs/"
+       :publishing-function org-twbs-publish-to-html)
+      ("STEM"
+       :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM"
+       :base-extension "org"
+       :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/"
+       :publishing-function org-twbs-publish-to-html)
+      ("link"
+       :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/link"
+       :base-extension "org"
+       :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/link/"
+       :publishing-function org-twbs-publish-to-html)
+      ("all" :components ("paper" "note" "emacs" "STEM" "link"))))
 
 ;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
 (require 'org-gcal)
@@ -798,7 +812,7 @@
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
 ;; C-m 키로 link.opg 파일을 엽니다
-(global-set-key (kbd "H-m") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org")))
+(global-set-key (kbd "H-m") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; C-? 키로 어느곳에서나 agenda view를 열게합니다
@@ -859,9 +873,6 @@
 ;; org-mode에서 colored text를 사용하기 위해 추가한 코드
 (add-to-list 'load-path "~/.emacs.d/load-path/org-colored-text/")
 (require 'org-colored-text)
-
-;; org to html 파일을 twitter bootstrap 스타일로 export 해주는 패키지 로드
-;; (require 'ox-twbs)
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
@@ -932,7 +943,7 @@
     (define-key evil-motion-state-map (kbd "`") nil)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
-    (define-key evil-motion-state-map (kbd "T") 'org-shiftleft)
+    (define-key evil-motion-state-map (kbd "T") (lambda() (interactive)(org-todo "DONE")))
     ;; org-mode에서 , . 키로 strike-through를 설정합니다
     (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
     (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
@@ -1377,7 +1388,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/CloudStation/gitrepo_sync/ims_org/org_files/note/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/estimation_theory.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -2652,6 +2663,9 @@ created by edward 180515"
 
 ;; C-c + y 키로 다른 branch에 있는 파일의 내용을 확인합니다
 (global-set-key (kbd "C-c y") 'magit-find-file)
+
+;; C-c + b 키로 .el 파일을 .elc 파일로 컴파일합니다
+(global-set-key (kbd "C-c b") 'byte-compile-file)
 
 ;; magit 패키지가 로딩되면 같이 실행되는 코드
 (eval-after-load "magit"
