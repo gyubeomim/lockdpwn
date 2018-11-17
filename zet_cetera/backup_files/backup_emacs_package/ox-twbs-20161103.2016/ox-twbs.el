@@ -193,6 +193,12 @@ body {
     margin-bottom: 105px;
 }
 
+/* ed: code added */
+.container{
+  padding-right: 100px !important;
+  padding-left: 100px  !important;
+}
+
 footer {
     position: absolute;
     bottom: 0;
@@ -2603,9 +2609,21 @@ INFO is a plist holding contextual information.  See
                       (truncate r) (truncate g) (truncate b)
                       (or desc raw-path)))
           (format "No Color RGB for %s" raw-path))))
+     ((string= type "colorbold")
+      (let ((rgb (assoc raw-path color-name-rgb-alist))
+            r g b)
+        (if rgb
+            (progn
+              (setq r (* 255 (/ (nth 1 rgb) 65535.0))
+                    g (* 255 (/ (nth 2 rgb) 65535.0))
+                    b (* 255 (/ (nth 3 rgb) 65535.0)))
+              (format "<span style=\"color: rgb(%s,%s,%s);fond-weight:bold\">%s</span>"
+                      (truncate r) (truncate g) (truncate b)
+                      (or desc raw-path)))
+          (format "No Color RGB for %s" raw-path))))
      ;;=================================================
      ;; External link with a description part.
-     ((and path desc) (format "<b href=\"%s\"%s>%s</b>"
+     ((and path desc) (format "<a href=\"%s\"%s>%s</a>"
                               (org-twbs-encode-plain-text path)
                               attributes
                               desc))
