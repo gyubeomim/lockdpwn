@@ -83,7 +83,7 @@
                            ;; org 모드에서 +{...}+ 을 사용하기 위해 설치한 패키지
     per-buffer-theme       ;; buffer 별로 다른 theme을 적용할 수 있도록 해주는 패키지
     ox-twbs                ;; org-mode twitter bootstrap .html 파일로 export 해주는 패키지
-
+    ov                     ;; org-mode에서 글자에 색상을 변경하기 위한 overlab 패키지
 
 
 
@@ -738,7 +738,7 @@
 ;; (add-to-ordered-list 'emulation-mode-map-alists '((org-mode . ,my-org-mode-map)) 0)
 
 ;; org-mode export에 관련된 설정
-;; org-publish 명령을 통해 아래 경로의 파일들을 원하는 경로(html/) 같은 곳에 변환할 수 있다
+;; org-publish 명령을 통해 아래 경로의 파일들을 원하는 경로(.../html/) 같은 곳에 변환할 수 있다
 (setq org-publish-project-alist
       '(("paper"
          :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/paper"
@@ -751,7 +751,6 @@
          :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/html/"
          :publishing-function org-twbs-publish-to-html)
       ("all" :components ("paper" "note"))))
-
 
 ;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
 (require 'org-gcal)
@@ -856,6 +855,13 @@
       )
     )
   )
+
+;; org-mode에서 colored text를 사용하기 위해 추가한 코드
+(add-to-list 'load-path "~/.emacs.d/load-path/org-colored-text/")
+(require 'org-colored-text)
+
+;; org to html 파일을 twitter bootstrap 스타일로 export 해주는 패키지 로드
+;; (require 'ox-twbs)
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
@@ -1371,7 +1377,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/CloudStation/gitrepo_sync/ims_org/org_files/note/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/duality-based_verification_techniques_for_2d_slam.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/CloudStation/gitrepo_sync/ims_org/org_files/note/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1428,35 +1434,13 @@
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
  '(org-keep-stored-link-after-insertion t)
- '(org-link-parameters
-   (quote
-    (("docview" :follow org-docview-open :export org-docview-export :store org-docview-store-link)
-     ("bibtex" :follow org-bibtex-open :store org-bibtex-store-link)
-     ("elisp" :follow org--open-elisp-link)
-     ("file" :complete org-file-complete-link)
-     ("http" :follow
-      (lambda
-        (path)
-        (browse-url
-         (concat "http:" path))))
-     ("https" :follow
-      (lambda
-        (path)
-        (browse-url
-         (concat "https:" path))))
-     ("mailto" :follow
-      (lambda
-        (path)
-        (browse-url
-         (concat "mailto:" path))))
-     ("shell" :follow org--open-shell-link))))
  '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
  '(org-tags-column 50)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(per-buffer-theme/default-theme (quote solarized-dark))
  '(per-buffer-theme/ignored-buffernames-regex
    (quote
