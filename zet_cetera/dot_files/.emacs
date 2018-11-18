@@ -505,12 +505,24 @@
     )
     ))
 
-;; org 모드에서 latex을 쓰기 위한 prefix \[ {...} \] 을 입력해주는 함수
+;; org 모드에서 latex을 쓰기 위한 prefix \[ {...} \] $ {...} $을 입력해주는 함수
+(defun create_latex_prefix_dollar ()
+  (interactive)
+  (insert "$")
+  (insert "$")
+  (forward-char -1)
+  )
 (defun create_latex_prefix ()
   (interactive)
   (insert "\\[  ")
   (insert "\\]")
   (forward-char -3)
+  )
+
+;; C-c C-v 키로 .org 버퍼에서 .html 파일을 크롬으로 여는 함수
+(defun org-html-open-chrome()
+  (interactive)
+  (browse-url-of-file (concat "./" (car (split-string (buffer-name) "\\.")) ".html"))
   )
 
 ;; PACKAGE: per-buffer-theme
@@ -557,6 +569,7 @@
      (define-key org-mode-map (kbd "C-c l") nil)
      (define-key org-mode-map (kbd "C-c '") nil)
      (define-key org-mode-map (kbd "C-c ;") nil)
+     (define-key org-mode-map (kbd "C-c C-k") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -608,8 +621,11 @@
      (define-key org-mode-map (kbd "C-c ]") 'org-agenda-file-to-front)
      ;; C-c l 키로 .org 파일에서 latex 수식을 변환합니다 (토글 형식)
      (define-key org-mode-map (kbd "C-c l") 'org-toggle-latex-fragment)
-     ;; C-c C-l 키로 .org 파일에서 latex 수식용 prefix를 생성합니더
+     ;; C-c C-l (or C-;) 키로 .org 파일에서 latex 수식용 prefix를 생성합니다
+     (define-key org-mode-map (kbd "C-c C-;") 'create_latex_prefix_dollar)
      (define-key org-mode-map (kbd "C-c C-l") 'create_latex_prefix)
+     ;; C-c C-v 키로 .org 파일에서 .html 파일 버전을 크롬으로 엽니다 (.html 이 있는 경우만)
+     (define-key org-mode-map (kbd "C-c C-v") 'org-html-open-chrome)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -627,9 +643,9 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "TODO" "LIST"
+           '((sequence "LIST"
                        "|"
-                       "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE")
+                       "TODO" "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE")
              (sequence "|" "OPEN" "CLOSED"))
            )
      ;; Setting Colours (faces) for todo states to give clearer view of work
@@ -641,6 +657,7 @@
              ("PENDING" . "dark orange")
              ("OPEN" . "green")
              ("CLOSED" . "firebrick")
+             ("TODO" . "#2aa198")
              ))
 
      ;; org-bullets 모드 활성화
@@ -662,60 +679,13 @@
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/CloudStation/gitrepo_sync/ims_org/org_files/*.org"))
      (setq org-agenda-files (file-expand-wildcards "~/CloudStation/gitrepo_sync/ims_org/org_files/note/*.org"))
+
      ;; C-. 키로 사용할 note 파일
-     (setq org-default-notes-file "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")
+     ;; (setq org-default-notes-file "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")
+
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates '(("1" "edward.org: [Task]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "Tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("2" "edward.org: [Issues]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org" "Issues")
-                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-
-                                   ("3" "dyros.org: [Task]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "Tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("4" "dyros.org: [Issues]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "Issues")
-                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("m" "dyros.org: [TeamMeeting]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/dyros.org" "TeamMeeting")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-
-                                   ("5" "parkable.org: [Task]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "Tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("6" "parkable.org: [Issues]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/project_parkable.org" "Issues")
-                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-
-                                   ("7" "cartographer.org: [Task]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org" "Tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("8" "cartographer.org: [Issues]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/project_cartographer.org" "Issues")
-                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-
-                                   ("9" "ubuntu_tips.org: [Ubuntu]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-
-                                   ("g" "SNU.org: [Task]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "Tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("h" "SNU.org: [Issues]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/SNU.org" "Issues")
-                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-
-                                   ("u" "emacs.org: [Task]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "Tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("i" "emacs.org: [Issues]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs.org" "Issues")
-                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-
-                                   (";" "todo.org: [Task]" entry
+     (setq org-capture-templates '((";" "todo.org: [Task]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("'" "todo.org: [Issues]" entry
@@ -813,6 +783,8 @@
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
 ;; C-m 키로 link.opg 파일을 엽니다
 (global-set-key (kbd "H-m") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org")))
+;; C-S-m 키로 note.opg 파일을 엽니다
+(global-set-key (kbd "H-S-m") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; C-? 키로 어느곳에서나 agenda view를 열게합니다
@@ -2579,7 +2551,6 @@ created by edward 180515"
                                   (enlarge-window-horizontally 2)
                                   (enlarge-window 2)
                                   ))
-(global-set-key (kbd "C-c C-v") 'enlarge-window)
 
 ;; python-mode, org-mode에서도 같은 단축키가 동작하도록 설정한다
 (add-hook 'python-mode-hook
@@ -2589,7 +2560,6 @@ created by edward 180515"
                                               (enlarge-window-horizontally 2)
                                               (enlarge-window 2)
                                               ))
-             (local-set-key (kbd "C-c C-v") 'enlarge-window)
              ))
 (add-hook 'org-mode-hook
           '(lambda ()
@@ -2599,7 +2569,6 @@ created by edward 180515"
                                               (enlarge-window-horizontally 2)
                                               (enlarge-window 2)
                                               ))
-             (local-set-key (kbd "C-c C-v") 'enlarge-window)
              (local-set-key (kbd "M-j") 'next-line)
 
              (define-key input-decode-map (kbd "C-[") (kbd "H-["))
