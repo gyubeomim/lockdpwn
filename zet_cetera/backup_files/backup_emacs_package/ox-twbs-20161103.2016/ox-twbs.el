@@ -195,8 +195,13 @@ body {
 
 /* ed: code added */
 .container{
-  padding-right: 100px !important;
-  padding-left: 100px  !important;
+  padding-right: 200px !important;
+  padding-left: 200px  !important;
+}
+
+/* ed: code added for centering image */
+figure p {
+  text-align: -webkit-center;
 }
 
 footer {
