@@ -1,18 +1,23 @@
-import pypcd
+#!/usr/bin/python
 
-pc = pypcd.PointCloud.from_path('./1536323081575586.pcd')
+import time
+import subprocess
+from Xlib import X
+from Xlib.display import Display
 
-bin_ = []
+display = Display(':0')
+root = display.screen().root
+root.grab_pointer(True,
+        X.ButtonPressMask | X.ButtonReleaseMask | X.PointerMotionMask,
+        X.GrabModeAsync, X.GrabModeAsync, 0, 0, X.CurrentTime)
+root.grab_keyboard(True,
+        X.GrabModeAsync, X.GrabModeAsync, X.CurrentTime)
 
-for i in range(pc.pc_data.size):
-    if pc.pc_data[i][0] == 0 and pc.pc_data[i][1] == 0 and pc.pc_data[i][2] == 0 and pc.pc_data[i][3] == 0 and pc.pc_data[i][4] == 0:
-        continue
-    else:
-        bin_.append([pc.pc_data[i][0],pc.pc_data[i][1],pc.pc_data[i][2],pc.pc_data[i][3]])
+subprocess.call('xset dpms force off'.split())
+p = subprocess.Popen('gnome-screensaver-command -i'.split())
+time.sleep(1)
 
-
-
-bin_np = np.array(bin_).reshape(-1)
-
-fp = open('./test.bin', 'wb')
-fp.write(bin_np)
+while True:
+    print display.next_event()
+    p.terminate()
+    break
