@@ -844,7 +844,7 @@
 
 ;; org-mode에서 colored text를 사용하기 위해 추가한 코드
 (add-to-list 'load-path "~/.emacs.d/load-path/org-colored-text/")
-(require 'org-colored-text)
+(require 'org-colored-text nil t)
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
