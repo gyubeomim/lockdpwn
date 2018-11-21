@@ -844,7 +844,8 @@
 
 ;; org-mode에서 colored text를 사용하기 위해 추가한 코드
 (add-to-list 'load-path "~/.emacs.d/load-path/org-colored-text/")
-(require 'org-colored-text nil t)
+;; (require '{...} nil t)는 만약 이 패키지가 없어도 에러 구문을 내지 않는다는 의미
+
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
@@ -914,12 +915,17 @@
     (define-key evil-motion-state-map (kbd "TAB") nil)
     (define-key evil-motion-state-map (kbd "`") nil)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
-    (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
-    (define-key evil-motion-state-map (kbd "T") (lambda() (interactive)(org-todo "DONE")))
+    (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
+    (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)(org-todo "DONE")))
     ;; org-mode에서 , . 키로 strike-through를 설정합니다
     (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
     (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
     (define-key evil-normal-state-map (kbd ".") 'strike-through-for-org-mode-undo)
+    ;; org-mode에서 w 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
+    (define-key evil-motion-state-map (kbd "w") (lambda() (interactive)
+                                                  (progn
+                                                    (outline-hide-other)
+                                                    (outline-show-subtree))))
 
     ;; 키바인딩 해제 INSERT MODE
     (define-key evil-insert-state-map (kbd "C-b") nil)
