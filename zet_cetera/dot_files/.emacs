@@ -916,7 +916,12 @@
     (define-key evil-motion-state-map (kbd "`") nil)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
-    (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)(org-todo "DONE")))
+    (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
+                                                  (let ((string (thing-at-point 'line t)))
+                                                    (if (string-match-p "OPEN" string)
+                                                        (org-todo "CLOSED")
+                                                      (org-todo "DONE")
+                                                      ))))
     ;; org-mode에서 , . 키로 strike-through를 설정합니다
     (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
     (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
