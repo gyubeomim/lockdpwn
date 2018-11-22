@@ -251,6 +251,7 @@ alias sob='source /home/dyros-vehicle/.bashrc'
 
 alias cdb='cd ~/gitrepo/ims/ROS/rosbook_ws'
 alias cb='cd /home/dyros-vehicle/bag_files'
+alias cbb='cd /media/dyros-data/bag_files/'
 
 alias cma='catkin_make'
 alias cmb='cd ~/gitrepo/ims/ROS/rosbook_ws && catkin_make'
@@ -363,7 +364,7 @@ alias stl='systemctl'
 alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
 
 # for ccc
-alias ccc='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
+# alias ccc='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
 
 #export ROS_MASTER_URI=http://192.168.137.2:11311
 #export ROS_HOSTNAME=127.0.0.1
@@ -373,7 +374,7 @@ export ROS_MASTER_URI=http://127.0.0.1:11311
 export ROS_HOSTNAME=127.0.0.1
 
 # for RealVNC viewer
-alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.18.907-Linux-x64'
+alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 
 # for tmux command history
 # export HISTCONTROL=ignoredups:erasedups
@@ -392,6 +393,9 @@ alias tu='netstat -tapno | grep Team'
 # for carla
 alias carla='cd /media/dyros-data/gitrepo/CARLA_0.8.4 && ./CarlaUE4.sh -windowed -resx=600 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
 alias carla_UE4='ueditor /media/dyros-data/gitrepo/carla-0.8.4_source/Unreal/CarlaUE4/CarlaUE4.uproject'
+
+alias carla_exp='cd /media/dyros-data/gitrepo/CARLA_0.8.4/LinuxNoEditor && ./CarlaUE4.sh -windowed -resx=600 -resy=480 -carla-settings=./Example.CarlaSettings.ini'              
+alias carla_ms='cd /media/dyros-data/gitrepo/carla-0.8.4_source/LinuxNoEditor && ./CarlaUE4.sh  -windowed -resx=800 -resy=640 -carla-settings=./Example.CarlaSettings.ini'       
 
 #for nvidia-smi
 alias nv='nvidia-smi -l'
