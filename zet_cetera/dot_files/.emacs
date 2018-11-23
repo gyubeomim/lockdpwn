@@ -779,8 +779,8 @@
 (global-set-key (kbd "C-c s") (lambda() (interactive)(org-agenda nil "s")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org")))
-(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
-(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+;; C-S-, 키로 특정 pomodoro.org 파일을 엽니다
+(global-set-key (kbd "C-<") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
 ;; C-m 키로 link.opg 파일을 엽니다
 (global-set-key (kbd "H-m") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org")))
 ;; C-S-m 키로 note.opg 파일을 엽니다

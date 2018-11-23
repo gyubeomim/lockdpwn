@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name: latex color
-# key: color
+# key: c
 # --
 {\color{${1:}}{${2:}}}$0
