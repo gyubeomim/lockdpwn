@@ -914,6 +914,8 @@
     (define-key evil-motion-state-map (kbd "K") nil)
     (define-key evil-motion-state-map (kbd "TAB") nil)
     (define-key evil-motion-state-map (kbd "`") nil)
+    ;; evil 모드에서 f 키로 빠르게 단어 사이를 이동합니다
+    (define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
     (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
@@ -2737,10 +2739,6 @@ created by edward 180515"
                              (define-key input-decode-map (kbd "C-S-m") (kbd "H-S-m"))
                              (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
                              ))
-
-;; C-g , C-S-g 키로 avy (버퍼 간 빠른이동) 기능을 실행합니다
-(global-set-key (kbd "C-g") 'avy-goto-word-0)
-(global-set-key (kbd "C-S-g") 'avy-goto-word-1)
 
 ;; customize mode와 같이 실행되는 hook 코드
 (add-hook 'custom-mode-hook (lambda ()

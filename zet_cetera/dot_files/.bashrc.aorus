@@ -180,6 +180,7 @@ alias pull_2='git pull origin server2_ws'
 alias clone='git clone'
 alias gc='git checkout'
 alias gb='git branch'
+alias gs='git status'
 
 
 # for tmux 
@@ -225,6 +226,9 @@ alias cwc='cd /home/dyros-vehicle/cartographer_ws'
 alias csc='cd /home/dyros-vehicle/cartographer_ws/src'
 alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --install --use-ninja '
 
+alias cwg='cd /home/dyros-vehicle/segmap_ws'
+alias csg='cd /home/dyros-vehicle/segmap_ws/src'
+alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper'
 
 #alias cl='cd /home/dyros-vehicle/gitrepo/ims'
 #alias cr='cd /home/dyros-vehicle/gitrepo/ims/ROS/'
@@ -267,6 +271,9 @@ alias co='cd /opt/ros/kinetic/share/'
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# for bazel
+export PATH="$PATH:$HOME/bin"
+
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
 
@@ -292,6 +299,7 @@ alias downd='cd /media/dyros-data/Download_d'
 
 #UE4Editor-------------
 alias ueditor='/media/dyros-data/gitrepo/UnrealEngine_4.18/Engine/Binaries/Linux/UE4Editor'
+alias ueditor2='/media/dyros-data/gitrepo/UnrealEngine_4.19/Engine/Binaries/Linux/UE4Editor'
 export UE4_ROOT='/home/dyros-vehicle/gitrepo/UnrealEngine'
 
 
@@ -385,6 +393,7 @@ alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/catkin_ws/devel/setup.bash
 source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash  # for cartographer
+source /home/dyros-vehicle/segmap_ws/devel/setup.bash  # for segmap
 
 # for x11vnc && TeamViewer connected user
 alias vu='netstat -tapno | grep 5902'
@@ -392,7 +401,10 @@ alias tu='netstat -tapno | grep Team'
 
 # for carla
 alias carla='cd /media/dyros-data/gitrepo/CARLA_0.8.4 && ./CarlaUE4.sh -windowed -resx=600 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
-alias carla_UE4='ueditor /media/dyros-data/gitrepo/carla-0.8.4_source/Unreal/CarlaUE4/CarlaUE4.uproject'
+alias carla_UE4='export UE4_ROOT=/media/dyros-data/gitrepo/UnrealEngine_4.18 && ueditor /media/dyros-data/gitrepo/carla-0.8.4_source/Unreal/CarlaUE4/CarlaUE4.uproject'
+
+alias carla2='cd /media/dyros-data/gitrepo/CARLA_0.9.1 && ./CarlaUE4.sh -windowed -resx=600 -resy=480'
+alias carla2_UE4='export UE4_ROOT=/media/dyros-data/gitrepo/UnrealEngine_4.19 && ueditor2 /media/dyros-data/gitrepo/carla-0.9.1_source/Unreal/CarlaUE4/CarlaUE4.uproject'
 
 alias carla_exp='cd /media/dyros-data/gitrepo/CARLA_0.8.4/LinuxNoEditor && ./CarlaUE4.sh -windowed -resx=600 -resy=480 -carla-settings=./Example.CarlaSettings.ini'              
 alias carla_ms='cd /media/dyros-data/gitrepo/carla-0.8.4_source/LinuxNoEditor && ./CarlaUE4.sh  -windowed -resx=800 -resy=640 -carla-settings=./Example.CarlaSettings.ini'       
