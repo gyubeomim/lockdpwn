@@ -667,7 +667,7 @@
      ;; header 크기 변하지 않게
      (add-hook 'org-mode-hook 'my/org-mode-hook)
      ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
-     (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.3))
+     (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
      ;; org-link 에서 .pdf 파일은 foxit reader로 열도록 설정한다
      (setq org-file-apps
@@ -1371,7 +1371,7 @@
  '(helm-bookmark-show-location t)
  '(org-agenda-files
    (quote
-    ("~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/estimation_theory.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/CloudStation/gitrepo_sync/ims_org/org_files/paper/Duality-Based_Verification_Techniques_for_2d_SLAM.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/estimation_theory.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1900,8 +1900,13 @@ Version 2017-04-19"
 ;; f3 키로 다음 창으로 이동
 (global-set-key [f3] 'next-multiframe-window)
 
-;; f4 키로 org-sparse-tree 명령어 실행 (for org-mode)
-(global-set-key [f4] 'org-sparse-tree)
+;; f5 키로 org-sparse-tree 명령어 실행 (for org-mode)
+
+;; f4 키로 org-show-todo-tree 명령어 실행 (for org-mode)
+(global-set-key [f4] '(lambda() (interactive)(org-show-todo-tree '(4))))
+
+;; f5 키로 org-sparse-tree 명령어 실행 (for org-mode)
+(global-set-key [f5] 'org-sparse-tree)
 
 ;; f6 키로 ECB 시작
 (global-set-key [f6] 'ecb-minor-mode)
