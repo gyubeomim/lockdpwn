@@ -775,8 +775,10 @@
                                      '(face (:foreground "dark orange"))
                                      )))))
 
-;; C-c + s 키로 gcal.org <==> Google Calendar를 동기화합니다
-(global-set-key (kbd "C-c s") (lambda() (interactive)(org-agenda nil "s")))
+;; C-c + s 키로 태그를 검색합니다
+(global-set-key (kbd "C-c s") 'org-tags-view)
+;; C-c + a 키로 특정 키워드를 검색합니다
+(global-set-key (kbd "C-c a") (lambda() (interactive)(org-agenda nil "s")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org")))
 ;; C-S-, 키로 특정 pomodoro.org 파일을 엽니다
@@ -933,6 +935,8 @@
                                                   (progn
                                                     (outline-hide-other)
                                                     (outline-show-subtree))))
+    ;; org-mode에서 q 키로 subtree를 엽니다
+    (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
 
     ;; 키바인딩 해제 INSERT MODE
     (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -1902,13 +1906,11 @@ Version 2017-04-19"
 ;; f3 키로 다음 창으로 이동
 (global-set-key [f3] 'next-multiframe-window)
 
-;; f5 키로 org-sparse-tree 명령어 실행 (for org-mode)
-
 ;; f4 키로 org-show-todo-tree 명령어 실행 (for org-mode)
 (global-set-key [f4] '(lambda() (interactive)(org-show-todo-tree '(4))))
 
-;; f5 키로 org-sparse-tree 명령어 실행 (for org-mode)
-(global-set-key [f5] 'org-sparse-tree)
+;; f5 키로 org-match-sparse-tree 명령어 실행 (for org-mode)
+(global-set-key [f5] 'org-match-sparse-tree)
 
 ;; f6 키로 ECB 시작
 (global-set-key [f6] 'ecb-minor-mode)
