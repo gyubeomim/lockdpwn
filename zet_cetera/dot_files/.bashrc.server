@@ -177,6 +177,7 @@ alias push='git push'
 alias pull='git pull'
 alias clone='git clone'
 alias gc='git checkout'
+alias gs='git status'
 alias gb='git branch'
 
 # for counting files
