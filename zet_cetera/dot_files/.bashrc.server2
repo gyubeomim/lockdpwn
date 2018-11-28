@@ -185,6 +185,7 @@ alias pull_1='git pull origin server1_ws'
 alias pull_2='git pull origin server2_ws'
 alias clone='git clone'
 alias gc='git checkout'
+alias gs='git status'
 alias gb='git branch'
 
 # for counting files
@@ -310,6 +311,13 @@ export UE4_ROOT='/home/dyros-vehicle/UnrealEngine'
 alias carla='cd /media/dyros-data/gitrepo/CARLA_0.8.4 && ./CarlaUE4.sh -windowed -resx=600 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
 alias carla_UE4='ueditor /media/dyros-data/gitrepo/carla-0.8.4_source/Unreal/CarlaUE4/CarlaUE4.uproject'
 
+alias carla_exp='cd /media/dyros-data/gitrepo/CARLA_0.8.4/LinuxNoEditor && SDL_VIDEODRIVER=offscreen SDL_HINT_CUDA_DEVICE = 0 ./CarlaUE4.sh -windowed -resx=600 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
+
+alias carla_ms='cd /media/dyros-data/gitrepo/carla-0.8.4_source/LinuxNoEditor && SDL_VIDEODRIVER=offscreen SDL_HINT_CUDA_DEVICE=0 ./CarlaUE4.sh  -windowed -resx=640 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
+alias carla_ms_display='cd /media/dyros-data/gitrepo/carla-0.8.4_source/LinuxNoEditor && ./CarlaUE4.sh  -windowed -resx=640 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
+
+
+#alias carla_ms='/media/dyros-data/gitrepo/carla-0.8.4_source/Unreal/CarlaUE4/LinuxNoEditor/#CarlaUE4/Binaries/Linux/CarlaUE4  -windowed -resx=800 -resy=640'
 
 # set ROS
 source /opt/ros/kinetic/setup.bash
