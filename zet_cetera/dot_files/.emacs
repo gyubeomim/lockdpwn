@@ -570,6 +570,7 @@
      (define-key org-mode-map (kbd "C-c '") nil)
      (define-key org-mode-map (kbd "C-c ;") nil)
      (define-key org-mode-map (kbd "C-c C-k") nil)
+     (define-key org-mode-map (kbd "C-j") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -781,12 +782,6 @@
 (global-set-key (kbd "C-c a") (lambda() (interactive)(org-agenda nil "s")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org")))
-;; C-S-, 키로 특정 pomodoro.org 파일을 엽니다
-(global-set-key (kbd "C-<") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
-;; C-m 키로 link.opg 파일을 엽니다
-(global-set-key (kbd "H-m") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org")))
-;; C-S-m 키로 note.opg 파일을 엽니다
-(global-set-key (kbd "H-S-m") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; C-? 키로 어느곳에서나 agenda view를 열게합니다
@@ -926,6 +921,12 @@
                                                         (org-todo "CLOSED")
                                                       (org-todo "DONE")
                                                       ))))
+    ;; [ 키로 link.opg 파일을 엽니다
+    (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org")))
+    ;; ] 키로 note.opg 파일을 엽니다
+    (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+    ;; } 키로 특정 pomodoro.org 파일을 엽니다
+    (define-key evil-motion-state-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
     ;; org-mode에서 , . 키로 strike-through를 설정합니다
     (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
     (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
@@ -2593,7 +2594,7 @@ created by edward 180515"
 
              (define-key input-decode-map (kbd "C-[") (kbd "H-["))
              (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
-             (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
+             ;; (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
 
              ;; C-z 키는 undo-tree 의 undo 명령어가 실행되도록 합니다 (for org-mode)
              (undo-tree-mode t)
@@ -2737,8 +2738,8 @@ created by edward 180515"
                              (keyboard-translate ?\C-i ?\H-i)
                              (define-key input-decode-map (kbd "C-[") (kbd "H-["))
                              (define-key input-decode-map (kbd "C-i") (kbd "H-i"))
-                             (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
-                             (define-key input-decode-map (kbd "C-S-m") (kbd "H-S-m"))
+                             ;; (define-key input-decode-map (kbd "C-m") (kbd "H-m"))
+                             ;; (define-key input-decode-map (kbd "C-S-m") (kbd "H-S-m"))
                              (define-key input-decode-map (kbd "C-S-i") (kbd "H-S-i"))
                              ))
 
