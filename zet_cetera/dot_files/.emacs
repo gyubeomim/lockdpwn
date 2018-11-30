@@ -141,9 +141,9 @@
 
 (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)            ; rebihnd tab to do persistent action
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)            ; rebihnd tab to do persistent action
-(define-key helm-grep-mode-map (kbd "<return>")  'helm-grep-mode-jump-other-window)
-(define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
-(define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
+;; (define-key helm-grep-mode-map (kbd "<return>")  'helm-grep-mode-jump-other-window)
+;; (define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
+;; (define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
 
 (when (executable-find "curl")
   (setq helm-google-suggest-use-curl-p t))
@@ -1380,7 +1380,7 @@
  '(git-gutter:deleted-sign "-")
  '(git-gutter:modified-sign "▸")
  '(helm-bookmark-show-location t)
- '(minimap-enlarge-certain-faces (quote always))
+ '(minimap-enlarge-certain-faces nil)
  '(minimap-highlight-line nil)
  '(minimap-major-modes (quote (prog-mode org-mode)))
  '(minimap-minimum-width 20)
@@ -2487,10 +2487,13 @@ created by edward 180515"
 ;;"find . -type f -exec grep --exclude=*{ph.h, rviz, rst} --include={cpp,c,h,py} -nH -ie   {} +" 같이 확장자를 필터링할 수 있다
 (grep-apply-setting 'grep-find-command '("find . -type f -exec grep -nH -ie   {} +" . 35))
 
-;; (eval-after-load "helm-grep" (lambda ()
-;;                           ;; 키바인딩 해제
-;;                           (define-key grep-mode-map (kbd "n") nil)
-;;                           )
+(eval-after-load "grep"
+  '(progn
+     ;; 키바인딩 해제 for evil mode keybinding n,N
+     (define-key grep-mode-map (kbd "n") nil)
+     (define-key grep-mode-map (kbd "N") nil)
+     ))
+
 
 
 ;; c++ 주석 처리 변경 코드 (// -> /* */ 로 변경한다)
