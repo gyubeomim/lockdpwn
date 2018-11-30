@@ -1383,6 +1383,7 @@
  '(minimap-enlarge-certain-faces (quote always))
  '(minimap-highlight-line nil)
  '(minimap-major-modes (quote (prog-mode org-mode)))
+ '(minimap-minimum-width 20)
  '(minimap-update-delay 0.01)
  '(minimap-window-location (quote right))
  '(org-agenda-files
