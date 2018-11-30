@@ -84,6 +84,7 @@
     per-buffer-theme       ;; buffer 별로 다른 theme을 적용할 수 있도록 해주는 패키지
     ox-twbs                ;; org-mode twitter bootstrap .html 파일로 export 해주는 패키지
     ov                     ;; org-mode에서 글자에 색상을 변경하기 위한 overlab 패키지
+    minimap                ;; navigation view sidebar을 생성해주는 패키지
 
 
 
@@ -588,7 +589,7 @@
      ;; code ==> image Update 단축키
      (define-key org-mode-map (kbd "C-c q") 'org-toggle-inline-images)
      ;; org  ==> markdown export 단축키
-     (define-key org-mode-map (kbd "C-c m") 'org-md-export-to-markdown)
+     ;; (define-key org-mode-map (kbd "C-c m") 'org-md-export-to-markdown)
      ;; Shift + Enter 키로 현재 링크를 엽니다
      (define-key org-mode-map (kbd "<S-return>") 'org-open-at-point)
      ;; Ctrl + Shift + Enter 키로 원래 위치로 돌아갑니다
@@ -884,7 +885,10 @@
 
 ;;
 (define-key global-map (kbd "C-c C-e") 'easy-jekyll)
-; (setq easy-jekyll-sshdomain "blogdomain")
+                                        ; (setq easy-jekyll-sshdomain "blogdomain")
+
+;; PACKAGE: minimap
+(global-set-key (kbd "C-c m") 'minimap-mode)
 
 ;; PACKAGE: evil
 (require 'evil)
@@ -1376,12 +1380,16 @@
  '(git-gutter:deleted-sign "-")
  '(git-gutter:modified-sign "▸")
  '(helm-bookmark-show-location t)
+ '(minimap-enlarge-certain-faces (quote always))
+ '(minimap-highlight-line nil)
+ '(minimap-update-delay 0.01)
+ '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
-    ("~/CloudStation/gitrepo_sync/ims_org/org_files/paper/Duality-Based_Verification_Techniques_for_2d_SLAM.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/estimation_theory.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/Duality-Based_Verification_Techniques_for_2d_SLAM.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/estimation_theory.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1441,7 +1449,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(per-buffer-theme/default-theme (quote solarized-dark))
  '(per-buffer-theme/ignored-buffernames-regex
    (quote
@@ -1501,10 +1509,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
- '(avy-lead-face ((t (:inherit isearch :background "gold"))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "gold"))))
+ '(avy-lead-face ((t (:inherit isearch :background "orange"))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "orange"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
- '(avy-lead-face-2 ((t (:inherit isearch :background "orange"))))
+ '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
  '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
  '(diff-refine-added ((t (:background "olive drab"))))
@@ -1526,6 +1534,7 @@
  '(highlight ((t (:background "grey"))))
  '(magit-diff-hunk-heading ((t (:background "black"))))
  '(magit-diff-hunk-heading-highlight ((t (:background "black"))))
+ '(minimap-active-region-background ((t (:background "gray70"))))
  '(org-agenda-calendar-event ((t (:foreground "#586e75"))))
  '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
@@ -1743,6 +1752,9 @@
        (lambda ()
          (interactive)
          (find-alternate-file "..")))
+
+     ;; for avy-goto-0
+     (define-key dired-mode-map "f" 'avy-goto-word-0)
 
      ;; dired mode 관련 단축키들을 추가했다
      ;; dired mode : Emacs's adaption of find

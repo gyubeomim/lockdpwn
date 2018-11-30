@@ -414,3 +414,6 @@ alias nv='nvidia-smi -l'
 
 #for AORUS LAN Card Insallation
 alias aorus_lan='cd ~/Documents/r8152-2.09.0 && sudo make install'
+
+#python virtualenv for segmap
+alias seg='source ~/segmappyenv/bin/activate'
