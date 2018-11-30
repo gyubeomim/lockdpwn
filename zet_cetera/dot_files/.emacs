@@ -1382,6 +1382,7 @@
  '(helm-bookmark-show-location t)
  '(minimap-enlarge-certain-faces (quote always))
  '(minimap-highlight-line nil)
+ '(minimap-major-modes (quote (prog-mode org-mode)))
  '(minimap-update-delay 0.01)
  '(minimap-window-location (quote right))
  '(org-agenda-files
