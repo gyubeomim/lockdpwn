@@ -8,3 +8,5 @@ cpp_archive/test
 .vscode/
 bin/
 build/
+
+*.pyc
