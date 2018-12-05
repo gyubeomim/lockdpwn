@@ -580,10 +580,12 @@
      (define-key org-mode-map (kbd "<M-S-down>") 'org-shiftdown)
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
-     ;; org capture 기능 단축키 (C-m 이 <return>과 충돌나므로 C-> 으로 변경했다)
-     (define-key org-mode-map (kbd "C->") 'org-capture)
      ;; org capture 기능 단축키 for todo.org
      (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ";")))
+     ;; C-< 키로 어느곳에서나 todo.org OPEN 기능을 열게합니다
+     (define-key org-mode-map (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
+     ;; C-> 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
+     (define-key org-mode-map (kbd "C->") (lambda () (interactive)(org-capture nil ":")))
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
      (define-key org-mode-map (kbd "C-c w") 'org-preview-html/preview)
      ;; code ==> image Update 단축키
@@ -611,8 +613,6 @@
      (define-key org-mode-map (kbd "M-f") 'forward-paragraph)
      ;; C-' 키로 태그를 설정합니다
      (define-key org-mode-map (kbd "C-'") 'org-set-tags-command)
-     ;; C-\ 키로 org-tags-sparse-tree 명령을 실행합니다
-     (define-key org-mode-map (kbd "C-\\") 'org-tags-sparse-tree)
      ;; C-[ 키로 link를 삽입합니다
      (define-key org-mode-map (kbd "H-[") 'org-insert-link)
      ;; C-c C-[ 키로 org-pomodoro-1day-done 함수를 실행합니다
@@ -690,6 +690,9 @@
      (setq org-capture-templates '((";" "todo.org: [Task]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
                                     "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                   (":" "todo.org: [Task]" entry
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("'" "todo.org: [Issues]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
@@ -789,14 +792,14 @@
 (global-set-key (kbd "C-?") 'org-agenda)
 ;; C-/ 키로 어느곳에서나 org todo list를 열게합니다
 (global-set-key (kbd "C-/") 'org-todo-list)
-;; C-> 키로 어느곳에서나 capture 기능을 열게합니다
-(global-set-key (kbd "C->") 'org-capture)
-;; C-. 키로 어느곳에서나 todo.org Tasks 기능을 열게합니다
+;; C-. 키로 어느곳에서나 todo.org LIST 기능을 열게합니다
 (global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ";")))
-;; C-, 키로 어느곳에서나 todo.org Issues 기능을 열게합니다
-(global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "'")))
-;; C-c n 키로 어느곳에서나 todo.org Note 기능을 열게합니다
-(global-set-key (kbd "C-c n") (lambda () (interactive)(org-capture nil "n")))
+;; C-> 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
+(global-set-key (kbd "C->") (lambda () (interactive)(org-capture nil ":")))
+;; C-< 키로 어느곳에서나 todo.org OPEN 기능을 열게합니다
+(global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
+;; C-, 키로 어느곳에서나 todo.org Note 기능을 열게합니다
+(global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "n")))
 ;; org-mode용 strike-through를 구현한 함수
 (defun strike-through-for-org-mode ()
   (interactive)
