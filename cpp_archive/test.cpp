@@ -1,40 +1,55 @@
-#include "ceres/ceres.h"
-#include "glog/logging.h"
+#include <cstdio>
+#include <queue>
+using namespace std;
 
-using ceres::AutoDiffCostFunction;
-using ceres::ConstFunction;
-using ceres::Problem;
-using ceres::Solver;
-using ceres::Solve;
+const int roff[4] = {-1,1,0,0};
+const int coff[4] = {0,0,-1,1};
 
-struct CostFunctor {
-  template <typename T>
-  bool operator()(const T* const x, T* residual) const {
-    residual[0] = T(10.0) - x[0];
-    return true;
-  }
-};
+int main() {
+    int N,M;
+    scanf("%d %d", &N, &M);
+    bool map[100][100];
 
-int main(int argc, char **argv) {
-  google::InitGoogleLogging(argv[0]);
+    for(int i=0; i<N; i++){
+        for(int j=0; j<M; j++){
+            scanf("%1d", &map[i][j]);
+        }
+    }
 
-  double x = 0.1;
-  const double initial_x = x;
+    bool visited[100][100] = {0};
+    visited[0][0] = true;
 
-  Problem problem;
+    queue<int> Q;
+    Q.push(0);
 
-  CostFunction* cost_function =
-      new AutoDiffCostFunction<CostFunctor, 1, 1>(new CostFunctor);
-  problem.AddResidualBlock(cost_function, NULL, &x);
+    int result = 1;
 
-  Solver::Options options;
-  options.linear_solver_type = ceres::DENSE_QR;
-  options.minimizer_progress_to_stdout = true;
-  Solver::Summary summary;
-  Solve(options, &problem, &summary);
+    while(true) {
+        int qSize = Q.size();
+        for(int i=0; i<qSize; i++){
+            int r = Q.front()/100;
+            int c = Q.front()%100;
+            Q.pop();
 
-  std::cout << summary.BriefReport() << std::endl;
-  std::cout << "x: " << initial_x << " --> " << x << std::endl;
+            if(r==N-1 & c==M-1){
+                printf("%d\n", result);
+                return 0;
+            }
 
-  return 0;
+            for(int d=0; d<4; d++){
+                int nr = r + roff[d];
+                int nc = c + coff[d];
+
+                if(nr<0 || nr>=N || nc<0 || nc >=M) {
+                    continue;
+                }
+                if(!map[nr][nc]) continue;
+                if(visited[nr][nc]) continue;
+
+                visited[nr][nc] = true;
+                Q.push(nr*100+nc);
+            }
+        }
+        result++;
+    }
 }
