@@ -370,6 +370,7 @@ source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash
 alias vu='netstat -tapno | grep 5902'
 alias tu='netstat -tapno | grep Team'
 
+export G2O_ROOT=~/gitrepo/openslam_g2o
 
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'

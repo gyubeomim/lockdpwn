@@ -669,7 +669,7 @@
      ;; header 크기 변하지 않게
      (add-hook 'org-mode-hook 'my/org-mode-hook)
      ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
-     (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+     (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.3))
 
      ;; org-link 에서 .pdf 파일은 foxit reader로 열도록 설정한다
      (setq org-file-apps
@@ -1394,7 +1394,7 @@
     ("~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/Duality-Based_Verification_Techniques_for_2d_SLAM.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/estimation_theory.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1544,8 +1544,8 @@
  '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-block ((t (:foreground "dark gray"))))
- '(org-block-begin-line ((t (:background "dim gray" :foreground "dark gray" :weight normal))))
- '(org-block-end-line ((t (:background "dim gray" :foreground "dark gray" :weight normal))))
+ '(org-block-begin-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
+ '(org-block-end-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
  '(org-date ((t (:background "black" :foreground "#839496" :underline nil :weight bold :height 0.75))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
