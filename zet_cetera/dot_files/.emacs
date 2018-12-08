@@ -86,6 +86,7 @@
     ov                     ;; org-mode에서 글자에 색상을 변경하기 위한 overlab 패키지
     minimap                ;; navigation view sidebar을 생성해주는 패키지
 
+    matlab-mode            ;; matlab의 .m 파일을 하이라이팅해주는 패키지
 
 
     ;; use-package                ;; package를 관리해주는 패키지
@@ -507,6 +508,12 @@
     ))
 
 ;; org 모드에서 latex을 쓰기 위한 prefix \[ {...} \] $ {...} $을 입력해주는 함수
+(defun create_latex_prefix_align ()
+  (interactive)
+  (insert "\\begin{align} ")
+  (insert "\\end{align}")
+  (forward-char -11)
+  )
 (defun create_latex_prefix_dollar ()
   (interactive)
   (insert "$")
@@ -572,6 +579,7 @@
      (define-key org-mode-map (kbd "C-c ;") nil)
      (define-key org-mode-map (kbd "C-c C-k") nil)
      (define-key org-mode-map (kbd "C-j") nil)
+     (define-key org-mode-map (kbd "C-c .") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -605,8 +613,10 @@
      (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
      ;; C+/ 키로 org todo list를 실행합니다
      (define-key org-mode-map (kbd "C-/") 'org-todo-list)
-     ;; C+? 키로 agenda를 실행합니다
-     (define-key org-mode-map (kbd "C-?") 'org-agenda)
+     ;; C+? 키로 agenda list를 실행합니다
+     (define-key org-mode-map (kbd "C-?") 'org-agenda-list)
+     ;; C+M+? 키로 agenda를 실행합니다
+     (define-key org-mode-map (kbd "C-M-?") 'org-agenda)
      ;; C-down + M-f 키를 기본 cpp,python 파일에서와 같이 구문단위로 이동하도록 설정합니다
      ;; org.el에서 remap이 되어있던 코드를 주석처리하니 아래 두 코드가 정상작동한다
      (define-key org-mode-map (kbd "<C-down>") 'forward-paragraph)
@@ -623,7 +633,8 @@
      (define-key org-mode-map (kbd "C-c ]") 'org-agenda-file-to-front)
      ;; C-c l 키로 .org 파일에서 latex 수식을 변환합니다 (토글 형식)
      (define-key org-mode-map (kbd "C-c l") 'org-toggle-latex-fragment)
-     ;; C-c C-l (or C-;) 키로 .org 파일에서 latex 수식용 prefix를 생성합니다
+     ;; C-c C-l (or C-;,') 키로 .org 파일에서 latex 수식용 prefix를 생성합니다
+     (define-key org-mode-map (kbd "C-c C-'") 'create_latex_prefix_align)
      (define-key org-mode-map (kbd "C-c C-;") 'create_latex_prefix_dollar)
      (define-key org-mode-map (kbd "C-c C-l") 'create_latex_prefix)
      ;; C-c C-v 키로 .org 파일에서 .html 파일 버전을 크롬으로 엽니다 (.html 이 있는 경우만)
@@ -779,7 +790,8 @@
                 (add-text-properties (match-beginning 0) (point-at-eol)
                                      '(face (:foreground "dark orange"))
                                      )))))
-
+;; C-\ 키로 태그를 검색합니다
+(global-set-key (kbd "C-\\") 'org-time-stamp)
 ;; C-c + s 키로 태그를 검색합니다
 (global-set-key (kbd "C-c s") 'org-tags-view)
 ;; C-c + a 키로 특정 키워드를 검색합니다
@@ -876,7 +888,9 @@
     (define-key undo-tree-map (kbd "C-r") nil)
     (define-key undo-tree-map (kbd "C-?") nil)
 
-    (define-key undo-tree-map (kbd "C-?") 'org-agenda)
+    ;; C-? C-M-? C-/ 키로 org-agenda 명령을 수행합니다
+    (define-key undo-tree-map (kbd "C-?") 'org-agenda-list)
+    (define-key undo-tree-map (kbd "C-M-?") 'org-agenda)
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
     ))
 
@@ -1392,6 +1406,32 @@
  '(org-agenda-files
    (quote
     ("~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/Duality-Based_Verification_Techniques_for_2d_SLAM.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/estimation_theory.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
+ '(org-agenda-finalize-hook
+   (quote
+    ((lambda nil
+       (save-excursion
+         (goto-char
+          (point-min))
+         (while
+             (re-search-forward "gcal:" nil t)
+           (add-text-properties
+            (match-beginning 0)
+            (point-at-eol)
+            (quote
+             (face
+              (:foreground "dark orange")))))))
+     (lambda nil
+       (save-excursion
+         (goto-char
+          (point-min))
+         (while
+             (re-search-forward "now" nil t)
+           (add-text-properties
+            (match-beginning 0)
+            (point-at-eol)
+            (quote
+             (face
+              (:foreground "red"))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1546,7 +1586,7 @@
  '(org-block ((t (:foreground "dark gray"))))
  '(org-block-begin-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
  '(org-block-end-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
- '(org-date ((t (:background "black" :foreground "#839496" :underline nil :weight bold :height 0.75))))
+ '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.7))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
