@@ -766,6 +766,7 @@
                                   (define-key org-agenda-mode-map (kbd "C-n") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
+                                  (define-key org-agenda-mode-map (kbd "]") nil)
 
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
@@ -801,7 +802,9 @@
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; C-? 키로 어느곳에서나 agenda view를 열게합니다
-(global-set-key (kbd "C-?") 'org-agenda)
+(global-set-key (kbd "C-?") 'org-agenda-list)
+;; C-M-? 키로 어느곳에서나 agenda list를 엽니다
+(global-set-key (kbd "C-M-?") 'org-agenda)
 ;; C-/ 키로 어느곳에서나 org todo list를 열게합니다
 (global-set-key (kbd "C-/") 'org-todo-list)
 ;; C-. 키로 어느곳에서나 todo.org LIST 기능을 열게합니다
@@ -858,6 +861,7 @@
 ;; org-mode에서 colored text를 사용하기 위해 추가한 코드
 (add-to-list 'load-path "~/.emacs.d/load-path/org-colored-text/")
 ;; (require '{...} nil t)는 만약 이 패키지가 없어도 에러 구문을 내지 않는다는 의미
+(require 'org-colored-text nil t)
 
 ;;org-END=================================================================
 
@@ -1175,8 +1179,15 @@
 ;; PACKAGE: wrap-region
 (require 'wrap-region)
 (wrap-region-global-mode t)
+
 ;; org 모드에서 + wrapping을 해준다
 (wrap-region-add-wrapper "+" "+" nil 'org-mode)  ; strikethrough
+
+(eval-after-load "wrap-region-mode"
+  '(progn
+     (define-key wrap-region-mode-map "[" nil)
+     ))
+
 
 
 ;; PACKAGE: highlight-indentation
