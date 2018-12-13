@@ -85,8 +85,10 @@
     ox-twbs                ;; org-mode twitter bootstrap .html 파일로 export 해주는 패키지
     ov                     ;; org-mode에서 글자에 색상을 변경하기 위한 overlab 패키지
     minimap                ;; navigation view sidebar을 생성해주는 패키지
-
     matlab-mode            ;; matlab의 .m 파일을 하이라이팅해주는 패키지
+    latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
+
+
 
 
     ;; use-package                ;; package를 관리해주는 패키지
@@ -680,7 +682,7 @@
      ;; header 크기 변하지 않게
      (add-hook 'org-mode-hook 'my/org-mode-hook)
      ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
-     (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.3))
+     (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.8))
 
      ;; org-link 에서 .pdf 파일은 foxit reader로 열도록 설정한다
      (setq org-file-apps
@@ -1188,7 +1190,24 @@
      (define-key wrap-region-mode-map "[" nil)
      ))
 
+;; PACKAGE: latex-mode, tex-mode, bibtex-mode
+(eval-after-load "tex-mode"
+  '(progn
+     ;; ed: 단축키 해제
+     (define-key latex-mode-map (kbd "C-c C-o") nil)
+     (define-key latex-mode-map (kbd "C-c C-p") nil)
+     ))
 
+(eval-after-load "bibtex"
+  '(progn
+     ;; ed: 단축키 해제
+     (define-key bibtex-mode-map (kbd "C-c C-o") nil)
+     (define-key bibtex-mode-map (kbd "C-c C-p") nil)
+     ))
+
+;; PACKAGE: doc-view-mode
+;; ed: linum-mode가 있으면 pdf viewer가 매우 느려진다
+(add-hook 'doc-view-mode-hook (lambda () (linum-mode -1)))
 
 ;; PACKAGE: highlight-indentation
 (require 'highlight-indentation)
