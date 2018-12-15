@@ -85,8 +85,10 @@
     ox-twbs                ;; org-mode twitter bootstrap .html 파일로 export 해주는 패키지
     ov                     ;; org-mode에서 글자에 색상을 변경하기 위한 overlab 패키지
     minimap                ;; navigation view sidebar을 생성해주는 패키지
-
     matlab-mode            ;; matlab의 .m 파일을 하이라이팅해주는 패키지
+    latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
+
+
 
 
     ;; use-package                ;; package를 관리해주는 패키지
@@ -680,7 +682,7 @@
      ;; header 크기 변하지 않게
      (add-hook 'org-mode-hook 'my/org-mode-hook)
      ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
-     (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.3))
+     (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.8))
 
      ;; org-link 에서 .pdf 파일은 foxit reader로 열도록 설정한다
      (setq org-file-apps
@@ -692,9 +694,6 @@
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/CloudStation/gitrepo_sync/ims_org/org_files/*.org"))
      (setq org-agenda-files (file-expand-wildcards "~/CloudStation/gitrepo_sync/ims_org/org_files/note/*.org"))
-
-     ;; C-. 키로 사용할 note 파일
-     ;; (setq org-default-notes-file "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")
 
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
@@ -722,35 +721,36 @@
      ))
 ;; (add-to-ordered-list 'emulation-mode-map-alists '((org-mode . ,my-org-mode-map)) 0)
 
-;; org-mode export에 관련된 설정
+;; org-mode export에 관련된 설정 (deprecated)
 ;; org-publish 명령을 통해 아래 경로의 파일들을 원하는 경로(.../html/) 같은 곳에 변환할 수 있다
-(setq org-publish-project-alist
-      '(("paper"
-         :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/paper"
-         :base-extension "org"
-         :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/"
-         :publishing-function org-twbs-publish-to-html)
-      ("note"
-         :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/note"
-         :base-extension "org"
-         :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/note/"
-         :publishing-function org-twbs-publish-to-html)
-      ("emacs"
-       :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs"
-       :base-extension "org"
-       :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs/"
-       :publishing-function org-twbs-publish-to-html)
-      ("STEM"
-       :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM"
-       :base-extension "org"
-       :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/"
-       :publishing-function org-twbs-publish-to-html)
-      ("link"
-       :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/link"
-       :base-extension "org"
-       :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/link/"
-       :publishing-function org-twbs-publish-to-html)
-      ("all" :components ("paper" "note" "emacs" "STEM" "link"))))
+;; (setq org-publish-project-alist
+;;       '(
+;;         ("paper"
+;;          :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/paper"
+;;          :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/"
+;;          :base-extension "org"
+;;          :publishing-function org-twbs-publish-to-html)
+;;       ("note"
+;;          :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/note"
+;;          :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/note/"
+;;          :base-extension "org"
+;;          :publishing-function org-twbs-publish-to-html)
+;;       ("emacs"
+;;        :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs"
+;;        :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs/"
+;;        :base-extension "org"
+;;        :publishing-function org-twbs-publish-to-html)
+;;       ("STEM"
+;;        :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM"
+;;        :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/"
+;;        :base-extension "org"
+;;        :publishing-function org-twbs-publish-to-html)
+;;       ("link"
+;;        :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/link"
+;;        :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/link/"
+;;        :base-extension "org"
+;;        :publishing-function org-twbs-publish-to-html)
+;;       ("all" :components ("paper" "note" "emacs" "STEM" "link"))))
 
 ;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
 (require 'org-gcal)
@@ -766,7 +766,14 @@
                                   (define-key org-agenda-mode-map (kbd "C-n") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
-                                  (define-key org-agenda-mode-map (kbd "]") nil)
+
+                                  ;; .org 파일 여는 명령어 추가
+                                  ;; ] 키로 portal.opg 파일을 엽니다
+                                  (define-key org-agenda-mode-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
+                                  ;; [ 키로 note.org 파일을 엽니다
+                                  (define-key org-agenda-mode-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+                                  ;; } 키로 특정 pomodoro.org 파일을 엽니다
+                                  (define-key org-agenda-mode-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
 
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
@@ -946,9 +953,9 @@
                                                         (org-todo "CLOSED")
                                                       (org-todo "DONE")
                                                       ))))
-    ;; ] 키로 link.opg 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org")))
-    ;; [ 키로 note.opg 파일을 엽니다
+    ;; ] 키로 portal.opg 파일을 엽니다
+    (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
+    ;; [ 키로 note.org 파일을 엽니다
     (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
     ;; } 키로 특정 pomodoro.org 파일을 엽니다
     (define-key evil-motion-state-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
@@ -1178,17 +1185,29 @@
 
 ;; PACKAGE: wrap-region
 (require 'wrap-region)
-(wrap-region-global-mode t)
+;; (wrap-region-global-mode t)
 
 ;; org 모드에서 + wrapping을 해준다
 (wrap-region-add-wrapper "+" "+" nil 'org-mode)  ; strikethrough
 
-(eval-after-load "wrap-region-mode"
+;; PACKAGE: latex-mode, tex-mode, bibtex-mode
+(eval-after-load "tex-mode"
   '(progn
-     (define-key wrap-region-mode-map "[" nil)
+     ;; ed: 단축키 해제
+     (define-key latex-mode-map (kbd "C-c C-o") nil)
+     (define-key latex-mode-map (kbd "C-c C-p") nil)
      ))
 
+(eval-after-load "bibtex"
+  '(progn
+     ;; ed: 단축키 해제
+     (define-key bibtex-mode-map (kbd "C-c C-o") nil)
+     (define-key bibtex-mode-map (kbd "C-c C-p") nil)
+     ))
 
+;; PACKAGE: doc-view-mode
+;; ed: linum-mode가 있으면 pdf viewer가 매우 느려진다
+(add-hook 'doc-view-mode-hook (lambda () (linum-mode -1)))
 
 ;; PACKAGE: highlight-indentation
 (require 'highlight-indentation)
@@ -1416,7 +1435,7 @@
  '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
-    ("~/CloudStation/gitrepo_sync/ims_org/org_files/link/link.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/Duality-Based_Verification_Techniques_for_2d_SLAM.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/estimation_theory.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_tensorflow.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_network_model.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/dl_core_concept.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/convex_optimization.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/algorithm.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/vs_2017.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/computer_device_spec.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/snu_interviews.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1610,6 +1629,7 @@
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.7))))
+ '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold)))))
 
 
@@ -1984,6 +2004,9 @@ Version 2017-04-19"
 ;; f6 키로 ECB 시작
 (global-set-key [f6] 'ecb-minor-mode)
 
+;; f7 키로 latex-preview-pane 모드 시작
+(global-set-key [f7] 'latex-preview-pane-mode)
+
 ;; f8 키로 디버깅 단축키
 (global-set-key [f8] 'gdb)
 
@@ -2327,7 +2350,10 @@ created by edward 180515"
 (global-set-key (kbd "C-M-1") 'easy-jekyll-preview)
 
 ;; Ctrl + 1 키로 .org 파일을 (org-publish) 명령어로 twitter bootstrap 스타일의 html 파일로 저장합니다
-(global-set-key (kbd "C-1") (lambda() (interactive)(org-publish "all")))
+;; (global-set-key (kbd "C-1") (lambda() (interactive)(org-publish "all")))
+
+;; Ctrl + 1 키로 .org 파일을 twitter bootstrap 스타일의 html 파일로 저장합니다
+(global-set-key (kbd "C-1") 'org-twbs-export-to-html)
 
 ;; C-2 키로 find file 파일이 존재하는지 검색합니다
 (global-set-key (kbd "C-2") 'helm-find)
@@ -2942,8 +2968,8 @@ created by edward 180515"
 
 ;; Alt + g 키로 xml 파일 내에서 코드를 folding할 수 있습니다
 (define-key nxml-mode-map (kbd "M-g") 'hs-toggle-hiding)
-;; nxml(.launch file) 모드에서도 C-c + / 키로 edward.org 파일을 엽니다
-(define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")))
+;; nxml(.launch file) 모드에서도 C-c + / 키로 edward.org 파일을 엽니다 (deprecated)
+;; (define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")))
 
 ;; grep-find (C-p) 명령어에서 새로운 grep 창이 열리지 않고 바로 현재창이 바뀌도록 하는 코드
 (eval-when-compile (require 'cl))

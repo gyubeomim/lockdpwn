@@ -1,7 +1,8 @@
 # -*- mode: snippet -*-
-# name: latex
-# key: latex_
+# name: latex by edward0im
+# key: latex
 # --
-#+BEGIN_LaTeX
-$0
-#+END_LaTeX
+#+LATEX_CLASS_OPTIONS: [a4paper,9pt,twoside]
+#+LaTeX_HEADER: \renewcommand\maketitle{}
+#+LaTeX_HEADER: \pagenumbering{gobble}
+#+LaTeX_HEADER: \usepackage{kotex}
