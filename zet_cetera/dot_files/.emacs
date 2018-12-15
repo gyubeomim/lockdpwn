@@ -1464,7 +1464,7 @@
               (:foreground "red"))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook nil)
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1518,6 +1518,7 @@
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
  '(org-keep-stored-link-after-insertion t)
+ '(org-link-file-path-type (quote absolute))
  '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
  '(org-tags-column 50)
