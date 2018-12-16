@@ -1,8 +1,3 @@
-zet_cetera/backup_files/backup_theme/Ultra-Flat-light/apps/scalable/Vbox.svg
-zet_cetera/backup_files/backup_theme/Ultra-Flat-light/apps/scalable/Thunar.svg
-zet_cetera/backup_files/backup_theme/Ultra-Flat-light/apps/scalable/VBox.svg
-zet_cetera/backup_files/backup_theme/Ultra-Flat-light/apps/scalable/flareGet.svg
-
 cpp_archive/test
 .vs/
 .vscode/
@@ -11,3 +6,5 @@ build/
 
 *.pyc
 .ipynb_checkpoints/
+
+*.svg
