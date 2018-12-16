@@ -12,7 +12,6 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defconst demo-packages
   '(
-    ;;anzu                 ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
     duplicate-thing        ;; M-c 키로 현재 행을 그대로 복사하는 패키지
     helm                   ;; 파일목록이나 최근사용하 파일들, 버퍼를 쉽게 볼 수 있게 해주는 패키지
     helm-projectile
@@ -54,6 +53,7 @@
 
 
     ;;WINDOWS-----------------------------------
+    ;;anzu                   ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
     ;;org-gcal               ;; org-mode와 google Calendar를 연동해주는 패키지
     ;;irony                  ;; c++ 코드 자동완성 패키지 (M-x irony-install-server로 설치한다)
     ;;company-irony          ;; c++ 코드 자동완성 패키지
@@ -228,7 +228,7 @@
 
 
 ;; 한글폰트 설정 (size 부분을 바꾸면 크기가 바뀝니다)
-(set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 21))
+(set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 19))
 ;; (set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("NanumGothicCoding" . "unicode-bmp") )
 ;; (set-fontset-font "fontset-default" '(#xe0bc . #xf66e)  '("NanumGothicCoding" . "unicode-bmp") )
 
@@ -405,8 +405,8 @@
      (define-key org-mode-map (kbd "M-f") 'forward-paragraph)
      ;; C-' 키로 태그를 설정합니다
      (define-key org-mode-map (kbd "C-'") 'org-set-tags-command)
-     ;; C-\ 키로 org-tags-sparse-tree 명령을 실행합니다
-     (define-key org-mode-map (kbd "C-\\") 'org-tags-sparse-tree)
+     ;; C-\ 키로 태그를 검색합니다
+     (define-key org-mode-map (kbd "C-\\") 'org-time-stamp)
      ;; C-[ 키로 link를 삽입합니다
      (define-key org-mode-map (kbd "H-[") 'org-insert-link)
      ;; C-c C-[ 키로 org-pomodoro-1day-done 함수를 실행합니다
@@ -1284,11 +1284,14 @@ Version 2017-04-19"
 ;; f10 라인 실행하고 다음 라인으로
 (global-set-key [f10] 'gud-next)
 
-;; f11 함수안으로 따라 들어간다
-(global-set-key [f11] 'gud-step)
+;; f11 키로 Full Screen
+(global-set-key [f11] 'toggle-frame-fullscreen)
 
-;; f12 현재 실행중인 함수 리턴후 멈춤
-(global-set-key [f12] 'gud-finish)
+;; f12 함수안으로 따라 들어간다
+(global-set-key [f12] 'gud-step)
+
+;; shift + f12 현재 실행중인 함수 리턴후 멈춤
+(global-set-key [(shift f12)] 'gud-finish)
 
 ;; shift + f10 현재 커서까지 실행하고 멈춤
 (global-set-key [(shift f10)] '(lambda ()
@@ -2202,6 +2205,9 @@ created by edward 180515"
 ;; Disable Beeping when using VNC
 (setq visible-bell 1)
 
+;; for org mode timestamp English ver.
+(setq system-time-locale "C")
+
 ;; Variable Customizing==========================================================================
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -2251,10 +2257,38 @@ created by edward 180515"
  '(git-gutter:deleted-sign "-")
  '(git-gutter:modified-sign ">")
  '(helm-bookmark-show-location t)
- '(org-agenda-files (quote ("")))
+ '(org-agenda-files
+   (quote
+    ("e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/note.org" "e:/gitrepo/ims_org/org_files/pomodoro.org" "e:/gitrepo/ims_org/org_files/pomodoro_old.org" "e:/gitrepo/ims_org/org_files/portal.org" "e:/gitrepo/ims_org/org_files/test.org")))
+ '(org-agenda-finalize-hook
+   (quote
+    ((lambda nil
+       (save-excursion
+         (goto-char
+          (point-min))
+         (while
+             (re-search-forward "gcal:" nil t)
+           (add-text-properties
+            (match-beginning 0)
+            (point-at-eol)
+            (quote
+             (face
+              (:foreground "dark orange")))))))
+     (lambda nil
+       (save-excursion
+         (goto-char
+          (point-min))
+         (while
+             (re-search-forward "now" nil t)
+           (add-text-properties
+            (match-beginning 0)
+            (point-at-eol)
+            (quote
+             (face
+              (:foreground "red"))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342肉\201" "\342肉\203" "\342\354몯" "\342\354몺" "*")))
+    ("\342\350\346뤃\242\201" "\342\350\346뤃\242\203" "\342\354嶺\214\217\257" "\342\354嶺\214\217\272" "*")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2418,4 +2452,5 @@ created by edward 180515"
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.7))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold))))
- '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold)))))
+ '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
+ '(variable-pitch ((t (:foundry "outline" :family "San Serif")))))
