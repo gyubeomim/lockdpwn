@@ -33,6 +33,7 @@
     magit                  ;; emacs용 git 패키지 (Alt + \ 단축키)
     iedit                  ;; 단어들의 일괄편집을 해주는 패키지 (Alt + [ 단축키)
     wgrep                  ;; 프로젝트 내 grep 후 한개의 버퍼에서 모든 파일 수정하는 패키지 (grep창에서 C-c C-p 단축키)
+    image+                 ;; .jpg, .png 같은 이미지들의 크기를 조정할 수 있는 패키지
     avy                    ;; 편집중 버퍼상의 빠른 이동   (Ctrl + = 단축키)
     org-bullets            ;; org-mode에서 마크 모양을 bullet 모양으로 해주는 패키지
     git-gutter             ;; 수정된 파일의 변경된 라인을 하이라이팅해주는 패키지
@@ -49,6 +50,7 @@
     ov                     ;; org-mode에서 글자에 색상을 변경하기 위한 overlab 패키지
     minimap                ;; navigation view sidebar을 생성해주는 패키지
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
+    pdf-tools              ;; emacs for pdf reader
 
 
     ;;WINDOWS-----------------------------------
@@ -226,7 +228,7 @@
 
 
 ;; 한글폰트 설정 (size 부분을 바꾸면 크기가 바뀝니다)
-(set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 23))
+(set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 21))
 ;; (set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("NanumGothicCoding" . "unicode-bmp") )
 ;; (set-fontset-font "fontset-default" '(#xe0bc . #xf66e)  '("NanumGothicCoding" . "unicode-bmp") )
 
@@ -366,8 +368,6 @@
      (define-key org-mode-map (kbd "C-c C-k") nil)
 
      ;; ed: 단축키 등록
-     ;; evil 모드에서 f 키로 빠르게 단어 사이를 이동합니다
-     (define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
      (define-key org-mode-map (kbd "<M-S-left>") 'org-shiftleft)
      (define-key org-mode-map (kbd "<M-S-up>") 'org-shiftup)
@@ -457,13 +457,13 @@
              ))
 
      ;; org-bullets 모드 활성화
-     ;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))
+     (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))
      ;; wrap line
      (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
      ;; header 크기 변하지 않게
      (add-hook 'org-mode-hook 'my/org-mode-hook)
      ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
-     (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.3))
+     (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.1))
 
      ;; org-link 에서 .pdf 파일은 foxit reader로 열도록 설정한다
      ;; (setq org-file-apps
@@ -600,10 +600,14 @@
   )
 
 ;; org-mode에서 colored text를 사용하기 위해 추가한 코드
-(add-to-list 'load-path "~/.emacs.d/load-path/org-colored-text/")
+(add-to-list 'load-path "e:/gitrepo/lockdpwn/lisp_archive/load-path/org-colored-text")
 ;; (require '{...} nil t)는 만약 이 패키지가 없어도 에러 구문을 내지 않는다는 의미
+(require 'org-colored-text nil t)
 
 ;;org-END=================================================================
+
+;; PACKAGE: doc-view (for pdf viewer)
+(setq doc-view-ghostscript-program "c:/Program Files/gs/gs9.26/bin/gswin64c.exe")
 
 ;; PACKAGE: smartparens
 (require 'smartparens-config)
@@ -639,10 +643,10 @@
     ))
 
 ;; for easy-jekyll mode
-(setq easy-jekyll-basedir "e:/gitrepo/tigerk0430.github.io/")
-(setq easy-jekyll-url "https://tigerk0430.github.io")
+;; (setq easy-jekyll-basedir "e:/gitrepo/tigerk0430.github.io/")
+;; (setq easy-jekyll-url "https://tigerk0430.github.io")
 ;; (setq easy-jekyll-root "/home/dyros-vehicle/")
-(setq easy-jekyll-previewtime "300")
+;; (setq easy-jekyll-previewtime "300")
 
 ;;
 (define-key global-map (kbd "C-c C-e") 'easy-jekyll)
@@ -673,6 +677,8 @@
     (define-key evil-motion-state-map (kbd "K") nil)
     (define-key evil-motion-state-map (kbd "TAB") nil)
     (define-key evil-motion-state-map (kbd "`") nil)
+	;; evil 모드에서 f 키로 빠르게 단어 사이를 이동합니다
+	(define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
     (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
@@ -792,6 +798,16 @@
 ;; Ctrl + Shift + i 키로 단어 하이라이트 모두 지우기
 (global-set-key (kbd "H-S-i") 'highlight-symbol-remove-all)
 
+;; PACKAGE: image+
+(require 'image+)
+(imagex-global-sticky-mode t)
+(eval-after-load "image+"
+  (lambda ()
+    ;; C-c = 키로 이미지를 확대한다
+    (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
+    ;; C-+ 키로 이미지 크기를 자동조정한다
+    (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
+    ))
 
 ;; Package: yasnippet
 ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
@@ -843,6 +859,10 @@
 (wrap-region-global-mode t)
 ;; org 모드에서 + wrapping을 해준다
 (wrap-region-add-wrapper "+" "+" nil 'org-mode)  ; strikethrough
+
+;; PACKAGE: doc-view-mode
+;; ed: linum-mode가 있으면 pdf viewer가 매우 느려진다
+(add-hook 'doc-view-mode-hook (lambda () (linum-mode -1)))
 
 ;; PACKAGE: which-func
 ;; 현재 라인이 가리키고 있는 함수를 위에 상태창에 표시합니다
@@ -927,204 +947,6 @@
 
 ;; PACKAGE: smart-mode-line
 (sml/setup)
-
-;; Variable Customizing
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(async-bytecomp-allowed-packages (quote (async helm helm-core helm-ls-git helm-ls-hg magit)))
- '(auto-hscroll-mode t)
- '(avy-keys
-   (quote
-    (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
- '(avy-style (quote at-full))
- '(column-number-mode t)
- '(cua-mode t nil (cua-base))
- '(custom-enable-theme (quote (solarized-dark)))
- '(custom-safe-themes
-   (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
- '(ecb-layout-name "right1")
- '(ecb-layout-window-sizes
-   (quote
-    (("right1"
-      (ecb-directories-buffer-name 0.3151515151515151 . 0.20833333333333334)
-      (ecb-sources-buffer-name 0.3151515151515151 . 0.2916666666666667)
-      (ecb-methods-buffer-name 0.3151515151515151 . 0.4791666666666667))
-     ("left14"
-      (ecb-directories-buffer-name 0.271523178807947 . 0.7317073170731707)
-      (ecb-history-buffer-name 0.271523178807947 . 0.24390243902439024)))))
- '(ecb-options-version "2.50")
- '(ecb-tip-of-the-day nil)
- '(evil-mode-line-format (quote (after)))
- '(find-file-visit-truename t)
- '(git-gutter:added-sign "+")
- '(git-gutter:deleted-sign "-")
- '(git-gutter:modified-sign ">")
- '(helm-bookmark-show-location t)
- '(org-agenda-files
-   (quote
-    ("")))
- '(org-capture-after-finalize-hook nil)
- '(org-capture-bookmark nil)
- '(org-capture-prepare-finalize-hook
-   (quote
-    ((lambda nil
-       (goto-line
-        (+
-         (line-number-at-pos)
-         -2))
-       (beginning-of-line)
-       (insert "*"))
-     (lambda nil
-       (progn
-         (setq num 1)
-         (loop
-          (< num 2000)
-          (let
-              ((numbering
-                (concat "#"
-                        (number-to-string num)))
-               (content
-                (with-current-buffer
-                    (cadr
-                     (split-string
-                      (buffer-name)
-                      "-"))
-                  (buffer-substring-no-properties
-                   (point-min)
-                   (point-max))))
-               (capture_content
-                (with-current-buffer
-                    (buffer-name)
-                  (buffer-substring-no-properties
-                   (point-min)
-                   (point-max)))))
-            (if
-                (string-match "[*][*][*][*]" capture_content)
-                (if
-                    (save-excursion
-                      (goto-char
-                       (point-min))
-                      (string-match numbering content))
-                    nil
-                  (return
-                   (progn
-                     (end-of-line)
-                     (insert numbering))))
-              (return))
-            (setq num
-                  (1+ num)))))))))
- '(org-default-priority 67)
- '(org-hide-emphasis-markers t)
- '(org-keep-stored-link-after-insertion t)
- '(org-lowest-priority 69)
- '(org-scheduled-delay-days 0)
- '(org-tags-column 50)
- '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
- '(package-selected-packages
-   (quote
-    (ov ox-twbs use-package smart-mode-line pomodoro tea-time sr-speedbar mic-paren htmlize org-preview-html yasnippet undo-tree solarized-theme smartparens rainbow-delimiters key-chord helm-swoop helm-projectile ecb duplicate-thing anzu)))
- '(pomodoro-break-time 5)
- '(pomodoro-extra-time 5)
- '(pomodoro-play-sounds nil)
- '(pomodoro-work-time 25)
- '(safe-local-variable-values
-   (quote
-    ((eval font-lock-add-keywords nil
-           (\`
-            (((\,
-               (concat "("
-                       (regexp-opt
-                        (quote
-                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
-                        t)
-                       "\\_>"))
-              1
-              (quote font-lock-variable-name-face))))))))
- '(sml/battery-format "")
- '(sml/col-number-format "")
- '(sml/full-mode-string " ")
- '(sml/line-number-format "")
- '(sml/mode-width 2)
- '(sml/modified-char "* ")
- '(sml/numbers-separator "")
- '(sml/position-percentage-format "")
- '(sml/prefix-face-list (quote ((":SU:" sml/sudo) (":G" sml/git) ("" sml/prefix))))
- '(sml/prefix-regexp (quote (":\\(.*:\\)" "\\[.*]" "~/")))
- '(sml/projectile-replacement-format "[%s] ")
- '(sml/read-only-char "R ")
- '(sml/shorten-directory nil)
- '(sml/show-client t)
- '(sml/show-remote nil)
- '(sml/show-trailing-N nil)
- '(sml/size-indication-format "")
- '(sml/use-projectile-p (quote before-prefixes))
- '(sml/vc-mode-show-backend nil)
- '(sp-base-key-bindings nil)
- '(speedbar-update-flag t)
- '(vc-follow-symlinks t)
- '(yas-also-auto-indent-first-line t)
- '(yas-also-indent-empty-lines t))
-
-;; Custom Face + 영어폰트 설정  (height 부분을 바꾸면 크기가 바뀝니다)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 121 :width normal))))
- '(avy-lead-face ((t (:inherit isearch :background "orange"))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "orange"))))
- '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
- '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
- '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
- '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
- '(diff-refine-added ((t (:background "olive drab"))))
- '(diff-refine-changed ((t (:background "nil"))))
- '(diff-refine-removed ((t (:background "firebrick"))))
- '(diff-removed ((t (:background "brown" :foreground "white smoke"))))
- '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
- '(font-lock-comment-face ((t (:foreground "forest green"))))
- '(hi-blue ((t (:background "blue" :foreground "#5c95b9"))))
- '(hi-blue-b ((t (:background "cyan" :foreground "#49a19a" :weight bold))))
- '(hi-green ((t (:background "green" :foreground "#8c9d50"))))
- '(hi-green-b ((t (:background "chartreuse" :foreground "#899b30" :weight bold))))
- '(hi-pink ((t (:background "pink" :foreground "#b36b91"))))
- '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
- '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
- '(highlight ((t (:background "grey"))))
- '(magit-diff-hunk-heading ((t (:background "black"))))
- '(magit-diff-hunk-heading-highlight ((t (:background "black"))))
- '(org-agenda-calendar-event ((t (:foreground "#586e75"))))
- '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
- '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
- '(org-block ((t (:foreground "dark gray"))))
- '(org-block-begin-line ((t (:background "dim gray" :foreground "dark gray" :weight normal))))
- '(org-block-end-line ((t (:background "dim gray" :foreground "dark gray" :weight normal))))
- '(org-date ((t (:background "black" :foreground "#839496" :underline nil :weight bold :height 0.75))))
- '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
- '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
- '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
- '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
- '(org-link ((t (:foreground "orange" :box nil :underline t :weight normal))))
- '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
- '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
- '(org-scheduled ((t (:foreground "#268bd2"))))
- '(org-scheduled-previously ((t (:foreground "#586e75"))))
- '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
- '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.7))))
- '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold)))))
-
-
-
 
 
 ;; 다중모니터에서 C-x-5-2를 통해서 새로운 frame을 생성한 다음에 모니터가 작아서 폰트사이즈가 작은 경우 폰트크기를 크게하기 위해 설정한 함수
@@ -1441,8 +1263,11 @@ Version 2017-04-19"
 ;; f3 키로 다음 창으로 이동
 (global-set-key [f3] 'next-multiframe-window)
 
-;; f4 키로 org-sparse-tree 명령어 실행 (for org-mode)
-(global-set-key [f4] 'org-sparse-tree)
+;; f4 키로 org-show-todo-tree 명령어 실행 (for org-mode)
+(global-set-key [f4] '(lambda() (interactive)(org-show-todo-tree '(4))))
+
+;; f5 키로 org-match-sparse-tree 명령어 실행 (for org-mode)
+(global-set-key [f5] 'org-match-sparse-tree)
 
 ;; f6 키로 ECB 시작
 (global-set-key [f6] 'ecb-minor-mode)
@@ -1774,6 +1599,7 @@ created by edward 180515"
 ;; C-c 8,9 키로 .emacs .emacs_w 파일을 열도록 설정합니다
 (global-set-key (kbd "C-c 8") (lambda() (interactive)(find-file "e:/gitrepo/lockdpwn/zet_cetera/dot_files/.emacs")))
 (global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "e:/gitrepo/lockdpwn/zet_cetera/dot_files/.emacs_w")))
+(global-set-key (kbd "C-c 0") (lambda() (interactive)(find-file "~/.emacs")))
 
 ;; revert buffer를 파라미터와 같이 함수화한 코드
 (defun my-revert-buffer()
@@ -2376,4 +2202,217 @@ created by edward 180515"
 ;; Disable Beeping when using VNC
 (setq visible-bell 1)
 
-(message "[+] All Settings are loaded!")
+;; Variable Customizing
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(async-bytecomp-allowed-packages (quote (async helm helm-core helm-ls-git helm-ls-hg magit)))
+ '(auto-hscroll-mode t)
+ '(avy-keys
+   (quote
+    (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
+ '(avy-style (quote at-full))
+ '(column-number-mode t)
+ '(company-backends
+   (quote
+    (company-nxml company-css company-eclim company-clang company-xcode company-cmake company-capf company-files
+                  (company-dabbrev-code company-etags company-keywords)
+                  company-oddmuse company-dabbrev)))
+ '(company-idle-delay 0.3)
+ '(cua-mode t nil (cua-base))
+ '(custom-enable-theme (quote (solarized-dark)))
+ '(custom-safe-themes
+   (quote
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(ecb-layout-name "right1")
+ '(ecb-layout-window-sizes
+   (quote
+    (("right1"
+      (ecb-directories-buffer-name 0.3151515151515151 . 0.20833333333333334)
+      (ecb-sources-buffer-name 0.3151515151515151 . 0.2916666666666667)
+      (ecb-methods-buffer-name 0.3151515151515151 . 0.4791666666666667))
+     ("left14"
+      (ecb-directories-buffer-name 0.271523178807947 . 0.7317073170731707)
+      (ecb-history-buffer-name 0.271523178807947 . 0.24390243902439024)))))
+ '(ecb-options-version "2.50")
+ '(ecb-tip-of-the-day nil)
+ '(elpy-modules
+   (quote
+    (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
+ '(evil-mode-line-format (quote (after)))
+ '(find-file-visit-truename t)
+ '(git-gutter:added-sign "+")
+ '(git-gutter:deleted-sign "-")
+ '(git-gutter:modified-sign ">")
+ '(helm-bookmark-show-location t)
+ '(org-agenda-files (quote ("")))
+ '(org-bullets-bullet-list (quote ("\342뿁" "\342뿃" "\342쑙" "\342쑠" "*")))
+ '(org-capture-after-finalize-hook nil)
+ '(org-capture-bookmark nil)
+ '(org-capture-prepare-finalize-hook
+   (quote
+    ((lambda nil
+       (goto-line
+        (+
+         (line-number-at-pos)
+         -2))
+       (beginning-of-line)
+       (insert "*"))
+     (lambda nil
+       (progn
+         (setq num 1)
+         (loop
+          (< num 2000)
+          (let
+              ((numbering
+                (concat "#"
+                        (number-to-string num)))
+               (content
+                (with-current-buffer
+                    (cadr
+                     (split-string
+                      (buffer-name)
+                      "-"))
+                  (buffer-substring-no-properties
+                   (point-min)
+                   (point-max))))
+               (capture_content
+                (with-current-buffer
+                    (buffer-name)
+                  (buffer-substring-no-properties
+                   (point-min)
+                   (point-max)))))
+            (if
+                (string-match "[*][*][*][*]" capture_content)
+                (if
+                    (save-excursion
+                      (goto-char
+                       (point-min))
+                      (string-match numbering content))
+                    nil
+                  (return
+                   (progn
+                     (end-of-line)
+                     (insert numbering))))
+              (return))
+            (setq num
+                  (1+ num)))))))))
+ '(org-default-priority 67)
+ '(org-hide-emphasis-markers t)
+ '(org-keep-stored-link-after-insertion t)
+ '(org-link-file-path-type (quote relative))
+ '(org-lowest-priority 69)
+ '(org-scheduled-delay-days 0)
+ '(org-tags-column 50)
+ '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
+ '(package-selected-packages
+   (quote
+    (ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+ '(per-buffer-theme/default-theme (quote solarized-dark))
+ '(per-buffer-theme/ignored-buffernames-regex
+   (quote
+    ("*[Mm]ini" "*[Hh]elm" "*[Cc]alendar" "*[Cc]alc" "*SPEEDBAR*" "*NeoTree*")))
+ '(per-buffer-theme/themes-alist
+   (quote
+    (((:theme . solarized-light)
+      (:buffernames "dl_network_model.org" "convex_optimization.org")
+      (:modes nil)))))
+ '(per-buffer-theme/timer-idle-delay 0.0)
+ '(pomodoro-break-time 5)
+ '(pomodoro-extra-time 5)
+ '(pomodoro-play-sounds nil)
+ '(pomodoro-work-time 25)
+ '(safe-local-variable-values
+   (quote
+    ((eval font-lock-add-keywords nil
+           (\`
+            (((\,
+               (concat "("
+                       (regexp-opt
+                        (quote
+                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
+                        t)
+                       "\\_>"))
+              1
+              (quote font-lock-variable-name-face))))))))
+ '(sml/battery-format "")
+ '(sml/col-number-format "")
+ '(sml/full-mode-string " ")
+ '(sml/line-number-format "")
+ '(sml/mode-width 2)
+ '(sml/modified-char "* ")
+ '(sml/numbers-separator "")
+ '(sml/position-percentage-format "")
+ '(sml/prefix-face-list (quote ((":SU:" sml/sudo) (":G" sml/git) ("" sml/prefix))))
+ '(sml/prefix-regexp (quote (":\\(.*:\\)" "\\[.*]" "~/")))
+ '(sml/projectile-replacement-format "[%s] ")
+ '(sml/read-only-char "R ")
+ '(sml/shorten-directory nil)
+ '(sml/show-client t)
+ '(sml/show-remote nil)
+ '(sml/show-trailing-N nil)
+ '(sml/size-indication-format "")
+ '(sml/use-projectile-p (quote before-prefixes))
+ '(sml/vc-mode-show-backend nil)
+ '(sp-base-key-bindings nil)
+ '(speedbar-update-flag t)
+ '(vc-follow-symlinks t)
+ '(yas-also-auto-indent-first-line t)
+ '(yas-also-indent-empty-lines t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 121 :width normal))))
+ '(avy-lead-face ((t (:inherit isearch :background "orange"))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "orange"))))
+ '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
+ '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
+ '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
+ '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
+ '(diff-refine-added ((t (:background "olive drab"))))
+ '(diff-refine-changed ((t (:background "nil"))))
+ '(diff-refine-removed ((t (:background "firebrick"))))
+ '(diff-removed ((t (:background "brown" :foreground "white smoke"))))
+ '(ein:cell-input-area ((t (:background "black"))))
+ '(ein:cell-input-prompt ((t (:inherit header-line :foreground "deep sky blue"))))
+ '(ein:cell-output-prompt ((t (:inherit header-line :foreground "red"))))
+ '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
+ '(font-lock-comment-face ((t (:foreground "forest green"))))
+ '(hi-blue ((t (:background "blue" :foreground "#5c95b9"))))
+ '(hi-blue-b ((t (:background "cyan" :foreground "#49a19a" :weight bold))))
+ '(hi-green ((t (:background "green" :foreground "#8c9d50"))))
+ '(hi-green-b ((t (:background "chartreuse" :foreground "#899b30" :weight bold))))
+ '(hi-pink ((t (:background "pink" :foreground "#b36b91"))))
+ '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
+ '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
+ '(highlight ((t (:background "grey"))))
+ '(magit-diff-hunk-heading ((t (:background "black"))))
+ '(magit-diff-hunk-heading-highlight ((t (:background "black"))))
+ '(org-agenda-calendar-event ((t (:foreground "#586e75"))))
+ '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))) t)
+ '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))) t)
+ '(org-block ((t (:foreground "dark gray"))))
+ '(org-block-begin-line ((t (:background "dim gray" :foreground "dark gray" :weight normal))) t)
+ '(org-block-end-line ((t (:background "dim gray" :foreground "dark gray" :weight normal))) t)
+ '(org-date ((t (:background "black" :foreground "#839496" :underline nil :weight bold :height 0.75))))
+ '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
+ '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
+ '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
+ '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
+ '(org-link ((t (:foreground "orange" :box nil :underline t :weight normal))))
+ '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
+ '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
+ '(org-scheduled ((t (:foreground "#268bd2"))))
+ '(org-scheduled-previously ((t (:foreground "#586e75"))))
+ '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
+ '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
+ '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.7))))
+ '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold)))))
