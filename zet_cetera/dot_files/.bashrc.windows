@@ -19,6 +19,7 @@ alias gc='git checkout'
 alias push='git push'
 alias pull='git pull'
 
+alias up='cd /c/Users/edward'
 
 alias sob='source ~/.bashrc'
 
