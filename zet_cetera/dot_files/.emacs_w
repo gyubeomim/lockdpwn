@@ -1,8 +1,6 @@
 ;;; MELPA와 MARMALADE 저장소를 package list에 추가합니다
 (require 'package)
 
-;; COMMENT OUT
-;;(add-to-list 'package-archives'("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("melpa" . "http://stable.melpa.org/packages/") t)
@@ -14,62 +12,31 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defconst demo-packages
   '(
+    ;;anzu                 ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
     duplicate-thing        ;; M-c 키로 현재 행을 그대로 복사하는 패키지
     helm                   ;; 파일목록이나 최근사용하 파일들, 버퍼를 쉽게 볼 수 있게 해주는 패키지
     helm-projectile
-    ;; helm-gtags
     helm-swoop
-    clean-aindent-mode
-    ws-butler              ;; whitespace를 알아서 제거해주는 패키지
     projectile
     undo-tree              ;; Alt + z 키를 통해 undo한 목록들을 볼 수 있는 패키지
     smartparens            ;; {}, [] 등 자동으로 괄호를 닫아주는 패키지
-    auto-complete          ;; 단어 자동완성 패키지
     ecb                    ;; Emacs Code Browser의 약자로 코드를 상세하게 분석할 수 있게 해주는 패키지
-    dtrt-indent            ;; 여러 파일들이 하나는 탭, 하나는 스페이스로 공백이 되어있을 경우 emacs가 알아서 처리하게 해주는 패키지
-    google-c-style         ;; 들여쓰기 형식을 google style (구글 엔지니어들 스타일인듯)로 해주는 패키지
-    etags                  ;; 함수나 여러 변수들의 선언을 찾아볼 수 있게 해주는 패키지
     key-chord              ;; 여러 쉬운 단축키들을 등록해주 수 있는 패키지 ( '..'키를 등록했습니다 )( 클래스 자동완성으로 등록 )
     rainbow-delimiters     ;; 괄호를 색색깔있게 바꿔줍니다
-    jedi                   ;; 파이썬용 jedi 패키지 (terminal 창에서 $ pip install jedi epc pylint virtualenv 를 쳐줘야 정상작동하는듯 하다)
-    arduino-mode           ;; 만약 아두이노를 사용한다면 추가해줍니다
-    highlight-indentation  ;; 파이썬용 들여쓰기 라인을 보여주는 패키지 (Alt + l로 설정했다)
-    ess                    ;; R 언어 전용 패키지입니다
-    ;;gtags                  ;; 함수나 여러 변수들의 선언을 찾아볼 수 있게 해주는 패키지
     highlight-symbol       ;; 같은 단어들 하이라이팅 해주는 패키지 (보기 좋게 글자를 색상을 칠해준다)
     ;; highlight-symbol.el 파일에서
     ;; highlight-symbol-colors ==> highlight-symbol-color로 수정한다 (색깔을 제대로 표시하지 못한다)
     ;; 바로 적용이 안되므로 .elc 파일을 삭제하던지 아니면 M-x : byte-compile-file을 실시한다
     yasnippet              ;; 여러가지 자주 사용하는 구문들을 쉽게 사용할 수 있게 템플릿 형식으로 제공해주는 패키지
     ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
-    ;;hide-comnt             ;; 주석을 감췄다 보여줬다 하는 패키지 (F9 단축키)
-    php-mode               ;; php 모드를 활성화합니다 (~/.emacs.d/elpa/php-mode.../php-mode.elc 파일이 잘못된 듯 합니다 이걸 삭제해주면 정상적으로 실행됩니다)
-    flycheck               ;; 코드의 오류를 검사해주는 패키지
-    robe                   ;; Ruby 관련된 패키지들 : 변수, 함수로 이동할 수 있는 패키지 : robe start를 입력해줘야 합니다
-    inf-ruby               ;; Ruby 관련된 패키지들 : ruby shell (irb)를 사용할 수 있는 패키지
-    rvm                    ;; Ruby 관련된 패키지들 : ruby version 관리해주는 패키지
-
-    yaml-mode              ;; .yaml 구문을 하이라이팅해주는 패키지
-    nxml                   ;; xml 구문들을 folding하기 위한 패키지
-    lua-mode               ;; lua 언어를 하이라이팅해주는 패키지
-    protobuf-mode          ;; .proto (google protocol buffer) 하이라이팅해주는 패키지
-    csharp-mode            ;; C# 구문을 하이라이팅해주는 패키지
-    multi-term             ;; 여러 터미널을 emacs에서 실행하 수 있게 해주는 패키지
     which-key              ;; 단축키들의 목록을 보여주는 패키지
     magit                  ;; emacs용 git 패키지 (Alt + \ 단축키)
     iedit                  ;; 단어들의 일괄편집을 해주는 패키지 (Alt + [ 단축키)
     wgrep                  ;; 프로젝트 내 grep 후 한개의 버퍼에서 모든 파일 수정하는 패키지 (grep창에서 C-c C-p 단축키)
     avy                    ;; 편집중 버퍼상의 빠른 이동   (Ctrl + = 단축키)
-    swiper                 ;; 편집중 버퍼상의 빠른 이동2  (Ctrl + - 단축키)
-    eyebrowse              ;; 워크 스페이스 관리 패키지 (다중 윈도우)
-    elpy                   ;; jedi 모드 같이 python code navigation을 해주는 패키지
-    markdown-mode          ;; markdown 구문을 하이라이팅해주는 패키지
-    ein                    ;; emacs에서 Ipython Notebook를 사용하게 해주는 패키지
     org-bullets            ;; org-mode에서 마크 모양을 bullet 모양으로 해주는 패키지
     git-gutter             ;; 수정된 파일의 변경된 라인을 하이라이팅해주는 패키지
     mic-paren              ;; 괄호로 닫혀진 구문이 너무 길어서 한쪽 끝이 안보일 경우 line, number를 알려주는 패키지
-    company                ;; auto-complte와 유사한 코드 자동완성 패키지
-    image+                 ;; .jpg, .png 같은 이미지들의 크기를 조정할 수 있는 패키지
     evil                   ;; Extensible Vim Layout Emacs에서 vim과 같은 레이아웃을 사용할 수 있도록 해주는 패키지
     pomodoro               ;; 일정관리를 위한 Podomoro Timer 패키지
     solarized-theme        ;; solarized 테마
@@ -78,16 +45,19 @@
     easy-jekyll            ;; emacs for jekyll mode
     wrap-region            ;; region 단위로 *,+ 를 입력할 수 있게 해주는 패키지
                            ;; org 모드에서 +{...}+ 을 사용하기 위해 설치한 패키지
-    per-buffer-theme       ;; buffer 별로 다른 theme을 적용할 수 있도록 해주는 패키지
     ox-twbs                ;; org-mode twitter bootstrap .html 파일로 export 해주는 패키지
     ov                     ;; org-mode에서 글자에 색상을 변경하기 위한 overlab 패키지
+    minimap                ;; navigation view sidebar을 생성해주는 패키지
+    latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
 
 
     ;;WINDOWS-----------------------------------
-    ;;anzu                 ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%) (Not for Windows)
     ;;org-gcal               ;; org-mode와 google Calendar를 연동해주는 패키지
     ;;irony                  ;; c++ 코드 자동완성 패키지 (M-x irony-install-server로 설치한다)
     ;;company-irony          ;; c++ 코드 자동완성 패키지
+    ;;helm-gtags
+    ;;gtags                  ;; 함수나 여러 변수들의 선언을 찾아볼 수 있게 해주는 패키지
+    ;;hide-comnt             ;; 주석을 감췄다 보여줬다 하는 패키지 (F9 단축키)
     ;;-----------------------------------
 
     ;; use-package                ;; package를 관리해주는 패키지
@@ -117,10 +87,6 @@
 
 (install-packages)
 
-;; this variables must be set before load helm-gtags
-;; you can change to any prefix key of your choice
-;; (setq helm-gtags-prefix-key "\C-cg")
-
 ;;===========================================================================
 ;;===========================================================================
 
@@ -132,7 +98,6 @@
 ;;(require 'setup-helm-gtags)
 ;;(require 'setup-cedet)
 ;;(require 'setup-editing)
-
 
 
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
@@ -225,115 +190,8 @@
 (helm-mode t)
 
 (provide 'setup-helm)
-;;(require 'helm-gtags)
-
-;;(setq
-;; helm-gtags-ignore-case t
-;; helm-gtags-auto-update t
-;; helm-gtags-use-input-at-cursor t
-;; helm-gtags-pulse-at-cursor t
-;; helm-gtags-prefix-key "\C-cg"
-;; helm-gtags-suggested-key-mapping t
-;;)
-
-;; Enable helm-gtags-mode in Dired so you can jump to any tag
-;; when navigate project tree with Dired
-;;(add-hook 'dired-mode-hook 'helm-gtags-mode)
-
-;; Enable helm-gtags-mode in Eshell for the same reason as above
-;; (add-hook 'eshell-mode-hook 'helm-gtags-mode)
-
-;; Enable helm-gtags-mode in languages that GNU Global supports
-;;(add-hook 'c-mode-hook 'helm-gtags-mode)
-;;(add-hook 'c++-mode-hook 'helm-gtags-mode)
-;;(add-hook 'java-mode-hook 'helm-gtags-mode)
-;;(add-hook 'asm-mode-hook 'helm-gtags-mode)
-;;(add-hook 'python-mode-hook 'helm-gtags-mode)
-
-;; key bindings
-;;(define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
-;;(define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
-;;(define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
-;;(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-;;(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-;;(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
-
-;; gtags 관련해서 자동으로 파일 열고 저장할 때 gtags를 실행하도록 하는 함수들
-;;(gtags-mode t)
-;;(add-hook 'prog-mode-hook 'gtags-mode)
-
-
-(defun gtags-create-or-update ()
-  "create or update the gnu global tag file"
-  (interactive)
-  (if (not (= 0 (call-process "global" nil nil nil " -p"))) ; tagfile doesn't exist?
-      (let ((olddir default-directory)
-            (topdir (read-directory-name
-                     "gtags: top of source tree:" default-directory)))
-        (cd topdir)
-        (shell-command "gtags -q && echo 'created tagfile'")
-        (cd olddir)) ; restore
-    ;;  tagfile already exists; update it
-    (with-temp-buffer
-      (shell-command "global -u && echo 'updated tagfile'" t))))
-
-
-;; (add-hook 'c-mode-common-hook
-;;           (lambda ()
-;;             (gtags-create-or-update)))
-;; (add-hook 'c++-mode-common-hook
-;;           (lambda ()
-;;             (gtags-create-or-update)))
-
-
-(defun gtags-root-dir ()
-  "Return GTAGS Root directory or nil if doesn't exist"
-  (with-temp-buffer
-    (if (zerop (call-process "global" nil t nil "-pr"))
-        (buffer-substring (point-min) (1- (point-max)))
-      nil)))
-
-
-;; gtags를 매번 저장할 때마다 업데이트하는 함수인듯, global -u 커맨드가 핵심커맨드인듯하다
-(defun gtags-update-single (filename)
-  "Update Gtags database for changes in a single file"
-  (interactive)
-  (with-temp-buffer
-    (shell-command "global -u" t))
-  (start-process "update-gtags" "update-gtags" "bash" "-c" (concat "cd " (gtags-root-dir) " ; gtags --single-update " filename )))
-
-
-(defun gtags-update-current-file()
-  (interactive)
-  (defvar filename)
-  (setq filename (replace-regexp-in-string (gtags-root-dir) "." (buffer-file-name (current-buffer))))
-  (gtags-update-single filename)
-  (message "Gtags updated for %s" filename)
-  )
-
-
-(defun gtags-update-hook()
-  "Update GTAGS file incrementally upon saving a file"
-  (when gtags-mode
-    (when (gtags-root-dir)
-      (gtags-update-current-file))))
-
-
-;;(add-hook 'after-save-hook 'gtags-update-hook)
-
-
-;;(provide 'setup-helm-gtags)
-
-
 
 ;;===========================================================================
-;; cedet에 관한 코드들 (auto-complete, cc-mode, semantic...)(단어 자동완성 관련된 코드들)
-
-;; PACKAGE: auto-complete
-(require 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
-
 ;; PACKAGE: semantic
 ;; (require 'semantic)
 ;; (require 'semantic/ia)
@@ -352,24 +210,6 @@
 ;; (semantic-add-system-include "/usr/include/c++/5" 'c-mode)
 ;; (semantic-add-system-include "/usr/include/c++/5" 'c++-mode)
 ;; (semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
-
-
-;; Company mode On
-(global-company-mode)
-
-;; using company-irony
-;; (add-hook 'c-mode-hook '(lambda ()
-;;                           (local-set-key (kbd "<return>") 'newline-and-indent)
-;;                           (linum-mode t)
-;;                           (irony-mode t)
-;;                           ))
-
-;; (add-hook 'c++-mode-hook 'irony-mode)
-;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-;; ;; C++11 에서 추가된 코드들에 대한 자동완성을 하기 위해 추가한 코드
-;; (setq irony-additional-clang-options '("-std=c++11"))
-
-
 
 ;;===========================================================================
 ;; 기타 초기값 설정 코드들
@@ -407,34 +247,9 @@
 (add-hook 'after-make-frame-functions 'set_korean_font_after_loading)
 
 
-;; PACKAGE: dtrt-indent
-(require 'dtrt-indent)
-(dtrt-indent-mode t)
-(setq dtrt-indent-verbosity 0)
-
-;; PACKAGE: ws-butler
-(require 'ws-butler)
-(add-hook 'c-mode-common-hook 'ws-butler-mode)
-(add-hook 'text-mode 'ws-butler-mode)
-(add-hook 'fundamental-mode 'ws-butler-mode)
-
-
-;; PACKAGE: jedi
-;; $ pip install jedi epc pylint virtualenv
-(require 'jedi)
-;; python에서 클래스 이름에 .을 입력하면 자동으로 멤버함수들의 목록을 출력해준다
-(setq jedi:install-server t)
-(setq jedi:complete-on-dot t)
-
 ;; 파이썬 모드 단축키를 설정합니다
 (add-hook 'python-mode-hook
           (lambda ()
-            (jedi:setup)
-            (jedi:ac-setup)
-            (define-key jedi-mode-map (kbd "C-c /") nil)
-            (local-set-key (kbd "M-,") 'jedi:goto-definition-pop-marker)
-            (local-set-key (kbd "M-.") 'jedi:goto-definition)
-
             ;; 파이썬 선택한영역을 < 또는 > 쪽으로 이동합니다
             (local-unset-key (kbd "C-c >"))
             (local-unset-key (kbd "C-c <"))
@@ -443,30 +258,8 @@
             (setq indent-tabs-mode t)
             (setq python-indent-offset 4)
             (setq tab-width 4)
-
-            (elpy-mode)         ;; elpy mode 추가 ("M-t" : elpy-rgrep으로 reference를 찾을 수 있습니다)
             ))
 
-
-;; elpy에서 사용하는 모든 keymap을 비활성화합니다
-(setq elpy-mode-map nil)
-
-;; elpy 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
-(eval-after-load "elpy"
-  (lambda ()
-    ;; Alt + t 키로 reference를 찾아준다 (grep -r 명령어와 비슷하다고 한다)
-    (local-set-key (kbd "M-t") 'elpy-rgrep-symbol)
-
-    ;; elpy-mode에서 부가적으로 실행되는 모든 모듈들을 해제한다
-    (remove-hook 'elpy-modules 'elpy-module-flymake)
-    (remove-hook 'elpy-modules 'elpy-module-yasnippet)
-    (remove-hook 'elpy-modules 'elpy-module-highlight-indentation)
-    (remove-hook 'elpy-modules 'elpy-module-django)
-    (remove-hook 'elpy-modules 'elpy-module-company)
-    (remove-hook 'elpy-modules 'elpy-module-eldoc)
-    (remove-hook 'elpy-modules 'elpy-module-pyvenv)
-    (remove-hook 'elpy-modules 'elpy-module-sane-defaults)
-                          ))
 
 
 ;; PACKAGE : org mode
@@ -528,9 +321,6 @@
   (interactive)
   (browse-url-of-file (concat "./" (car (split-string (buffer-name) "\\.")) ".html"))
   )
-
-;; PACKAGE: per-buffer-theme
-;; (require 'per-buffer-theme)
 
 ;; PACKAGE: org2jekyll
 ;; (require 'org2jekyll)
@@ -1003,18 +793,6 @@
 (global-set-key (kbd "H-S-i") 'highlight-symbol-remove-all)
 
 
-;; PACKAGE: image+
-(require 'image+)
-(imagex-global-sticky-mode t)
-(eval-after-load "image+"
-  (lambda ()
-    ;; C-c = 키로 이미지를 확대한다
-    (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
-    ;; C-+ 키로 이미지 크기를 자동조정한다
-    (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
-    ))
-
-
 ;; Package: yasnippet
 ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
 (require 'yasnippet)
@@ -1037,23 +815,6 @@
 (require 'duplicate-thing)
 (global-set-key (kbd "M-c") 'duplicate-thing)
 
-;; PACKAGE : flycheck
-(require 'flycheck)
-;; c++11에 안맞는 문법이 있을경우(range-based loop 등) 경고 메세지를 띄우는데 이를 무시한다
-(add-hook 'c++-mode-hook
-          (lambda ()
-            (setq flycheck-gcc-language-standard "c++11")
-            (setq flycheck-clang-language-standard "c++11")
-            ))
-
-;; ROS를 사용하는 경우 flycheck #include <ros/ros.h>가 나지 않도록 추가한 코드
-(setq flycheck-clang-include-path (list (expand-file-name "/opt/ros/kinetic/include")))
-
-
-;; emacs syntax warning + error 들을 무시합니다
-(with-eval-after-load 'flycheck
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-  )
 
 ;; PAKCAGE: which-key
 (require 'which-key)
@@ -1062,17 +823,6 @@
 
 ;; PACKAGE: avy
 (require 'avy)
-
-;; PACKGE: eyebrowse
-(require 'eyebrowse)
-(eyebrowse-mode t)
-
-;; C + 1,2,3을 누를때마다 워크스테이션을 생성한다
-(setq eyebrowse-new-workspace t)
-(setq eyebrowse-wrap-around t)
-(setq eyebrowse-switch-back-and-forth t)
-(setq eyebrowse-new-workspace nil)
-(setq eyebrowse-mode-line-style (quote always))
 
 
 ;; PACKAGE: solarized theme
@@ -1088,55 +838,11 @@
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 
-;; PACKAGE: ein
-;; (require 'ein)
-;; jupyter notebook을 킨 상태에서 브라우저가 자동으로 켜지지 않도록 설정합니다
-(setq ein:jupyter-server-args (quote ("--no-browser")))
-(setq ein:use-auto-complete t)
-
-;; ein 모드가 실행되고 난 후 세팅에 관한 코드
-(eval-after-load "ein"
-  '(progn
-     (ein:ipynb-mode)
-
-     ;; ed: ein 단축키 해제
-     (define-key ein:notebook-mode-map (kbd "C-c i") nil)
-     (define-key ein:notebook-mode-map (kbd "H-i") nil)
-     (define-key ein:notebook-mode-map (kbd "C-u") nil)
-     (define-key ein:notebook-mode-map (kbd "C-x C-s") nil)
-     (define-key ein:ipynb-mode-map (kbd "C-c C-o") nil)
-     (define-key ein:ipynb-mode-map (kbd "C-c C-p") nil)
-
-     ;; ed: ein 단축키 등록
-     (define-key ein:notebook-mode-map (kbd "C-w") 'ein:notebook-save-notebook-command)
-     (define-key ein:notebook-mode-map (kbd "C-c C-d") 'ein:worksheet-delete-cell)
-     (define-key ein:notebook-mode-map (kbd "M-<return>") 'ein:worksheet-execute-cell-and-goto-next)
-     ))
-
-;; PACKAGE: flymd
-;; markdown 언어를 볼 수 있게 해주는 패키지 (not used)
-;; (require 'flymd)
-;; markdown을 파이어폭스에서 실행하도록 하는 코드
-;; (defun my-flymd-browser-function (url)
-;;    (let ((browse-url-browser-function 'browse-url-firefox))
-;;      (browse-url url)))
-;; (setq flymd-browser-open-function 'my-flymd-browser-function)
-
-
 ;; PACKAGE: wrap-region
 (require 'wrap-region)
 (wrap-region-global-mode t)
 ;; org 모드에서 + wrapping을 해준다
 (wrap-region-add-wrapper "+" "+" nil 'org-mode)  ; strikethrough
-
-
-;; PACKAGE: highlight-indentation
-(require 'highlight-indentation)
-;;(add-hook 'python-mode-hook 'highlight-indentation-mode)
-;;(add-hook 'js2-mode-hook 'highlight-indentation-mode)
-;; (set-face-font 'highlight-indentation-face "Monospace")
-;; (set-face-background 'highlight-indentation-face "#0d0d0d")
-;; (set-face-attribute 'highlight-indentation-face nil :height 54)
 
 ;; PACKAGE: which-func
 ;; 현재 라인이 가리키고 있는 함수를 위에 상태창에 표시합니다
@@ -1182,55 +888,6 @@
 ;; PACKAGE: wgrep
 (require 'wgrep)
 
-;; PACKAGE: rvm
-;; Ruby 관련된 패키지 설정들
-;; 1. 처음 루비 파일을 연 다음 C-c C-s를 누르면 inf-ruby (irb) 창이 열립니다
-;; 2. 이 때 다시 한 번 C-c C-s를 눌러 robe start 명령어를 실행합니다
-;; 3. C-c C-c 를 눌러 irb 창을 닫습니다.
-;; 그 다음부턴 원하는 함수, 변수의 자동완성과 jump 기능을 사용할 수 있습니다
-(require 'rvm)
-(rvm-use-default)
-(defadvice inf-ruby-console-auto
-    (before activate-rvm-for-robe activate)
-  (rvm-activate-corresponding-ruby))
-
-;;(eval-after-load 'company
-;; '(push 'company-robe company-backends))
-;;(require 'rinari)
-;;(require 'ido)
-;;(ido-mode)
-;;(require 'rhtml-mode)
-;;(global-rinari-mode)
-;;(add-hook 'rhtml-mode-hook
-;;	  (lambda () (rinari-launch)))
-;;(setq rinari-tags-file-name "TAGS")
-;;(add-hook 'ruby-mode-hook 'rinari-launch)
-
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            ;;(local-set-key (kbd "<tab>") 'company-robe)
-            (local-set-key (kbd "C-c C-s") 'inf-ruby-console-auto)))
-
-(add-hook 'inf-ruby-mode-hook
-          (lambda()
-            (local-set-key (kbd "C-c C-s") 'robe-start)
-            ;; (local-set-key (kbd "C-c C-c") 'delete-window)
-            ))
-
-(autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
-;;(add-hook 'ruby-mode-hook 'company-mode)
-(add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'robe-mode-hook 'ac-robe-setup)
-
-;; Package: clean-aindent-mode
-;; (require 'clean-aindent-mode)
-;; (add-hook 'prog-mode-hook 'clean-aindent-mode)
-
-;; Package: ws-butler
-(require 'ws-butler)
-(add-hook 'prog-mode-hook 'ws-butler-mode)
-
 ;; Package: projejctile
 (require 'projectile)
 (projectile-global-mode)
@@ -1242,16 +899,6 @@
 (setq projectile-completion-system 'helm)
 (setq projectile-indexing-method 'alien)
 
-;; Package: arduino-mode
-;; emacs 25.1 버전에서는 왜그런지 모르지만 이 부분에서 에러난다
-;; (require 'arduino-mode)
-;; arduino 아두이노 모드에 자동완성 기능을 추가합니다
-;; (add-hook 'arduino-mode-hook 'auto-complete-mode)
-;; (add-hook 'arduino-mode-hook
-;;          (lambda ()
-;;            (local-set-key (kbd "M-,") 'pop-tag-mark)))
-;; 태그는 etags 기능을 써야하는듯 합니다 terminal >> etags *.ino
-
 ;; highlight symbol mode를 활성화합니다
 (require 'highlight-symbol)
 (add-hook 'c-mode-hook 'highlight-symbol-mode)
@@ -1262,23 +909,6 @@
 ;; hs-minor-mode 를 활성화합니다. 코드를 접엇다 펼쳤다 하는 모드
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
-;; PACKAGE: multi-term
-(require 'multi-term)
-(setq multi-term-program "/bin/bash")
-
-;; C + v 키로 multi-term 모드에서 붙여넣기를 설정한다
-;; multi-term은 term-mode를 사용하므로
-(add-hook 'term-mode-hook
-          (lambda ()
-            (cua-mode)
-
-            (define-key term-raw-map (kbd "C-b") nil)
-            (define-key term-raw-map (kbd "C-q") nil)
-            (define-key term-raw-map (kbd "<S-insert>") nil)
-
-            (define-key term-raw-map (kbd "C-b") 'helm-for-files)
-            (define-key term-mode-map (kbd "C-b") 'helm-for-files)
-            ))
 
 ;; C-c u 키로 cua-mode를 껐다 켰다 합니다
 ;; multi-term을 사용하면 .cpp 버퍼에서 C-c : copy(cua-mode)가 안먹히는 버그가 있는데 이 때 사용하기 위한 단축키
@@ -1294,9 +924,6 @@
 (global-set-key (kbd "C-n") 'make-frame-command)
 (global-set-key (kbd "C-S-n") 'delete-frame)
 
-
-;; PACKAGE: protobuf-mode
-(require 'protobuf-mode)
 
 ;; PACKAGE: smart-mode-line
 (sml/setup)
@@ -1318,12 +945,6 @@
     (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
  '(avy-style (quote at-full))
  '(column-number-mode t)
- '(company-backends
-   (quote
-    (company-nxml company-css company-eclim company-clang company-xcode company-cmake company-capf company-files
-                   (company-dabbrev-code company-etags company-keywords)
-                   company-oddmuse company-dabbrev)))
- '(company-idle-delay 0.3)
  '(cua-mode t nil (cua-base))
  '(custom-enable-theme (quote (solarized-dark)))
  '(custom-safe-themes
@@ -1341,9 +962,6 @@
       (ecb-history-buffer-name 0.271523178807947 . 0.24390243902439024)))))
  '(ecb-options-version "2.50")
  '(ecb-tip-of-the-day nil)
- '(elpy-modules
-   (quote
-    (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
  '(evil-mode-line-format (quote (after)))
  '(find-file-visit-truename t)
  '(git-gutter:added-sign "+")
@@ -1412,17 +1030,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
- '(per-buffer-theme/default-theme (quote solarized-dark))
- '(per-buffer-theme/ignored-buffernames-regex
-   (quote
-    ("*[Mm]ini" "*[Hh]elm" "*[Cc]alendar" "*[Cc]alc" "*SPEEDBAR*" "*NeoTree*")))
- '(per-buffer-theme/themes-alist
-   (quote
-    (((:theme . solarized-light)
-      (:buffernames "dl_network_model.org" "convex_optimization.org")
-      (:modes nil)))))
- '(per-buffer-theme/timer-idle-delay 0.0)
+    (ov ox-twbs use-package smart-mode-line pomodoro tea-time sr-speedbar mic-paren htmlize org-preview-html yasnippet undo-tree solarized-theme smartparens rainbow-delimiters key-chord helm-swoop helm-projectile ecb duplicate-thing anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
@@ -1471,7 +1079,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
+ '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 121 :width normal))))
  '(avy-lead-face ((t (:inherit isearch :background "orange"))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "orange"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
@@ -1482,9 +1090,6 @@
  '(diff-refine-changed ((t (:background "nil"))))
  '(diff-refine-removed ((t (:background "firebrick"))))
  '(diff-removed ((t (:background "brown" :foreground "white smoke"))))
- '(ein:cell-input-area ((t (:background "black"))))
- '(ein:cell-input-prompt ((t (:inherit header-line :foreground "deep sky blue"))))
- '(ein:cell-output-prompt ((t (:inherit header-line :foreground "red"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
  '(font-lock-comment-face ((t (:foreground "forest green"))))
  '(hi-blue ((t (:background "blue" :foreground "#5c95b9"))))
@@ -1544,8 +1149,8 @@
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
-(define-key c++-mode-map (kbd "C-=") 'zoom-frame)
-(define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
+;;(define-key c++-mode-map (kbd "C-=") 'zoom-frame)
+;;(define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
 
 
@@ -1792,51 +1397,6 @@
 ;; (eval-after-load "ecb" (lambda ()
 ;;                          (semantic-mode t)
 ;;                          ))
-
-;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수 (NOT USED)
-(defun make_TAGS_file (&optional path)
-  "make TAGS file"
-  (interactive (list (read-file-name "path to make TAGS : " default-directory)))
-  (with-temp-buffer
-    (shell-command (concat "find " (concat path) (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
-  )
-
-;; 현재 위치에서 TAGS 파일을 생성해주는 함수
-(defun make_TAGS_file_auto (&optional path)
-  "make TAGS file automatically"
-  (interactive)
-  (with-temp-buffer
-    (shell-command (concat "find " default-directory (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
-  )
-
-;; M-? 키를 이용해 자동으로 GTAGS && TAGS file을 만든다.
-;;(global-set-key (kbd "M-?") '(lambda ()
-;;                               (interactive)
-;;                              (make_TAGS_file_auto)
-;;                               (helm-gtags-create-tags default-directory "default")
-;;                               (revert-buffer)
-;;                               ))
-
-
-;; PACKAGE: google-c-style
-(require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
-(add-hook 'c++-mode-common-hook 'google-set-c-style)
-(add-hook 'c++-mode-common-hook 'google-make-newline-indent)
-
-
-;; C언어 모드에서 자동정렬 (들여쓰기 스타일)
-(add-hook 'c-mode-hook
-          '(lambda ()
-             (c-set-style "google")))
-
-
-;;C++ 모드 자동정렬 (들여쓰기 스타일)
-(add-hook 'c++-mode-hook
-          '(lambda ()
-             (c-set-style "google")))
-
 
 ;; 영어 대문자, 소문자를 토글해주는 함수
 (defun xah-toggle-letter-case ()
@@ -2207,10 +1767,6 @@ created by edward 180515"
 (setq compile-command "g++ -m64 -std=c++11 -g -o ")
 
 
-;; eyebrowse 모드에서 C-1,2,3키로 워크스페이스를 변경합니다 (not used)
-;; (global-set-key (kbd "C-1") 'eyebrowse-switch-to-window-config-0)
-;; (global-set-key (kbd "C-2") 'eyebrowse-switch-to-window-config-1)
-;; (global-set-key (kbd "C-3") 'eyebrowse-switch-to-window-config-2)
 ;; Ctrl + 1 키로 현재 버퍼를 업데이트합니다
 ;; (global-set-key (kbd "C-1") 'my-revert-buffer)
 ;; (define-key undo-tree-map (kbd "C-1") 'my-revert-buffer)
@@ -2251,12 +1807,6 @@ created by edward 180515"
 ;; Ctrl + Shift + 5 (C-%) 키로 projectile에 project를 추가합니다
 (global-set-key (kbd "C-%") 'projectile-add-known-project)
 
-;; Ctrl + ^키로 jupyter notebook 서버를 실행합니다
-(global-set-key (kbd "C-^") 'ein:jupyter-server-start)
-
-;; Ctrl + 6키로 remote 접속을 위한 notebooklist-login 명령어를 설정합니다
-(global-set-key (kbd "C-6") 'ein:notebooklist-login)
-
 ;; Ctrl + 7 키로 선택한 버퍼를 닫습니다
 (global-set-key (kbd "C-7") 'buffer-menu)
 
@@ -2278,47 +1828,6 @@ created by edward 180515"
 ;; Ctrl + 0 키로 Customize Variable 명령어를 사용한다
 (global-set-key (kbd "C-0") 'customize-variable)
 
-;; Alt + 1 키로 multi terminal을 실행합니다
-(global-set-key (kbd "M-1") 'multi-term)
-
-;; multi-term + 화면분할 및 이동을 자동으로 해주는 함수 by edward
-(defun my-multi-term ()
-  (interactive)
-  (setq num 1)
-  (loop (< num 10)
-        (let ((terminal_name (concat "*terminal<" (number-to-string num) ">*")))
-          (if (get-buffer terminal_name)
-              (if (eq (count-windows) 1)
-                  (return (progn
-                            (split-window-vertically)
-                            (next-multiframe-window)
-                            (switch-to-buffer terminal_name)
-                            ))
-                (return (progn
-                          (next-multiframe-window)
-                          (switch-to-buffer terminal_name)
-                          ))
-                )
-            (if (eq (count-windows) 1)
-                (progn
-                  (split-window-vertically)
-                  (next-multiframe-window)
-                  (multi-term)
-                  (switch-to-buffer terminal_name)
-                  (return))
-              (progn
-                (next-multiframe-window)
-                (multi-term)
-                (switch-to-buffer terminal_name)
-                (return))
-              ))
-          )
-        (setq num (1+ num))
-        ))
-
-;; Alt + 2 키로 multi-term으로 화면분할 후 자동으로 이동하도록 설정합니다
-(global-set-key (kbd "M-2") 'my-multi-term)
-
 ;; Alt + 3 키로 다음 윈도우 창으로 이동합니다
 (global-set-key (kbd "M-3") 'next-multiframe-window)
 
@@ -2334,12 +1843,6 @@ created by edward 180515"
 
 ;; Alt + 5 키로 projectile에 project를 제거합니다
 (global-set-key (kbd "M-5") 'projectile-remove-known-project)
-
-;; Alt + 6키로 remote 접속을 위한 notebooklist-open 명령어를 설정합니다
-(global-set-key (kbd "M-6") 'ein:notebooklist-open)
-
-;; Alt + 8 키로 flycheck 기능을 ON/OFF합니다
-(global-set-key (kbd "M-8") 'global-flycheck-mode)
 
 ;; Alt + 9 키로 shell을 불러오는 커맨드를 실행합니다
 (global-set-key (kbd "M-9") 'shell-command)
@@ -2576,9 +2079,6 @@ created by edward 180515"
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
 (global-set-key (kbd "M-/") 'visit-tags-table)
 
-;; C-S-l 키로 python 코드에서 들여쓰기를 보여줍니다
-(global-set-key (kbd "C-S-l") 'highlight-indentation-mode)
-
 
 (defun select-current-line ()
   "Select the current line"
@@ -2702,7 +2202,6 @@ created by edward 180515"
 ;; Ctrl + \ - 키로 창을 가로,세로로 분할합니다
 (global-set-key (kbd "C-c \\") 'split-window-right)
 (global-set-key (kbd "C-c -") 'split-window-vertically)
-(define-key imagex-sticky-mode-map (kbd "C-c -") 'split-window-vertically)
 
 ;; 모든 환경에서 C-i <==> TAB 키를 따로 사용하기 위한 훅 코드
 ;; C-i <==> TAB 이 같은 키로 인식되므로 아래 코드를 추가해준다
@@ -2727,9 +2226,6 @@ created by edward 180515"
                                (define-key custom-mode-map (kbd "C-u") 'evil-scroll-up)
                                (define-key custom-mode-map (kbd "C-d") 'evil-scroll-down)
                               ))
-
-;; C-u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다 (NOT USED)
-;; (global-set-key (kbd "C-u") 'swiper-all)
 
 ;; Alt + a 키로 해당 단어의 reference를 검색해줍니다
 (global-set-key (kbd "M-a") 'helm-projectile-grep)
@@ -2807,44 +2303,14 @@ created by edward 180515"
 (setq key-chord-two-keys-delay 0.1) ; default 0.1
 ;; 1개의 키가 입력되는데 걸리는 시간 설정
 (setq key-chord-one-key-delay 0.17) ; default 0.2
-(key-chord-define-global "66" 'ein:jupyter-server-stop)        ;; jupyter notebook 서버 종료
-(key-chord-define-global ",," 'jedi:complete)                  ;; 코드 자동완성 for python
-;;(key-chord-define-global "xx" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
-;;(key-chord-define-global "zz" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
-;; (key-chord-define-global "xx" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
-;; (key-chord-define-global "cc" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
-;; (key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
-;; (key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
-;;(key-chord-define-global "??" 'split-window-right)             ;; 오른쪽에 새창 만들기 (NOT USED)
-;;(key-chord-define-global ">>" 'split-window-below)             ;; 아래쪽에 새창 만들기 (NOT USED)
-;;(key-chord-define-global "<<" 'ac-complete-semantic-raw)       ;; 코드 자동완성2 (NOT USED)
-
 
 ;; .h header 파일을 c++ 모드로 설정합니다
 ;; 아니면 아래 라인을 적용하지 않고 헤더파일 맨 첫줄에 // -*-c++-*- 구문을 입력합니다
 ;; 아니면 .hpp 파일로 만들면 됩니다
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-
-;; xml 구문을 folding해서 쉽게 보기 위해 아래와 같이 코드를 작성합니다.
-(require 'hideshow)
-(require 'sgml-mode)
-(require 'nxml-mode)
-(add-to-list 'hs-special-modes-alist
-             '(nxml-mode
-               "<!--\\|<[^/>]*[^/]>"
-               "-->\\|</[^/>]*[^/]>"
-               "<!--"
-               sgml-skip-tag-forward
-               nil))
-(add-hook 'nxml-mode-hook 'hs-minor-mode)
-
-;; Alt + g 키로 xml 파일 내에서 코드를 folding할 수 있습니다
-(define-key nxml-mode-map (kbd "M-g") 'hs-toggle-hiding)
-;; nxml(.launch file) 모드에서도 C-c + / 키로 edward.org 파일을 엽니다
-(define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")))
 
 ;; grep-find (C-p) 명령어에서 새로운 grep 창이 열리지 않고 바로 현재창이 바뀌도록 하는 코드
 (eval-when-compile (require 'cl))
