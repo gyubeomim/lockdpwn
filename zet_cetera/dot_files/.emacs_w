@@ -50,7 +50,6 @@
     ov                     ;; org-mode에서 글자에 색상을 변경하기 위한 overlab 패키지
     minimap                ;; navigation view sidebar을 생성해주는 패키지
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
-    pdf-tools              ;; emacs for pdf reader
 
 
     ;;WINDOWS-----------------------------------

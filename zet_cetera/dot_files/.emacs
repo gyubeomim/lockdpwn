@@ -2020,11 +2020,14 @@ Version 2017-04-19"
 ;; f10 라인 실행하고 다음 라인으로
 (global-set-key [f10] 'gud-next)
 
-;; f11 함수안으로 따라 들어간다
-(global-set-key [f11] 'gud-step)
+;; f11 라인 실행하고 다음 라인으로
+(global-set-key [f11] 'toggle-frame-fullscreen)
 
-;; f12 현재 실행중인 함수 리턴후 멈춤
-(global-set-key [f12] 'gud-finish)
+;; f12 함수안으로 따라 들어간다
+(global-set-key [f12] 'gud-step)
+
+;; shift + f12 현재 실행중인 함수 리턴후 멈춤
+(global-set-key [(shift f12)] 'gud-finish)
 
 ;; shift + f10 현재 커서까지 실행하고 멈춤
 (global-set-key [(shift f10)] '(lambda ()
@@ -3030,5 +3033,8 @@ created by edward 180515"
 
 ;; Disable Beeping when using VNC
 (setq visible-bell 1)
+
+;; for org-mode timestamp English ver.
+(setq system-time-locale "C")
 
 (message "[+] All Settings are loaded!")
