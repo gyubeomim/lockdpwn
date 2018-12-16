@@ -473,30 +473,30 @@
      ;;    ))
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
-     (setq org-agenda-files (file-expand-wildcards "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/todo.org"))
-     (setq org-agenda-files (file-expand-wildcards "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/*.org"))
+     (setq org-agenda-files (file-expand-wildcards "e:/gitrepo/ims_org/org_files/todo.org"))
+     (setq org-agenda-files (file-expand-wildcards "e:/gitrepo/ims_org/org_files/*.org"))
 
      ;; C-. 키로 사용할 note 파일
-     ;; (setq org-default-notes-file "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")
+     ;; (setq org-default-notes-file "e:/gitrepo/ims_org/org_files/edward.org")
 
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '((";" "todo.org: [Task]" entry
-                                    (file+headline "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
+                                    (file+headline "e:/gitrepo/ims_org/org_files/todo.org" "Tasks")
                                     "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    (":" "todo.org: [Task]" entry
-                                    (file+headline "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
+                                    (file+headline "e:/gitrepo/ims_org/org_files/todo.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("'" "todo.org: [Issues]" entry
-                                    (file+headline "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Issues")
+                                    (file+headline "e:/gitrepo/ims_org/org_files/todo.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
-                                    (file+headline "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
+                                    (file+headline "e:/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
                                     "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
 
                                    ("n" "note.org: [Note]" entry
-                                    (file+headline "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "Note")
+                                    (file+headline "e:/gitrepo/ims_org/org_files/note.org" "Note")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
@@ -521,11 +521,11 @@
 
                                   ;; .org 파일 여는 명령어 추가
                                   ;; ] 키로 portal.opg 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "]") (lambda() (interactive)(find-file "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
+                                  (define-key org-agenda-mode-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/portal.org")))
                                   ;; [ 키로 note.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "[") (lambda() (interactive)(find-file "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+                                  (define-key org-agenda-mode-map (kbd "[") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/note.org")))
                                   ;; } 키로 특정 pomodoro.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "}") (lambda() (interactive)(find-file "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+                                  (define-key org-agenda-mode-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
 
 
                                   ;; C-' 키로 tag를 설정합니다
@@ -541,7 +541,7 @@
 ;; C-c + a 키로 특정 키워드를 검색합니다
 (global-set-key (kbd "C-c a") (lambda() (interactive)(org-agenda nil "s")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
-(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/todo.org")))
+(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/todo.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; C-? 키로 어느곳에서나 agenda view를 열게합니다
@@ -698,11 +698,11 @@
                                                     (outline-show-subtree))))
 
     ;; ] 키로 portal.opg 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
+    (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/portal.org")))
     ;; [ 키로 note.org 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+    (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/note.org")))
     ;; } 키로 특정 pomodoro.org 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "}") (lambda() (interactive)(find-file "e:/Documents/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+    (define-key evil-motion-state-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
 
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
@@ -2202,7 +2202,7 @@ created by edward 180515"
 ;; Disable Beeping when using VNC
 (setq visible-bell 1)
 
-;; Variable Customizing
+;; Variable Customizing==========================================================================
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -2252,7 +2252,9 @@ created by edward 180515"
  '(git-gutter:modified-sign ">")
  '(helm-bookmark-show-location t)
  '(org-agenda-files (quote ("")))
- '(org-bullets-bullet-list (quote ("\342뿁" "\342뿃" "\342쑙" "\342쑠" "*")))
+ '(org-bullets-bullet-list
+   (quote
+    ("\342肉\201" "\342肉\203" "\342\354몯" "\342\354몺" "*")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2313,7 +2315,7 @@ created by edward 180515"
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (org ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(per-buffer-theme/default-theme (quote solarized-dark))
  '(per-buffer-theme/ignored-buffernames-regex
    (quote
@@ -2397,12 +2399,12 @@ created by edward 180515"
  '(magit-diff-hunk-heading ((t (:background "black"))))
  '(magit-diff-hunk-heading-highlight ((t (:background "black"))))
  '(org-agenda-calendar-event ((t (:foreground "#586e75"))))
- '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))) t)
- '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))) t)
+ '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
+ '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-block ((t (:foreground "dark gray"))))
- '(org-block-begin-line ((t (:background "dim gray" :foreground "dark gray" :weight normal))) t)
- '(org-block-end-line ((t (:background "dim gray" :foreground "dark gray" :weight normal))) t)
- '(org-date ((t (:background "black" :foreground "#839496" :underline nil :weight bold :height 0.75))))
+ '(org-block-begin-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
+ '(org-block-end-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
+ '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.7))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
@@ -2415,4 +2417,5 @@ created by edward 180515"
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.7))))
+ '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold)))))
