@@ -2285,10 +2285,22 @@ created by edward 180515"
             (point-at-eol)
             (quote
              (face
-              (:foreground "red"))))))))))
+              (:foreground "red")))))))
+     (lambda nil
+       (save-excursion
+         (goto-char
+          (point-min))
+         (while
+             (re-search-forward "deadline" nil t)
+           (add-text-properties
+            (match-beginning 0)
+            (point-at-eol)
+            (quote
+             (face
+              (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342\350\346뤃\242\201" "\342\350\346뤃\242\203" "\342\354嶺\214\217\257" "\342\354嶺\214\217\272" "*")))
+    ("\342\350\346琉\203\242\201" "\342\350\346琉\203\242\203" "\342\354癲\253\214\217\257" "\342\354癲\253\214\217\272" "*")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
