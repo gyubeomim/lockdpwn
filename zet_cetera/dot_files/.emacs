@@ -943,6 +943,9 @@
     (define-key evil-motion-state-map (kbd "K") nil)
     (define-key evil-motion-state-map (kbd "TAB") nil)
     (define-key evil-motion-state-map (kbd "`") nil)
+    ;; evil 모드에서 e,E 키로 빠르게 단어를 highlight 합니다
+    (define-key evil-motion-state-map (kbd "e") 'highlight-symbol)
+    (define-key evil-motion-state-map (kbd "E") 'highlight-symbol-remove-all)
     ;; evil 모드에서 f 키로 빠르게 단어 사이를 이동합니다
     (define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
@@ -1055,13 +1058,6 @@
 
 ;; Ctrl + w 키로 helm-find-files 명령을 실행합니다
 (global-set-key (kbd "C-w") 'helm-find-files)
-
-;; Ctrl + i 키로 단어 하이라이트(특정 단어만 색깔강조하기)
-(global-set-key (kbd "H-i") 'highlight-symbol)
-
-;; Ctrl + Shift + i 키로 단어 하이라이트 모두 지우기
-(global-set-key (kbd "H-S-i") 'highlight-symbol-remove-all)
-
 
 ;; PACKAGE: image+
 (require 'image+)
@@ -1436,7 +1432,7 @@
  '(org-agenda-files
    (quote
     ("~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
-  '(org-agenda-finalize-hook
+ '(org-agenda-finalize-hook
    (quote
     ((lambda nil
        (save-excursion
@@ -1642,7 +1638,7 @@
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.7))))
- '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold))))
+ '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold)))))
 
 
