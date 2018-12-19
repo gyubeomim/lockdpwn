@@ -774,6 +774,8 @@
                                   (define-key org-agenda-mode-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
                                   ;; } 키로 특정 pomodoro.org 파일을 엽니다
                                   (define-key org-agenda-mode-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+                                  ;; { 키로 특정 paper_researh.org 파일을 엽니다
+                                  (define-key org-agenda-mode-map (kbd "{") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
 
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
@@ -798,8 +800,10 @@
                 (add-text-properties (match-beginning 0) (point-at-eol)
                                      '(face (:foreground "dark orange"))
                                      )))))
-;; C-\ 키로 태그를 검색합니다
+;; C-\ 키로 현재 날짜를 입력합니다
 (global-set-key (kbd "C-\\") 'org-time-stamp)
+;; C-| 키로 현재 날짜(+HH:MM)을 입력합니다
+(global-set-key (kbd "C-|") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
 ;; C-c + s 키로 태그를 검색합니다
 (global-set-key (kbd "C-c s") 'org-tags-view)
 ;; C-c + a 키로 특정 키워드를 검색합니다
@@ -962,6 +966,9 @@
     (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
     ;; } 키로 특정 pomodoro.org 파일을 엽니다
     (define-key evil-motion-state-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+    ;; { 키로 특정 paper_researh.org 파일을 엽니다
+    (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
+
     ;; org-mode에서 , . 키로 strike-through를 설정합니다
     (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
     (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
