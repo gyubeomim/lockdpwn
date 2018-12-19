@@ -1533,7 +1533,7 @@
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
  '(org-keep-stored-link-after-insertion t)
- '(org-link-file-path-type (quote absolute))
+ '(org-link-file-path-type (quote relative))
  '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
  '(org-tags-column 50)
