@@ -396,10 +396,10 @@
      ;; C-c v,b 키로 org-table 모드에서 열과 행을 추가합니다
      (define-key org-mode-map (kbd "C-c b") 'org-table-insert-row)
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
-     ;; ;; C+| 키로 영역을 table화 합니다
-     ;; (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
-     ;; C-| 키로 현재 날짜(+HH:MM)을 입력합니다
-     (define-key org-mode-map (kbd "C-|") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
+     ;; C+| 키로 영역을 table화 합니다
+     (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
+     ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
+     (define-key org-mode-map (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
      ;; C+/ 키로 org todo list를 실행합니다
      (define-key org-mode-map (kbd "C-/") 'org-todo-list)
      ;; C+? 키로 agenda를 실행합니다
@@ -541,8 +541,8 @@
 
 ;; C-\ 키로 태그를 검색합니다
 (global-set-key (kbd "C-\\") 'org-time-stamp)
-;; C-| 키로 현재 날짜(+HH:MM)을 입력합니다
-(global-set-key (kbd "C-|") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
+;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
+(global-set-key (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
 ;; C-c + s 키로 태그를 검색합니다
 (global-set-key (kbd "C-c s") 'org-tags-view)
 ;; C-c + a 키로 특정 키워드를 검색합니다
