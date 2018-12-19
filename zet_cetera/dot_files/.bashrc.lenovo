@@ -351,6 +351,7 @@ alias ccc='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/ctrl_caps_change.
 
 # for 3 Monitors Toggle ON/OFF
 alias mon='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/monitors_toggle.sh'
+alias mon2='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/monitors_toggle2.sh'
 
 # for hed gitrepository (pycaffe)
 export PYTHONPATH=~/gitrepo/hed/python:$PYTHONPATH

@@ -535,6 +535,16 @@
   (browse-url-of-file (concat "./" (car (split-string (buffer-name) "\\.")) ".html"))
   )
 
+;; org-capture가 끝나고 바로 방금 저장한 capture로 이동하는 함수
+;; org-capture-after-finalize-hook에 등록해야 한다
+(defun after-org-capture-goto-there()
+  (interactive)
+  (org-capture '(16))
+  (if (string= (buffer-name) "pomodoro.org")  ;; pomodoro.org 인 경우 이동하지 않는다
+      (kill-buffer)
+    nil
+  ))
+
 ;; PACKAGE: per-buffer-theme
 ;; (require 'per-buffer-theme)
 
@@ -611,8 +621,10 @@
      ;; C-c v,b 키로 org-table 모드에서 열과 행을 추가합니다
      (define-key org-mode-map (kbd "C-c b") 'org-table-insert-row)
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
-     ;; C+| 키로 영역을 table화 합니다
-     (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
+     ;; ;; C+| 키로 영역을 table화 합니다
+     ;; (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
+     ;; C-| 키로 현재 날짜(+HH:MM)을 입력합니다
+     (define-key org-mode-map (kbd "C-|") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
      ;; C+/ 키로 org todo list를 실행합니다
      (define-key org-mode-map (kbd "C-/") 'org-todo-list)
      ;; C+? 키로 agenda list를 실행합니다
@@ -1478,7 +1490,7 @@
              (face
               (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
- '(org-capture-after-finalize-hook nil)
+ '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -1540,7 +1552,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(per-buffer-theme/default-theme (quote solarized-dark))
  '(per-buffer-theme/ignored-buffernames-regex
    (quote
@@ -3050,6 +3062,7 @@ created by edward 180515"
 (setq visible-bell 1)
 
 ;; for org-mode timestamp English ver.
+;; <2018-12-19 수> ==> <2018-12-19 Wed>
 (setq system-time-locale "C")
 
 (message "[+] All Settings are loaded!")
