@@ -51,6 +51,8 @@
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
 
 
+
+    
     ;;WINDOWS-----------------------------------
     ;;anzu                   ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
     ;;org-gcal               ;; org-mode와 google Calendar를 연동해주는 패키지
@@ -238,7 +240,7 @@
 (set-keyboard-coding-system 'utf-8)
 (set-language-environment "Korean")
 (prefer-coding-system 'utf-8)
-(set-file-name-coding-system 'cp949-dos)
+;; (set-file-name-coding-system 'cp949-dos)
 
 
 ;; emacs --daemon 버전에서 M-x load-file 하거나 새로 켜는 경우 한글폰트를 적용하는 함수
@@ -373,8 +375,10 @@
      (define-key org-mode-map (kbd "<M-S-down>") 'org-shiftdown)
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
-     ;; org capture 기능 단축키 (C-m 이 <return>과 충돌나므로 C-> 으로 변경했다)
-     (define-key org-mode-map (kbd "C->") 'org-capture)
+     ;; C-M-> org capture 기능 단축키 
+     (define-key org-mode-map (kbd "C-M->") 'org-capture)
+     ;; C-> 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
+     (define-key org-mode-map (kbd "C->") (lambda () (interactive)(org-capture nil ":")))
      ;; org capture 기능 단축키 for todo.org
      (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ";")))
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
@@ -392,8 +396,10 @@
      ;; C-c v,b 키로 org-table 모드에서 열과 행을 추가합니다
      (define-key org-mode-map (kbd "C-c b") 'org-table-insert-row)
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
-     ;; C+| 키로 영역을 table화 합니다
-     (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
+     ;; ;; C+| 키로 영역을 table화 합니다
+     ;; (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
+     ;; C-| 키로 현재 날짜(+HH:MM)을 입력합니다
+     (define-key org-mode-map (kbd "C-|") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
      ;; C+/ 키로 org todo list를 실행합니다
      (define-key org-mode-map (kbd "C-/") 'org-todo-list)
      ;; C+? 키로 agenda를 실행합니다
@@ -535,6 +541,8 @@
 
 ;; C-\ 키로 태그를 검색합니다
 (global-set-key (kbd "C-\\") 'org-time-stamp)
+;; C-| 키로 현재 날짜(+HH:MM)을 입력합니다
+(global-set-key (kbd "C-|") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
 ;; C-c + s 키로 태그를 검색합니다
 (global-set-key (kbd "C-c s") 'org-tags-view)
 ;; C-c + a 키로 특정 키워드를 검색합니다
@@ -649,7 +657,12 @@
 
 ;;
 (define-key global-map (kbd "C-c C-e") 'easy-jekyll)
-; (setq easy-jekyll-sshdomain "blogdomain")
+                                        ; (setq easy-jekyll-sshdomain "blogdomain")
+
+;; PACKAGE: minimap
+(require 'minimap)
+(global-set-key (kbd "C-c m") 'minimap-mode)
+
 
 ;; PACKAGE: evil
 (require 'evil)
@@ -1176,6 +1189,13 @@
 ;;최근 사용된 word list를 가지고, 자동 완성구현, 3글자 이후에 M-RET
 (dynamic-completion-mode)
 
+;; PACKAGE: sublimity
+;; (require 'sublimity)
+;; (require 'sublimity-map)
+;; (require 'sublimity-scroll)
+;; (require 'sublimity-attractive)
+;; (sublimity-mode 1)
+
 ;; PACKAGE: mic-paren
 ;; 반대편 괄호의 line number를 알려주는 패키지
 (require 'mic-paren) ; loading
@@ -1270,6 +1290,9 @@ Version 2017-04-19"
 
 ;; f6 키로 ECB 시작
 (global-set-key [f6] 'ecb-minor-mode)
+
+;; f7 키로 latex-preview-pane 모드 시작
+(global-set-key [f7] 'latex-preview-pane-mode)
 
 ;; f8 키로 디버깅 단축키
 (global-set-key [f8] 'gdb)
@@ -1698,6 +1721,7 @@ created by edward 180515"
 (global-unset-key (kbd "S-SPC"))
 (global-unset-key (kbd "C-S-SPC"))
 (global-set-key [(control tab)] 'toggle-input-method)
+(global-set-key (kbd "<kana>") 'toggle-input-method)
 
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.
 (cua-mode)
@@ -2256,6 +2280,12 @@ created by edward 180515"
  '(git-gutter:deleted-sign "-")
  '(git-gutter:modified-sign ">")
  '(helm-bookmark-show-location t)
+ '(minimap-enlarge-certain-faces nil)
+ '(minimap-highlight-line nil)
+ '(minimap-major-modes (quote (prog-mode org-mode)))
+ '(minimap-minimum-width 20)
+ '(minimap-update-delay 0.01)
+ '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
     ("e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/note.org" "e:/gitrepo/ims_org/org_files/pomodoro.org" "e:/gitrepo/ims_org/org_files/pomodoro_old.org" "e:/gitrepo/ims_org/org_files/portal.org" "e:/gitrepo/ims_org/org_files/test.org")))
@@ -2299,7 +2329,7 @@ created by edward 180515"
               (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342\350\346琉\203\242\201" "\342\350\346琉\203\242\203" "\342\354癲\253\214\217\257" "\342\354癲\253\214\217\272" "*")))
+    ("\342\350\346嶺\214\214\203\242\201" "\342\350\346嶺\214\214\203\242\203" "\342\354\347\354녇\253\214\217\257" "\342\354\347\354녇\253\214\217\272" "*")))
  '(org-capture-after-finalize-hook nil)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2443,6 +2473,11 @@ created by edward 180515"
  '(highlight ((t (:background "grey"))))
  '(magit-diff-hunk-heading ((t (:background "black"))))
  '(magit-diff-hunk-heading-highlight ((t (:background "black"))))
+ '(minimap-active-region-background ((t nil)))
+ '(minimap-font-face ((t (:height 30 :family "NanumGothicCoding"))))
+ '(minimap-semantic-function-face ((t (:inherit (font-lock-function-name-face minimap-font-face) :background "#202414" :box (:line-width 1 :color "white") :height 1))))
+ '(minimap-semantic-type-face ((t (:inherit (font-lock-type-face minimap-font-face) :background "gray10" :box (:line-width 1 :color "white") :height 1))))
+ '(minimap-semantic-variable-face ((t (:inherit (font-lock-variable-name-face minimap-font-face) :background "gray10" :box (:line-width 1 :color "white") :height 1))))
  '(org-agenda-calendar-event ((t (:foreground "#586e75"))))
  '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
