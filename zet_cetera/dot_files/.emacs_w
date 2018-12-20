@@ -325,6 +325,16 @@
   (browse-url-of-file (concat "./" (car (split-string (buffer-name) "\\.")) ".html"))
   )
 
+;; org-capture가 끝나고 바로 방금 저장한 capture로 이동하는 함수
+;; org-capture-after-finalize-hook에 등록해야 한다
+(defun after-org-capture-goto-there()
+  (interactive)
+  (org-capture '(16))
+  (if (string= (buffer-name) "pomodoro.org")  ;; pomodoro.org 인 경우 이동하지 않는다
+      (kill-buffer)
+    nil
+  ))
+
 ;; PACKAGE: org2jekyll
 ;; (require 'org2jekyll)
 
@@ -539,6 +549,8 @@
                                   (define-key org-agenda-mode-map (kbd "<M-S-left>") 'org-shiftleft)
                                   ))
 
+;; C-M-> org capture 기능 단축키 
+(global-set-key (kbd "C-M->") 'org-capture)
 ;; C-\ 키로 태그를 검색합니다
 (global-set-key (kbd "C-\\") 'org-time-stamp)
 ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
@@ -2288,7 +2300,7 @@ created by edward 180515"
  '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
-    ("e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/note.org" "e:/gitrepo/ims_org/org_files/pomodoro.org" "e:/gitrepo/ims_org/org_files/pomodoro_old.org" "e:/gitrepo/ims_org/org_files/portal.org" "e:/gitrepo/ims_org/org_files/test.org")))
+    ("e:/gitrepo/ims_org/org_files/note/x11vnc.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/note.org" "e:/gitrepo/ims_org/org_files/pomodoro.org" "e:/gitrepo/ims_org/org_files/pomodoro_old.org" "e:/gitrepo/ims_org/org_files/portal.org" "e:/gitrepo/ims_org/org_files/test.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -2329,8 +2341,8 @@ created by edward 180515"
               (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342\350\346嶺\214\214\203\242\201" "\342\350\346嶺\214\214\203\242\203" "\342\354\347\354녇\253\214\217\257" "\342\354\347\354녇\253\214\217\272" "*")))
- '(org-capture-after-finalize-hook nil)
+    ("\342\350\346癲\253\214\214\203\242\201" "\342\350\346癲\253\214\214\203\242\203" "\342\354\347\354\353뀋\253\214\217\257" "\342\354\347\354\353뀋\253\214\217\272" "*")))
+ '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
