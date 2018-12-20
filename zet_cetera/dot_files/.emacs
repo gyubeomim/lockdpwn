@@ -2821,6 +2821,23 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
     (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
+
+    ;; ] 키로 portal.opg 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/portal.org")))
+    (define-key magit-diff-mode-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/portal.org")))
+    (define-key magit-process-mode-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/portal.org")))
+    ;; [ 키로 note.org 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "[") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/note.org")))
+    (define-key magit-diff-mode-map (kbd "[") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/note.org")))
+    (define-key magit-process-mode-map (kbd "[") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/note.org")))
+    ;; } 키로 특정 pomodoro.org 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
+    (define-key magit-diff-mode-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
+    (define-key magit-process-mode-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
+    ;; { 키로 특정 paper_researh.org 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/paper_research.org")))
+    (define-key magit-diff-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/paper_research.org")))
+    (define-key magit-process-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/paper_research.org")))
     ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.

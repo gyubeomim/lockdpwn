@@ -541,6 +541,9 @@
                                   (define-key org-agenda-mode-map (kbd "[") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/note.org")))
                                   ;; } 키로 특정 pomodoro.org 파일을 엽니다
                                   (define-key org-agenda-mode-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
+                                  ;; { 키로 특정 paper_researh.org 파일을 엽니다
+                                  (define-key org-agenda-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/paper_research.org")))
+
 
 
                                   ;; C-' 키로 tag를 설정합니다
@@ -727,6 +730,9 @@
     (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/note.org")))
     ;; } 키로 특정 pomodoro.org 파일을 엽니다
     (define-key evil-motion-state-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
+    ;; { 키로 특정 paper_researh.org 파일을 엽니다
+    (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/paper_research.org")))
+
 
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
@@ -880,7 +886,7 @@
 
 ;; PACKAGE: wrap-region
 (require 'wrap-region)
-(wrap-region-global-mode t)
+;; (wrap-region-global-mode t)
 ;; org 모드에서 + wrapping을 해준다
 (wrap-region-add-wrapper "+" "+" nil 'org-mode)  ; strikethrough
 
@@ -2021,7 +2027,7 @@ created by edward 180515"
     (define-key magit-unstaged-section-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-unstaged-section-map (kbd "C-d") 'evil-scroll-down)
 
-    (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
+    ;; (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
     (define-key magit-file-mode-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-file-mode-map (kbd "C-d") 'evil-scroll-down)
 
@@ -2029,6 +2035,23 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
     (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
+
+    ;; ] 키로 portal.opg 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/portal.org")))
+    (define-key magit-diff-mode-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/portal.org")))
+    (define-key magit-process-mode-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/portal.org")))
+    ;; [ 키로 note.org 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "[") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/note.org")))
+    (define-key magit-diff-mode-map (kbd "[") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/note.org")))
+    (define-key magit-process-mode-map (kbd "[") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/note.org")))
+    ;; } 키로 특정 pomodoro.org 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
+    (define-key magit-diff-mode-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
+    (define-key magit-process-mode-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
+    ;; { 키로 특정 paper_researh.org 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/paper_research.org")))
+    (define-key magit-diff-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/paper_research.org")))
+    (define-key magit-process-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/paper_research.org")))
     ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
@@ -2341,7 +2364,7 @@ created by edward 180515"
               (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342\350\346癲\253\214\214\203\242\201" "\342\350\346癲\253\214\214\203\242\203" "\342\354\347\354\353뀋\253\214\217\257" "\342\354\347\354\353뀋\253\214\217\272" "*")))
+    ("◆" "◇" "◈" "□" "*")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
