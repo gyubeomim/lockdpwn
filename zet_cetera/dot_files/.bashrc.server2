@@ -184,6 +184,8 @@ alias pull_a='git pull origin aorus_ws'
 alias pull_1='git pull origin server1_ws'
 alias pull_2='git pull origin server2_ws'
 alias clone='git clone'
+alias add='git add -u'  # not for untracked file
+alias cred='git config credential.helper "cache --timeout=864000000" --global'
 alias gc='git checkout'
 alias gs='git status'
 alias gb='git branch'
