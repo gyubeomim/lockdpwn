@@ -178,6 +178,8 @@ alias pull='git pull'
 alias pull_1='git pull origin server1_ws'
 alias pull_2='git pull origin server2_ws'
 alias clone='git clone'
+alias add='git add -u'  # not for untracked file
+alias cred='git config credential.helper "cache --timeout=864000000" --global'
 alias gc='git checkout'
 alias gb='git branch'
 alias gs='git status'
@@ -393,7 +395,7 @@ alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/catkin_ws/devel/setup.bash
 source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash  # for cartographer
-# source /home/dyros-vehicle/segmap_ws/devel/setup.bash  # for segmap
+source /home/dyros-vehicle/segmap_ws/devel/setup.bash  # for segmap
 
 # for x11vnc && TeamViewer connected user
 alias vu='netstat -tapno | grep 5902'
