@@ -919,6 +919,10 @@
     (define-key undo-tree-map (kbd "C-?") 'org-agenda-list)
     (define-key undo-tree-map (kbd "C-M-?") 'org-agenda)
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
+
+    ;; C-_ 키로 font 크기를 특정 크기로 맞춰주는 함수 설정
+    (define-key undo-tree-map (kbd "C-_") 'set-frame-125)
+
     ))
 
 ;; for easy-jekyll mode
@@ -1081,13 +1085,13 @@
 ;; PACKAGE: image+
 (require 'image+)
 (imagex-global-sticky-mode t)
-(eval-after-load "image+"
-  (lambda ()
-    ;; C-c = 키로 이미지를 확대한다
-    (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
-    ;; C-+ 키로 이미지 크기를 자동조정한다
-    (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
-    ))
+;; (eval-after-load "image+"
+;;   (lambda ()
+;;     ;; C-c = 키로 이미지를 확대한다
+;;     (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
+;;     ;; C-+ 키로 이미지 크기를 자동조정한다
+;;     (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
+;;     ))
 
 
 ;; Package: yasnippet
@@ -1682,10 +1686,33 @@
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
+;; 15인치 화면용 font size
+(defun set-frame-125 (&optional frame)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height 125)
+    (message "Set frame's default text height to 125")))
+
+;; 27인치 화면용 font size
+(defun set-frame-148 (&optional frame)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height 148)
+    (message "Set frame's default text height to 148")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
+(global-set-key (kbd "C-_") 'set-frame-125)
+(global-set-key (kbd "C-+") 'set-frame-148)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
