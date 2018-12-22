@@ -543,16 +543,30 @@
   (if (string= (buffer-name) "pomodoro.org")  ;; pomodoro.org 인 경우 이동하지 않는다
       (kill-buffer)
     nil
-  ))
+    ))
 
-;; PACKAGE: per-buffer-theme
+;; ==, '', "" 를 입력할 때 바로 옆에 글을 쓰려고 하면 못 쓰는 경우가 있었는데 이를 방지하기 위한 함수
+(defun escape-wrapped-word ()
+  "escape == \"\" '' word in org mode by edward"
+  (interactive)
+  (insert " ")
+  (right-char)
+  (insert " ")
+  (left-char)
+  (left-char)
+  (backward-delete-char-untabify 1)
+  (right-char)
+  (right-char)
+  )
+
+;; package: per-buffer-theme
 ;; (require 'per-buffer-theme)
 
-;; PACKAGE: org2jekyll
+;; package: org2jekyll
 ;; (require 'org2jekyll)
 
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
-;; "org" because C-h f org-mode RET says that org-mode is defined in org.el
+;; "org" because c-h f org-mode ret says that org-mode is defined in org.el
 (eval-after-load "org"
   '(progn
      ;; ed: 단축키 해제
@@ -812,6 +826,9 @@
                 (add-text-properties (match-beginning 0) (point-at-eol)
                                      '(face (:foreground "dark orange"))
                                      )))))
+
+;; C-`' 키로 ==, '', "" 문자열 바로 옆에 글을 쓸 수 있도록 해주는 함수
+(global-set-key (kbd "C-`") 'escape-wrapped-word)
 ;; C-\ 키로 현재 날짜를 입력합니다
 (global-set-key (kbd "C-\\") 'org-time-stamp)
 ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
@@ -1425,6 +1442,9 @@
  '(custom-safe-themes
    (quote
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(display-time-day-and-date t)
+ '(display-time-default-load-average nil)
+ '(display-time-format "%H:%M, %D")
  '(ecb-layout-name "right1")
  '(ecb-layout-window-sizes
    (quote
@@ -1732,7 +1752,7 @@
 (setq inhibit-startup-screen t)
 
 ;; 상태표시줄에 시간표시하기
-;; (display-time)
+(display-time)
 
 ;; 몇가지 유용한 설정
 (transient-mark-mode t)
