@@ -1592,7 +1592,7 @@
  '(pomodoro-play-sounds nil)
  '(pomodoro-work-time 25)
  '(rtags-other-window-window-size-percentage 10)
- '(rtags-split-window-function (quote split-window-below))
+ '(rtags-split-window-function (quote split-window-vertically))
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
