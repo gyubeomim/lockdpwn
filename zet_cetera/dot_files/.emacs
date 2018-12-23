@@ -2785,8 +2785,10 @@ created by edward 180515"
              (define-key cua--cua-keys-keymap (kbd "C-z") 'undo-tree-undo)
              ))
 
+;; M-/ 키로 cmake-ide cmake를 실행합니다
+(global-set-key (kbd "M-/") 'cmake-ide-run-cmake)
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
-(global-set-key (kbd "M-/") 'visit-tags-table)
+;; (global-set-key (kbd "M-/") 'visit-tags-table)
 
 ;; C-S-l 키로 python 코드에서 들여쓰기를 보여줍니다
 (global-set-key (kbd "C-S-l") 'highlight-indentation-mode)
