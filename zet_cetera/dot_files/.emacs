@@ -938,7 +938,7 @@
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
 
     ;; C-_ 키로 font 크기를 특정 크기로 맞춰주는 함수 설정
-    (define-key undo-tree-map (kbd "C-_") 'set-frame-125)
+    (define-key undo-tree-map (kbd "C-_") 'set-frame-115)
 
     ))
 
@@ -1711,33 +1711,33 @@
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
-;; 15인치 화면용 font size
-(defun set-frame-125 (&optional frame)
-  "Increase the default size of text by AMT inside FRAME N times.
-  N can be given as a prefix arg.
-  AMT will default to 10.
-  FRAME will default the selected frame."
-  (interactive "p")
-  (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 125)
-    (message "Set frame's default text height to 125")))
-
 ;; 27인치 화면용 font size
-(defun set-frame-148 (&optional frame)
+(defun set-frame-115 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 148)
-    (message "Set frame's default text height to 148")))
+    (set-face-attribute 'default frame :height 115)
+    (message "Set frame's default text height to 115")))
+
+;; 15인치 화면용 font size
+(defun set-frame-140 (&optional frame)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height 140)
+    (message "Set frame's default text height to 140")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
-(global-set-key (kbd "C-_") 'set-frame-125)
-(global-set-key (kbd "C-+") 'set-frame-148)
+(global-set-key (kbd "C-_") 'set-frame-115)
+(global-set-key (kbd "C-+") 'set-frame-140)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
