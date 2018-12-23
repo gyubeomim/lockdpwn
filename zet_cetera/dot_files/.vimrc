@@ -312,6 +312,14 @@ map F <Plug>Sneak_S
 " %s키로 단어를 바꾸던 기능을 커서 위에서 \s키를 누르면 동작하도록 설정합니다
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
+" vim-rtags
+"Out of box this plugin provides mappings. In order to use custom mappings the default mappings can be disabled:
+let g:rtagsUseDefaultMappings = 1
+"By default, search results are showed in a location list. Location lists are local to the current window. To use the vim QuickFix window, which is shared between all windows, set:
+let g:rtagsUseLocationList = 0
+"To implement 'return to previous location after jump' feature, internal stack is used. It is possible to set its maximum size (number of entries), default is 100:
+let g:rtagsJumpStackMaxSize = 100
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle 설정 (플러그인 설정)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -340,7 +348,7 @@ Plugin 'Mark'  " 동일한 단어들을 마킹해주는 플러그인입니다
 
 Plugin 'vim-airline/vim-airline'  " vim 화면을 좀 더 예쁘게 구성해주는 플러그인
 Plugin 'vim-airline/vim-airline-themes'
-
+Plugin 'lyuts/vim-rtags'
 Plugin 'gtags.vim'
 Plugin 'valloric/youcompleteme'   " C++, Python 등 언어의 자동완성 플러그인
 Plugin 'airblade/vim-gitgutter'   " git project에서 수정,추가,제거된 라인을 표시해주는 gitgutter for Vim
