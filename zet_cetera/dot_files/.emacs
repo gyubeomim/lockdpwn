@@ -2700,7 +2700,7 @@ created by edward 180515"
 
 
 ;; 함수나 변수로 이동하는 단축키를 Alt + . , 로 설정한다
-(global-set-key (kbd "M-.") 'rtags-find-symbol)
+(global-set-key (kbd "M-.") 'rtags-find-symbol-at-point)
 (global-set-key (kbd "M-,") 'rtags-location-stack-back)
 ;; (global-set-key (kbd "M-.") 'xref-find-definitions)
 ;; (global-set-key (kbd "M-,") 'xref-pop-marker-stack)
@@ -2785,8 +2785,10 @@ created by edward 180515"
              (define-key cua--cua-keys-keymap (kbd "C-z") 'undo-tree-undo)
              ))
 
-;; M-/ 키로 cmake-ide cmake를 실행합니다
-(global-set-key (kbd "M-/") 'cmake-ide-run-cmake)
+;; M-/ 키로 cmake-ide compile_commands.json을 불러옵니다
+(global-set-key (kbd "M-/") 'cmake-ide-load-db)
+;; M-? 키로 cmake-ide cmake를 실행합니다
+(global-set-key (kbd "M-?") 'cmake-ide-run-cmake)
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
 ;; (global-set-key (kbd "M-/") 'visit-tags-table)
 
