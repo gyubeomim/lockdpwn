@@ -222,15 +222,15 @@ function len(){
 # set ROS alias command
 alias cw='cd /home/dyros-vehicle/catkin_ws'
 alias cs='cd /home/dyros-vehicle/catkin_ws/src'
-alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make'
+alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 alias cwc='cd /home/dyros-vehicle/cartographer_ws'
 alias csc='cd /home/dyros-vehicle/cartographer_ws/src'
-alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --install --use-ninja '
+alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 alias cwg='cd /home/dyros-vehicle/segmap_ws'
 alias csg='cd /home/dyros-vehicle/segmap_ws/src'
-alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper'
+alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 #alias cl='cd /home/dyros-vehicle/gitrepo/ims'
 #alias cr='cd /home/dyros-vehicle/gitrepo/ims/ROS/'

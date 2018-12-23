@@ -2008,12 +2008,11 @@
     (shell-command (concat "find " default-directory (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
   )
 
-;; M-? 키를 이용해 자동으로 GTAGS && TAGS file을 만든다.
-(global-set-key (kbd "M-?") '(lambda ()
+;; C-c / 키를 이용해 자동으로 GTAGS && TAGS file을 만든다.
+(global-set-key (kbd "C-c /") '(lambda ()
                                (interactive)
                                (make_TAGS_file_auto)
                                (helm-gtags-create-tags default-directory "default")
-                               (revert-buffer)
                                ))
 
 
@@ -2706,8 +2705,6 @@ created by edward 180515"
 ;; M-., M-, 키로 함수나 변수로 이동하는 단축키를 설정한다
 (global-set-key (kbd "M-.") 'rtags-find-symbol-at-point)
 (global-set-key (kbd "M-,") 'rtags-location-stack-back)
-;; (global-set-key (kbd "M-.") 'xref-find-definitions)
-;; (global-set-key (kbd "M-,") 'xref-pop-marker-stack)
 
 
 ;; 변수나 함수 하이라이팅한 구문을 빠르게 이동합니다 higlight-symbol 패키지
@@ -3050,9 +3047,9 @@ created by edward 180515"
 (key-chord-define-global "zz" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
+(key-chord-define-global "XX" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
+(key-chord-define-global "ZZ" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-mode t)
-;; (key-chord-define-global "xx" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
-;; (key-chord-define-global "cc" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 ;; (key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
 ;; (key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
 ;;(key-chord-define-global "??" 'split-window-right)             ;; 오른쪽에 새창 만들기 (NOT USED)
