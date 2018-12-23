@@ -277,6 +277,12 @@ alias csc='cd /home/dyros-vehicle/gitrepo/ims_carto/src'
 alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja'
 alias cmca='catkin_make_isolated --install --use-ninja'
 
+# for segmap
+alias cwg='cd /home/dyros-vehicle/segmap_ws'
+alias csg='cd /home/dyros-vehicle/segmap_ws/src'
+alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper'
+
+
 
 # V-Rep Settings
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
@@ -381,6 +387,10 @@ alias matlab=/usr/local/MATLAB/R2018b/bin/matlab
 
 # for ubuntu-live-wallpaper change
 alias wc='python /home/dyros-vehicle/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py'
+
+#python virtualenv for segmap
+alias seg='source ~/segmappyenv/bin/activate'
+
 
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'

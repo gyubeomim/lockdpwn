@@ -88,8 +88,8 @@
     matlab-mode            ;; matlab의 .m 파일을 하이라이팅해주는 패키지
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
 
-
-
+    rtags
+    cmake-ide
 
     ;; use-package                ;; package를 관리해주는 패키지
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지
@@ -1512,10 +1512,10 @@
             (point-at-eol)
             (quote
              (face
-              (:background "gold" :weight bold))))))))))
+              (:background "gold" :weight bold))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1576,7 +1576,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(per-buffer-theme/default-theme (quote solarized-dark))
  '(per-buffer-theme/ignored-buffernames-regex
    (quote
@@ -1591,6 +1591,8 @@
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
  '(pomodoro-work-time 25)
+ '(rtags-other-window-window-size-percentage 10)
+ '(rtags-split-window-function (quote split-window-below))
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
@@ -1938,6 +1940,11 @@
 
 ;;최근 사용된 word list를 가지고, 자동 완성구현, 3글자 이후에 M-RET
 (dynamic-completion-mode)
+
+(require 'cmake-ide)
+(require 'rtags)
+(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
+(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
 
 ;; PACKAGE: mic-paren
 ;; 반대편 괄호의 line number를 알려주는 패키지
@@ -2693,8 +2700,10 @@ created by edward 180515"
 
 
 ;; 함수나 변수로 이동하는 단축키를 Alt + . , 로 설정한다
-(global-set-key (kbd "M-.") 'xref-find-definitions)
-(global-set-key (kbd "M-,") 'xref-pop-marker-stack)
+(global-set-key (kbd "M-.") 'rtags-find-symbol)
+(global-set-key (kbd "M-,") 'rtags-location-stack-back)
+;; (global-set-key (kbd "M-.") 'xref-find-definitions)
+;; (global-set-key (kbd "M-,") 'xref-pop-marker-stack)
 
 
 ;; 변수나 함수 하이라이팅한 구문을 빠르게 이동합니다 higlight-symbol 패키지
