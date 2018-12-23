@@ -88,8 +88,8 @@
     matlab-mode            ;; matlab의 .m 파일을 하이라이팅해주는 패키지
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
 
-
-
+    rtags
+    cmake-ide
 
     ;; use-package                ;; package를 관리해주는 패키지
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지
@@ -543,16 +543,30 @@
   (if (string= (buffer-name) "pomodoro.org")  ;; pomodoro.org 인 경우 이동하지 않는다
       (kill-buffer)
     nil
-  ))
+    ))
 
-;; PACKAGE: per-buffer-theme
+;; ==, '', "" 를 입력할 때 바로 옆에 글을 쓰려고 하면 못 쓰는 경우가 있었는데 이를 방지하기 위한 함수
+(defun escape-wrapped-word ()
+  "escape == \"\" '' word in org mode by edward"
+  (interactive)
+  (insert " ")
+  (right-char)
+  (insert " ")
+  (left-char)
+  (left-char)
+  (backward-delete-char-untabify 1)
+  (right-char)
+  (right-char)
+  )
+
+;; package: per-buffer-theme
 ;; (require 'per-buffer-theme)
 
-;; PACKAGE: org2jekyll
+;; package: org2jekyll
 ;; (require 'org2jekyll)
 
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
-;; "org" because C-h f org-mode RET says that org-mode is defined in org.el
+;; "org" because c-h f org-mode ret says that org-mode is defined in org.el
 (eval-after-load "org"
   '(progn
      ;; ed: 단축키 해제
@@ -812,6 +826,9 @@
                 (add-text-properties (match-beginning 0) (point-at-eol)
                                      '(face (:foreground "dark orange"))
                                      )))))
+
+;; C-`' 키로 ==, '', "" 문자열 바로 옆에 글을 쓸 수 있도록 해주는 함수
+(global-set-key (kbd "C-`") 'escape-wrapped-word)
 ;; C-\ 키로 현재 날짜를 입력합니다
 (global-set-key (kbd "C-\\") 'org-time-stamp)
 ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
@@ -919,6 +936,10 @@
     (define-key undo-tree-map (kbd "C-?") 'org-agenda-list)
     (define-key undo-tree-map (kbd "C-M-?") 'org-agenda)
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
+
+    ;; C-_ 키로 font 크기를 특정 크기로 맞춰주는 함수 설정
+    (define-key undo-tree-map (kbd "C-_") 'set-frame-115)
+
     ))
 
 ;; for easy-jekyll mode
@@ -1081,13 +1102,13 @@
 ;; PACKAGE: image+
 (require 'image+)
 (imagex-global-sticky-mode t)
-(eval-after-load "image+"
-  (lambda ()
-    ;; C-c = 키로 이미지를 확대한다
-    (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
-    ;; C-+ 키로 이미지 크기를 자동조정한다
-    (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
-    ))
+;; (eval-after-load "image+"
+;;   (lambda ()
+;;     ;; C-c = 키로 이미지를 확대한다
+;;     (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
+;;     ;; C-+ 키로 이미지 크기를 자동조정한다
+;;     (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
+;;     ))
 
 
 ;; Package: yasnippet
@@ -1421,6 +1442,9 @@
  '(custom-safe-themes
    (quote
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(display-time-day-and-date t)
+ '(display-time-default-load-average nil)
+ '(display-time-format "%H:%M, %D")
  '(ecb-layout-name "right1")
  '(ecb-layout-window-sizes
    (quote
@@ -1488,10 +1512,10 @@
             (point-at-eol)
             (quote
              (face
-              (:background "gold" :weight bold))))))))))
+              (:background "gold" :weight bold))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1552,7 +1576,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(per-buffer-theme/default-theme (quote solarized-dark))
  '(per-buffer-theme/ignored-buffernames-regex
    (quote
@@ -1567,6 +1591,11 @@
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
  '(pomodoro-work-time 25)
+ '(rtags-other-window-window-size-percentage 1)
+ '(rtags-split-window-function (quote split-window-below))
+ '(rtags-tracking t)
+ '(rtags-tracking-timer-interval 0.1)
+ '(rtags-use-bookmarks nil)
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
@@ -1682,10 +1711,33 @@
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
+;; 27인치 화면용 font size
+(defun set-frame-115 (&optional frame)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height 115)
+    (message "Set frame's default text height to 115")))
+
+;; 15인치 화면용 font size
+(defun set-frame-140 (&optional frame)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height 140)
+    (message "Set frame's default text height to 140")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
+(global-set-key (kbd "C-_") 'set-frame-115)
+(global-set-key (kbd "C-+") 'set-frame-140)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
@@ -1705,7 +1757,7 @@
 (setq inhibit-startup-screen t)
 
 ;; 상태표시줄에 시간표시하기
-;; (display-time)
+(display-time)
 
 ;; 몇가지 유용한 설정
 (transient-mark-mode t)
@@ -1892,6 +1944,11 @@
 ;;최근 사용된 word list를 가지고, 자동 완성구현, 3글자 이후에 M-RET
 (dynamic-completion-mode)
 
+(require 'cmake-ide)
+(require 'rtags)
+(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
+(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+
 ;; PACKAGE: mic-paren
 ;; 반대편 괄호의 line number를 알려주는 패키지
 (require 'mic-paren) ; loading
@@ -1951,12 +2008,11 @@
     (shell-command (concat "find " default-directory (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
   )
 
-;; M-? 키를 이용해 자동으로 GTAGS && TAGS file을 만든다.
-(global-set-key (kbd "M-?") '(lambda ()
+;; C-c / 키를 이용해 자동으로 GTAGS && TAGS file을 만든다.
+(global-set-key (kbd "C-c /") '(lambda ()
                                (interactive)
                                (make_TAGS_file_auto)
                                (helm-gtags-create-tags default-directory "default")
-                               (revert-buffer)
                                ))
 
 
@@ -2644,10 +2700,11 @@ created by edward 180515"
 ;; Ctrl + t 를 누르면 커서의 숫자가 증가합니다
 (global-set-key (kbd "C-t") 'increment-number-at-point)
 
-
-;; 함수나 변수로 이동하는 단축키를 Alt + . , 로 설정한다
-(global-set-key (kbd "M-.") 'xref-find-definitions)
-(global-set-key (kbd "M-,") 'xref-pop-marker-stack)
+;; M-> 키로 현재 커서에 있는 변수의 reference를 검색합니다.
+(global-set-key (kbd "M->") 'rtags-find-references-at-point)
+;; M-., M-, 키로 함수나 변수로 이동하는 단축키를 설정한다
+(global-set-key (kbd "M-.") 'rtags-find-symbol-at-point)
+(global-set-key (kbd "M-,") 'rtags-location-stack-back)
 
 
 ;; 변수나 함수 하이라이팅한 구문을 빠르게 이동합니다 higlight-symbol 패키지
@@ -2729,8 +2786,12 @@ created by edward 180515"
              (define-key cua--cua-keys-keymap (kbd "C-z") 'undo-tree-undo)
              ))
 
+;; M-/ 키로 cmake-ide compile_commands.json을 불러옵니다
+(global-set-key (kbd "M-/") 'cmake-ide-load-db)
+;; M-? 키로 cmake-ide cmake를 실행합니다
+(global-set-key (kbd "M-?") 'cmake-ide-run-cmake)
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
-(global-set-key (kbd "M-/") 'visit-tags-table)
+;; (global-set-key (kbd "M-/") 'visit-tags-table)
 
 ;; C-S-l 키로 python 코드에서 들여쓰기를 보여줍니다
 (global-set-key (kbd "C-S-l") 'highlight-indentation-mode)
@@ -2821,6 +2882,23 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
     (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
+
+    ;; ] 키로 portal.opg 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
+    (define-key magit-diff-mode-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
+    (define-key magit-process-mode-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
+    ;; [ 키로 note.org 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+    (define-key magit-diff-mode-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+    (define-key magit-process-mode-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+    ;; } 키로 특정 pomodoro.org 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+    (define-key magit-diff-mode-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+    (define-key magit-process-mode-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+    ;; { 키로 특정 paper_researh.org 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "{") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
+    (define-key magit-diff-mode-map (kbd "{") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
+    (define-key magit-process-mode-map (kbd "{") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
     ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
@@ -2969,9 +3047,9 @@ created by edward 180515"
 (key-chord-define-global "zz" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
+(key-chord-define-global "XX" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
+(key-chord-define-global "ZZ" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-mode t)
-;; (key-chord-define-global "xx" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
-;; (key-chord-define-global "cc" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 ;; (key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
 ;; (key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
 ;;(key-chord-define-global "??" 'split-window-right)             ;; 오른쪽에 새창 만들기 (NOT USED)

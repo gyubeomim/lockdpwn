@@ -176,6 +176,8 @@ alias commit='git commit'
 alias push='git push'
 alias pull='git pull'
 alias clone='git clone'
+alias add='git add -u'  # not for untracked file
+alias cred='git config credential.helper "cache --timeout=864000000" --global'
 alias gc='git checkout'
 alias gs='git status'
 alias gb='git branch'

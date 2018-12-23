@@ -178,6 +178,8 @@ alias pull='git pull'
 alias pull_1='git pull origin server1_ws'
 alias pull_2='git pull origin server2_ws'
 alias clone='git clone'
+alias add='git add -u'  # not for untracked file
+alias cred='git config credential.helper "cache --timeout=864000000" --global'
 alias gc='git checkout'
 alias gb='git branch'
 alias gs='git status'
@@ -220,15 +222,15 @@ function len(){
 # set ROS alias command
 alias cw='cd /home/dyros-vehicle/catkin_ws'
 alias cs='cd /home/dyros-vehicle/catkin_ws/src'
-alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make'
+alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 alias cwc='cd /home/dyros-vehicle/cartographer_ws'
 alias csc='cd /home/dyros-vehicle/cartographer_ws/src'
-alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --install --use-ninja '
+alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 alias cwg='cd /home/dyros-vehicle/segmap_ws'
 alias csg='cd /home/dyros-vehicle/segmap_ws/src'
-alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper'
+alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 #alias cl='cd /home/dyros-vehicle/gitrepo/ims'
 #alias cr='cd /home/dyros-vehicle/gitrepo/ims/ROS/'
@@ -393,7 +395,7 @@ alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/catkin_ws/devel/setup.bash
 source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash  # for cartographer
-# source /home/dyros-vehicle/segmap_ws/devel/setup.bash  # for segmap
+source /home/dyros-vehicle/segmap_ws/devel/setup.bash  # for segmap
 
 # for x11vnc && TeamViewer connected user
 alias vu='netstat -tapno | grep 5902'
