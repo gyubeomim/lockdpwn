@@ -259,7 +259,7 @@ alias cdb='cd ~/gitrepo/ims/ROS/rosbook_ws'
 alias cb='cd /home/dyros-vehicle/bag_files'
 alias cbb='cd /media/dyros-data/bag_files/'
 
-alias cma='catkin_make'
+alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmb='cd ~/gitrepo/ims/ROS/rosbook_ws && catkin_make'
 
 
@@ -419,3 +419,6 @@ alias aorus_lan='cd ~/Documents/r8152-2.09.0 && sudo make install'
 
 #python virtualenv for segmap
 alias seg='source ~/segmappyenv/bin/activate'
+
+# for cmake rtags
+alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
