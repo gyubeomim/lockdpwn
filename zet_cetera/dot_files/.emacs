@@ -938,7 +938,7 @@
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
 
     ;; C-_ 키로 font 크기를 특정 크기로 맞춰주는 함수 설정
-    (define-key undo-tree-map (kbd "C-_") 'set-frame-115)
+    (define-key undo-tree-map (kbd "C-_") 'set-frame-125)
 
     ))
 
@@ -1430,6 +1430,7 @@
    (quote
     (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
  '(avy-style (quote at-full))
+ '(cmake-ide-make-command "make -j4")
  '(column-number-mode t)
  '(company-backends
    (quote
@@ -1448,7 +1449,11 @@
  '(ecb-layout-name "right1")
  '(ecb-layout-window-sizes
    (quote
-    (("right1"
+    (("left3"
+      (ecb-directories-buffer-name 0.2 . 0.29411764705882354)
+      (ecb-sources-buffer-name 0.2 . 0.3333333333333333)
+      (ecb-methods-buffer-name 0.2 . 0.35294117647058826))
+     ("right1"
       (ecb-directories-buffer-name 0.3151515151515151 . 0.20833333333333334)
       (ecb-sources-buffer-name 0.3151515151515151 . 0.2916666666666667)
       (ecb-methods-buffer-name 0.3151515151515151 . 0.4791666666666667))
@@ -1641,8 +1646,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
- '(avy-lead-face ((t (:inherit isearch :background "orange"))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "orange"))))
+ '(avy-lead-face ((t (:inherit isearch :background "#996300" :foreground "gainsboro"))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "#996300" :foreground "gainsboro"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
  '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
@@ -1712,15 +1717,15 @@
   (zoom-frame (- n) frame amt))
 
 ;; 27인치 화면용 font size
-(defun set-frame-115 (&optional frame)
+(defun set-frame-125 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 115)
-    (message "Set frame's default text height to 115")))
+    (set-face-attribute 'default frame :height 125)
+    (message "Set frame's default text height to something I want")))
 
 ;; 15인치 화면용 font size
 (defun set-frame-140 (&optional frame)
@@ -1736,7 +1741,7 @@
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
-(global-set-key (kbd "C-_") 'set-frame-115)
+(global-set-key (kbd "C-_") 'set-frame-125)
 (global-set-key (kbd "C-+") 'set-frame-140)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
