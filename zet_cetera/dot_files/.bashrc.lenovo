@@ -278,7 +278,7 @@ alias soc='source install_isolated/setup.bash'
 alias cwc='cd /home/dyros-vehicle/gitrepo/ims_carto'
 alias csc='cd /home/dyros-vehicle/gitrepo/ims_carto/src'
 alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
-alias cmca='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cmca='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT__EXPORT_COMPILE_COMMANDS=1 COMPILE_COMMANDS=1'
 
 # for segmap
 alias cwg='cd /home/dyros-vehicle/segmap_ws'
@@ -394,6 +394,8 @@ alias wc='python /home/dyros-vehicle/gitrepo/ubuntu-live-wallpaper/wallpaper-cha
 #python virtualenv for segmap
 alias seg='source ~/segmappyenv/bin/activate'
 
+# cmake for rtags
+alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
 
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'
