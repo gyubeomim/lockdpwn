@@ -940,7 +940,10 @@
 
 ;; Package: projejctile
 (require 'projectile)
-(projectile-global-mode)
+;; (projectile-global-mode)
+;; COMMENT(edward): tramp(ssh) 모드에서 Tramp:Sending Password 후 멈추는 현상을 방지하기 위한 코드
+(add-hook 'text-mode-hook 'projectile-mode)
+(add-hook 'prog-mode-hook 'projectile-mode)
 (setq projectile-enable-caching t)
 
 ;; PACKAGE: helm-projectile
@@ -2027,9 +2030,10 @@ created by edward 180515"
     (define-key magit-unstaged-section-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-unstaged-section-map (kbd "C-d") 'evil-scroll-down)
 
+    ;; COMMENT(edward): windows에서만 그런건지 이 키들이 prog-mode에서도 자꾸 동작한다
     ;; (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
-    (define-key magit-file-mode-map (kbd "C-u") 'evil-scroll-up)
-    (define-key magit-file-mode-map (kbd "C-d") 'evil-scroll-down)
+    ;; (define-key magit-file-mode-map (kbd "C-u") 'evil-scroll-up)
+    ;; (define-key magit-file-mode-map (kbd "C-d") 'evil-scroll-down)
 
     (define-key magit-diff-mode-map (kbd "j") 'evil-next-line)
     (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
@@ -2362,9 +2366,7 @@ created by edward 180515"
             (quote
              (face
               (:background "gold" :weight bold))))))))))
- '(org-bullets-bullet-list
-   (quote
-    ("◆" "◇" "◈" "□" "*")))
+ '(org-bullets-bullet-list (quote ("\342뾾" "\342뾿" "\342뿀" "\342뼞" "*")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2474,6 +2476,7 @@ created by edward 180515"
  '(sml/vc-mode-show-backend nil)
  '(sp-base-key-bindings nil)
  '(speedbar-update-flag t)
+ '(tramp-verbose 6)
  '(vc-follow-symlinks t)
  '(yas-also-auto-indent-first-line t)
  '(yas-also-indent-empty-lines t))
