@@ -620,6 +620,8 @@
      (define-key org-mode-map (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
      ;; C-> 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
      (define-key org-mode-map (kbd "C->") (lambda () (interactive)(org-capture nil ":")))
+     ;; C-M-> 키로 어느곳에서나 org-capture 기능을 열게합니다
+     (define-key org-mode-map (kbd "C-M->") 'org-capture)
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
      (define-key org-mode-map (kbd "C-c w") 'org-preview-html/preview)
      ;; code ==> image Update 단축키
@@ -732,6 +734,10 @@
                                    ("'" "todo.org: [Issues]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+
+                                   ("1" "ubuntu_tips.org: [Tips]" entry
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
@@ -853,6 +859,8 @@
 (global-set-key (kbd "C->") (lambda () (interactive)(org-capture nil ":")))
 ;; C-< 키로 어느곳에서나 todo.org OPEN 기능을 열게합니다
 (global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
+;; C-M-> 키로 어느곳에서나 org-capture 기능을 열게합니다
+(global-set-key (kbd "C-M->") 'org-capture)
 ;; C-, 키로 어느곳에서나 todo.org Note 기능을 열게합니다
 (global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "n")))
 ;; org-mode용 strike-through를 구현한 함수
@@ -2863,6 +2871,11 @@ created by edward 180515"
     (define-key magit-process-mode-map (kbd "M-3") nil)
 
     ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
+    (define-key magit-log-mode-map (kbd "j") 'evil-next-line)
+    (define-key magit-log-mode-map (kbd "k") 'evil-previous-line)
+    (define-key magit-log-mode-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-log-mode-map (kbd "C-d") 'evil-scroll-down)
+
     (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
     (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
     (define-key magit-status-mode-map (kbd "C-u") 'evil-scroll-up)
