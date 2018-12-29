@@ -1736,21 +1736,21 @@
     (message "Set frame's default text height to something I want")))
 
 ;; 15인치 화면용 font size
-(defun set-frame-140 (&optional frame)
+(defun set-frame-155 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 140)
-    (message "Set frame's default text height to 140")))
+    (set-face-attribute 'default frame :height 155)
+    (message "Set frame's default text height to 155")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
 (global-set-key (kbd "C-_") 'set-frame-125)
-(global-set-key (kbd "C-+") 'set-frame-140)
+(global-set-key (kbd "C-+") 'set-frame-155)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
@@ -2589,6 +2589,7 @@ created by edward 180515"
 (global-unset-key (kbd "S-SPC"))
 (global-unset-key (kbd "C-S-SPC"))
 (global-set-key [(control tab)] 'toggle-input-method)
+(global-set-key (kbd "S-SPC") 'toggle-input-method)
 
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.
 (cua-mode)
