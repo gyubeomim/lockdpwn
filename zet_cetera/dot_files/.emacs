@@ -559,6 +559,25 @@
   (right-char)
   )
 
+;; TODO ==> DONE, OPEN ==> CLOSED 키워드로 바꾸고 CLOSED:에 시간까지 추가해주는 함수
+(defun org-todo-done-edward (arg)
+  ""
+  (interactive)
+  (cond ((string= arg "DONE") (org-todo "DONE"))
+        ((string= arg "CLOSED") (org-todo "CLOSED"))
+        (t (user-error "Error while doing org-todo-dopne-edward"))
+        )
+  (save-excursion
+    (next-line)
+    (if (string-match-p "CLOSED:" (thing-at-point 'line t))
+        (user-error "CLOSED: is already exists")
+      (move-end-of-line 1)
+      (insert " CLOSED: ")
+      (move-end-of-line 1)
+      (org-time-stamp-inactive '(16))
+      ))
+  )
+
 ;; package: per-buffer-theme
 ;; (require 'per-buffer-theme)
 
@@ -998,8 +1017,8 @@
     (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
                                                   (let ((string (thing-at-point 'line t)))
                                                     (if (string-match-p "OPEN" string)
-                                                        (org-todo "CLOSED")
-                                                      (org-todo "DONE")
+                                                        (org-todo-done-edward "CLOSED")
+                                                      (org-todo-done-edward "DONE")
                                                       ))))
     ;; ] 키로 portal.opg 파일을 엽니다
     (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
@@ -1525,10 +1544,10 @@
             (point-at-eol)
             (quote
              (face
-              (:background "gold" :weight bold))))))))) t)
+              (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1643,6 +1662,7 @@
  '(sml/vc-mode-show-backend nil)
  '(sp-base-key-bindings nil)
  '(speedbar-update-flag t)
+ '(split-width-threshold 120)
  '(vc-follow-symlinks t)
  '(yas-also-auto-indent-first-line t)
  '(yas-also-indent-empty-lines t))
