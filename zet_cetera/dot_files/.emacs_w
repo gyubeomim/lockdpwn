@@ -229,7 +229,8 @@
 
 
 ;; 한글폰트 설정 (size 부분을 바꾸면 크기가 바뀝니다)
-(set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 19))
+;; (set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 19))
+(set-fontset-font "fontset-default" 'hangul '("NanumGothicCoding" . "unicode-bmp"))
 ;; (set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("NanumGothicCoding" . "unicode-bmp") )
 ;; (set-fontset-font "fontset-default" '(#xe0bc . #xf66e)  '("NanumGothicCoding" . "unicode-bmp") )
 
@@ -333,7 +334,22 @@
   (if (string= (buffer-name) "pomodoro.org")  ;; pomodoro.org 인 경우 이동하지 않는다
       (kill-buffer)
     nil
-  ))
+    ))
+
+;; ==, '', "" 를 입력할 때 바로 옆에 글을 쓰려고 하면 못 쓰는 경우가 있었는데 이를 방지하기 위한 함수
+(defun escape-wrapped-word ()
+  "escape == \"\" '' word in org mode by edward"
+  (interactive)
+  (insert " ")
+  (right-char)
+  (insert " ")
+  (left-char)
+  (left-char)
+  (backward-delete-char-untabify 1)
+  (right-char)
+  (right-char)
+  )
+
 
 ;; PACKAGE: org2jekyll
 ;; (require 'org2jekyll)
@@ -552,6 +568,8 @@
                                   (define-key org-agenda-mode-map (kbd "<M-S-left>") 'org-shiftleft)
                                   ))
 
+;; C-`' 키로 ==, '', "" 문자열 바로 옆에 글을 쓸 수 있도록 해주는 함수
+(global-set-key (kbd "C-`") 'escape-wrapped-word)
 ;; C-M-> org capture 기능 단축키 
 (global-set-key (kbd "C-M->") 'org-capture)
 ;; C-\ 키로 태그를 검색합니다
@@ -662,6 +680,10 @@
     (define-key undo-tree-map (kbd "C-?") 'org-agenda-list)
     (define-key undo-tree-map (kbd "C-M-?") 'org-agenda)
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
+
+    ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
+    (define-key undo-tree-map (kbd "C-_") 'set-frame-125)
+    (define-key undo-tree-map (kbd "C-+") 'set-frame-144)
     ))
 
 ;; for easy-jekyll mode
@@ -829,15 +851,15 @@
 (global-set-key (kbd "H-S-i") 'highlight-symbol-remove-all)
 
 ;; PACKAGE: image+
-(require 'image+)
-(imagex-global-sticky-mode t)
-(eval-after-load "image+"
-  (lambda ()
-    ;; C-c = 키로 이미지를 확대한다
-    (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
-    ;; C-+ 키로 이미지 크기를 자동조정한다
-    (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
-    ))
+;; (require 'image+)
+;; (imagex-global-sticky-mode t)
+;; (eval-after-load "image+"
+;;   (lambda ()
+;;     ;; C-c = 키로 이미지를 확대한다
+;;     (define-key imagex-sticky-mode-map (kbd "C-c =") 'imagex-sticky-zoom-in)
+;;     ;; C-+ 키로 이미지 크기를 자동조정한다
+;;     (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
+;;     ))
 
 ;; Package: yasnippet
 ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
@@ -1000,6 +1022,31 @@
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
+;; 27인치 화면용 font size
+(defun set-frame-125 (&optional frame)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height 125)
+    (message "Set frame's default text height to 125")))
+
+;; 15인치 화면용 font size
+(defun set-frame-144 (&optional frame)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height 144)
+    (message "Set frame's default text height to 144")))
+
+;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
+(global-set-key (kbd "C-_") 'set-frame-125)
+(global-set-key (kbd "C-+") 'set-frame-144)
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
@@ -1819,7 +1866,7 @@ created by edward 180515"
 ;;(setq grep-find-template
 ;;"find . <X> -type f <F> -exec grep <C> -nH -ie <R> \\{\\} +")
 ;;"find . -type f -exec grep --exclude=*{ph.h, rviz, rst} --include={cpp,c,h,py} -nH -ie   {} +" 같이 확장자를 필터링할 수 있다
-(grep-apply-setting 'grep-find-command '("find . -type f -exec grep -nH -ie   {} +" . 35))
+(grep-apply-setting 'grep-find-command '("grep -nH -ie  . -R " . 14))
 
 ;; (eval-after-load "helm-grep" (lambda ()
 ;;                           ;; 키바인딩 해제
@@ -2366,7 +2413,9 @@ created by edward 180515"
             (quote
              (face
               (:background "gold" :weight bold))))))))))
- '(org-bullets-bullet-list (quote ("\342뾾" "\342뾿" "\342뿀" "\342뼞" "*")))
+ '(org-bullets-bullet-list
+   (quote
+    ("\342毓\276" "\342毓\277" "\342肉\200" "\342堉\236" "*")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2476,6 +2525,7 @@ created by edward 180515"
  '(sml/vc-mode-show-backend nil)
  '(sp-base-key-bindings nil)
  '(speedbar-update-flag t)
+ '(split-width-threshold 120)
  '(tramp-verbose 6)
  '(vc-follow-symlinks t)
  '(yas-also-auto-indent-first-line t)
@@ -2486,8 +2536,8 @@ created by edward 180515"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 121 :width normal))))
- '(avy-lead-face ((t (:inherit isearch :background "orange"))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "orange"))))
+ '(avy-lead-face ((t (:inherit isearch :background "#996300" :foreground "gainsboro"))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "#996300" :foreground "gainsboro"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
  '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
