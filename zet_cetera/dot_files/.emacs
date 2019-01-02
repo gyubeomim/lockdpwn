@@ -566,6 +566,25 @@
   (right-char)
   )
 
+;; TODO ==> DONE, OPEN ==> CLOSED 키워드로 바꾸고 CLOSED:에 시간까지 추가해주는 함수
+(defun org-todo-done-edward (arg)
+  ""
+  (interactive)
+  (cond ((string= arg "DONE") (org-todo "DONE"))
+        ((string= arg "CLOSED") (org-todo "CLOSED"))
+        (t (user-error "Error while doing org-todo-dopne-edward"))
+        )
+  (save-excursion
+    (next-line)
+    (if (string-match-p "CLOSED:" (thing-at-point 'line t))
+        (user-error "CLOSED: is already exists")
+      (move-end-of-line 1)
+      (insert " CLOSED: ")
+      (move-end-of-line 1)
+      (org-time-stamp-inactive '(16))
+      ))
+  )
+
 ;; package: per-buffer-theme
 ;; (require 'per-buffer-theme)
 
@@ -627,6 +646,8 @@
      (define-key org-mode-map (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
      ;; C-> 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
      (define-key org-mode-map (kbd "C->") (lambda () (interactive)(org-capture nil ":")))
+     ;; C-M-> 키로 어느곳에서나 org-capture 기능을 열게합니다
+     (define-key org-mode-map (kbd "C-M->") 'org-capture)
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
      (define-key org-mode-map (kbd "C-c w") 'org-preview-html/preview)
      ;; code ==> image Update 단축키
@@ -739,6 +760,10 @@
                                    ("'" "todo.org: [Issues]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+
+                                   ("1" "ubuntu_tips.org: [Tips]" entry
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
@@ -860,6 +885,8 @@
 (global-set-key (kbd "C->") (lambda () (interactive)(org-capture nil ":")))
 ;; C-< 키로 어느곳에서나 todo.org OPEN 기능을 열게합니다
 (global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
+;; C-M-> 키로 어느곳에서나 org-capture 기능을 열게합니다
+(global-set-key (kbd "C-M->") 'org-capture)
 ;; C-, 키로 어느곳에서나 todo.org Note 기능을 열게합니다
 (global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "n")))
 ;; org-mode용 strike-through를 구현한 함수
@@ -997,8 +1024,8 @@
     (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
                                                   (let ((string (thing-at-point 'line t)))
                                                     (if (string-match-p "OPEN" string)
-                                                        (org-todo "CLOSED")
-                                                      (org-todo "DONE")
+                                                        (org-todo-done-edward "CLOSED")
+                                                      (org-todo-done-edward "DONE")
                                                       ))))
     ;; ] 키로 portal.opg 파일을 엽니다
     (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
@@ -1524,10 +1551,10 @@
             (point-at-eol)
             (quote
              (face
-              (:background "gold" :weight bold))))))))) t)
+              (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1642,6 +1669,7 @@
  '(sml/vc-mode-show-backend nil)
  '(sp-base-key-bindings nil)
  '(speedbar-update-flag t)
+ '(split-width-threshold 120)
  '(vc-follow-symlinks t)
  '(yas-also-auto-indent-first-line t)
  '(yas-also-indent-empty-lines t))
@@ -1735,21 +1763,21 @@
     (message "Set frame's default text height to something I want")))
 
 ;; 15인치 화면용 font size
-(defun set-frame-140 (&optional frame)
+(defun set-frame-155 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 140)
-    (message "Set frame's default text height to 140")))
+    (set-face-attribute 'default frame :height 155)
+    (message "Set frame's default text height to 155")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
 (global-set-key (kbd "C-_") 'set-frame-125)
-(global-set-key (kbd "C-+") 'set-frame-140)
+(global-set-key (kbd "C-+") 'set-frame-155)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
@@ -2588,6 +2616,7 @@ created by edward 180515"
 (global-unset-key (kbd "S-SPC"))
 (global-unset-key (kbd "C-S-SPC"))
 (global-set-key [(control tab)] 'toggle-input-method)
+;; (global-set-key (kbd "S-SPC") 'toggle-input-method)
 
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.
 (cua-mode)
@@ -2870,6 +2899,11 @@ created by edward 180515"
     (define-key magit-process-mode-map (kbd "M-3") nil)
 
     ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
+    (define-key magit-log-mode-map (kbd "j") 'evil-next-line)
+    (define-key magit-log-mode-map (kbd "k") 'evil-previous-line)
+    (define-key magit-log-mode-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-log-mode-map (kbd "C-d") 'evil-scroll-down)
+
     (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
     (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
     (define-key magit-status-mode-map (kbd "C-u") 'evil-scroll-up)
