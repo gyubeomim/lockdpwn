@@ -340,6 +340,13 @@
 ;; (require 'semantic/ia)
 ;; (require 'semantic/complete)
 
+(eval-after-load 'semantic
+    (add-hook 'semantic-mode-hook
+              (lambda ()
+                (dolist (x (default-value 'completion-at-point-functions))
+                  (when (string-prefix-p "semantic-" (symbol-name x))
+                    (remove-hook 'completion-at-point-functions x))))))
+
 ;; Semantic ON
 ;; (semantic-mode t)
 

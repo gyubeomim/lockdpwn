@@ -368,7 +368,7 @@ alias cd....='cd ../../..'
 
 
 # for systemctl
-alias stl='systemctl'
+alias sctl='sudo systemctl'
 
 # for chown
 alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
@@ -395,7 +395,7 @@ alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/catkin_ws/devel/setup.bash
 source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash  # for cartographer
-source /home/dyros-vehicle/segmap_ws/devel/setup.bash  # for segmap
+# source /home/dyros-vehicle/segmap_ws/devel/setup.bash  # for segmap
 
 # for x11vnc && TeamViewer connected user
 alias vu='netstat -tapno | grep 5902'
@@ -415,10 +415,18 @@ alias carla_ms='cd /media/dyros-data/gitrepo/carla-0.8.4_source/LinuxNoEditor &&
 alias nv='nvidia-smi -l'
 
 #for AORUS LAN Card Insallation
-alias aorus_lan='cd ~/Documents/r8152-2.09.0 && sudo make install'
+alias aorus_lan='cd ~/Documents/r8152-2.09.0 && make && sudo make install'
 
 #python virtualenv for segmap
 alias seg='source ~/segmappyenv/bin/activate'
 
 # for cmake rtags
 alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
+
+# for docker
+alias doc='docker'
+alias doca='docker attach'
+alias docps='docker ps -a'
+alias docrm='docker rm'
+alias docrmi='docker rmi'
+alias docim='docker images'
