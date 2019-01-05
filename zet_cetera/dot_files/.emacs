@@ -1551,10 +1551,10 @@
             (point-at-eol)
             (quote
              (face
-              (:background "gold" :weight bold))))))))))
+              (:background "gold" :weight bold))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
