@@ -42,7 +42,7 @@ class Array
 
 int main()
 {
-  Array<> iarr;    // ÅÛÇÃ¸´ µðÆúÆ® °ª »ç¿ë: Array<int, 100>
+  Array<> iarr;    // ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½ï¿½ï¿½: Array<int, 100>
 
   iarr.Add(10);
   iarr.Add(20);
@@ -55,7 +55,7 @@ int main()
 
   cout << endl;
 
-  Array<double> darr;   // doubleÇü ÅÛÇÃ¸´
+  Array<double> darr;   // doubleï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½
 
   darr.Add(10.1);
   darr.Add(10.2);
@@ -69,7 +69,7 @@ int main()
   cout<< endl;
 
 
-  Array<string,10> sarr;   // <string,10>Çü ÅÛÇÃ¸´
+  Array<string,10> sarr;   // <string,10>ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½
   sarr.Add("ed");
   sarr.Add("ward");
   sarr.Add("Is Awesome");

@@ -340,6 +340,13 @@
 ;; (require 'semantic/ia)
 ;; (require 'semantic/complete)
 
+(eval-after-load 'semantic
+    (add-hook 'semantic-mode-hook
+              (lambda ()
+                (dolist (x (default-value 'completion-at-point-functions))
+                  (when (string-prefix-p "semantic-" (symbol-name x))
+                    (remove-hook 'completion-at-point-functions x))))))
+
 ;; Semantic ON
 ;; (semantic-mode t)
 
@@ -559,6 +566,25 @@
   (right-char)
   )
 
+;; TODO ==> DONE, OPEN ==> CLOSED 키워드로 바꾸고 CLOSED:에 시간까지 추가해주는 함수
+(defun org-todo-done-edward (arg)
+  ""
+  (interactive)
+  (cond ((string= arg "DONE") (org-todo "DONE"))
+        ((string= arg "CLOSED") (org-todo "CLOSED"))
+        (t (user-error "Error while doing org-todo-dopne-edward"))
+        )
+  (save-excursion
+    (next-line)
+    (if (string-match-p "CLOSED:" (thing-at-point 'line t))
+        (user-error "CLOSED: is already exists")
+      (move-end-of-line 1)
+      (insert " CLOSED: ")
+      (move-end-of-line 1)
+      (org-time-stamp-inactive '(16))
+      ))
+  )
+
 ;; package: per-buffer-theme
 ;; (require 'per-buffer-theme)
 
@@ -620,6 +646,8 @@
      (define-key org-mode-map (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
      ;; C-> 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
      (define-key org-mode-map (kbd "C->") (lambda () (interactive)(org-capture nil ":")))
+     ;; C-M-> 키로 어느곳에서나 org-capture 기능을 열게합니다
+     (define-key org-mode-map (kbd "C-M->") 'org-capture)
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
      (define-key org-mode-map (kbd "C-c w") 'org-preview-html/preview)
      ;; code ==> image Update 단축키
@@ -732,6 +760,10 @@
                                    ("'" "todo.org: [Issues]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+
+                                   ("1" "ubuntu_tips.org: [Tips]" entry
+                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
@@ -853,6 +885,8 @@
 (global-set-key (kbd "C->") (lambda () (interactive)(org-capture nil ":")))
 ;; C-< 키로 어느곳에서나 todo.org OPEN 기능을 열게합니다
 (global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
+;; C-M-> 키로 어느곳에서나 org-capture 기능을 열게합니다
+(global-set-key (kbd "C-M->") 'org-capture)
 ;; C-, 키로 어느곳에서나 todo.org Note 기능을 열게합니다
 (global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "n")))
 ;; org-mode용 strike-through를 구현한 함수
@@ -938,7 +972,7 @@
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
 
     ;; C-_ 키로 font 크기를 특정 크기로 맞춰주는 함수 설정
-    (define-key undo-tree-map (kbd "C-_") 'set-frame-115)
+    (define-key undo-tree-map (kbd "C-_") 'set-frame-125)
 
     ))
 
@@ -990,8 +1024,8 @@
     (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
                                                   (let ((string (thing-at-point 'line t)))
                                                     (if (string-match-p "OPEN" string)
-                                                        (org-todo "CLOSED")
-                                                      (org-todo "DONE")
+                                                        (org-todo-done-edward "CLOSED")
+                                                      (org-todo-done-edward "DONE")
                                                       ))))
     ;; ] 키로 portal.opg 파일을 엽니다
     (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
@@ -1430,6 +1464,7 @@
    (quote
     (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
  '(avy-style (quote at-full))
+ '(cmake-ide-make-command "make -j4")
  '(column-number-mode t)
  '(company-backends
    (quote
@@ -1448,7 +1483,11 @@
  '(ecb-layout-name "right1")
  '(ecb-layout-window-sizes
    (quote
-    (("right1"
+    (("left3"
+      (ecb-directories-buffer-name 0.2 . 0.29411764705882354)
+      (ecb-sources-buffer-name 0.2 . 0.3333333333333333)
+      (ecb-methods-buffer-name 0.2 . 0.35294117647058826))
+     ("right1"
       (ecb-directories-buffer-name 0.3151515151515151 . 0.20833333333333334)
       (ecb-sources-buffer-name 0.3151515151515151 . 0.2916666666666667)
       (ecb-methods-buffer-name 0.3151515151515151 . 0.4791666666666667))
@@ -1630,6 +1669,7 @@
  '(sml/vc-mode-show-backend nil)
  '(sp-base-key-bindings nil)
  '(speedbar-update-flag t)
+ '(split-width-threshold 120)
  '(vc-follow-symlinks t)
  '(yas-also-auto-indent-first-line t)
  '(yas-also-indent-empty-lines t))
@@ -1641,8 +1681,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
- '(avy-lead-face ((t (:inherit isearch :background "orange"))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "orange"))))
+ '(avy-lead-face ((t (:inherit isearch :background "#996300" :foreground "gainsboro"))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "#996300" :foreground "gainsboro"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
  '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
@@ -1712,32 +1752,32 @@
   (zoom-frame (- n) frame amt))
 
 ;; 27인치 화면용 font size
-(defun set-frame-115 (&optional frame)
+(defun set-frame-125 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 115)
-    (message "Set frame's default text height to 115")))
+    (set-face-attribute 'default frame :height 125)
+    (message "Set frame's default text height to something I want")))
 
 ;; 15인치 화면용 font size
-(defun set-frame-140 (&optional frame)
+(defun set-frame-155 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 140)
-    (message "Set frame's default text height to 140")))
+    (set-face-attribute 'default frame :height 155)
+    (message "Set frame's default text height to 155")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
-(global-set-key (kbd "C-_") 'set-frame-115)
-(global-set-key (kbd "C-+") 'set-frame-140)
+(global-set-key (kbd "C-_") 'set-frame-125)
+(global-set-key (kbd "C-+") 'set-frame-155)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
@@ -2576,6 +2616,7 @@ created by edward 180515"
 (global-unset-key (kbd "S-SPC"))
 (global-unset-key (kbd "C-S-SPC"))
 (global-set-key [(control tab)] 'toggle-input-method)
+;; (global-set-key (kbd "S-SPC") 'toggle-input-method)
 
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.
 (cua-mode)
@@ -2700,11 +2741,13 @@ created by edward 180515"
 ;; Ctrl + t 를 누르면 커서의 숫자가 증가합니다
 (global-set-key (kbd "C-t") 'increment-number-at-point)
 
-;; M-> 키로 현재 커서에 있는 변수의 reference를 검색합니다.
-(global-set-key (kbd "M->") 'rtags-find-references-at-point)
 ;; M-., M-, 키로 함수나 변수로 이동하는 단축키를 설정한다
 (global-set-key (kbd "M-.") 'rtags-find-symbol-at-point)
 (global-set-key (kbd "M-,") 'rtags-location-stack-back)
+;; M-< 키로 현재 커서에 있는 변수의 reference를 검색합니다.
+(global-set-key (kbd "M-<") 'rtags-find-references-at-point)
+;; M-> 키로 현재 커서에 있는 변수로 이동합니다
+(global-set-key (kbd "M->") 'rtags-find-symbol)
 
 
 ;; 변수나 함수 하이라이팅한 구문을 빠르게 이동합니다 higlight-symbol 패키지
@@ -2856,6 +2899,11 @@ created by edward 180515"
     (define-key magit-process-mode-map (kbd "M-3") nil)
 
     ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
+    (define-key magit-log-mode-map (kbd "j") 'evil-next-line)
+    (define-key magit-log-mode-map (kbd "k") 'evil-previous-line)
+    (define-key magit-log-mode-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-log-mode-map (kbd "C-d") 'evil-scroll-down)
+
     (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
     (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
     (define-key magit-status-mode-map (kbd "C-u") 'evil-scroll-up)
@@ -3047,8 +3095,8 @@ created by edward 180515"
 (key-chord-define-global "zz" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
-(key-chord-define-global "XX" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
-(key-chord-define-global "ZZ" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
+(key-chord-define-global "cc" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
+(key-chord-define-global "aa" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-mode t)
 ;; (key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
 ;; (key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2

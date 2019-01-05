@@ -147,7 +147,8 @@ C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
 PS1="$C_LIGHTGREEN\u(@lenovo)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
-# PS1="$C_LIGHTGREEN(@user)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+# PS1="$C_LIGHTRED[user@user]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+# PS1="$C_LIGHTBLUE[user@user]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
 # LANGUAGE=ko_KR
@@ -236,15 +237,17 @@ export ROS_HOSTNAME=127.0.0.1
 # set ROS alias command
 alias cw='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic'
 alias cs='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/src'
-alias cm='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic && catkin_make'
+alias cm='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+
 # alias cw='cd /home/dyros-vehicle/catkin_ws'
 # alias cs='cd /home/dyros-vehicle/catkin_ws/src'
 # alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make'
+
 alias cr='cd /home/dyros-vehicle/gitrepo/ims_ros/'
 alias cb='cd /media/dyros-vehicle/edward_6/bag_files'
 alias cbb='cd ~/bag_files'
-alias cma='catkin_make'
-alias cmac='catkin_make_isolated --install --use-ninja'
 alias so='source devel/setup.bash'
 alias so2='rospack profile && source devel/setup.bash'
 alias cdd='cd /media/dyros-vehicle/edward_6'
@@ -263,6 +266,7 @@ alias cd....='cd ../../..'
 
 # for triple-monitors
 alias cvt='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/cvt_1920_1080.sh'
+alias cvt2='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/cvt_1920_1080_2.sh'
 
 # for systemctl
 alias stl='sudo systemctl'
@@ -274,13 +278,13 @@ alias cl='clear'
 alias soc='source install_isolated/setup.bash'
 alias cwc='cd /home/dyros-vehicle/gitrepo/ims_carto'
 alias csc='cd /home/dyros-vehicle/gitrepo/ims_carto/src'
-alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja'
-alias cmca='catkin_make_isolated --install --use-ninja'
+alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cmca='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT__EXPORT_COMPILE_COMMANDS=1 COMPILE_COMMANDS=1'
 
 # for segmap
 alias cwg='cd /home/dyros-vehicle/segmap_ws'
 alias csg='cd /home/dyros-vehicle/segmap_ws/src'
-alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper'
+alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 
 
@@ -391,6 +395,8 @@ alias wc='python /home/dyros-vehicle/gitrepo/ubuntu-live-wallpaper/wallpaper-cha
 #python virtualenv for segmap
 alias seg='source ~/segmappyenv/bin/activate'
 
+# cmake for rtags
+alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
 
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'

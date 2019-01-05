@@ -8,3 +8,9 @@ build/
 .ipynb_checkpoints/
 
 *.svg
+
+GTAGS
+GSYMS
+GRTAGS
+GPATH
+TAGS
