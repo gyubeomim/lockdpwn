@@ -1513,7 +1513,7 @@
  '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
-    ("~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/software/docker.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1551,10 +1551,10 @@
             (point-at-eol)
             (quote
              (face
-              (:background "gold" :weight bold))))))))) t)
+              (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1611,7 +1611,7 @@
  '(org-link-file-path-type (quote relative))
  '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
- '(org-tags-column 50)
+ '(org-tags-column 10)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
@@ -1725,7 +1725,7 @@
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.7))))
+ '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.6))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold)))))
 
@@ -2616,7 +2616,7 @@ created by edward 180515"
 (global-unset-key (kbd "S-SPC"))
 (global-unset-key (kbd "C-S-SPC"))
 (global-set-key [(control tab)] 'toggle-input-method)
-;; (global-set-key (kbd "S-SPC") 'toggle-input-method)
+(global-set-key (kbd "S-SPC") 'toggle-input-method)
 
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.
 (cua-mode)

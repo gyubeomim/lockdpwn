@@ -1,7 +1,7 @@
 docker run \
            --runtime=nvidia \
 		   --net=host \
-		   --name segmap_docker \
-		   -it \
+		   --name autoware_docker \
+		   --it \
 		   -v /home/dyros-vehicle/docker:/root/data \
-		   edward0im/dyrosvehicle:ubuntu_cuda9.0
+		   edward0im/dyrosvehicle:ubuntu_autoware
