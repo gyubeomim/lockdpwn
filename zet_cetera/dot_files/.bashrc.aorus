@@ -435,3 +435,8 @@ alias docim='docker images'
 # docker tag edward0im:ubuntu_cuda9.0 edward0im/dyrosvehicle:ubuntu_cuda9.0                                                          
 # doc push edward0im/dyrosvehicle:ubuntu_cuda9.0
 
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/dyros-vehicle/gitrepo/ORB_SLAM2/Examples/ROS
+
+# for docker image
+alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm chenzj/dfimage"
+
