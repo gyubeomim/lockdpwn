@@ -1,6 +1,4 @@
-# 기존 image가 rviz같은 그래픽 도구가 잘 안돌아가서 이를 돌아가게 하기 위한 코드
-# from https://github.com/CPFL/Autoware/pull/1416/commits/d3ad521c4a6be236a7f4023f75f2221429c8b0bf
-FROM edward0im/dyrosvehicle:ubuntu_cuda9.0
+FROM osrf/ros:kinetic-desktop-full
 
 USER root
 

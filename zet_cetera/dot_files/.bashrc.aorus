@@ -430,3 +430,8 @@ alias docps='docker ps -a'
 alias docrm='docker rm'
 alias docrmi='docker rmi'
 alias docim='docker images'
+
+# docker PUSH to ONLINE commands----------------------------------------
+# docker tag edward0im:ubuntu_cuda9.0 edward0im/dyrosvehicle:ubuntu_cuda9.0                                                          
+# doc push edward0im/dyrosvehicle:ubuntu_cuda9.0
+#----------------------------------------------------------------------- 
