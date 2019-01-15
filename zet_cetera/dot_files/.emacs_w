@@ -350,6 +350,24 @@
   (right-char)
   )
 
+;; TODO ==> DONE, OPEN ==> CLOSED 키워드로 바꾸고 CLOSED:에 시간까지 추가해주는 함수
+(defun org-todo-done-edward (arg)
+  ""
+  (interactive)
+  (cond ((string= arg "DONE") (org-todo "DONE"))
+        ((string= arg "CLOSED") (org-todo "CLOSED"))
+        (t (user-error "Error while doing org-todo-dopne-edward"))
+        )
+  (save-excursion
+    (next-line)
+    (if (string-match-p "CLOSED:" (thing-at-point 'line t))
+        (user-error "CLOSED: is already exists")
+      (move-end-of-line 1)
+      (insert " CLOSED: ")
+      (move-end-of-line 1)
+      (org-time-stamp-inactive '(16))
+      ))
+  )
 
 ;; PACKAGE: org2jekyll
 ;; (require 'org2jekyll)
@@ -434,8 +452,6 @@
      ;; org.el에서 remap이 되어있던 코드를 주석처리하니 아래 두 코드가 정상작동한다
      (define-key org-mode-map (kbd "<C-down>") 'forward-paragraph)
      (define-key org-mode-map (kbd "M-f") 'forward-paragraph)
-     ;; C-' 키로 태그를 설정합니다
-     (define-key org-mode-map (kbd "C-'") 'org-set-tags-command)
      ;; C-\ 키로 태그를 검색합니다
      (define-key org-mode-map (kbd "C-\\") 'org-time-stamp)
      ;; C-[ 키로 link를 삽입합니다
@@ -562,8 +578,8 @@
 
 
 
-                                  ;; C-' 키로 tag를 설정합니다
-                                  (define-key org-agenda-mode-map (kbd "C-'") 'org-agenda-set-tags)
+                                  ;; ' 키로 tag를 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "'") 'org-agenda-set-tags)
                                   (define-key org-agenda-mode-map (kbd "<M-S-right>") 'org-shiftright)
                                   (define-key org-agenda-mode-map (kbd "<M-S-left>") 'org-shiftleft)
                                   ))
@@ -683,7 +699,7 @@
 
     ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
     (define-key undo-tree-map (kbd "C-_") 'set-frame-125)
-    (define-key undo-tree-map (kbd "C-+") 'set-frame-144)
+    (define-key undo-tree-map (kbd "C-+") 'set-frame-140)
     ))
 
 ;; for easy-jekyll mode
@@ -733,9 +749,10 @@
     (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
                                                   (let ((string (thing-at-point 'line t)))
                                                     (if (string-match-p "OPEN" string)
-                                                        (org-todo "CLOSED")
-                                                      (org-todo "DONE")
+                                                        (org-todo-done-edward "CLOSED")
+                                                      (org-todo-done-edward "DONE")
                                                       ))))
+    (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
     ;; org-mode에서 , . 키로 strike-through를 설정합니다
     (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
     (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
@@ -1034,19 +1051,19 @@
     (message "Set frame's default text height to 125")))
 
 ;; 15인치 화면용 font size
-(defun set-frame-144 (&optional frame)
+(defun set-frame-140 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 144)
-    (message "Set frame's default text height to 144")))
+    (set-face-attribute 'default frame :height 140)
+    (message "Set frame's default text height to 140")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-_") 'set-frame-125)
-(global-set-key (kbd "C-+") 'set-frame-144)
+(global-set-key (kbd "C-+") 'set-frame-140)
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
@@ -2415,7 +2432,7 @@ created by edward 180515"
               (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342毓\276" "\342毓\277" "\342肉\200" "\342堉\236" "*")))
+    ("\342驪\223\276" "\342驪\223\277" "\342\350굢\200" "\342\345젆\236" "*")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2472,7 +2489,7 @@ created by edward 180515"
  '(org-link-file-path-type (quote relative))
  '(org-lowest-priority 69)
  '(org-scheduled-delay-days 0)
- '(org-tags-column 50)
+ '(org-tags-column 10)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
