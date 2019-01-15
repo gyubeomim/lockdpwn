@@ -398,6 +398,18 @@ alias seg='source ~/segmappyenv/bin/activate'
 # cmake for rtags
 alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
 
+# for docker
+alias doc='docker'
+alias doca='docker attach'
+alias docps='docker ps -a'
+alias docrm='docker rm'
+alias docrmi='docker rmi'
+alias docim='docker images'
+# docker PUSH to ONLINE commands
+# docker tag edward0im:ubuntu_cuda9.0 edward0im/dyrosvehicle:ubuntu_cuda9.0
+# doc push edward0im/dyrosvehicle:ubuntu_cuda9.0
+
+
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'
 # alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/directorPython'
