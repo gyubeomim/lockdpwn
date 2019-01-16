@@ -9,7 +9,7 @@ docker run \
 	--name autoware_docker \
     --env="XAUTHORITY=${XAUTH}" \
     --env="DISPLAY=${DISPLAY}" \
-	--env="XDG_RUNTIME_DIR=/run/user/1000"
+	--env="XDG_RUNTIME_DIR=/run/user/1000" \
     --privileged \
 	-v /run/user/1000:/run/user/1000 \
 	-v /dev/bus/usb:/dev/bus/usb \
