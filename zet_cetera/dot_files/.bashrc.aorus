@@ -309,7 +309,7 @@ export UE4_ROOT='/home/dyros-vehicle/gitrepo/UnrealEngine'
 alias ti='cd /home/dyros-vehicle/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
 alias cdd='cd /media/dyros-data/'
 
-alias cr='cd /home/dyros-vehicle/gitrepo/ims/ROS/'
+alias cr='cd /home/dyros-vehicle/gitrepo/ims_ros/'
 alias t='tmux'
 
 
@@ -337,21 +337,14 @@ stty -ixon
 
 
 # for caffe
-export PYTHONPATH=/home/dyros-vehicle/gitrepo/fast-rcnn/caffe-fast-rcnn/python:$PYTHONPATH
-
-
+# export PYTHONPATH=/home/dyros-vehicle/gitrepo/fast-rcnn/caffe-fast-rcnn/python:$PYTHONPATH
 # for Fast R-CNN
 export FRCN_ROOT=/home/dyros-vehicle/gitrepo/fast-rcnn
-
-
 # for simdat
-export PYTHONPATH=/home/dyros-vehicle/gitrepo:$PYTHONPATH
-
+# export PYTHONPATH=/home/dyros-vehicle/gitrepo:$PYTHONPATH
 
 # for vtk 6.2
 export LD_LIBRARY_PATH=/usr/include/vtk-6.2/:$LD_LIBRARY_PATH 
-
-
 # for vtk 5.xx
 export LD_LIBRARY_PATH=/home/dyros-vehicle/Documents/VTK-5.10.1/build:/home/dyros-vehicle/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
 
@@ -435,3 +428,7 @@ alias docim='docker images'
 # docker tag edward0im:ubuntu_cuda9.0 edward0im/dyrosvehicle:ubuntu_cuda9.0                                                          
 # doc push edward0im/dyrosvehicle:ubuntu_cuda9.0
 #----------------------------------------------------------------------- 
+
+# for avod 
+export PYTHONPATH=$PYTHONPATH:'/media/dyros-data/gitrepo/avod'
+export PYTHONPATH=$PYTHONPATH:'/media/dyros-data/gitrepo/avod/wavedata'
