@@ -6,7 +6,7 @@ docker run \
     --runtime=nvidia \
     -it \
     --net=host \
-	--name autoware_docker \
+	--name docker_autoware \
     --env="XAUTHORITY=${XAUTH}" \
     --env="DISPLAY=${DISPLAY}" \
 	--env="XDG_RUNTIME_DIR=/run/user/1000" \
@@ -16,7 +16,7 @@ docker run \
     -v $XSOCK:$XSOCK:rw \
     -v $XAUTH:$XAUTH:rw \
     -v $HOST_DIR:$SHARED_DIR:rw \
-	-v /home/dyros-vehicle/docker:/home/autoware/docker \
+	-v /home/dyros-vehicle/share_docker:/home/autoware/share_docker \
 	-v /media/dyros-data/datasets:/home/autoware/datasets \
 	-v /media/dyros-data/bag_files:/home/autoware/bag_files \
 	edward0im/dyrosvehicle:ubuntu_autoware

@@ -2,9 +2,9 @@
 XSOCK=/tmp/.X11-unix
 XAUTH=/home/$USER/.Xauthority
 
-	# -v /home/dyros-vehicle/docker:~/docker \
-	# -v /media/dyros-data/datasets:~/datasets \
-	# -v /media/dyros-data/bag_files:~/bag_files \
+# -v /home/dyros-vehicle/docker:~/docker \
+# -v /media/dyros-data/datasets:~/datasets \
+# -v /media/dyros-data/bag_files:~/bag_files \
 
 docker run \
 	--rm \
@@ -21,4 +21,5 @@ docker run \
     -v $XSOCK:$XSOCK:rw \
     -v $XAUTH:$XAUTH:rw \
     -v $HOST_DIR:$SHARED_DIR:rw \
-	luca911014/frustum-pointnet:0.0.1
+	edward0im/dyrosvehicle:ubuntu_second
+	/bin/bash
