@@ -677,8 +677,6 @@
      ;; org.el에서 remap이 되어있던 코드를 주석처리하니 아래 두 코드가 정상작동한다
      (define-key org-mode-map (kbd "<C-down>") 'forward-paragraph)
      (define-key org-mode-map (kbd "M-f") 'forward-paragraph)
-     ;; C-' 키로 태그를 설정합니다
-     (define-key org-mode-map (kbd "C-'") 'org-set-tags-command)
      ;; C-[ 키로 link를 삽입합니다
      (define-key org-mode-map (kbd "H-[") 'org-insert-link)
      ;; C-c C-[ 키로 org-pomodoro-1day-done 함수를 실행합니다
@@ -842,8 +840,6 @@
                                   (define-key org-agenda-mode-map (kbd "C-u") 'evil-scroll-up)
                                   (define-key org-agenda-mode-map (kbd "C-d") 'evil-scroll-down)
 
-                                  ;; C-' 키로 tag를 설정합니다
-                                  (define-key org-agenda-mode-map (kbd "C-'") 'org-agenda-set-tags)
                                   (define-key org-agenda-mode-map (kbd "<M-S-right>") 'org-shiftright)
                                   (define-key org-agenda-mode-map (kbd "<M-S-left>") 'org-shiftleft)
                                   ))
@@ -1036,12 +1032,19 @@
     ;; { 키로 특정 paper_researh.org 파일을 엽니다
     (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
 
+    ;; org-mode에서 ' 키로 tag를 설정합니다
+    (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
+
     ;; org-mode에서 , . 키로 strike-through를 설정합니다
     (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
     (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
     (define-key evil-normal-state-map (kbd ".") 'strike-through-for-org-mode-undo)
-    ;; org-mode에서 w 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
-    (define-key evil-motion-state-map (kbd "w") (lambda() (interactive)
+    ;; org-mode에서 c 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
+    (define-key evil-normal-state-map (kbd "c") (lambda() (interactive)
+                                                  (progn
+                                                    (outline-hide-other)
+                                                    (outline-show-subtree))))
+    (define-key evil-motion-state-map (kbd "c") (lambda() (interactive)
                                                   (progn
                                                     (outline-hide-other)
                                                     (outline-show-subtree))))

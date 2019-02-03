@@ -1,0 +1,10 @@
+#!/bin/sh
+
+docker run \
+       --runtime=nvidia \
+	   --name=docker_deeplabv3plus \
+       -it \
+       -p 7777:8888 \
+       -v ~/share_docker:/root/share_docker \
+	   edward0im/dyrosvehicle:ubuntu_deeplabv3plus
+       /bin/bash
