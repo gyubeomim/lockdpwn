@@ -316,10 +316,11 @@ alias carla_UE4='ueditor /media/dyros-data/gitrepo/carla-0.8.4_source/Unreal/Car
 alias carla_exp='cd /media/dyros-data/gitrepo/CARLA_0.8.4/LinuxNoEditor && SDL_VIDEODRIVER=offscreen SDL_HINT_CUDA_DEVICE = 0 ./CarlaUE4.sh -windowed -resx=600 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
 
 alias carla_ms='cd /media/dyros-data/gitrepo/carla-0.8.4_source/LinuxNoEditor && SDL_VIDEODRIVER=offscreen SDL_HINT_CUDA_DEVICE=0 ./CarlaUE4.sh  -windowed -resx=640 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
-alias carla_ms_display='cd /media/dyros-data/gitrepo/carla-0.8.4_source/LinuxNoEditor && ./CarlaUE4.sh  -windowed -resx=640 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
+alias carla_ms_display='cd /media/dyros-data/gitrepo/carla-0.8.4_source/LinuxNoEditor && ./CarlaUE4.sh  -windowed -resx=800 -resy=600 -carla-settings=./Example.CarlaSettings.ini'
 
 alias carla_ms_play='cd /media/dyros-data/gitrepo/carla-0.8.4_source/LinuxNoEditor && ./CarlaUE4.sh  -windowed -resx=640 -resy=480'
 
+alias carla_test='cd /media/dyros-data/gitrepo/DDPGlearningPrj && python manual_control.py'
 #alias carla_ms='/media/dyros-data/gitrepo/carla-0.8.4_source/Unreal/CarlaUE4/LinuxNoEditor/#CarlaUE4/Binaries/Linux/CarlaUE4  -windowed -resx=800 -resy=640'
 
 # set ROS
@@ -375,3 +376,17 @@ alias tu='netstat -tapno | grep Team'
 # export HISTCONTROL=ignoredups:erasedups
 # shopt -s histappend
 # export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+# for docker
+alias doc='docker'
+alias doca='docker attach'
+alias docps='docker ps -a'
+alias docrm='docker rm'
+alias docrmi='docker rmi'
+alias docim='docker images'
+
+# docker PUSH to ONLINE commands----------------------------------------
+# docker tag edward0im:ubuntu_cuda9.0 edward0im/dyrosvehicle:ubuntu_cuda9.0                                                          
+# doc push edward0im/dyrosvehicle:ubuntu_cuda9.0
+#----------------------------------------------------------------------- 
+

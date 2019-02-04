@@ -7,7 +7,7 @@ xhost +local:docker
 docker run \
 	--runtime=nvidia \
 	--net=host \
-	--name docker_cuda9.0 \
+	--name docker_second \
 	-it \
 	--env="XAUTHORITY=${XAUTH}" \
 	--env="DISPLAY=unix$DISPLAY" \
@@ -17,9 +17,10 @@ docker run \
 	-v /dev/bus/usb:/dev/bus/usb \
 	-v $XSOCK:$XSOCK:rw \
 	-v $XAUTH:$XAUTH:rw \
-	-v /media/dyros-data/gitrepo/ims_ros/docker_ws/src_ubuntu_cuda9.0:/root/docker_ws/src \
-	-v /media/dyros-data/gitrepo/ims_ros/docker_ws/not_used_ubuntu_cuda9.0:/root/docker_ws/not_used \
 	-v /home/dyros-vehicle/share_docker:/root/share_docker \
 	-v /media/dyros-data/bag_files:/root/bag_files \
+	-v /media/dyros-data/datasets/kitti/data_object:/root/data \
+	-v /media/dyros-data/pretrained_weights/second_pretrained_model_v1.5:/root/model \
 	--expose 22 \
-	edward0im/dyrosvehicle:ubuntu_cuda9.0
+	edward0im/dyrosvehicle:ubuntu_second
+
