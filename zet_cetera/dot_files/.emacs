@@ -744,31 +744,31 @@
         ))
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
-     (setq org-agenda-files (file-expand-wildcards "~/CloudStation/gitrepo_sync/ims_org/org_files/*.org"))
-     (setq org-agenda-files (file-expand-wildcards "~/CloudStation/gitrepo_sync/ims_org/org_files/note/*.org"))
+     (setq org-agenda-files (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/*.org"))
+     (setq org-agenda-files (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/note/*.org"))
 
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '((";" "todo.org: [Task]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
                                     "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    (":" "todo.org: [Task]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ("'" "todo.org: [Issues]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "Issues")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "Issues")
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("1" "ubuntu_tips.org: [Tips]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
                                     "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
 
                                    ("n" "note.org: [Note]" entry
-                                    (file+headline "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "Note")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/note.org" "Note")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
@@ -782,28 +782,28 @@
 ;; (setq org-publish-project-alist
 ;;       '(
 ;;         ("paper"
-;;          :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/paper"
-;;          :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/"
+;;          :base-directory "~/gitrepo_sync/ims_org/org_files/paper"
+;;          :publishing-directory "~/gitrepo_sync/ims_org/org_files/paper/"
 ;;          :base-extension "org"
 ;;          :publishing-function org-twbs-publish-to-html)
 ;;       ("note"
-;;          :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/note"
-;;          :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/note/"
+;;          :base-directory "~/gitrepo_sync/ims_org/org_files/note"
+;;          :publishing-directory "~/gitrepo_sync/ims_org/org_files/note/"
 ;;          :base-extension "org"
 ;;          :publishing-function org-twbs-publish-to-html)
 ;;       ("emacs"
-;;        :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs"
-;;        :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/emacs/"
+;;        :base-directory "~/gitrepo_sync/ims_org/org_files/emacs"
+;;        :publishing-directory "~/gitrepo_sync/ims_org/org_files/emacs/"
 ;;        :base-extension "org"
 ;;        :publishing-function org-twbs-publish-to-html)
 ;;       ("STEM"
-;;        :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM"
-;;        :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/"
+;;        :base-directory "~/gitrepo_sync/ims_org/org_files/STEM"
+;;        :publishing-directory "~/gitrepo_sync/ims_org/org_files/STEM/"
 ;;        :base-extension "org"
 ;;        :publishing-function org-twbs-publish-to-html)
 ;;       ("link"
-;;        :base-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/link"
-;;        :publishing-directory "~/CloudStation/gitrepo_sync/ims_org/org_files/link/"
+;;        :base-directory "~/gitrepo_sync/ims_org/org_files/link"
+;;        :publishing-directory "~/gitrepo_sync/ims_org/org_files/link/"
 ;;        :base-extension "org"
 ;;        :publishing-function org-twbs-publish-to-html)
 ;;       ("all" :components ("paper" "note" "emacs" "STEM" "link"))))
@@ -813,7 +813,7 @@
 (setq package-check-signature nil)
 (setq org-gcal-client-id "815785509878-3gn7mhcti240j6am59uk95s230n11172.apps.googleusercontent.com"
       org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
-      org-gcal-file-alist '(("gyurse@gmail.com" .  "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
+      org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo_sync/ims_org/org_files/gcal.org")))
 ;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
 (add-hook 'org-agenda-mode-hook (lambda ()
                                   (org-gcal-sync nil nil t)
@@ -825,13 +825,13 @@
 
                                   ;; .org 파일 여는 명령어 추가
                                   ;; ] 키로 portal.opg 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
+                                  (define-key org-agenda-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
                                   ;; [ 키로 note.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+                                  (define-key org-agenda-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
                                   ;; } 키로 특정 pomodoro.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+                                  (define-key org-agenda-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
                                   ;; { 키로 특정 paper_researh.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "{") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
+                                  (define-key org-agenda-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
 
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
@@ -866,7 +866,7 @@
 ;; C-c + a 키로 특정 키워드를 검색합니다
 (global-set-key (kbd "C-c a") (lambda() (interactive)(org-agenda nil "s")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
-(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org")))
+(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; C-? 키로 어느곳에서나 agenda view를 열게합니다
@@ -1024,13 +1024,13 @@
                                                       (org-todo-done-edward "DONE")
                                                       ))))
     ;; ] 키로 portal.opg 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
+    (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
     ;; [ 키로 note.org 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+    (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
     ;; } 키로 특정 pomodoro.org 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+    (define-key evil-motion-state-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
     ;; { 키로 특정 paper_researh.org 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
+    (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
 
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
@@ -1516,7 +1516,7 @@
  '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
-    ("~/CloudStation/gitrepo_sync/ims_org/org_files/STEM/software/docker.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/todo.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/CloudStation/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/gitrepo_sync/ims_org/org_files/STEM/software/docker.org" "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/note.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -2935,21 +2935,21 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
 
     ;; ] 키로 portal.opg 파일을 엽니다
-    (define-key magit-status-mode-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
-    (define-key magit-diff-mode-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
-    (define-key magit-process-mode-map (kbd "]") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/portal.org")))
+    (define-key magit-status-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
+    (define-key magit-diff-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
+    (define-key magit-process-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
     ;; [ 키로 note.org 파일을 엽니다
-    (define-key magit-status-mode-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
-    (define-key magit-diff-mode-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
-    (define-key magit-process-mode-map (kbd "[") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/note.org")))
+    (define-key magit-status-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
+    (define-key magit-diff-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
+    (define-key magit-process-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
     ;; } 키로 특정 pomodoro.org 파일을 엽니다
-    (define-key magit-status-mode-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
-    (define-key magit-diff-mode-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
-    (define-key magit-process-mode-map (kbd "}") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+    (define-key magit-status-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+    (define-key magit-diff-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+    (define-key magit-process-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
     ;; { 키로 특정 paper_researh.org 파일을 엽니다
-    (define-key magit-status-mode-map (kbd "{") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
-    (define-key magit-diff-mode-map (kbd "{") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
-    (define-key magit-process-mode-map (kbd "{") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
+    (define-key magit-status-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
+    (define-key magit-diff-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
+    (define-key magit-process-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org")))
     ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
@@ -3129,7 +3129,7 @@ created by edward 180515"
 ;; Alt + g 키로 xml 파일 내에서 코드를 folding할 수 있습니다
 (define-key nxml-mode-map (kbd "M-g") 'hs-toggle-hiding)
 ;; nxml(.launch file) 모드에서도 C-c + / 키로 edward.org 파일을 엽니다 (deprecated)
-;; (define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/CloudStation/gitrepo_sync/ims_org/org_files/edward.org")))
+;; (define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/edward.org")))
 
 ;; grep-find (C-p) 명령어에서 새로운 grep 창이 열리지 않고 바로 현재창이 바뀌도록 하는 코드
 (eval-when-compile (require 'cl))

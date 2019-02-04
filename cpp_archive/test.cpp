@@ -1,52 +1,125 @@
-#include <cstdio>
-#include <algorithm>
-#include <queue>
+/*
+ * #+DESCRIPTION: Inverse Perspective Mapping 알고리즘을 수행한 예제 코드
+ *
+ * #+DATE:        2019-01-28-Mon
+ * #+AUTHOR:      Edward Im (gyurse@gmail.com)
+ */
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+#include <iostream>
 
 using namespace std;
+using namespace cv;
+#define PI 3.1415926
 
-const int roff[4]={-1,1,0,0};
-const int coff[4]={0,0,-1,1};
+int frameWidth = 640;
+int frameHeight = 480;
 
-int main() {
-    int N,M;
-    scanf("%d %d", &N, &M);
-    bool map[100][100];
-
-    for(int i=0; i<N; i++)
-        for(int j=0; j<M; j++)
-            scanf("%1d", &map[i][j]);
-
-    bool visited[100][100] = {0};
-    visited[0][0] = true;
-
-    queue<int> Q;
-    Q.push(0);
-    int result = 1;
-
-    while(true){
-        int qSize = Q.size();
-        for(int i=0; i<qSize; i++){
-            int r = Q.front()/100;
-            int c = Q.front()%100;
-            Q.pop();
-
-            if(r==N-1 && c==M-1){
-                printf("%d\n", result);
-                return 0;
-            }
-
-            for(int d=0; d<4; d++){
-                int nr = r + roff[d];
-                int nc = c + coff[d];
-
-                if(nr<0 || nr>=N || nc<0 || nc>=M) continue;
-                if(map[nr][nc]==0) continue;
-                if(visited[nr][nc]) continue;
-
-                visited[nr][nc] = true;
-                Q.push(nr*100+nc);
-            }
-        }
-        result++;
+int main(int argc, char const *argv[]) {
+    if(argc < 2) {
+      cerr << "Usage: " << argv[0] << " /dev/video1" << endl;
+      cout << "Exiting...." << endl;
+      return -1;
     }
+
+    // get file name from the command line
+    string filename = argv[1];
+
+    // capture object
+    VideoCapture capture(filename);
+
+    // mat container to receive images
+    Mat source, destination;
+
+    // check if capture was successful
+    if( !capture.isOpened()) throw "Error reading video";
+
+
+    int alpha_ = 90, beta_ = 90, gamma_ = 90;
+    int f_ = 500, dist_ = 500;
+
+    // namedWindow("Result", 1);
+
+    //createTrackbar("Alpha", "Result", &alpha_, 180);
+    //createTrackbar("Beta", "Result", &beta_, 180);
+    //createTrackbar("Gamma", "Result", &gamma_, 180);
+    //createTrackbar("f", "Result", &f_, 2000);
+    //createTrackbar("Distance", "Result", &dist_, 2000);
+
+    while( true ) {
+
+        capture >> source;
+
+        resize(source, source,Size(frameWidth, frameHeight));
+
+        double focalLength, dist, alpha, beta, gamma; 
+
+        alpha = 43;
+        beta =((double)beta_ -90) * PI/180;
+        gamma =((double)gamma_ -90) * PI/180;
+        focalLength = (double)f_;
+        dist = (double)dist_;
+
+        Size image_size = source.size();
+        double w = (double)image_size.width, h = (double)image_size.height;
+
+
+        // Projecion matrix 2D -> 3D
+        Mat A1 = (Mat_<float>(4, 3)<< 
+            1, 0, -w/2,
+            0, 1, -h/2,
+            0, 0, 0,
+            0, 0, 1 );
+
+
+        // Rotation matrices Rx, Ry, Rz
+
+        Mat RX = (Mat_<float>(4, 4) << 
+            1, 0, 0, 0,
+            0, cos(alpha), -sin(alpha), 0,
+            0, sin(alpha), cos(alpha), 0,
+            0, 0, 0, 1 );
+
+        Mat RY = (Mat_<float>(4, 4) << 
+            cos(beta), 0, -sin(beta), 0,
+            0, 1, 0, 0,
+            sin(beta), 0, cos(beta), 0,
+            0, 0, 0, 1  );
+
+        Mat RZ = (Mat_<float>(4, 4) << 
+            cos(gamma), -sin(gamma), 0, 0,
+            sin(gamma), cos(gamma), 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1  );
+
+
+        // R - rotation matrix
+        Mat R = RX * RY * RZ;
+
+        // T - translation matrix
+        Mat T = (Mat_<float>(4, 4) << 
+            1, 0, 0, 0,  
+            0, 1, 0, 0,  
+            0, 0, 1, dist,  
+            0, 0, 0, 1); 
+
+        // K - intrinsic matrix 
+        Mat K = (Mat_<float>(3, 4) << 
+            focalLength, 0, w/2, 0,
+            0, focalLength, h/2, 0,
+            0, 0, 1, 0
+            ); 
+
+
+        Mat transformationMat = K * (T * (R * A1));
+
+        warpPerspective(source, destination, transformationMat, image_size, INTER_CUBIC | WARP_INVERSE_MAP);
+
+        imshow("Result", destination);
+        waitKey(200);
+    }
+
+
+    return 0;
 }
