@@ -1674,6 +1674,7 @@
  '(speedbar-update-flag t)
  '(split-width-threshold 120)
  '(tabbar-cycle-scope nil)
+ '(tabbar-separator (quote ("|")))
  '(vc-follow-symlinks t)
  '(yas-also-auto-indent-first-line t)
  '(yas-also-indent-empty-lines t))
