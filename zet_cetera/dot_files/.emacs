@@ -1734,7 +1734,14 @@
  '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.6))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
- '(tabbar-default ((t (:background "#002b36" :foreground "gray50" :height 0.9)))))
+ '(tabbar-button ((t (:inherit tabbar-default))))
+ '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
+ '(tabbar-default ((t (:background "#002b36" :foreground "gray50" :height 0.9))))
+ '(tabbar-highlight ((t (:foreground "white"))))
+ '(tabbar-modified ((t (:inherit tabbar-default :foreground "green"))))
+ '(tabbar-selected ((t (:inherit tabbar-default :foreground "cyan"))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red"))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))
 
 
 
