@@ -980,7 +980,7 @@
 
 ;;
 (define-key global-map (kbd "C-c C-e") 'easy-jekyll)
-                                        ; (setq easy-jekyll-sshdomain "blogdomain")
+;; (setq easy-jekyll-sshdomain "blogdomain")
 
 ;; PACKAGE: minimap
 (global-set-key (kbd "C-c m") 'minimap-mode)
@@ -1557,7 +1557,7 @@
               (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1618,7 +1618,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(per-buffer-theme/default-theme (quote solarized-dark))
  '(per-buffer-theme/ignored-buffernames-regex
    (quote
@@ -1673,6 +1673,7 @@
  '(sp-base-key-bindings nil)
  '(speedbar-update-flag t)
  '(split-width-threshold 120)
+ '(tabbar-cycle-scope nil)
  '(vc-follow-symlinks t)
  '(yas-also-auto-indent-first-line t)
  '(yas-also-indent-empty-lines t))
@@ -1730,7 +1731,8 @@
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.6))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold :height 1.0))))
- '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold)))))
+ '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
+ '(tabbar-default ((t (:background "#002b36" :foreground "gray50" :height 0.9)))))
 
 
 
@@ -2057,6 +2059,38 @@
                                (make_TAGS_file_auto)
                                (helm-gtags-create-tags default-directory "default")
                                ))
+
+(require 'tabbar)
+; turn on the tabbar
+(tabbar-mode t)
+; define all tabs to be one of 3 possible groups: “Emacs Buffer”, “Dired”,
+;“User Buffer”.
+
+;; (defun tabbar-buffer-groups ()
+;;   "Return the list of group names the current buffer belongs to.
+;; This function is a custom function for tabbar-mode's tabbar-buffer-groups.
+;; This function group all buffers into 3 groups:
+;; Those Dired, those user buffer, and those emacs buffer.
+;; Emacs buffer are those starting with “*”."
+;;   (list
+;;    (cond
+;;     ((string-equal "*" (substring (buffer-name) 0 1))
+;;      "Emacs Buffer"
+;;      )
+;;     ((eq major-mode 'dired-mode)
+;;      "Dired"
+;;      )
+;;     (t
+;;      "User Buffer"
+;;      )
+;;     )))
+
+;; (setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
+
+(eval-after-load "tabbar" '(progn
+                             (define-key tabbar-mode-map (kbd "C-<tab>") 'tabbar-forward)
+                             (define-key tabbar-mode-map (kbd "C-S-<tab>") 'tabbar-backward)
+                             ))
 
 
 ;; PACKAGE: google-c-style

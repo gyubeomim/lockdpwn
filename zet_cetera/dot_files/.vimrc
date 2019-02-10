@@ -320,6 +320,25 @@ let g:rtagsUseLocationList = 0
 "To implement 'return to previous location after jump' feature, internal stack is used. It is possible to set its maximum size (number of entries), default is 100:
 let g:rtagsJumpStackMaxSize = 100
 
+" vim-cpp-enhanced-highlight
+""Highlighting of class scope is disabled by default. To enable set
+let g:cpp_class_scope_highlight = 1
+""Highlighting of member variables is disabled by default. To enable set
+let g:cpp_member_variable_highlight = 1
+""Highlighting of class names in declarations is disabled by default. To enable set
+let g:cpp_class_decl_highlight = 1
+""There are two ways to highlight template functions. Either
+let g:cpp_experimental_simple_template_highlight = 1
+""which works in most cases, but can be a little slow on large files. Alternatively set
+let g:cpp_experimental_template_highlight = 1
+""which is a faster implementation but has some corner cases where it doesn't work.
+""Note: C++ template syntax is notoriously difficult to parse, so don't expect this feature to be perfect.
+""Highlighting of library concepts is enabled by
+let g:cpp_concepts_highlight = 1
+""This will highlight the keywords concept and requires as well as all named requirements (like DefaultConstructible) in the standard library.
+""Highlighting of user defined functions can be disabled by
+let g:cpp_no_function_highlight = 1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle 설정 (플러그인 설정)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -352,6 +371,7 @@ Plugin 'lyuts/vim-rtags'
 Plugin 'gtags.vim'
 Plugin 'valloric/youcompleteme'   " C++, Python 등 언어의 자동완성 플러그인
 Plugin 'airblade/vim-gitgutter'   " git project에서 수정,추가,제거된 라인을 표시해주는 gitgutter for Vim
+Plugin 'octol/vim-cpp-enhanced-highlight' " C++ Code Highlight Package
 
 " Plugin 'matchparenpp'     " 괄호에 커서를 가져다 대면 반대쪽 커서가 깜빡거리게 해주는 플러그인 (NOT USED)
 filetype plugin indent on
