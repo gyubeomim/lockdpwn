@@ -87,6 +87,7 @@
     minimap                ;; navigation view sidebar을 생성해주는 패키지
     matlab-mode            ;; matlab의 .m 파일을 하이라이팅해주는 패키지
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
+    tabbar                 ;; emacs에서 tab을 사용할 수 있게해주는 패키지
 
     rtags
     cmake-ide
@@ -1554,7 +1555,7 @@
             (point-at-eol)
             (quote
              (face
-              (:background "gold" :weight bold))))))))))
+              (:background "gold" :weight bold))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)

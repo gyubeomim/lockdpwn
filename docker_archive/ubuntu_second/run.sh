@@ -21,6 +21,4 @@ docker run \
 	-v /media/dyros-data/bag_files:/root/bag_files \
 	-v /media/dyros-data/datasets/kitti/data_object:/root/data \
 	-v /media/dyros-data/pretrained_weights/second_pretrained_model_v1.5:/root/model \
-	--expose 22 \
-	edward0im/dyrosvehicle:ubuntu_second
-
+	edward0im/dyrosvehicle:ubuntu_second 
