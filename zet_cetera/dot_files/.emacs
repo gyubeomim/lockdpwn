@@ -1558,7 +1558,7 @@
               (:background "gold" :weight bold))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1724,7 +1724,7 @@
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
- '(org-link ((t (:foreground "orange" :box nil :underline t :weight normal))))
+ '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "#268bd2"))))
@@ -2099,6 +2099,7 @@
 (eval-after-load "tabbar" '(progn
                              (define-key tabbar-mode-map (kbd "C-<tab>") 'tabbar-forward)
                              (define-key tabbar-mode-map (kbd "C-S-<tab>") 'tabbar-backward)
+                             (define-key tabbar-mode-map (kbd "C-S-<iso-lefttab>") 'tabbar-backward)
                              ))
 
 
