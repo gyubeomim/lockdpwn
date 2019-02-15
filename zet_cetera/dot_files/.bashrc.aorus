@@ -263,6 +263,7 @@ alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmb='cd ~/gitrepo/ims/ROS/rosbook_ws && catkin_make'
 
 
+
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
@@ -388,6 +389,7 @@ alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/catkin_ws/devel/setup.bash
 source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash  # for cartographer
+source ~/catkin_ws/devel/setup.bash
 # source /home/dyros-vehicle/segmap_ws/devel/setup.bash  # for segmap
 
 # for x11vnc && TeamViewer connected user
