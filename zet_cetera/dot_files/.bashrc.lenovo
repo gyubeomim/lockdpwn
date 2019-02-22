@@ -247,6 +247,7 @@ alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_CO
 
 alias cr='cd /home/dyros-vehicle/gitrepo/ims_ros/'
 alias cb='cd ~/bag_files_4tb'
+alias cbb='cd ~/bag_files'
 alias so='source devel/setup.bash'
 alias so2='rospack profile && source devel/setup.bash'
 alias cdd='cd /media/dyros-vehicle/edward_6'

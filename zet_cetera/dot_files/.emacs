@@ -337,19 +337,20 @@
 (ac-config-default)
 
 ;; PACKAGE: semantic
-;; (require 'semantic)
-;; (require 'semantic/ia)
+(require 'semantic)
+;; (require 'semantic/ia)  ;; interactive analysis
 ;; (require 'semantic/complete)
 
-(eval-after-load 'semantic
-    (add-hook 'semantic-mode-hook
-              (lambda ()
-                (dolist (x (default-value 'completion-at-point-functions))
-                  (when (string-prefix-p "semantic-" (symbol-name x))
-                    (remove-hook 'completion-at-point-functions x))))))
-
 ;; Semantic ON
-;; (semantic-mode t)
+(semantic-mode t)
+
+;;(eval-after-load 'semantic
+    ;; (add-hook 'semantic-mode-hook
+    ;;           (lambda ()
+    ;;             (dolist (x (default-value 'completion-at-point-functions))
+    ;;               (when (string-prefix-p "semantic-" (symbol-name x))
+    ;;                 (remove-hook 'completion-at-point-functions x))))
+    ;;           ))
 
 ;; 함수나 변수들을 찾아 이동할 때마다 로그를 기록합니다
 ;; (global-semantic-mru-bookmark-mode)
@@ -1777,21 +1778,21 @@
     (message "Set frame's default text height to something I want")))
 
 ;; 15인치 화면용 font size
-(defun set-frame-155 (&optional frame)
+(defun set-frame-153 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 155)
-    (message "Set frame's default text height to 155")))
+    (set-face-attribute 'default frame :height 153)
+    (message "Set frame's default text height to 153")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
 (global-set-key (kbd "C-_") 'set-frame-125)
-(global-set-key (kbd "C-+") 'set-frame-155)
+(global-set-key (kbd "C-+") 'set-frame-153)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
@@ -2527,8 +2528,11 @@ created by edward 180515"
 ;; (global-set-key (kbd "C-1") (lambda() (interactive)(org-publish "all")))
 
 ;; Ctrl + 1 키로 .org 파일을 twitter bootstrap 스타일의 html 파일로 저장합니다
-(global-set-key (kbd "C-1") 'org-twbs-export-to-html)
+;; (global-set-key (kbd "C-1") 'org-twbs-export-to-html)
 
+;; C-1 키로 현재 파일에서 빠르게 특정 함수나 변수로 이동합니다
+(global-set-key (kbd "C-1") 'helm-semantic)
+                                        ;
 ;; C-2 키로 find file 파일이 존재하는지 검색합니다
 (global-set-key (kbd "C-2") 'helm-find)
 
@@ -3145,8 +3149,8 @@ created by edward 180515"
 (key-chord-define-global "cc" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
 (key-chord-define-global "aa" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-mode t)
-;; (key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
-;; (key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
+(key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
+(key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
 ;;(key-chord-define-global "??" 'split-window-right)             ;; 오른쪽에 새창 만들기 (NOT USED)
 ;;(key-chord-define-global ">>" 'split-window-below)             ;; 아래쪽에 새창 만들기 (NOT USED)
 ;;(key-chord-define-global "<<" 'ac-complete-semantic-raw)       ;; 코드 자동완성2 (NOT USED)
