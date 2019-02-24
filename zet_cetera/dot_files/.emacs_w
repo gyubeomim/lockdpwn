@@ -758,7 +758,7 @@
     (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
     (define-key evil-normal-state-map (kbd ".") 'strike-through-for-org-mode-undo)
     ;; org-mode에서 w 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
-    (define-key evil-motion-state-map (kbd "w") (lambda() (interactive)
+    (define-key evil-motion-state-map (kbd "c") (lambda() (interactive)
                                                   (progn
                                                     (outline-hide-other)
                                                     (outline-show-subtree))))
@@ -2432,7 +2432,7 @@ created by edward 180515"
               (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342驪\223\276" "\342驪\223\277" "\342\350굢\200" "\342\345젆\236" "*")))
+    ("\342癲\207\223\276" "\342癲\207\223\277" "\342\350援\242\200" "\342\345\354젂\236" "*")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2594,7 +2594,7 @@ created by edward 180515"
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
- '(org-link ((t (:foreground "orange" :box nil :underline t :weight normal))))
+ '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "#268bd2"))))
