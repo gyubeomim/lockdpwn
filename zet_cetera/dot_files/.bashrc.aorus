@@ -368,7 +368,10 @@ alias sctl='sudo systemctl'
 alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
 
 # for chmod
-alias chmodd='chmod 644 *.* -R'
+function chmodd() {
+	find . -type f | xargs chmod 644 
+	find . -type d | xargs chmod 775
+}
 
 # for ccc
 # alias ccc='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'

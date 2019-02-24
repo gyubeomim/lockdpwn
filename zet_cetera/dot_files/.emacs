@@ -24,7 +24,7 @@
     projectile
     undo-tree              ;; Alt + z 키를 통해 undo한 목록들을 볼 수 있는 패키지
     smartparens            ;; {}, [] 등 자동으로 괄호를 닫아주는 패키지
-    auto-complete          ;; 단어 자동완성 패키지
+    auto-complete          ;; 단어 자동완성 패키지 (현재 사용하지는 않지만 jedi의 필수패키지이므로 추가했다 190223)
     ecb                    ;; Emacs Code Browser의 약자로 코드를 상세하게 분석할 수 있게 해주는 패키지
     dtrt-indent            ;; 여러 파일들이 하나는 탭, 하나는 스페이스로 공백이 되어있을 경우 emacs가 알아서 처리하게 해주는 패키지
     google-c-style         ;; 들여쓰기 형식을 google style (구글 엔지니어들 스타일인듯)로 해주는 패키지
@@ -332,9 +332,9 @@
 ;; cedet에 관한 코드들 (auto-complete, cc-mode, semantic...)(단어 자동완성 관련된 코드들)
 
 ;; PACKAGE: auto-complete
-(require 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
+;; (require 'auto-complete)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
 
 ;; PACKAGE: semantic
 (require 'semantic)
@@ -1283,6 +1283,8 @@
 ;; PACKAGE: doc-view-mode
 ;; ed: linum-mode가 있으면 pdf viewer가 매우 느려진다
 (add-hook 'doc-view-mode-hook (lambda () (linum-mode -1)))
+;; ed: image도 마찬가지
+(add-hook 'image-mode-hook (lambda () (linum-mode -1)))
 
 ;; PACKAGE: highlight-indentation
 (require 'highlight-indentation)
@@ -1559,7 +1561,7 @@
               (:background "gold" :weight bold))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -3149,8 +3151,8 @@ created by edward 180515"
 (key-chord-define-global "cc" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
 (key-chord-define-global "aa" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-mode t)
-(key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
-(key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
+;; (key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
+;; (key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
 ;;(key-chord-define-global "??" 'split-window-right)             ;; 오른쪽에 새창 만들기 (NOT USED)
 ;;(key-chord-define-global ">>" 'split-window-below)             ;; 아래쪽에 새창 만들기 (NOT USED)
 ;;(key-chord-define-global "<<" 'ac-complete-semantic-raw)       ;; 코드 자동완성2 (NOT USED)
