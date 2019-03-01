@@ -92,6 +92,9 @@
     rtags
     cmake-ide
 
+
+
+    ;; eldoc
     ;; ycmd
     ;; company-ycmd
     ;; use-package                ;; package를 관리해주는 패키지
@@ -367,27 +370,42 @@
 ;; (semantic-add-system-include "/usr/include/c++/5" 'c++-mode)
 ;; (semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
 
+;; package: eldoc
+;; (require 'eldoc)
+;; (eldoc-mode)
+;; (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
+;; (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode)
 
-;; Company mode On
-(global-company-mode)
-
+;; package: company irony
+(require 'company)
 (require 'irony)
-;; using company-irony
-(add-hook 'c-mode-hook '(lambda ()
-                          (local-set-key (kbd "<return>") 'newline-and-indent)
-                          (linum-mode t)
-                          (irony-mode t)
-                          ))
-(add-hook 'c-mode-hook 'company-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'c++-mode-hook 'company-mode)
-(add-hook 'c++-mode-hook 'irony-mode)
 
+;; insert키를 누르면 irony 서버를 다시 시작합니다. 속도가 느려질 경우 사용합니다
+(global-set-key (kbd "<insert>") 'irony-server-kill)
+
+;; Enable company mode globally
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; using company-irony
+;; (add-hook 'c-mode-hook '(lambda ()
+;;                           (local-set-key (kbd "<return>") 'newline-and-indent)
+;;                           (linum-mode t)
+;;                           (irony-mode t)
+;;                           ))
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
 ;; C++11 에서 추가된 코드들에 대한 자동완성을 하기 위해 추가한 코드
 (setq irony-additional-clang-options '("-std=c++11"))
+(setq company-idle-delay 0)
 
+;; Now call this function so it add your path to company-c-header-path-system
+;; Irony-mode configuration
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
 
+;; For irony mode I think
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
 ;;===========================================================================
 ;; 기타 초기값 설정 코드들
@@ -607,7 +625,6 @@
 ;; (set-variable 'ycmd-global-config "/media/dyros-data/gitrepo/ycmd/examples/.ycm_extra_conf.py")
 ;; (add-hook 'c++-mode-hook 'ycmd-mode)
 ;; (add-hook 'after-init-hook 'global-ycmd-mode)
-
 ;; (require 'company-ycmd)
 ;; (company-ycmd-setup)
 
@@ -1055,6 +1072,9 @@
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
 
+    ;; irony-server가 느려질 경우 끄기 위한 단축키
+    (define-key evil-motion-state-map (kbd "z") 'irony-server-kill)
+
     ;; org-mode에서 , . 키로 strike-through를 설정합니다
     (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
     (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
@@ -1491,12 +1511,7 @@
  '(avy-style (quote at-full))
  '(cmake-ide-make-command "make -j4")
  '(column-number-mode t)
- '(company-backends
-   (quote
-    (company-irony company-nxml company-css company-eclim company-clang company-xcode company-cmake company-capf company-files
-                   (company-dabbrev-code company-gtags company-etags company-keywords)
-                   company-oddmuse company-dabbrev)))
- '(company-idle-delay 0.1)
+ '(company-backends (quote (company-irony company-clang company-cmake)))
  '(cua-mode t nil (cua-base))
  '(custom-enable-theme (quote (solarized-dark)))
  '(custom-safe-themes
@@ -1763,10 +1778,6 @@
  '(tabbar-selected ((t (:inherit tabbar-default :foreground "cyan"))))
  '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red"))))
  '(tabbar-unselected ((t (:inherit tabbar-default)))))
-
-
-
-
 
 ;; 다중모니터에서 C-x-5-2를 통해서 새로운 frame을 생성한 다음에 모니터가 작아서 폰트사이즈가 작은 경우 폰트크기를 크게하기 위해 설정한 함수
 ;; https://stackoverflow.com/questions/24705984/increase-decrease-font-size-in-an-emacs-frame-not-just-buffer
