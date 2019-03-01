@@ -371,6 +371,7 @@
 ;; Company mode On
 (global-company-mode)
 
+(require 'irony)
 ;; using company-irony
 (add-hook 'c-mode-hook '(lambda ()
                           (local-set-key (kbd "<return>") 'newline-and-indent)
