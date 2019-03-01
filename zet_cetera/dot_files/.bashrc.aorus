@@ -349,7 +349,6 @@ export LD_LIBRARY_PATH=/usr/include/vtk-6.2/:$LD_LIBRARY_PATH
 # for vtk 5.xx
 export LD_LIBRARY_PATH=/home/dyros-vehicle/Documents/VTK-5.10.1/build:/home/dyros-vehicle/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
 
-
 # for cd command 
 alias cd='cd '
 alias ..='..'
@@ -443,3 +442,6 @@ export PYTHONPATH=$PYTHONPATH:'/media/dyros-data/gitrepo/avod/wavedata'
 
 # for parking slam
 alias cps='cd /home/dyros-vehicle/catkin_ws/src/edward/parking_slam/'
+
+# for libclang.7.so
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH 

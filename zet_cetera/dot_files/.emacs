@@ -92,6 +92,8 @@
     rtags
     cmake-ide
 
+    ;; ycmd
+    ;; company-ycmd
     ;; use-package                ;; package를 관리해주는 패키지
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지
     ;; ample-theme            ;; ample 테마
@@ -375,8 +377,11 @@
                           (linum-mode t)
                           (irony-mode t)
                           ))
-
+(add-hook 'c-mode-hook 'company-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'c++-mode-hook 'company-mode)
 (add-hook 'c++-mode-hook 'irony-mode)
+
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 ;; C++11 에서 추가된 코드들에 대한 자동완성을 하기 위해 추가한 코드
 (setq irony-additional-clang-options '("-std=c++11"))
@@ -594,6 +599,16 @@
 
 ;; package: org2jekyll
 ;; (require 'org2jekyll)
+
+;; package: ycmd
+;; (require 'ycmd)
+;; (set-variable 'ycmd-server-command '("python3" "-u" "/media/dyros-data/gitrepo/ycmd/ycmd"))
+;; (set-variable 'ycmd-global-config "/media/dyros-data/gitrepo/ycmd/examples/.ycm_extra_conf.py")
+;; (add-hook 'c++-mode-hook 'ycmd-mode)
+;; (add-hook 'after-init-hook 'global-ycmd-mode)
+
+;; (require 'company-ycmd)
+;; (company-ycmd-setup)
 
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
 ;; "org" because c-h f org-mode ret says that org-mode is defined in org.el
@@ -1480,7 +1495,7 @@
     (company-irony company-nxml company-css company-eclim company-clang company-xcode company-cmake company-capf company-files
                    (company-dabbrev-code company-gtags company-etags company-keywords)
                    company-oddmuse company-dabbrev)))
- '(company-idle-delay 0.3)
+ '(company-idle-delay 0.1)
  '(cua-mode t nil (cua-base))
  '(custom-enable-theme (quote (solarized-dark)))
  '(custom-safe-themes
@@ -1560,10 +1575,10 @@
             (point-at-eol)
             (quote
              (face
-              (:background "gold" :weight bold))))))))))
+              (:background "gold" :weight bold))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
