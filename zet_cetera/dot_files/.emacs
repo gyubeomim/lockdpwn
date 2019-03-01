@@ -24,7 +24,7 @@
     projectile
     undo-tree              ;; Alt + z 키를 통해 undo한 목록들을 볼 수 있는 패키지
     smartparens            ;; {}, [] 등 자동으로 괄호를 닫아주는 패키지
-    auto-complete          ;; 단어 자동완성 패키지 (현재 사용하지는 않지만 jedi의 필수패키지이므로 추가했다 190223)
+    auto-complete          ;; 단어 자동완성 패키지
     ecb                    ;; Emacs Code Browser의 약자로 코드를 상세하게 분석할 수 있게 해주는 패키지
     dtrt-indent            ;; 여러 파일들이 하나는 탭, 하나는 스페이스로 공백이 되어있을 경우 emacs가 알아서 처리하게 해주는 패키지
     google-c-style         ;; 들여쓰기 형식을 google style (구글 엔지니어들 스타일인듯)로 해주는 패키지
@@ -337,9 +337,9 @@
 ;; cedet에 관한 코드들 (auto-complete, cc-mode, semantic...)(단어 자동완성 관련된 코드들)
 
 ;; PACKAGE: auto-complete
-;; (require 'auto-complete)
-;; (require 'auto-complete-config)
-;; (ac-config-default)
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
 
 ;; PACKAGE: semantic
 (require 'semantic)
@@ -2074,9 +2074,10 @@
 
 ;; ecb는 semantic-mode를 켜야지 정상적으로 function, variable list를 보여준다
 ;; ecb symboldef 버퍼에서 semantic mode가 필요하기 때문에 ecb를 로딩하는 순간 같이 실행해준다 (NOT USED)
-;; (eval-after-load "ecb" (lambda ()
-;;                          (semantic-mode t)
-;;                          ))
+(eval-after-load "ecb" (lambda ()
+                         (irony-server-kill)
+                         ;; (semantic-mode t)
+                         ))
 
 ;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수 (NOT USED)
 (defun make_TAGS_file (&optional path)
