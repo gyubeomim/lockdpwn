@@ -344,13 +344,15 @@
 ;; Semantic ON
 (semantic-mode t)
 
-;;(eval-after-load 'semantic
-    ;; (add-hook 'semantic-mode-hook
-    ;;           (lambda ()
-    ;;             (dolist (x (default-value 'completion-at-point-functions))
-    ;;               (when (string-prefix-p "semantic-" (symbol-name x))
-    ;;                 (remove-hook 'completion-at-point-functions x))))
-    ;;           ))
+;; semantic mode freezing probelm fixing code
+;; https://github.com/syl20bnr/spacemacs/issues/7038#issuecomment-254980900
+(eval-after-load 'semantic
+    (add-hook 'semantic-mode-hook
+              (lambda ()
+                (dolist (x (default-value 'completion-at-point-functions))
+                  (when (string-prefix-p "semantic-" (symbol-name x))
+                    (remove-hook 'completion-at-point-functions x))))
+              ))
 
 ;; 함수나 변수들을 찾아 이동할 때마다 로그를 기록합니다
 ;; (global-semantic-mru-bookmark-mode)
@@ -2100,9 +2102,8 @@
 ;; (setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
 
 (eval-after-load "tabbar" '(progn
-                             (define-key tabbar-mode-map (kbd "C-<tab>") 'tabbar-forward)
-                             (define-key tabbar-mode-map (kbd "C-S-<tab>") 'tabbar-backward)
-                             (define-key tabbar-mode-map (kbd "C-S-<iso-lefttab>") 'tabbar-backward)
+                             (define-key tabbar-mode-map (kbd "<home>") 'tabbar-forward)
+                             (define-key tabbar-mode-map (kbd "<end>") 'tabbar-backward)
                              ))
 
 
