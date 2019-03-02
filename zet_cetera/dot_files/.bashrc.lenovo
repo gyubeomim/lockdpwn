@@ -410,6 +410,9 @@ alias docim='docker images'
 # docker tag edward0im:ubuntu_cuda9.0 edward0im/dyrosvehicle:ubuntu_cuda9.0
 # doc push edward0im/dyrosvehicle:ubuntu_cuda9.0
 
+# for chmod
+alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 775'
+
 
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'

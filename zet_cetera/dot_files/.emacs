@@ -92,6 +92,11 @@
     rtags
     cmake-ide
 
+
+
+    ;; eldoc
+    ;; ycmd
+    ;; company-ycmd
     ;; use-package                ;; package를 관리해주는 패키지
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지
     ;; ample-theme            ;; ample 테마
@@ -344,13 +349,15 @@
 ;; Semantic ON
 (semantic-mode t)
 
-;;(eval-after-load 'semantic
-    ;; (add-hook 'semantic-mode-hook
-    ;;           (lambda ()
-    ;;             (dolist (x (default-value 'completion-at-point-functions))
-    ;;               (when (string-prefix-p "semantic-" (symbol-name x))
-    ;;                 (remove-hook 'completion-at-point-functions x))))
-    ;;           ))
+;; semantic mode freezing probelm fixing code
+;; https://github.com/syl20bnr/spacemacs/issues/7038#issuecomment-254980900
+(eval-after-load 'semantic
+    (add-hook 'semantic-mode-hook
+              (lambda ()
+                (dolist (x (default-value 'completion-at-point-functions))
+                  (when (string-prefix-p "semantic-" (symbol-name x))
+                    (remove-hook 'completion-at-point-functions x))))
+              ))
 
 ;; 함수나 변수들을 찾아 이동할 때마다 로그를 기록합니다
 ;; (global-semantic-mru-bookmark-mode)
@@ -363,23 +370,42 @@
 ;; (semantic-add-system-include "/usr/include/c++/5" 'c++-mode)
 ;; (semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
 
+;; package: eldoc
+;; (require 'eldoc)
+;; (eldoc-mode)
+;; (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
+;; (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode)
 
-;; Company mode On
-(global-company-mode)
+;; package: company irony
+(require 'company)
+(require 'irony)
+
+;; insert키를 누르면 irony 서버를 다시 시작합니다. 속도가 느려질 경우 사용합니다
+(global-set-key (kbd "<insert>") 'irony-server-kill)
+
+;; Enable company mode globally
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; using company-irony
-(add-hook 'c-mode-hook '(lambda ()
-                          (local-set-key (kbd "<return>") 'newline-and-indent)
-                          (linum-mode t)
-                          (irony-mode t)
-                          ))
-
-(add-hook 'c++-mode-hook 'irony-mode)
+;; (add-hook 'c-mode-hook '(lambda ()
+;;                           (local-set-key (kbd "<return>") 'newline-and-indent)
+;;                           (linum-mode t)
+;;                           (irony-mode t)
+;;                           ))
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
 ;; C++11 에서 추가된 코드들에 대한 자동완성을 하기 위해 추가한 코드
 (setq irony-additional-clang-options '("-std=c++11"))
+(setq company-idle-delay 0)
 
+;; Now call this function so it add your path to company-c-header-path-system
+;; Irony-mode configuration
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
 
+;; For irony mode I think
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
 ;;===========================================================================
 ;; 기타 초기값 설정 코드들
@@ -592,6 +618,15 @@
 
 ;; package: org2jekyll
 ;; (require 'org2jekyll)
+
+;; package: ycmd
+;; (require 'ycmd)
+;; (set-variable 'ycmd-server-command '("python3" "-u" "/media/dyros-data/gitrepo/ycmd/ycmd"))
+;; (set-variable 'ycmd-global-config "/media/dyros-data/gitrepo/ycmd/examples/.ycm_extra_conf.py")
+;; (add-hook 'c++-mode-hook 'ycmd-mode)
+;; (add-hook 'after-init-hook 'global-ycmd-mode)
+;; (require 'company-ycmd)
+;; (company-ycmd-setup)
 
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
 ;; "org" because c-h f org-mode ret says that org-mode is defined in org.el
@@ -1037,6 +1072,9 @@
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
 
+    ;; irony-server가 느려질 경우 끄기 위한 단축키
+    (define-key evil-motion-state-map (kbd "z") 'irony-server-kill)
+
     ;; org-mode에서 , . 키로 strike-through를 설정합니다
     (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
     (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
@@ -1283,6 +1321,8 @@
 ;; PACKAGE: doc-view-mode
 ;; ed: linum-mode가 있으면 pdf viewer가 매우 느려진다
 (add-hook 'doc-view-mode-hook (lambda () (linum-mode -1)))
+;; ed: image도 마찬가지
+(add-hook 'image-mode-hook (lambda () (linum-mode -1)))
 
 ;; PACKAGE: highlight-indentation
 (require 'highlight-indentation)
@@ -1471,12 +1511,7 @@
  '(avy-style (quote at-full))
  '(cmake-ide-make-command "make -j4")
  '(column-number-mode t)
- '(company-backends
-   (quote
-    (company-irony company-nxml company-css company-eclim company-clang company-xcode company-cmake company-capf company-files
-                   (company-dabbrev-code company-gtags company-etags company-keywords)
-                   company-oddmuse company-dabbrev)))
- '(company-idle-delay 0.3)
+ '(company-backends (quote (company-irony company-clang company-cmake)))
  '(cua-mode t nil (cua-base))
  '(custom-enable-theme (quote (solarized-dark)))
  '(custom-safe-themes
@@ -1559,7 +1594,7 @@
               (:background "gold" :weight bold))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1732,7 +1767,7 @@
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "dim gray" :slant italic :weight bold :height 0.6))))
+ '(org-tag ((t (:foreground "gainsboro" :box (:line-width 1 :color "dim gray") :slant italic :weight bold :height 0.6))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
@@ -1743,10 +1778,6 @@
  '(tabbar-selected ((t (:inherit tabbar-default :foreground "cyan"))))
  '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red"))))
  '(tabbar-unselected ((t (:inherit tabbar-default)))))
-
-
-
-
 
 ;; 다중모니터에서 C-x-5-2를 통해서 새로운 frame을 생성한 다음에 모니터가 작아서 폰트사이즈가 작은 경우 폰트크기를 크게하기 위해 설정한 함수
 ;; https://stackoverflow.com/questions/24705984/increase-decrease-font-size-in-an-emacs-frame-not-just-buffer
@@ -2043,9 +2074,10 @@
 
 ;; ecb는 semantic-mode를 켜야지 정상적으로 function, variable list를 보여준다
 ;; ecb symboldef 버퍼에서 semantic mode가 필요하기 때문에 ecb를 로딩하는 순간 같이 실행해준다 (NOT USED)
-;; (eval-after-load "ecb" (lambda ()
-;;                          (semantic-mode t)
-;;                          ))
+(eval-after-load "ecb" (lambda ()
+                         (irony-server-kill)
+                         ;; (semantic-mode t)
+                         ))
 
 ;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수 (NOT USED)
 (defun make_TAGS_file (&optional path)
@@ -2098,9 +2130,8 @@
 ;; (setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
 
 (eval-after-load "tabbar" '(progn
-                             (define-key tabbar-mode-map (kbd "C-<tab>") 'tabbar-forward)
-                             (define-key tabbar-mode-map (kbd "C-S-<tab>") 'tabbar-backward)
-                             (define-key tabbar-mode-map (kbd "C-S-<iso-lefttab>") 'tabbar-backward)
+                             (define-key tabbar-mode-map (kbd "<home>") 'tabbar-forward)
+                             (define-key tabbar-mode-map (kbd "<end>") 'tabbar-backward)
                              ))
 
 
@@ -3149,8 +3180,8 @@ created by edward 180515"
 (key-chord-define-global "cc" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
 (key-chord-define-global "aa" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-mode t)
-(key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
-(key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
+;; (key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
+;; (key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
 ;;(key-chord-define-global "??" 'split-window-right)             ;; 오른쪽에 새창 만들기 (NOT USED)
 ;;(key-chord-define-global ">>" 'split-window-below)             ;; 아래쪽에 새창 만들기 (NOT USED)
 ;;(key-chord-define-global "<<" 'ac-complete-semantic-raw)       ;; 코드 자동완성2 (NOT USED)
