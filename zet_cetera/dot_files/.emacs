@@ -1655,7 +1655,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (nlinum tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(per-buffer-theme/default-theme (quote solarized-dark))
  '(per-buffer-theme/ignored-buffernames-regex
    (quote
@@ -1899,7 +1899,9 @@
 (global-auto-revert-mode t)
 
 ;;linum 모드 켜기 (줄번호 표시하기)
-(global-linum-mode t)
+;; linum-mode는 너무 느려서 nlinum 모드로 변경했다
+;; (global-linum-mode t)
+(global-nlinum-mode t)
 
 ;; 계산기 자릿수 분리기호 삽입 calc EMACS 기본 계산기 모드에서 자릿수 분리기호 삽입
 (setq calc-group-digits t)

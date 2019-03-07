@@ -163,7 +163,7 @@ alias ida64='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
 alias g1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
-alias g2='cd /home/dyros-vehicle/gitrepo/ims_ros'
+alias g2='cd /home/dyros-vehicle/ims_ros'
 alias g3='cd /home/dyros-vehicle/gitrepo/ims_carto'
 alias g4='cd /home/dyros-vehicle/gitrepo/ims_dyros'
 alias g5='cd /home/dyros-vehicle/gitrepo/ims_ml'
@@ -172,7 +172,7 @@ alias gr='cd /home/dyros-vehicle/gitrepo/'
 
 
 git1='/home/dyros-vehicle/gitrepo/lockdpwn'
-git2='/home/dyros-vehicle/gitrepo/ims_ros'
+git2='/home/dyros-vehicle/ims_ros'
 git3='/home/dyros-vehicle/gitrepo/ims_ml'
 git4='/home/dyros-vehicle/gitrepo/ims_ml/SqueezeSeg'
 gr='/home/dyros-vehicle/gitrepo/'
@@ -235,9 +235,9 @@ export ROS_MASTER_URI=http://localhost:11311
 export ROS_HOSTNAME=127.0.0.1
 
 # set ROS alias command
-alias cw='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic'
-alias cs='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/src'
-alias cm='cd /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cw='cd /home/dyros-vehicle/ims_ros/catkin_ws_kinetic'
+alias cs='cd /home/dyros-vehicle/ims_ros/catkin_ws_kinetic/src'
+alias cm='cd /home/dyros-vehicle/ims_ros/catkin_ws_kinetic && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
@@ -245,7 +245,7 @@ alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_CO
 # alias cs='cd /home/dyros-vehicle/catkin_ws/src'
 # alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make'
 
-alias cr='cd /home/dyros-vehicle/gitrepo/ims_ros/'
+alias cr='cd /home/dyros-vehicle/ims_ros/'
 alias cb='cd ~/bag_files_4tb'
 alias cbb='cd ~/bag_files'
 alias so='source devel/setup.bash'
@@ -292,7 +292,7 @@ alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper -DCMAKE_EX
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh ~/gitrepo/ims_ros/vrep_ws/dyros_simulator2_parking.ttt'
+alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh ~/ims_ros/vrep_ws/dyros_simulator2_parking.ttt'
 
 
 # source .bashrc
@@ -377,7 +377,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 # export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 source /opt/ros/kinetic/setup.bash
-source /home/dyros-vehicle/gitrepo/ims_ros/catkin_ws_kinetic/devel/setup.bash
+source /home/dyros-vehicle/ims_ros/catkin_ws_kinetic/devel/setup.bash
 source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash
 
 # for x11vnc && TeamViewer connected user
@@ -420,10 +420,10 @@ alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 7
 # for source gazebo config
 # alias sog='source /usr/share/gazebo-2.2/setup.sh'
 # alias sog2='source /usr/share/gazebo/setup.sh'
-# alias cmb='cd ~/gitrepo/ims_ros/rosbook_ws && catkin_make'
-# alias cdb='cd ~/gitrepo/ims_ros/rosbook_ws'
+# alias cmb='cd ~/ims_ros/rosbook_ws && catkin_make'
+# alias cdb='cd ~/ims_ros/rosbook_ws'
 # # for stockroom_bot
-# #alias sb='source ~/gitrepo/ims_ros/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims_ros/stockroombot_ws/src/stockroom_bot'/models
+# #alias sb='source ~/ims_ros/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/ims_ros/stockroombot_ws/src/stockroom_bot'/models
 # PERL5LIB="/home/dyros-vehicle/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 # PERL_LOCAL_LIB_ROOT="/home/dyros-vehicle/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 # PERL_MB_OPT="--install_base \"/home/dyros-vehicle/perl5\""; export PERL_MB_OPT;
