@@ -88,6 +88,7 @@
     matlab-mode            ;; matlab의 .m 파일을 하이라이팅해주는 패키지
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
     tabbar                 ;; emacs에서 tab을 사용할 수 있게해주는 패키지
+    nlinum                 ;; linum-mode 대체하는 패키지, linum-mode가 속도가 매우 느려서 바꿨다
 
     rtags
     cmake-ide
