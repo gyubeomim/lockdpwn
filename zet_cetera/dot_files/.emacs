@@ -3178,10 +3178,10 @@ created by edward 180515"
 (key-chord-define-global ",," 'jedi:complete)                  ;; 코드 자동완성 for python
 (key-chord-define-global "xx" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
 (key-chord-define-global "zz" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
+(key-chord-define-global "XX" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
+(key-chord-define-global "aa" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
-(key-chord-define-global "cc" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
-(key-chord-define-global "aa" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-mode t)
 ;; (key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
 ;; (key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
