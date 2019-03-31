@@ -387,8 +387,8 @@ alias tu='netstat -tapno | grep Team'
 # for g2o
 export G2O_ROOT=~/gitrepo/openslam_g2o
 
-# for matlab 2018b
-alias matlab=/usr/local/MATLAB/R2018b/bin/matlab
+# for matlab 2018a
+alias matlab=/usr/local/MATLAB/R2018a/bin/matlab
 
 # for ubuntu-live-wallpaper change
 alias wc='python /home/dyros-vehicle/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py'
