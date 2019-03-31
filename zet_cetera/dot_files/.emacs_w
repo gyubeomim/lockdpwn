@@ -574,7 +574,7 @@
                                   ;; ] 키로 특정 pomodoro.org 파일을 엽니다
                                   (define-key org-agenda-mode-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
                                   ;; { 키로 특정 todo.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/todo.org")))
+                                  (define-key org-agenda-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/todo.org")))
 
 
 
@@ -770,7 +770,7 @@
     ;; ] 키로 특정 pomodoro.org 파일을 엽니다
     (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
     ;; { 키로 특정 todo.org 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/todo.org")))
+    (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/todo.org")))
 
 
     ;; org-mode에서 q 키로 subtree를 엽니다
@@ -2118,9 +2118,9 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
     (define-key magit-process-mode-map (kbd "]") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
     ;; { 키로 특정 todo.org 파일을 엽니다
-    (define-key magit-status-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/todo.org")))
-    (define-key magit-diff-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/todo.org")))
-    (define-key magit-process-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/paper/todo.org")))
+    (define-key magit-status-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/todo.org")))
+    (define-key magit-diff-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/todo.org")))
+    (define-key magit-process-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/todo.org")))
     ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
