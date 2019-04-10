@@ -2134,8 +2134,8 @@
 ;; (setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
 
 (eval-after-load "tabbar" '(progn
-                             (define-key tabbar-mode-map (kbd "<home>") 'tabbar-forward)
-                             (define-key tabbar-mode-map (kbd "<end>") 'tabbar-backward)
+                             (define-key tabbar-mode-map (kbd "<end>") 'tabbar-forward)
+                             (define-key tabbar-mode-map (kbd "<home>") 'tabbar-backward)
                              ))
 
 
@@ -2859,15 +2859,13 @@ created by edward 180515"
 ;; Ctrl + z로 뒤로가기 기능을 실행합니다
 (global-set-key "\C-z" 'undo-tree-undo)
 
-;; Alt + j & END 키로 vim처럼 한칸씩 아래로 움직입니다
+;; Alt + j 키로 vim처럼 한칸씩 아래로 움직입니다
 (define-key c++-mode-map "\M-j" nil)
 (define-key c-mode-map "\M-j" nil)
 (global-set-key "\M-j" 'next-line)
-(global-set-key (kbd "<end>") 'next-line)
 
-;; Alt + k & HOME 키로 vim처럼 한칸씩 위로 올라갑니다
+;; Alt + k 키로 vim처럼 한칸씩 위로 올라갑니다
 (global-set-key "\M-k" 'previous-line)
-(global-set-key (kbd "<home>") 'previous-line)
 
 ;; vim 처럼 M-i,o 키를 좌우로 단어 단위로 움직이도록 설정합니다
 (global-set-key (kbd "M-i") 'left-word)
