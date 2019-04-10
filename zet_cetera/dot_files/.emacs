@@ -88,13 +88,12 @@
     matlab-mode            ;; matlab의 .m 파일을 하이라이팅해주는 패키지
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
     tabbar                 ;; emacs에서 tab을 사용할 수 있게해주는 패키지
-    nlinum                 ;; linum-mode 대체하는 패키지, linum-mode가 속도가 매우 느려서 바꿨다
 
     rtags
     cmake-ide
 
 
-
+    ;; nlinum                 ;; linum-mode 대체하는 패키지, linum-mode가 속도가 매우 느려서 바꿨다 (26.1 업그레이드하면서 필요없어짐)
     ;; eldoc
     ;; ycmd
     ;; company-ycmd
@@ -1352,7 +1351,8 @@
 ;; git gutter 모드를 사용해 수정된 라인을 하이라이팅한다
 (global-git-gutter-mode t)
 ;; linum-mode와 겹쳐서 linum이 안보이는 문제를 해결하기 위해 코드 추가
-(git-gutter:linum-setup)
+;; (git-gutter:linum-setup)
+;; (setq git-gutter:window-width 1)
 
 ;; custom 모양 및 색상 추가
 (set-face-foreground 'git-gutter:modified "yellow")
@@ -1656,7 +1656,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (nlinum tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(per-buffer-theme/default-theme (quote solarized-dark))
  '(per-buffer-theme/ignored-buffernames-regex
    (quote
@@ -1810,21 +1810,21 @@
     (message "Set frame's default text height to something I want")))
 
 ;; 15인치 화면용 font size
-(defun set-frame-153 (&optional frame)
+(defun set-frame-183 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 153)
-    (message "Set frame's default text height to 153")))
+    (set-face-attribute 'default frame :height 183)
+    (message "Set frame's default text height to 183")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
 (global-set-key (kbd "C-_") 'set-frame-125)
-(global-set-key (kbd "C-+") 'set-frame-153)
+(global-set-key (kbd "C-+") 'set-frame-183)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
@@ -1902,7 +1902,8 @@
 ;;linum 모드 켜기 (줄번호 표시하기)
 ;; linum-mode는 너무 느려서 nlinum 모드로 변경했다
 ;; (global-linum-mode t)
-(global-nlinum-mode t)
+;; (global-nlinum-mode t)
+(global-display-line-numbers-mode)
 
 ;; 계산기 자릿수 분리기호 삽입 calc EMACS 기본 계산기 모드에서 자릿수 분리기호 삽입
 (setq calc-group-digits t)

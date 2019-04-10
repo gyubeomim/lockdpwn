@@ -301,9 +301,8 @@ alias sob='source /home/dyros-vehicle/.bashrc'
 # vnc viewer
 alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.18.907-Linux-x64'
 
-# emacs 25.2
-# alias emacs='sudo /home/dyros-vehicle/Downloads/emacs-25.2/src/emacs'
-alias emacs='/home/dyros-vehicle/Downloads/emacs-25.2/lib-src/emacsclient -a '"''"' -c'
+# emacs 26.1
+alias emacs='/home/dyros-vehicle/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
 
 # Ti-Nspire CX CAS emulator
 alias ti='cd /home/dyros-vehicle/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
