@@ -50,6 +50,11 @@
     minimap                ;; navigation view sidebar을 생성해주는 패키지
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
 
+    tabbar                 ;; emacs에서 tab을 사용할 수 있게해주는 패키지
+
+
+
+    
 
     ;;WINDOWS-----------------------------------
     ;;anzu                   ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
@@ -596,6 +601,8 @@
 (global-set-key (kbd "C-c a") (lambda() (interactive)(org-agenda nil "s")))
 ;; C-c + # 키로 특정 .org 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/todo.org")))
+(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/note.org")))
+(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; C-? 키로 어느곳에서나 agenda view를 열게합니다
@@ -697,7 +704,7 @@
 
     ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
     (define-key undo-tree-map (kbd "C-_") 'set-frame-125)
-    (define-key undo-tree-map (kbd "C-+") 'set-frame-140)
+    (define-key undo-tree-map (kbd "C-+") 'set-frame-134)
     ))
 
 ;; for easy-jekyll mode
@@ -1049,19 +1056,19 @@
     (message "Set frame's default text height to 125")))
 
 ;; 15인치 화면용 font size
-(defun set-frame-140 (&optional frame)
+(defun set-frame-134 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 140)
-    (message "Set frame's default text height to 140")))
+    (set-face-attribute 'default frame :height 134)
+    (message "Set frame's default text height to 134")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-_") 'set-frame-125)
-(global-set-key (kbd "C-+") 'set-frame-140)
+(global-set-key (kbd "C-+") 'set-frame-134)
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
@@ -1280,6 +1287,16 @@
 ;; (require 'sublimity-scroll)
 ;; (require 'sublimity-attractive)
 ;; (sublimity-mode 1)
+
+;; PACKAGE: tabbar
+(require 'tabbar)
+; turn on the tabbar
+(tabbar-mode t)
+(eval-after-load "tabbar" '(progn
+                             (define-key tabbar-mode-map (kbd "<end>") 'tabbar-forward)
+                             (define-key tabbar-mode-map (kbd "<home>") 'tabbar-backward)
+                             ))
+
 
 ;; PACKAGE: mic-paren
 ;; 반대편 괄호의 line number를 알려주는 패키지
@@ -2546,7 +2563,9 @@ created by edward 180515"
  '(tramp-verbose 6)
  '(vc-follow-symlinks t)
  '(yas-also-auto-indent-first-line t)
- '(yas-also-indent-empty-lines t))
+ '(yas-also-indent-empty-lines t)
+ '(tabbar-cycle-scope nil)
+ '(tabbar-separator (quote ("|"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -2604,4 +2623,12 @@ created by edward 180515"
  '(org-tag ((t (:foreground "gainsboro" :box (:line-width 1 :color "dim gray") :slant italic :weight bold :height 0.7))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
- '(variable-pitch ((t (:foundry "outline" :family "San Serif")))))
+ '(variable-pitch ((t (:foundry "outline" :family "San Serif"))))
+  '(tabbar-button ((t (:inherit tabbar-default))))
+ '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
+ '(tabbar-default ((t (:background "#002b36" :foreground "gray50" :height 0.9))))
+ '(tabbar-highlight ((t (:foreground "white"))))
+ '(tabbar-modified ((t (:inherit tabbar-default :foreground "green"))))
+ '(tabbar-selected ((t (:inherit tabbar-default :foreground "cyan"))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red"))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))
