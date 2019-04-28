@@ -27,7 +27,7 @@
     ;; highlight-symbol-colors ==> highlight-symbol-color로 수정한다 (색깔을 제대로 표시하지 못한다)
     ;; 바로 적용이 안되므로 .elc 파일을 삭제하던지 아니면 M-x : byte-compile-file을 실시한다
     yasnippet              ;; 여러가지 자주 사용하는 구문들을 쉽게 사용할 수 있게 템플릿 형식으로 제공해주는 패키지
-    ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
+                           ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
     which-key              ;; 단축키들의 목록을 보여주는 패키지
     magit                  ;; emacs용 git 패키지 (Alt + \ 단축키)
     iedit                  ;; 단어들의 일괄편집을 해주는 패키지 (Alt + [ 단축키)
@@ -49,10 +49,8 @@
     ov                     ;; org-mode에서 글자에 색상을 변경하기 위한 overlab 패키지
     minimap                ;; navigation view sidebar을 생성해주는 패키지
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
-    nlinum
 
 
-    
     ;;WINDOWS-----------------------------------
     ;;anzu                   ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
     ;;org-gcal               ;; org-mode와 google Calendar를 연동해주는 패키지
@@ -63,7 +61,7 @@
     ;;hide-comnt             ;; 주석을 감췄다 보여줬다 하는 패키지 (F9 단축키)
     ;;-----------------------------------
 
-    ;; use-package                ;; package를 관리해주는 패키지
+    ;; use-package            ;; package를 관리해주는 패키지
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지
     ;; ample-theme            ;; ample 테마
     ;; org2jekyll             ;; .org 파일을 github page(jekyll)에서 볼 수 있도록 변환해주는 패키지 (NOT USED)
@@ -930,8 +928,8 @@
 (wrap-region-add-wrapper "+" "+" nil 'org-mode)  ; strikethrough
 
 ;; PACKAGE: doc-view-mode
-;; ed: linum-mode가 있으면 pdf viewer가 매우 느려진다
-(add-hook 'doc-view-mode-hook (lambda () (linum-mode -1)))
+;; ed: linum-mode가 있으면 pdf viewer가 매우 느려진다 (emacs 26.1부터 linum 모드를 사용 안함)
+;;(add-hook 'doc-view-mode-hook (lambda () (linum-mode -1)))
 
 ;; PACKAGE: which-func
 ;; 현재 라인이 가리키고 있는 함수를 위에 상태창에 표시합니다
@@ -952,7 +950,7 @@
 ;; git gutter 모드를 사용해 수정된 라인을 하이라이팅한다
 (global-git-gutter-mode t)
 ;; linum-mode와 겹쳐서 linum이 안보이는 문제를 해결하기 위해 코드 추가
-(git-gutter:linum-setup)
+;; (git-gutter:linum-setup)
 
 ;; custom 모양 및 색상 추가
 (set-face-foreground 'git-gutter:modified "yellow")
@@ -1142,9 +1140,10 @@
 ;;파일이 수정되었을 때 자동으로 다시 읽어들이도록 하는 설정
 (global-auto-revert-mode t)
 
-;;linum 모드 켜기 (줄번호 표시하기)
+;;linum 모드 켜기 (줄번호 표시하기) 
 ;; (global-linum-mode t)
-(global-nlinum-mode t)
+;; (global-nlinum-mode t)
+(global-display-line-numbers-mode) ;; emacs 26.1부터 사용하는 모드. git-gutter와 충돌이 없다
 
 ;; 계산기 자릿수 분리기호 삽입 calc EMACS 기본 계산기 모드에서 자릿수 분리기호 삽입
 (setq calc-group-digits t)
@@ -1303,7 +1302,7 @@
   (setq tab-width 4)
 
   ;; 줄번호 표시
-  (linum-mode 1)
+  ;; (linum-mode 1)
   )
 
 ;; PACKAGE: ECB Emacs Code Browser
@@ -2433,7 +2432,7 @@ created by edward 180515"
               (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342\347솾\207\223\276" "\342\347솾\207\223\277" "\342\350\346뤃\242\200" "\342\345\354\354쟼\236" "*")))
+    ("\342\347\354녇\207\223\276" "\342\347\354녇\207\223\277" "\342\350\346琉\203\242\200" "\342\345\354\354\354읆\236" "*")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
