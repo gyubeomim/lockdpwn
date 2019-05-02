@@ -250,7 +250,7 @@ alias cb='cd ~/bag_files_4tb'
 alias cbb='cd ~/bag_files'
 alias so='source devel/setup.bash'
 alias so2='rospack profile && source devel/setup.bash'
-alias cdd='cd /media/dyros-vehicle/edward_6'
+alias cdd='cd /media/dyros-data'
 alias down='cd ~/Downloads'
 alias docu='cd ~/Documents'
 
@@ -291,8 +291,8 @@ alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper -DCMAKE_EX
 # V-Rep Settings
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh ~/dyros_ws/vrep_ws/dyros_simulator2_parking.ttt'
+alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
+alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/dyros_ws/vrep_ws/dyros_simulator_v7_comparison_controllers.ttt'
 
 
 # source .bashrc
