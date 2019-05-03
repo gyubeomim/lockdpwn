@@ -2449,7 +2449,7 @@ created by edward 180515"
               (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342\347\354녇\207\223\276" "\342\347\354녇\207\223\277" "\342\350\346琉\203\242\200" "\342\345\354\354\354읆\236" "*")))
+    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346嶺\214\214\203\242\200" "\342\345\354\354\354\354\354뱿\236" "*")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2560,12 +2560,12 @@ created by edward 180515"
  '(sp-base-key-bindings nil)
  '(speedbar-update-flag t)
  '(split-width-threshold 120)
+ '(tabbar-cycle-scope nil)
+ '(tabbar-separator (quote ("|")))
  '(tramp-verbose 6)
  '(vc-follow-symlinks t)
  '(yas-also-auto-indent-first-line t)
- '(yas-also-indent-empty-lines t)
- '(tabbar-cycle-scope nil)
- '(tabbar-separator (quote ("|"))))
+ '(yas-also-indent-empty-lines t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -2620,15 +2620,15 @@ created by edward 180515"
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "gainsboro" :box (:line-width 1 :color "dim gray") :slant italic :weight bold :height 0.7))))
+ '(org-tag ((t (:foreground "gainsboro" :underline t :slant italic :weight normal :height 0.7))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
- '(variable-pitch ((t (:foundry "outline" :family "San Serif"))))
-  '(tabbar-button ((t (:inherit tabbar-default))))
+ '(tabbar-button ((t (:inherit tabbar-default))))
  '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
  '(tabbar-default ((t (:background "#002b36" :foreground "gray50" :height 0.9))))
  '(tabbar-highlight ((t (:foreground "white"))))
  '(tabbar-modified ((t (:inherit tabbar-default :foreground "green"))))
  '(tabbar-selected ((t (:inherit tabbar-default :foreground "cyan"))))
  '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red"))))
- '(tabbar-unselected ((t (:inherit tabbar-default)))))
+ '(tabbar-unselected ((t (:inherit tabbar-default))))
+ '(variable-pitch ((t (:foundry "outline" :family "San Serif")))))
