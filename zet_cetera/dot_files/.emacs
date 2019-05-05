@@ -898,10 +898,10 @@
 (global-set-key (kbd "C-\\") 'org-time-stamp)
 ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
 (global-set-key (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
-;; C-c + s 키로 태그를 검색합니다
-(global-set-key (kbd "C-c s") 'org-tags-view)
-;; C-c + a 키로 특정 키워드를 검색합니다
-(global-set-key (kbd "C-c a") (lambda() (interactive)(org-agenda nil "s")))
+;; C-c + s 키로 특정 키워드를 검색합니다
+(global-set-key (kbd "C-c s") (lambda() (interactive)(org-agenda nil "s")))
+;; C-c + a 키로 태그를 검색합니다
+(global-set-key (kbd "C-c a") 'org-tags-view)
 ;; C-c + # 키로 특정 .org 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
@@ -1556,7 +1556,7 @@
  '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
-    ("~/gitrepo_sync/ims_org/org_files/STEM/software/docker.org" "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/note.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/note/dyros/computer_device_spec.org" "~/gitrepo_sync/ims_org/org_files/STEM/software/docker.org" "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/gitrepo_sync/ims_org/org_files/note.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1771,7 +1771,7 @@
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "gold" :underline t :slant italic :weight normal :height 0.8))))
+ '(org-tag ((t (:foreground "gainsboro" :underline t :slant italic :weight normal :height 0.8))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight normal :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
@@ -2572,13 +2572,13 @@ created by edward 180515"
 
 
 ;; Ctrl + Alt + 1 키로 jekyll 블로그의 .md 포스트를 preview 합니다
-(global-set-key (kbd "C-M-1") 'easy-jekyll-preview)
+;; (global-set-key (kbd "C-M-1") 'easy-jekyll-preview)
 
 ;; Ctrl + 1 키로 .org 파일을 (org-publish) 명령어로 twitter bootstrap 스타일의 html 파일로 저장합니다
 ;; (global-set-key (kbd "C-1") (lambda() (interactive)(org-publish "all")))
 
-;; Ctrl + 1 키로 .org 파일을 twitter bootstrap 스타일의 html 파일로 저장합니다
-;; (global-set-key (kbd "C-1") 'org-twbs-export-to-html)
+;; Ctrl + Alt + 1 키로 .org 파일을 twitter bootstrap 스타일의 html 파일로 저장합니다
+(global-set-key (kbd "C-M-1") 'org-twbs-export-to-html)
 
 ;; C-1 키로 현재 파일에서 빠르게 특정 함수나 변수로 이동합니다
 (global-set-key (kbd "C-1") 'helm-semantic)

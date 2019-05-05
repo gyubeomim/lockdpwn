@@ -292,7 +292,7 @@ alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper -DCMAKE_EX
 export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/dyros_ws/vrep_ws/dyros_simulator_v7_comparison_controllers.ttt'
+alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/dyros_ws/catkin_ws_kinetic/src/controller_msk/vrep/dyros_simulator_v7_comparison_controllers.ttt'
 
 
 # source .bashrc
@@ -361,7 +361,7 @@ export PATH=/home/dyros-vehicle/Documents/cling_2018-05-10_ubuntu16/bin:$PATH
 alias ccc='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
 
 # for 3 Monitors Toggle ON/OFF
-alias mon='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/monitors_toggle3.sh'
+alias mon='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/monitors_toggle4_all_horizontal.sh'
 alias mon2='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/monitors_toggle2.sh'
 alias mon3='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/monitors_toggle.sh'
 
