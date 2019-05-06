@@ -375,10 +375,6 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 # shopt -s histappend
 # export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-source /opt/ros/kinetic/setup.bash
-source /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/devel/setup.bash
-source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash
-
 # for x11vnc && TeamViewer connected user
 alias vu='netstat -tapno | grep 5902'
 alias tu='netstat -tapno | grep Team'
@@ -415,6 +411,9 @@ alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 7
 # for parkingslam
 alias cps='cd /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/src/edward/parking_slam/'
 
+source /opt/ros/kinetic/setup.bash
+source /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/devel/setup.bash
+source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash
 
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'

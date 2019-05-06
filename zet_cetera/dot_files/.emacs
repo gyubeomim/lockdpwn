@@ -1093,6 +1093,15 @@
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
 
+    ;; insert키를 누르면 irony 서버를 다시 시작합니다. 속도가 느려질 경우 사용합니다
+    (define-key evil-normal-state-map (kbd "<insert>") 'irony-server-kill)
+
+    ;; 1,2키로 tab들을 이동합니다
+    (define-key evil-motion-state-map (kbd "1") 'tabbar-backward)
+    (define-key evil-motion-state-map (kbd "2") 'tabbar-forward)
+    (define-key evil-normal-state-map (kbd "1") 'tabbar-backward)
+    (define-key evil-normal-state-map (kbd "2") 'tabbar-forward)
+
     ;; 키바인딩 해제 INSERT MODE
     (define-key evil-insert-state-map (kbd "C-b") nil)
     (define-key evil-insert-state-map (kbd "C-d") nil)
@@ -1556,7 +1565,7 @@
  '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
-    ("~/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/note/dyros/computer_device_spec.org" "~/gitrepo_sync/ims_org/org_files/STEM/software/docker.org" "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/gitrepo_sync/ims_org/org_files/note.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/gitrepo_sync/ims_org/org_files/pomodoro_old2.org" "~/gitrepo_sync/ims_org/org_files/pomodoro_old.org" "~/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/note/dyros/computer_device_spec.org" "~/gitrepo_sync/ims_org/org_files/STEM/software/docker.org" "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/gitrepo_sync/ims_org/org_files/note.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
