@@ -1603,7 +1603,7 @@
             (point-at-eol)
             (quote
              (face
-              (:background "gold" :weight bold))))))))))
+              (:foreground "gold" :weight normal :underline t))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1682,6 +1682,7 @@
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
  '(pomodoro-work-time 25)
+ '(recenter-positions (quote (middle top bottom)))
  '(rtags-other-window-window-size-percentage 1)
  '(rtags-split-window-function (quote split-window-below))
  '(rtags-tracking t)
@@ -1761,6 +1762,9 @@
  '(magit-diff-hunk-heading ((t (:background "black"))))
  '(magit-diff-hunk-heading-highlight ((t (:background "black"))))
  '(minimap-active-region-background ((t nil)))
+ '(minimap-semantic-function-face ((t (:inherit (font-lock-function-name-face minimap-font-face)))))
+ '(minimap-semantic-type-face ((t (:inherit (font-lock-type-face minimap-font-face)))))
+ '(minimap-semantic-variable-face ((t (:inherit (font-lock-function-name-face minimap-font-face)))))
  '(org-agenda-calendar-event ((t (:foreground "#586e75"))))
  '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
