@@ -594,6 +594,12 @@
   (right-char)
   )
 
+;; org 모드에서 번호 link를 편하게 생성하기 위한 함수 추가
+(defun insert-number-of-link (num)
+  (interactive "sEnter # of link: ")
+  (insert (concat  "[[*#" num "][#" num "]]"))
+  )
+
 ;; TODO ==> DONE, OPEN ==> CLOSED 키워드로 바꾸고 CLOSED:에 시간까지 추가해주는 함수
 (defun org-todo-done-edward (arg)
   ""
@@ -908,6 +914,8 @@
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
+;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
+(global-set-key (kbd "C-'") 'insert-number-of-link)
 ;; C-? 키로 어느곳에서나 agenda view를 열게합니다
 (global-set-key (kbd "C-?") 'org-agenda-list)
 ;; C-M-? 키로 어느곳에서나 agenda list를 엽니다
