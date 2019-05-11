@@ -1825,6 +1825,16 @@
     (set-face-attribute 'default frame :height 125)
     (message "Set frame's default text height to something I want")))
 
+(defun set-frame-141 (&optional frame)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height 141)
+    (message "Set frame's default text height to 141")))
+
 ;; 15인치 화면용 font size
 (defun set-frame-183 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
