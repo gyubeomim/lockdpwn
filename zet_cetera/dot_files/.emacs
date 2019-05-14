@@ -1611,7 +1611,7 @@
             (point-at-eol)
             (quote
              (face
-              (:foreground "gold" :weight normal :underline t))))))))))
+              (:foreground "gold" :weight normal :underline t))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1690,7 +1690,7 @@
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
  '(pomodoro-work-time 25)
- '(recenter-positions (quote (middle top bottom)))
+ '(recenter-positions (quote (middle 0.7 top bottom)))
  '(rtags-other-window-window-size-percentage 1)
  '(rtags-split-window-function (quote split-window-below))
  '(rtags-tracking t)
@@ -1844,15 +1844,15 @@
     (message "Set frame's default text height to 141")))
 
 ;; 15인치 화면용 font size
-(defun set-frame-183 (&optional frame)
+(defun set-frame-153 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 183)
-    (message "Set frame's default text height to 183")))
+    (set-face-attribute 'default frame :height 153)
+    (message "Set frame's default text height to 153")))
 
 
 ;; 15인치 화면용 font size
@@ -1870,7 +1870,7 @@
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
 (global-set-key (kbd "C-_") 'set-frame-125)
-(global-set-key (kbd "C-+") 'set-frame-163)
+(global-set-key (kbd "C-+") 'set-frame-153)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
