@@ -1,30 +1,44 @@
-#include <Eigen/Geometry>
 #include <iostream>
 
-#define DEG2RAD M_PI/180.0
+using namespace std;
 
-int main()
-{
-  Eigen::Isometry3d original = Eigen::Isometry3d::Identity();
-  original.translate(1.414214*Eigen::Vector3d::UnitY());
-  original.rotate(Eigen::AngleAxisd(45.0*DEG2RAD, Eigen::Vector3d::UnitZ()));
+class Circle {
+ private:
+  int radius;
 
-  std::cout << "original:\n" << original.matrix() << "\n" << std::endl;
+ public:
+  double getArea();
+  void setRadius(int r);
+};
 
-  Eigen::Isometry3d cycle1 = Eigen::Isometry3d::Identity();
-  cycle1.translate(1.414214*Eigen::Vector3d::UnitY());
-  cycle1.rotate(Eigen::AngleAxisd(90*DEG2RAD, Eigen::Vector3d::UnitX()));
-  cycle1.rotate(Eigen::AngleAxisd(45.0*DEG2RAD, Eigen::Vector3d::UnitY()));
+void Circle::setRadius(int r) {
+  radius = r;
+}
 
-  std::cout << "cycle 1:\n" << cycle1.matrix() << "\n" << std::endl;
+double Circle::getArea() {
+  return 3.14 * radius * radius;
+}
 
-  Eigen::Isometry3d diff_front = cycle1 * original.inverse();
-  std::cout << "diff_front:\n" << diff_front.matrix() << "\n" << std::endl;
+int main(int argc, const char *argv[]) {
+  Circle circleArray[3];
 
-  Eigen::Isometry3d diff_back = original.inverse() * cycle1;
-  std::cout << "diff_back:\n" << diff_back.matrix() << "\n" << std::endl;
+  circleArray[0].setRadius(10);
+  circleArray[1].setRadius(20);
+  circleArray[2].setRadius(30);
 
-  Eigen::Isometry3d x_90 = Eigen::Isometry3d::Identity();
-  x_90.rotate(Eigen::AngleAxisd(90.0*DEG2RAD, Eigen::Vector3d::UnitX()));
-  std::cout << "x_90:\n" << x_90.matrix() << "\n" << std::endl;
+  for(int i=0; i<3; i++) {  
+    cout << "Circle " << i << "의 면적은 " << circleArray[i].getArea() << endl;
+  }
+
+  cout << endl;
+
+  Circle *p;
+  p = circleArray;
+
+  for(int i=0; i<3; i++) {
+    cout << "Circle " << i << "의 면적은 " << p->getArea() << endl;
+    p++;
+  }
+
+  return 0;
 }
