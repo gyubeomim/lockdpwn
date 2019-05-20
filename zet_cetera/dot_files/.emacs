@@ -1513,6 +1513,11 @@
 ;; PACKAGE: smart-mode-line
 (sml/setup)
 
+;; sml package is not working with multi-term package
+;; solution is [https://github.com/Malabarba/smart-mode-line/issues/226]
+(defadvice term-command-hook (after sml/term-advice-1 activate)
+(sml/generate-buffer-identification)
+
 ;; Variable Customizing
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -1614,7 +1619,7 @@
               (:foreground "gold" :weight normal :underline t))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1729,6 +1734,7 @@
  '(sml/use-projectile-p (quote before-prefixes))
  '(sml/vc-mode-show-backend nil)
  '(sp-base-key-bindings nil)
+ '(sp-escape-quotes-after-insert nil)
  '(speedbar-update-flag t)
  '(split-width-threshold 120)
  '(tabbar-cycle-scope nil)
