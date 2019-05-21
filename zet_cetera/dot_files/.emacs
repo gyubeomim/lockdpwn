@@ -1,4 +1,4 @@
-;;; MELPA와 MARMALADE 저장소를 package list에 추가합니다
+;; MELPA와 MARMALADE 저장소를 package list에 추가합니다
 (require 'package)
 
 (add-to-list 'package-archives'("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -92,6 +92,7 @@
     rtags
     cmake-ide
 
+    spacemacs-theme
 
     ;; nlinum                 ;; linum-mode 대체하는 패키지, linum-mode가 속도가 매우 느려서 바꿨다 (26.1 업그레이드하면서 필요없어짐)
     ;; eldoc
@@ -1082,6 +1083,9 @@
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
 
+    ;; org-mode에서 ` 키로 dired 모드를 싱행합니다
+    (define-key evil-motion-state-map (kbd "`") (lambda() (interactive)(dired "./")))
+
     ;; irony-server가 느려질 경우 끄기 위한 단축키
     (define-key evil-motion-state-map (kbd "z") 'irony-server-kill)
 
@@ -1271,9 +1275,9 @@
 (require 'solarized-dark-theme)
 (provide 'solarized-dark-theme)
 (load-theme 'solarized-dark t)
-;;(load-theme 'solarized-light t)
+;;(load-theme 'spacemacs-dark t)
 ;;(load-theme 'arjen-grey t)
-;; (load-theme 'ample-light t)
+;;(load-theme 'ample-light t)
 
 
 ;; elisp, lisp 모드에서만 rainbow-delimiters를 활성화합니다
@@ -1501,6 +1505,9 @@
                                 (message "[+] cua-mode restarted..")
                                 ))
 
+;; PACKAGE: smart-mode-line
+;; sml 2018버전 패키지가 multi-term하고 충돌하는 오류가 발생한다. 2019 버전부터는 수정된듯
+(sml/setup)
 
 ;; C-n C-S-n 키로 새로운 frame을 만들고 제거합니다
 (global-set-key (kbd "C-n") 'make-frame-command)
@@ -1509,9 +1516,6 @@
 
 ;; PACKAGE: protobuf-mode
 (require 'protobuf-mode)
-
-;; PACKAGE: smart-mode-line
-(sml/setup)
 
 ;; Variable Customizing
 (custom-set-variables
@@ -1536,7 +1540,7 @@
  '(custom-enable-theme (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(display-time-day-and-date t)
  '(display-time-default-load-average nil)
  '(display-time-format "%H:%M, %D")
@@ -1573,7 +1577,7 @@
  '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
-    ("~/gitrepo_sync/ims_org/org_files/pomodoro_old2.org" "~/gitrepo_sync/ims_org/org_files/pomodoro_old.org" "~/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/note/dyros/computer_device_spec.org" "~/gitrepo_sync/ims_org/org_files/STEM/software/docker.org" "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/gitrepo_sync/ims_org/org_files/note.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/gitrepo_sync/ims_org/org_files/emacs/custom_commands.org" "~/gitrepo_sync/ims_org/org_files/pomodoro_old2.org" "~/gitrepo_sync/ims_org/org_files/pomodoro_old.org" "~/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/note/dyros/computer_device_spec.org" "~/gitrepo_sync/ims_org/org_files/STEM/software/docker.org" "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/gitrepo_sync/ims_org/org_files/note.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1614,7 +1618,7 @@
               (:foreground "gold" :weight normal :underline t))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1675,7 +1679,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(per-buffer-theme/default-theme (quote solarized-dark))
  '(per-buffer-theme/ignored-buffernames-regex
    (quote
@@ -1729,6 +1733,7 @@
  '(sml/use-projectile-p (quote before-prefixes))
  '(sml/vc-mode-show-backend nil)
  '(sp-base-key-bindings nil)
+ '(sp-escape-quotes-after-insert nil)
  '(speedbar-update-flag t)
  '(split-width-threshold 120)
  '(tabbar-cycle-scope nil)
@@ -1998,6 +2003,9 @@
 
 ;;상단 메뉴 숨기기
 (menu-bar-mode 0)
+
+;; Current Line Highlighting
+(global-hl-line-mode t)
 
 ;;도구 모음 숨기기
 (tool-bar-mode 0)

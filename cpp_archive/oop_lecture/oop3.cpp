@@ -40,16 +40,3 @@ int main(int argc, const char *argv[])
 	delete[] p;
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
