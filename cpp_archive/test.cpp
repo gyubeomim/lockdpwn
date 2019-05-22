@@ -23,46 +23,57 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#include <iostream>
-#include <string>
+#include <cstdio>
+#include <queue>
 
 using namespace std;
 
+const int roff[4] = {-1, 1, 0, 0};
+const int coff[4] = {0, 0, -1, 1};
+
 int main() {
-  string s("I Love");
-  string a;
-  a = s;
-  a.append(" C++");
+  int N,M;
+  scanf("%d %d", &N, &M);
 
-  cout << a << endl;
+  bool map[100][100];
 
-  a.erase(6, 10);
-  a.append(" You");
+  for(int i=0; i<N; i++)
+    for(int j=0; j<M; j++)
+      scanf("%1d", &map[i][j]);
 
-  cout << a << endl;
+  bool visited[100][100] = {0};
+  visited[0][0] = true;
 
-  int len = a.length();
+  queue<int> Q;
+  Q.push(0);
+  int result = 1; // 이동 횟수
 
-  for(int i=0; i<3; i++) {
-    string first = a.substr(0,1);
-    string sub = a.substr(1, len-1);
-    a = sub + " " + first;
-    cout << a << endl;
+  while(true) {
+    int qSize = Q.size();
+
+    for(int i=0; i<qSize; i++) {
+      int r = Q.front() / 100;
+      int c = Q.front() % 100;
+      Q.pop();
+
+      if(r==N-1 && c==M-1) {
+        printf("%d\n", result);
+        return 0;
+      }
+
+      for(int d=0; d<4; d++) {
+        int nr = r + roff[d];
+        int nc = c + coff[d];
+
+        if(nr<0 || nr>=N || nc<0 || nc>=M) continue; // 미로 바깥인 경우
+        if(!map[nr][nc]) continue; // 벽인 경우
+        if(visited[nr][nc]) continue;
+
+        visited[nr][nc] = true;
+        Q.push(nr*100 + nc);
+      }
+    }
+    result++;
   }
-
   return 0;
 }

@@ -124,8 +124,8 @@ set ls=2
 " background 효과 dark.
 set background=dark 
 
-" colorscheme을 jellybeans로 세팅
-colorscheme solarized
+" colorscheme 세팅 
+colorscheme desert
 
  
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
