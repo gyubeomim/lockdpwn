@@ -2356,6 +2356,7 @@ created by edward 180515"
 (setq system-time-locale "C")
 
 ;; Variable Customizing==========================================================================
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -2509,6 +2510,7 @@ created by edward 180515"
  '(org-keep-stored-link-after-insertion t)
  '(org-link-file-path-type (quote relative))
  '(org-lowest-priority 69)
+ '(org-reverse-note-order nil)
  '(org-scheduled-delay-days 0)
  '(org-tags-column 10)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
