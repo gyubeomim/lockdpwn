@@ -1,13 +1,16 @@
 cpp_archive/test
-.vs/
-.vscode/
-bin/
-build/
+
+.vs
+.vscode
+
+bin
+build
+devel
 
 *.pyc
-.ipynb_checkpoints/
-
 *.svg
+
+.ipynb_checkpoints/
 
 GTAGS
 GSYMS
