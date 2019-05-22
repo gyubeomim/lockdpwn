@@ -35,6 +35,7 @@
 
 #include "ceres/ceres.h"
 #include "glog/logging.h"
+#include <vector>
 
 using ceres::AutoDiffCostFunction;
 using ceres::CostFunction;

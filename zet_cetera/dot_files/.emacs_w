@@ -703,8 +703,8 @@
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
 
     ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
-    (define-key undo-tree-map (kbd "C-_") 'set-frame-125)
-    (define-key undo-tree-map (kbd "C-+") 'set-frame-134)
+    (define-key undo-tree-map (kbd "C-_") 'set-frame-110)
+    (define-key undo-tree-map (kbd "C-+") 'set-frame-125)
     ))
 
 ;; for easy-jekyll mode
@@ -1050,7 +1050,16 @@
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
-;; 27인치 화면용 font size
+(defun set-frame-110 (&optional frame)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height 110)
+    (message "Set frame's default text height to 110")))
+
 (defun set-frame-125 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
@@ -1061,20 +1070,9 @@
     (set-face-attribute 'default frame :height 125)
     (message "Set frame's default text height to 125")))
 
-;; 15인치 화면용 font size
-(defun set-frame-134 (&optional frame)
-  "Increase the default size of text by AMT inside FRAME N times.
-  N can be given as a prefix arg.
-  AMT will default to 10.
-  FRAME will default the selected frame."
-  (interactive "p")
-  (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 134)
-    (message "Set frame's default text height to 134")))
-
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
-(global-set-key (kbd "C-_") 'set-frame-125)
-(global-set-key (kbd "C-+") 'set-frame-134)
+(global-set-key (kbd "C-_") 'set-frame-110)
+(global-set-key (kbd "C-+") 'set-frame-125)
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
@@ -2455,7 +2453,7 @@ created by edward 180515"
               (:background "gold" :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346癲\253\214\214\203\242\200" "\342\345\354\354\354\354\354諭\277\236" "*")))
+    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347솾\253\214\214\203\242\200" "\342\345\354\354\354\354\354獄\255\277\236" "*")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2619,7 +2617,8 @@ created by edward 180515"
  '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
- '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
+ '(org-level-4 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 0.98))))
+ '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.98))))
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
@@ -2627,7 +2626,7 @@ created by edward 180515"
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "gainsboro" :underline t :slant italic :weight normal :height 0.7))))
+ '(org-tag ((t (:foreground "gold" :underline t :slant italic :weight normal :height 0.9))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
