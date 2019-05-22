@@ -1016,7 +1016,7 @@
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
 
     ;; C-_ 키로 font 크기를 특정 크기로 맞춰주는 함수 설정
-    (define-key undo-tree-map (kbd "C-_") 'set-frame-125)
+    (define-key undo-tree-map (kbd "C-_") 'set-frame-110)
 
     ))
 
@@ -1271,12 +1271,13 @@
 (setq eyebrowse-mode-line-style (quote always))
 
 
+(setq custom-safe-themes t)
 ;; PACKAGE: solarized theme
-(require 'solarized-dark-theme)
-(provide 'solarized-dark-theme)
+;; (require 'solarized-dark-theme)
+;; (provide 'solarized-dark-theme)
 (load-theme 'solarized-dark t)
-;;(load-theme 'spacemacs-dark t)
-;;(load-theme 'arjen-grey t)
+;; (load-theme 'spacemacs-dark t)
+;; (load-theme 'arjen-grey t)
 ;;(load-theme 'ample-light t)
 
 
@@ -1536,11 +1537,12 @@
  '(cmake-ide-make-command "make -j4")
  '(column-number-mode t)
  '(company-backends (quote (company-irony company-clang company-cmake)))
+ '(compilation-message-face (quote default))
+ '(cua-global-mark-cursor-color "#2aa198")
  '(cua-mode t nil (cua-base))
- '(custom-enable-theme (quote (solarized-dark)))
- '(custom-safe-themes
-   (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "83db918b06f0b1df1153f21c0d47250556c7ffb5b5e6906d21749f41737babb7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "962dacd99e5a99801ca7257f25be7be0cebc333ad07be97efd6ff59755e6148f" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(cua-normal-cursor-color "#839496")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
  '(display-time-day-and-date t)
  '(display-time-default-load-average nil)
  '(display-time-format "%H:%M, %D")
@@ -1564,17 +1566,46 @@
    (quote
     (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
  '(evil-mode-line-format (quote (after)))
+ '(fci-rule-color "#073642")
  '(find-file-visit-truename t)
  '(git-gutter:added-sign "+")
  '(git-gutter:deleted-sign "-")
  '(git-gutter:modified-sign "▸")
  '(helm-bookmark-show-location t)
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#002b36" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#93a1a1")
+ '(highlight-tail-colors
+   (quote
+    (("#073642" . 0)
+     ("#546E00" . 20)
+     ("#00736F" . 30)
+     ("#00629D" . 50)
+     ("#7B6000" . 60)
+     ("#8B2C02" . 70)
+     ("#93115C" . 85)
+     ("#073642" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+ '(hl-fg-colors
+   (quote
+    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+ '(magit-diff-use-overlays nil)
  '(minimap-enlarge-certain-faces nil)
  '(minimap-highlight-line nil)
  '(minimap-major-modes (quote (prog-mode org-mode)))
  '(minimap-minimum-width 20)
  '(minimap-update-delay 0.01)
  '(minimap-window-location (quote right))
+ '(nrepl-message-colors
+   (quote
+    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(org-agenda-files
    (quote
     ("~/gitrepo_sync/ims_org/org_files/emacs/custom_commands.org" "~/gitrepo_sync/ims_org/org_files/pomodoro_old2.org" "~/gitrepo_sync/ims_org/org_files/pomodoro_old.org" "~/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/note/dyros/computer_device_spec.org" "~/gitrepo_sync/ims_org/org_files/STEM/software/docker.org" "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/gitrepo_sync/ims_org/org_files/note.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
@@ -1680,20 +1711,12 @@
  '(package-selected-packages
    (quote
     (spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
- '(per-buffer-theme/default-theme (quote solarized-dark))
- '(per-buffer-theme/ignored-buffernames-regex
-   (quote
-    ("*[Mm]ini" "*[Hh]elm" "*[Cc]alendar" "*[Cc]alc" "*SPEEDBAR*" "*NeoTree*")))
- '(per-buffer-theme/themes-alist
-   (quote
-    (((:theme . solarized-light)
-      (:buffernames "dl_network_model.org" "convex_optimization.org")
-      (:modes nil)))))
- '(per-buffer-theme/timer-idle-delay 0.0)
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
  '(pomodoro-work-time 25)
+ '(pos-tip-background-color "#073642")
+ '(pos-tip-foreground-color "#93a1a1")
  '(recenter-positions (quote (middle 0.7 top bottom)))
  '(rtags-other-window-window-size-percentage 1)
  '(rtags-split-window-function (quote split-window-below))
@@ -1713,12 +1736,14 @@
                        "\\_>"))
               1
               (quote font-lock-variable-name-face))))))))
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(sml/battery-format "")
  '(sml/col-number-format "")
  '(sml/full-mode-string " ")
  '(sml/line-number-format "")
  '(sml/mode-width 2)
  '(sml/modified-char "* ")
+ '(sml/no-confirm-load-theme t)
  '(sml/numbers-separator "")
  '(sml/position-percentage-format "")
  '(sml/prefix-face-list (quote ((":SU:" sml/sudo) (":G" sml/git) ("" sml/prefix))))
@@ -1738,7 +1763,39 @@
  '(split-width-threshold 120)
  '(tabbar-cycle-scope nil)
  '(tabbar-separator (quote ("|")))
+ '(term-default-bg-color "#002b36")
+ '(term-default-fg-color "#839496")
+ '(vc-annotate-background nil)
+ '(vc-annotate-background-mode nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#dc322f")
+     (40 . "#c8805d801780")
+     (60 . "#bec073400bc0")
+     (80 . "#b58900")
+     (100 . "#a5008e550000")
+     (120 . "#9d0091000000")
+     (140 . "#950093aa0000")
+     (160 . "#8d0096550000")
+     (180 . "#859900")
+     (200 . "#66aa9baa32aa")
+     (220 . "#57809d004c00")
+     (240 . "#48559e556555")
+     (260 . "#392a9faa7eaa")
+     (280 . "#2aa198")
+     (300 . "#28669833af33")
+     (320 . "#279993ccbacc")
+     (340 . "#26cc8f66c666")
+     (360 . "#268bd2"))))
+ '(vc-annotate-very-old-color nil)
  '(vc-follow-symlinks t)
+ '(weechat-color-list
+   (quote
+    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
+ '(xterm-color-names
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
+ '(xterm-color-names-bright
+   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"])
  '(yas-also-auto-indent-first-line t)
  '(yas-also-indent-empty-lines t))
 
@@ -1788,7 +1845,8 @@
  '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
- '(org-level-4 ((t (:inherit variable-pitch :foreground "#268bd2" :weight normal :height 0.98))))
+ '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.98))))
+ '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.98))))
  '(org-level-7 ((t (:inherit variable-pitch :foreground "gray"))))
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
@@ -1797,7 +1855,7 @@
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "gainsboro" :underline t :slant italic :weight normal :height 0.8))))
+ '(org-tag ((t (:foreground "green yellow" :underline t :slant italic :weight normal :height 0.9))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight normal :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
@@ -1827,6 +1885,16 @@
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
+(defun set-frame-110 (&optional frame)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height 110)
+    (message "Set frame's default text height to 110")))
+
 ;; 27인치 화면용 font size
 (defun set-frame-125 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
@@ -1836,7 +1904,7 @@
   (interactive "p")
   (let ((frame (selected-frame)))
     (set-face-attribute 'default frame :height 125)
-    (message "Set frame's default text height to something I want")))
+    (message "Set frame's default text height to 125")))
 
 (defun set-frame-141 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
@@ -1874,7 +1942,7 @@
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
-(global-set-key (kbd "C-_") 'set-frame-125)
+(global-set-key (kbd "C-_") 'set-frame-110)
 (global-set-key (kbd "C-+") 'set-frame-153)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
