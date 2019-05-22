@@ -7,9 +7,10 @@
 # endif()
 
 find_package(Ceres REQUIRED)
+include_directories(${CERES_INCLUDE_DIRS})
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 add_executable(helloworld helloworld.cc)
-target_link_libraries(helloworld ceres)
+target_link_libraries(helloworld ${CERES_LIBRARIES})
 
 # Force CMake to link curve_fitting_c using the C linker, this is important
 # when Ceres was compiled using C++11 to ensure that -std=c++11 is not passed
