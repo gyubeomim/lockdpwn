@@ -754,9 +754,9 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "LIST"
+           '((sequence "LIST" "TODO"
                        "|"
-                       "TODO" "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE")
+                       "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE")
              (sequence "|" "OPEN" "CLOSED"))
            )
      ;; Setting Colours (faces) for todo states to give clearer view of work
@@ -813,7 +813,7 @@
 
                                    ("n" "note.org: [Note]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/note.org" "Note")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -880,6 +880,8 @@
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
                                   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line)
+                                  (define-key org-agenda-mode-map (kbd "l") 'evil-forward-char)
+                                  (define-key org-agenda-mode-map (kbd "h") 'evil-backward-char)
                                   ;; evil-scroll-down & up 을 설정합니다
                                   (define-key org-agenda-mode-map (kbd "C-u") 'evil-scroll-up)
                                   (define-key org-agenda-mode-map (kbd "C-d") 'evil-scroll-down)
@@ -1607,7 +1609,9 @@
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
- '(org-agenda-files (quote ("~/gitrepo_sync/ims_org/org_files/gcal.org")))
+ '(org-agenda-files
+   (quote
+    ("~/gitrepo_sync/ims_org/org_files/note.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1704,7 +1708,7 @@
  '(org-keep-stored-link-after-insertion t)
  '(org-link-file-path-type (quote relative))
  '(org-lowest-priority 68)
- '(org-reverse-note-order nil)
+ '(org-reverse-note-order t)
  '(org-scheduled-delay-days 0)
  '(org-tags-column 10)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
@@ -1717,7 +1721,7 @@
  '(pomodoro-work-time 25)
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
- '(recenter-positions (quote (middle 0.7 top bottom)))
+ '(recenter-positions (quote (middle 0.75 top bottom)))
  '(rtags-other-window-window-size-percentage 1)
  '(rtags-split-window-function (quote split-window-below))
  '(rtags-tracking t)
@@ -1836,9 +1840,11 @@
  '(minimap-semantic-function-face ((t (:inherit (font-lock-function-name-face minimap-font-face)))))
  '(minimap-semantic-type-face ((t (:inherit (font-lock-type-face minimap-font-face)))))
  '(minimap-semantic-variable-face ((t (:inherit (font-lock-function-name-face minimap-font-face)))))
- '(org-agenda-calendar-event ((t (:foreground "#586e75"))))
- '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
+ '(org-agenda-calendar-event ((t (:foreground "dark gray"))))
+ '(org-agenda-date ((t (:background "light gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
+ '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#002b36" :foreground "spring green" :inverse-video t :overline nil :weight normal))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
+ '(org-agenda-done ((t (:foreground "dark gray" :slant italic))))
  '(org-block ((t (:foreground "dark gray"))))
  '(org-block-begin-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
  '(org-block-end-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
@@ -1848,15 +1854,18 @@
  '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.98))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.98))))
  '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.98))))
+ '(org-level-6 ((t (:inherit variable-pitch :foreground "yellow3"))))
  '(org-level-7 ((t (:inherit variable-pitch :foreground "gray"))))
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
- '(org-scheduled ((t (:foreground "#268bd2"))))
- '(org-scheduled-previously ((t (:foreground "#586e75"))))
- '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
+ '(org-scheduled ((t (:foreground "#268bd2" :weight bold))))
+ '(org-scheduled-previously ((t (:foreground "#268bd2" :weight bold))))
+ '(org-scheduled-today ((t (:foreground "#859900" :weight bold))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "gold" :underline t :slant italic :weight normal :height 0.9))))
+ '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.9))))
+ '(org-time-grid ((t (:foreground "dark gray"))))
+ '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight normal :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
