@@ -1861,7 +1861,7 @@
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "#268bd2" :weight bold))))
  '(org-scheduled-previously ((t (:foreground "#268bd2" :weight bold))))
- '(org-scheduled-today ((t (:foreground "#859900" :weight bold))))
+ '(org-scheduled-today ((t (:foreground "lime green" :weight bold))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.9))))
  '(org-time-grid ((t (:foreground "dark gray"))))
