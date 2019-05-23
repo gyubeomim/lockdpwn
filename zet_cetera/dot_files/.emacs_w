@@ -565,6 +565,8 @@
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
                                   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line)
+                                  (define-key org-agenda-mode-map (kbd "l") 'evil-forward-char)
+                                  (define-key org-agenda-mode-map (kbd "h") 'evil-backward-char)
                                   ;; evil-scroll-down & up 을 설정합니다
                                   (define-key org-agenda-mode-map (kbd "C-u") 'evil-scroll-up)
                                   (define-key org-agenda-mode-map (kbd "C-d") 'evil-scroll-down)
@@ -701,10 +703,6 @@
     (define-key undo-tree-map (kbd "C-?") 'org-agenda-list)
     (define-key undo-tree-map (kbd "C-M-?") 'org-agenda)
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
-
-    ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
-    (define-key undo-tree-map (kbd "C-_") 'set-frame-110)
-    (define-key undo-tree-map (kbd "C-+") 'set-frame-125)
     ))
 
 ;; for easy-jekyll mode
@@ -780,6 +778,9 @@
 
     ;; ` 키로 현재 파일의 경로를 dired로 엽니다
     (define-key evil-normal-state-map (kbd "`") (lambda() (interactive)(dired "./")))
+
+    ;; b 키로 helm-for-files를 실행합니다
+    (define-key evil-motion-state-map (kbd "x") 'helm-for-files)
     
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
@@ -1064,19 +1065,19 @@
     (set-face-attribute 'default frame :height 110)
     (message "Set frame's default text height to 110")))
 
-(defun set-frame-125 (&optional frame)
+(defun set-frame-120 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 125)
-    (message "Set frame's default text height to 125")))
+    (set-face-attribute 'default frame :height 120)
+    (message "Set frame's default text height to 120")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
-(global-set-key (kbd "C-_") 'set-frame-110)
-(global-set-key (kbd "C-+") 'set-frame-125)
+(global-set-key (kbd "C-<f9>") 'set-frame-110)
+(global-set-key (kbd "C-<f10>") 'set-frame-120)
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
@@ -1207,6 +1208,9 @@
 
 ;;상단 메뉴 숨기기
 (menu-bar-mode 0)
+
+;; 현재 커서 하이라이팅 모드
+(global-hl-line-mode t)
 
 ;;도구 모음 숨기기
 (tool-bar-mode 0)
@@ -2613,27 +2617,33 @@ created by edward 180515"
  '(minimap-semantic-function-face ((t (:inherit (font-lock-function-name-face minimap-font-face) :background "#202414" :box (:line-width 1 :color "white") :height 1))))
  '(minimap-semantic-type-face ((t (:inherit (font-lock-type-face minimap-font-face) :background "gray10" :box (:line-width 1 :color "white") :height 1))))
  '(minimap-semantic-variable-face ((t (:inherit (font-lock-variable-name-face minimap-font-face) :background "gray10" :box (:line-width 1 :color "white") :height 1))))
- '(org-agenda-calendar-event ((t (:foreground "#586e75"))))
- '(org-agenda-date ((t (:background "dim gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
+  '(org-agenda-calendar-event ((t (:foreground "dark gray"))))
+ '(org-agenda-date ((t (:background "light gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
+ '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#002b36" :foreground "spring green" :inverse-video t :overline nil :weight normal))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
+ '(org-agenda-done ((t (:foreground "dark gray" :slant italic))))
  '(org-block ((t (:foreground "dark gray"))))
  '(org-block-begin-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
  '(org-block-end-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
  '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.7))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "light slate blue" :weight normal :height 1.2))))
- '(org-level-2 ((t (:inherit variable-pitch :foreground "yellow green" :weight normal :height 0.98))))
+ '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.98))))
- '(org-level-4 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 0.98))))
+ '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.98))))
  '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.98))))
+ '(org-level-6 ((t (:inherit variable-pitch :foreground "yellow3"))))
+ '(org-level-7 ((t (:inherit variable-pitch :foreground "gray"))))
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
- '(org-scheduled ((t (:foreground "#268bd2"))))
- '(org-scheduled-previously ((t (:foreground "#586e75"))))
- '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
+ '(org-scheduled ((t (:foreground "#268bd2" :weight bold))))
+ '(org-scheduled-previously ((t (:foreground "#268bd2" :weight bold))))
+ '(org-scheduled-today ((t (:foreground "lime green" :weight bold))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "gold" :underline t :slant italic :weight normal :height 0.9))))
- '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight bold))))
+ '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.9))))
+ '(org-time-grid ((t (:foreground "dark gray"))))
+ '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
+ '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight normal :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
  '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
