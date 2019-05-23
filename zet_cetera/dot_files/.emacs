@@ -793,7 +793,7 @@
 
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates '((";" "todo.org: [Task]" entry
+     (setq org-capture-templates  '((";" "todo.org: [Task]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
                                     "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    (":" "todo.org: [Task]" entry
@@ -994,7 +994,6 @@
 ;; PACKAGE: comment-dwim
 ;; Alt + ' 키로 comment-dwim 명령어를 수행합니다
 (global-set-key (kbd "M-'") 'comment-dwim)
-
 ;; (require 'evernote-mode)
 ;; (setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8"))
 ;; (setq evernote-username "gyurse")
@@ -1014,10 +1013,6 @@
     (define-key undo-tree-map (kbd "C-?") 'org-agenda-list)
     (define-key undo-tree-map (kbd "C-M-?") 'org-agenda)
     (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
-
-    ;; C-_ 키로 font 크기를 특정 크기로 맞춰주는 함수 설정
-    (define-key undo-tree-map (kbd "C-_") 'set-frame-110)
-
     ))
 
 ;; for easy-jekyll mode
@@ -1083,8 +1078,11 @@
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
 
-    ;; org-mode에서 ` 키로 dired 모드를 싱행합니다
+    ;; ` 키로 dired 모드를 싱행합니다
     (define-key evil-motion-state-map (kbd "`") (lambda() (interactive)(dired "./")))
+
+    ;; x 키로 helm-for-files
+    (define-key evil-motion-state-map (kbd "x") 'helm-for-files)
 
     ;; irony-server가 느려질 경우 끄기 위한 단축키
     (define-key evil-motion-state-map (kbd "z") 'irony-server-kill)
@@ -1169,6 +1167,9 @@
 
 ;; Ctrl + F 키를 누르면 자동으로 빈 라인이 하나 만들어집니다 (vim의 o키와 동일합니다)
 (global-set-key "\C-f" 'newline-without-break-of-line)
+
+;; Ctrl + G 키를 누르면 원하는 라인으로 이동하는 명령어를 실행합니다
+(global-set-key "\C-g" 'goto-line)
 
 ;; Ctrl + O 키를 누르면 자동으로 한 줄 위에 빈 라인이 하나 만들어집니다
 (global-set-key "\C-o" 'newline-without-break-of-line-upper)
@@ -1606,9 +1607,7 @@
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
- '(org-agenda-files
-   (quote
-    ("~/gitrepo_sync/ims_org/org_files/emacs/custom_commands.org" "~/gitrepo_sync/ims_org/org_files/pomodoro_old2.org" "~/gitrepo_sync/ims_org/org_files/pomodoro_old.org" "~/gitrepo_sync/ims_org/org_files/note/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/note/dyros/computer_device_spec.org" "~/gitrepo_sync/ims_org/org_files/STEM/software/docker.org" "~/gitrepo_sync/ims_org/org_files/paper/paper_research.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_parkable.org" "~/gitrepo_sync/ims_org/org_files/not_used/project_cartographer.org" "~/gitrepo_sync/ims_org/org_files/not_used/emacs.org" "~/gitrepo_sync/ims_org/org_files/not_used/edward.org" "~/gitrepo_sync/ims_org/org_files/not_used/SNU.org" "~/gitrepo_sync/ims_org/org_files/not_used/dyros.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/note/ip_list.org" "~/gitrepo_sync/ims_org/org_files/note.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/note/cmake.org" "~/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
+ '(org-agenda-files (quote ("~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1646,7 +1645,7 @@
             (point-at-eol)
             (quote
              (face
-              (:foreground "gold" :weight normal :underline t))))))))) t)
+              (:foreground "gold" :weight normal :underline t))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1705,6 +1704,7 @@
  '(org-keep-stored-link-after-insertion t)
  '(org-link-file-path-type (quote relative))
  '(org-lowest-priority 68)
+ '(org-reverse-note-order nil)
  '(org-scheduled-delay-days 0)
  '(org-tags-column 10)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
@@ -1805,7 +1805,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "PfEd" :slant normal :weight normal :height 136 :width normal))))
+ '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 136 :width normal :foundry "ADBO" :family "Source Code Pro"))))
  '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
@@ -1816,6 +1816,7 @@
  '(diff-refine-changed ((t (:background "nil"))))
  '(diff-refine-removed ((t (:background "firebrick"))))
  '(diff-removed ((t (:background "brown" :foreground "white smoke"))))
+ '(dired-directory ((t (:foreground "gold" :weight normal))))
  '(ein:cell-input-area ((t (:background "black"))))
  '(ein:cell-input-prompt ((t (:inherit header-line :foreground "deep sky blue"))))
  '(ein:cell-output-prompt ((t (:inherit header-line :foreground "red"))))
@@ -1842,9 +1843,9 @@
  '(org-block-begin-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
  '(org-block-end-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
  '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.7))))
- '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :weight bold :height 1.2))))
- '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900" :weight normal :height 0.98))))
- '(org-level-3 ((t (:inherit variable-pitch :foreground "#b58900" :weight normal :height 0.98))))
+ '(org-level-1 ((t (:inherit variable-pitch :foreground "light slate blue" :weight normal :height 1.2))))
+ '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.98))))
+ '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.98))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.98))))
  '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.98))))
  '(org-level-7 ((t (:inherit variable-pitch :foreground "gray"))))
@@ -1855,7 +1856,7 @@
  '(org-scheduled-previously ((t (:foreground "#586e75"))))
  '(org-scheduled-today ((t (:foreground "#859900" :weight normal))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "green yellow" :underline t :slant italic :weight normal :height 0.9))))
+ '(org-tag ((t (:foreground "gold" :underline t :slant italic :weight normal :height 0.9))))
  '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight normal :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
@@ -1895,7 +1896,6 @@
     (set-face-attribute 'default frame :height 110)
     (message "Set frame's default text height to 110")))
 
-;; 27인치 화면용 font size
 (defun set-frame-125 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
@@ -1916,7 +1916,6 @@
     (set-face-attribute 'default frame :height 141)
     (message "Set frame's default text height to 141")))
 
-;; 15인치 화면용 font size
 (defun set-frame-153 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
@@ -1927,23 +1926,13 @@
     (set-face-attribute 'default frame :height 153)
     (message "Set frame's default text height to 153")))
 
-
-;; 15인치 화면용 font size
-(defun set-frame-163 (&optional frame)
-  "Increase the default size of text by AMT inside FRAME N times.
-  N can be given as a prefix arg.
-  AMT will default to 10.
-  FRAME will default the selected frame."
-  (interactive "p")
-  (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 163)
-    (message "Set frame's default text height to 163")))
-
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
-(global-set-key (kbd "C-_") 'set-frame-110)
-(global-set-key (kbd "C-+") 'set-frame-153)
+(global-set-key (kbd "C-<f9>") 'set-frame-110)
+(global-set-key (kbd "C-<f10>") 'set-frame-125)
+(global-set-key (kbd "C-<f11>") 'set-frame-141)
+(global-set-key (kbd "C-<f12>") 'set-frame-153)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
