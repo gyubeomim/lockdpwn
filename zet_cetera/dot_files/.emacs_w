@@ -747,8 +747,9 @@
     (define-key evil-motion-state-map (kbd "K") nil)
     (define-key evil-motion-state-map (kbd "TAB") nil)
     (define-key evil-motion-state-map (kbd "`") nil)
-	;; evil 모드에서 f 키로 빠르게 단어 사이를 이동합니다
-	(define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
+    
+    ;; evil 모드에서 f 키로 빠르게 단어 사이를 이동합니다
+    (define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
     (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
@@ -777,9 +778,12 @@
     ;; { 키로 특정 todo.org 파일을 엽니다
     (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/todo.org")))
 
-
+    ;; ` 키로 현재 파일의 경로를 dired로 엽니다
+    (define-key evil-normal-state-map (kbd "`") (lambda() (interactive)(dired "./")))
+    
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
+
 
     ;; 1,2키로 tab들을 이동합니다
     (define-key evil-motion-state-map (kbd "1") 'tabbar-backward)
@@ -2356,7 +2360,6 @@ created by edward 180515"
 (setq system-time-locale "C")
 
 ;; Variable Customizing==========================================================================
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -2413,7 +2416,7 @@ created by edward 180515"
  '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
-    ("e:/gitrepo/ims_org/org_files/note/x11vnc.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/note.org" "e:/gitrepo/ims_org/org_files/pomodoro.org" "e:/gitrepo/ims_org/org_files/pomodoro_old.org" "e:/gitrepo/ims_org/org_files/portal.org" "e:/gitrepo/ims_org/org_files/test.org")))
+    ("e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/note.org" "e:/gitrepo/ims_org/org_files/pomodoro.org" "e:/gitrepo/ims_org/org_files/portal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -2451,10 +2454,10 @@ created by edward 180515"
             (point-at-eol)
             (quote
              (face
-              (:background "gold" :weight bold))))))))))
+              (:foreground "gold" :underline t :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347솾\253\214\214\203\242\200" "\342\345\354\354\354\354\354獄\255\277\236" "*")))
+    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354녇\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347뛾\255\277\236" "*")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2579,8 +2582,8 @@ created by edward 180515"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 108 :width normal :foundry "outline" :family "Source Code Pro"))))
- '(avy-lead-face ((t (:inherit isearch :background "#996300" :foreground "gainsboro"))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "#996300" :foreground "gainsboro"))))
+ '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black"))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
  '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))

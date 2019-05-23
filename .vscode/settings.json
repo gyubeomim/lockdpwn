@@ -3,7 +3,8 @@
     "files.associations": {
         "random": "cpp",
         "queue": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "xstring": "cpp"
     },
     // Code Runner "CPP" 설정
     "code-runner.executorMap": {
