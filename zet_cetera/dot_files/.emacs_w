@@ -1894,9 +1894,7 @@ created by edward 180515"
 ;; 현재 버퍼의 파일을 임의로 /.emacs.d/.temporary/ 폴더에 저장하는 함수
 (defun copy-buffer-to-file ()
   (interactive)
-  (let ((bufname (concat "~/.emacs.d/.temporary/" (concat (format-time-string "%Y%m%d_%H%M%S")
-                                         "_"
-                                         (buffer-name)
+  (let ((bufname (concat "~/.emacs.d/.temporary/" (concat (format-time-string "%Y%m%d_%H%M%S.vim")
                                          ))))
     (if (file-directory-p "~/.emacs.d/.temporary")
         (progn
