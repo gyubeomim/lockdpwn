@@ -1274,6 +1274,12 @@
 
      ;; dired mode 에서 chmod를 바로 수행하고 싶을 경우 M키를 눌러서 합니다
      (define-key dired-mode-map "M" 'chmod)
+
+     ;; dired mode 에서 X키로 마크한 파일들을 삭제합니다
+     (define-key dired-mode-map "X" 'dired-do-flagged-delete)
+
+     ;; dired mode 에서 x키로 마크한 파일들을 삭제합니다
+     (define-key dired-mode-map "x" 'helm-for-files)
      ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
@@ -1888,7 +1894,7 @@ created by edward 180515"
 ;; 현재 버퍼의 파일을 임의로 /.emacs.d/.temporary/ 폴더에 저장하는 함수
 (defun copy-buffer-to-file ()
   (interactive)
-  (let ((bufname (concat "~/.emacs.d/.temporary/" (concat (format-time-string "%Y%m%d_%T")
+  (let ((bufname (concat "~/.emacs.d/.temporary/" (concat (format-time-string "%Y%m%d_%H%M%S")
                                          "_"
                                          (buffer-name)
                                          ))))
