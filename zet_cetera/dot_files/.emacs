@@ -1649,7 +1649,7 @@
             (point-at-eol)
             (quote
              (face
-              (:foreground "gold" :weight normal :underline t))))))))))
+              (:foreground "gold" :weight normal :underline t))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
@@ -1845,7 +1845,7 @@
  '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#002b36" :foreground "spring green" :inverse-video t :overline nil :weight normal))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-agenda-done ((t (:foreground "dark gray" :slant italic))))
- '(org-block ((t (:foreground "dark gray"))))
+ '(org-block ((t (:foreground "gainsboro"))))
  '(org-block-begin-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
  '(org-block-end-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
  '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.7))))
@@ -1866,7 +1866,7 @@
  '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.9))))
  '(org-time-grid ((t (:foreground "dark gray"))))
  '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
- '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight normal :height 1.0))))
+ '(org-verbatim ((t (:inherit shadow :background "aquamarine" :foreground "black" :weight normal :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
  '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
@@ -2135,6 +2135,12 @@
 
      ;; dired mode 에서 chmod를 바로 수행하고 싶을 경우 M키를 눌러서 합니다
      (define-key dired-mode-map "M" 'chmod)
+
+     ;; dired mode 에서 X키로 마크한 파일들을 삭제합니다
+     (define-key dired-mode-map "X" 'dired-do-flagged-delete)
+
+     ;; dired mode 에서 x키로 마크한 파일들을 삭제합니다
+     (define-key dired-mode-map "x" 'helm-for-files)
      ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
