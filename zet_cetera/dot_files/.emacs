@@ -877,6 +877,9 @@
                                   ;; ] 키로 특정 pomodoro.org 파일을 엽니다
                                   (define-key org-agenda-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
 
+                                  ;; tab 키로 해당 이벤트를 확인합니다
+                                  (define-key org-agenda-mode-map (kbd "<tab>") 'org-agenda-show)
+
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
                                   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line)
@@ -1846,8 +1849,8 @@
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-agenda-done ((t (:foreground "dark gray" :slant italic))))
  '(org-block ((t (:foreground "gainsboro"))))
- '(org-block-begin-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
- '(org-block-end-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
+ '(org-block-begin-line ((t (:inherit org-meta-line :foreground "#002b36" :underline "dark slate gray" :weight normal))))
+ '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
  '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.7))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "light slate blue" :weight normal :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.98))))

@@ -353,6 +353,12 @@
   (right-char)
   )
 
+;; org 모드에서 번호 link를 편하게 생성하기 위한 함수 추가
+(defun insert-number-of-link (num)
+  (interactive "sEnter # of link: ")
+  (insert (concat  "[[*#" num "][#" num "]]"))
+  )
+
 ;; TODO ==> DONE, OPEN ==> CLOSED 키워드로 바꾸고 CLOSED:에 시간까지 추가해주는 함수
 (defun org-todo-done-edward (arg)
   ""
@@ -489,9 +495,9 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "LIST"
+           '((sequence "LIST" "TODO"
                        "|"
-                       "TODO" "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE")
+                       "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE")
              (sequence "|" "OPEN" "CLOSED"))
            )
      ;; Setting Colours (faces) for todo states to give clearer view of work
@@ -547,7 +553,7 @@
 
                                    ("n" "note.org: [Note]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/note.org" "Note")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -581,7 +587,8 @@
                                   ;; { 키로 특정 todo.org 파일을 엽니다
                                   (define-key org-agenda-mode-map (kbd "{") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/todo.org")))
 
-
+                                  ;; tab 키로 해당 이벤트를 확인합니다
+                                  (define-key org-agenda-mode-map (kbd "<tab>") 'org-agenda-show)
 
                                   ;; ' 키로 tag를 설정합니다
                                   (define-key org-agenda-mode-map (kbd "'") 'org-agenda-set-tags)
@@ -607,6 +614,8 @@
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
+;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
+(global-set-key (kbd "C-'") 'insert-number-of-link)
 ;; C-? 키로 어느곳에서나 agenda view를 열게합니다
 (global-set-key (kbd "C-?") 'org-agenda-list)
 ;; C-/ 키로 어느곳에서나 org todo list를 열게합니다
@@ -2465,7 +2474,7 @@ created by edward 180515"
               (:foreground "gold" :underline t :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354녇\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347뛾\255\277\236" "*")))
+    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353뀋\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353쎗\255\277\236" "*")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2621,14 +2630,14 @@ created by edward 180515"
  '(minimap-semantic-function-face ((t (:inherit (font-lock-function-name-face minimap-font-face) :background "#202414" :box (:line-width 1 :color "white") :height 1))))
  '(minimap-semantic-type-face ((t (:inherit (font-lock-type-face minimap-font-face) :background "gray10" :box (:line-width 1 :color "white") :height 1))))
  '(minimap-semantic-variable-face ((t (:inherit (font-lock-variable-name-face minimap-font-face) :background "gray10" :box (:line-width 1 :color "white") :height 1))))
-  '(org-agenda-calendar-event ((t (:foreground "dark gray"))))
+ '(org-agenda-calendar-event ((t (:foreground "dark gray"))))
  '(org-agenda-date ((t (:background "light gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
  '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#002b36" :foreground "spring green" :inverse-video t :overline nil :weight normal))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-agenda-done ((t (:foreground "dark gray" :slant italic))))
- '(org-block ((t (:foreground "dark gray"))))
- '(org-block-begin-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
- '(org-block-end-line ((t (:background "#073642" :foreground "#073642" :weight normal))))
+ '(org-block ((t (:foreground "gainsboro"))))
+ '(org-block-begin-line ((t (:inherit org-meta-line :foreground "#002b36" :underline "dark slate gray" :weight normal))))
+ '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
  '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.7))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "light slate blue" :weight normal :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.98))))
@@ -2647,7 +2656,7 @@ created by edward 180515"
  '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.9))))
  '(org-time-grid ((t (:foreground "dark gray"))))
  '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
- '(org-verbatim ((t (:inherit shadow :background "#93a1a1" :foreground "gray15" :weight normal :height 1.0))))
+ '(org-verbatim ((t (:inherit shadow :background "aquamarine" :foreground "black" :weight normal :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
  '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
