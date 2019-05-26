@@ -1080,6 +1080,9 @@
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
 
+    ;; - 키로 emacs 창을 minimize 합니다
+    (define-key evil-motion-state-map (kbd "-") 'suspend-frame)
+
     ;; ` 키로 dired 모드를 싱행합니다
     (define-key evil-motion-state-map (kbd "`") (lambda() (interactive)(dired "./")))
 
