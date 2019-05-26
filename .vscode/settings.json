@@ -4,7 +4,8 @@
         "random": "cpp",
         "queue": "cpp",
         "stack": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "vector": "cpp"
     },
     // Code Runner "CPP" 설정
     "code-runner.executorMap": {

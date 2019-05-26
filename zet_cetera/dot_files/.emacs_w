@@ -788,6 +788,9 @@
     ;; ` 키로 현재 파일의 경로를 dired로 엽니다
     (define-key evil-normal-state-map (kbd "`") (lambda() (interactive)(dired "./")))
 
+    ;; - 키로 emacs를 minimize 합니다
+    (define-key evil-normal-state-map (kbd "-") 'suspend-frame)
+
     ;; b 키로 helm-for-files를 실행합니다
     (define-key evil-motion-state-map (kbd "x") 'helm-for-files)
     
@@ -1850,6 +1853,7 @@ created by edward 180515"
 (global-unset-key (kbd "S-SPC"))
 (global-unset-key (kbd "C-S-SPC"))
 (global-set-key [(control tab)] 'toggle-input-method)
+(global-set-key (kbd "S-SPC") 'toggle-input-method)
 (global-set-key (kbd "<kana>") 'toggle-input-method)
 
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.
