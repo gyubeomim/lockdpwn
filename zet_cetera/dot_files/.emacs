@@ -867,6 +867,7 @@
                                   (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
 
+
                                   ;; .org 파일 여는 명령어 추가
                                   ;; { 키로 todo.org 파일을 엽니다
                                   (define-key org-agenda-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
@@ -885,6 +886,10 @@
                                   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line)
                                   (define-key org-agenda-mode-map (kbd "l") 'evil-forward-char)
                                   (define-key org-agenda-mode-map (kbd "h") 'evil-backward-char)
+
+                                  ;; x 키로 buffer list를 봅니다
+                                  (define-key org-agenda-mode-map (kbd "x") 'helm-for-files)
+
                                   ;; evil-scroll-down & up 을 설정합니다
                                   (define-key org-agenda-mode-map (kbd "C-u") 'evil-scroll-up)
                                   (define-key org-agenda-mode-map (kbd "C-d") 'evil-scroll-down)
@@ -1088,6 +1093,9 @@
 
     ;; ` 키로 dired 모드를 싱행합니다
     (define-key evil-motion-state-map (kbd "`") (lambda() (interactive)(dired "./")))
+
+    ;; \ 키로 checkbox를 toggle합니다
+    (define-key evil-motion-state-map (kbd "\\") 'org-toggle-checkbox)
 
     ;; x 키로 helm-for-files
     (define-key evil-motion-state-map (kbd "x") 'helm-for-files)
@@ -1658,7 +1666,7 @@
               (:foreground "gold" :weight normal :underline t))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1831,7 +1839,7 @@
  '(ein:cell-input-prompt ((t (:inherit header-line :foreground "deep sky blue"))))
  '(ein:cell-output-prompt ((t (:inherit header-line :foreground "red"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
- '(font-lock-comment-face ((t (:foreground "forest green"))))
+ '(font-lock-comment-face ((t (:foreground "lime green"))))
  '(hi-blue ((t (:background "blue" :foreground "#5c95b9"))))
  '(hi-blue-b ((t (:background "cyan" :foreground "#49a19a" :weight bold))))
  '(hi-green ((t (:background "green" :foreground "#8c9d50"))))
@@ -1951,8 +1959,6 @@
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
-
-
 ;;GUI 환경에서 시작 시 창 화면 최대화 하기
 (add-to-list 'default-frame-alist '(fullscreen . maximized))(add-to-list 'default-frame-alist '(height . 31))
 (add-to-list 'default-frame-alist '(width . 100))
@@ -1984,6 +1990,12 @@
   (org-capture nil "o")
   )
 
+;; 일반적인 timer
+(defun pomodoro-custom-edward (time)
+  (interactive "sEnter the custom time: ")
+  (pomodoro-custom (string-to-number time))
+)
+
 ;; C-c C-o,p 키로 타이머를 시작, 중지합니다, C-c C-9,0 키로 중지, 재개합니다
 (global-set-key (kbd "C-c C-o") 'pomodoro-start-edward)
 (global-set-key (kbd "C-c C-p") 'pomodoro-stop)
@@ -2004,6 +2016,8 @@
 (add-hook 'python-mode-hook (lambda ()
                              (define-key python-mode-map (kbd "C-c C-p") 'pomodoro-stop)
                              ))
+
+(global-set-key (kbd "C-c C-]") 'pomodoro-custom-edward)
 
 
 ;;파일 편집 위치 기억
@@ -3216,6 +3230,7 @@ created by edward 180515"
 ;; customize mode와 같이 실행되는 hook 코드
 (add-hook 'custom-mode-hook (lambda ()
                                ;; evil 모드 키바인딩을 설정합니다
+                               (define-key custom-mode-map (kbd "x") 'helm-for-files)
                                (define-key custom-mode-map (kbd "j") 'evil-next-line)
                                (define-key custom-mode-map (kbd "k") 'evil-previous-line)
                                (define-key custom-mode-map (kbd "l") 'evil-forward-char)
