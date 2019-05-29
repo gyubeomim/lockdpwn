@@ -2478,7 +2478,7 @@ created by edward 180515"
               (:foreground "gold" :underline t :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353뀋\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353쎗\255\277\236" "*")))
+    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354럸\255\277\236" "*")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -2617,8 +2617,8 @@ created by edward 180515"
  '(ein:cell-input-area ((t (:background "black"))))
  '(ein:cell-input-prompt ((t (:inherit header-line :foreground "deep sky blue"))))
  '(ein:cell-output-prompt ((t (:inherit header-line :foreground "red"))))
- '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
- '(font-lock-comment-face ((t (:foreground "forest green"))))
+ '(font-lock-comment-delimiter-face ((t (:foreground "lime green" :slant normal))))
+ '(font-lock-comment-face ((t (:foreground "lime green"))))
  '(hi-blue ((t (:background "blue" :foreground "#5c95b9"))))
  '(hi-blue-b ((t (:background "cyan" :foreground "#49a19a" :weight bold))))
  '(hi-green ((t (:background "green" :foreground "#8c9d50"))))
