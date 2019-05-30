@@ -684,12 +684,12 @@
      (define-key org-mode-map (kbd "<M-S-down>") 'org-shiftdown)
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
-     ;; org capture 기능 단축키 for todo.org
-     (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ";")))
      ;; C-< 키로 어느곳에서나 todo.org OPEN 기능을 열게합니다
      (define-key org-mode-map (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
-     ;; C-> 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
-     (define-key org-mode-map (kbd "C->") (lambda () (interactive)(org-capture nil ":")))
+     ;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
+     (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
+     ;; C-> 키로 어느곳에서나 todo.org LIST 기능을 열게합니다
+     (define-key org-mode-map (kbd "C->") (lambda () (interactive)(org-capture nil ";")))
      ;; C-M-> 키로 어느곳에서나 org-capture 기능을 열게합니다
      (define-key org-mode-map (kbd "C-M->") 'org-capture)
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
@@ -867,6 +867,9 @@
                                   (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
 
+                                  ;; 1,2키로 tab을 이동합니다
+                                  (define-key org-agenda-mode-map (kbd "1") 'tabbar-backward)
+                                  (define-key org-agenda-mode-map (kbd "2") 'tabbar-forward)
 
                                   ;; .org 파일 여는 명령어 추가
                                   ;; { 키로 todo.org 파일을 엽니다
@@ -933,10 +936,10 @@
 (global-set-key (kbd "C-M-?") 'org-agenda)
 ;; C-/ 키로 어느곳에서나 org todo list를 열게합니다
 (global-set-key (kbd "C-/") 'org-todo-list)
-;; C-. 키로 어느곳에서나 todo.org LIST 기능을 열게합니다
-(global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ";")))
-;; C-> 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
-(global-set-key (kbd "C->") (lambda () (interactive)(org-capture nil ":")))
+;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
+(global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
+;; C-> 키로 어느곳에서나 todo.org LIST 기능을 열게합니다
+(global-set-key (kbd "C->") (lambda () (interactive)(org-capture nil ";")))
 ;; C-< 키로 어느곳에서나 todo.org OPEN 기능을 열게합니다
 (global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
 ;; C-M-> 키로 어느곳에서나 org-capture 기능을 열게합니다
