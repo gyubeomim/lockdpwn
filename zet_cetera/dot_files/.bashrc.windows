@@ -5,8 +5,9 @@ alias l='ls -alh'
 
 
 alias g1='cd /e/gitrepo/lockdpwn'
-alias g2='cd /e/gitrepo/ims_ros'
-alias g3='cd /e/gitrepo/ims_ml'
+alias g2='cd /e/gitrepo/ims_org'
+alias g3='cd /e/gitrepo/ims_carto'
+alias g4='cd /e/gitrepo/dyros_ws'
 alias gr='cd /e/gitrepo/'
 alias ipy='cd /e/gitrepo/lockdpwn/python_archive/ipython'
 alias ml='cd /e/gitrepo/lockdpwn/python_archive/machineLearning'
@@ -16,10 +17,18 @@ alias cpp='cd /e/gitrepo/lockdpwn/cpp_archive'
 
 alias gb='git branch'
 alias gc='git checkout'
+alias gs='git status'
 alias push='git push'
 alias pull='git pull'
+alias clone='git clone'
+alias add='git add -u'
 
-alias up='cd /c/Users/edward'
+alias org='cd /e/gitrepo/ims_org/ && sh push_windows_master.sh'
+alias orgpull='cd /e/gitrepo/ims_org/ && git pull origin master'
+
+
+alias up='cd /c/Users/edward/'
+alias down='cd /c/Users/edward/Downloads'
 
 alias sob='source ~/.bashrc'
 
