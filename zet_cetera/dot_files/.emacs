@@ -804,7 +804,7 @@
                                     "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("1" "ubuntu_tips.org: [Tips]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/note/ubuntu_tips.org" "Ubuntu")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
@@ -1124,6 +1124,9 @@
 
     ;; insert키를 누르면 irony 서버를 다시 시작합니다. 속도가 느려질 경우 사용합니다
     (define-key evil-normal-state-map (kbd "<insert>") 'irony-server-kill)
+
+    ;; m 키로 minimap-mode Toggle
+    (define-key evil-normal-state-map (kbd "m") 'minimap-mode)
 
     ;; 1,2키로 tab들을 이동합니다
     (define-key evil-motion-state-map (kbd "1") 'tabbar-backward)
