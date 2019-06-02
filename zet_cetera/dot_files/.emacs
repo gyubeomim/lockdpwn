@@ -579,7 +579,7 @@
   (if (string= (buffer-name) "pomodoro.org")  ;; pomodoro.org 인 경우 이동하지 않는다
       (switch-to-buffer (other-buffer (current-buffer) 1))
     nil)
-  (if (string= (buffer-name) "note.org")      ;; note.org 인 경우 이동하지 않는다
+  (if (string= (buffer-name) "quick.org")      ;; quick.org 인 경우 이동하지 않는다
       (switch-to-buffer (other-buffer (current-buffer) 1))
     nil)
 )
@@ -758,7 +758,7 @@
      (setq org-todo-keywords
            '((sequence "LIST" "TODO"
                        "|"
-                       "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE"))
+                       "DELAYED" "PAUSED" "REPLACED" "CANCELLED"  "DONE"))
            )
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
@@ -766,7 +766,7 @@
              ("REPLACED" . "purple")
              ("LIST" . "deep pink")
              ("DELAYED" . "forest green")
-             ("PENDING" . "dark orange")
+             ("PAUSED" . "dark orange")
              ("TODO" . "#2aa198")
              ))
 
@@ -793,10 +793,10 @@
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates  '((";" "todo.org: [LIST]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
                                     "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    (":" "todo.org: [TODO]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("1" "ubuntu_tips.org: [Tips]" entry
@@ -807,8 +807,8 @@
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
                                     "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
 
-                                   ("n" "note.org: [Note]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/note.org" "Note")
+                                   ("n" "quick.org: [quick]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/quick.org" "quick")
                                     "*** %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
@@ -872,8 +872,8 @@
                                   (define-key org-agenda-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
                                   ;; } 키로 portal.org 파일을 엽니다
                                   (define-key org-agenda-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
-                                  ;; [ 키로 note.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
+                                  ;; [ 키로 quick.org 파일을 엽니다
+                                  (define-key org-agenda-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
                                   ;; ] 키로 특정 pomodoro.org 파일을 엽니다
                                   (define-key org-agenda-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
 
@@ -920,7 +920,7 @@
 (global-set-key (kbd "C-c a") 'org-tags-view)
 ;; C-c + # 키로 특정 .org 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
-(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
+(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
@@ -1077,8 +1077,8 @@
     (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
     ;; } 키로 portal.opg 파일을 엽니다
     (define-key evil-motion-state-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
-    ;; [ 키로 note.org 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
+    ;; [ 키로 quick.org 파일을 엽니다
+    (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
     ;; ] 키로 특정 pomodoro.org 파일을 엽니다
     (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
 
@@ -1625,7 +1625,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(org-agenda-files
    (quote
-    ("~/gitrepo_sync/ims_org/org_files/note.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1701,8 +1701,7 @@
                   (buffer-substring-no-properties
                    (point-min)
                    (point-max)))))
-            (if
-                (string-match "[*][*][*][*]" capture_content)
+            (if (or (string-match "[*][*][*][*]" capture_content) (string= (buffer-name) "CAPTURE-quick.org")) 
                 (if
                     (save-excursion
                       (goto-char
@@ -3172,10 +3171,10 @@ created by edward 180515"
     (define-key magit-status-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
     (define-key magit-diff-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
     (define-key magit-process-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
-    ;; [ 키로 note.org 파일을 엽니다
-    (define-key magit-status-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
-    (define-key magit-diff-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
-    (define-key magit-process-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/note.org")))
+    ;; [ 키로 quick.org 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
+    (define-key magit-diff-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
+    (define-key magit-process-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
     ;; ] 키로 특정 pomodoro.org 파일을 엽니다
     (define-key magit-status-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
     (define-key magit-diff-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
