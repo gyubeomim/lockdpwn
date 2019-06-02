@@ -606,8 +606,7 @@
   ""
   (interactive)
   (cond ((string= arg "DONE") (org-todo "DONE"))
-        ((string= arg "CLOSED") (org-todo "CLOSED"))
-        (t (user-error "Error while doing org-todo-dopne-edward"))
+        (t (user-error "Error while doing org-todo-done-edward"))
         )
   (save-excursion
     (next-line)
@@ -690,8 +689,8 @@
      (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
      ;; C-> 키로 어느곳에서나 todo.org LIST 기능을 열게합니다
      (define-key org-mode-map (kbd "C->") (lambda () (interactive)(org-capture nil ";")))
-     ;; C-M-> 키로 어느곳에서나 org-capture 기능을 열게합니다
-     (define-key org-mode-map (kbd "C-M->") 'org-capture)
+     ;; C-<f12> 키로 어느곳에서나 org-capture 기능을 열게합니다
+     (define-key org-mode-map (kbd "C-<f12>") 'org-capture)
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
      (define-key org-mode-map (kbd "C-c w") 'org-preview-html/preview)
      ;; code ==> image Update 단축키
@@ -756,8 +755,7 @@
      (setq org-todo-keywords
            '((sequence "LIST" "TODO"
                        "|"
-                       "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE")
-             (sequence "|" "OPEN" "CLOSED"))
+                       "DELAYED" "PENDING" "REPLACED" "CANCELLED"  "DONE"))
            )
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
@@ -766,8 +764,6 @@
              ("LIST" . "deep pink")
              ("DELAYED" . "forest green")
              ("PENDING" . "dark orange")
-             ("OPEN" . "green")
-             ("CLOSED" . "firebrick")
              ("TODO" . "#2aa198")
              ))
 
@@ -793,15 +789,12 @@
 
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates  '((";" "todo.org: [Task]" entry
+     (setq org-capture-templates  '((";" "todo.org: [LIST]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
                                     "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   (":" "todo.org: [Task]" entry
+                                   (":" "todo.org: [TODO]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "Tasks")
                                     "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
-                                   ("'" "todo.org: [Issues]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "Issues")
-                                    "*** OPEN %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("1" "ubuntu_tips.org: [Tips]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
@@ -942,8 +935,8 @@
 (global-set-key (kbd "C->") (lambda () (interactive)(org-capture nil ";")))
 ;; C-< 키로 어느곳에서나 todo.org OPEN 기능을 열게합니다
 (global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
-;; C-M-> 키로 어느곳에서나 org-capture 기능을 열게합니다
-(global-set-key (kbd "C-M->") 'org-capture)
+;; C-<f12> 키로 어느곳에서나 org-capture 기능을 열게합니다
+(global-set-key (kbd "C-<f12>") 'org-capture)
 ;; C-, 키로 어느곳에서나 todo.org Note 기능을 열게합니다
 (global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "n")))
 ;; org-mode용 strike-through를 구현한 함수
@@ -1075,10 +1068,8 @@
     (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
     (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
                                                   (let ((string (thing-at-point 'line t)))
-                                                    (if (string-match-p "OPEN" string)
-                                                        (org-todo-done-edward "CLOSED")
                                                       (org-todo-done-edward "DONE")
-                                                      ))))
+                                                      )))
     ;; { 키로 todo.opg 파일을 엽니다
     (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
     ;; } 키로 portal.opg 파일을 엽니다
@@ -1961,7 +1952,6 @@
 (global-set-key (kbd "C-<f9>") 'set-frame-110)
 (global-set-key (kbd "C-<f10>") 'set-frame-125)
 (global-set-key (kbd "C-<f11>") 'set-frame-141)
-(global-set-key (kbd "C-<f12>") 'set-frame-153)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
@@ -2167,6 +2157,10 @@
 
      ;; dired mode 에서 x키로 마크한 파일들을 삭제합니다
      (define-key dired-mode-map "x" 'helm-for-files)
+
+     ;; 1,2키로 tab을 이동합니다
+     (define-key dired-mode-map (kbd "1") 'tabbar-backward)
+     (define-key dired-mode-map (kbd "2") 'tabbar-forward)
      ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
