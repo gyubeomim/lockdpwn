@@ -815,6 +815,10 @@
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/quick.org" "quick")
                                     "*** %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
+                                   ("a" "archive.org: [Archive]" entry
+                                    (file+headline "e:/gitrepo/ims_org/org_files/archive.org" "archive")
+                                    "*** %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+
                                    ("m" "milestone.org: [Milestone]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/milestone.org" "milestone")
                                     "*** MILESTONE %?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
@@ -2353,10 +2357,10 @@ Version 2017-04-19"
 (global-set-key (kbd "M-u") 'xah-toggle-letter-case)
 
 ;;f1 이전 버퍼창 이동
-(global-set-key [f1] 'previous-buffer)
+(global-set-key [f1] 'tabbar-backward)
 
 ;;f2 다음 버퍼창 이동
-(global-set-key [f2] 'next-buffer)
+(global-set-key [f2] 'tabbar-forward)
 
 ;; f3 키로 다음 창으로 이동
 (global-set-key [f3] 'next-multiframe-window)
