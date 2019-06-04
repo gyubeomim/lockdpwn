@@ -1082,6 +1082,11 @@
     (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
                                                   (let ((string (thing-at-point 'line t)))
                                                     (cond ((string-match-p "TODO" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "LIST" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "REPLACED" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "DELAYED" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "PAUSED" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "CANCELLED" string) (org-todo-done-edward "DONE"))
                                                           ((string-match-p "MILESTONE" string) (org-todo-done-edward "COMPLETE"))
                                                           ))))
 
