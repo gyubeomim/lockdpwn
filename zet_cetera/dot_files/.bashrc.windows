@@ -23,8 +23,8 @@ alias pull='git pull'
 alias clone='git clone'
 alias add='git add -u'
 
-alias org='cd /e/gitrepo/ims_org/ && sh push_windows_master.sh'
-alias orgpull='cd /e/gitrepo/ims_org/ && git pull origin master'
+alias o='cd /e/gitrepo/ims_org/ && sh push_windows_master.sh'
+alias op='cd /e/gitrepo/ims_org/ && git pull origin master'
 
 
 alias up='cd /c/Users/edward/'
