@@ -31,40 +31,60 @@
 
 
 
-#include <algorithm>
-#include <cstdio>
 #include <iostream>
-#include <string>
-#include <vector>
+#include <cstdio>
+#include <queue>
+#include <cstring>
 
 using namespace std;
 
-const int MOD = 1e6;
+int n, m, v, chk[1001], gph[1001][1001];
 
-string n;
-int d[5001], ten, one;
+void dfs(int now) {
+  chk[now] = 1;
+  cout << now << " ";
 
-int main(int argc, char const *argv[]) {
-  cin >> n;
+  for (int i = 1; i <= n; i++) {
+    if (!chk[i] && gph[now][i]) {
+      dfs(i);
+    }
+  }
+}
 
-  ten = n[0] - '0';
-  one = n[1] - '0';
+void bfs(int now) {
+  queue<int> que;
+  que.push(now);
+  chk[now] = 1;
 
-  if(ten != 0) d[0] = 1;
-  if(10 < 10*ten+one && 10*ten+one <=26) d[-1] = 1;
+  while(!que.empty()) {
+    int now = que.front();
+    que.pop();
 
-  for(int i=1; i<n.size(); i++) {
-    ten = n[i-1] - '0';
-    one = n[i] - '0';
+    cout << now << " ";
 
-    if(one > 0) d[i] += d[i-1];
-    if (10 < 10 * ten + one && 10 * ten + one <= 26)
-      d[i] += d[i - 2];
+    for(int i=1; i<=n; i++) {
+      if(!chk[i] && gph[now][i]) {
+        que.push(i);
+        chk[i] = 1;
+      }
+    }
+  }
+}
 
-    d[i] %= MOD;
+int main() {
+  cin >> n >> m >> v;
+
+  for(int i=0; i<m; i++) {
+    int u,v;
+    cin >> u >> v;
+
+    gph[u][v] = gph[v][u] = 1;
   }
 
-  cout << d[n.size() - 1] << '\n';
+  dfs(v);
+  cout << '\n';
+  memset(chk, 0, sizeof(chk));
+  bfs(v);
 
   return 0;
 }

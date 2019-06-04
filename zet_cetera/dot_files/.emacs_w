@@ -791,8 +791,8 @@
     ;; \ 키로 checkbox를 toggle합니다
     (define-key evil-motion-state-map (kbd "\\") 'org-toggle-checkbox)
 
-    ;; - 키로 emacs를 minimize 합니다
-    (define-key evil-normal-state-map (kbd "-") 'suspend-frame)
+    ;; SPC 키로 emacs를 minimize 합니다
+    (define-key evil-normal-state-map (kbd "<SPC>") 'suspend-frame)
 
     ;; m 키로 minimap-mode Toggle
     (define-key evil-normal-state-map (kbd "m") 'minimap-mode)
@@ -2527,7 +2527,7 @@ created by edward 180515"
                   (buffer-substring-no-properties
                    (point-min)
                    (point-max)))))
-            (if (or (string-match "[*][*][*][*]" capture_content) (string= (buffer-name) "CAPTURE-quick.org")) 
+            (if (or (string-match "[*][*][*][*]" capture_content) (string= (buffer-name) "CAPTURE-quick.org") (string= (buffer-name) "CAPTURE-archive.org")) 
                 (if
                     (save-excursion
                       (goto-char
