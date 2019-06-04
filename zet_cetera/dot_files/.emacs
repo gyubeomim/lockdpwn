@@ -579,9 +579,6 @@
   (if (string= (buffer-name) "pomodoro.org")  ;; pomodoro.org 인 경우 이동하지 않는다
       (switch-to-buffer (other-buffer (current-buffer) 1))
     nil)
-  (if (string= (buffer-name) "quick.org")      ;; quick.org 인 경우 이동하지 않는다
-      (switch-to-buffer (other-buffer (current-buffer) 1))
-    nil)
 )
 
 ;; ==, '', "" 를 입력할 때 바로 옆에 글을 쓰려고 하면 못 쓰는 경우가 있었는데 이를 방지하기 위한 함수
@@ -813,15 +810,15 @@
 
                                    ("n" "quick.org: [quick]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/quick.org" "quick")
-                                    "*** %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
                                    ("a" "archive.org: [Archive]" entry
-                                    (file+headline "e:/gitrepo/ims_org/org_files/archive.org" "archive")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/archive.org" "archive")
                                     "*** %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
                                    ("m" "milestone.org: [Milestone]" entry
-                                    (file+headline "e:/gitrepo/ims_org/org_files/milestone.org" "milestone")
-                                    "*** MILESTONE %?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/milestone.org" "milestone")
+                                    "*** MILESTONE %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -933,8 +930,8 @@
 ;; C-c + # 키로 특정 .org 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
-(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/milestone.org")))
-(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
+(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/milestone.org")))
+(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
@@ -1640,7 +1637,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(org-agenda-files
    (quote
-    ("~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1678,7 +1675,7 @@
             (point-at-eol)
             (quote
              (face
-              (:foreground "gold" :weight normal :underline t))))))))) t)
+              (:foreground "gold" :weight normal :underline t))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
@@ -1716,7 +1713,16 @@
                   (buffer-substring-no-properties
                    (point-min)
                    (point-max)))))
-            (if (or (string-match "[*][*][*][*]" capture_content) (string= (buffer-name) "CAPTURE-quick.org")) 
+            (if
+                (or
+                 (string-match "[*][*][*][*]" capture_content)
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-quick.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-archive.org"))
+                 )
                 (if
                     (save-excursion
                       (goto-char
