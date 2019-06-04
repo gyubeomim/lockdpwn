@@ -1,40 +1,9 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#include <iostream>
 #include <cstdio>
-#include <queue>
 #include <cstring>
+#include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -42,7 +11,6 @@ int n, m, v, chk[1001], gph[1001][1001];
 
 void dfs(int now) {
   chk[now] = 1;
-  cout << now << " ";
 
   for (int i = 1; i <= n; i++) {
     if (!chk[i] && gph[now][i]) {
@@ -51,40 +19,26 @@ void dfs(int now) {
   }
 }
 
-void bfs(int now) {
-  queue<int> que;
-  que.push(now);
-  chk[now] = 1;
+int main() {
+  cin >> n >> m;
 
-  while(!que.empty()) {
-    int now = que.front();
-    que.pop();
+  for (int i = 0; i < m; i++) {
+    int x, y;
+    cin >> x >> y;
 
-    cout << now << " ";
+    gph[x][y] = gph[y][x] = 1;
+  }
 
-    for(int i=1; i<=n; i++) {
-      if(!chk[i] && gph[now][i]) {
-        que.push(i);
-        chk[i] = 1;
-      }
+  int count = 0;
+
+  for (int i = 1; i <= n; i++) {
+    if (chk[i] == 0) {
+      dfs(i);
+      count += 1;
     }
   }
-}
 
-int main() {
-  cin >> n >> m >> v;
-
-  for(int i=0; i<m; i++) {
-    int u,v;
-    cin >> u >> v;
-
-    gph[u][v] = gph[v][u] = 1;
-  }
-
-  dfs(v);
-  cout << '\n';
-  memset(chk, 0, sizeof(chk));
-  bfs(v);
+  cout << count << '\n';
 
   return 0;
 }

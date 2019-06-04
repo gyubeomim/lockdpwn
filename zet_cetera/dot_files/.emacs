@@ -604,11 +604,12 @@
   (insert (concat  "[[*#" num "][#" num "]]"))
   )
 
-;; TODO ==> DONE, OPEN ==> CLOSED 키워드로 바꾸고 CLOSED:에 시간까지 추가해주는 함수
+;; TODO ==> DONE과 같이 키워드를 한 번에 바꾸고 CLOSED:에 시간까지 추가해주는 함수
 (defun org-todo-done-edward (arg)
   ""
   (interactive)
   (cond ((string= arg "DONE") (org-todo "DONE"))
+        ((string= arg "COMPLETE") (org-todo "COMPLETE"))
         (t (user-error "Error while doing org-todo-done-edward"))
         )
   (save-excursion
@@ -686,8 +687,8 @@
      (define-key org-mode-map (kbd "<M-S-down>") 'org-shiftdown)
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
-     ;; C-< 키로 어느곳에서나 todo.org OPEN 기능을 열게합니다
-     (define-key org-mode-map (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
+     ;; C-< 키로 어느곳에서나 milestone.org MILESTONE 기능을 열게합니다
+     (define-key org-mode-map (kbd "C-<") (lambda () (interactive)(org-capture nil "m")))
      ;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
      (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
      ;; C-> 키로 어느곳에서나 todo.org LIST 기능을 열게합니다
@@ -756,9 +757,10 @@
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
-           '((sequence "LIST" "TODO"
-                       "|"
-                       "DELAYED" "PAUSED" "REPLACED" "CANCELLED"  "DONE"))
+           '(
+             (sequence "LIST" "TODO" "|" "DELAYED" "PAUSED" "REPLACED" "CANCELLED"  "DONE")
+             (sequence "MILESTONE" "|" "COMPLETE")
+             )
            )
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
@@ -768,6 +770,8 @@
              ("DELAYED" . "forest green")
              ("PAUSED" . "dark orange")
              ("TODO" . "#2aa198")
+             ("MILESTONE" . "purple")
+             ("COMPLETE" . "green4")
              ))
 
      ;; org-bullets 모드 활성화
@@ -810,6 +814,10 @@
                                    ("n" "quick.org: [quick]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/quick.org" "quick")
                                     "*** %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+
+                                   ("m" "milestone.org: [Milestone]" entry
+                                    (file+headline "e:/gitrepo/ims_org/org_files/milestone.org" "milestone")
+                                    "*** MILESTONE %?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -921,7 +929,8 @@
 ;; C-c + # 키로 특정 .org 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
-(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/milestone.org")))
+(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/pomodoro.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
@@ -936,8 +945,8 @@
 (global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
 ;; C-> 키로 어느곳에서나 todo.org LIST 기능을 열게합니다
 (global-set-key (kbd "C->") (lambda () (interactive)(org-capture nil ";")))
-;; C-< 키로 어느곳에서나 todo.org OPEN 기능을 열게합니다
-(global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "'")))
+;; C-< 키로 어느곳에서나 milestone.org MILESTONE 기능을 열게합니다
+(global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "m")))
 ;; C-<f12> 키로 어느곳에서나 org-capture 기능을 열게합니다
 (global-set-key (kbd "C-<f12>") 'org-capture)
 ;; C-, 키로 어느곳에서나 todo.org Note 기능을 열게합니다
@@ -1071,8 +1080,10 @@
     (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
     (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
                                                   (let ((string (thing-at-point 'line t)))
-                                                      (org-todo-done-edward "DONE")
-                                                      )))
+                                                    (cond ((string-match-p "TODO" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "MILESTONE" string) (org-todo-done-edward "COMPLETE"))
+                                                          ))))
+
     ;; { 키로 todo.opg 파일을 엽니다
     (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
     ;; } 키로 portal.opg 파일을 엽니다
@@ -1861,7 +1872,7 @@
  '(org-block ((t (:foreground "gainsboro"))))
  '(org-block-begin-line ((t (:inherit org-meta-line :foreground "#002b36" :underline "dark slate gray" :weight normal))))
  '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
- '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.7))))
+ '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "light slate blue" :weight normal :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.98))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.98))))
