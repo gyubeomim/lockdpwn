@@ -768,7 +768,7 @@
              ("PAUSED" . "dark orange")
              ("TODO" . "#2aa198")
              ("MILESTONE" . "purple")
-             ("COMPLETE" . "green4")
+             ("COMPLETE" . "green2")
              ))
 
      ;; org-bullets 모드 활성화
@@ -1079,16 +1079,16 @@
     (define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
-    (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
-                                                  (let ((string (thing-at-point 'line t)))
-                                                    (cond ((string-match-p "TODO" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "LIST" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "REPLACED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "DELAYED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "PAUSED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "CANCELLED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "MILESTONE" string) (org-todo-done-edward "COMPLETE"))
-                                                          ))))
+  (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
+                                                (let ((string (thing-at-point 'line t)))
+                                                  (cond ((string-match-p "TODO" string) (org-todo-done-edward "DONE"))
+                                                        ((string-match-p "LIST" string) (org-todo-done-edward "DONE"))
+                                                        ((string-match-p "REPLACED" string) (org-todo-done-edward "DONE"))
+                                                        ((string-match-p "DELAYED" string) (org-todo-done-edward "DONE"))
+                                                        ((string-match-p "PAUSED" string) (org-todo-done-edward "DONE"))
+                                                        ((string-match-p "CANCELLED" string) (org-todo-done-edward "DONE"))
+                                                        ((string-match-p "MILESTONE" string) (org-todo-done-edward "COMPLETE"))
+                                                        ))))
 
     ;; { 키로 todo.opg 파일을 엽니다
     (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
@@ -1726,7 +1726,7 @@
                   "CAPTURE-quick.org")
                  (string=
                   (buffer-name)
-                  "CAPTURE-archive.org"))
+                  "CAPTURE-archive.org")
                  )
                 (if
                     (save-excursion
@@ -1934,6 +1934,16 @@
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
+(defun set-frame-108 (&optional frame)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height 108)
+    (message "Set frame's default text height to 108")))
+
 (defun set-frame-110 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
@@ -1977,6 +1987,7 @@
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
+(global-set-key (kbd "C-<f8>") 'set-frame-108)
 (global-set-key (kbd "C-<f9>") 'set-frame-110)
 (global-set-key (kbd "C-<f10>") 'set-frame-125)
 (global-set-key (kbd "C-<f11>") 'set-frame-141)
