@@ -876,6 +876,9 @@
                                   (define-key org-agenda-mode-map (kbd "1") 'tabbar-backward)
                                   (define-key org-agenda-mode-map (kbd "2") 'tabbar-forward)
 
+                                  ;; SPC 키로 emacs 창을 minimize 합니다
+                                  (define-key org-agenda-mode-map (kbd "<SPC>") 'suspend-frame)
+
                                   ;; .org 파일 여는 명령어 추가
                                   ;; { 키로 todo.org 파일을 엽니다
                                   (define-key org-agenda-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))

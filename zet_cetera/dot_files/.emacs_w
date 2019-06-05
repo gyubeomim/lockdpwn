@@ -579,6 +579,10 @@
                                   (define-key org-agenda-mode-map (kbd "1") 'tabbar-backward)
                                   (define-key org-agenda-mode-map (kbd "2") 'tabbar-forward)
 
+                                  ;; SPC 키로 emacs 창을 minimize 합니다
+                                  (define-key org-agenda-mode-map (kbd "<SPC>") 'suspend-frame)
+
+
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
                                   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line)
