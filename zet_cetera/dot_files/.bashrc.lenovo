@@ -415,8 +415,8 @@ alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 7
 alias cps='cd /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/src/edward/parking_slam/'
 
 # for org-mode
-alias o='cd /home/dyros-vehicle/gitrepo_sync/ims_org && ./push_master.sh'
-alias op='cd /home/dyros-vehicle/gitrepo_sync/ims_org && git pull origin master'
+alias org='cd /home/dyros-vehicle/gitrepo_sync/ims_org && ./push_master.sh'
+alias orgp='cd /home/dyros-vehicle/gitrepo_sync/ims_org && git pull origin master'
 
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/devel/setup.bash
