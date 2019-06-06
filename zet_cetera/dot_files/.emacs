@@ -517,7 +517,7 @@
                     org-level-3
                     org-level-4
                     org-level-5))
-      (set-face-attribute face nil :weight 'normal :height 0.98))
+      (set-face-attribute face nil :weight 'normal :height 0.99))
     ))
 
 ;; pomodoro 시간관리를 위해 timestamp에 +25분을 더한 구문을 출력하는 함수
@@ -795,10 +795,10 @@
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates  '((";" "todo.org: [LIST]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
-                                    "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
                                    (":" "todo.org: [TODO]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
                                    ("1" "ubuntu_tips.org: [Tips]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
@@ -806,7 +806,7 @@
 
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
-                                    "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
+                                    "*** %i\n%?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
 
                                    ("n" "quick.org: [quick]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/quick.org" "quick")
@@ -1723,13 +1723,8 @@
                    (point-max)))))
             (if
                 (or
-                 (string-match "[*][*][*][*]" capture_content)
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-quick.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-archive.org")
+                 ;;(string-match "[*][*][*][*]" capture_content)
+                 t
                  )
                 (if
                     (save-excursion
@@ -1851,7 +1846,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 136 :width normal :foundry "ADBO" :family "Source Code Pro"))))
+ '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 108 :width normal :foundry "ADBO" :family "Source Code Pro"))))
  '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
@@ -1892,10 +1887,10 @@
  '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
  '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "light slate blue" :weight normal :height 1.2))))
- '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.98))))
- '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.98))))
- '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.98))))
- '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.98))))
+ '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
+ '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.99))))
+ '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.99))))
+ '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.99))))
  '(org-level-6 ((t (:inherit variable-pitch :foreground "yellow3"))))
  '(org-level-7 ((t (:inherit variable-pitch :foreground "gray"))))
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
@@ -1905,7 +1900,7 @@
  '(org-scheduled-previously ((t (:foreground "#268bd2" :weight bold))))
  '(org-scheduled-today ((t (:foreground "lime green" :weight bold))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.9))))
+ '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.8))))
  '(org-time-grid ((t (:foreground "dark gray"))))
  '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
  '(org-verbatim ((t (:inherit shadow :background "aquamarine" :foreground "black" :weight normal :height 1.0))))
