@@ -819,6 +819,10 @@
                                    ("m" "milestone.org: [Milestone]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/milestone.org" "milestone")
                                     "*** MILESTONE %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+
+                                   ("d" "daily.org: [Daily]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/daily.org" "daily")
+                                    "*** %?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -886,8 +890,8 @@
                                   (define-key org-agenda-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
                                   ;; [ 키로 quick.org 파일을 엽니다
                                   (define-key org-agenda-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
-                                  ;; ] 키로 특정 pomodoro.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+                                  ;; ] 키로 특정 daily.org 파일을 엽니다
+                                  (define-key org-agenda-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
 
                                   ;; tab 키로 해당 이벤트를 확인합니다
                                   (define-key org-agenda-mode-map (kbd "<tab>") 'org-agenda-show)
@@ -934,7 +938,7 @@
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/milestone.org")))
-(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
@@ -1099,8 +1103,8 @@
     (define-key evil-motion-state-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
     ;; [ 키로 quick.org 파일을 엽니다
     (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
-    ;; ] 키로 특정 pomodoro.org 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+    ;; ] 키로 특정 daily.org 파일을 엽니다
+    (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
 
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
@@ -1671,7 +1675,7 @@
             (point-at-eol)
             (quote
              (face
-              (:foreground "red")))))))
+              (:foreground "deep sky blue" :weight bold)))))))
      (lambda nil
        (save-excursion
          (goto-char
@@ -1722,10 +1726,7 @@
                    (point-min)
                    (point-max)))))
             (if
-                (or
-                 ;;(string-match "[*][*][*][*]" capture_content)
-                 t
-                 )
+                (not (string= (buffer-name) "CAPTURE-daily.org"))
                 (if
                     (save-excursion
                       (goto-char
@@ -1877,11 +1878,11 @@
  '(minimap-semantic-function-face ((t (:inherit (font-lock-function-name-face minimap-font-face)))))
  '(minimap-semantic-type-face ((t (:inherit (font-lock-type-face minimap-font-face)))))
  '(minimap-semantic-variable-face ((t (:inherit (font-lock-function-name-face minimap-font-face)))))
- '(org-agenda-calendar-event ((t (:foreground "dark gray"))))
+ '(org-agenda-calendar-event ((t (:foreground "gainsboro"))))
  '(org-agenda-date ((t (:background "light gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
- '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#002b36" :foreground "spring green" :inverse-video t :overline nil :weight normal))))
+ '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#002b36" :foreground "deep sky blue" :inverse-video t :overline nil :weight normal))))
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
- '(org-agenda-done ((t (:foreground "dark gray" :slant italic))))
+ '(org-agenda-done ((t (:foreground "gainsboro" :slant italic))))
  '(org-block ((t (:foreground "gainsboro"))))
  '(org-block-begin-line ((t (:inherit org-meta-line :foreground "#002b36" :underline "dark slate gray" :weight normal))))
  '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
@@ -1896,12 +1897,12 @@
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
- '(org-scheduled ((t (:foreground "#268bd2" :weight bold))))
- '(org-scheduled-previously ((t (:foreground "#268bd2" :weight bold))))
+ '(org-scheduled ((t (:foreground "lime green" :weight bold))))
+ '(org-scheduled-previously ((t (:foreground "lime green" :weight bold))))
  '(org-scheduled-today ((t (:foreground "lime green" :weight bold))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.8))))
- '(org-time-grid ((t (:foreground "dark gray"))))
+ '(org-time-grid ((t (:foreground "gainsboro"))))
  '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
  '(org-verbatim ((t (:inherit shadow :background "aquamarine" :foreground "black" :weight normal :height 1.0))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
@@ -2020,7 +2021,7 @@
 (defun pomodoro-start-edward ()
   (interactive)
   (pomodoro-start nil)
-  (org-capture nil "o")
+  ;;(org-capture nil "o")
   )
 
 ;; 일반적인 timer
@@ -3210,10 +3211,10 @@ created by edward 180515"
     (define-key magit-status-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
     (define-key magit-diff-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
     (define-key magit-process-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
-    ;; ] 키로 특정 pomodoro.org 파일을 엽니다
-    (define-key magit-status-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
-    (define-key magit-diff-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
-    (define-key magit-process-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/pomodoro.org")))
+    ;; ] 키로 특정 daily.org 파일을 엽니다
+    (define-key magit-status-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
+    (define-key magit-diff-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
+    (define-key magit-process-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
     ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
