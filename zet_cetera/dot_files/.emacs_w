@@ -1331,6 +1331,9 @@
      ;; dired mode 에서 X키로 마크한 파일들을 삭제합니다
      (define-key dired-mode-map "X" 'dired-do-flagged-delete)
 
+     ;; dired mode 에서 x키로 최소화를 수행합니다
+     (define-key dired-mode-map (kbd "x") 'suspend-frame)
+
      ;; dired mode 에서 SPC키로 helm-for-files를 실행합니다
      (define-key dired-mode-map (kbd "SPC") 'helm-for-files)
 

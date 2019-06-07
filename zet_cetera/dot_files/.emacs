@@ -905,9 +905,6 @@
                                   (define-key org-agenda-mode-map (kbd "l") 'evil-forward-char)
                                   (define-key org-agenda-mode-map (kbd "h") 'evil-backward-char)
 
-                                  ;; x 키로 buffer list를 봅니다
-                                  (define-key org-agenda-mode-map (kbd "x") 'helm-for-files)
-
                                   ;; evil-scroll-down & up 을 설정합니다
                                   (define-key org-agenda-mode-map (kbd "C-u") 'evil-scroll-up)
                                   (define-key org-agenda-mode-map (kbd "C-d") 'evil-scroll-down)
@@ -1113,6 +1110,7 @@
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
 
     ;; x 키로 emacs 창을 minimize 합니다
+    (define-key evil-normal-state-map (kbd "x") 'suspend-frame)
     (define-key evil-motion-state-map (kbd "x") 'suspend-frame)
 
     ;; ` 키로 dired 모드를 싱행합니다
@@ -2200,6 +2198,9 @@
      ;; dired mode 에서 X키로 마크한 파일들을 삭제합니다
      (define-key dired-mode-map "X" 'dired-do-flagged-delete)
 
+     ;; dired mode 에서 x키로 최소화를 수행합니다
+     (define-key dired-mode-map (kbd "x") 'suspend-frame)
+
      ;; dired mode 에서 SPC키로 helm-for-files를 실행합니다
      (define-key dired-mode-map (kbd "SPC") 'helm-for-files)
 
@@ -3275,7 +3276,7 @@ created by edward 180515"
 ;; customize mode와 같이 실행되는 hook 코드
 (add-hook 'custom-mode-hook (lambda ()
                                ;; evil 모드 키바인딩을 설정합니다
-                               (define-key custom-mode-map (kbd "x") 'helm-for-files)
+                               (define-key custom-mode-map (kbd "SPC") 'helm-for-files)
                                (define-key custom-mode-map (kbd "j") 'evil-next-line)
                                (define-key custom-mode-map (kbd "k") 'evil-previous-line)
                                (define-key custom-mode-map (kbd "l") 'evil-forward-char)
