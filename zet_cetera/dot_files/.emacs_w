@@ -564,7 +564,7 @@
 
                                    ("d" "daily.org: [Daily]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/daily.org" "daily")
-                                    "*** %?%i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    "*** %?%i\")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
