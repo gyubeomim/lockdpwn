@@ -880,8 +880,11 @@
                                   (define-key org-agenda-mode-map (kbd "1") 'tabbar-backward)
                                   (define-key org-agenda-mode-map (kbd "2") 'tabbar-forward)
 
-                                  ;; SPC 키로 emacs 창을 minimize 합니다
-                                  (define-key org-agenda-mode-map (kbd "<SPC>") 'suspend-frame)
+                                  ;; x 키로 emacs 창을 minimize 합니다
+                                  (define-key org-agenda-mode-map (kbd "x") 'suspend-frame)
+
+                                  ;; SPC 키로 helm-for-files를 실행합니다
+                                  (define-key org-agenda-mode-map (kbd "SPC") 'helm-for-files)
 
                                   ;; .org 파일 여는 명령어 추가
                                   ;; { 키로 todo.org 파일을 엽니다
@@ -1109,8 +1112,8 @@
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
 
-    ;; SPC 키로 emacs 창을 minimize 합니다
-    (define-key evil-motion-state-map (kbd "<SPC>") 'suspend-frame)
+    ;; x 키로 emacs 창을 minimize 합니다
+    (define-key evil-motion-state-map (kbd "x") 'suspend-frame)
 
     ;; ` 키로 dired 모드를 싱행합니다
     (define-key evil-motion-state-map (kbd "`") (lambda() (interactive)(dired "./")))
@@ -1118,8 +1121,9 @@
     ;; \ 키로 checkbox를 toggle합니다
     (define-key evil-motion-state-map (kbd "\\") 'org-toggle-checkbox)
 
-    ;; x 키로 helm-for-files
-    (define-key evil-motion-state-map (kbd "x") 'helm-for-files)
+    ;; SPC 키로 helm-for-files
+    (define-key evil-motion-state-map (kbd "SPC") 'helm-for-files)
+    (define-key evil-normal-state-map (kbd "SPC") 'helm-for-files)
 
     ;; irony-server가 느려질 경우 끄기 위한 단축키
     (define-key evil-motion-state-map (kbd "z") 'irony-server-kill)
@@ -2196,8 +2200,8 @@
      ;; dired mode 에서 X키로 마크한 파일들을 삭제합니다
      (define-key dired-mode-map "X" 'dired-do-flagged-delete)
 
-     ;; dired mode 에서 x키로 마크한 파일들을 삭제합니다
-     (define-key dired-mode-map "x" 'helm-for-files)
+     ;; dired mode 에서 SPC키로 helm-for-files를 실행합니다
+     (define-key dired-mode-map (kbd "SPC") 'helm-for-files)
 
      ;; 1,2키로 tab을 이동합니다
      (define-key dired-mode-map (kbd "1") 'tabbar-backward)

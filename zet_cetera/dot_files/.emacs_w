@@ -564,7 +564,7 @@
 
                                    ("d" "daily.org: [Daily]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/daily.org" "daily")
-                                    "*** %?%i\")
+                                    "*** %?%i")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -583,9 +583,11 @@
                                   (define-key org-agenda-mode-map (kbd "1") 'tabbar-backward)
                                   (define-key org-agenda-mode-map (kbd "2") 'tabbar-forward)
 
-                                  ;; SPC 키로 emacs 창을 minimize 합니다
-                                  (define-key org-agenda-mode-map (kbd "<SPC>") 'suspend-frame)
+                                  ;; x 키로 emacs 창을 minimize 합니다
+                                  (define-key org-agenda-mode-map (kbd "x") 'suspend-frame)
 
+                                  ;; SPC 키로 helm-for-files를 실행합니다
+                                  (define-key org-agenda-mode-map (kbd "SPC") 'helm-for-files)
 
                                   ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
@@ -816,14 +818,15 @@
     ;; \ 키로 checkbox를 toggle합니다
     (define-key evil-motion-state-map (kbd "\\") 'org-toggle-checkbox)
 
-    ;; SPC 키로 emacs를 minimize 합니다
-    (define-key evil-normal-state-map (kbd "<SPC>") 'suspend-frame)
+    ;; x 키로 emacs를 minimize 합니다
+    (define-key evil-motion-state-map (kbd "x") 'suspend-frame)
 
     ;; m 키로 minimap-mode Toggle
     (define-key evil-normal-state-map (kbd "m") 'minimap-mode)
 
-    ;; b 키로 helm-for-files를 실행합니다
-    (define-key evil-motion-state-map (kbd "x") 'helm-for-files)
+    ;; SPC 키로 helm-for-files를 실행합니다
+    (define-key evil-motion-state-map (kbd "SPC") 'helm-for-files)
+    (define-key evil-normal-state-map (kbd "SPC") 'helm-for-files)
     
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
@@ -1328,8 +1331,8 @@
      ;; dired mode 에서 X키로 마크한 파일들을 삭제합니다
      (define-key dired-mode-map "X" 'dired-do-flagged-delete)
 
-     ;; dired mode 에서 x키로 마크한 파일들을 삭제합니다
-     (define-key dired-mode-map "x" 'helm-for-files)
+     ;; dired mode 에서 SPC키로 helm-for-files를 실행합니다
+     (define-key dired-mode-map (kbd "SPC") 'helm-for-files)
 
      ;; 1,2키로 tab을 이동합니다
      (define-key dired-mode-map (kbd "1") 'tabbar-backward)
