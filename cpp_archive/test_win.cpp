@@ -7,38 +7,53 @@
 
 using namespace std;
 
-int n, m, v, chk[1001], gph[1001][1001];
+int v, e, x, y, chk[1001], gph[1001][1001];
 
-void dfs(int now) {
+void bfs(int now) {
+  queue<int> que;
+  que.push(now);
   chk[now] = 1;
 
-  for (int i = 1; i <= n; i++) {
-    if (!chk[i] && gph[now][i]) {
-      dfs(i);
+  while(!que.empty()) {
+    int now = que.front();
+    que.pop();
+
+    for (int i = 1; i <= e; i++) {
+      if(!chk[i] && gph[now][i]) {
+        que.push(i);
+        chk[i] = 1;
+
+      }
+    }
+
+    if (que.size() >= 2) {
+      cout << "YES\n";
+      return;
     }
   }
+  cout << "NO\n";
 }
 
 int main() {
-  cin >> n >> m;
+  int T,t;
+  cin >> T;
 
-  for (int i = 0; i < m; i++) {
-    int x, y;
-    cin >> x >> y;
+  t = 1;
 
-    gph[x][y] = gph[y][x] = 1;
-  }
+  while(t <= T) {
+    cin >> v >> e;
 
-  int count = 0;
-
-  for (int i = 1; i <= n; i++) {
-    if (chk[i] == 0) {
-      dfs(i);
-      count += 1;
+    for(int i=0; i<e; i++) {
+      cin >> x >> y;
+      gph[x][y] = gph[y][x] = 1;
     }
+
+    bfs(1);
+
+    cout << "-------------------\n";
+    t += 1;
   }
 
-  cout << count << '\n';
 
   return 0;
 }

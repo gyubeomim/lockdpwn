@@ -756,7 +756,7 @@
      (setq org-todo-keywords
            '(
              (sequence "LIST" "TODO" "|" "DELAYED" "PAUSED" "REPLACED" "CANCELLED"  "DONE")
-             (sequence "MILESTONE" "|" "COMPLETE")
+             (sequence "|" "MILESTONE" "COMPLETE")
              )
            )
      ;; Setting Colours (faces) for todo states to give clearer view of work
@@ -806,7 +806,7 @@
 
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
-                                    "*** %i\n%?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
+                                    "*** %i\n**** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
 
                                    ("n" "quick.org: [quick]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/quick.org" "quick")
