@@ -1086,16 +1086,16 @@
     (define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
-  (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
-                                                (let ((string (thing-at-point 'line t)))
-                                                  (cond ((string-match-p "TODO" string) (org-todo-done-edward "DONE"))
-                                                        ((string-match-p "LIST" string) (org-todo-done-edward "DONE"))
-                                                        ((string-match-p "REPLACED" string) (org-todo-done-edward "DONE"))
-                                                        ((string-match-p "DELAYED" string) (org-todo-done-edward "DONE"))
-                                                        ((string-match-p "PAUSED" string) (org-todo-done-edward "DONE"))
-                                                        ((string-match-p "CANCELLED" string) (org-todo-done-edward "DONE"))
-                                                        ((string-match-p "MILESTONE" string) (org-todo-done-edward "COMPLETE"))
-                                                        ))))
+    (define-key evil-motion-state-map (kbd "t") (lambda() ((interactive "P"))
+                                                  (let ((string (thing-at-point 'line t)))
+                                                    (cond ((string-match-p "TODO" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "LIST" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "REPLACED" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "DELAYED" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "PAUSED" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "CANCELLED" string) (org-todo-done-edward "DONE"))
+                                                          ((string-match-p "MILESTONE" string) (org-todo-done-edward "COMPLETE"))
+                                                          ))))
 
     ;; { 키로 todo.opg 파일을 엽니다
     (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
@@ -1691,7 +1691,7 @@
              (face
               (:foreground "gold" :weight normal :underline t))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
- '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
+ ;;'(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
