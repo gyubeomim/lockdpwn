@@ -2198,6 +2198,9 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
 
+    ;; x키로 emacs 창을 최소화합니다.
+    (define-key magit-status-mode-map (kbd "x") 'suspend-frame)
+
     ;; } 키로 portal.opg 파일을 엽니다
     (define-key magit-status-mode-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/portal.org")))
     (define-key magit-diff-mode-map (kbd "}") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/portal.org")))
@@ -2523,7 +2526,7 @@ created by edward 180515"
  '(org-bullets-bullet-list
    (quote
     ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354諭\272\255\272\255\277\236" "*")))
- '(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
+ ;;'(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote

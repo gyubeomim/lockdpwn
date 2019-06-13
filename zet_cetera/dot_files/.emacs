@@ -3207,6 +3207,9 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
 
+    ;; x키로 emacs 창을 최소화합니다.
+    (define-key magit-status-mode-map (kbd "x") 'suspend-frame)
+
     ;; { 키로 todo.opg 파일을 엽니다
     (define-key magit-status-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
     (define-key magit-diff-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
