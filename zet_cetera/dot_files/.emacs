@@ -711,10 +711,10 @@
      (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
      ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
      (define-key org-mode-map (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
-     ;; C+/ 키로 org todo list를 실행합니다
-     (define-key org-mode-map (kbd "C-/") 'org-todo-list)
-     ;; C+? 키로 agenda list를 실행합니다
-     (define-key org-mode-map (kbd "C-?") 'org-agenda-list)
+     ;; C+? 키로 org todo list를 실행합니다
+     (define-key org-mode-map (kbd "C-?") 'org-todo-list)
+     ;; C+/ 키로 agenda list를 실행합니다
+     (define-key org-mode-map (kbd "C-/") 'org-agenda-list)
      ;; C+M+? 키로 agenda를 실행합니다
      (define-key org-mode-map (kbd "C-M-?") 'org-agenda)
      ;; C-down + M-f 키를 기본 cpp,python 파일에서와 같이 구문단위로 이동하도록 설정합니다
@@ -943,12 +943,12 @@
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
 (global-set-key (kbd "C-'") 'insert-number-of-link)
-;; C-? 키로 어느곳에서나 agenda view를 열게합니다
-(global-set-key (kbd "C-?") 'org-agenda-list)
+;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
+(global-set-key (kbd "C-/") 'org-agenda-list)
+;; C-? 키로 어느곳에서나 org todo list를 열게합니다
+(global-set-key (kbd "C-?") 'org-todo-list)
 ;; C-M-? 키로 어느곳에서나 agenda list를 엽니다
 (global-set-key (kbd "C-M-?") 'org-agenda)
-;; C-/ 키로 어느곳에서나 org todo list를 열게합니다
-(global-set-key (kbd "C-/") 'org-todo-list)
 ;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
 (global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
 ;; C-> 키로 어느곳에서나 todo.org LIST 기능을 열게합니다
@@ -1036,9 +1036,9 @@
     (define-key undo-tree-map (kbd "C-?") nil)
 
     ;; C-? C-M-? C-/ 키로 org-agenda 명령을 수행합니다
-    (define-key undo-tree-map (kbd "C-?") 'org-agenda-list)
+    (define-key undo-tree-map (kbd "C-/") 'org-agenda-list)
     (define-key undo-tree-map (kbd "C-M-?") 'org-agenda)
-    (define-key undo-tree-map (kbd "C-/") 'org-todo-list)
+    (define-key undo-tree-map (kbd "C-?") 'org-todo-list)
     ))
 
 ;; for easy-jekyll mode
