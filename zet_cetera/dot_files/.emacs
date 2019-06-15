@@ -265,17 +265,24 @@
 ;;(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 ;;(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
+(require 'helm-bookmark)
 (eval-after-load "helm"
   (lambda()
-    ;; M-j,k 키로 helm-for-files에서 위 아래로 이동합니다.
+    ;; M-h,j,k,l 키로 helm-for-files에서 위 아래로 이동합니다.
+    (define-key helm-buffer-map (kbd "M-h") 'helm-previous-source)
     (define-key helm-buffer-map (kbd "M-k") 'helm-previous-line)
     (define-key helm-buffer-map (kbd "M-j") 'helm-next-line)
-    
+    (define-key helm-buffer-map (kbd "M-l") 'helm-next-source)
+
+    (define-key helm-generic-files-map (kbd "M-h") 'helm-previous-source)
     (define-key helm-generic-files-map (kbd "M-k") 'helm-previous-line)
     (define-key helm-generic-files-map (kbd "M-j") 'helm-next-line)
+    (define-key helm-generic-files-map (kbd "M-l") 'helm-next-source)
 
+    (define-key helm-bookmark-map (kbd "M-h") 'helm-previous-source)
     (define-key helm-bookmark-map (kbd "M-k") 'helm-previous-line)
     (define-key helm-bookmark-map (kbd "M-j") 'helm-next-line)
+    (define-key helm-bookmark-map (kbd "M-l") 'helm-next-source)
 ))
 
 ;; gtags 관련해서 자동으로 파일 열고 저장할 때 gtags를 실행하도록 하는 함수들
@@ -582,6 +589,14 @@
   (interactive)
   (browse-url-of-file (concat "./" (car (split-string (buffer-name) "\\.")) ".html"))
   )
+
+(eval-after-load "mhtml-mode"
+  (lambda()
+    (define-key mhtml-mode-map (kbd "C-c 1") nil)
+    (define-key mhtml-mode-map (kbd "C-c 2") nil)
+    (define-key mhtml-mode-map (kbd "C-c 3") nil)
+    (define-key mhtml-mode-map (kbd "C-c 4") nil)
+))
 
 ;; org-capture가 끝나고 바로 방금 저장한 capture로 이동하는 함수
 ;; org-capture-after-finalize-hook에 등록해야 한다
