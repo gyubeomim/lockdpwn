@@ -167,7 +167,6 @@
  helm-move-to-line-cycle-in-source t ; move to end or beginning of source when reaching top or bottom of source.
  helm-buffers-fuzzy-matching t          ; fuzzy matching buffer names when non-nil
  ;; useful in helm-mini that lists buffers
-
  )
 
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
@@ -265,6 +264,13 @@
 ;;(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
 ;;(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 ;;(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+
+(eval-after-load "helm"
+  (lambda()
+    ;; M-j,k 키로 helm-for-files에서 위 아래로 이동합니다.
+    (define-key helm-buffer-map (kbd "M-k") 'helm-previous-line)
+    (define-key helm-buffer-map (kbd "M-j") 'helm-next-line)
+))
 
 ;; gtags 관련해서 자동으로 파일 열고 저장할 때 gtags를 실행하도록 하는 함수들
 (gtags-mode t)
@@ -860,6 +866,20 @@
 ;;        :base-extension "org"
 ;;        :publishing-function org-twbs-publish-to-html)
 ;;       ("all" :components ("paper" "note" "emacs" "STEM" "link"))))
+(setq org-publish-project-alist
+      '(("org-jekyll"
+         ;; Path to org files.
+         :base-directory "~/gitrepo_sync/ims_org/org_files/blog/"
+         :base-extension "org"
+
+         ;; Path to Jekyll Posts
+         :publishing-directory "~/gitrepo/tigerk0430.github.io/_posts"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4
+         :html-extension "html"
+         :body-only t
+)))
 
 ;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
 (require 'org-gcal)
@@ -2748,14 +2768,14 @@ created by edward 180515"
   )
 
 
-;; Ctrl + Alt + 1 키로 jekyll 블로그의 .md 포스트를 preview 합니다
-;; (global-set-key (kbd "C-M-1") 'easy-jekyll-preview)
+;; Ctrl + Alt + 1 키로 jekyll 블로그의 .org 포스트를 preview 합니다
+(global-set-key (kbd "C-M-1") (lambda() (interactive)(org-publish "org-jekyll" t)))
 
 ;; Ctrl + 1 키로 .org 파일을 (org-publish) 명령어로 twitter bootstrap 스타일의 html 파일로 저장합니다
 ;; (global-set-key (kbd "C-1") (lambda() (interactive)(org-publish "all")))
 
 ;; Ctrl + Alt + 1 키로 .org 파일을 twitter bootstrap 스타일의 html 파일로 저장합니다
-(global-set-key (kbd "C-M-1") 'org-twbs-export-to-html)
+(global-set-key (kbd "C-M-1") 'org-publish-all)
 
 ;; C-1 키로 현재 파일에서 빠르게 특정 함수나 변수로 이동합니다
 (global-set-key (kbd "C-1") 'helm-semantic)

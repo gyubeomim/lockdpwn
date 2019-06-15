@@ -197,6 +197,14 @@
 
 (provide 'setup-helm)
 
+(eval-after-load "helm"
+  (lambda()
+    ;; M-j,k 키로 helm-for-files에서 위 아래로 이동합니다.
+    (define-key helm-buffer-map (kbd "M-k") 'helm-previous-line)
+    (define-key helm-buffer-map (kbd "M-j") 'helm-next-line)
+))
+
+
 ;;===========================================================================
 ;; PACKAGE: semantic
 ;; (require 'semantic)
@@ -571,6 +579,21 @@
      (setq org-agenda-log-mode-items '(closed clock state))
      ))
 ;; (add-to-ordered-list 'emulation-mode-map-alists '((org-mode . ,my-org-mode-map)) 0)
+
+(setq org-publish-project-alist
+      '(("org-jekyll"
+         ;; Path to org files.
+         :base-directory "e:/gitrepo/ims_org/org_files/blog/"
+         :base-extension "org"
+
+         ;; Path to Jekyll Posts
+         :publishing-directory "e:/gitrepo/tigerk0430.github.io/_posts"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4
+         :html-extension "html"
+         :body-only t
+)))
 
 ;; agenda mode를 키면 자동으로 실행되는 hook
 (add-hook 'org-agenda-mode-hook (lambda ()
@@ -1814,11 +1837,11 @@ created by edward 180515"
   )
 
 
-;; Ctrl + Alt + 1 키로 jekyll 블로그의 .md 포스트를 preview 합니다
-(global-set-key (kbd "C-M-1") 'easy-jekyll-preview)
+;; Ctrl + Alt + 1 키로 jekyll 블로그의 .org 포스트를 preview 합니다
+(global-set-key (kbd "C-M-1") (lambda() (interactive)(org-publish "org-jekyll" t)))
 
 ;; Ctrl + 1 키로 .org 파일을 twitter bootstrap 스타일의 html 파일로 저장합니다
-(global-set-key (kbd "C-1") 'org-twbs-export-to-html)
+;; (global-set-key (kbd "C-1") 'org-publish-all)
 
 ;; C-2 키로 find file 파일이 존재하는지 검색합니다
 (global-set-key (kbd "C-2") 'helm-find)
