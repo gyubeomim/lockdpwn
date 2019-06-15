@@ -270,6 +270,12 @@
     ;; M-j,k 키로 helm-for-files에서 위 아래로 이동합니다.
     (define-key helm-buffer-map (kbd "M-k") 'helm-previous-line)
     (define-key helm-buffer-map (kbd "M-j") 'helm-next-line)
+    
+    (define-key helm-generic-files-map (kbd "M-k") 'helm-previous-line)
+    (define-key helm-generic-files-map (kbd "M-j") 'helm-next-line)
+
+    (define-key helm-bookmark-map (kbd "M-k") 'helm-previous-line)
+    (define-key helm-bookmark-map (kbd "M-j") 'helm-next-line)
 ))
 
 ;; gtags 관련해서 자동으로 파일 열고 저장할 때 gtags를 실행하도록 하는 함수들
