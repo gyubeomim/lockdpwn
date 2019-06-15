@@ -565,6 +565,9 @@
      ;; C-. 키로 사용할 note 파일
      ;; (setq org-default-notes-file "e:/gitrepo/ims_org/org_files/edward.org")
 
+     (setq org-html-html5-fancy t
+           org-html-doctype "html5")
+
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '((";" "todo.org: [LIST]" entry
@@ -613,7 +616,7 @@
          :headline-levels 4
          :html-extension "html"
          :body-only t
-)))
+         )))
 
 ;; agenda mode를 키면 자동으로 실행되는 hook
 (add-hook 'org-agenda-mode-hook (lambda ()
@@ -741,6 +744,11 @@
 ;; (require '{...} nil t)는 만약 이 패키지가 없어도 에러 구문을 내지 않는다는 의미
 (require 'org-colored-text nil t)
 
+;; org 모드에서 ../pictrues/{path} 경로를 html로 변환할 때는 /pictures/{path}로 변환해주기 위한 함수
+(defun org-custom-link-img-export (path desc format)
+  (cond
+   ((eq format 'html)
+    (format "<img src=\"/pictures/%s\" alt=\"%s\"/>" path desc))))
 ;;org-END=================================================================
 
 ;; PACKAGE: doc-view (for pdf viewer)
@@ -780,14 +788,14 @@
     ))
 
 ;; for easy-jekyll mode
-;; (setq easy-jekyll-basedir "e:/gitrepo/tigerk0430.github.io/")
-;; (setq easy-jekyll-url "https://tigerk0430.github.io")
+(setq easy-jekyll-basedir "e:/gitrepo/tigerk0430.github.io/")
+(setq easy-jekyll-url "https://tigerk0430.github.io")
 ;; (setq easy-jekyll-root "/home/dyros-vehicle/")
-;; (setq easy-jekyll-previewtime "300")
+(setq easy-jekyll-previewtime "300")
 
 ;;
 (define-key global-map (kbd "C-c C-e") 'easy-jekyll)
-                                        ; (setq easy-jekyll-sshdomain "blogdomain")
+;; (setq easy-jekyll-sshdomain "blogdomain")
 
 ;; PACKAGE: minimap
 (require 'minimap)
@@ -1857,7 +1865,7 @@ created by edward 180515"
   )
 
 
-;; Ctrl + Alt + 1 키로 jekyll 블로그의 .org 포스트를 preview 합니다
+;; Ctrl + Alt + 1 키로 jekyll 블로그의 .org 포스트를 올립니다
 (global-set-key (kbd "C-M-1") (lambda() (interactive)(org-publish "org-jekyll" t)))
 
 ;; Ctrl + 1 키로 .org 파일을 twitter bootstrap 스타일의 html 파일로 저장합니다
@@ -2568,8 +2576,7 @@ created by edward 180515"
               (:foreground "gold" :underline t :weight bold))))))))))
  '(org-bullets-bullet-list
    (quote
-    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354諭\272\255\272\255\277\236" "*")))
- ;;'(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
+    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354獄\255\272\255\272\255\277\236" "*")))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -2643,6 +2650,76 @@ created by edward 180515"
  '(org-hide-emphasis-markers t)
  '(org-keep-stored-link-after-insertion t)
  '(org-link-file-path-type (quote relative))
+ '(org-link-parameters
+   (quote
+    (("rmail" :follow org-rmail-open :store org-rmail-store-link)
+     ("mhe" :follow org-mhe-open :store org-mhe-store-link)
+     ("irc" :follow org-irc-visit :store org-irc-store-link)
+     ("info" :follow org-info-open :export org-info-export :store org-info-store-link)
+     ("gnus" :follow org-gnus-open :store org-gnus-store-link)
+     ("docview" :follow org-docview-open :export org-docview-export :store org-docview-store-link)
+     ("bibtex" :follow org-bibtex-open :store org-bibtex-store-link)
+     ("bbdb" :follow org-bbdb-open :export org-bbdb-export :complete org-bbdb-complete-link :store org-bbdb-store-link)
+     ("w3m" :store org-w3m-store-link)
+     ("colorbold" :follow
+      #[257 "\300\207"
+            ["No follow action."]
+            2 "No follow action.
+
+(fn PATH)"]
+      :export
+      #[771 "\211\301=\203 \302\303#\207\211\304=\205U \305\"\306\211\211\203N A@\307\245\310_\262\3118\312\245\310_\262\3138\314\245\310_\262\302\315\316!\316!\316!
+\206J %\202S \302\317\"\266\204\207"
+            [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s);font-weight:bold\">%s</span>" truncate "No Color RGB for %s"]
+            13 "
+
+(fn COLOR DESCRIPTION BACKEND)"])
+     ("color" :follow
+      #[257 "\300\207"
+            ["No follow action."]
+            2 "No follow action.
+
+(fn PATH)"]
+      :export
+      #[771 "\211\301=\203 \302\303#\207\211\304=\205U \305\"\306\211\211\203N A@\307\245\310_\262\3118\312\245\310_\262\3138\314\245\310_\262\302\315\316!\316!\316!
+\206J %\202S \302\317\"\266\204\207"
+            [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s)\">%s</span>" truncate "No Color RGB for %s"]
+            13 "
+
+(fn COLOR DESCRIPTION BACKEND)"])
+     ("file+sys")
+     ("file+emacs")
+     ("ipynb" :follow ein:org-open :help-echo "Open ipython notebook." :store ein:org-store-link)
+     ("doi" :follow org--open-doi-link)
+     ("elisp" :follow org--open-elisp-link)
+     ("file" :complete org-file-complete-link :export org-custom-link-img-export)
+     ("ftp" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "ftp:" path))))
+     ("help" :follow org--open-help-link)
+     ("http" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "http:" path))))
+     ("https" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "https:" path))))
+     ("mailto" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "mailto:" path))))
+     ("news" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "news:" path))))
+     ("shell" :follow org--open-shell-link))))
  '(org-lowest-priority 69)
  '(org-reverse-note-order nil)
  '(org-scheduled-delay-days 0)
