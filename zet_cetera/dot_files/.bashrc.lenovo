@@ -164,7 +164,7 @@ alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
 alias g1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
 alias g2='cd /home/dyros-vehicle/gitrepo_sync/ims_org'
-alias g3='cd /home/dyros-vehicle/dyros_ws'
+alias g3='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io'
 alias g4='cd /home/dyros-vehicle/gitrepo/ims_carto'
 alias g5='cd /home/dyros-vehicle/gitrepo/ims_dyros'
 alias g6='cd /home/dyros-vehicle/gitrepo/ims_ml'
@@ -417,6 +417,10 @@ alias cps='cd /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/src/edward/parking_
 # for org-mode
 alias o='cd /home/dyros-vehicle/gitrepo_sync/ims_org && ./push_master.sh'
 alias op='cd /home/dyros-vehicle/gitrepo_sync/ims_org && git pull origin master'
+
+# for github page
+alias blog='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io && ./push_master.sh'
+alias blogp='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io && git pull origin master'
 
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/devel/setup.bash

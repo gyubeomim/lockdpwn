@@ -1735,9 +1735,8 @@
             (point-at-eol)
             (quote
              (face
-              (:foreground "gold" :weight normal :underline t))))))))))
+              (:foreground "gold" :weight normal :underline t))))))))) t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
- ;;'(org-capture-after-finalize-hook (quote (after-org-capture-goto-there)))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
@@ -1796,6 +1795,63 @@
  '(org-hide-emphasis-markers t)
  '(org-keep-stored-link-after-insertion t)
  '(org-link-file-path-type (quote relative))
+ '(org-link-parameters
+   (quote
+    (("bibtex" :follow org-bibtex-open :store org-bibtex-store-link)
+     ("colorbold" :follow
+      #[257 "\300\207"
+            ["No follow action."]
+            2 "No follow action.
+
+(fn PATH)"]
+      :export
+      #[771 [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s);font-weight:bold\">%s</span>" truncate "No Color RGB for %s"]
+            13 "
+
+(fn COLOR DESCRIPTION BACKEND)"])
+     ("color" :follow
+      #[257 "\300\207"
+            ["No follow action."]
+            2 "No follow action.
+
+(fn PATH)"]
+      :export
+      #[771 [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s)\">%s</span>" truncate "No Color RGB for %s"]
+            13 "
+(fn COLOR DESCRIPTION BACKEND)"])
+     ("file+sys")
+     ("file+emacs")
+     ("ipynb" :follow ein:org-open :help-echo "Open ipython notebook." :store ein:org-store-link)
+     ("doi" :follow org--open-doi-link)
+     ("elisp" :follow org--open-elisp-link)
+     ("file" :complete org-file-complete-link)
+     ("ftp" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "ftp:" path))))
+     ("help" :follow org--open-help-link)
+     ("http" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "http:" path))))
+     ("https" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "https:" path))))
+     ("mailto" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "mailto:" path))))
+     ("news" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "news:" path))))
+     ("shell" :follow org--open-shell-link))))
  '(org-lowest-priority 68)
  '(org-reverse-note-order t)
  '(org-scheduled-delay-days 0)
