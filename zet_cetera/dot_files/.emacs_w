@@ -1864,9 +1864,16 @@ created by edward 180515"
   (message "[+] this buffer reverted..")
   )
 
-
 ;; Ctrl + Alt + 1 키로 jekyll 블로그의 .org 포스트를 올립니다
-(global-set-key (kbd "C-M-1") (lambda() (interactive)(org-publish "org-jekyll" t)))
+(global-set-key (kbd "C-M-1") (lambda()
+                                (interactive)
+                                (org-publish "org-jekyll" t)
+
+                                ;; org 모드에서 ../pictrues/{path} 경로를 html로 변환할 때는 /pictures/{path}로 변환해주기 위한 함수
+                                ;; 단 경로가 ~/gitrepo/tigerk0430.github.io에 있어야 한다.
+                                (shell-command "sed -i 's/\\.\\.\\/pictures/\\/pictures/g' e:/gitrepo/tigerk0430.github.io/_posts/*.html" t)
+                                ))
+
 
 ;; Ctrl + 1 키로 .org 파일을 twitter bootstrap 스타일의 html 파일로 저장합니다
 ;; (global-set-key (kbd "C-1") 'org-publish-all)
@@ -2668,9 +2675,7 @@ created by edward 180515"
 
 (fn PATH)"]
       :export
-      #[771 "\211\301=\203 \302\303#\207\211\304=\205U \305\"\306\211\211\203N A@\307\245\310_\262\3118\312\245\310_\262\3138\314\245\310_\262\302\315\316!\316!\316!
-\206J %\202S \302\317\"\266\204\207"
-            [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s);font-weight:bold\">%s</span>" truncate "No Color RGB for %s"]
+      #[771 [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s);font-weight:bold\">%s</span>" truncate "No Color RGB for %s"]
             13 "
 
 (fn COLOR DESCRIPTION BACKEND)"])
@@ -2681,9 +2686,7 @@ created by edward 180515"
 
 (fn PATH)"]
       :export
-      #[771 "\211\301=\203 \302\303#\207\211\304=\205U \305\"\306\211\211\203N A@\307\245\310_\262\3118\312\245\310_\262\3138\314\245\310_\262\302\315\316!\316!\316!
-\206J %\202S \302\317\"\266\204\207"
-            [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s)\">%s</span>" truncate "No Color RGB for %s"]
+      #[771 [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s)\">%s</span>" truncate "No Color RGB for %s"]
             13 "
 
 (fn COLOR DESCRIPTION BACKEND)"])
@@ -2692,7 +2695,7 @@ created by edward 180515"
      ("ipynb" :follow ein:org-open :help-echo "Open ipython notebook." :store ein:org-store-link)
      ("doi" :follow org--open-doi-link)
      ("elisp" :follow org--open-elisp-link)
-     ("file" :complete org-file-complete-link :export org-custom-link-img-export)
+     ("file" :complete org-file-complete-link)
      ("ftp" :follow
       (lambda
         (path)
