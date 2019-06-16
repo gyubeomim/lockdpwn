@@ -283,6 +283,11 @@
     (define-key helm-bookmark-map (kbd "M-k") 'helm-previous-line)
     (define-key helm-bookmark-map (kbd "M-j") 'helm-next-line)
     (define-key helm-bookmark-map (kbd "M-l") 'helm-next-source)
+
+    (define-key helm-read-file-map (kbd "M-h") 'helm-previous-source)
+    (define-key helm-read-file-map (kbd "M-k") 'helm-previous-line)
+    (define-key helm-read-file-map (kbd "M-j") 'helm-next-line)
+    (define-key helm-read-file-map (kbd "M-l") 'helm-next-source)
 ))
 
 ;; gtags 관련해서 자동으로 파일 열고 저장할 때 gtags를 실행하도록 하는 함수들
@@ -1132,7 +1137,7 @@
     (define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
-    (define-key evil-motion-state-map (kbd "t") (lambda() ((interactive "P"))
+    (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
                                                   (let ((string (thing-at-point 'line t)))
                                                     (cond ((string-match-p "TODO" string) (org-todo-done-edward "DONE"))
                                                           ((string-match-p "LIST" string) (org-todo-done-edward "DONE"))
@@ -1697,7 +1702,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(org-agenda-files
    (quote
-    ("~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1735,9 +1740,9 @@
             (point-at-eol)
             (quote
              (face
-              (:foreground "gold" :weight normal :underline t))))))))) t)
+              (:foreground "gold" :weight normal :underline t))))))))))
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1805,8 +1810,9 @@
 
 (fn PATH)"]
       :export
-      #[771 [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s);font-weight:bold\">%s</span>" truncate "No Color RGB for %s"]
-            13 "
+      #[771
+        [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s);font-weight:bold\">%s</span>" truncate "No Color RGB for %s"]
+        13 "
 
 (fn COLOR DESCRIPTION BACKEND)"])
      ("color" :follow
@@ -1816,8 +1822,9 @@
 
 (fn PATH)"]
       :export
-      #[771 [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s)\">%s</span>" truncate "No Color RGB for %s"]
-            13 "
+      #[771
+        [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s)\">%s</span>" truncate "No Color RGB for %s"]
+        13 "
 (fn COLOR DESCRIPTION BACKEND)"])
      ("file+sys")
      ("file+emacs")
@@ -2863,9 +2870,6 @@ created by edward 180515"
 ;; Ctrl + 1 키로 .org 파일을 (org-publish) 명령어로 twitter bootstrap 스타일의 html 파일로 저장합니다
 ;; (global-set-key (kbd "C-1") (lambda() (interactive)(org-publish "all")))
 
-;; Ctrl + Alt + 1 키로 .org 파일을 twitter bootstrap 스타일의 html 파일로 저장합니다
-(global-set-key (kbd "C-M-1") 'org-publish-all)
-
 ;; C-1 키로 현재 파일에서 빠르게 특정 함수나 변수로 이동합니다
 (global-set-key (kbd "C-1") 'helm-semantic)
                                         ;
@@ -3568,6 +3572,11 @@ created by edward 180515"
 ;; .cu 같은 CUDA 확장자를 c++ 환경으로 인식하도록 설정합니다
 (setq auto-mode-alist
       (append '((".*\\.cu\\'" . c++-mode))
+              auto-mode-alist))
+
+;; .emacs_w 파일을 elisp 모드로 세팅합니다.
+(setq auto-mode-alist
+      (append '((".*\\.emacs_w\\'" . emacs-lisp-mode))
               auto-mode-alist))
 
 ;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다 (vnc에서 emacs를 사용하는 경우)
