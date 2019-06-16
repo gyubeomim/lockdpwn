@@ -1048,11 +1048,11 @@
 ;; (require '{...} nil t)는 만약 이 패키지가 없어도 에러 구문을 내지 않는다는 의미
 (require 'org-colored-text nil t)
 
-;; org 모드에서 ../pictrues/{path} 경로를 html로 변환할 때는 /pictures/{path}로 변환해주기 위한 함수
-(defun org-custom-link-img-export (path desc format)
-  (cond
-   ((eq format 'html)
-    (format "<img src=\"/pictures/%s\" alt=\"%s\"/>" path desc))))
+;; COMMENT(edward): deprecated
+;; (defun org-custom-link-img-export (path desc format)
+;;   (cond
+;;    ((eq format 'html)
+;;     (format "<img src=\"/pictures/%s\" alt=\"%s\"/>" path desc))))
 ;;org-END=================================================================
 
 ;; PACKAGE: smartparens
@@ -2851,7 +2851,14 @@ created by edward 180515"
 
 
 ;; Ctrl + Alt + 1 키로 jekyll 블로그의 .org 포스트를 올립니다
-(global-set-key (kbd "C-M-1") (lambda() (interactive)(org-publish "org-jekyll" t)))
+(global-set-key (kbd "C-M-1") (lambda()
+                                (interactive)
+                                (org-publish "org-jekyll" t)
+
+                                ;; org 모드에서 ../pictrues/{path} 경로를 html로 변환할 때는 /pictures/{path}로 변환해주기 위한 함수
+                                ;; 단 경로가 ~/gitrepo/tigerk0430.github.io에 있어야 한다.
+                                (shell-command "sed -i 's/..\\/pictures/\\/pictures/g' ~/gitrepo/tigerk0430.github.io/_posts/*.html" t)
+                                ))
 
 ;; Ctrl + 1 키로 .org 파일을 (org-publish) 명령어로 twitter bootstrap 스타일의 html 파일로 저장합니다
 ;; (global-set-key (kbd "C-1") (lambda() (interactive)(org-publish "all")))
