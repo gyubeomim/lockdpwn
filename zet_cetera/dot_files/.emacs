@@ -637,19 +637,31 @@
 (defun org-todo-done-edward (arg)
   ""
   (interactive)
+  (save-excursion
+    ; (next-line)
+    (if (string-match-p "CLOSED:" (thing-at-point 'line t))
+        (user-error "CLOSED: is already exists")
+      (move-beginning-of-line 2)
+      (insert "\nCLOSED: ")
+      ; (move-end-of-line 1)
+      (org-time-stamp-inactive '(16))
+      (insert " ")
+      ))
   (cond ((string= arg "DONE") (org-todo "DONE"))
         ((string= arg "COMPLETE") (org-todo "COMPLETE"))
         (t (user-error "Error while doing org-todo-done-edward"))
         )
+  ;created @{...}인 경우 CLOSED:가 한 번 더 생성되므로 이를 제거하기 위한 코드
   (save-excursion
     (next-line)
-    (if (string-match-p "CLOSED:" (thing-at-point 'line t))
-        (user-error "CLOSED: is already exists")
-      (move-end-of-line 1)
-      (insert " CLOSED: ")
-      (move-end-of-line 1)
-      (org-time-stamp-inactive '(16))
-      ))
+    (if (string-match-p "SCHEDULED" (thing-at-point 'line t))
+        (return)
+      (progn
+        (kill-whole-line)
+        (kill-whole-line)
+        )
+      )
+    )
   )
 
 ;; package: per-buffer-theme
@@ -788,7 +800,7 @@
      (setq org-todo-keywords
            '(
              (sequence "LIST" "TODO" "|" "DELAYED" "PAUSED" "REPLACED" "CANCELLED"  "DONE")
-             (sequence "|" "MILESTONE" "COMPLETE")
+             (sequence "MILESTONE" "|" "COMPLETE")
              )
            )
      ;; Setting Colours (faces) for todo states to give clearer view of work
@@ -827,10 +839,10 @@
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates  '((";" "todo.org: [LIST]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
-                                    "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+                                    "*** LIST %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
                                    (":" "todo.org: [TODO]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+                                    "*** TODO %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
                                    ("1" "ubuntu_tips.org: [Tips]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
@@ -850,7 +862,7 @@
 
                                    ("m" "milestone.org: [Milestone]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/milestone.org" "milestone")
-                                    "*** MILESTONE %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** MILESTONE %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("d" "daily.org: [Daily]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/daily.org" "daily")
