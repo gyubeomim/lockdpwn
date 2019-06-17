@@ -52,9 +52,9 @@
 
     tabbar                 ;; emacs에서 tab을 사용할 수 있게해주는 패키지
 
+    spacemacs-theme        ;; spacemacs theme
 
 
-    
 
     ;;WINDOWS-----------------------------------
     ;;anzu                   ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
@@ -1024,10 +1024,8 @@
 
 (setq custom-safe-themes t)
 
-;; PACKAGE: solarized theme
-(require 'solarized-dark-theme)
-(provide 'solarized-dark-theme)
-(load-theme 'solarized-dark t)
+;; (load-theme 'solarized-dark t)
+(load-theme 'spacemacs-dark t)
 ;; (load-theme 'solarized-light t)
 ;;(load-theme 'arjen-grey t)
 ;;(load-theme 'ample-light t)
@@ -2581,9 +2579,10 @@ created by edward 180515"
             (quote
              (face
               (:foreground "gold" :underline t :weight bold))))))))))
+ '(org-agenda-skip-scheduled-if-done t)
  '(org-bullets-bullet-list
    (quote
-    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354獄\255\272\255\272\255\277\236" "*")))
+    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347뛾\255\272\255\272\255\277\236" "*")))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -2675,8 +2674,9 @@ created by edward 180515"
 
 (fn PATH)"]
       :export
-      #[771 [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s);font-weight:bold\">%s</span>" truncate "No Color RGB for %s"]
-            13 "
+      #[771
+        [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s);font-weight:bold\">%s</span>" truncate "No Color RGB for %s"]
+        13 "
 
 (fn COLOR DESCRIPTION BACKEND)"])
      ("color" :follow
@@ -2686,8 +2686,9 @@ created by edward 180515"
 
 (fn PATH)"]
       :export
-      #[771 [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s)\">%s</span>" truncate "No Color RGB for %s"]
-            13 "
+      #[771
+        [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s)\">%s</span>" truncate "No Color RGB for %s"]
+        13 "
 
 (fn COLOR DESCRIPTION BACKEND)"])
      ("file+sys")
@@ -2782,7 +2783,7 @@ created by edward 180515"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "outline" :family "Source Code Pro"))))
+ '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 108 :width normal :foundry "outline" :family "Source Code Pro"))))
  '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black"))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
@@ -2822,7 +2823,7 @@ created by edward 180515"
  '(org-block ((t (:foreground "gainsboro"))))
  '(org-block-begin-line ((t (:inherit org-meta-line :foreground "#002b36" :underline "dark slate gray" :weight normal))))
  '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
- '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.8))))
+ '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "light slate blue" :weight normal :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.99))))
@@ -2844,7 +2845,7 @@ created by edward 180515"
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
  '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
- '(tabbar-default ((t (:background "#002b36" :foreground "gray50" :height 0.9))))
+ '(tabbar-default ((t (:foreground "gray50" :height 0.9))))
  '(tabbar-highlight ((t (:foreground "white"))))
  '(tabbar-modified ((t (:inherit tabbar-default :foreground "green"))))
  '(tabbar-selected ((t (:inherit tabbar-default :foreground "cyan"))))
