@@ -1366,13 +1366,11 @@
 
 
 (setq custom-safe-themes t)
-;; PACKAGE: solarized theme
-;; (require 'solarized-dark-theme)
-;; (provide 'solarized-dark-theme)
-(load-theme 'solarized-dark t)
-;; (load-theme 'spacemacs-dark t)
+;; (load-theme 'solarized-dark t)
+(load-theme 'spacemacs-dark t)
+;; (load-theme 'zenburn t)
 ;; (load-theme 'arjen-grey t)
-;;(load-theme 'ample-light t)
+;; (load-theme 'ample-light t)
 
 
 ;; elisp, lisp 모드에서만 rainbow-delimiters를 활성화합니다
@@ -1667,11 +1665,6 @@
  '(git-gutter:modified-sign "▸")
  '(helm-bookmark-show-location t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
- '(highlight-symbol-colors
-   (--map
-    (solarized-color-blend it "#002b36" 0.25)
-    (quote
-     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
  '(highlight-symbol-foreground-color "#93a1a1")
  '(highlight-tail-colors
    (quote
@@ -1741,8 +1734,9 @@
             (quote
              (face
               (:foreground "gold" :weight normal :underline t))))))))))
+ '(org-agenda-skip-scheduled-if-done t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1866,7 +1860,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree solarized-theme smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (zenburn-theme spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
@@ -1892,7 +1886,6 @@
                        "\\_>"))
               1
               (quote font-lock-variable-name-face))))))))
- '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(sml/battery-format "")
  '(sml/col-number-format "")
  '(sml/full-mode-string " ")
@@ -1961,7 +1954,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "ADBO" :family "Source Code Pro"))))
+ '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "ADBO" :family "Source Code Pro"))))
  '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
@@ -1977,7 +1970,7 @@
  '(ein:cell-input-prompt ((t (:inherit header-line :foreground "deep sky blue"))))
  '(ein:cell-output-prompt ((t (:inherit header-line :foreground "red"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
- '(font-lock-comment-face ((t (:foreground "lime green"))))
+ '(font-lock-comment-face ((t (:foreground "lime green" :slant normal))))
  '(hi-blue ((t (:background "blue" :foreground "#5c95b9"))))
  '(hi-blue-b ((t (:background "cyan" :foreground "#49a19a" :weight bold))))
  '(hi-green ((t (:background "green" :foreground "#8c9d50"))))
@@ -2000,7 +1993,7 @@
  '(org-block ((t (:foreground "gainsboro"))))
  '(org-block-begin-line ((t (:inherit org-meta-line :foreground "#002b36" :underline "dark slate gray" :weight normal))))
  '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
- '(org-date ((t (:background "#073642" :foreground "#eee8d5" :underline nil :height 0.8))))
+ '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "light slate blue" :weight normal :height 1.2))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.99))))
@@ -2022,7 +2015,7 @@
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
  '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
- '(tabbar-default ((t (:background "#002b36" :foreground "gray50" :height 0.9))))
+ '(tabbar-default ((t (:foreground "gray50" :height 0.9))))
  '(tabbar-highlight ((t (:foreground "white"))))
  '(tabbar-modified ((t (:inherit tabbar-default :foreground "green"))))
  '(tabbar-selected ((t (:inherit tabbar-default :foreground "cyan"))))
