@@ -1748,7 +1748,7 @@
               (:foreground "gold" :weight normal :underline t))))))))))
  '(org-agenda-skip-scheduled-if-done t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1991,6 +1991,9 @@
  '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
  '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
  '(highlight ((t (:background "grey"))))
+ '(highlight-symbol-face ((t (:foreground "magenta"))))
+ '(iedit-occurrence ((t (:foreground "magenta" :weight bold))))
+ '(iedit-read-only-occurrence ((t (:foreground "magenta"))))
  '(magit-diff-hunk-heading ((t (:background "black"))))
  '(magit-diff-hunk-heading-highlight ((t (:background "black"))))
  '(minimap-active-region-background ((t nil)))
