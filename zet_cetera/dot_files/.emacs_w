@@ -530,12 +530,12 @@
      (setq org-todo-keyword-faces
            '(("CANCELLED" . "firebrick")
              ("REPLACED" . "purple")
-             ("LIST" . "deep pink")
              ("DELAYED" . "forest green")
              ("PAUSED" . "dark orange")
-             ("TODO" . "#2aa198")
-             ("MILESTONE" . "purple")
-             ("COMPLETE" . "green2")
+             ("MILESTONE" . "gainsboro")
+             ("LIST" . "gainsboro")
+             ("TODO" . "gainsboro")
+             ("COMPLETE" . "#86dc2f")
              ))
 
      ;; org-bullets 모드 활성화
@@ -2558,7 +2558,7 @@ created by edward 180515"
             (point-at-eol)
             (quote
              (face
-              (:foreground "dark orange")))))))
+              (:foreground "dark gray")))))))
      (lambda nil
        (save-excursion
          (goto-char
@@ -2828,7 +2828,7 @@ created by edward 180515"
  '(org-block-begin-line ((t (:inherit org-meta-line :foreground "#002b36" :underline "dark slate gray" :weight normal))))
  '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
- '(org-level-1 ((t (:inherit variable-pitch :foreground "light slate blue" :weight normal :height 1.2))))
+ '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.99))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.99))))
@@ -2839,7 +2839,7 @@ created by edward 180515"
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "gainsboro" :weight normal))))
- '(org-scheduled-previously ((t (:foreground "lime green" :weight bold))))
+ '(org-scheduled-previously ((t (:foreground "gainsboro" :slant normal :weight normal))))
  '(org-scheduled-today ((t (:foreground "gainsboro" :weight normal :height 1.0))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.8))))

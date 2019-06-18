@@ -791,12 +791,12 @@
      (setq org-todo-keyword-faces
            '(("CANCELLED" . "firebrick")
              ("REPLACED" . "purple")
-             ("LIST" . "deep pink")
              ("DELAYED" . "forest green")
              ("PAUSED" . "dark orange")
-             ("TODO" . "#2aa198")
-             ("MILESTONE" . "purple")
-             ("COMPLETE" . "green2")
+             ("MILESTONE" . "gainsboro")
+             ("LIST" . "gainsboro")
+             ("TODO" . "gainsboro")
+             ("COMPLETE" . "#86dc2f")
              ))
 
      ;; org-bullets 모드 활성화
@@ -965,16 +965,6 @@
                                   (define-key org-agenda-mode-map (kbd "<M-S-left>") 'org-shiftleft)
                                   ))
 ;; (add-hook 'org-capture-after-finalize-hook (lambda () (org-gcal-sync) ))
-
-;; org-agenda-view에서 gcal.org의 색깔만 변경하는 코드
-(add-hook 'org-agenda-finalize-hook
-          (lambda ()
-            (save-excursion
-              (goto-char (point-min))
-              (while (re-search-forward "gcal:" nil t)
-                (add-text-properties (match-beginning 0) (point-at-eol)
-                                     '(face (:foreground "dark orange"))
-                                     )))))
 
 ;; C-`' 키로 ==, '', "" 문자열 바로 옆에 글을 쓸 수 있도록 해주는 함수
 (global-set-key (kbd "C-`") 'escape-wrapped-word)
@@ -1715,7 +1705,7 @@
             (point-at-eol)
             (quote
              (face
-              (:foreground "dark orange")))))))
+              (:foreground "dark gray")))))))
      (lambda nil
        (save-excursion
          (goto-char
@@ -1742,7 +1732,7 @@
               (:foreground "gold" :weight normal :underline t))))))))))
  '(org-agenda-skip-scheduled-if-done t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -2003,7 +1993,7 @@
  '(org-block-begin-line ((t (:inherit org-meta-line :foreground "#002b36" :underline "dark slate gray" :weight normal))))
  '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
- '(org-level-1 ((t (:inherit variable-pitch :foreground "light slate blue" :weight normal :height 1.2))))
+ '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.99))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.99))))
@@ -2014,7 +2004,7 @@
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "gainsoboro" :weight normal))))
- '(org-scheduled-previously ((t (:foreground "lime green" :weight bold))))
+ '(org-scheduled-previously ((t (:foreground "gainsboro" :slant normal :weight normal))))
  '(org-scheduled-today ((t (:foreground "gainsoboro" :weight normal :height 1.0))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.8))))
@@ -3403,6 +3393,10 @@ created by edward 180515"
                                (define-key custom-mode-map (kbd "G") 'evil-goto-line)
                                (define-key custom-mode-map (kbd "C-u") 'evil-scroll-up)
                                (define-key custom-mode-map (kbd "C-d") 'evil-scroll-down)
+
+                               ;; ; , 키로 org-agenda, todo 목록을 확인합니다
+                               (define-key custom-mode-map (kbd ";") 'org-agenda-list)
+                               (define-key custom-mode-map (kbd ",") 'org-todo-list)
                               ))
 
 ;; C-u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다 (NOT USED)
