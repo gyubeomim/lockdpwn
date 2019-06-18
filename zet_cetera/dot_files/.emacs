@@ -929,6 +929,9 @@
                                   ;; x 키로 emacs 창을 minimize 합니다
                                   (define-key org-agenda-mode-map (kbd "x") 'suspend-frame)
 
+                                  ;; , 키로 projectile switch 함수를 실행합니다
+                                  (define-key org-agenda-mode-map (kbd ",") 'helm-projectile-switch-project)
+
                                   ;; SPC 키로 helm-for-files를 실행합니다
                                   (define-key org-agenda-mode-map (kbd "SPC") 'helm-for-files)
 
@@ -1177,10 +1180,10 @@
     ;; irony-server가 느려질 경우 끄기 위한 단축키
     (define-key evil-motion-state-map (kbd "z") 'irony-server-kill)
 
-    ;; org-mode에서 , . 키로 strike-through를 설정합니다
-    (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
-    (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
-    (define-key evil-normal-state-map (kbd ".") 'strike-through-for-org-mode-undo)
+    ;; , 키로 projectile switch 를 실행합니다
+    (define-key evil-motion-state-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key evil-normal-state-map (kbd ",") 'helm-projectile-switch-project)
+
     ;; org-mode에서 c 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
     (define-key evil-normal-state-map (kbd "c") (lambda() (interactive)
                                                   (progn

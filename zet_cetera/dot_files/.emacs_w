@@ -844,10 +844,11 @@
                                                           ))))
 
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
-    ;; org-mode에서 , . 키로 strike-through를 설정합니다
-    (define-key evil-motion-state-map (kbd ",") 'strike-through-for-org-mode)
-    (define-key evil-motion-state-map (kbd ".") 'strike-through-for-org-mode-undo)
-    (define-key evil-normal-state-map (kbd ".") 'strike-through-for-org-mode-undo)
+
+    ;; , 키로 projectile switch 를 실행합니다
+    (define-key evil-motion-state-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key evil-normal-state-map (kbd ",") 'helm-projectile-switch-project)
+
     ;; org-mode에서 w 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
     (define-key evil-motion-state-map (kbd "c") (lambda() (interactive)
                                                   (progn
