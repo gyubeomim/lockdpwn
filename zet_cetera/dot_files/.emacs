@@ -634,35 +634,23 @@
   )
 
 ;; TODO ==> DONE과 같이 키워드를 한 번에 바꾸고 CLOSED:에 시간까지 추가해주는 함수
-(defun org-todo-done-edward (arg)
-  ""
-  (interactive)
-  (save-excursion
-    ; (next-line)
-    (if (string-match-p "CLOSED:" (thing-at-point 'line t))
-        (user-error "CLOSED: is already exists")
-      (move-beginning-of-line 2)
-      (insert "\nCLOSED: ")
-      ; (move-end-of-line 1)
-      (org-time-stamp-inactive '(16))
-      (insert " ")
-      ))
-  (cond ((string= arg "DONE") (org-todo "DONE"))
-        ((string= arg "COMPLETE") (org-todo "COMPLETE"))
-        (t (user-error "Error while doing org-todo-done-edward"))
-        )
-  ;created @{...}인 경우 CLOSED:가 한 번 더 생성되므로 이를 제거하기 위한 코드
-  (save-excursion
-    (next-line)
-    (if (string-match-p "SCHEDULED" (thing-at-point 'line t))
-        (return)
-      (progn
-        (kill-whole-line)
-        (kill-whole-line)
-        )
-      )
+(defun org-todo-done-edward(arg)
+""
+(interactive)
+(cond ((string= arg "DONE") (org-todo "DONE"))    ;; 파라미터가 DONE인 경우
+    ((string= arg "COMPLETE") (org-todo "COMPLETE"))  ;; 파라미터가 MILESTONE인 경우
+    (t (user-error "Error while doing org-todo-dopne-edward"))
     )
-  )
+(save-excursion
+(next-line)
+(if (string-match-p "CLOSED:" (thing-at-point 'line t))  ;; 이미 CLOSED: 가 있는 경우
+    (user-error "CLOSED: is already exists")
+    (move-end-of-line 1)                                   ;; 없는 경우
+    (insert " CLOSED: ")
+    (move-end-of-line 1)
+    (org-time-stamp-inactive '(16))
+    ))
+)
 
 ;; package: per-buffer-theme
 ;; (require 'per-buffer-theme)
@@ -839,10 +827,10 @@
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates  '((";" "todo.org: [LIST]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
-                                    "*** LIST %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+                                    "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
                                    (":" "todo.org: [TODO]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
-                                    "*** TODO %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
                                    ("1" "ubuntu_tips.org: [Tips]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
@@ -862,7 +850,7 @@
 
                                    ("m" "milestone.org: [Milestone]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/milestone.org" "milestone")
-                                    "*** MILESTONE %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** MILESTONE %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
                                    ("d" "daily.org: [Daily]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/daily.org" "daily")
@@ -2019,9 +2007,9 @@
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
- '(org-scheduled ((t (:foreground "lime green" :weight bold))))
+ '(org-scheduled ((t (:foreground "gainsoboro" :weight normal))))
  '(org-scheduled-previously ((t (:foreground "lime green" :weight bold))))
- '(org-scheduled-today ((t (:foreground "lime green" :weight bold))))
+ '(org-scheduled-today ((t (:foreground "gainsoboro" :weight normal :height 1.0))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.8))))
  '(org-time-grid ((t (:foreground "gainsboro"))))
