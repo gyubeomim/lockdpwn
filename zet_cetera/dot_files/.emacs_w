@@ -2582,7 +2582,7 @@ created by edward 180515"
  '(org-agenda-skip-scheduled-if-done t)
  '(org-bullets-bullet-list
    (quote
-    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353쎗\255\272\255\272\255\277\236" "*")))
+    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353\354럸\255\272\255\272\255\277\236" "*")))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -2834,9 +2834,9 @@ created by edward 180515"
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
- '(org-scheduled ((t (:foreground "lime green" :weight bold))))
+ '(org-scheduled ((t (:foreground "gainsboro" :weight normal))))
  '(org-scheduled-previously ((t (:foreground "lime green" :weight bold))))
- '(org-scheduled-today ((t (:foreground "lime green" :weight bold))))
+ '(org-scheduled-today ((t (:foreground "gainsboro" :weight normal :height 1.0))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.8))))
  '(org-time-grid ((t (:foreground "gainsboro"))))
