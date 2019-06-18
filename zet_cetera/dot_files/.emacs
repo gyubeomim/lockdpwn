@@ -743,10 +743,6 @@
      (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
      ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
      (define-key org-mode-map (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
-     ;; C+? 키로 org todo list를 실행합니다
-     (define-key org-mode-map (kbd "C-?") 'org-todo-list)
-     ;; C+/ 키로 agenda list를 실행합니다
-     (define-key org-mode-map (kbd "C-/") 'org-agenda-list)
      ;; C+M+? 키로 agenda를 실행합니다
      (define-key org-mode-map (kbd "C-M-?") 'org-agenda)
      ;; C-down + M-f 키를 기본 cpp,python 파일에서와 같이 구문단위로 이동하도록 설정합니다
@@ -921,6 +917,13 @@
                                   (define-key org-agenda-mode-map (kbd "C-n") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
+                                  
+                                  ;; ; . 키로 org-agenda 목록을 보도록 설정합니다
+                                  (define-key org-agenda-mode-map (kbd ";") 'org-agenda-list)
+                                  (define-key org-agenda-mode-map (kbd ".") 'org-todo-list)
+
+                                  ;; / 키로 today로 이동합니다
+                                  (define-key org-agenda-mode-map (kbd "/") 'org-agenda-goto-today)
 
                                   ;; 1,2키로 tab을 이동합니다
                                   (define-key org-agenda-mode-map (kbd "1") 'tabbar-backward)
@@ -992,10 +995,6 @@
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
 (global-set-key (kbd "C-'") 'insert-number-of-link)
-;; C-/ 키로 어느곳에서나 agenda view를 열게합니다
-(global-set-key (kbd "C-/") 'org-agenda-list)
-;; C-? 키로 어느곳에서나 org todo list를 열게합니다
-(global-set-key (kbd "C-?") 'org-todo-list)
 ;; C-M-? 키로 어느곳에서나 agenda list를 엽니다
 (global-set-key (kbd "C-M-?") 'org-agenda)
 ;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
@@ -1089,10 +1088,8 @@
     (define-key undo-tree-map (kbd "C-r") nil)
     (define-key undo-tree-map (kbd "C-?") nil)
 
-    ;; C-? C-M-? C-/ 키로 org-agenda 명령을 수행합니다
-    (define-key undo-tree-map (kbd "C-/") 'org-agenda-list)
+    ;; C-M-?키로 org-agenda 명령을 수행합니다
     (define-key undo-tree-map (kbd "C-M-?") 'org-agenda)
-    (define-key undo-tree-map (kbd "C-?") 'org-todo-list)
     ))
 
 ;; for easy-jekyll mode
@@ -1162,6 +1159,12 @@
 
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
+
+    ;; ; . 키로 org-agenda, todo list를 보도록 설정합니다
+    (define-key evil-motion-state-map (kbd ";") 'org-agenda-list)
+    (define-key evil-motion-state-map (kbd ".") 'org-todo-list)
+    (define-key evil-normal-state-map (kbd ";") 'org-agenda-list)
+    (define-key evil-normal-state-map (kbd ".") 'org-todo-list)
 
     ;; x 키로 emacs 창을 minimize 합니다
     (define-key evil-normal-state-map (kbd "x") 'suspend-frame)
@@ -2882,9 +2885,9 @@ created by edward 180515"
 (global-set-key (kbd "C-4") 'create-scratch-buffer)
 
 ;; C-5 키로 다른 프로젝트로 스위치하는 명령어를 실행합니다
-(global-set-key (kbd "C-5") 'helm-projectile-switch-project)
-;; helm-projectile-switch-project (C-5) 로 프로젝트를 바꾼 다음 실행하는 명령어로
-;;                                         바뀐 프로젝트의 홈폴더에서 dired 모드를 실행합니다
+;; (global-set-key (kbd "C-5") 'helm-projectile-switch-project)
+
+;; helm-projectile-switch-project로 프로젝트를 바꾼 다음 실행하는 명령어로 바뀐 프로젝트의 홈폴더에서 dired 모드를 실행합니다
 (setq projectile-switch-project-action 'projectile-dired)
 
 ;; Ctrl + Shift + 5 (C-%) 키로 projectile에 project를 추가합니다
