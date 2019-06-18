@@ -165,7 +165,7 @@ alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 alias g1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
 alias g2='cd /home/dyros-vehicle/gitrepo_sync/ims_org'
 alias g3='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io'
-alias g4='cd /home/dyros-vehicle/gitrepo/ims_carto'
+alias g4='cd /home/dyros-vehicle/dyros_ws'
 alias g5='cd /home/dyros-vehicle/gitrepo/ims_dyros'
 alias g6='cd /home/dyros-vehicle/gitrepo/ims_ml'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
@@ -411,8 +411,8 @@ alias docim='docker images'
 # for chmod
 alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 775'
 
-# for parkingslam
-alias cps='cd /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/src/edward/parking_slam/'
+# for edward folder
+alias cse='cd /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/src/edward/'
 
 # for org-mode
 alias o='cd /home/dyros-vehicle/gitrepo_sync/ims_org && ./push_master.sh'

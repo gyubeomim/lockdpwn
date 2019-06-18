@@ -2030,7 +2030,7 @@
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
  '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
- '(tabbar-default ((t (:foreground "gray50" :height 0.9))))
+ '(tabbar-default ((t (:foreground "white" :height 0.9))))
  '(tabbar-highlight ((t (:foreground "white"))))
  '(tabbar-modified ((t (:inherit tabbar-default :foreground "green"))))
  '(tabbar-selected ((t (:inherit tabbar-default :foreground "cyan"))))
