@@ -8,8 +8,8 @@ using namespace std;
 
 int main() {
   std::default_random_engine generator;
-  std::uniform_real_distribution<double> uniform_dist1(-0.5, 0.5);
-  std::uniform_real_distribution<double> uniform_dist2(-0.5, 0.5);
+  std::uniform_real_distribution<double> uniform_dist1(-0.3, 0.3);
+  std::uniform_real_distribution<double> uniform_dist2(-0.3, 0.3);
   std::uniform_real_distribution<double> uniform_dist3(-0.174533, 0.174533);
 
   double var1=0, var2=0, var3=0;

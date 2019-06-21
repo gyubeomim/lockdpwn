@@ -232,6 +232,8 @@ alias cwg='cd /home/dyros-vehicle/segmap_ws'
 alias csg='cd /home/dyros-vehicle/segmap_ws/src'
 alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
+alias cse='cd /home/dyros-vehicle/catkin_ws/src/edward/'
+
 #alias cl='cd /home/dyros-vehicle/gitrepo/ims'
 #alias cr='cd /home/dyros-vehicle/gitrepo/ims/ROS/'
 alias so='source devel/setup.bash'
