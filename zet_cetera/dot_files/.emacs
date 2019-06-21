@@ -1731,6 +1731,7 @@
              (face
               (:foreground "gold" :weight normal :underline t))))))))))
  '(org-agenda-skip-scheduled-if-done t)
+ '(org-agenda-skip-deadline-if-done t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
