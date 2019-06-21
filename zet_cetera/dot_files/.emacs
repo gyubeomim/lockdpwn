@@ -2008,7 +2008,7 @@
  '(org-scheduled-previously ((t (:foreground "gainsboro" :slant normal :weight normal))))
  '(org-scheduled-today ((t (:foreground "gainsoboro" :weight normal :height 1.0))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "light sky blue" :underline t :slant italic :weight normal :height 0.8))))
+  '(org-tag ((t (:foreground "gainsboro" :underline nil :slant normal :weight bold :height 1.0))))
  '(org-time-grid ((t (:foreground "gainsboro"))))
  '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
  '(org-verbatim ((t (:inherit shadow :background "aquamarine" :foreground "black" :weight normal :height 1.0))))
