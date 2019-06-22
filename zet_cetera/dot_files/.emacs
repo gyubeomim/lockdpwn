@@ -789,10 +789,10 @@
            )
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
-           '(("CANCELLED" . "firebrick")
-             ("REPLACED" . "purple")
-             ("DELAYED" . "forest green")
-             ("PAUSED" . "dark orange")
+           '(("CANCELLED" . "goldenrod")
+             ("REPLACED" . "goldenrod")
+             ("DELAYED" . "goldenrod")
+             ("PAUSED" . "goldenrod")
              ("MILESTONE" . "gainsboro")
              ("LIST" . "gainsboro")
              ("TODO" . "gainsboro")
@@ -937,16 +937,6 @@
 
                                   ;; SPC 키로 helm-for-files를 실행합니다
                                   (define-key org-agenda-mode-map (kbd "SPC") 'helm-for-files)
-
-                                  ;; .org 파일 여는 명령어 추가
-                                  ;; { 키로 todo.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
-                                  ;; } 키로 portal.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
-                                  ;; [ 키로 quick.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
-                                  ;; ] 키로 특정 daily.org 파일을 엽니다
-                                  (define-key org-agenda-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
 
                                   ;; tab 키로 해당 이벤트를 확인합니다
                                   (define-key org-agenda-mode-map (kbd "<tab>") 'org-agenda-show)
@@ -1137,15 +1127,6 @@
                                                           ((string-match-p "CANCELLED" string) (org-todo-done-edward "DONE"))
                                                           ((string-match-p "MILESTONE" string) (org-todo-done-edward "COMPLETE"))
                                                           ))))
-
-    ;; { 키로 todo.opg 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
-    ;; } 키로 portal.opg 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
-    ;; [ 키로 quick.org 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
-    ;; ] 키로 특정 daily.org 파일을 엽니다
-    (define-key evil-motion-state-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
 
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
@@ -1730,8 +1711,8 @@
             (quote
              (face
               (:foreground "gold" :weight normal :underline t))))))))))
- '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-skip-deadline-if-done t)
+ '(org-agenda-skip-scheduled-if-done t)
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
@@ -1864,7 +1845,7 @@
  '(pomodoro-work-time 25)
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
- '(recenter-positions (quote (middle 0.75 top bottom)))
+ '(recenter-positions (quote (middle top bottom)))
  '(rtags-other-window-window-size-percentage 1)
  '(rtags-split-window-function (quote split-window-below))
  '(rtags-tracking t)
@@ -2008,7 +1989,7 @@
  '(org-scheduled-previously ((t (:foreground "gainsboro" :slant normal :weight normal))))
  '(org-scheduled-today ((t (:foreground "gainsoboro" :weight normal :height 1.0))))
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
-  '(org-tag ((t (:foreground "gainsboro" :underline nil :slant normal :weight bold :height 1.0))))
+ '(org-tag ((t (:foreground "gainsboro" :underline nil :slant normal :weight bold :height 1.0))))
  '(org-time-grid ((t (:foreground "gainsboro"))))
  '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
  '(org-verbatim ((t (:inherit shadow :background "aquamarine" :foreground "black" :weight normal :height 1.0))))
@@ -2881,8 +2862,8 @@ created by edward 180515"
 ;; helm-projectile-switch-project로 프로젝트를 바꾼 다음 실행하는 명령어로 바뀐 프로젝트의 홈폴더에서 dired 모드를 실행합니다
 (setq projectile-switch-project-action 'projectile-dired)
 
-;; Ctrl + Shift + 5 (C-%) 키로 projectile에 project를 추가합니다
-(global-set-key (kbd "C-%") 'projectile-add-known-project)
+;; Ctrl + 5  키로 projectile에 project를 추가합니다
+(global-set-key (kbd "C-5") 'projectile-add-known-project)
 
 ;; Ctrl + ^키로 jupyter notebook 서버를 실행합니다
 (global-set-key (kbd "C-^") 'ein:jupyter-server-start)
@@ -3315,23 +3296,6 @@ created by edward 180515"
 
     ;; x키로 emacs 창을 최소화합니다.
     (define-key magit-status-mode-map (kbd "x") 'suspend-frame)
-
-    ;; { 키로 todo.opg 파일을 엽니다
-    (define-key magit-status-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
-    (define-key magit-diff-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
-    (define-key magit-process-mode-map (kbd "{") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
-    ;; } 키로 portal.opg 파일을 엽니다
-    (define-key magit-status-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
-    (define-key magit-diff-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
-    (define-key magit-process-mode-map (kbd "}") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/portal.org")))
-    ;; [ 키로 quick.org 파일을 엽니다
-    (define-key magit-status-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
-    (define-key magit-diff-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
-    (define-key magit-process-mode-map (kbd "[") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
-    ;; ] 키로 특정 daily.org 파일을 엽니다
-    (define-key magit-status-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
-    (define-key magit-diff-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
-    (define-key magit-process-mode-map (kbd "]") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
     ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
