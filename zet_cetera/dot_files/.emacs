@@ -796,9 +796,9 @@
              ("REPLACED" . "goldenrod")
              ("DELAYED" . "goldenrod")
              ("PAUSED" . "goldenrod")
-             ("MILESTONE" . "gainsboro")
-             ("LIST" . "gainsboro")
-             ("TODO" . "gainsboro")
+             ("LIST" . "#86dc2f")
+             ("TODO" . "#86dc2f")
+             ("MILESTONE" . "#86dc2f")
              ("DONE" . "#268bd2")
              ("COMPLETE" . "#268bd2")
              ))
@@ -827,10 +827,11 @@
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates  '((";" "todo.org: [LIST]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
-                                    "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+                                    "*** LIST %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
                                    (":" "todo.org: [TODO]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+                                    "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("1" "ubuntu_tips.org: [Tips]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
@@ -850,7 +851,7 @@
 
                                    ("m" "milestone.org: [Milestone]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/milestone.org" "milestone")
-                                    "*** MILESTONE %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** MILESTONE %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("d" "daily.org: [Daily]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/daily.org" "daily")
