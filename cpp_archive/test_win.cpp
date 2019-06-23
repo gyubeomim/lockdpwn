@@ -7,9 +7,21 @@
 
 using namespace std;
 
-int v, e, x, y, chk[1001], gph[1001][1001];
+int n, e, v, chk[1001], gph[1001][1001];
 
-void bfs(int now) {
+void dfs(int now) { 
+  chk[now] = 1;
+  cout << now << " ";
+
+  for(int i=1; i<=n; i++) { 
+    if(!chk[i] && gph[now][i]) {
+      dfs(i);
+    }
+  }
+}
+
+
+void bfs(int now){ 
   queue<int> que;
   que.push(now);
   chk[now] = 1;
@@ -17,43 +29,31 @@ void bfs(int now) {
   while(!que.empty()) {
     int now = que.front();
     que.pop();
+    cout << now << " ";
 
-    for (int i = 1; i <= e; i++) {
+    for(int i=1; i<=n; i++) {
       if(!chk[i] && gph[now][i]) {
         que.push(i);
         chk[i] = 1;
-
       }
     }
-
-    if (que.size() >= 2) {
-      cout << "YES\n";
-      return;
-    }
   }
-  cout << "NO\n";
 }
 
+
 int main() {
-  int T,t;
-  cin >> T;
+  cin >> n >> e >> v;
 
-  t = 1;
-
-  while(t <= T) {
-    cin >> v >> e;
-
-    for(int i=0; i<e; i++) {
-      cin >> x >> y;
-      gph[x][y] = gph[y][x] = 1;
-    }
-
-    bfs(1);
-
-    cout << "-------------------\n";
-    t += 1;
+  for(int i=0; i<e; i++) {
+    int x,y;
+    cin >> x >> y;
+    gph[x][y] = gph[y][x] = 1;
   }
 
+  dfs(v);
+  cout << '\n';
+  memset(chk, 0, sizeof(chk));
+  bfs(v);
 
   return 0;
 }
