@@ -843,11 +843,11 @@
 
                                    ("n" "quick.org: [quick]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/quick.org" "quick")
-                                    "*** %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+                                    "*** %i\n%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
                                    ("a" "archive.org: [Archive]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/archive.org" "archive")
-                                    "*** %i\ncreated @%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+                                    "*** %i\n%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
                                    ("m" "milestone.org: [Milestone]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/milestone.org" "milestone")
@@ -928,8 +928,8 @@
                                   (define-key org-agenda-mode-map (kbd "[") 'org-todo-list)
 
                                   ;; 1,2키로 tab을 이동합니다
-                                  (define-key org-agenda-mode-map (kbd "J") 'tabbar-backward)
-                                  (define-key org-agenda-mode-map (kbd "K") 'tabbar-forward)
+                                  (define-key org-agenda-mode-map (kbd "1") 'tabbar-backward)
+                                  (define-key org-agenda-mode-map (kbd "2") 'tabbar-forward)
 
                                   ;; x 키로 emacs 창을 minimize 합니다
                                   (define-key org-agenda-mode-map (kbd "x") 'suspend-frame)
@@ -1183,10 +1183,10 @@
     (define-key evil-normal-state-map (kbd "m") 'minimap-mode)
 
     ;; 1,2키로 tab들을 이동합니다
-    (define-key evil-motion-state-map (kbd "J") 'tabbar-backward)
-    (define-key evil-motion-state-map (kbd "K") 'tabbar-forward)
-    (define-key evil-normal-state-map (kbd "J") 'tabbar-backward)
-    (define-key evil-normal-state-map (kbd "K") 'tabbar-forward)
+    (define-key evil-motion-state-map (kbd "1") 'tabbar-backward)
+    (define-key evil-motion-state-map (kbd "2") 'tabbar-forward)
+    (define-key evil-normal-state-map (kbd "1") 'tabbar-backward)
+    (define-key evil-normal-state-map (kbd "2") 'tabbar-forward)
 
     ;; 키바인딩 해제 INSERT MODE
     (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -1719,6 +1719,12 @@
               (:foreground "gold" :weight normal :underline t))))))))))
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-scheduled-if-done t)
+ '(org-agenda-time-grid
+   (quote
+    ((daily today require-timed)
+     (800 1000 1200 1400 1600 1800 2000)
+     "......" " ")))
+ '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
  '(org-capture-bookmark nil)
@@ -2301,8 +2307,8 @@
      (define-key dired-mode-map (kbd "SPC") 'helm-for-files)
 
      ;; 1,2키로 tab을 이동합니다
-     (define-key dired-mode-map (kbd "J") 'tabbar-backward)
-     (define-key dired-mode-map (kbd "K") 'tabbar-forward)
+     (define-key dired-mode-map (kbd "1") 'tabbar-backward)
+     (define-key dired-mode-map (kbd "2") 'tabbar-forward)
      ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
