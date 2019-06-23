@@ -94,6 +94,9 @@
 
     spacemacs-theme
 
+    calfw                  ;; calendar framework for org-mode
+    calfw-org
+
     ;; nlinum                 ;; linum-mode 대체하는 패키지, linum-mode가 속도가 매우 느려서 바꿨다 (26.1 업그레이드하면서 필요없어짐)
     ;; eldoc
     ;; ycmd
@@ -1041,6 +1044,10 @@
 ;;    ((eq format 'html)
 ;;     (format "<img src=\"/pictures/%s\" alt=\"%s\"/>" path desc))))
 ;;org-END=================================================================
+
+;; PACKAGE: calfw
+(require 'calfw)
+(require 'calfw-org)
 
 ;; PACKAGE: smartparens
 (require 'smartparens-config)
