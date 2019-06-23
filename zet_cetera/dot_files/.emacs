@@ -921,12 +921,9 @@
                                   (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
                                   
-                                  ;; ; . 키로 org-agenda 목록을 보도록 설정합니다
-                                  (define-key org-agenda-mode-map (kbd ";") 'org-agenda-list)
-                                  (define-key org-agenda-mode-map (kbd ".") 'org-todo-list)
-
-                                  ;; / 키로 today로 이동합니다
-                                  (define-key org-agenda-mode-map (kbd "/") 'org-agenda-goto-today)
+                                  ;; [ ] 키로 org-agenda 목록을 보도록 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "]") 'org-agenda-list)
+                                  (define-key org-agenda-mode-map (kbd "[") 'org-todo-list)
 
                                   ;; 1,2키로 tab을 이동합니다
                                   (define-key org-agenda-mode-map (kbd "J") 'tabbar-backward)
@@ -1138,11 +1135,11 @@
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
 
-    ;; ; . 키로 org-agenda, todo list를 보도록 설정합니다
-    (define-key evil-motion-state-map (kbd ";") 'org-agenda-list)
-    (define-key evil-motion-state-map (kbd ".") 'org-todo-list)
-    (define-key evil-normal-state-map (kbd ";") 'org-agenda-list)
-    (define-key evil-normal-state-map (kbd ".") 'org-todo-list)
+    ;; [ ] 키로 org-agenda, todo list를 보도록 설정합니다
+    (define-key evil-motion-state-map (kbd "]") 'org-agenda-list)
+    (define-key evil-motion-state-map (kbd "[") 'org-todo-list)
+    (define-key evil-normal-state-map (kbd "]") 'org-agenda-list)
+    (define-key evil-normal-state-map (kbd "[") 'org-todo-list)
 
     ;; x 키로 emacs 창을 minimize 합니다
     (define-key evil-normal-state-map (kbd "x") 'suspend-frame)
@@ -3366,9 +3363,9 @@ created by edward 180515"
                                (define-key custom-mode-map (kbd "C-u") 'evil-scroll-up)
                                (define-key custom-mode-map (kbd "C-d") 'evil-scroll-down)
 
-                               ;; ; , 키로 org-agenda, todo 목록을 확인합니다
-                               (define-key custom-mode-map (kbd ";") 'org-agenda-list)
-                               (define-key custom-mode-map (kbd ",") 'org-todo-list)
+                               ;; [ ] 키로 org-agenda, todo 목록을 확인합니다
+                               (define-key custom-mode-map (kbd "]") 'org-agenda-list)
+                               (define-key custom-mode-map (kbd "[") 'org-todo-list)
                               ))
 
 ;; C-u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다 (NOT USED)

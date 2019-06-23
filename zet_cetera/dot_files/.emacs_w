@@ -54,7 +54,8 @@
 
     spacemacs-theme        ;; spacemacs theme
 
-    ;;calfw-org
+    calfw
+    calfw-org
 
     ;;WINDOWS-----------------------------------
     ;;anzu                   ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
@@ -623,12 +624,9 @@
                                   (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
 
-                                  ;; ; . 키로 org-agenda 목록을 보도록 설정합니다
-                                  (define-key org-agenda-mode-map (kbd ";") 'org-agenda-list)
-                                  (define-key org-agenda-mode-map (kbd ".") 'org-todo-list)
-
-                                  ;; / 키로 today로 이동합니다
-                                  (define-key org-agenda-mode-map (kbd "/") 'org-agenda-goto-today)
+                                  ;; [ ] 키로 org-agenda 목록을 보도록 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "]") 'org-agenda-list)
+                                  (define-key org-agenda-mode-map (kbd "[") 'org-todo-list)
 
                                   ;; 1,2키로 tab을 이동합니다
                                   (define-key org-agenda-mode-map (kbd "J") 'tabbar-backward)
@@ -742,6 +740,10 @@
     (format "<img src=\"/pictures/%s\" alt=\"%s\"/>" path desc))))
 ;;org-END=================================================================
 
+;; PACKAGE: calfw
+(require 'calfw)
+(require 'calfw-org)
+
 ;; PACKAGE: doc-view (for pdf viewer)
 (setq doc-view-ghostscript-program "c:/Program Files/gs/gs9.26/bin/gswin64c.exe")
 
@@ -838,11 +840,11 @@
     (define-key evil-motion-state-map (kbd ",") 'helm-projectile-switch-project)
     (define-key evil-normal-state-map (kbd ",") 'helm-projectile-switch-project)
 
-    ;; ; . 키로 org-agenda, todo list를 보도록 설정합니다
-    (define-key evil-motion-state-map (kbd ";") 'org-agenda-list)
-    (define-key evil-motion-state-map (kbd ".") 'org-todo-list)
-    (define-key evil-normal-state-map (kbd ";") 'org-agenda-list)
-    (define-key evil-normal-state-map (kbd ".") 'org-todo-list)
+    ;; [ ] 키로 org-agenda, todo list를 보도록 설정합니다
+    (define-key evil-motion-state-map (kbd "]") 'org-agenda-list)
+    (define-key evil-motion-state-map (kbd "[") 'org-todo-list)
+    (define-key evil-normal-state-map (kbd "]") 'org-agenda-list)
+    (define-key evil-normal-state-map (kbd "[") 'org-todo-list)
 
     ;; org-mode에서 w 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
     (define-key evil-motion-state-map (kbd "c") (lambda() (interactive)
@@ -2565,7 +2567,7 @@ created by edward 180515"
  '(org-agenda-skip-scheduled-if-done t)
  '(org-bullets-bullet-list
    (quote
-    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353\354\353\354쓠\255\272\255\272\255\277\236" "*")))
+    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353\354\353\354\354뱺\255\272\255\272\255\277\236" "*")))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
