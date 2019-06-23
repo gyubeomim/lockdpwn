@@ -40,7 +40,6 @@ void bfs(int now){
   }
 }
 
-
 int main() {
   cin >> n >> e >> v;
 

@@ -799,7 +799,8 @@
              ("MILESTONE" . "gainsboro")
              ("LIST" . "gainsboro")
              ("TODO" . "gainsboro")
-             ("COMPLETE" . "#86dc2f")
+             ("DONE" . "#268bd2")
+             ("COMPLETE" . "#268bd2")
              ))
 
      ;; org-bullets 모드 활성화
@@ -1754,10 +1755,18 @@
                    (point-min)
                    (point-max)))))
             (if
-                (not
+                (or
                  (string=
                   (buffer-name)
-                  "CAPTURE-daily.org"))
+                  "CAPTURE-daily.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-milestone.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-todo.org")
+                 )
+                (return)
                 (if
                     (save-excursion
                       (goto-char
@@ -1767,8 +1776,7 @@
                   (return
                    (progn
                      (end-of-line)
-                     (insert numbering))))
-              (return))
+                     (insert numbering)))))
             (setq num
                   (1+ num)))))))))
  '(org-default-priority 66)
@@ -1836,9 +1844,9 @@
          (concat "news:" path))))
      ("shell" :follow org--open-shell-link))))
  '(org-lowest-priority 68)
- '(org-reverse-note-order t)
+ '(org-reverse-note-order nil)
  '(org-scheduled-delay-days 0)
- '(org-tags-column 10)
+ '(org-tags-column -80)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
@@ -1981,7 +1989,7 @@
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
- '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.99))))
+ '(org-level-3 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 0.99))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.99))))
  '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.99))))
  '(org-level-6 ((t (:inherit variable-pitch :foreground "yellow3"))))

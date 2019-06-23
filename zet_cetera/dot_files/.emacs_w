@@ -54,7 +54,7 @@
 
     spacemacs-theme        ;; spacemacs theme
 
-    calfw
+    calfw                  ;; calendar for org-mode
     calfw-org
 
     ;;WINDOWS-----------------------------------
@@ -535,10 +535,11 @@
              ("REPLACED" . "goldenrod")
              ("DELAYED" . "goldenrod")
              ("PAUSED" . "goldenrod")
-             ("MILESTONE" . "gainsboro")
-             ("LIST" . "gainsboro")
-             ("TODO" . "gainsboro")
-             ("COMPLETE" . "#86dc2f")
+             ("LIST" . "#86dc2f")
+             ("TODO" . "#86dc2f")
+             ("MILESTONE" . "#86dc2f")
+             ("DONE" . "#268bd2")
+             ("COMPLETE" . "#268bd2")
              ))
 
      ;; org-bullets 모드 활성화
@@ -571,10 +572,11 @@
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '((";" "todo.org: [LIST]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/todo.org" "tasks")
-                                    "*** LIST %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+                                    "*** LIST %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   
                                    (":" "todo.org: [TODO]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/todo.org" "tasks")
-                                    "*** TODO %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+                                    "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
@@ -590,7 +592,7 @@
                                    
                                    ("m" "milestone.org: [Milestone]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/milestone.org" "milestone")
-                                    "*** MILESTONE %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
+                                    "*** MILESTONE %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("d" "daily.org: [Daily]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/daily.org" "daily")
@@ -628,7 +630,7 @@
                                   (define-key org-agenda-mode-map (kbd "]") 'org-agenda-list)
                                   (define-key org-agenda-mode-map (kbd "[") 'org-todo-list)
 
-                                  ;; 1,2키로 tab을 이동합니다
+                                  ;; J,K키로 tab을 이동합니다
                                   (define-key org-agenda-mode-map (kbd "J") 'tabbar-backward)
                                   (define-key org-agenda-mode-map (kbd "K") 'tabbar-forward)
 
@@ -1184,8 +1186,8 @@
 
 
 ;;GUI 환경에서 시작 시 창 화면 최대화 하기
-(add-to-list 'default-frame-alist '(fullscreen . maximized))(add-to-list 'default-frame-alist '(height . 31))
-(add-to-list 'default-frame-alist '(width . 100))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))(add-to-list 'default-frame-alist '(height . 31))
+;; (add-to-list 'default-frame-alist '(width . 100))
 (set-frame-position (selected-frame) 0 0)
 
 ;; 매칭되는 괄호 강조하기
@@ -1355,10 +1357,7 @@
 (eval-after-load "dired"
   '(progn
      ;; dired mode : Move to the parent directory
-     (define-key dired-mode-map "a"
-       (lambda ()
-         (interactive)
-         (find-alternate-file "..")))
+     (define-key dired-mode-map "a" (lambda () (interactive) (find-alternate-file "..")))
 
      ;; for avy-goto-0
      (define-key dired-mode-map "f" 'avy-goto-word-0)
@@ -1386,7 +1385,7 @@
      ;; dired mode 에서 SPC키로 helm-for-files를 실행합니다
      (define-key dired-mode-map (kbd "SPC") 'helm-for-files)
 
-     ;; 1,2키로 tab을 이동합니다
+     ;; J,K키로 tab을 이동합니다
      (define-key dired-mode-map (kbd "J") 'tabbar-backward)
      (define-key dired-mode-map (kbd "K") 'tabbar-forward)
      ))
@@ -2567,7 +2566,7 @@ created by edward 180515"
  '(org-agenda-skip-scheduled-if-done t)
  '(org-bullets-bullet-list
    (quote
-    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353\354\353\354\354뱺\255\272\255\272\255\277\236" "*")))
+    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347뛾\255\272\255\272\255\272\255\277\236" "*")))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -2603,21 +2602,27 @@ created by edward 180515"
                    (point-min)
                    (point-max)))))
             (if
-                (not
+                (or
                  (string=
                   (buffer-name)
-                  "CAPTURE-daily.org"))
-                (if
-                    (save-excursion
-                      (goto-char
-                       (point-min))
-                      (string-match numbering content))
-                    nil
-                  (return
-                   (progn
-                     (end-of-line)
-                     (insert numbering))))
-              (return))
+                  "CAPTURE-daily.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-milestone.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-todo.org"))
+                (return)
+              (if
+                  (save-excursion
+                    (goto-char
+                     (point-min))
+                    (string-match numbering content))
+                  nil
+                (return
+                 (progn
+                   (end-of-line)
+                   (insert numbering)))))
             (setq num
                   (1+ num)))))))))
  '(org-default-priority 67)
@@ -2712,7 +2717,7 @@ created by edward 180515"
  '(org-lowest-priority 69)
  '(org-reverse-note-order nil)
  '(org-scheduled-delay-days 0)
- '(org-tags-column 10)
+ '(org-tags-column -80)
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
@@ -2811,7 +2816,7 @@ created by edward 180515"
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
- '(org-level-3 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.99))))
+ '(org-level-3 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 0.99))))
  '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.99))))
  '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.99))))
  '(org-level-6 ((t (:inherit variable-pitch :foreground "yellow3"))))
