@@ -3313,6 +3313,16 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
 
+    ;; [ ] 키로 org-agenda, todo 목록을 확인합니다
+    (define-key magit-status-mode-map (kbd "]") 'org-agenda-list)
+    (define-key magit-status-mode-map (kbd "[") 'org-todo-list)
+    (define-key magit-process-mode-map (kbd "]") 'org-agenda-list)
+    (define-key magit-process-mode-map (kbd "[") 'org-todo-list)
+    (define-key magit-diff-mode-map (kbd "]") 'org-agenda-list)
+    (define-key magit-diff-mode-map (kbd "[") 'org-todo-list)
+    (define-key magit-file-mode-map (kbd "]") 'org-agenda-list)
+    (define-key magit-file-mode-map (kbd "[") 'org-todo-list)
+
     ;; x키로 emacs 창을 최소화합니다.
     (define-key magit-status-mode-map (kbd "x") 'suspend-frame)
     ))
