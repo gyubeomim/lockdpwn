@@ -1676,9 +1676,10 @@
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1724,9 +1725,8 @@
     ((daily today require-timed)
      (800 1000 1200 1400 1600 1800 2000)
      "......" " ")))
- '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)) t)
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -1771,19 +1771,18 @@
                   "CAPTURE-milestone.org")
                  (string=
                   (buffer-name)
-                  "CAPTURE-todo.org")
-                 )
+                  "CAPTURE-todo.org"))
                 (return)
-                (if
-                    (save-excursion
-                      (goto-char
-                       (point-min))
-                      (string-match numbering content))
-                    nil
-                  (return
-                   (progn
-                     (end-of-line)
-                     (insert numbering)))))
+              (if
+                  (save-excursion
+                    (goto-char
+                     (point-min))
+                    (string-match numbering content))
+                  nil
+                (return
+                 (progn
+                   (end-of-line)
+                   (insert numbering)))))
             (setq num
                   (1+ num)))))))))
  '(org-default-priority 66)
