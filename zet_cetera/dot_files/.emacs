@@ -2100,8 +2100,8 @@
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
 ;;GUI 환경에서 시작 시 창 화면 최대화 하기
-(add-to-list 'default-frame-alist '(fullscreen . maximized))(add-to-list 'default-frame-alist '(height . 31))
-(add-to-list 'default-frame-alist '(width . 100))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))(add-to-list 'default-frame-alist '(height . 31))
+;; (add-to-list 'default-frame-alist '(width . 100))
 (set-frame-position (selected-frame) 0 0)
 
 ;; 매칭되는 괄호 강조하기
