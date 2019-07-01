@@ -1863,7 +1863,7 @@
  '(pomodoro-work-time 25)
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
- '(recenter-positions (quote (middle top bottom)))
+ '(recenter-positions (quote (middle 0.75 top bottom)))
  '(rtags-other-window-window-size-percentage 1)
  '(rtags-split-window-function (quote split-window-below))
  '(rtags-tracking t)
