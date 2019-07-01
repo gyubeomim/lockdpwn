@@ -2239,6 +2239,9 @@ created by edward 180515"
     (define-key magit-unstaged-section-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-unstaged-section-map (kbd "C-d") 'evil-scroll-down)
 
+    ;; Space 키로 helm-for-files 명령을 실행합니다
+    (define-key magit-status-mode-map (kbd "<SPC>") 'helm-for-files)
+
     ;; COMMENT(edward): windows에서만 그런건지 이 키들이 prog-mode에서도 자꾸 동작한다
     ;; (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
     ;; (define-key magit-file-mode-map (kbd "C-u") 'evil-scroll-up)
