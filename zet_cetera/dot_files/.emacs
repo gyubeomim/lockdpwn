@@ -1992,6 +1992,8 @@
  '(org-block ((t (:foreground "gainsboro"))))
  '(org-block-begin-line ((t (:inherit org-meta-line :foreground "#002b36" :underline "dark slate gray" :weight normal))))
  '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
+ '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
+ '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))

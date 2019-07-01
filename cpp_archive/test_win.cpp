@@ -1,48 +1,61 @@
 
 
-#include <cstdio>
-#include <cstring>
 #include <iostream>
-#include <vector>
+#include <cmath>
+#include <cstring>
+#include <cstdio>
+#include <queue>
+#include <algorithm>
 
 using namespace std;
 
-int v, chk[1001], gph[1001][1001];
+const int roff[4] = {-1, 1, 0 ,0};
+const int coff[4] = {0,0,-1,1};
+bool map[25][25];
+bool visited[25][25] = {0};
+queue<int> Q;
+vector<int> v;
 
-void dfs(int now) {
-  chk[now] = 1;
-
-  for(int i=1; i<=v; i++) {
-    if(!chk[i] && gph[now][i]) {
-      dfs(i);
-    }
+int bfs(int r, int c) {
+  if(map[r][c] == 1) {
+    Q.push(r*25 + c);
   }
+
+  while(!Q.empty()){
+    for(int d=0; d<4; d++) {
+    int nr = r + roff[d];
+    int nc = c + coff[d];
+
+    }
+  } 
+
 }
 
 int main() {
-  int T;
-  cin >> T;
+  int N;
+  cin >> N;
 
-  while(T--) {
-    cin >> v;
-
-    int x;
-    for(int i=1; i<=v; i++) {
-      scanf("%d ", &x);
-      gph[i][x] = gph[x][i] = 1;
+  for(int i=0; i<N; i++){
+    for(int j=0;j<N;j++){
+      scanf("%1d", &map[i][j]);
     }
+  }
 
-    int result = 0;
 
-    for(int i=1; i<=v; i++) {
-      if(!chk[i]) {
-        dfs(i);
-        result += 1;
+  int num = 0;
+  for(int r=0;r<N;r++){
+    for(int c=0;c<N;c++){
+      num = bfs(r,c);
+      if(num != 0) {
+        v.push_back(num);
       }
     }
-    cout << result << '\n';
-    memset(chk, 0, sizeof(chk));
-    memset(gph, 0, sizeof(gph));
   }
+
+  std::sort(v.begin(), v.end());
+  for(auto it : v) {
+    cout << it << '\n';
+  }
+
   return 0;
 }
