@@ -3312,6 +3312,9 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
     (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
+    
+    ;; Space 키로 helm-for-files 명령을 실행합니다
+    (define-key magit-status-mode-map (kbd "<SPC>") 'helm-for-files)
 
     ;; [ ] 키로 org-agenda, todo 목록을 확인합니다
     (define-key magit-status-mode-map (kbd "]") 'org-agenda-list)
