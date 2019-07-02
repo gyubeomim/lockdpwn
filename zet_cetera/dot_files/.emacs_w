@@ -418,9 +418,6 @@
 ;; PACKAGE: org2jekyll
 ;; (require 'org2jekyll)
 
-;; PAKCAGE: prettify-symbols-mode
-(global-prettify-symbols-mode t)
-
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
 ;; "org" because C-h f org-mode RET says that org-mode is defined in org.el
 (eval-after-load "org"
@@ -550,7 +547,16 @@
 
      ;; org-item의 -를 bullet으로 변경하는 코드
      (add-hook 'org-mode-hook (lambda ()
-                               (push '("-" .  8226) prettify-symbols-alist)))
+                                (push '("-" .  8226) prettify-symbols-alist)
+               (prettify-symbols-mode)))
+
+     (font-lock-add-keywords 'org-mode
+                             '(("\\(src_\\)\\([^[{]+\\)\\(\\[:.*\\]\\){\\([^}]*\\)}"
+                                (1 '(:foreground "black" :weight 'normal :height 10)) ; src_ part
+                                (2 '(:foreground "cyan" :weight 'bold :height 75 :underline "red")) ; "lang" part.
+                                (3 '(:foreground "#555555" :height 70)) ; [:header arguments] part.
+                                (4 'org-code) ; "code..." part.
+                                )))
 
      ;; org-bullets 모드 활성화
      (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))
