@@ -264,10 +264,15 @@
 ;; 선호하는 인코딩환경을 utf-8으로 설정합니다 (한글 문제)
 ;; 한글이 깨지는 경우
 ;; M-x revert-buffer-with-coding-system --> korea-iso-8bit 으로 설정해주면 정상적으로 보인다
-;; (set-terminal-coding-system 'utf-8)
-;; (set-keyboard-coding-system 'utf-8)
-;; (set-language-environment "Korean")
 (prefer-coding-system 'utf-8)
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq coding-system-for-read 'utf-8)
+(setq coding-system-for-write 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 ;; (modify-coding-system-alist 'file "" 'utf-8-unix)
 ;; (set-file-name-coding-system 'cp949-dos)
 
@@ -291,7 +296,6 @@
             (setq python-indent-offset 4)
             (setq tab-width 4)
             ))
-
 
 
 ;; PACKAGE : org mode
@@ -414,7 +418,8 @@
 ;; PACKAGE: org2jekyll
 ;; (require 'org2jekyll)
 
-;;(require 'calfw-org)
+;; PAKCAGE: prettify-symbols-mode
+(global-prettify-symbols-mode t)
 
 ;; org 모드가 실행되고 나서 설정하고 싶은 코드는 아래 작성한다
 ;; "org" because C-h f org-mode RET says that org-mode is defined in org.el
@@ -544,14 +549,8 @@
              ))
 
      ;; org-item의 -를 bullet으로 변경하는 코드
-     (font-lock-add-keywords 'org-mode
-                        '(("^ +\\([-*]\\) "
-                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-     (font-lock-add-keywords 'org-mode
-                        '(("^ +\\([-*]\\) "
-                           0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "‣")))
-                          ("\\(->\\)"
-                           0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "→")))))
+     (add-hook 'org-mode-hook (lambda ()
+                               (push '("-" .  8226) prettify-symbols-alist)))
 
      ;; org-bullets 모드 활성화
      (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))
@@ -2483,6 +2482,9 @@ created by edward 180515"
 ;; for org mode timestamp English ver.
 (setq system-time-locale "C")
 
+;; font for all unicode characters
+(set-fontset-font "fontset-default" 'unicode
+                  "-outline-DejaVu Sans Mono-normal-normal-normal-mono-*-*-*-*-c-*-iso10646-1")
 ;; Variable Customizing==========================================================================
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -2507,6 +2509,7 @@ created by edward 180515"
                   company-oddmuse company-dabbrev)))
  '(company-idle-delay 0.3)
  '(cua-mode t nil (cua-base))
+ '(default-input-method "korean-hangul")
  '(ecb-layout-name "right1")
  '(ecb-layout-window-sizes
    (quote
@@ -2583,7 +2586,6 @@ created by edward 180515"
     ((daily today require-timed)
      (800 1000 1200 1400 1600 1800 2000)
      "......" " ")))
- '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -2757,6 +2759,7 @@ created by edward 180515"
                        "\\_>"))
               1
               (quote font-lock-variable-name-face))))))))
+ '(selection-coding-system (quote utf-8-unix))
  '(sml/battery-format "")
  '(sml/col-number-format "")
  '(sml/full-mode-string " ")
@@ -2790,7 +2793,7 @@ created by edward 180515"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "outline" :antialias "natural" :family "Source Code Pro"))))
+ '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "outline" :family "Source Code Pro"))))
  '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black"))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
