@@ -2571,7 +2571,7 @@ created by edward 180515"
      "......" " ")))
  '(org-bullets-bullet-list
    (quote
-    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347뛾\255\272\255\272\255\272\255\272\255\277\236" "*")))
+    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353쎗\255\272\255\272\255\272\255\272\255\277\236" "*")))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -2828,7 +2828,7 @@ created by edward 180515"
  '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.99))))
  '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.99))))
  '(org-level-6 ((t (:inherit variable-pitch :foreground "yellow3"))))
- '(org-level-7 ((t (:inherit variable-pitch :foreground "gray"))))
+ '(org-level-7 ((t (:inherit variable-pitch :foreground "light sea green" :weight normal))))
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))

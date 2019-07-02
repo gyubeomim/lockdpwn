@@ -1992,7 +1992,7 @@
  '(org-level-4 ((t (:inherit variable-pitch :foreground "light gray" :weight normal :height 0.99))))
  '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.99))))
  '(org-level-6 ((t (:inherit variable-pitch :foreground "yellow3"))))
- '(org-level-7 ((t (:inherit variable-pitch :foreground "gray"))))
+ '(org-level-7 ((t (:inherit variable-pitch :foreground "light sea green" :weight normal))))
  '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
