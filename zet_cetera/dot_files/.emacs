@@ -450,6 +450,8 @@
 
 
 ;; 한글폰트 설정 (size 부분을 바꾸면 크기가 바뀝니다)
+(set-fontset-font "fontset-default" 'hangul '("NanumGothic" . "unicode-bmp"))
+;; (set-fontset-font "fontset-default" 'hangul '("NanumGothicCoding" . "unicode-bmp"))
 (set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 20))
 ;; (set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("NanumGothicCoding" . "unicode-bmp") )
 ;; (set-fontset-font "fontset-default" '(#xe0bc . #xf66e)  '("NanumGothicCoding" . "unicode-bmp") )
@@ -465,7 +467,7 @@
 
 ;; emacs --daemon 버전에서 M-x load-file 하거나 새로 켜는 경우 한글폰트를 적용하는 함수
 (defun set_korean_font_after_loading (&optional frame)
-  (set-fontset-font "fontset-default" 'hangul "NanumGothicCoding"))
+  (set-fontset-font "fontset-default" 'hangul "NanumGothic"))
 
 (add-hook 'after-make-frame-functions 'set_korean_font_after_loading)
 
@@ -799,6 +801,16 @@
              ("DONE" . "#268bd2")
              ("COMPLETE" . "#268bd2")
              ))
+
+     ;; org-item의 -를 bullet으로 변경하는 코드
+     (font-lock-add-keywords 'org-mode
+                             '(("^ +\\([-*]\\) "
+                                (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+     (font-lock-add-keywords 'org-mode
+                             '(("^ +\\([-*]\\) "
+                                0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "‣")))
+                               ("\\(->\\)"
+                                0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "→")))))
 
      ;; org-bullets 모드 활성화
      (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))

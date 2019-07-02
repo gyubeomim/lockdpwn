@@ -253,24 +253,28 @@
 
 
 ;; 한글폰트 설정 (size 부분을 바꾸면 크기가 바뀝니다)
-;; (set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 19))
-(set-fontset-font "fontset-default" 'hangul '("NanumGothicCoding" . "unicode-bmp"))
+(set-fontset-font "fontset-default" 'hangul '("NanumGothic" . "unicode-bmp"))
+;; (set-fontset-font "fontset-default" 'hangul '("NanumGothicCoding" . "unicode-bmp"))
+;; (set-fontset-font t 'hangul  (font-spec :name "NanumGothic" :size 18))
+;; (set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 18))
+;; (set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("NanumGothic" . "unicode-bmp") )
 ;; (set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("NanumGothicCoding" . "unicode-bmp") )
 ;; (set-fontset-font "fontset-default" '(#xe0bc . #xf66e)  '("NanumGothicCoding" . "unicode-bmp") )
 
 ;; 선호하는 인코딩환경을 utf-8으로 설정합니다 (한글 문제)
 ;; 한글이 깨지는 경우
 ;; M-x revert-buffer-with-coding-system --> korea-iso-8bit 으로 설정해주면 정상적으로 보인다
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-language-environment "Korean")
+;; (set-terminal-coding-system 'utf-8)
+;; (set-keyboard-coding-system 'utf-8)
+;; (set-language-environment "Korean")
 (prefer-coding-system 'utf-8)
+;; (modify-coding-system-alist 'file "" 'utf-8-unix)
 ;; (set-file-name-coding-system 'cp949-dos)
 
 
 ;; emacs --daemon 버전에서 M-x load-file 하거나 새로 켜는 경우 한글폰트를 적용하는 함수
 (defun set_korean_font_after_loading (&optional frame)
-  (set-fontset-font "fontset-default" 'hangul "NanumGothicCoding"))
+  (set-fontset-font "fontset-default" 'hangul "NanumGothic"))
 
 (add-hook 'after-make-frame-functions 'set_korean_font_after_loading)
 
@@ -538,6 +542,16 @@
              ("DONE" . "#268bd2")
              ("COMPLETE" . "#268bd2")
              ))
+
+     ;; org-item의 -를 bullet으로 변경하는 코드
+     (font-lock-add-keywords 'org-mode
+                        '(("^ +\\([-*]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+     (font-lock-add-keywords 'org-mode
+                        '(("^ +\\([-*]\\) "
+                           0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "‣")))
+                          ("\\(->\\)"
+                           0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "→")))))
 
      ;; org-bullets 모드 활성화
      (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))
@@ -2569,9 +2583,7 @@ created by edward 180515"
     ((daily today require-timed)
      (800 1000 1200 1400 1600 1800 2000)
      "......" " ")))
- '(org-bullets-bullet-list
-   (quote
-    ("\342\347\354\353\353\200\213\207\223\276" "\342\347\354\353\353\200\213\207\223\277" "\342\350\346\347\354\353\353\200\213\253\214\214\203\242\200" "\342\345\354\354\354\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353\354\353\354\354\347\353쎗\255\272\255\272\255\272\255\272\255\277\236" "*")))
+ '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
    (quote
@@ -2778,7 +2790,7 @@ created by edward 180515"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "outline" :family "Source Code Pro"))))
+ '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "outline" :antialias "natural" :family "Source Code Pro"))))
  '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black"))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
