@@ -5,56 +5,73 @@
 #include <cstring>
 #include <cstdio>
 #include <queue>
-#include <algorithm>
 
 using namespace std;
 
-const int roff[4] = {-1, 1, 0 ,0};
-const int coff[4] = {0,0,-1,1};
-bool map[25][25];
-bool visited[25][25] = {0};
+const int roff[9] = {0, -1, 1, 0, 0, -1, -1, 1, 1};
+const int coff[9] = {0, 0, 0, -1, 1, -1, 1, -1, 1};
+int N,M;
+bool map[50][50];
+bool visited[50][50] = {0};
 queue<int> Q;
-vector<int> v;
 
-int bfs(int r, int c) {
-  if(map[r][c] == 1) {
-    Q.push(r*25 + c);
-  }
+bool bfs(int r, int c) {
+  if (visited[r][c]) return false;
 
-  while(!Q.empty()){
-    for(int d=0; d<4; d++) {
-    int nr = r + roff[d];
-    int nc = c + coff[d];
-
-    }
+  if (map[r][c] == 1) {
+    // cout << "r: " << r<<", c: " << c <<endl;
+    Q.push(50 * r + c);
   } 
+  else
+    return false;
 
-}
+  while (!Q.empty()) {
+    int qSize = Q.size();
+    for (int i = 0; i < qSize; i++) {
+      int r = Q.front() / 50;
+      int c = Q.front() % 50;
+      Q.pop();
 
-int main() {
-  int N;
-  cin >> N;
+      for (int d = 0; d < 9; d++) {
+        int nr = r + roff[d];
+        int nc = c + coff[d];
 
-  for(int i=0; i<N; i++){
-    for(int j=0;j<N;j++){
-      scanf("%1d", &map[i][j]);
-    }
-  }
+        if (nr < 0 || nr >= M || nc < 0 || nc >= N) continue;
+        if (!map[nr][nc]) continue;
+        if (visited[nr][nc]) continue;
 
-
-  int num = 0;
-  for(int r=0;r<N;r++){
-    for(int c=0;c<N;c++){
-      num = bfs(r,c);
-      if(num != 0) {
-        v.push_back(num);
+        visited[nr][nc] = true;
+        Q.push(50 * nr + nc);
       }
     }
   }
+  return true;
+}
 
-  std::sort(v.begin(), v.end());
-  for(auto it : v) {
-    cout << it << '\n';
+int main() {
+  while (true) {
+    cin >> N >> M;
+    if(N==0&&M==0) return 0;
+
+    for (int i = 0; i < M; i++) {
+      for (int j = 0; j < N; j++) {
+        cin >> map[i][j];
+        // cout << "map[" << i <<"]["<<j<<"]: " << map[i][j]<<endl;
+      }
+    }
+    int count = 0;
+    // cout << "N: " << N << ", M: " << M << endl;
+    for (int i = 0; i < M; i++) {
+      for (int j = 0; j < N; j++) {
+        if (bfs(i, j)) {
+          // cout << "i: " << i << ", j: " << j << endl;
+          count += 1;
+        }
+      }
+    }
+    cout << count << '\n';
+    memset(map,0,sizeof(map));
+    memset(visited,0,sizeof(visited));
   }
 
   return 0;

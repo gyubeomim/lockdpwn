@@ -723,8 +723,6 @@
      (define-key org-mode-map (kbd "C-<") (lambda () (interactive)(org-capture nil "m")))
      ;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
      (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
-     ;; C-> 키로 어느곳에서나 todo.org LIST 기능을 열게합니다
-     (define-key org-mode-map (kbd "C->") (lambda () (interactive)(org-capture nil ";")))
      ;; C-<f12> 키로 어느곳에서나 org-capture 기능을 열게합니다
      (define-key org-mode-map (kbd "C-<f12>") 'org-capture)
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
@@ -786,7 +784,7 @@
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
            '(
-             (sequence "LIST" "TODO" "|" "DELAYED" "PAUSED" "REPLACED" "CANCELLED"  "DONE")
+             (sequence "TODO" "|" "DELAYED" "PAUSED" "REPLACED" "CANCELLED"  "DONE")
              (sequence "MILESTONE" "|" "COMPLETE")
              )
            )
@@ -796,7 +794,6 @@
              ("REPLACED" . "goldenrod")
              ("DELAYED" . "goldenrod")
              ("PAUSED" . "goldenrod")
-             ("LIST" . "#86dc2f")
              ("TODO" . "#86dc2f")
              ("MILESTONE" . "#86dc2f")
              ("DONE" . "#268bd2")
@@ -825,11 +822,7 @@
 
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates  '((";" "todo.org: [LIST]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
-                                    "*** LIST %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
-
-                                   (":" "todo.org: [TODO]" entry
+     (setq org-capture-templates  '((":" "todo.org: [TODO]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
@@ -981,8 +974,6 @@
 (global-set-key (kbd "C-M-?") 'org-agenda)
 ;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
 (global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
-;; C-> 키로 어느곳에서나 todo.org LIST 기능을 열게합니다
-(global-set-key (kbd "C->") (lambda () (interactive)(org-capture nil ";")))
 ;; C-< 키로 어느곳에서나 milestone.org MILESTONE 기능을 열게합니다
 (global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "m")))
 ;; C-<f12> 키로 어느곳에서나 org-capture 기능을 열게합니다
@@ -1126,7 +1117,6 @@
     (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
                                                   (let ((string (thing-at-point 'line t)))
                                                     (cond ((string-match-p "TODO" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "LIST" string) (org-todo-done-edward "DONE"))
                                                           ((string-match-p "REPLACED" string) (org-todo-done-edward "DONE"))
                                                           ((string-match-p "DELAYED" string) (org-todo-done-edward "DONE"))
                                                           ((string-match-p "PAUSED" string) (org-todo-done-edward "DONE"))
