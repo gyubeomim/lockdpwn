@@ -958,6 +958,11 @@
                                   (define-key org-agenda-mode-map (kbd "C-u") 'evil-scroll-up)
                                   (define-key org-agenda-mode-map (kbd "C-d") 'evil-scroll-down)
 
+                                  ;; tab 키로 해당 이벤트를 확인합니다
+                                  (define-key org-agenda-mode-map (kbd "<tab>") 'org-agenda-show)
+
+                                  ;; ' 키로 tag를 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "'") 'org-agenda-set-tags)
                                   (define-key org-agenda-mode-map (kbd "<M-S-right>") 'org-shiftright)
                                   (define-key org-agenda-mode-map (kbd "<M-S-left>") 'org-shiftleft)
                                   ))
@@ -1993,8 +1998,8 @@
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-agenda-done ((t (:foreground "gainsboro" :slant italic))))
  '(org-block ((t (:foreground "gainsboro"))))
- '(org-block-begin-line ((t (:inherit org-meta-line :foreground "#002b36" :underline "dark slate gray" :weight normal))))
- '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
+ '(org-block-begin-line ((t (:inherit org-meta-line :background "#333333" :foreground "gray" :weight normal))))
+ '(org-block-end-line ((t (:inherit org-meta-line :background "#333333" :foreground "gray" :weight normal))))
  '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
  '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
@@ -2074,15 +2079,15 @@
     (set-face-attribute 'default frame :height 125)
     (message "Set frame's default text height to 125")))
 
-(defun set-frame-141 (&optional frame)
+(defun set-frame-133 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 141)
-    (message "Set frame's default text height to 141")))
+    (set-face-attribute 'default frame :height 133)
+    (message "Set frame's default text height to 133")))
 
 (defun set-frame-153 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
@@ -2100,7 +2105,7 @@
 (global-set-key (kbd "C-<f8>") 'set-frame-108)
 (global-set-key (kbd "C-<f9>") 'set-frame-110)
 (global-set-key (kbd "C-<f10>") 'set-frame-125)
-(global-set-key (kbd "C-<f11>") 'set-frame-141)
+(global-set-key (kbd "C-<f11>") 'set-frame-133)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 
@@ -3481,10 +3486,10 @@ created by edward 180515"
 (setq key-chord-one-key-delay 0.17) ; default 0.2
 (key-chord-define-global "66" 'ein:jupyter-server-stop)        ;; jupyter notebook 서버 종료
 (key-chord-define-global ",," 'jedi:complete)                  ;; 코드 자동완성 for python
-(key-chord-define-global "xx" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
-(key-chord-define-global "zz" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
-(key-chord-define-global "XX" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
-(key-chord-define-global "aa" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
+(key-chord-define-global "zz" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
+(key-chord-define-global "aa" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
+(key-chord-define-global "cc" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
+(key-chord-define-global "CC" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
