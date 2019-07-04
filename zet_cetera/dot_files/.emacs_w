@@ -545,7 +545,7 @@
              ("COMPLETE" . "#268bd2")
              ))
 
-     ;; org-item의 -를 bullet으로 변경하는 코드
+     ;; org-item의 -를 bullet으로 변경하는 코드 (for Windows only)
      (add-hook 'org-mode-hook (lambda ()
                                 (push '("-" .  8226) prettify-symbols-alist)
                (prettify-symbols-mode)))
