@@ -1,70 +1,93 @@
-
-
 #include <iostream>
-#include <cmath>
-#include <cstring>
-#include <cstdio>
 #include <queue>
+#include <algorithm>
+#include <cstring>
 
 using namespace std;
 
-const int roff[4] = {-1, 1, 0, 0};
-const int coff[4] = {0, 0, -1, 1};
-int N,M;
-int map[1000][1000];
-bool visited[1000][1000] = {0};
-queue<int> Q;
+const int dx[4] = {-1, 1, 0, 0};
+const int dy[4] = {0, 0, -1, 1};
 
-int main() {
-	cin >> N >> M;
-	if(N==0 && M==0) return 0;
+int N, num;
+int map[101][101], visited[101][101] = {0};
 
-	for (int i = 0; i < M; i++) {
-		for (int j = 0; j < N; j++) {
-			cin >> map[i][j];
-			// cout << "map[" << i <<"]["<<j<<"]: " << map[i][j]<<endl;
-			if(map[i][j]==1) {
-				Q.push(1000*i+j);
-				visited[i][j] = true;
-				// cout << "visited[" << i << "]["<< j << "]: " << visited[i][j] << endl;
+bool chk(int x,int y){
+	return 0<=x && x<N && 0<=y && y<N;
+}
+
+void dfs(int x, int y, int num) {
+  visited[x][y] = true;
+  map[x][y] = num;
+
+  for (int d = 0; d < 4; d++) {
+    int nx = x + dx[d];
+    int ny = y + dy[d];
+    if (chk(nx, ny) && map[nx][ny] && !visited[nx][ny])
+      dfs(nx, ny, num);
+  }
+}
+
+int bfs(int num) {
+	queue<pair<int,int>> Q;
+	memset(visited,0,sizeof(visited));
+
+	for(int i=0;i<N;i++){
+		for(int j=0;j<N;j++){
+			if(map[i][j]==num){
+				visited[i][j]=1;
+				Q.push({i,j});
 			}
 		}
 	}
 
 	int result = 0;
-
 	while(!Q.empty()) {
-		int qSize = Q.size();
-		for(int i=0; i<qSize;i++) {
-			int r=Q.front()/1000;
-			int c=Q.front()%1000;
+		int qsize = Q.size();
+		while(qsize--){
+			int x=Q.front().first;
+			int y=Q.front().second;
 			Q.pop();
 
-			for(int d=0; d<4; d++) {
-				int nr=r+roff[d];
-				int nc=c+coff[d];
+			for(int d=0;d<=4;d++){
+				int nx=x+dx[d];
+				int ny=y+dy[d];
 
-				if (nr < 0 || nr >= M || nc < 0 || nc >= N) continue;
-				if (map[nr][nc]==-1) continue;
-				if (visited[nr][nc]) continue;
-
-				visited[nr][nc] = true;
-				map[nr][nc] = 1;
-				Q.push(1000 * nr + nc);
+				if(!chk(nx,ny)) continue;
+				if(map[nx][ny] !=0 && map[nx][ny]!=num) return result;
+				if(map[nx][ny]==0&&!visited[nx][ny]){
+					visited[nx][ny]=1;
+					Q.push({nx,ny});
+				}
 			}
 		}
-		result += 1;
+		result+=1;
 	}
+}
 
-	for (int i = 0; i < M; i++) {
-		for (int j = 0; j < N; j++) {
-			if(map[i][j]==0) {	
-				cout << -1 << '\n';
-				return 0;
-			}
+int main() {
+  cin >> N;
+  if (N == 0) return 0;
+
+  for (int i = 0; i < N; i++) {
+    for (int j = 0; j < N; j++) {
+      cin >> map[i][j];
+      // cout << "map[" << i <<"]["<<j<<"]: " << map[i][j]<<endl;
+    }
+  }
+
+	for(int i=0;i<N;i++) {
+		for(int j=0;j<N;j++){
+			if(map[i][j] && !visited[i][j])
+			dfs(i,j,++num);
 		}
 	}
-	cout << result-1 << '\n';
 
-	return 0;
+	int min_dist = 9999;
+
+	for(int i=1;i<=num;i++){
+		min_dist = std::min(min_dist,bfs(i));
+	}
+	cout << min_dist << '\n';
+
+  return 0;
 }

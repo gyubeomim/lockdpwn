@@ -2414,6 +2414,9 @@ created by edward 180515"
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
 
+;; Alt + F4 키로 emacsclient를 종료합니다
+(global-set-key (kbd "M-<f4>") 'save-buffers-kill-terminal)
+
 ;; .h header 파일을 c++ 모드로 설정합니다
 ;; 아니면 아래 라인을 적용하지 않고 헤더파일 맨 첫줄에 // -*-c++-*- 구문을 입력합니다
 ;; 아니면 .hpp 파일로 만들면 됩니다
