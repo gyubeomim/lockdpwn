@@ -7,9 +7,9 @@ using namespace std;
 using namespace cv;
 
 int main(int argc, const char* argv[]) {
-  /* cv::Ptr<Feature2D> f2d = xfeatures2d::SIFT::create(); */
+  cv::Ptr<Feature2D> f2d = xfeatures2d::SIFT::create();
   /* cv::Ptr<Feature2D> f2d = xfeatures2d::SURF::create(); */
-  cv::Ptr<Feature2D> f2d = ORB::create();
+  /* cv::Ptr<Feature2D> f2d = ORB::create(); */
 
   // you get the picture, i hope..
   Mat img_1 = imread("/home/dyros-vehicle/Pictures/10.pgm", 1);

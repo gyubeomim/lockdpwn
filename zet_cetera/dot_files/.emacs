@@ -154,6 +154,9 @@
 
 (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)            ; rebihnd tab to do persistent action
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)            ; rebihnd tab to do persistent action
+;; M-j,k로 helm에서 위아래로 커서를 움직이는 명령어를 실행합니다.
+(define-key helm-map (kbd "M-j") 'helm-next-line)
+(define-key helm-map (kbd "M-k") 'helm-previous-line)
 ;; (define-key helm-grep-mode-map (kbd "<return>")  'helm-grep-mode-jump-other-window)
 ;; (define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
 ;; (define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
@@ -1092,12 +1095,31 @@
 (setq easy-jekyll-root "/home/dyros-vehicle/")
 (setq easy-jekyll-previewtime "300")
 
-;;
 (define-key global-map (kbd "C-c C-e") 'easy-jekyll)
 ;; (setq easy-jekyll-sshdomain "blogdomain")
 
-;; PACKAGE: minimap
-(global-set-key (kbd "C-c m") 'minimap-mode)
+;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수 (NOT USED)
+(defun make_TAGS_file (&optional path)
+  "make TAGS file"
+  (interactive (list (read-file-name "path to make TAGS : " default-directory)))
+  (with-temp-buffer
+    (shell-command (concat "find " (concat path) (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
+  )
+
+;; 현재 위치에서 TAGS 파일을 생성해주는 함수
+(defun make_TAGS_file_auto (&optional path)
+  "make TAGS file automatically"
+  (interactive)
+  (with-temp-buffer
+    (shell-command (concat "find " default-directory (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
+  )
+
+;; C-c / 키를 이용해 자동으로 GTAGS && TAGS file을 만든다.
+(global-set-key (kbd "C-c /") '(lambda ()
+                               (interactive)
+                               (make_TAGS_file_auto)
+                               (helm-gtags-create-tags default-directory "default")
+                               ))
 
 ;; PACKAGE: evil
 (require 'evil)
@@ -1140,6 +1162,13 @@
                                                           ((string-match-p "CANCELLED" string) (org-todo-done-edward "DONE"))
                                                           ((string-match-p "MILESTONE" string) (org-todo-done-edward "COMPLETE"))
                                                           ))))
+
+    ;; +, 3,#,4,$ 키로 gtag, TAGS 파일을 생성 + 코드 네이버게이션을 하는 명령어를 실행합니다
+    (define-key evil-motion-state-map (kbd "+") 'make_TAGS_file)
+    (define-key evil-motion-state-map (kbd "3") 'helm-gtags-dwim)
+    (define-key evil-motion-state-map (kbd "#") 'helm-gtags-pop-stack)
+    (define-key evil-motion-state-map (kbd "4") 'xref-find-definitions)
+    (define-key evil-motion-state-map (kbd "$") 'xref-pop-marker-stack)
 
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
@@ -2386,28 +2415,6 @@
                          ;; (semantic-mode t)
                          ))
 
-;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수 (NOT USED)
-(defun make_TAGS_file (&optional path)
-  "make TAGS file"
-  (interactive (list (read-file-name "path to make TAGS : " default-directory)))
-  (with-temp-buffer
-    (shell-command (concat "find " (concat path) (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
-  )
-
-;; 현재 위치에서 TAGS 파일을 생성해주는 함수
-(defun make_TAGS_file_auto (&optional path)
-  "make TAGS file automatically"
-  (interactive)
-  (with-temp-buffer
-    (shell-command (concat "find " default-directory (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
-  )
-
-;; C-c / 키를 이용해 자동으로 GTAGS && TAGS file을 만든다.
-(global-set-key (kbd "C-c /") '(lambda ()
-                               (interactive)
-                               (make_TAGS_file_auto)
-                               (helm-gtags-create-tags default-directory "default")
-                               ))
 
 (require 'tabbar)
 ; turn on the tabbar
@@ -3486,13 +3493,13 @@ created by edward 180515"
 (setq key-chord-one-key-delay 0.17) ; default 0.2
 (key-chord-define-global "66" 'ein:jupyter-server-stop)        ;; jupyter notebook 서버 종료
 (key-chord-define-global ",," 'jedi:complete)                  ;; 코드 자동완성 for python
-(key-chord-define-global "zz" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
-(key-chord-define-global "aa" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
-(key-chord-define-global "cc" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
-(key-chord-define-global "CC" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 (key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
+;; (key-chord-define-global "zz" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
+;; (key-chord-define-global "aa" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
+;; (key-chord-define-global "ZZ" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
+;; (key-chord-define-global "AA" 'xref-pop-marker-stack)          ;; 코드 네비게이션 돌아오기      (up to emacs 25.2)
 ;; (key-chord-define-global "MM" 'ac-complete-semantic)           ;; 코드 자동완성
 ;; (key-chord-define-global "mm" 'ac-complete-semantic-raw)       ;; 코드 자동완성2
 ;;(key-chord-define-global "??" 'split-window-right)             ;; 오른쪽에 새창 만들기 (NOT USED)
