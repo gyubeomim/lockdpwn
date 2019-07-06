@@ -886,6 +886,9 @@
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
 
+    ;; org-mode에서 {, }키로 커서의 라인을 strikethrough 처리합니다.
+    (define-key evil-motion-state-map (kbd "{") 'strike-through-for-org-mode)
+    (define-key evil-motion-state-map (kbd "}") 'strike-through-for-org-mode-undo)
 
     ;; 1,2키로 tab들을 이동합니다
     (define-key evil-motion-state-map (kbd "1") 'tabbar-backward)
