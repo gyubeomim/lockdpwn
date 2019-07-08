@@ -88,7 +88,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -146,7 +146,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_LIGHTGREEN\esstarlaw(@\u)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTGREEN\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # PS1="$C_LIGHTRED[user@user]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # PS1="$C_LIGHTBLUE[user@user]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 

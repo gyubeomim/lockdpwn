@@ -2099,15 +2099,15 @@
     (set-face-attribute 'default frame :height 110)
     (message "Set frame's default text height to 110")))
 
-(defun set-frame-125 (&optional frame)
+(defun set-frame-118 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 125)
-    (message "Set frame's default text height to 125")))
+    (set-face-attribute 'default frame :height 118)
+    (message "Set frame's default text height to 118")))
 
 (defun set-frame-133 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
@@ -2134,7 +2134,7 @@
 (global-set-key (kbd "C--") 'zoom-frame-out)
 (global-set-key (kbd "C-<f8>") 'set-frame-108)
 (global-set-key (kbd "C-<f9>") 'set-frame-110)
-(global-set-key (kbd "C-<f10>") 'set-frame-125)
+(global-set-key (kbd "C-<f10>") 'set-frame-118)
 (global-set-key (kbd "C-<f11>") 'set-frame-133)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
@@ -3340,8 +3340,6 @@ created by edward 180515"
     (define-key magit-process-mode-map (kbd "[") 'org-todo-list)
     (define-key magit-diff-mode-map (kbd "]") 'org-agenda-list)
     (define-key magit-diff-mode-map (kbd "[") 'org-todo-list)
-    (define-key magit-file-mode-map (kbd "]") 'org-agenda-list)
-    (define-key magit-file-mode-map (kbd "[") 'org-todo-list)
 
     ;; x키로 emacs 창을 최소화합니다.
     (define-key magit-status-mode-map (kbd "x") 'suspend-frame)
