@@ -1,0 +1,210 @@
+/* This module is to set narrower shadow for uttons */
+
+.button,
+.header-bar .entry { /*DEF box-shadow: 0 0px 0px alpha(@dark_shadow, 0.10), 0 1px 2px alpha(@dark_shadow, 0.2);*/
+    box-shadow: 0 1px 1px alpha(@dark_shadow, 0.075);
+}
+
+.button:hover { /*DEF box-shadow: 0 1px 3px alpha(@dark_shadow, 0.10), 0 2px 2px alpha(@dark_shadow, 0.2)*/
+    box-shadow: 0 1px 0px alpha(@dark_shadow, 0.10);}
+
+.button:active { /*SAME*/
+    box-shadow: inset 0 1px 2px 0px alpha (@dark_shadow, 0.16),
+                0 1px 0 0 alpha (@light_shadow, 0.15);}
+
+.button:checked { /*SAME*/
+    box-shadow: inset 0 0px 0px 1px alpha (@dark_shadow, 0.05),
+                0 1px 0 0 alpha (@light_shadow, 0.15);
+}
+
+/* efek line interseksi */
+
+.primary-toolbar .button.raised.linked,
+.primary-toolbar .raised.linked .button,
+.toolbar .button.raised.linked,
+.toolbar .raised.linked .button,
+.toolbar .linked .button,
+.header-bar .button.raised.linked,
+.header-bar .raised.linked .button,
+.header-bar .linked .button {
+box-shadow: inset -1px 0 shade(@toolbar_bg_color, 0.85), 0 1px 1px alpha(@dark_shadow, 0.075);
+}
+
+.primary-toolbar .button.raised.linked:hover,
+.primary-toolbar .raised.linked .button:hover,
+.toolbar .button.raised.linked:hover,
+.toolbar .raised.linked .button:hover,
+.toolbar .linked .button:hover,
+.header-bar .button.raised.linked:hover,
+.header-bar .raised.linked .button:hover,
+.header-bar .linked .button:hover {
+box-shadow: inset -1px 0 shade(@toolbar_bg_color, 0.85), 0 1px 0px alpha(@dark_shadow, 0.10);
+}
+
+.primary-toolbar .button.raised.linked:active,
+.primary-toolbar .raised.linked .button:active,
+.toolbar .button.raised.linked:active,
+.toolbar .raised.linked .button:active,
+.toolbar .linked .button:active,
+.header-bar .button.raised.linked:active,
+.header-bar .raised.linked .button:active,
+.header-bar .linked .button:active {
+box-shadow: inset -1px 0 shade(@toolbar_bg_color, 0.85), inset 0 1px 2px 0px alpha (@dark_shadow, 0.16),
+                0 1px 0 0 alpha (@light_shadow, 0.15);
+}
+
+.primary-toolbar .button.raised.linked:checked,
+.primary-toolbar .raised.linked .button:checked,
+.toolbar .button.raised.linked:checked,
+.toolbar .raised.linked .button:checked,
+.toolbar .linked .button:checked,
+.header-bar .button.raised.linked:checked,
+.header-bar .raised.linked .button:checked,
+.header-bar .linked .button:checked {
+box-shadow: inset -1px 0 shade(@toolbar_bg_color, 0.85), inset 0 0px 0px 1px alpha (@dark_shadow, 0.05),
+                0 1px 0 0 alpha (@light_shadow, 0.15);
+}
+
+.primary-toolbar .button.raised.linked:last-child,
+.primary-toolbar .raised.linked .button:last-child,
+.toolbar .button.raised.linked:last-child,
+.toolbar .raised.linked .button:last-child,
+.toolbar .linked .button:last-child,
+.header-bar .button.raised.linked:last-child,
+.header-bar .raised.linked .button:last-child,
+.header-bar .linked .button:last-child {
+box-shadow: inset -1px 0 transparent, 0 1px 1px alpha(@dark_shadow, 0.075);
+}
+
+.primary-toolbar .button.raised.linked:last-child:hover,
+.primary-toolbar .raised.linked .button:last-child:hover,
+.toolbar .button.raised.linked:last-child:hover,
+.toolbar .raised.linked .button:last-child:hover,
+.toolbar .linked .button:last-child:hover,
+.header-bar .button.raised.linked:last-child:hover,
+.header-bar .raised.linked .button:last-child:hover,
+.header-bar .linked .button:last-child:hover {
+box-shadow: inset -1px 0 transparent, 0 1px 0px alpha(@dark_shadow, 0.1);
+}
+
+.primary-toolbar .button.raised.linked:last-child:active,
+.primary-toolbar .raised.linked .button:last-child:active,
+.toolbar .button.raised.linked:last-child:active,
+.toolbar .raised.linked .button:last-child:active,
+.toolbar .linked .button:last-child:active,
+.header-bar .button.raised.linked:last-child:active,
+.header-bar .raised.linked .button:last-child:active,
+.header-bar .linked .button:last-child:active {
+box-shadow: inset -1px 0 transparent,  inset 0 1px 2px 0px alpha (@dark_shadow, 0.16),
+                0 1px 0 0 alpha (@light_shadow, 0.15);
+}
+
+.primary-toolbar .button.raised.linked:last-child:checked,
+.primary-toolbar .raised.linked .button:last-child:checked,
+.toolbar .button.raised.linked:last-child:checked,
+.toolbar .raised.linked .button:last-child:checked,
+.toolbar .linked .button:last-child:checked,
+.header-bar .button.raised.linked:last-child:checked,
+.header-bar .raised.linked .button:last-child:checked,
+.header-bar .linked .button:last-child:checked {
+box-shadow: inset -1px 0 transparent,  inset 0 0px 0px 1px alpha (@dark_shadow, 0.05),
+                0 1px 0 0 alpha (@light_shadow, 0.15);
+}
+
+/* efek line interseksi kasus vekdrop only if shadow wider */
+
+.primary-toolbar .button.raised.linked:backdrop,
+.primary-toolbar .raised.linked .button:backdrop,
+.toolbar .button.raised.linked:backdrop,
+.toolbar .raised.linked .button:backdrop,
+.toolbar .linked .button:backdrop,
+.header-bar .button.raised.linked:backdrop,
+.header-bar .raised.linked .button:backdrop,
+.header-bar .linked .button:backdrop,
+.primary-toolbar .button.raised.linked:insensitive,
+.primary-toolbar .raised.linked .button:insensitive,
+.toolbar .button.raised.linked:insensitive,
+.toolbar .raised.linked .button:insensitive,
+.toolbar .linked .button:insensitive,
+.header-bar .button.raised.linked:insensitive,
+.header-bar .raised.linked .button:insensitive,
+.header-bar .linked .button:insensitive {
+    box-shadow: inset -1px 0 shade(@toolbar_bg_color, 0.85)}
+
+.primary-toolbar .button.raised.linked:last-child:backdrop,
+.primary-toolbar .raised.linked .button:last-child:backdrop,
+.toolbar .button.raised.linked:last-child:backdrop,
+.toolbar .raised.linked .button:last-child:backdrop,
+.toolbar .linked .button:last-child:backdrop,
+.header-bar .button.raised.linked:last-child:backdrop,
+.header-bar .raised.linked .button:last-child:backdrop,
+.header-bar .linked .button:last-child:backdrop,
+.primary-toolbar .button.raised.linked:last-child:insensitive,
+.primary-toolbar .raised.linked .button:last-child:insensitive,
+.toolbar .button.raised.linked:last-child:insensitive,
+.toolbar .raised.linked .button:last-child:insensitive,
+.toolbar .linked .button:last-child:insensitive,
+.header-bar .button.raised.linked:last-child:insensitive,
+.header-bar .raised.linked .button:last-child:insensitive,
+.header-bar .linked .button:last-child:insensitive {
+box-shadow: none
+}
+
+/* This module is to set narrower padding for uttons */
+
+.button { /*tombol dropdown menu*/
+    padding: 3px;
+}
+  .button.image-button {
+    padding: 4px 6px; }
+  .button.text-button {
+    padding-left: 12px;
+    padding-right: 12px; }
+
+  .button.text-button.image-button {
+    padding: 4px 8px 5px; }
+    .button.text-button.image-button GtkLabel:first-child {
+      padding-left: 8px; }
+    .button.text-button.image-button GtkLabel:last-child {
+      padding-right: 8px; }
+
+  .header-bar .button.text-button, .primary-toolbar .button.text-button, .toolbar .button.text-button, .action-bar .button.text-button, .selection-mode.header-bar .button.text-button {
+    padding: 4px 12px; }
+  .header-bar .button.image-button, .titlebar .button.image-button, .primary-toolbar .button.image-button, .toolbar .button.image-button, .action-bar .button.image-button, .selection-mode.header-bar .button.image-button {
+    padding: 4px 6px; }
+
+.titlebar .titlebutton { /* efek padding header nautilus primarily red-yellow-green */
+   padding: 4px 1px;
+}
+
+.header-bar .entry {
+padding-top: 4px;
+padding-bottom: 4px }
+
+.dialog-action-area.linked .button, 
+.dialog-action-area.linked .button:active,
+.dialog-action-area.linked .button:active:hover,
+.dialog-action-area.linked .button:insensitive,
+.dialog-action-area.linked .button:only-child,
+.dialog-action-area.linked .button:active:only-child,
+.dialog-action-area.linked .button:active:hover:only-child,
+.dialog-action-area.linked .button:insensitive:only-child,
+.dialog-action-area.linked .button:first-child,
+.dialog-action-area.linked .button:active:first-child,
+.dialog-action-area.linked .button:active:hover:first-child,
+.dialog-action-area.linked .button:insensitive:first-child,
+.dialog-action-area.linked .button:last-child,
+.dialog-action-area.linked .button:active:last-child,
+.dialog-action-area.linked .button:active:hover:last-child,
+.dialog-action-area.linked .button:insensitive:last-child {
+      padding: 4px 6px;}
+
+/*pengaruhi pathbar pada dialog box TDK pd nautilus*/
+.path-bar .button, .path-bar .header-bar .button.titlebutton, .header-bar .path-bar .button.titlebutton,
+.path-bar .titlebar .button.titlebutton,
+.titlebar .path-bar .button.titlebutton,
+.path-bar GtkCalendar.header .button.titlebutton,
+GtkCalendar.header .path-bar .button.titlebutton {
+padding: 4px 6px
+}
+

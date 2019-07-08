@@ -886,6 +886,9 @@
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
 
+    ;; org-mode에서 {, }키로 커서의 라인을 strikethrough 처리합니다.
+    (define-key evil-motion-state-map (kbd "{") 'strike-through-for-org-mode)
+    (define-key evil-motion-state-map (kbd "}") 'strike-through-for-org-mode-undo)
 
     ;; 1,2키로 tab들을 이동합니다
     (define-key evil-motion-state-map (kbd "1") 'tabbar-backward)
@@ -2839,8 +2842,8 @@ created by edward 180515"
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-agenda-done ((t (:foreground "gainsboro" :slant italic))))
  '(org-block ((t (:foreground "gainsboro"))))
- '(org-block-begin-line ((t (:inherit org-meta-line :foreground "#002b36" :underline "dark slate gray" :weight normal))))
- '(org-block-end-line ((t (:inherit org-meta-line :foreground "#002b36" :overline "dark slate grey" :weight normal))))
+ '(org-block-begin-line ((t (:inherit org-meta-line :background "#333333" :foreground "#gray" :weight normal))))
+ '(org-block-end-line ((t (:inherit org-meta-line :foreground "gray" :weight normal))))
  '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
  '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
