@@ -645,8 +645,9 @@
 (defun org-todo-done-edward(arg)
 ""
 (interactive)
-(cond ((string= arg "DONE") (org-todo "DONE"))    ;; 파라미터가 DONE인 경우
-    ((string= arg "COMPLETE") (org-todo "COMPLETE"))  ;; 파라미터가 MILESTONE인 경우
+(cond ((string= arg "DONE") (org-todo "DONE")) 
+    ((string= arg "COMPLETE") (org-todo "COMPLETE"))
+    ((string= arg "CLOSED") (org-todo "CLOSED"))
     (t (user-error "Error while doing org-todo-dopne-edward"))
     )
 (save-excursion
@@ -791,6 +792,7 @@
            '(
              (sequence "TODO" "|" "DELAYED" "PAUSED" "REPLACED" "CANCELLED"  "DONE")
              (sequence "MILESTONE" "|" "COMPLETE")
+             (sequence "OPEN" "|" "CLOSED")
              )
            )
      ;; Setting Colours (faces) for todo states to give clearer view of work
@@ -801,8 +803,10 @@
              ("PAUSED" . "goldenrod")
              ("TODO" . "#86dc2f")
              ("MILESTONE" . "#86dc2f")
+             ("OPEN" . "#86dc2f")
              ("DONE" . "#268bd2")
              ("COMPLETE" . "#268bd2")
+             ("CLOSED" . "#268bd2")
              ))
 
      ;; org-item의 -를 bullet으로 변경하는 코드
@@ -860,6 +864,20 @@
                                    ("m" "milestone.org: [Milestone]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/milestone.org" "milestone")
                                     "*** MILESTONE %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
+                                   ("1" "issues.org: [edward]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "edward")
+                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   ("2" "issues.org: [DYROS]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "DYROS")
+                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   ("3" "issues.org: [SNU]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "SNU")
+                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   ("4" "issues.org: [ATLAS]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "ATLAS")
+                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
 
                                    ("d" "daily.org: [Daily]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/daily.org" "daily")
@@ -986,6 +1004,7 @@
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/milestone.org")))
 (global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
+(global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/issues.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
@@ -1161,6 +1180,7 @@
                                                           ((string-match-p "PAUSED" string) (org-todo-done-edward "DONE"))
                                                           ((string-match-p "CANCELLED" string) (org-todo-done-edward "DONE"))
                                                           ((string-match-p "MILESTONE" string) (org-todo-done-edward "COMPLETE"))
+                                                          ((string-match-p "OPEN" string) (org-todo-done-edward "CLOSED"))
                                                           ))))
 
     ;; +, 3,#,4,$ 키로 gtag, TAGS 파일을 생성 + 코드 네이버게이션을 하는 명령어를 실행합니다
@@ -1807,7 +1827,11 @@
                   "CAPTURE-milestone.org")
                  (string=
                   (buffer-name)
-                  "CAPTURE-todo.org"))
+                  "CAPTURE-todo.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-issues.org")
+                 )
                 (return)
               (if
                   (save-excursion
