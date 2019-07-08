@@ -17,4 +17,12 @@ case $1 in
 		# 2개 모니터를 ON (Notebook 모니터는 끔)
        xrandr --output VGA1 --primary --mode 1920x1080R --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 3840x0
         ;;
+    atlas1)
+		# 2개 모니터를 ON
+       xrandr --output DVI-I-1 --primary --mode 1920x1080 --pos 1920x0 --output DVI-I-2 --mode 1920x1080 --pos 0x0
+        ;;
+    off_atlas1)
+		# 1개 모니터만 켠다 
+       xrandr --output DVI-I-1 --primary --mode 1920x1080 --pos 1920x0  --output DVI-I-2 --off
+        ;;
 esac

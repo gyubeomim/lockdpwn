@@ -346,5 +346,9 @@ alias op='cd /home/atlas1/gitrepo/ims_org && git pull origin master'
 alias blog='cd /home/atlas1/gitrepo/tigerk0430.github.io && ./push_master.sh'
 alias blogp='cd /home/atlas1/gitrepo/tigerk0430.github.io && git pull origin master'
 
+# for 3 Monitors Toggle ON/OFF
+alias mon='/home/atlas1/gitrepo/lockdpwn/script_archive/monitors_toggle.sh atlas1'
+alias moff='/home/atlas1/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off_atlas1'
+
 source /opt/ros/kinetic/setup.bash
 source /home/atlas1/catkin_ws/devel/setup.bash
