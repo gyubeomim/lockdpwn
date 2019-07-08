@@ -4,50 +4,41 @@
 using namespace std;
 
 int N;
-vector<pair<char,char>> v[26];
+bool visited[100001];
+int parent[100001] = {0};
+vector<int> v[100001];
 
-void preOrder(char root) {
-	char left=v[root-'A'].front().first;
-	char right=v[root-'A'].front().second;
+void dfs(int now) {
+  visited[now] = true;
 
-	printf("%c",root);
-	if(left!='.') preOrder(left);
-	if(right!='.') preOrder(right);
-}
-
-void inOrder(char root) {
-	char left=v[root-'A'].front().first;
-	char right=v[root-'A'].front().second;
-
-	if(left!='.') inOrder(left);
-	printf("%c",root);
-	if(right!='.') inOrder(right);
-}
-
-void postOrder(char root) {
-	char left=v[root-'A'].front().first;
-	char right=v[root-'A'].front().second;
-
-	if(left!='.') postOrder(left);
-	if(right!='.') postOrder(right);
-	printf("%c",root);
+  for (int i = 0; i < v[now].size(); i++) {
+    int next = v[now][i];
+    if (!visited[next]) {
+      parent[next] = now;
+      dfs(next);
+    }
+  }
 }
 
 int main() {
-	cin >> N;
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+  cin >> N;
 
-	for(int i=0;i<N;i++){
-		char n,l,r;
-		scanf(" %c %c %c", &n,&l,&r); // " %c..." 같이 첫 칸을 띄워주는게 포인트
-		v[n-'A'].push_back({l,r});
-	}
+  for (int i = 0; i < N - 1; i++) {
+    int x, y;
+    cin >> x >> y;
 
-	preOrder('A');
-	cout << '\n';
-	inOrder('A');
-	cout << '\n';
-	postOrder('A');
-	cout << '\n';
+		v[x].push_back(y);
+		v[y].push_back(x);
+  }
+
+  dfs(1);
+
+  for (int i = 2; i <= N; i++) {
+    if (parent[i])
+      cout << parent[i] << '\n';
+  }
 
   return 0;
 }
