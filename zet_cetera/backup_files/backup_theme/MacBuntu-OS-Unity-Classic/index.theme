@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=MacBuntu-OS-Unity-Classic
+Comment=MacBuntu OS Unity Classic
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=MacBuntu-OS-Unity-Classic
+MetacityTheme=MacBuntu-OS-Unity-Classic
+IconTheme=MacBuntu-OS
+CursorTheme=DMZ-Black
+ButtonLayout=close,minimize,maximize:
+X-Ubuntu-UseOverlayScrollbars=true
