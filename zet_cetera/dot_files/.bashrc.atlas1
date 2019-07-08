@@ -146,7 +146,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_LIGHTGREEN\u(@atlas1)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTGREEN\esstarlaw(@\u)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # PS1="$C_LIGHTRED[user@user]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # PS1="$C_LIGHTBLUE[user@user]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
@@ -154,7 +154,7 @@ PS1="$C_LIGHTGREEN\u(@atlas1)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # LANGUAGE=ko_KR
 
 alias g1='cd /home/atlas1/gitrepo/lockdpwn'
-alias g2='cd /home/atlas1/gitrepo_sync/ims_org'
+alias g2='cd /home/atlas1/gitrepo/ims_org'
 alias g3='cd /home/atlas1/gitrepo/tigerk0430.github.io'
 alias g4='cd /home/atlas1/dyros_ws'
 alias g5='cd /home/atlas1/gitrepo/ims_dyros'
@@ -339,8 +339,8 @@ alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 7
 alias cse='cd /home/atlas1/catkin_ws/src/edward/'
 
 # for org-mode
-alias o='cd /home/atlas1/gitrepo_sync/ims_org && ./push_master.sh'
-alias op='cd /home/atlas1/gitrepo_sync/ims_org && git pull origin master'
+alias o='cd /home/atlas1/gitrepo/ims_org && ./push_master.sh'
+alias op='cd /home/atlas1/gitrepo/ims_org && git pull origin master'
 
 # for github page
 alias blog='cd /home/atlas1/gitrepo/tigerk0430.github.io && ./push_master.sh'
