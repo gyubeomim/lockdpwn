@@ -1117,7 +1117,7 @@
 (define-key global-map (kbd "C-c C-e") 'easy-jekyll)
 ;; (setq easy-jekyll-sshdomain "blogdomain")
 
-;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수 (NOT USED)
+;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수
 (defun make_TAGS_file (&optional path)
   "make TAGS file"
   (interactive (list (read-file-name "path to make TAGS : " default-directory)))
@@ -1126,18 +1126,19 @@
   )
 
 ;; 현재 위치에서 TAGS 파일을 생성해주는 함수
-(defun make_TAGS_file_auto (&optional path)
+(defun make_TAGS_file_directly (&optional path)
   "make TAGS file automatically"
   (interactive)
   (with-temp-buffer
-    (shell-command (concat "find " default-directory (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
+    (shell-command (concat "find " default-directory (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t)
+    )
   )
 
 ;; C-c / 키를 이용해 자동으로 GTAGS && TAGS file을 만든다.
 (global-set-key (kbd "C-c /") '(lambda ()
                                (interactive)
-                               (make_TAGS_file_auto)
                                (helm-gtags-create-tags default-directory "default")
+                               (make_TAGS_file_directly)
                                ))
 
 ;; PACKAGE: evil
@@ -1184,7 +1185,11 @@
                                                           ))))
 
     ;; +, 3,#,4,$ 키로 gtag, TAGS 파일을 생성 + 코드 네이버게이션을 하는 명령어를 실행합니다
-    (define-key evil-motion-state-map (kbd "+") 'make_TAGS_file)
+    (define-key evil-motion-state-map (kbd "+") '(lambda(path) (interactive (list (read-directory-name "path to make TAGS : " default-directory)))
+                                                   (helm-gtags-create-tags path "default")
+                                                   (make_TAGS_file path)
+                                                   (rename-file "TAGS" (concat path "/TAGS"))
+                                                   ))
     (define-key evil-motion-state-map (kbd "3") 'helm-gtags-dwim)
     (define-key evil-motion-state-map (kbd "#") 'helm-gtags-pop-stack)
     (define-key evil-motion-state-map (kbd "4") 'xref-find-definitions)
@@ -3609,6 +3614,10 @@ created by edward 180515"
 ;; .emacs_w 파일을 elisp 모드로 세팅합니다.
 (setq auto-mode-alist
       (append '((".*\\.emacs_w\\'" . emacs-lisp-mode))
+              auto-mode-alist))
+;; .emacs.atlas1 파일도 elisp 모드로 세팅합니다
+(setq auto-mode-alist
+      (append '((".*\\.emacs.atlas1\\'" . emacs-lisp-mode))
               auto-mode-alist))
 
 ;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다 (vnc에서 emacs를 사용하는 경우)
