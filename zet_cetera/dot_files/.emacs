@@ -1120,29 +1120,26 @@
 (define-key global-map (kbd "C-c C-e") 'easy-jekyll)
 ;; (setq easy-jekyll-sshdomain "blogdomain")
 
-;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수
-(defun make_TAGS (&optional path)
-  "make TAGS file"
-  (interactive (list (read-file-name "path to make TAGS : " default-directory)))
+;; path를 입력하면 GTAGS, TAGS 파일을 생성해주는 함수
+(defun create_GTAGS_TAGS (&optional path)
+  ""
+  (interactive (list (read-directory-name "path to make GTAGS & TAGS : " default-directory)))
+  (helm-gtags-create-tags path "default")
   (with-temp-buffer
     (shell-command (concat "find " (concat path) (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t))
+  (rename-file "TAGS" (concat path "/TAGS"))
+  (message "[+] Successfully created GTAGS & TAGS!")
   )
 
-;; 현재 위치에서 TAGS 파일을 생성해주는 함수
-(defun create_TAGS_directly (&optional path)
-  "make TAGS file automatically"
+;; 현재 위치에서 GTAGS, TAGS 파일을 생성해주는 함수
+(defun create_GTAGS_TAGS_directly (&optional path)
+  ""
   (interactive)
+  (helm-gtags-create-tags default-directory "default")
   (with-temp-buffer
     (shell-command (concat "find " default-directory (concat " -print | etags - *.{cpp,h,c,cc,hpp,py,el}")) t)
     )
   )
-
-;; C-c / 키를 이용해 자동으로 GTAGS && TAGS file을 만든다.
-(global-set-key (kbd "C-c /") '(lambda ()
-                               (interactive)
-                               (helm-gtags-create-tags default-directory "default")
-                               (create_TAGS_directly)
-                               ))
 
 ;; PACKAGE: evil
 (require 'evil)
@@ -1188,12 +1185,7 @@
                                                           ))))
 
     ;; -, 3,#,4,$ 키로 gtag, TAGS 파일을 생성 + 코드 네이버게이션을 하는 명령어를 실행합니다
-    (define-key evil-motion-state-map (kbd "-") '(lambda(path)
-                                                   (interactive (list (read-directory-name "path to make TAGS : " default-directory)))
-                                                   (helm-gtags-create-tags path "default")
-                                                   (make_TAGS path)
-                                                   (rename-file "TAGS" (concat path "/TAGS"))
-                                                   ))
+    (define-key evil-motion-state-map (kbd "-") 'create_GTAGS_TAGS)
     (define-key evil-motion-state-map (kbd "3") 'helm-gtags-dwim)
     (define-key evil-motion-state-map (kbd "#") 'helm-gtags-pop-stack)
     (define-key evil-motion-state-map (kbd "4") 'xref-find-definitions)
@@ -2381,12 +2373,7 @@
      (define-key dired-mode-map (kbd "2") 'tabbar-forward)
 
      ;; - 키로 gtags, etags를 생성하는 명령어들을 실행합니다
-     (define-key dired-mode-map (kbd "-") '(lambda(path)
-                                                    (interactive (list (read-directory-name "path to make TAGS : " default-directory)))
-                                                    (helm-gtags-create-tags path "default")
-                                                    (make_TAGS path)
-                                                    (rename-file "TAGS" (concat path "/TAGS"))
-                                                    ))
+     (define-key dired-mode-map (kbd "-") 'create_GTAGS_TAGS)
      ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
