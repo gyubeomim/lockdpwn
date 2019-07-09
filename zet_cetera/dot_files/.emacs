@@ -645,7 +645,7 @@
 (defun org-todo-done-edward(arg)
 ""
 (interactive)
-(cond ((string= arg "DONE") (org-todo "DONE")) 
+(cond ((string= arg "DONE") (org-todo "DONE"))
     ((string= arg "COMPLETE") (org-todo "COMPLETE"))
     ((string= arg "CLOSED") (org-todo "CLOSED"))
     (t (user-error "Error while doing org-todo-dopne-edward"))
@@ -878,7 +878,6 @@
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "ATLAS")
                                     "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-
                                    ("d" "daily.org: [Daily]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/daily.org" "daily")
                                     "*** %?%i")
@@ -940,15 +939,19 @@
 (setq org-gcal-client-id "815785509878-3gn7mhcti240j6am59uk95s230n11172.apps.googleusercontent.com"
       org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
       org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo_sync/ims_org/org_files/gcal.org")))
-;; agenda mode를 키면 자동으로 Google Calendar와 동기화합니다
+;; agenda mode
 (add-hook 'org-agenda-mode-hook (lambda ()
-                                  (org-gcal-sync nil nil t)
+                                  ;; atlas1 계정에서는 gcal을 동기화하지 않습니다
+                                  (if (string= (user-login-name) "atlas1")
+                                      nil
+                                    (org-gcal-sync nil nil t)
+                                    )
 
                                   ;; 키바인딩 해제
                                   (define-key org-agenda-mode-map (kbd "C-n") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
-                                  
+
                                   ;; [ ] 키로 org-agenda 목록을 보도록 설정합니다
                                   (define-key org-agenda-mode-map (kbd "]") 'org-agenda-list)
                                   (define-key org-agenda-mode-map (kbd "[") 'org-todo-list)
@@ -1118,7 +1121,7 @@
 ;; (setq easy-jekyll-sshdomain "blogdomain")
 
 ;; path를 입력하면 그곳에서 TAGS 파일을 생성해주는 함수
-(defun make_TAGS_file (&optional path)
+(defun make_TAGS (&optional path)
   "make TAGS file"
   (interactive (list (read-file-name "path to make TAGS : " default-directory)))
   (with-temp-buffer
@@ -1126,7 +1129,7 @@
   )
 
 ;; 현재 위치에서 TAGS 파일을 생성해주는 함수
-(defun make_TAGS_file_directly (&optional path)
+(defun create_TAGS_directly (&optional path)
   "make TAGS file automatically"
   (interactive)
   (with-temp-buffer
@@ -1138,7 +1141,7 @@
 (global-set-key (kbd "C-c /") '(lambda ()
                                (interactive)
                                (helm-gtags-create-tags default-directory "default")
-                               (make_TAGS_file_directly)
+                               (create_TAGS_directly)
                                ))
 
 ;; PACKAGE: evil
@@ -1184,10 +1187,11 @@
                                                           ((string-match-p "OPEN" string) (org-todo-done-edward "CLOSED"))
                                                           ))))
 
-    ;; +, 3,#,4,$ 키로 gtag, TAGS 파일을 생성 + 코드 네이버게이션을 하는 명령어를 실행합니다
-    (define-key evil-motion-state-map (kbd "+") '(lambda(path) (interactive (list (read-directory-name "path to make TAGS : " default-directory)))
+    ;; -, 3,#,4,$ 키로 gtag, TAGS 파일을 생성 + 코드 네이버게이션을 하는 명령어를 실행합니다
+    (define-key evil-motion-state-map (kbd "-") '(lambda(path)
+                                                   (interactive (list (read-directory-name "path to make TAGS : " default-directory)))
                                                    (helm-gtags-create-tags path "default")
-                                                   (make_TAGS_file path)
+                                                   (make_TAGS path)
                                                    (rename-file "TAGS" (concat path "/TAGS"))
                                                    ))
     (define-key evil-motion-state-map (kbd "3") 'helm-gtags-dwim)
@@ -1740,7 +1744,7 @@
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/gitrepo/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -2126,15 +2130,15 @@
     (set-face-attribute 'default frame :height 110)
     (message "Set frame's default text height to 110")))
 
-(defun set-frame-125 (&optional frame)
+(defun set-frame-118 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 125)
-    (message "Set frame's default text height to 125")))
+    (set-face-attribute 'default frame :height 118)
+    (message "Set frame's default text height to 118")))
 
 (defun set-frame-133 (&optional frame)
   "Increase the default size of text by AMT inside FRAME N times.
@@ -2161,7 +2165,7 @@
 (global-set-key (kbd "C--") 'zoom-frame-out)
 (global-set-key (kbd "C-<f8>") 'set-frame-108)
 (global-set-key (kbd "C-<f9>") 'set-frame-110)
-(global-set-key (kbd "C-<f10>") 'set-frame-125)
+(global-set-key (kbd "C-<f10>") 'set-frame-118)
 (global-set-key (kbd "C-<f11>") 'set-frame-133)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
@@ -2375,6 +2379,14 @@
      ;; 1,2키로 tab을 이동합니다
      (define-key dired-mode-map (kbd "1") 'tabbar-backward)
      (define-key dired-mode-map (kbd "2") 'tabbar-forward)
+
+     ;; - 키로 gtags, etags를 생성하는 명령어들을 실행합니다
+     (define-key dired-mode-map (kbd "-") '(lambda(path)
+                                                    (interactive (list (read-directory-name "path to make TAGS : " default-directory)))
+                                                    (helm-gtags-create-tags path "default")
+                                                    (make_TAGS path)
+                                                    (rename-file "TAGS" (concat path "/TAGS"))
+                                                    ))
      ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
@@ -3356,7 +3368,7 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
     (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
-    
+
     ;; Space 키로 helm-for-files 명령을 실행합니다
     (define-key magit-status-mode-map (kbd "<SPC>") 'helm-for-files)
 
@@ -3367,8 +3379,6 @@ created by edward 180515"
     (define-key magit-process-mode-map (kbd "[") 'org-todo-list)
     (define-key magit-diff-mode-map (kbd "]") 'org-agenda-list)
     (define-key magit-diff-mode-map (kbd "[") 'org-todo-list)
-    (define-key magit-file-mode-map (kbd "]") 'org-agenda-list)
-    (define-key magit-file-mode-map (kbd "[") 'org-todo-list)
 
     ;; x키로 emacs 창을 최소화합니다.
     (define-key magit-status-mode-map (kbd "x") 'suspend-frame)
@@ -3615,7 +3625,6 @@ created by edward 180515"
 (setq auto-mode-alist
       (append '((".*\\.emacs_w\\'" . emacs-lisp-mode))
               auto-mode-alist))
-;; .emacs.atlas1 파일도 elisp 모드로 세팅합니다
 (setq auto-mode-alist
       (append '((".*\\.emacs.atlas1\\'" . emacs-lisp-mode))
               auto-mode-alist))
