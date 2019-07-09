@@ -2105,63 +2105,23 @@
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
-(defun set-frame-108 (&optional frame)
+(defun set-frame-custom (&optional num)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 108)
-    (message "Set frame's default text height to 108")))
+    (set-face-attribute 'default frame :height (string-to-number num))
+    (message (concat "Set frame's default text height to " num))))
 
-(defun set-frame-110 (&optional frame)
-  "Increase the default size of text by AMT inside FRAME N times.
-  N can be given as a prefix arg.
-  AMT will default to 10.
-  FRAME will default the selected frame."
-  (interactive "p")
-  (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 110)
-    (message "Set frame's default text height to 110")))
-
-(defun set-frame-118 (&optional frame)
-  "Increase the default size of text by AMT inside FRAME N times.
-  N can be given as a prefix arg.
-  AMT will default to 10.
-  FRAME will default the selected frame."
-  (interactive "p")
-  (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 118)
-    (message "Set frame's default text height to 118")))
-
-(defun set-frame-133 (&optional frame)
-  "Increase the default size of text by AMT inside FRAME N times.
-  N can be given as a prefix arg.
-  AMT will default to 10.
-  FRAME will default the selected frame."
-  (interactive "p")
-  (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 133)
-    (message "Set frame's default text height to 133")))
-
-(defun set-frame-153 (&optional frame)
-  "Increase the default size of text by AMT inside FRAME N times.
-  N can be given as a prefix arg.
-  AMT will default to 10.
-  FRAME will default the selected frame."
-  (interactive "p")
-  (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 153)
-    (message "Set frame's default text height to 153")))
-
-;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
+;; C + <f#> 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
+(global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "103")))
+(global-set-key (kbd "C-<f9>") '(lambda () (interactive) (set-frame-custom "110")))
+(global-set-key (kbd "C-<f10>") '(lambda () (interactive) (set-frame-custom "118")))
+(global-set-key (kbd "C-<f11>") '(lambda () (interactive) (set-frame-custom "133")))
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
-(global-set-key (kbd "C-<f8>") 'set-frame-108)
-(global-set-key (kbd "C-<f9>") 'set-frame-110)
-(global-set-key (kbd "C-<f10>") 'set-frame-118)
-(global-set-key (kbd "C-<f11>") 'set-frame-133)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
 (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
 

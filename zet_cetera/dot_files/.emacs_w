@@ -1171,40 +1171,21 @@
   (interactive "p")
   (zoom-frame (- n) frame amt))
 
-(defun set-frame-103 (&optional frame)
+(defun set-frame-custom (&optional num)
   "Increase the default size of text by AMT inside FRAME N times.
   N can be given as a prefix arg.
   AMT will default to 10.
   FRAME will default the selected frame."
   (interactive "p")
   (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 103)
-    (message "Set frame's default text height to 103")))
+    (set-face-attribute 'default frame :height (string-to-number num))
+    (message (concat "Set frame's default text height to " num))))
 
-(defun set-frame-110 (&optional frame)
-  "Increase the default size of text by AMT inside FRAME N times.
-  N can be given as a prefix arg.
-  AMT will default to 10.
-  FRAME will default the selected frame."
-  (interactive "p")
-  (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 110)
-    (message "Set frame's default text height to 110")))
-
-(defun set-frame-120 (&optional frame)
-  "Increase the default size of text by AMT inside FRAME N times.
-  N can be given as a prefix arg.
-  AMT will default to 10.
-  FRAME will default the selected frame."
-  (interactive "p")
-  (let ((frame (selected-frame)))
-    (set-face-attribute 'default frame :height 120)
-    (message "Set frame's default text height to 120")))
-
-;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
-(global-set-key (kbd "C-<f8>") 'set-frame-103)
-(global-set-key (kbd "C-<f9>") 'set-frame-110)
-(global-set-key (kbd "C-<f10>") 'set-frame-120)
+;; C + <f#> 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
+(global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "103")))
+(global-set-key (kbd "C-<f9>") '(lambda () (interactive) (set-frame-custom "110")))
+(global-set-key (kbd "C-<f10>") '(lambda () (interactive) (set-frame-custom "120")))
+(global-set-key (kbd "C-<f11>") '(lambda () (interactive) (set-frame-custom "125")))
 
 ;; C + -,= 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-=") 'zoom-frame)
@@ -2660,23 +2641,22 @@ created by edward 180515"
                  (string=
                   (buffer-name)
                   "CAPTURE-todo.org")
-                (string=
-                 (buffer-name)
-                 "CAPTURE-issues.org")
-                )
-            (return)
-            (if
-                (save-excursion
-                  (goto-char
-                   (point-min))
-                  (string-match numbering content))
-                nil
-              (return
-               (progn
-                 (end-of-line)
-                 (insert numbering)))))
-          (setq num
-                (1+ num)))))))))
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-issues.org"))
+                (return)
+              (if
+                  (save-excursion
+                    (goto-char
+                     (point-min))
+                    (string-match numbering content))
+                  nil
+                (return
+                 (progn
+                   (end-of-line)
+                   (insert numbering)))))
+            (setq num
+                  (1+ num)))))))))
  '(org-default-priority 67)
  '(org-file-apps
    (quote
