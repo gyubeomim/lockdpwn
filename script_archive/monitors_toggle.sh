@@ -23,6 +23,6 @@ case $1 in
         ;;
     off_atlas1)
 		# 1개 모니터만 켠다 
-       xrandr --output DVI-I-2 --primary --mode 1920x1080 --pos 1920x0  --output DVI-I-3 --off
+       xrandr --output DVI-I-3 --primary --mode 1920x1080 --pos 1920x0  --output DVI-I-2 --off
         ;;
 esac

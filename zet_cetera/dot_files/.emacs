@@ -877,6 +877,9 @@
                                    ("4" "issues.org: [ATLAS]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "ATLAS")
                                     "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   ("5" "issues.org: [emacs]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "EMACS")
+                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("d" "daily.org: [Daily]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/daily.org" "daily")
@@ -1131,7 +1134,7 @@
   (message "[+] Successfully created GTAGS & TAGS!")
   )
 
-;; 현재 위치에서 GTAGS, TAGS 파일을 생성해주는 함수
+;; 현재 위치에서 GTAGS, TAGS 파일을 생성해주는 함수 (not used)
 (defun create_GTAGS_TAGS_directly (&optional path)
   ""
   (interactive)
@@ -1705,7 +1708,7 @@
  '(git-gutter:modified-sign "▸")
  '(helm-bookmark-show-location t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
- '(highlight-symbol-foreground-color "#93a1a1")
+ '(highlight-symbol-foreground-color "black")
  '(highlight-tail-colors
    (quote
     (("#073642" . 0)
@@ -3313,6 +3316,12 @@ created by edward 180515"
 
 ;; C-c + b 키로 .el 파일을 .elc 파일로 컴파일합니다
 (global-set-key (kbd "C-c b") 'byte-compile-file)
+
+(eval-after-load "diff-mode"
+  '(progn
+    (define-key diff-mode-map (kbd "M-3") nil)
+    )
+  )
 
 ;; magit 패키지가 로딩되면 같이 실행되는 코드
 (eval-after-load "magit"
