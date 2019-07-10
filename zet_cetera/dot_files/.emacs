@@ -2018,7 +2018,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "ADBO" :family "Source Code Pro"))))
+ '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "ADBO" :family "Roboto Mono for Powerline"))))
  '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
@@ -2123,10 +2123,14 @@
     (message (concat "Set frame's default text height to " num))))
 
 ;; C + <f#> 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
-(global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "103")))
-(global-set-key (kbd "C-<f9>") '(lambda () (interactive) (set-frame-custom "110")))
-(global-set-key (kbd "C-<f10>") '(lambda () (interactive) (set-frame-custom "118")))
-(global-set-key (kbd "C-<f11>") '(lambda () (interactive) (set-frame-custom "133")))
+(global-set-key (kbd "C-<f5>") '(lambda () (interactive) (set-frame-custom "103")))
+(global-set-key (kbd "C-<f6>") '(lambda () (interactive) (set-frame-custom "110")))
+(global-set-key (kbd "C-<f7>") '(lambda () (interactive) (set-frame-custom "120")))
+(global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "130")))
+(global-set-key (kbd "C-<f9>") '(lambda () (interactive) (set-frame-custom "140")))
+(global-set-key (kbd "C-<f10>") '(lambda () (interactive) (set-frame-custom "150")))
+(global-set-key (kbd "C-<f11>") '(lambda () (interactive) (set-frame-custom "160")))
+
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
 (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
