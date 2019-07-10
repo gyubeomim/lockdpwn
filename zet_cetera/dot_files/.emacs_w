@@ -611,17 +611,21 @@
                                     "*** MILESTONE %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("1" "issues.org: [edward]" entry
-                                    (file+headline "e:/gitrepo/ims_org/org_files/issues.org" "edward")
-                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "edward")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("2" "issues.org: [DYROS]" entry
-                                    (file+headline "e:/gitrepo/ims_org/org_files/issues.org" "DYROS")
-                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "DYROS")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("3" "issues.org: [SNU]" entry
-                                    (file+headline "e:/gitrepo/ims_org/org_files/issues.org" "SNU")
-                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "SNU")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("4" "issues.org: [ATLAS]" entry
-                                    (file+headline "e:/gitrepo/ims_org/org_files/issues.org" "ATLAS")
-                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "ATLAS")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   ("5" "issues.org: [EMACS]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "EMACS")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
+
 
                                    ("d" "daily.org: [Daily]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/daily.org" "daily")

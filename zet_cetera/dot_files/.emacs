@@ -455,7 +455,7 @@
 ;; 한글폰트 설정 (size 부분을 바꾸면 크기가 바뀝니다)
 (set-fontset-font "fontset-default" 'hangul '("NanumGothic" . "unicode-bmp"))
 ;; (set-fontset-font "fontset-default" 'hangul '("NanumGothicCoding" . "unicode-bmp"))
-(set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding" :size 20))
+(set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding"))
 ;; (set-fontset-font "fontset-default" '(#x1100 . #xffdc)  '("NanumGothicCoding" . "unicode-bmp") )
 ;; (set-fontset-font "fontset-default" '(#xe0bc . #xf66e)  '("NanumGothicCoding" . "unicode-bmp") )
 
@@ -825,6 +825,10 @@
      (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
      ;; header 크기 변하지 않게
      (add-hook 'org-mode-hook 'my/org-mode-hook)
+
+     ;; org mode에서만 font를 다르게 설정해주는 variable-pitch-mode를 실행합니다
+     (add-hook 'org-mode-hook 'variable-pitch-mode)
+
      ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
      (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.8))
 
@@ -845,7 +849,7 @@
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("1" "ubuntu_tips.org: [Tips]" entry
+                                   ("u" "ubuntu_tips.org: [Tips]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
 
@@ -865,25 +869,25 @@
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/milestone.org" "milestone")
                                     "*** MILESTONE %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("1" "issues.org: [edward]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "edward")
-                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("2" "issues.org: [DYROS]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "DYROS")
-                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("3" "issues.org: [SNU]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "SNU")
-                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("4" "issues.org: [ATLAS]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "ATLAS")
-                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("5" "issues.org: [emacs]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "EMACS")
-                                    "*** OPEN %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
-
                                    ("d" "daily.org: [Daily]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/daily.org" "daily")
                                     "*** %?%i")
+
+                                   ("1" "issues.org: [edward]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "edward")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   ("2" "issues.org: [DYROS]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "DYROS")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   ("3" "issues.org: [SNU]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "SNU")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   ("4" "issues.org: [ATLAS]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "ATLAS")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   ("5" "issues.org: [EMACS]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "EMACS")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -1527,7 +1531,8 @@
 (eval-after-load "iedit"
   (lambda()
     ;; iedit 모드에서 `키로 선택 해제를 합니다 (default: M-;)
-    (define-key iedit-mode-keymap (kbd "`") 'iedit-toggle-selection)
+    (define-key iedit-mode-keymap (kbd "q") 'iedit-toggle-selection)
+    (define-key iedit-mode-occurrence-keymap (kbd "q") 'iedit-toggle-selection)
     ))
 
 
@@ -2058,6 +2063,7 @@
  '(org-block-end-line ((t (:inherit org-meta-line :background "#333333" :foreground "gray" :weight normal))))
  '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
  '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
+ '(org-code ((t (:background "white smoke" :foreground "deep pink"))))
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
@@ -2085,7 +2091,8 @@
  '(tabbar-modified ((t (:inherit tabbar-default :foreground "green"))))
  '(tabbar-selected ((t (:inherit tabbar-default :foreground "cyan"))))
  '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red"))))
- '(tabbar-unselected ((t (:inherit tabbar-default)))))
+ '(tabbar-unselected ((t (:inherit tabbar-default))))
+ '(variable-pitch ((t (:family "Roboto Mono for Powerline" :weight normal)))))
 
 ;; 다중모니터에서 C-x-5-2를 통해서 새로운 frame을 생성한 다음에 모니터가 작아서 폰트사이즈가 작은 경우 폰트크기를 크게하기 위해 설정한 함수
 ;; https://stackoverflow.com/questions/24705984/increase-decrease-font-size-in-an-emacs-frame-not-just-buffer
@@ -3316,9 +3323,9 @@ created by edward 180515"
     (define-key magit-unstaged-section-map (kbd "C-u") 'evil-scroll-up)
     (define-key magit-unstaged-section-map (kbd "C-d") 'evil-scroll-down)
 
-    (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
-    (define-key magit-file-mode-map (kbd "C-u") 'evil-scroll-up)
-    (define-key magit-file-mode-map (kbd "C-d") 'evil-scroll-down)
+    ;; (define-key magit-file-mode-map (kbd "k") 'evil-previous-line)
+    ;; (define-key magit-file-mode-map (kbd "C-u") 'evil-scroll-up)
+    ;; (define-key magit-file-mode-map (kbd "C-d") 'evil-scroll-down)
 
     (define-key magit-diff-mode-map (kbd "j") 'evil-next-line)
     (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
@@ -3542,6 +3549,10 @@ created by edward 180515"
   (emacs-lisp-mode)
   )
 
+(custom-theme-set-faces
+ 'user
+ '(variable-pitch ((t (:family "Roboto Mono for Powerline" :weight normal))))
+ )
 
 ;; ROS의 .launch 파일을 xml모드로 구문 하이라이팅하기 위해 설정합니다
 (setq auto-mode-alist
