@@ -2866,6 +2866,7 @@ created by edward 180515"
  '(org-block-end-line ((t (:inherit org-meta-line :foreground "gray" :weight normal))))
  '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
  '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
+ '(org-code ((t (:background "linen" :foreground "deep pink"))))
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
@@ -2895,4 +2896,3 @@ created by edward 180515"
  '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red"))))
  '(tabbar-unselected ((t (:inherit tabbar-default))))
  '(variable-pitch ((t (:family "Roboto Mono" :weight normal)))))
-

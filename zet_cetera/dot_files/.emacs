@@ -2063,7 +2063,7 @@
  '(org-block-end-line ((t (:inherit org-meta-line :background "#333333" :foreground "gray" :weight normal))))
  '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
  '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
- '(org-code ((t (:background "white smoke" :foreground "deep pink"))))
+ '(org-code ((t (:background "linen" :foreground "deep pink"))))
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
