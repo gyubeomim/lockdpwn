@@ -146,7 +146,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_LIGHTBLUE\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTGREEN\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # PS1="$C_LIGHTGREEN\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
@@ -230,9 +230,8 @@ alias cm='cd /home/atlas1/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMAN
 alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
-# alias cw='cd /home/atlas1/catkin_ws'
-# alias cs='cd /home/atlas1/catkin_ws/src'
-# alias cm='cd /home/atlas1/catkin_ws && catkin_make'
+# for ATLAS
+alias co='cd /home/atlas1/gitrepo/orb-sandbox'
 
 alias cr='cd /home/atlas1/dyros_ws/'
 alias cb='cd ~/bag_files_4tb'
@@ -340,6 +339,9 @@ alias cse='cd /home/atlas1/catkin_ws/src/edward/'
 # for org-mode
 alias o='cd /home/atlas1/gitrepo/ims_org && ./push_master.sh'
 alias op='cd /home/atlas1/gitrepo/ims_org && git pull origin master'
+
+alias set='cd /home/atlas1/gitrepo/ims_org && git push origin master && cd /home/atlas1/gitrepo/lockdpwn && ./push_master.sh'
+alias setp='cd /home/atlas1/gitrepo/ims_org && git pull origin master && cd /home/atlas1/gitrepo/lockdpwn && git pull origin master'
 
 # for github page
 alias blog='cd /home/atlas1/gitrepo/tigerk0430.github.io && ./push_master.sh'
