@@ -1714,6 +1714,7 @@
  '(helm-bookmark-show-location t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-foreground-color "black")
+ '(highlight-symbol-idle-delay 0.5)
  '(highlight-tail-colors
    (quote
     (("#073642" . 0)
