@@ -1198,6 +1198,9 @@
     (define-key evil-motion-state-map (kbd "4") 'xref-find-definitions)
     (define-key evil-motion-state-map (kbd "$") 'xref-pop-marker-stack)
 
+    ;; % 키로 cmake 프로젝트를 컴파일합니다
+    (define-key evil-motion-state-map (kbd "%") 'cmake-ide-compile)
+
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
 
