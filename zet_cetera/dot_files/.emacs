@@ -89,14 +89,15 @@
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
     tabbar                 ;; emacs에서 tab을 사용할 수 있게해주는 패키지
 
-    rtags
-    cmake-ide
+    rtags                  ;; code navigation package
+    cmake-ide              ;; cmake-ide for rtags
+    cmake-mode             ;; cmake package syntax highlighting
 
-    spacemacs-theme
+    spacemacs-theme        ;; spacemacs theme
 
-    calfw                  ;; calendar framework for org-mode
-    calfw-org
 
+    ;; calfw                  ;; calendar framework for org-mode
+    ;; calfw-org              ;; calfw-org
     ;; nlinum                 ;; linum-mode 대체하는 패키지, linum-mode가 속도가 매우 느려서 바꿨다 (26.1 업그레이드하면서 필요없어짐)
     ;; eldoc
     ;; ycmd
@@ -1596,6 +1597,17 @@
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 
+;; helm-projectile-switch-project로 프로젝트를 바꾼 다음 실행하는 명령어로 바뀐 프로젝트의 홈폴더에서 dired 모드를 실행합니다
+(setq projectile-switch-project-action 'projectile-dired)
+
+;; 현재 경로를 projectile project로 추가하는 함수 by edward
+(defun add-current-project-to-projectile ()
+  (interactive)
+  (write-region "" "" ".projectile")
+  (projectile-add-known-project default-directory)
+  (message (concat "[+] This Project has added to projectile!: " default-directory))
+  )
+
 ;; PACKAGE: helm-projectile
 (require 'helm-projectile)
 (helm-projectile-on)
@@ -2126,7 +2138,10 @@
     (set-face-attribute 'default frame :height (string-to-number num))
     (message (concat "Set frame's default text height to " num))))
 
-;; C + <f#> 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
+;; C + <f#> keybinding set
+(global-set-key (kbd "C-<f1>") 'projectile-add-known-project)
+(global-set-key (kbd "C-<f2>") 'projectile-remove-known-project)
+;; C + <f5-11> 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-<f5>") '(lambda () (interactive) (set-frame-custom "103")))
 (global-set-key (kbd "C-<f6>") '(lambda () (interactive) (set-frame-custom "110")))
 (global-set-key (kbd "C-<f7>") '(lambda () (interactive) (set-frame-custom "120")))
@@ -2870,50 +2885,6 @@ created by edward 180515"
   (message "[+] this buffer reverted..")
   )
 
-
-;; Ctrl + Alt + 1 키로 jekyll 블로그의 .org 포스트를 올립니다
-(global-set-key (kbd "C-M-1") (lambda()
-                                (interactive)
-                                (org-publish "org-jekyll" t)
-
-                                ;; org 모드에서 ../pictrues/{path} 경로를 html로 변환할 때는 /pictures/{path}로 변환해주기 위한 함수
-                                ;; 단 경로가 ~/gitrepo/tigerk0430.github.io에 있어야 한다.
-                                (shell-command "sed -i 's/..\\/pictures/\\/pictures/g' ~/gitrepo/tigerk0430.github.io/_posts/*.html" t)
-                                ))
-
-;; Ctrl + 1 키로 .org 파일을 (org-publish) 명령어로 twitter bootstrap 스타일의 html 파일로 저장합니다
-;; (global-set-key (kbd "C-1") (lambda() (interactive)(org-publish "all")))
-
-;; C-1 키로 현재 파일에서 빠르게 특정 함수나 변수로 이동합니다
-(global-set-key (kbd "C-1") 'helm-semantic)
-                                        ;
-;; C-2 키로 find file 파일이 존재하는지 검색합니다
-(global-set-key (kbd "C-2") 'helm-find)
-
-;; C-3 키로 find dir 폴더가 존재하는지 검색합니다
-(global-set-key (kbd "C-3") 'helm-projectile-find-dir)
-
-;; C-4 키로 *scratch* buffer를 생성하고 이동합니다
-(global-set-key (kbd "C-4") 'create-scratch-buffer)
-
-;; C-5 키로 다른 프로젝트로 스위치하는 명령어를 실행합니다
-;; (global-set-key (kbd "C-5") 'helm-projectile-switch-project)
-
-;; helm-projectile-switch-project로 프로젝트를 바꾼 다음 실행하는 명령어로 바뀐 프로젝트의 홈폴더에서 dired 모드를 실행합니다
-(setq projectile-switch-project-action 'projectile-dired)
-
-;; Ctrl + 5  키로 projectile에 project를 추가합니다
-(global-set-key (kbd "C-5") 'projectile-add-known-project)
-
-;; Ctrl + ^키로 jupyter notebook 서버를 실행합니다
-(global-set-key (kbd "C-^") 'ein:jupyter-server-start)
-
-;; Ctrl + 6키로 remote 접속을 위한 notebooklist-login 명령어를 설정합니다
-(global-set-key (kbd "C-6") 'ein:notebooklist-login)
-
-;; Ctrl + 7 키로 선택한 버퍼를 닫습니다
-(global-set-key (kbd "C-7") 'buffer-menu)
-
 ;; kill-this-buffer가 가끔 menu-bar-mode 때문에 실행되지 않는 경우가 있는데
 ;; 이를 방지하기 위해 직접 제작한 함수
 (defun my-kill-this-buffer ()
@@ -2922,18 +2893,6 @@ created by edward 180515"
   (kill-this-buffer)
   (menu-bar-mode -1)
   )
-
-;; Ctrl + 8 키로 현재 버퍼를 닫습니다
-(global-set-key (kbd "C-8") 'my-kill-this-buffer)
-
-;; Ctrl + 9 키로 Customize Variable 명령어를 사용한다
-(global-set-key (kbd "C-9") 'pwd)
-
-;; Ctrl + 0 키로 Customize Variable 명령어를 사용한다
-(global-set-key (kbd "C-0") 'customize-variable)
-
-;; Alt + 1 키로 multi terminal을 실행합니다
-(global-set-key (kbd "M-1") 'multi-term)
 
 ;; multi-term + 화면분할 및 이동을 자동으로 해주는 함수 by edward
 (defun my-multi-term ()
@@ -2970,24 +2929,57 @@ created by edward 180515"
         (setq num (1+ num))
         ))
 
+;; Ctrl + Alt + 1 키로 jekyll 블로그의 .org 포스트를 올립니다
+(global-set-key (kbd "C-M-1") (lambda()
+                                (interactive)
+                                (org-publish "org-jekyll" t)
+
+                                ;; org 모드에서 ../pictrues/{path} 경로를 html로 변환할 때는 /pictures/{path}로 변환해주기 위한 함수
+                                ;; 단 경로가 ~/gitrepo/tigerk0430.github.io에 있어야 한다.
+                                (shell-command "sed -i 's/..\\/pictures/\\/pictures/g' ~/gitrepo/tigerk0430.github.io/_posts/*.html" t)
+                                ))
+
+;; C-1 키로 현재 파일에서 빠르게 특정 함수나 변수로 이동합니다
+(global-set-key (kbd "C-1") 'helm-semantic)
+                                        ;
+;; C-2 키로 find file 파일이 존재하는지 검색합니다
+(global-set-key (kbd "C-2") 'helm-find)
+
+;; C-3 키로 find dir 폴더가 존재하는지 검색합니다
+(global-set-key (kbd "C-3") 'helm-projectile-find-dir)
+
+;; C-4 키로 *scratch* buffer를 생성하고 이동합니다
+(global-set-key (kbd "C-4") 'create-scratch-buffer)
+
+;; Ctrl + 4 키로 현재 경로를 projectile project로 추가합니다
+(global-set-key (kbd "C-5") 'add-current-project-to-projectile)
+
+;; Ctrl + ^키로 jupyter notebook 서버를 실행합니다
+(global-set-key (kbd "C-^") 'ein:jupyter-server-start)
+
+;; Ctrl + 6키로 remote 접속을 위한 notebooklist-login 명령어를 설정합니다
+(global-set-key (kbd "C-6") 'ein:notebooklist-login)
+
+;; Ctrl + 7 키로 선택한 버퍼를 닫습니다
+(global-set-key (kbd "C-7") 'buffer-menu)
+
+;; Ctrl + 8 키로 현재 버퍼를 닫습니다
+(global-set-key (kbd "C-8") 'my-kill-this-buffer)
+
+;; Ctrl + 9 키로 Customize Variable 명령어를 사용한다
+(global-set-key (kbd "C-9") 'pwd)
+
+;; Ctrl + 0 키로 Customize Variable 명령어를 사용한다
+(global-set-key (kbd "C-0") 'customize-variable)
+
+;; Alt + 1 키로 multi terminal을 실행합니다
+(global-set-key (kbd "M-1") 'multi-term)
+
 ;; Alt + 2 키로 multi-term으로 화면분할 후 자동으로 이동하도록 설정합니다
 (global-set-key (kbd "M-2") 'my-multi-term)
 
 ;; Alt + 3 키로 다음 윈도우 창으로 이동합니다
 (global-set-key (kbd "M-3") 'next-multiframe-window)
-
-;; 현재 경로를 projectile project로 추가하는 함수 by edward
-(defun add-current-project-to-projectile ()
-  (interactive)
-  (write-region "" "" ".projectile")
-  (projectile-add-known-project default-directory)
-  (message (concat "[+] This Project has added to projectile!: " default-directory))
-  )
-;; Alt + 4 키로 현재 경로를 projectile project로 추가합니다
-(global-set-key (kbd "M-4") 'add-current-project-to-projectile)
-
-;; Alt + 5 키로 projectile에 project를 제거합니다
-(global-set-key (kbd "M-5") 'projectile-remove-known-project)
 
 ;; Alt + 6키로 remote 접속을 위한 notebooklist-open 명령어를 설정합니다
 (global-set-key (kbd "M-6") 'ein:notebooklist-open)
@@ -3007,9 +2999,6 @@ created by edward 180515"
 (global-set-key (kbd "<M-left>") 'previous-multiframe-window)
 (global-set-key (kbd "<M-up>") 'previous-multiframe-window)
 
-;; edebug defun을 ctrl + b로 설정한다
-;; (global-set-key "\C-b" 'edebug-defun)
-
 ;; Ctrl + q 키로 현재 창 남기고 나머지 창 모두 닫기
 (global-set-key "\C-q" 'delete-other-windows)
 
@@ -3017,9 +3006,9 @@ created by edward 180515"
 (global-set-key "\M-q" 'delete-window)
 (define-key c++-mode-map (kbd "M-q") 'delete-window)
 
-;; Ctrl + tab 키를 한/영키로
 (global-unset-key (kbd "S-SPC"))
 (global-unset-key (kbd "C-S-SPC"))
+;; Ctrl + tab 키를 한/영키로
 (global-set-key [(control tab)] 'toggle-input-method)
 (global-set-key (kbd "S-SPC") 'toggle-input-method)
 
@@ -3051,7 +3040,6 @@ created by edward 180515"
 ;; Ctrl + Shift + k 키로 해당 커서의 오른쪽부분만 삭제합니다
 (global-set-key (kbd "C-S-k") 'kill-visual-line)
 (define-key org-mode-map (kbd "C-S-k") 'kill-visual-line)
-
 
 ;; Ctrl + a 키로 전체선택하게 합니다
 (global-set-key "\C-a" 'mark-whole-buffer)
@@ -3583,7 +3571,7 @@ created by edward 180515"
               auto-mode-alist))
 ;; ROS의 CMakefile을 구문하이라이팅하기 위해 설정합니다
 (setq auto-mode-alist
-      (append '((".*\\.txt\\'" . ruby-mode))
+      (append '((".*\\.txt\\'" . cmake-mode))
               auto-mode-alist))
 (setq auto-mode-alist
       (append '((".*\\.vim\\'" . ruby-mode))

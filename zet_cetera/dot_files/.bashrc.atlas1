@@ -340,7 +340,7 @@ alias cse='cd /home/atlas1/catkin_ws/src/edward/'
 alias o='cd /home/atlas1/gitrepo/ims_org && ./push_master.sh'
 alias op='cd /home/atlas1/gitrepo/ims_org && git pull origin master'
 
-alias seto='cd /home/atlas1/gitrepo/ims_org && git push origin master && cd /home/atlas1/gitrepo/lockdpwn && ./push_master.sh'
+alias seto='cd /home/atlas1/gitrepo/ims_org && ./push_master.sh  && cd /home/atlas1/gitrepo/lockdpwn && ./push_master.sh'
 alias setop='cd /home/atlas1/gitrepo/ims_org && git pull origin master && cd /home/atlas1/gitrepo/lockdpwn && git pull origin master'
 
 # for github page
