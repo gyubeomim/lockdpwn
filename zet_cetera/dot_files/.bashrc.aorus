@@ -445,7 +445,7 @@ export PYTHONPATH=$PYTHONPATH:'/media/dyros-data/gitrepo/avod'
 export PYTHONPATH=$PYTHONPATH:'/media/dyros-data/gitrepo/avod/wavedata'
 
 # for parking slam
-alias cps='cd /home/dyros-vehicle/catkin_ws/src/edward/parking_space_detection'
+alias cps='cd /home/dyros-vehicle/catkin_ws/src/edward/parkingslam'
 
 # for libclang.7.so
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH 
