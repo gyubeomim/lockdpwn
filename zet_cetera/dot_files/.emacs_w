@@ -2260,7 +2260,7 @@ created by edward 180515"
 (setq key-chord-two-keys-delay 0.1) ; default 0.1
 ;; 1개의 키가 입력되는데 걸리는 시간 설정
 (setq key-chord-one-key-delay 0.17) ; default 0.2
-(key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
+(key-chord-define-global "zx" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
 
