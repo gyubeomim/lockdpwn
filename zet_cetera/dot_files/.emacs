@@ -773,6 +773,9 @@
      (define-key org-mode-map (kbd "C-c C-l") 'create_latex_prefix)
      ;; C-c C-v 키로 .org 파일에서 .html 파일 버전을 크롬으로 엽니다 (.html 이 있는 경우만)
      (define-key org-mode-map (kbd "C-c C-v") 'org-html-open-chrome)
+     ;; org-mode에서 ' 키로 tag를 설정합니다
+     (define-key org-mode-map (kbd "C-/") 'org-set-tags)
+
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -852,7 +855,7 @@
 
                                    ("u" "ubuntu_tips.org: [Tips]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
-                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n***** %?")
+                                    "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
                                    ("o" "pomodoro.org: [GTD]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
@@ -1114,6 +1117,7 @@
   (lambda ()
     (define-key undo-tree-map (kbd "C-r") nil)
     (define-key undo-tree-map (kbd "C-?") nil)
+    (define-key undo-tree-map (kbd "C-/") nil)
 
     ;; C-M-?키로 org-agenda 명령을 수행합니다
     (define-key undo-tree-map (kbd "C-M-?") 'org-agenda)
@@ -2034,7 +2038,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "ADBO" :family "Source Code Pro for Powerline"))))
+ '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "ADBO" :family "Source Code Pro"))))
  '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
@@ -2875,7 +2879,8 @@ created by edward 180515"
 ;; (global-set-key (kbd "C-1") 'my-revert-buffer)
 ;; (define-key undo-tree-map (kbd "C-1") 'my-revert-buffer)
 
-;; C-c 9 키로 .emacs 파일을 열도록 설정합니다
+;; C-c 8,9 키로 .emacs 파일을 열도록 설정합니다
+(global-set-key (kbd "C-c 8") (lambda() (interactive)(find-file "~/gitrepo/lockdpwn/zet_cetera/dot_files/.emacs_w")))
 (global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/.emacs")))
 
 ;; revert buffer를 파라미터와 같이 함수화한 코드

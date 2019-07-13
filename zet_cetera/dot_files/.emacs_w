@@ -449,6 +449,9 @@
      (define-key org-mode-map (kbd "C-c C-l") 'create_latex_prefix)
      ;; C-c C-v 키로 .org 파일에서 .html 파일 버전을 크롬으로 엽니다 (.html 이 있는 경우만)
      (define-key org-mode-map (kbd "C-c C-v") 'org-html-open-chrome)
+     ;; org-mode에서 ' 키로 tag를 설정합니다
+     (define-key org-mode-map (kbd "C-/") 'org-set-tags)
+
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -740,6 +743,7 @@
   (lambda ()
     (define-key undo-tree-map (kbd "C-r") nil)
     (define-key undo-tree-map (kbd "C-?") nil)
+    (define-key undo-tree-map (kbd "C-/") nil)
 
     ;; C-M-? 키로 org-agenda 명령을 수행합니다
     (define-key undo-tree-map (kbd "C-M-?") 'org-agenda)
