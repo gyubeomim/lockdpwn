@@ -1019,6 +1019,7 @@
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/milestone.org")))
 (global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
 (global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/issues.org")))
+(global-set-key (kbd "C-c 6") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
