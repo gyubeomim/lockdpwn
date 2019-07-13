@@ -842,7 +842,7 @@
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/*.org"))
-     (setq org-agenda-files (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/note/*.org"))
+     (setq org-agenda-files (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/notes/*.org"))
 
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
@@ -3490,7 +3490,7 @@ created by edward 180515"
 (setq key-chord-one-key-delay 0.17) ; default 0.2
 (key-chord-define-global "66" 'ein:jupyter-server-stop)        ;; jupyter notebook 서버 종료
 (key-chord-define-global ",," 'jedi:complete)                  ;; 코드 자동완성 for python
-(key-chord-define-global "xc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
+(key-chord-define-global "zx" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
 ;; (key-chord-define-global "zz" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
