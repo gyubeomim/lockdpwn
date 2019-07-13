@@ -418,6 +418,10 @@ alias cse='cd /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/src/edward/'
 alias o='cd /home/dyros-vehicle/gitrepo_sync/ims_org && ./push_master.sh'
 alias op='cd /home/dyros-vehicle/gitrepo_sync/ims_org && git pull origin master'
 
+# for org-mode
+alias seto='cd /home/dyros-vehicle/gitrepo_sync/ims_org && ./push_master.sh && cd /home/dyros-vehicle/gitrepo/lockdpwn && ./push_master.sh'
+alias setop='cd /home/dyros-vehicle/gitrepo_sync/ims_org && git pull origin master && cd /home/dyros-vehicle/gitrepo/lockdpwn && git pull origin master'
+
 # for github page
 alias blog='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io && ./push_master.sh'
 alias blogp='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io && git pull origin master'

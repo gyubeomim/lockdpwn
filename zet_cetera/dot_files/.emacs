@@ -1760,7 +1760,7 @@
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
+    ("~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
