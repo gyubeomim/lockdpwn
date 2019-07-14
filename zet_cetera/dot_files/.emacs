@@ -844,8 +844,7 @@
         ))
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
-     (setq org-agenda-files (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/*.org"))
-     (setq org-agenda-files (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/notes/*.org"))
+     (setq org-agenda-files (append (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/*.org") (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/notes/*.org")))
 
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
@@ -1763,9 +1762,6 @@
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(org-agenda-current-time-string "now ------------------------------------------")
- '(org-agenda-files
-   (quote
-    ("~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/gcal.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
