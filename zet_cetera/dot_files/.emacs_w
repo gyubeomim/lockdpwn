@@ -470,7 +470,7 @@
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
            '(
-             (sequence "TODO" "|" "DELAYED" "PAUSED" "REPLACED" "CANCELLED"  "DONE")
+             (sequence "TODO" "|" "CANCELLED" "REPLACED" "DELAYED" "PAUSED" "DONE")
              (sequence "MILESTONE" "|" "COMPLETE")
              (sequence "OPEN" "|" "CLOSED")
              )
@@ -523,10 +523,8 @@
      ;;    ))
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
-     (setq org-agenda-files (file-expand-wildcards "e:/gitrepo/ims_org/org_files/todo.org"))
-     (setq org-agenda-files (file-expand-wildcards "e:/gitrepo/ims_org/org_files/*.org"))
-     (setq org-agenda-files (file-expand-wildcards "e:/gitrepo/ims_org/org_files/notes/*.org"))
-
+     ;; (setq org-agenda-files (append (file-expand-wildcards "e:/gitrepo/ims_org/org_files/*.org") (file-expand-wildcards "e:/gitrepo/ims_org/org_files/notes/*.org")))
+     
      ;; C-. 키로 사용할 note 파일
      ;; (setq org-default-notes-file "e:/gitrepo/ims_org/org_files/edward.org")
 
@@ -580,7 +578,6 @@
      (setq org-refile-targets '((org-agenda-files :level . 1)))
      (setq org-agenda-log-mode-items '(closed clock state))
      ))
-;; (add-to-ordered-list 'emulation-mode-map-alists '((org-mode . ,my-org-mode-map)) 0)
 
 (setq org-publish-project-alist
       '(("org-jekyll"
@@ -1129,8 +1126,10 @@
 (global-set-key (kbd "C--") 'zoom-frame-out)
 
 ;;GUI 환경에서 시작 시 창 화면 최대화 하기
-;; (add-to-list 'default-frame-alist '(fullscreen . maximized))(add-to-list 'default-frame-alist '(height . 31))
-;; (add-to-list 'default-frame-alist '(width . 100))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(height . 31))
+(add-to-list 'default-frame-alist '(width . 75))
+(add-to-list 'default-frame-alist '(height . 25))
 (set-frame-position (selected-frame) 0 0)
 
 ;; 매칭되는 괄호 강조하기
@@ -2337,6 +2336,9 @@ created by edward 180515"
 ;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다 (vnc에서 emacs를 사용하는 경우)
 (setq x-alt-keysym 'meta)
 
+;; ad-handle-definition 'winner-mode' got redefined 경고를 없애줍니다
+(setq ad-redefinition-action 'accept)
+
 ;; Disable Beeping when using VNC
 (setq visible-bell 1)
 
@@ -2406,7 +2408,7 @@ created by edward 180515"
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "e:/gitrepo/ims_org/org_files/issues.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/milestone.org" "e:/gitrepo/ims_org/org_files/daily.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/quick.org")))
+    ("e:/gitrepo/ims_org/org_files/notes/cplusplus_stl.org" "e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "e:/gitrepo/ims_org/org_files/issues.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/milestone.org" "e:/gitrepo/ims_org/org_files/daily.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/quick.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -2662,7 +2664,7 @@ created by edward 180515"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "outline" :family "Roboto Mono"))))
+ '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "outline" :family "Roboto Mono"))))
  '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black"))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black"))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))

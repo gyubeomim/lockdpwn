@@ -794,7 +794,7 @@
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
            '(
-             (sequence "TODO" "|" "DELAYED" "PAUSED" "REPLACED" "CANCELLED"  "DONE")
+             (sequence "TODO" "|" "CANCELLED" "REPLACED" "DELAYED" "PAUSED" "DONE")
              (sequence "MILESTONE" "|" "COMPLETE")
              (sequence "OPEN" "|" "CLOSED")
              )
@@ -3600,6 +3600,9 @@ created by edward 180515"
 
 ;; Map Alt key to Meta Alt키를 Meta키로 인식하도록 설정한다 (vnc에서 emacs를 사용하는 경우)
 (setq x-alt-keysym 'meta)
+
+;; ad-handle-definition 'winner-mode' got redefined 경고를 없애줍니다
+(setq ad-redefinition-action 'accept)
 
 ;; Disable Beeping when using VNC
 (setq visible-bell 1)
