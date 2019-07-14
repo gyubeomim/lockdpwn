@@ -995,6 +995,9 @@
                                   ;; tab 키로 해당 이벤트를 확인합니다
                                   (define-key org-agenda-mode-map (kbd "<tab>") 'org-agenda-show)
 
+                                  ;; org-agenda-mode에서 ' 키로 tag를 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "C-/") 'org-agenda-set-tags)
+
                                   ;; ' 키로 tag를 설정합니다
                                   (define-key org-agenda-mode-map (kbd "'") 'org-agenda-set-tags)
                                   (define-key org-agenda-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -1762,6 +1765,9 @@
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(org-agenda-current-time-string "now ------------------------------------------")
+ '(org-agenda-files
+   (quote
+    ("~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/Duality-Based_Verification_Techniques_for_2d_SLAM.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_c++_coding_style_guideline.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_intern_meeting.org" "~/gitrepo_sync/ims_org/org_files/notes/boj.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmake.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_device_spec.org" "~/gitrepo_sync/ims_org/org_files/notes/control_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/cplusplus.org" "~/gitrepo_sync/ims_org/org_files/notes/cplusplus_stl.org" "~/gitrepo_sync/ims_org/org_files/notes/dl_core_concept.org" "~/gitrepo_sync/ims_org/org_files/notes/dl_network_model.org" "~/gitrepo_sync/ims_org/org_files/notes/dl_tensorflow.org" "~/gitrepo_sync/ims_org/org_files/notes/docker.org" "~/gitrepo_sync/ims_org/org_files/notes/eigenvalue_eigenvector.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/est_ch2.org" "~/gitrepo_sync/ims_org/org_files/notes/est_ch3.org" "~/gitrepo_sync/ims_org/org_files/notes/est_ch7.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_final_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_mid_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/eth_rpg_vision_course2.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/information.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo_sync/ims_org/org_files/notes/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/lie_group_algebra.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/natural_constant_e.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_code_review.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam_a_versatile_and_accurate_monocular_slam_system.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/paper_research.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_slam.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_space_detection_based_on_avmlidar_sensor_fusion_for_autonomous_valet_parking.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/svd.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/tools_of_titans.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/visual_slam_algorithms_a_survey_from_2010_to_2016.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org" "~/gitrepo_sync/ims_org/org_files/notes/x11vnc.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1941,7 +1947,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (zenburn-theme spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (cmake-mode zenburn-theme spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
@@ -3099,9 +3105,9 @@ created by edward 180515"
 
 
 
-;; c++ 주석 처리 변경 코드 (// -> /* */ 로 변경한다)
-(add-hook 'c++-mode-hook (lambda () (setq comment-start "/* "
-                                          comment-end   "*/")))
+;; c++ 주석 처리 변경 코드 (// -> /* */ 로 변경한다) (deprecated)
+;; (add-hook 'c++-mode-hook (lambda () (setq comment-start "/* "
+;;                                           comment-end   "*/")))
 
 ;; 괄호 사이를 이동하는 코드
 (defun match-paren (arg)
@@ -3572,9 +3578,9 @@ created by edward 180515"
       (append '((".*\\.sdf\\'" . xml-mode))
               auto-mode-alist))
 ;; ROS의 CMakefile을 구문하이라이팅하기 위해 설정합니다
-(setq auto-mode-alist
-      (append '((".*\\.txt\\'" . cmake-mode))
-              auto-mode-alist))
+;; (setq auto-mode-alist
+;;       (append '((".*\\.txt\\'" . cmake-mode))
+;;               auto-mode-alist))
 (setq auto-mode-alist
       (append '((".*\\.vim\\'" . ruby-mode))
               auto-mode-alist))

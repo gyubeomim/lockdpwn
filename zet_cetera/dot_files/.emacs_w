@@ -614,6 +614,9 @@
                                   ;; tab 키로 해당 이벤트를 확인합니다
                                   (define-key org-agenda-mode-map (kbd "<tab>") 'org-agenda-show)
 
+                                  ;; org-agenda-mode에서 ' 키로 tag를 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "C-/") 'org-agenda-set-tags)
+
                                   ;; ' 키로 tag를 설정합니다
                                   (define-key org-agenda-mode-map (kbd "'") 'org-agenda-set-tags)
                                   (define-key org-agenda-mode-map (kbd "<M-S-right>") 'org-shiftright)
