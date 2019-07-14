@@ -515,19 +515,6 @@
      ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
      (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.1))
 
-     ;; org-link 에서 .pdf 파일은 foxit reader로 열도록 설정한다
-     ;; (setq org-file-apps
-     ;;  '((auto-mode . emacs)
-     ;;    ("\\.pdf\\'" . "~/opt/foxitsoftware/foxitreader/FoxitReader \"%s\"")
-     ;;    ("\\.pdf::\\([0-9]+\\)\\'" . "~/opt/foxitsoftware/foxitreader/FoxitReader \"%s\" -p %1")
-     ;;    ))
-
-     ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
-     ;; (setq org-agenda-files (append (file-expand-wildcards "e:/gitrepo/ims_org/org_files/*.org") (file-expand-wildcards "e:/gitrepo/ims_org/org_files/notes/*.org")))
-     
-     ;; C-. 키로 사용할 note 파일
-     ;; (setq org-default-notes-file "e:/gitrepo/ims_org/org_files/edward.org")
-
      (setq org-html-html5-fancy t
            org-html-doctype "html5")
 
