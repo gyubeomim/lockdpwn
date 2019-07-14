@@ -751,6 +751,21 @@
 (require 'minimap)
 (global-set-key (kbd "C-c m") 'minimap-mode)
 
+;; revert buffer를 파라미터와 같이 함수화한 코드
+(defun my-revert-buffer()
+  (interactive)
+  (revert-buffer t t t)
+  (message "[+] this buffer reverted..")
+  )
+
+;; kill-this-buffer가 가끔 menu-bar-mode 때문에 실행되지 않는 경우가 있는데
+;; 이를 방지하기 위해 직접 제작한 함수
+(defun my-kill-this-buffer ()
+  (interactive)
+  (menu-bar-mode 1)
+  (kill-this-buffer)
+  (menu-bar-mode -1)
+  )
 
 ;; PACKAGE: evil
 (require 'evil)
@@ -802,6 +817,9 @@
     ;; , 키로 projectile switch 를 실행합니다
     (define-key evil-motion-state-map (kbd ",") 'helm-projectile-switch-project)
     (define-key evil-normal-state-map (kbd ",") 'helm-projectile-switch-project)
+
+    ;; 0키로 buffer를 새로고침합니다
+    (define-key evil-motion-state-map (kbd "0") 'my-revert-buffer)
 
     ;; [ ] 키로 org-agenda, todo list를 보도록 설정합니다
     (define-key evil-motion-state-map (kbd "]") 'org-agenda-list)
@@ -1757,21 +1775,6 @@ created by edward 180515"
 (setq compile-command "g++ -m64 -std=c++11 -g -o ")
 
 
-;; revert buffer를 파라미터와 같이 함수화한 코드
-(defun my-revert-buffer()
-  (interactive)
-  (revert-buffer t t t)
-  (message "[+] this buffer reverted..")
-  )
-
-;; kill-this-buffer가 가끔 menu-bar-mode 때문에 실행되지 않는 경우가 있는데
-;; 이를 방지하기 위해 직접 제작한 함수
-(defun my-kill-this-buffer ()
-  (interactive)
-  (menu-bar-mode 1)
-  (kill-this-buffer)
-  (menu-bar-mode -1)
-  )
 
 ;; C-c 8,9 키로 .emacs .emacs_w 파일을 열도록 설정합니다
 (global-set-key (kbd "C-c 8") (lambda() (interactive)(find-file "e:/gitrepo/lockdpwn/zet_cetera/dot_files/.emacs")))
@@ -2445,66 +2448,43 @@ created by edward 180515"
      (800 1000 1200 1400 1600 1800 2000)
      "......" " ")))
  '(org-capture-bookmark nil)
- '(org-capture-prepare-finalize-hook
-   (quote
-    ((lambda nil
-       (goto-line
-        (+
-         (line-number-at-pos)
-         -2))
-       (beginning-of-line)
-       (insert "*"))
-     (lambda nil
-       (progn
-         (setq num 1)
-         (loop
-          (< num 2000)
-          (let
-              ((numbering
-                (concat "#"
-                        (number-to-string num)))
-               (content
-                (with-current-buffer
-                    (cadr
-                     (split-string
-                      (buffer-name)
-                      "-"))
-                  (buffer-substring-no-properties
-                   (point-min)
-                   (point-max))))
-               (capture_content
-                (with-current-buffer
-                    (buffer-name)
-                  (buffer-substring-no-properties
-                   (point-min)
-                   (point-max)))))
-            (if
-                (or
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-daily.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-milestone.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-todo.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-issues.org"))
-                (return)
-              (if
-                  (save-excursion
-                    (goto-char
-                     (point-min))
-                    (string-match numbering content))
-                  nil
-                (return
-                 (progn
-                   (end-of-line)
-                   (insert numbering)))))
-            (setq num
-                  (1+ num)))))))))
+  '(org-capture-prepare-finalize-hook
+  (quote
+   ((lambda nil
+      (goto-line (+ (line-number-at-pos) -2))
+      (beginning-of-line)
+      (insert "*"))
+    (lambda nil
+      (progn
+        (setq num 1)
+        (loop (< num 2000)
+              (let ((numbering (concat "#" (number-to-string num)))
+                    (content
+                     (with-current-buffer (cadr (split-string (buffer-name) "-")) (buffer-substring-no-properties (point-min) (point-max))))
+                    (capture_content
+                     (with-current-buffer (buffer-name) (buffer-substring-no-properties (point-min) (point-max)))))
+                (if (or (string= (buffer-name) "CAPTURE-daily.org")
+                        (string= (buffer-name) "CAPTURE-todo.org")
+                        )
+                    (return)
+                  (if
+                      (save-excursion (goto-char (point-min))
+                                      (string-match numbering content))
+                      nil
+                    (return
+                     (progn
+                       (if (string= (buffer-name) "CAPTURE-issues.org") ;; issues.org의 경우 각각의 이슈 앞에 numbering을 해야한다
+                           (progn
+                             (beginning-of-line)
+                             (search-forward "OPEN")
+                             (insert (concat " " numbering))
+                             )
+                         (progn
+                           (end-of-line)
+                           (insert numbering)))
+                       ))))
+                (setq num
+                      (1+ num)))))))))
  '(org-default-priority 67)
  '(org-file-apps
    (quote

@@ -250,10 +250,6 @@
  helm-gtags-suggested-key-mapping t
  )
 
-;; Enable helm-gtags-mode in Dired so you can jump to any tag
-;; when navigate project tree with Dired
-(add-hook 'dired-mode-hook 'helm-gtags-mode)
-
 ;; Enable helm-gtags-mode in Eshell for the same reason as above
 ;; (add-hook 'eshell-mode-hook 'helm-gtags-mode)
 
@@ -1156,6 +1152,58 @@
     )
   )
 
+;; revert buffer를 파라미터와 같이 함수화한 코드
+(defun my-revert-buffer()
+  (interactive)
+  (revert-buffer t t t)
+  (message "[+] this buffer reverted..")
+  )
+
+;; kill-this-buffer가 가끔 menu-bar-mode 때문에 실행되지 않는 경우가 있는데
+;; 이를 방지하기 위해 직접 제작한 함수
+(defun my-kill-this-buffer ()
+  (interactive)
+  (menu-bar-mode 1)
+  (kill-this-buffer)
+  (menu-bar-mode -1)
+  )
+
+;; multi-term + 화면분할 및 이동을 자동으로 해주는 함수 by edward
+(defun my-multi-term ()
+  (interactive)
+  (setq num 1)
+  (loop (< num 10)
+        (let ((terminal_name (concat "*terminal<" (number-to-string num) ">*")))
+          (if (get-buffer terminal_name)
+              (if (eq (count-windows) 1)
+                  (return (progn
+                            (split-window-vertically)
+                            (next-multiframe-window)
+                            (switch-to-buffer terminal_name)
+                            ))
+                (return (progn
+                          (next-multiframe-window)
+                          (switch-to-buffer terminal_name)
+                          ))
+                )
+            (if (eq (count-windows) 1)
+                (progn
+                  (split-window-vertically)
+                  (next-multiframe-window)
+                  (multi-term)
+                  (switch-to-buffer terminal_name)
+                  (return))
+              (progn
+                (next-multiframe-window)
+                (multi-term)
+                (switch-to-buffer terminal_name)
+                (return))
+              ))
+          )
+        (setq num (1+ num))
+        ))
+
+
 ;; PACKAGE: evil
 (require 'evil)
 (evil-mode t)
@@ -1205,6 +1253,9 @@
     (define-key evil-motion-state-map (kbd "#") 'helm-gtags-pop-stack)
     (define-key evil-motion-state-map (kbd "4") 'xref-find-definitions)
     (define-key evil-motion-state-map (kbd "$") 'xref-pop-marker-stack)
+
+    ;; 0키로 buffer를 새로고침합니다
+    (define-key evil-motion-state-map (kbd "0") 'my-revert-buffer)
 
     ;; % 키로 cmake 프로젝트를 컴파일합니다
     (define-key evil-motion-state-map (kbd "%") 'cmake-ide-compile)
@@ -1767,7 +1818,7 @@
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/Duality-Based_Verification_Techniques_for_2d_SLAM.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_c++_coding_style_guideline.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_intern_meeting.org" "~/gitrepo_sync/ims_org/org_files/notes/boj.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmake.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_device_spec.org" "~/gitrepo_sync/ims_org/org_files/notes/control_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/cplusplus.org" "~/gitrepo_sync/ims_org/org_files/notes/cplusplus_stl.org" "~/gitrepo_sync/ims_org/org_files/notes/dl_core_concept.org" "~/gitrepo_sync/ims_org/org_files/notes/dl_network_model.org" "~/gitrepo_sync/ims_org/org_files/notes/dl_tensorflow.org" "~/gitrepo_sync/ims_org/org_files/notes/docker.org" "~/gitrepo_sync/ims_org/org_files/notes/eigenvalue_eigenvector.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/est_ch2.org" "~/gitrepo_sync/ims_org/org_files/notes/est_ch3.org" "~/gitrepo_sync/ims_org/org_files/notes/est_ch7.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_final_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_mid_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/eth_rpg_vision_course2.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/information.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo_sync/ims_org/org_files/notes/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/lie_group_algebra.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/natural_constant_e.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_code_review.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam_a_versatile_and_accurate_monocular_slam_system.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/paper_research.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_slam.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_space_detection_based_on_avmlidar_sensor_fusion_for_autonomous_valet_parking.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/svd.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/tools_of_titans.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/visual_slam_algorithms_a_survey_from_2010_to_2016.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org" "~/gitrepo_sync/ims_org/org_files/notes/x11vnc.org")))
+    ("~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/Duality-Based_Verification_Techniques_for_2d_SLAM.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_c++_coding_style_guideline.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_intern_meeting.org" "~/gitrepo_sync/ims_org/org_files/notes/boj.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmake.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/control_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/cplusplus.org" "~/gitrepo_sync/ims_org/org_files/notes/cplusplus_stl.org" "~/gitrepo_sync/ims_org/org_files/notes/dl_core_concept.org" "~/gitrepo_sync/ims_org/org_files/notes/dl_network_model.org" "~/gitrepo_sync/ims_org/org_files/notes/dl_tensorflow.org" "~/gitrepo_sync/ims_org/org_files/notes/docker.org" "~/gitrepo_sync/ims_org/org_files/notes/eigenvalue_eigenvector.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/est_ch2.org" "~/gitrepo_sync/ims_org/org_files/notes/est_ch3.org" "~/gitrepo_sync/ims_org/org_files/notes/est_ch7.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_final_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_mid_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/eth_rpg_vision_course2.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/information.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo_sync/ims_org/org_files/notes/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/lie_group_algebra.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/natural_constant_e.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_code_review.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam_a_versatile_and_accurate_monocular_slam_system.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/paper_research.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_slam.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_space_detection_based_on_avmlidar_sensor_fusion_for_autonomous_valet_parking.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/svd.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/tools_of_titans.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/visual_slam_algorithms_a_survey_from_2010_to_2016.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org" "~/gitrepo_sync/ims_org/org_files/notes/x11vnc.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1817,65 +1868,42 @@
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
-   (quote
-    ((lambda nil
-       (goto-line
-        (+
-         (line-number-at-pos)
-         -2))
-       (beginning-of-line)
-       (insert "*"))
-     (lambda nil
-       (progn
-         (setq num 1)
-         (loop
-          (< num 2000)
-          (let
-              ((numbering
-                (concat "#"
-                        (number-to-string num)))
-               (content
-                (with-current-buffer
-                    (cadr
-                     (split-string
-                      (buffer-name)
-                      "-"))
-                  (buffer-substring-no-properties
-                   (point-min)
-                   (point-max))))
-               (capture_content
-                (with-current-buffer
-                    (buffer-name)
-                  (buffer-substring-no-properties
-                   (point-min)
-                   (point-max)))))
-            (if
-                (or
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-daily.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-milestone.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-todo.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-issues.org"))
-                (return)
-              (if
-                  (save-excursion
-                    (goto-char
-                     (point-min))
-                    (string-match numbering content))
-                  nil
-                (return
-                 (progn
-                   (end-of-line)
-                   (insert numbering)))))
-            (setq num
-                  (1+ num)))))))))
+  (quote
+   ((lambda nil
+      (goto-line (+ (line-number-at-pos) -2))
+      (beginning-of-line)
+      (insert "*"))
+    (lambda nil
+      (progn
+        (setq num 1)
+        (loop (< num 2000)
+              (let ((numbering (concat "#" (number-to-string num)))
+                    (content
+                     (with-current-buffer (cadr (split-string (buffer-name) "-")) (buffer-substring-no-properties (point-min) (point-max))))
+                    (capture_content
+                     (with-current-buffer (buffer-name) (buffer-substring-no-properties (point-min) (point-max)))))
+                (if (or (string= (buffer-name) "CAPTURE-daily.org")
+                        (string= (buffer-name) "CAPTURE-todo.org")
+                        )
+                    (return)
+                  (if
+                      (save-excursion (goto-char (point-min))
+                                      (string-match numbering content))
+                      nil
+                    (return
+                     (progn
+                       (if (string= (buffer-name) "CAPTURE-issues.org") ;; issues.org의 경우 각각의 이슈 앞에 numbering을 해야한다
+                           (progn
+                             (beginning-of-line)
+                             (search-forward "OPEN")
+                             (insert (concat " " numbering))
+                             )
+                         (progn
+                           (end-of-line)
+                           (insert numbering)))
+                       ))))
+                (setq num
+                      (1+ num)))))))))
  '(org-default-priority 66)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
@@ -2332,6 +2360,13 @@
        (dired-insert-set-properties (point-min) (point-max)))
   (set-buffer-modified-p nil))
 (add-hook 'dired-after-readin-hook 'sof/dired-sort)
+
+
+;; Enable helm-gtags-mode in Dired so you can jump to any tag
+;; when navigate project tree with Dired
+(add-hook 'dired-mode-hook 'helm-gtags-mode)
+
+(add-hook 'dired-mode-hook 'variable-pitch-mode)
 
 ;; dired mode에서 여러 단축키들을 설정하는 코드
 (eval-after-load "dired"
@@ -2873,69 +2908,9 @@ created by edward 180515"
 ;; compile 명령어 수정 (c++일 경우 g++, c일 경우 gcc로 해주면 됩니다)
 (setq compile-command "g++ -m64 -std=c++11 -g -o ")
 
-
-;; eyebrowse 모드에서 C-1,2,3키로 워크스페이스를 변경합니다 (not used)
-;; (global-set-key (kbd "C-1") 'eyebrowse-switch-to-window-config-0)
-;; (global-set-key (kbd "C-2") 'eyebrowse-switch-to-window-config-1)
-;; (global-set-key (kbd "C-3") 'eyebrowse-switch-to-window-config-2)
-;; Ctrl + 1 키로 현재 버퍼를 업데이트합니다
-;; (global-set-key (kbd "C-1") 'my-revert-buffer)
-;; (define-key undo-tree-map (kbd "C-1") 'my-revert-buffer)
-
 ;; C-c 8,9 키로 .emacs 파일을 열도록 설정합니다
 (global-set-key (kbd "C-c 8") (lambda() (interactive)(find-file "~/gitrepo/lockdpwn/zet_cetera/dot_files/.emacs_w")))
 (global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/.emacs")))
-
-;; revert buffer를 파라미터와 같이 함수화한 코드
-(defun my-revert-buffer()
-  (interactive)
-  (revert-buffer t t t)
-  (message "[+] this buffer reverted..")
-  )
-
-;; kill-this-buffer가 가끔 menu-bar-mode 때문에 실행되지 않는 경우가 있는데
-;; 이를 방지하기 위해 직접 제작한 함수
-(defun my-kill-this-buffer ()
-  (interactive)
-  (menu-bar-mode 1)
-  (kill-this-buffer)
-  (menu-bar-mode -1)
-  )
-
-;; multi-term + 화면분할 및 이동을 자동으로 해주는 함수 by edward
-(defun my-multi-term ()
-  (interactive)
-  (setq num 1)
-  (loop (< num 10)
-        (let ((terminal_name (concat "*terminal<" (number-to-string num) ">*")))
-          (if (get-buffer terminal_name)
-              (if (eq (count-windows) 1)
-                  (return (progn
-                            (split-window-vertically)
-                            (next-multiframe-window)
-                            (switch-to-buffer terminal_name)
-                            ))
-                (return (progn
-                          (next-multiframe-window)
-                          (switch-to-buffer terminal_name)
-                          ))
-                )
-            (if (eq (count-windows) 1)
-                (progn
-                  (split-window-vertically)
-                  (next-multiframe-window)
-                  (multi-term)
-                  (switch-to-buffer terminal_name)
-                  (return))
-              (progn
-                (next-multiframe-window)
-                (multi-term)
-                (switch-to-buffer terminal_name)
-                (return))
-              ))
-          )
-        (setq num (1+ num))
-        ))
 
 ;; Ctrl + Alt + 1 키로 jekyll 블로그의 .org 포스트를 올립니다
 (global-set-key (kbd "C-M-1") (lambda()
