@@ -7,6 +7,7 @@
 (add-to-list 'package-archives'("melpa" . "http://melpa.org/packages/") t)
 
 (package-initialize) ;; You might already have this line
+
 (setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -49,27 +50,23 @@
     ov                     ;; org-mode에서 글자에 색상을 변경하기 위한 overlab 패키지
     minimap                ;; navigation view sidebar을 생성해주는 패키지
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
-
     tabbar                 ;; emacs에서 tab을 사용할 수 있게해주는 패키지
-
     spacemacs-theme        ;; spacemacs theme
-
     cmake-mode             ;; cmake package
+    use-package            ;; package를 관리해주는 패키지
 
-
+    
     ;;WINDOWS-----------------------------------
-    ;; calfw                  ;; calendar for org-mode
-    ;; calfw-org
-    ;;anzu                   ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
-    ;;org-gcal               ;; org-mode와 google Calendar를 연동해주는 패키지
-    ;;irony                  ;; c++ 코드 자동완성 패키지 (M-x irony-install-server로 설치한다)
-    ;;company-irony          ;; c++ 코드 자동완성 패키지
+    ;;calfw                  ;; calendar for org-mode
+    ;;calfw-org
+    ;;anzu                    ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
+    ;;org-gcal                ;; org-mode와 google Calendar를 연동해주는 패키지
+    ;;irony                   ;; c++ 코드 자동완성 패키지 (M-x irony-install-server로 설치한다)
+    ;;company-irony           ;; c++ 코드 자동완성 패키지
     ;;helm-gtags
-    ;;gtags                  ;; 함수나 여러 변수들의 선언을 찾아볼 수 있게 해주는 패키지
-    ;;hide-comnt             ;; 주석을 감췄다 보여줬다 하는 패키지 (F9 단축키)
+    ;;gtags                   ;; 함수나 여러 변수들의 선언을 찾아볼 수 있게 해주는 패키지
+    ;;hide-comnt              ;; 주석을 감췄다 보여줬다 하는 패키지 (F9 단축키)
     ;;-----------------------------------
-
-    ;; use-package            ;; package를 관리해주는 패키지
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지
     ;; ample-theme            ;; ample 테마
     ;; org2jekyll             ;; .org 파일을 github page(jekyll)에서 볼 수 있도록 변환해주는 패키지 (NOT USED)
@@ -77,8 +74,8 @@
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
     ;; htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
     ;; powerline              ;; emacs 상태창을 예쁘게 꾸며주는 패키지
-    ;; anaconda-mode ;; jedi 모드 같이 python code navigation을 해주는 패키지2
-    ;; helm-ros  ;; ROS용 emacs 패키지 (not used)
+    ;; anaconda-mode          ;; jedi 모드 같이 python code navigation을 해주는 패키지2
+    ;; helm-ros               ;; ROS용 emacs 패키지 (not used)
     ;; autopair
     ;; function-args
     ;; comment-dwim-2
@@ -96,11 +93,45 @@
 
 (install-packages)
 
-;;===========================================================================
-;;===========================================================================
+;;startm
+
+;; cleaner modeline
+(use-package diminish :ensure t :pin melpa
+             :config
+             (progn
+               (add-hook 'auto-revert-mode-hook
+                         (lambda() (diminish 'auto-revert-mode)))
+               (diminish 'undo-tree-mode)
+               )
+             )
+
+(use-package which-key :ensure t
+             :diminish which-key-mode
+             :config (progn (which-key-mode)
+                            (which-key-setup-side-window-bottom))
+             )
+
+;; emacs 26.1부터 사용하는 line number 모드. (git-gutter와 충돌이 없다)
+(global-display-line-numbers-mode) 
+
+;; 현재 커서가 가리키는 줄을 하이라이팅하는 모드
+(global-hl-line-mode t)
+
+(use-package rainbow-delimiters :ensure t :pin melpa
+             :config
+             ;; elisp, lisp 모드에서만 rainbow-delimiters를 활성화합니다
+             (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+             (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+             )
+
+(use-package wgrep :ensure t :pin melpa)
+
+
+
+
+
 
 ;; 1. helm에 관한 코드들
-
 (require 'helm-config)
 (require 'helm-grep)
 ;;(require 'setup-helm)
@@ -333,25 +364,25 @@
   (insert (concat  "[[*#" num "][#" num "]]"))
   )
 
-;; TODO ==> DONE과 같이 키워드를 한 번에 바꾸고 CLOSED:에 시간까지 추가해주는 함수
-(defun org-todo-done-edward(arg)
-""
-(interactive)
-(cond ((string= arg "DONE") (org-todo "DONE"))   
-    ((string= arg "COMPLETE") (org-todo "COMPLETE"))
-    ((string= arg "CLOSED") (org-todo "CLOSED")) 
-    (t (user-error "Error while doing org-todo-done-edward"))
-    )
-(save-excursion
-(next-line)
-(if (string-match-p "CLOSED:" (thing-at-point 'line t))  ;; 이미 CLOSED: 가 있는 경우
-    (user-error "CLOSED: is already exists")
-    (move-end-of-line 1)                                   ;; 없는 경우
-    (insert " CLOSED: ")
-    (move-end-of-line 1)
-    (org-time-stamp-inactive '(16))
-    ))
-)
+;; ;; TODO ==> DONE과 같이 키워드를 한 번에 바꾸고 CLOSED:에 시간까지 추가해주는 함수
+;; (defun org-todo-done-edward(arg)
+;;   ""
+;;   (interactive)
+;;   (cond ((string= arg "DONE") (org-todo "DONE"))   
+;;         ((string= arg "COMPLETE") (org-todo "COMPLETE"))
+;;         ((string= arg "CLOSED") (org-todo "CLOSED")) 
+;;         (t (user-error "Error while doing org-todo-done-edward"))
+;;         )
+;;   (save-excursion
+;;     (next-line)
+;;     (if (string-match-p "CLOSED:" (thing-at-point 'line t))  ;; 이미 CLOSED: 가 있는 경우
+;;         (user-error "CLOSED: is already exists")
+;;       (move-end-of-line 1)                                   ;; 없는 경우
+;;       (insert " CLOSED: ")
+;;       (move-end-of-line 1)
+;;       (org-time-stamp-inactive '(16))
+;;       ))
+;;   )
 
 ;; PACKAGE: org2jekyll
 ;; (require 'org2jekyll)
@@ -800,18 +831,9 @@
     ;; evil 모드에서 f 키로 빠르게 단어 사이를 이동합니다
     (define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
-    (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
-    (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
-                                                  (let ((string (thing-at-point 'line t)))
-                                                    (cond ((string-match-p "TODO" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "REPLACED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "DELAYED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "PAUSED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "CANCELLED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "MILESTONE" string) (org-todo-done-edward "COMPLETE"))
-                                                          ((string-match-p "OPEN" string) (org-todo-done-edward "CLOSED"))
-                                                          ))))
+    (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
 
+    ;; ' 키로 org-mode에서 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
 
     ;; , 키로 projectile switch 를 실행합니다
@@ -981,11 +1003,6 @@
 (global-set-key (kbd "M-c") 'duplicate-thing)
 
 
-;; PAKCAGE: which-key
-(require 'which-key)
-;; 단축키 입력시 하단에서 목록을 보여주는 모드
-(which-key-mode)
-
 ;; PACKAGE: avy
 (require 'avy)
 
@@ -993,11 +1010,6 @@
 
 ;; (load-theme 'solarized-dark t)
 (load-theme 'spacemacs-dark t)
-
-
-;; elisp, lisp 모드에서만 rainbow-delimiters를 활성화합니다
-(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 
 ;; PACKAGE: wrap-region
 (require 'wrap-region)
@@ -1037,9 +1049,6 @@
 ;;     ;; iedit 모드에서 `키로 선택 해제를 합니다 (default: M-;)
 ;;     (define-key iedit-mode-keymap (kbd "`") 'iedit-toggle-selection)
 ;;     ))
-
-;; PACKAGE: wgrep
-(require 'wgrep)
 
 ;; Package: projejctile
 (require 'projectile)
@@ -1210,11 +1219,6 @@
 ;;파일이 수정되었을 때 자동으로 다시 읽어들이도록 하는 설정
 (global-auto-revert-mode t)
 
-;;linum 모드 켜기 (줄번호 표시하기) 
-;; (global-linum-mode t)
-;; (global-nlinum-mode t)
-(global-display-line-numbers-mode) ;; emacs 26.1부터 사용하는 모드. git-gutter와 충돌이 없다
-
 ;; 계산기 자릿수 분리기호 삽입 calc EMACS 기본 계산기 모드에서 자릿수 분리기호 삽입
 (setq calc-group-digits t)
 
@@ -1262,9 +1266,6 @@
 
 ;;상단 메뉴 숨기기
 (menu-bar-mode 0)
-
-;; 현재 커서 하이라이팅 모드
-(global-hl-line-mode t)
 
 ;;도구 모음 숨기기
 (tool-bar-mode 0)

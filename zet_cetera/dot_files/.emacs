@@ -639,24 +639,24 @@
   )
 
 ;; TODO ==> DONE과 같이 키워드를 한 번에 바꾸고 CLOSED:에 시간까지 추가해주는 함수
-(defun org-todo-done-edward(arg)
-""
-(interactive)
-(cond ((string= arg "DONE") (org-todo "DONE"))
-    ((string= arg "COMPLETE") (org-todo "COMPLETE"))
-    ((string= arg "CLOSED") (org-todo "CLOSED"))
-    (t (user-error "Error while doing org-todo-dopne-edward"))
-    )
-(save-excursion
-(next-line)
-(if (string-match-p "CLOSED:" (thing-at-point 'line t))  ;; 이미 CLOSED: 가 있는 경우
-    (user-error "CLOSED: is already exists")
-    (move-end-of-line 1)                                   ;; 없는 경우
-    (insert " CLOSED: ")
-    (move-end-of-line 1)
-    (org-time-stamp-inactive '(16))
-    ))
-)
+;; (defun org-todo-done-edward(arg)
+;; ""
+;; (interactive)
+;; (cond ((string= arg "DONE") (org-todo "DONE"))
+;;     ((string= arg "COMPLETE") (org-todo "COMPLETE"))
+;;     ((string= arg "CLOSED") (org-todo "CLOSED"))
+;;     (t (user-error "Error while doing org-todo-dopne-edward"))
+;;     )
+;; (save-excursion
+;; (next-line)
+;; (if (string-match-p "CLOSED:" (thing-at-point 'line t))  ;; 이미 CLOSED: 가 있는 경우
+;;     (user-error "CLOSED: is already exists")
+;;     (move-end-of-line 1)                                   ;; 없는 경우
+;;     (insert " CLOSED: ")
+;;     (move-end-of-line 1)
+;;     (org-time-stamp-inactive '(16))
+;;     ))
+;; )
 
 ;; package: per-buffer-theme
 ;; (require 'per-buffer-theme)
@@ -1235,17 +1235,7 @@
     ;; evil 모드에서 f 키로 빠르게 단어 사이를 이동합니다
     (define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
-    (define-key evil-motion-state-map (kbd "T") 'org-shiftright)
-    (define-key evil-motion-state-map (kbd "t") (lambda() (interactive)
-                                                  (let ((string (thing-at-point 'line t)))
-                                                    (cond ((string-match-p "TODO" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "REPLACED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "DELAYED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "PAUSED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "CANCELLED" string) (org-todo-done-edward "DONE"))
-                                                          ((string-match-p "MILESTONE" string) (org-todo-done-edward "COMPLETE"))
-                                                          ((string-match-p "OPEN" string) (org-todo-done-edward "CLOSED"))
-                                                          ))))
+    (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
 
     ;; -, 3,#,4,$ 키로 gtag, TAGS 파일을 생성 + 코드 네이버게이션을 하는 명령어를 실행합니다
     (define-key evil-motion-state-map (kbd "-") 'create_GTAGS_TAGS)
