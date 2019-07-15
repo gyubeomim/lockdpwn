@@ -27,8 +27,24 @@ alias add='git add -u'
 alias o='cd /e/gitrepo/ims_org/ && sh windows_push_master.sh'
 alias op='cd /e/gitrepo/ims_org/ && git pull origin master'
 
-alias seto='cd /e/gitrepo/ims_org/ && sh windows_push_master.sh && cd /e/gitrepo/lockdpwn && sh windows_push_master.sh'
-alias setop='cd /e/gitrepo/ims_org/ && git pull origin master && cd /e/gitrepo/lockdpwn && git pull origin master'
+# for org-mode & lockdpwn
+function seto(){
+	echo "[+] push ims_org origin master..."
+	cd /e/gitrepo/ims_org
+	sh windows_push_master.sh
+	echo "[+] push lockdpwn origin master..."
+	cd /e/gitrepo/lockdpwn
+	sh windows_push_master.sh
+}
+function setop(){
+	echo "[+] pull ims_org origin master..."
+	cd /e/gitrepo/ims_org
+	git pull origin master
+	echo "[+] pull lockdpwn origin master..."
+	cd /e/gitrepo/lockdpwn
+	git pull origin master
+}
+
 
 alias blog='cd /e/gitrepo/tigerk0430.github.io/ && sh windows_push_master.sh'
 alias blogp='cd /e/gitrepo/tigerk0430.github.io/ && git pull origin master'
