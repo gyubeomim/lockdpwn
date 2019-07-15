@@ -623,10 +623,6 @@
                                   (define-key org-agenda-mode-map (kbd "]") 'org-agenda-list)
                                   (define-key org-agenda-mode-map (kbd "[") 'org-todo-list)
 
-                                  ;; 1,2키로 tab을 이동합니다
-                                  (define-key org-agenda-mode-map (kbd "1") 'tabbar-backward)
-                                  (define-key org-agenda-mode-map (kbd "2") 'tabbar-forward)
-
                                   ;; x 키로 emacs 창을 minimize 합니다
                                   (define-key org-agenda-mode-map (kbd "x") 'suspend-frame)
 
