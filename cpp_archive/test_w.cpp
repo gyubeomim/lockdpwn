@@ -1,37 +1,42 @@
 #include <cstring>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
-using ll = long long;
+int N,C,x[200000],limit;
 
-ll n,m,tree[1000001] = {0};
+bool possible(int current, int remain) {
+  if(remain==0) return true;
+
+  for(int i=current; i<N; i++){
+    if(x[i]-x[current]>=limit) 
+      return possible(i, remain-1);
+  }
+  return false;
+}
 
 int main() {
-  ll lo = 0;
-  ll hi = 10000000000001;
+  cin >> N >> C;
 
-  cin >> n >> m;
-
-  for (int i = 0; i < n; i++) {
-    ll x;
-    cin >> x;
-    tree[i] = x;
+  for (int i = 0; i < N; i++) {
+    cin >> x[i];
   }
+
+  sort(x, x+N);
+
+  int lo=1;
+  int hi=x[N-1]+1;
 
   while (lo < hi) {
-    ll mid = (lo + hi) >> 1;
-    ll result = 0;
+      limit = (lo + hi) / 2;
 
-    for (int i = 0; i < n; i++) {
-      ll val = tree[i]-mid;
-      if(val>0)
-        result += val;
-    }
-    if (result >= m) lo = mid + 1;
-    else hi = mid;
+      if (possible(0, C - 1)) 
+        lo = limit + 1;
+      else
+        hi = limit;
   }
-  cout << lo - 1 << '\n';
+  cout << lo-1 << '\n';
 
   return 0;
 }
