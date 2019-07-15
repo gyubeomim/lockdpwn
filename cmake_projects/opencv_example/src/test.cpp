@@ -12,8 +12,8 @@ int main(int argc, const char* argv[]) {
   /* cv::Ptr<Feature2D> f2d = ORB::create(); */
 
   // you get the picture, i hope..
-  Mat img_1 = imread("/home/dyros-vehicle/Pictures/10.pgm", 1);
-  Mat img_2 = imread("/home/dyros-vehicle/Pictures/11.pgm", 1);
+  Mat img_1 = imread("/home/atlas1/Pictures/test/1.pgm", 1);
+  Mat img_2 = imread("/home/atlas1/Pictures/test/2.pgm", 1);
 
   //-- Step 1: Detect the keypoints:
   std::vector<KeyPoint> keypoints_1, keypoints_2;    
