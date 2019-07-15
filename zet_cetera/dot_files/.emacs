@@ -1156,7 +1156,7 @@
 (defun my-revert-buffer()
   (interactive)
   (revert-buffer t t t)
-  (message "[+] this buffer reverted..")
+  (message "[+] reverted this buffer...")
   )
 
 ;; kill-this-buffer가 가끔 menu-bar-mode 때문에 실행되지 않는 경우가 있는데
@@ -1858,42 +1858,69 @@
  '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
  '(org-capture-bookmark nil)
  '(org-capture-prepare-finalize-hook
-  (quote
-   ((lambda nil
-      (goto-line (+ (line-number-at-pos) -2))
-      (beginning-of-line)
-      (insert "*"))
-    (lambda nil
-      (progn
-        (setq num 1)
-        (loop (< num 2000)
-              (let ((numbering (concat "#" (number-to-string num)))
-                    (content
-                     (with-current-buffer (cadr (split-string (buffer-name) "-")) (buffer-substring-no-properties (point-min) (point-max))))
-                    (capture_content
-                     (with-current-buffer (buffer-name) (buffer-substring-no-properties (point-min) (point-max)))))
-                (if (or (string= (buffer-name) "CAPTURE-daily.org")
-                        (string= (buffer-name) "CAPTURE-todo.org")
-                        )
-                    (return)
-                  (if
-                      (save-excursion (goto-char (point-min))
-                                      (string-match numbering content))
-                      nil
-                    (return
+   (quote
+    ((lambda nil
+       (goto-line
+        (+
+         (line-number-at-pos)
+         -2))
+       (beginning-of-line)
+       (insert "*"))
+     (lambda nil
+       (progn
+         (setq num 1)
+         (loop
+          (< num 2000)
+          (let
+              ((numbering
+                (concat "#"
+                        (number-to-string num)))
+               (content
+                (with-current-buffer
+                    (cadr
+                     (split-string
+                      (buffer-name)
+                      "-"))
+                  (buffer-substring-no-properties
+                   (point-min)
+                   (point-max))))
+               (capture_content
+                (with-current-buffer
+                    (buffer-name)
+                  (buffer-substring-no-properties
+                   (point-min)
+                   (point-max)))))
+            (if
+                (or
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-daily.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-todo.org"))
+                (return)
+              (if
+                  (save-excursion
+                    (goto-char
+                     (point-min))
+                    (string-match numbering content))
+                  nil
+                (return
+                 (progn
+                   (if
+                       (string=
+                        (buffer-name)
+                        "CAPTURE-issues.org")
+                       (progn
+                         (beginning-of-line)
+                         (search-forward "OPEN")
+                         (insert
+                          (concat " " numbering)))
                      (progn
-                       (if (string= (buffer-name) "CAPTURE-issues.org") ;; issues.org의 경우 각각의 이슈 앞에 numbering을 해야한다
-                           (progn
-                             (beginning-of-line)
-                             (search-forward "OPEN")
-                             (insert (concat " " numbering))
-                             )
-                         (progn
-                           (end-of-line)
-                           (insert numbering)))
-                       ))))
-                (setq num
-                      (1+ num)))))))))
+                       (end-of-line)
+                       (insert numbering)))))))
+            (setq num
+                  (1+ num)))))))))
  '(org-default-priority 66)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
@@ -1980,7 +2007,8 @@
  '(rtags-use-bookmarks nil)
  '(safe-local-variable-values
    (quote
-    ((eval font-lock-add-keywords nil
+    ((cmake-ide-cmake-args . "RelWithDebInfo")
+     (eval font-lock-add-keywords nil
            (\`
             (((\,
                (concat "("
@@ -3573,6 +3601,10 @@ created by edward 180515"
 
 ;; Disable Beeping when using VNC
 (setq visible-bell 1)
+
+;; 가끔씩 evil-mode search freezing 현상이 일어날 때가 있는데 이를 방지하기 위해 설정한 코드
+;; https://github.com/syl20bnr/spacemacs/issues/3623
+(setq-default search-invisible t)
 
 ;; for org-mode timestamp English ver.
 ;; <2018-12-19 수> ==> <2018-12-19 Wed>

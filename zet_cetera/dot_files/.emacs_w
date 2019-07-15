@@ -786,7 +786,7 @@
 (defun my-revert-buffer()
   (interactive)
   (revert-buffer t t t)
-  (message "[+] this buffer reverted..")
+  (message "[+] reverted this buffer...")
   )
 
 ;; kill-this-buffer가 가끔 menu-bar-mode 때문에 실행되지 않는 경우가 있는데

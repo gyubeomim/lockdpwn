@@ -351,5 +351,8 @@ alias blogp='cd /home/atlas1/gitrepo/tigerk0430.github.io && git pull origin mas
 alias mon='/home/atlas1/gitrepo/lockdpwn/script_archive/monitors_toggle.sh atlas1'
 alias moff='/home/atlas1/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off_atlas1'
 
+# for gdb
+alias gdb='gdb -q'
+
 source /opt/ros/kinetic/setup.bash
 source /home/atlas1/catkin_ws/devel/setup.bash
