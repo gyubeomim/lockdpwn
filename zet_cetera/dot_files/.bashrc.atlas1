@@ -340,8 +340,24 @@ alias cse='cd /home/atlas1/catkin_ws/src/edward/'
 alias o='cd /home/atlas1/gitrepo/ims_org && ./push_master.sh'
 alias op='cd /home/atlas1/gitrepo/ims_org && git pull origin master'
 
-alias seto='cd /home/atlas1/gitrepo/ims_org && ./push_master.sh  && cd /home/atlas1/gitrepo/lockdpwn && ./push_master.sh'
-alias setop='cd /home/atlas1/gitrepo/ims_org && git pull origin master && cd /home/atlas1/gitrepo/lockdpwn && git pull origin master'
+# for org-mode & lockdpwn
+function seto(){
+	echo "[+] push ims_org origin master..."
+	cd ~/gitrepo/ims_org
+	./push_master.sh
+	echo "[+] push lockdpwn origin master..."
+	cd ~/gitrepo/lockdpwn
+	./push_master.sh
+}
+function setop(){
+	echo "[+] pull ims_org origin master..."
+	cd ~/gitrepo/ims_org
+	git pull origin master
+	echo "[+] pull lockdpwn origin master..."
+	cd ~/gitrepo/lockdpwn
+	git pull origin master
+}
+
 
 # for github page
 alias blog='cd /home/atlas1/gitrepo/tigerk0430.github.io && ./push_master.sh'
