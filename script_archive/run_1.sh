@@ -13,6 +13,10 @@ case $1 in
 		cd build_reldeb/
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 		;;
+	reldebonly)
+		cd build_reldeb/
+		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+		;;
 	debug)
 		cd build_debug/
 		cmake -DCMAKE_BUILD_TYPE=Debug .. 
