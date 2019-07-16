@@ -13,7 +13,7 @@ case $1 in
 		cd build_reldeb/
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 		;;
-	reldebonly)
+	reldeb2)
 		cd build_reldeb/
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 		;;
@@ -35,6 +35,14 @@ case $1 in
 	reldeb)
 		$executable
 		;;
+	reldeb2)
+		gdb --ex="set print thread-events off"  --ex="r" -args $executable
+		;;
 	debug)
-		gdb --ex="set print thread-events off" --ex="r" -args $executable
+		gdb --ex="set print thread-events off" --ex="b example_kitti.cc:56" --ex="b ORBmatcher.cc:159" --ex="b ORBmatcher.cc:522" --ex="r" -args $executable
 esac
+
+#ARCHIVE
+# gdb --ex="set print thread-events off" --ex="r" -args $executable
+# gdb --ex="set print thread-events off" --ex="b example_kitti.cc:56" --ex="b ORBmatcher.cc:159" --ex="b ORBmatcher.cc:522" --ex="r" -args $executable
+# gdb --ex="set print thread-events off" --ex="b BRIEFdescriptor.cc:118"  --ex="r" -args $executable

@@ -2957,7 +2957,7 @@ created by edward 180515"
      ))
 
 ;; compile 명령어 수정 (c++일 경우 g++, c일 경우 gcc로 해주면 됩니다)
-(setq compile-command "g++ -m64 -std=c++11 -g -o ")
+(setq compile-command "g++ -m64 -std=c++11 -Wall -O2 -g -o ")
 
 ;; C-c 8,9 키로 .emacs 파일을 열도록 설정합니다
 (global-set-key (kbd "C-c 8") (lambda() (interactive)(find-file "~/gitrepo/lockdpwn/zet_cetera/dot_files/.emacs_w")))
