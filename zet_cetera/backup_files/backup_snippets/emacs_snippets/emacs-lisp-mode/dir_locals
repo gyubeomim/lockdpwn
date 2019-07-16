@@ -1,6 +1,6 @@
 #contributor: Gyubeom Edward Im
 #name: .dir-locals.el by edward
-#key: dirlocal
+#key: dl
 # --
 ((nil . (
     (cmake-ide-build-dir . "../build")

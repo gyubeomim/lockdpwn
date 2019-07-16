@@ -23,8 +23,8 @@ int main(int argc, const char* argv[]) {
   cv::Mat out_1, out_2;
   cv::drawKeypoints(img_1, keypoints_1, out_1);
   cv::drawKeypoints(img_2, keypoints_2, out_2);
-  cv::imwrite("sift_result1.jpg", out_1);
-  cv::imwrite("sift_result2.jpg", out_2);
+  // cv::imwrite("sift_result1.jpg", out_1);
+  // cv::imwrite("sift_result2.jpg", out_2);
 
   //-- Step 2: Calculate descriptors (feature vectors)    
   Mat descriptors_1, descriptors_2;    

@@ -2382,6 +2382,37 @@
 
 (add-hook 'dired-mode-hook 'variable-pitch-mode)
 
+;; refer: https://stackoverflow.com/a/20302565/7402755
+(defun dired-new-file ()
+(interactive)
+  (let* (
+      (n 0)
+      lawlist-filename
+      (dired-buffer-name (buffer-name)))
+    (catch 'done
+      (while t
+        (setq lawlist-filename (concat ".dir-locals"
+          (if (= n 0) "" (int-to-string n))
+            ".el"))
+        (setq n (1+ n))
+        (if (not (file-exists-p lawlist-filename))
+          (throw 'done nil)) ))
+    (message "[b]uffer + file (maybe) | [f]ile + buffer (maybe)")
+    (let ((file-or-buffer (read-char-exclusive)))
+      (cond
+        ((eq file-or-buffer ?b)
+          (switch-to-buffer (get-buffer-create lawlist-filename))
+          (text-mode)
+          (or (y-or-n-p (format "Save Buffer `%s'? "lawlist-filename))
+            (error "Done."))
+          (write-file lawlist-filename)
+          (with-current-buffer dired-buffer-name
+            (revert-buffer)))
+        ((eq file-or-buffer ?f)
+          (start-process "touch-file" nil "touch" lawlist-filename)
+          (revert-buffer))
+        (t (message "You have exited the function.")) ))))
+
 ;; dired mode에서 여러 단축키들을 설정하는 코드
 (eval-after-load "dired"
   '(progn
@@ -2423,6 +2454,10 @@
 
      ;; - 키로 gtags, etags를 생성하는 명령어들을 실행합니다
      (define-key dired-mode-map (kbd "-") 'create_GTAGS_TAGS)
+
+     ;; . 키로 .dir-locals.el 파일을 생성합니다.
+     ; (define-key dired-mode-map (kbd ".") (lambda () (interactive) (find-file ".dir-locals.el")))
+     (define-key dired-mode-map (kbd ".") 'dired-new-file)
      ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
