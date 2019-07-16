@@ -17,8 +17,7 @@ class SearchByNumFun  :public Search
 
 
 //이름으로 검색 시에 사용할 클래스 정의
-class SearchByNameFun
-    :public Search
+class SearchByNameFun  :public Search
 {
   string name;
  public:

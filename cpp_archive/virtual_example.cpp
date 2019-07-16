@@ -1,8 +1,6 @@
 /*
   c++ ==>기술이의 스킬랜드 blog에서 순수 가상함수 + 상속 + 소멸자 예제 소스코드
 */
-
-#include "stdafx.h"
 #include <iostream>
 #include <string>
 

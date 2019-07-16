@@ -1,8 +1,3 @@
-//#pragma once
-//#include "Collection.h"
-//#include "MyGlobal.h"
-
-
 class Zone
 {
   Collection *collection;

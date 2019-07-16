@@ -2455,8 +2455,10 @@
      ;; - 키로 gtags, etags를 생성하는 명령어들을 실행합니다
      (define-key dired-mode-map (kbd "-") 'create_GTAGS_TAGS)
 
+     ;; tab 키로 커서가 가리키고 있는 파일을 임시적으로 봅니다
+     (define-key dired-mode-map (kbd "<tab>") 'dired-display-file)
+
      ;; . 키로 .dir-locals.el 파일을 생성합니다.
-     ; (define-key dired-mode-map (kbd ".") (lambda () (interactive) (find-file ".dir-locals.el")))
      (define-key dired-mode-map (kbd ".") 'dired-new-file)
      ))
 

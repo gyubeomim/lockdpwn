@@ -36,7 +36,7 @@ int main() {
 
     // (C) Computer chooses word를 눌렀을 경우
     if (ch2 == 'C' || ch2=='c') {
-      ifstream fin("hangword.txt");
+      ifstream fin("./data/hangword.txt");
 
       if(!fin) {
         cout<<"File missing, aborting.\n\nYou are missing a file of name";

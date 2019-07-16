@@ -9,6 +9,8 @@ devel
 
 *.pyc
 *.svg
+*.out
+*.gch
 
 .ipynb_checkpoints/
 
