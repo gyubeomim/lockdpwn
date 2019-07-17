@@ -9,6 +9,9 @@ case $1 in
 	release)
 		cmake -DCMAKE_BUILD_TYPE=Release ..
 		;;
+	reldebonly)
+		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+		;;
 	reldeb)
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 		;;
