@@ -1007,13 +1007,17 @@
 (global-set-key (kbd "C-c s") (lambda() (interactive)(org-agenda nil "s")))
 ;; C-c + a 키로 태그를 검색합니다
 (global-set-key (kbd "C-c a") 'org-tags-view)
-;; C-c + # 키로 특정 .org 파일을 엽니다
+;; C-c + # 키로 특정 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
 (global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/milestone.org")))
 (global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
 (global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/issues.org")))
 (global-set-key (kbd "C-c 6") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org")))
+;; C-c 8,9 키로 .emacs .emacs_w 파일을 열도록 설정합니다
+(global-set-key (kbd "C-c 8") (lambda() (interactive)(find-file "~/gitrepo/lockdpwn/zet_cetera/dot_files/.emacs_w")))
+(global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/.emacs")))
+
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
@@ -1024,10 +1028,9 @@
 (global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
 ;; C-< 키로 어느곳에서나 milestone.org MILESTONE 기능을 열게합니다
 (global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "m")))
-;; C-<f12> 키로 어느곳에서나 org-capture 기능을 열게합니다
-(global-set-key (kbd "C-<f12>") 'org-capture)
 ;; C-, 키로 어느곳에서나 todo.org Note 기능을 열게합니다
 (global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "n")))
+
 ;; org-mode용 strike-through를 구현한 함수
 (defun strike-through-for-org-mode ()
   (interactive)
@@ -2201,6 +2204,8 @@
 (global-set-key (kbd "C-<f9>") '(lambda () (interactive) (set-frame-custom "140")))
 (global-set-key (kbd "C-<f10>") '(lambda () (interactive) (set-frame-custom "150")))
 (global-set-key (kbd "C-<f11>") '(lambda () (interactive) (set-frame-custom "160")))
+;; C-<f12> 키로 어느곳에서나 org-capture 기능을 열게합니다
+(global-set-key (kbd "C-<f12>") 'org-capture)
 
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
@@ -2905,11 +2910,11 @@ created by edward 180515"
 ;; f8 키로 디버깅 단축키
 (global-set-key [f8] 'gdb)
 
+;; shift + f8 키로 gud를 실행한다
+(global-set-key (kbd "S-<f8>") 'gud-run)
+
 ;; f9 소스창에서 바로 브레이크포인트 설정
 (global-set-key (kbd "<f9>") 'gud-break)
-
-;; shift + f9 키로 gud를 실행한다
-(global-set-key (kbd "S-<f9>") 'gud-run)
 
 ;; f10 키로 라인 실행하고 다음 라인으로
 (global-set-key (kbd "<f10>") 'gud-next)
@@ -2920,13 +2925,13 @@ created by edward 180515"
 ;; f11 키로 전체화면 모드 실행
 (global-set-key (kbd "<f11>") 'toggle-frame-fullscreen)
 
-;; shift + f10 현재 커서까지 실행하고 멈춤
+;; 6 키로 현재 커서까지 실행하고 멈춤
 (define-key evil-motion-state-map (kbd "6") '(lambda ()
                                                (interactive)
                                                (call-interactively 'gud-tbreak)
                                                (call-interactively 'gud-cont)))
 
-;; shift + f12 현재 실행중인 함수 리턴후 멈춤
+;; 7 키로 현재 실행중인 함수 리턴후 멈춤
 (define-key evil-motion-state-map (kbd "7") 'gud-finish)
 
 ;; 8 키로 gdb 다중창 On/Off
@@ -2934,7 +2939,6 @@ created by edward 180515"
 
 ;; 9 키로 gdb의 layout을 변경합니다
 (define-key evil-motion-state-map (kbd "9") 'my-gdb-settings-toggle)
-
 
 ;; gdb variables
 (setq gdb-show-changed-values t)
@@ -2959,10 +2963,6 @@ created by edward 180515"
 
 ;; compile 명령어 수정 (c++일 경우 g++, c일 경우 gcc로 해주면 됩니다)
 (setq compile-command "g++ -m64 -std=c++11 -Wall -O2 -g -o ")
-
-;; C-c 8,9 키로 .emacs 파일을 열도록 설정합니다
-(global-set-key (kbd "C-c 8") (lambda() (interactive)(find-file "~/gitrepo/lockdpwn/zet_cetera/dot_files/.emacs_w")))
-(global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/.emacs")))
 
 ;; Ctrl + Alt + 1 키로 jekyll 블로그의 .org 포스트를 올립니다
 (global-set-key (kbd "C-M-1") (lambda()
