@@ -2616,54 +2616,6 @@ Version 2017-04-19"
 ;; Alt + u 키로 region 영역에 영어단어를 대문자, 소문자, 앞에만 대문자 형식으로 토글해줍니다
 (global-set-key (kbd "M-u") 'xah-toggle-letter-case)
 
-;;f1 이전 버퍼창 이동
-(global-set-key [f1] 'tabbar-backward)
-
-;;f2 다음 버퍼창 이동
-(global-set-key [f2] 'tabbar-forward)
-
-;; f3 키로 다음 창으로 이동
-(global-set-key [f3] 'next-multiframe-window)
-
-;; f4 키로 org-show-todo-tree 명령어 실행 (for org-mode)
-(global-set-key [f4] '(lambda() (interactive)(org-show-todo-tree '(4))))
-
-;; f5 키로 org-match-sparse-tree 명령어 실행 (for org-mode)
-(global-set-key [f5] 'org-match-sparse-tree)
-
-;; f6 키로 ECB 시작
-(global-set-key [f6] 'ecb-minor-mode)
-
-;; f7 키로 latex-preview-pane 모드 시작
-(global-set-key [f7] 'latex-preview-pane-mode)
-
-;; f8 키로 디버깅 단축키
-(global-set-key [f8] 'gdb)
-
-;; f9 소스창에서 바로 브레이크포인트 설정
-(global-set-key [f9] 'gud-break)
-
-;; shift + f9 키로 gud를 실행한다
-(global-set-key [(shift f9)] 'gud-run)
-
-;; f10 라인 실행하고 다음 라인으로
-(global-set-key [f10] 'gud-next)
-
-;; f11 라인 실행하고 다음 라인으로
-(global-set-key [f11] 'toggle-frame-fullscreen)
-
-;; f12 함수안으로 따라 들어간다
-(global-set-key [f12] 'gud-step)
-
-;; shift + f12 현재 실행중인 함수 리턴후 멈춤
-(global-set-key [(shift f12)] 'gud-finish)
-
-;; shift + f10 현재 커서까지 실행하고 멈춤
-(global-set-key [(shift f10)] '(lambda ()
-                                 (interactive)
-                                 (call-interactively 'gud-tbreak)
-                                 (call-interactively 'gud-cont)))
-
 (defun gdb-setup-windows-default ()
   "Layout the window pattern for option `gdb-many-windows'."
   (gdb-get-buffer-create 'gdb-locals-buffer)
@@ -2921,19 +2873,65 @@ created by edward 180515"
       (put this-command 'state 0))
      )))
 
-
-
-;; 처음 F8로 시작할 때 생성되는 창을 설정하는 함수 (my-gdb-setup-windows5) 로 설정했다
-;; defadvice로 설정하는 것인듯
+;; 처음 gdb를 시작할 때 생성되는 창을 설정하는 함수 (my-gdb-setup-windows5) 로 설정했다 (defadvice로 설정하는 듯)
 (defadvice gdb-setup-windows (around setup-more-gdb-windows activate)
   (my-gdb-setup-windows5)
   )
 
-;; shift + f12 gdb 다중창 On/Off
-(global-set-key [(shift f12)] 'gdb-many-windows)
+;;f1 이전 버퍼창 이동
+(global-set-key [f1] 'tabbar-backward)
 
-;; shift + f11 키로 gdb의 layout을 변경합니다
-(global-set-key [(shift f11)] 'my-gdb-settings-toggle)
+;;f2 다음 버퍼창 이동
+(global-set-key [f2] 'tabbar-forward)
+
+;; f3 키로 다음 창으로 이동
+(global-set-key [f3] 'next-multiframe-window)
+
+;; f4 키로 org-show-todo-tree 명령어 실행 (for org-mode)
+(global-set-key [f4] '(lambda() (interactive)(org-show-todo-tree '(4))))
+
+;; f5 키로 org-match-sparse-tree 명령어 실행 (for org-mode)
+(global-set-key [f5] 'org-match-sparse-tree)
+
+;; f6 키로 ECB 시작
+(global-set-key [f6] 'ecb-minor-mode)
+
+;; f7 키로 latex-preview-pane 모드 시작
+(global-set-key [f7] 'latex-preview-pane-mode)
+
+;; f8 키로 디버깅 단축키
+(global-set-key [f8] 'gdb)
+
+;; f9 소스창에서 바로 브레이크포인트 설정
+(global-set-key (kbd "<f9>") 'gud-break)
+
+;; shift + f9 키로 gud를 실행한다
+(global-set-key (kbd "S-<f9>") 'gud-run)
+
+;; f10 키로 라인 실행하고 다음 라인으로
+(global-set-key (kbd "<f10>") 'gud-next)
+
+;; Shift + f10 키로 함수안으로 따라 들어간다
+(global-set-key (kbd "S-<f10>") 'gud-step)
+
+;; f11 키로 전체화면 모드 실행
+(global-set-key (kbd "<f11>") 'toggle-frame-fullscreen)
+
+;; shift + f10 현재 커서까지 실행하고 멈춤
+(define-key evil-motion-state-map (kbd "6") '(lambda ()
+                                               (interactive)
+                                               (call-interactively 'gud-tbreak)
+                                               (call-interactively 'gud-cont)))
+
+;; shift + f12 현재 실행중인 함수 리턴후 멈춤
+(define-key evil-motion-state-map (kbd "7") 'gud-finish)
+
+;; 8 키로 gdb 다중창 On/Off
+(define-key evil-motion-state-map (kbd "8") 'gdb-many-windows)
+
+;; 9 키로 gdb의 layout을 변경합니다
+(define-key evil-motion-state-map (kbd "9") 'my-gdb-settings-toggle)
+
 
 ;; gdb variables
 (setq gdb-show-changed-values t)
@@ -3603,10 +3601,6 @@ created by edward 180515"
 (setq auto-mode-alist
       (append '((".*\\.sdf\\'" . xml-mode))
               auto-mode-alist))
-;; ROS의 CMakefile을 구문하이라이팅하기 위해 설정합니다
-;; (setq auto-mode-alist
-;;       (append '((".*\\.txt\\'" . cmake-mode))
-;;               auto-mode-alist))
 (setq auto-mode-alist
       (append '((".*\\.vim\\'" . ruby-mode))
               auto-mode-alist))
