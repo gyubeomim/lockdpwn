@@ -10,15 +10,12 @@ case $1 in
 		cmake -DCMAKE_BUILD_TYPE=Release ..
 		;;
 	reldeb)
-		cd build_reldeb/
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 		;;
 	reldeb2)
-		cd build_reldeb/
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 		;;
 	debug)
-		cd build_debug/
 		cmake -DCMAKE_BUILD_TYPE=Debug .. 
 		;;
 esac
