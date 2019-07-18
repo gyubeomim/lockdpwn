@@ -2944,6 +2944,7 @@ created by edward 180515"
 (setq gdb-show-changed-values t)
 (setq gdb-use-colon-colon-notation t)
 (setq gdb-use-separate-io-buffer nil)
+(setq gdb-display-io-nopopup nil)
 (setq gdb-delete-out-of-scope t)
 (setq gdb-speedbar-auto-raise t)
 
