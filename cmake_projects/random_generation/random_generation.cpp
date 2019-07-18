@@ -15,7 +15,7 @@ int main() {
   double var1=0, var2=0, var3=0;
 
   ofstream outfile;
-  outfile.open("random_posture.csv", std::ofstream::out | std::ofstream::app);
+  outfile.open("./build/random_posture.csv", std::ofstream::out | std::ofstream::app);
   for(int i=1; i<=1000; i++) {
     var3 =  3.8     + uniform_dist3(generator);
     var1 =  55.5024 + uniform_dist1(generator) * std::cos(var3);
