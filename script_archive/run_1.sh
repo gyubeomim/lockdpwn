@@ -32,15 +32,12 @@ esac
 make -j12
 cd ../
 
-executable="/home/atlas1/gitrepo/orb-sandbox/thirdparty/orb-slam/examples/stereo/example_kitti 
-			/home/atlas1/gitrepo/orb-sandbox/thirdparty/orb-slam/resource/vocabulary/ORBvoc.txt 
-			/home/atlas1/gitrepo/orb-sandbox/thirdparty/orb-slam/examples/stereo/KITTI03.yaml 
+executable="./thirdparty/orb-slam/examples/stereo/example_kitti 
+			./thirdparty/orb-slam/resource/vocabulary/ORBvoc.txt 
+			./thirdparty/orb-slam/examples/stereo/KITTI03.yaml 
 			/home/atlas1/datasets/kitti/data_odometry/sequences/00 0 0"
 
-executable_intern="/home/atlas1/gitrepo/orb-sandbox/thirdparty/intern-sandbox/build/example_kitti 
-					/home/atlas1/gitrepo/orb-sandbox/thirdparty/orb-slam/resource/vocabulary/ORBvoc.txt 
-					/home/atlas1/gitrepo/orb-sandbox/thirdparty/orb-slam/examples/stereo/KITTI03.yaml 
-					/home/atlas1/datasets/kitti/data_odometry/sequences/00 0 0"
+executable_intern="/home/atlas1/gitrepo/orb-sandbox/thirdparty/intern-sandbox/build/example_kitti ../orb-slam/resource/vocabulary/ORBvoc.txt ../orb-slam/examples/stereo/KITTI03.yaml 	/home/atlas1/datasets/kitti/data_odometry/sequences/00 0 0"
 
 case $1 in
 	r)
@@ -63,6 +60,14 @@ esac
 # gdb --ex="set print thread-events off" --ex="r" -args $executable
 # gdb --ex="set print thread-events off" --ex="b example_kitti.cc:56" --ex="b ORBmatcher.cc:159" --ex="b ORBmatcher.cc:522" --ex="r" -args $executable
 # gdb --ex="set print thread-events off" --ex="b BRIEFdescriptor.cc:118"  --ex="r" -args $executable
+
+
+# executable="/home/atlas1/gitrepo/orb-sandbox/thirdparty/orb-slam/examples/stereo/example_kitti 
+# 			/home/atlas1/gitrepo/orb-sandbox/thirdparty/orb-slam/resource/vocabulary/ORBvoc.txt 
+# 			/home/atlas1/gitrepo/orb-sandbox/thirdparty/orb-slam/examples/stereo/KITTI03.yaml 
+# 			/home/atlas1/datasets/kitti/data_odometry/sequences/00 0 0"
+
+
 # executable_intern="/home/atlas1/gitrepo/orb-sandbox/thirdparty/intern-sandbox/build/example_kitti 
 # 					/home/atlas1/gitrepo/orb-sandbox/thirdparty/orb-slam/resource/vocabulary/ORBvoc.txt 
 # 					/home/atlas1/gitrepo/orb-sandbox/thirdparty/orb-slam/examples/stereo/KITTI03.yaml 
