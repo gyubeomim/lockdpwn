@@ -55,10 +55,13 @@
     cmake-mode             ;; cmake package
     use-package            ;; package를 관리해주는 패키지
 
-    
+    calfw                  ;; calendar for org-mode
+    calfw-org
+
+    htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
+
+
     ;;WINDOWS-----------------------------------
-    ;;calfw                  ;; calendar for org-mode
-    ;;calfw-org
     ;;anzu                    ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
     ;;org-gcal                ;; org-mode와 google Calendar를 연동해주는 패키지
     ;;irony                   ;; c++ 코드 자동완성 패키지 (M-x irony-install-server로 설치한다)
@@ -72,7 +75,6 @@
     ;; org2jekyll             ;; .org 파일을 github page(jekyll)에서 볼 수 있도록 변환해주는 패키지 (NOT USED)
     ;; arjen-grey-theme       ;; grey 테마를 설정할 수 있는 패키지
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
-    ;; htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
     ;; powerline              ;; emacs 상태창을 예쁘게 꾸며주는 패키지
     ;; anaconda-mode          ;; jedi 모드 같이 python code navigation을 해주는 패키지2
     ;; helm-ros               ;; ROS용 emacs 패키지 (not used)
@@ -436,8 +438,6 @@
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
      ;; C-<f12> org capture 기능 단축키 
      (define-key org-mode-map (kbd "C-<f12>") 'org-capture)
-     ;; C-< 키로 어느곳에서나 milestone.org MILESTONE 기능을 열게합니다
-     (define-key org-mode-map (kbd "C-<") (lambda () (interactive)(org-capture nil "m")))
      ;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
      (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
@@ -677,11 +677,9 @@
 (global-set-key (kbd "C-;") 'org-store-link)
 ;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
 (global-set-key (kbd "C-'") 'insert-number-of-link)
-;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
+;; C-. 키로 어느곳에서나 todo.org 파일을 작성합니다
 (global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
-;; C-< 키로 어느곳에서나 milestone.org MILESTONE 기능을 열게합니다
-(global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "m")))
-;; C-, 키로 어느곳에서나 todo.org Note 기능을 열게합니다
+;; C-, 키로 어느곳에서나 quick.org 파일을 작성합니다
 (global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "n")))
 ;; org-mode용 strike-through를 구현한 함수
 (defun strike-through-for-org-mode ()
@@ -741,6 +739,11 @@
 ;; PACKAGE: calfw
 (require 'calfw)
 (require 'calfw-org)
+
+;; PAKCAGE: htmlize
+(require 'htmlize)
+(setq org-html-htmlize-output-type 'css) ; default: 'inline-css
+
 
 ;; PACKAGE: doc-view (for pdf viewer)
 (setq doc-view-ghostscript-program "c:/Program Files/gs/gs9.26/bin/gswin64c.exe")

@@ -95,9 +95,13 @@
 
     spacemacs-theme        ;; spacemacs theme
 
+    calfw                  ;; calendar framework for org-mode
+    calfw-org              ;; calfw-org
 
-    ;; calfw                  ;; calendar framework for org-mode
-    ;; calfw-org              ;; calfw-org
+    htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
+
+
+
     ;; nlinum                 ;; linum-mode 대체하는 패키지, linum-mode가 속도가 매우 느려서 바꿨다 (26.1 업그레이드하면서 필요없어짐)
     ;; eldoc
     ;; ycmd
@@ -108,7 +112,6 @@
     ;; org2jekyll             ;; .org 파일을 github page(jekyll)에서 볼 수 있도록 변환해주는 패키지 (NOT USED)
     ;; arjen-grey-theme       ;; grey 테마를 설정할 수 있는 패키지
     ;; org-preview-html       ;; org-mode의 편집을 실시간으로 html로 나타내주는 패키지 (not used)
-    ;; htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
     ;; powerline              ;; emacs 상태창을 예쁘게 꾸며주는 패키지
     ;; anaconda-mode ;; jedi 모드 같이 python code navigation을 해주는 패키지2
     ;; helm-ros  ;; ROS용 emacs 패키지 (not used)
@@ -471,6 +474,12 @@
 
 (add-hook 'after-make-frame-functions 'set_korean_font_after_loading)
 
+;; org-table에서 한글 폰트로 인해 정렬이 깨지지 않도록 하는 방법
+;;https://crazia.tistory.com/entry/Emacs-24x-%EB%B2%84%EC%A0%BC-%ED%95%9C%EA%B8%80-%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%A0%95-orgmode-%EC%9D%98-%ED%95%9C%EA%B8%80-%ED%85%8C%EC%9D%B4%EB%B8%94-%EA%B9%A8%EC%A7%80%EC%A7%80-%EC%95%8A%EA%B2%8C-%EB%B3%B4%EC%9D%B4%EA%B8%B0
+(setq face-font-rescale-alist
+      '(("NanumGothicCoding" . 1.2307692307692308)
+        ("NanumGothic" . 1.2307692307692308)
+        ))
 
 ;; PACKAGE: dtrt-indent
 (require 'dtrt-indent)
@@ -722,9 +731,7 @@
      (define-key org-mode-map (kbd "<M-S-down>") 'org-shiftdown)
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
-     ;; C-< 키로 어느곳에서나 milestone.org MILESTONE 기능을 열게합니다
-     (define-key org-mode-map (kbd "C-<") (lambda () (interactive)(org-capture nil "m")))
-     ;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
+     ;; C-. 키로 어느곳에서나 todo.org 파일을 작성합니다
      (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
      ;; C-<f12> 키로 어느곳에서나 org-capture 기능을 열게합니다
      (define-key org-mode-map (kbd "C-<f12>") 'org-capture)
@@ -775,17 +782,23 @@
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
+
      ;; org-mode에서 이미지를 보여주는 설정
      ;; (setq org-startup-with-inline-images t)
+
      ;; src block에 syntax highlighting을 해주는 패키지
      (setq org-src-fontify-natively t)
+
      ;; org-mode를 시작할 때 unfold all
      ;;(setq org-inhibit-startup-visibility-stuff t)
+
      ;; org-mode에서 이미지 크기를 줄이기 위한 설정
      (setq org-image-actual-width nil)
+
      ;; tag가 달리는 위치 설정
      (setq org-tags-column 120)
      (setq org-startup-indented nil)
+
      ;; org-agenda view에서 하루가 지난 뒤까지 deadline이 없는 경우 계속 누적되지 않도록 설정
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
@@ -958,8 +971,9 @@
                                   (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
 
-                                  ;; [ ] 키로 org-agenda 목록을 보도록 설정합니다
+                                  ;; [ ] } 키로 org-agenda 목록을 보도록 설정합니다
                                   (define-key org-agenda-mode-map (kbd "]") 'org-agenda-list)
+                                  (define-key org-agenda-mode-map (kbd "}") 'cfw:open-org-calendar)
                                   (define-key org-agenda-mode-map (kbd "[") 'org-todo-list)
 
                                   ;; x 키로 emacs 창을 minimize 합니다
@@ -1024,11 +1038,9 @@
 (global-set-key (kbd "C-'") 'insert-number-of-link)
 ;; C-M-? 키로 어느곳에서나 agenda list를 엽니다
 (global-set-key (kbd "C-M-?") 'org-agenda)
-;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
+;; C-. 키로 어느곳에서나 todo.org 파일을 작성합니다
 (global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
-;; C-< 키로 어느곳에서나 milestone.org MILESTONE 기능을 열게합니다
-(global-set-key (kbd "C-<") (lambda () (interactive)(org-capture nil "m")))
-;; C-, 키로 어느곳에서나 todo.org Note 기능을 열게합니다
+;; C-, 키로 어느곳에서나 quick.org 파일을 작성합니다
 (global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "n")))
 
 ;; org-mode용 strike-through를 구현한 함수
@@ -1253,10 +1265,12 @@
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
 
-    ;; [ ] 키로 org-agenda, todo list를 보도록 설정합니다
+    ;; [ ] } 키로 org-agenda 목록을 보도록 설정합니다
     (define-key evil-motion-state-map (kbd "]") 'org-agenda-list)
+    (define-key evil-motion-state-map (kbd "}") 'cfw:open-org-calendar)
     (define-key evil-motion-state-map (kbd "[") 'org-todo-list)
     (define-key evil-normal-state-map (kbd "]") 'org-agenda-list)
+    (define-key evil-normal-state-map (kbd "}") 'cfw:open-org-calendar)
     (define-key evil-normal-state-map (kbd "[") 'org-todo-list)
 
     ;; x 키로 emacs 창을 minimize 합니다
@@ -1446,10 +1460,14 @@
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   )
 
-;; PAKCAGE: which-key
+;; PACKAGE: which-key
 (require 'which-key)
 ;; 단축키 입력시 하단에서 목록을 보여주는 모드
 (which-key-mode)
+
+;; PAKCAGE: htmlize
+(require 'htmlize)
+(setq org-html-htmlize-output-type 'css) ; default: 'inline-css
 
 ;; PACKAGE: avy
 (require 'avy)
@@ -3369,10 +3387,15 @@ created by edward 180515"
 
     ;; [ ] 키로 org-agenda, todo 목록을 확인합니다
     (define-key magit-status-mode-map (kbd "]") 'org-agenda-list)
+    (define-key magit-status-mode-map (kbd "}") 'cfw:open-org-calendar)
     (define-key magit-status-mode-map (kbd "[") 'org-todo-list)
+
     (define-key magit-process-mode-map (kbd "]") 'org-agenda-list)
+    (define-key magit-process-mode-map (kbd "}") 'cfw:open-org-calendar)
     (define-key magit-process-mode-map (kbd "[") 'org-todo-list)
+
     (define-key magit-diff-mode-map (kbd "]") 'org-agenda-list)
+    (define-key magit-diff-mode-map (kbd "}") 'cfw:open-org-calendar)
     (define-key magit-diff-mode-map (kbd "[") 'org-todo-list)
 
     ;; x키로 emacs 창을 최소화합니다.
@@ -3440,8 +3463,9 @@ created by edward 180515"
                                (define-key custom-mode-map (kbd "C-u") 'evil-scroll-up)
                                (define-key custom-mode-map (kbd "C-d") 'evil-scroll-down)
 
-                               ;; [ ] 키로 org-agenda, todo 목록을 확인합니다
+                               ;; [ ] } 키로 org-agenda, todo 목록을 확인합니다
                                (define-key custom-mode-map (kbd "]") 'org-agenda-list)
+                               (define-key custom-mode-map (kbd "}") 'cfw:open-org-calendar)
                                (define-key custom-mode-map (kbd "[") 'org-todo-list)
                               ))
 
