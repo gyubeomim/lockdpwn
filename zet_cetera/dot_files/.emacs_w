@@ -2126,7 +2126,21 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "[") 'org-todo-list)
 
     ;; x키로 emacs 창을 최소화합니다.
+    (define-key magit-process-mode-map (kbd "x") 'suspend-frame)
+    (define-key magit-log-mode-map (kbd "x") 'suspend-frame)
+    (define-key magit-diff-mode-map (kbd "x") 'suspend-frame)
     (define-key magit-status-mode-map (kbd "x") 'suspend-frame)
+    (define-key magit-unstaged-section-map (kbd "x") 'suspend-frame)
+    (define-key magit-branch-section-map (kbd "x") 'suspend-frame)
+
+    ;; , 키로 projectile switch 를 실행합니다
+    (define-key magit-process-mode-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key magit-log-mode-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key magit-diff-mode-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key magit-status-mode-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key magit-unstaged-section-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key magit-branch-section-map (kbd ",") 'helm-projectile-switch-project)
+
     ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
@@ -2257,7 +2271,7 @@ created by edward 180515"
 (setq key-chord-two-keys-delay 0.1) ; default 0.1
 ;; 1개의 키가 입력되는데 걸리는 시간 설정
 (setq key-chord-one-key-delay 0.17) ; default 0.2
-(key-chord-define-global "zx" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
+(key-chord-define-global "zc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
 
@@ -2686,8 +2700,8 @@ created by edward 180515"
  '(highlight ((t (:background "grey"))))
  '(highlight-symbol-face ((t (:foreground "yellow"))))
  '(iedit-occurrence ((t (:foreground "magenta" :weight bold))))
- '(magit-diff-hunk-heading ((t (:background "black"))))
- '(magit-diff-hunk-heading-highlight ((t (:background "black"))))
+ '(magit-diff-hunk-heading ((t (:background "dark slate gray" :foreground "light gray"))))
+ '(magit-diff-hunk-heading-highlight ((t (:background "dark cyan" :foreground "light gray"))))
  '(minimap-active-region-background ((t nil)))
  '(minimap-font-face ((t (:height 30 :family "NanumGothicCoding"))))
  '(minimap-semantic-function-face ((t (:inherit (font-lock-function-name-face minimap-font-face) :background "#202414" :box (:line-width 1 :color "white") :height 1))))
