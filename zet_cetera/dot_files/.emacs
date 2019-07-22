@@ -2594,6 +2594,10 @@
 (add-hook 'c++-mode-common-hook 'google-make-newline-indent)
 
 
+;; PACKAGE: cua-mode
+; (require 'cua-mode)
+(define-key cua-global-keymap "<SPC>" nil)
+
 ;; C언어 모드에서 자동정렬 (들여쓰기 스타일)
 (add-hook 'c-mode-hook
           '(lambda ()
@@ -3397,7 +3401,21 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "[") 'org-todo-list)
 
     ;; x키로 emacs 창을 최소화합니다.
+    (define-key magit-process-mode-map (kbd "x") 'suspend-frame)
+    (define-key magit-log-mode-map (kbd "x") 'suspend-frame)
+    (define-key magit-diff-mode-map (kbd "x") 'suspend-frame)
     (define-key magit-status-mode-map (kbd "x") 'suspend-frame)
+    (define-key magit-unstaged-section-map (kbd "x") 'suspend-frame)
+    (define-key magit-branch-section-map (kbd "x") 'suspend-frame)
+
+    ;; , 키로 projectile switch 를 실행합니다
+    (define-key magit-process-mode-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key magit-log-mode-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key magit-diff-mode-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key magit-status-mode-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key magit-unstaged-section-map (kbd ",") 'helm-projectile-switch-project)
+    (define-key magit-branch-section-map (kbd ",") 'helm-projectile-switch-project)
+
     ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
