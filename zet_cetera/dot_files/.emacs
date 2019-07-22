@@ -1912,12 +1912,10 @@
                    (point-max)))))
             (if
                 (or
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-daily.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-todo.org"))
+                 (string= (buffer-name) "CAPTURE-daily.org")
+                 (string= (buffer-name) "CAPTURE-todo.org")
+                 (string= (buffer-name) "CAPTURE-milestone.org")
+                 )
                 (return)
               (if
                   (save-excursion
