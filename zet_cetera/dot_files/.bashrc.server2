@@ -153,13 +153,10 @@ PS1="$C_LIGHTYELLOW\u(@server2)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 PATH=$PATH:/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
 ida=/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
 alias g1='cd /media/dyros-data/gitrepo/lockdpwn'
-alias g2='cd /media/dyros-data/gitrepo/ims_ros'
+alias g2='cd /media/dyros-data/gitrepo/dv_ws/dyros_ws'
 alias g3='cd /media/dyros-data/gitrepo/ims_carto'
-alias g4='cd /media/dyros-data/gitrepo/ims_dyros'
-alias g5='cd /media/dyros-data/gitrepo/ims_ml'
-alias sq='cd /media/dyros-data/gitrepo/ims_ml/projects/SqueezeSeg'
 alias gr='cd /media/dyros-data/gitrepo/'
-alias dy='cd /media/dyros-data/gitrepo/dyros_ws'
+alias dy='cd /media/dyros-data/gitrepo/dv_ws'
 alias qt2='/media/dyros-data/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
 alias qt3='/media/dyros-data/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 
@@ -248,8 +245,7 @@ if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline
 fi
 
 
-# alias emacs='/home/dyros-vehicle/Downloads/emacs-25.2/src/emacs'
-alias emacs='/home/dyros-vehicle/Downloads/emacs-25.2/lib-src/emacsclient -a '"''"' -c'
+alias emacs='/home/dyros-vehicle/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
 
 # for stockroom_bot
 #alias sb='source ~/gitrepo/ims_ros/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims_ros/stockroombot_ws/src/stockroom_bot'/models
@@ -306,8 +302,9 @@ alias soc='source install_isolated/setup.bash'
 
 
 #UE4Editor-------------
-alias ueditor='/home/dyros-vehicle/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
-export UE4_ROOT='/home/dyros-vehicle/UnrealEngine'
+#alias ueditor='/home/dyros-vehicle/gitrepo/UnrealEngine_4.19/Engine/Binaries/Linux/UE4Editor'
+alias ueditor='/home/dyros-vehicle/UnrealEngine_/Engine/Binaries/Linux/UE4Editor'
+export UE4_ROOT='/home/dyros-vehicle/UnrealEngine_'
 
 # for carla
 alias carla='cd /media/dyros-data/gitrepo/CARLA_0.8.4 && ./CarlaUE4.sh -windowed -resx=600 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
@@ -323,9 +320,6 @@ alias carla_ms_play='cd /media/dyros-data/gitrepo/carla-0.8.4_source/LinuxNoEdit
 alias carla_test='cd /media/dyros-data/gitrepo/DDPGlearningPrj && python manual_control.py'
 #alias carla_ms='/media/dyros-data/gitrepo/carla-0.8.4_source/Unreal/CarlaUE4/LinuxNoEditor/#CarlaUE4/Binaries/Linux/CarlaUE4  -windowed -resx=800 -resy=640'
 
-# set ROS
-source /opt/ros/kinetic/setup.bash
-source /home/dyros-vehicle/catkin_ws/devel/setup.bash
 
 alias ti='cd /home/dyros-vehicle/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
 
@@ -358,12 +352,13 @@ alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
 alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 
 # for hed git repository (pycaffe)
-export PYTHONPATH=/media/dyros-data/gitrepo/hed/python:$PYTHONPATH
-export CAFFE_ROOT=/media/dyros-data/gitrepo/hed
+# export PYTHONPATH=/media/dyros-data/gitrepo/hed/python:$PYTHONPATH
+# export CAFFE_ROOT=/media/dyros-data/gitrepo/hed
 
 # fro avod git repo 
-export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod
-export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod/wavedata
+# export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod
+# export PYTHONPATH=$PYTHONPATH:/media/dyros-data/gitrepo/avod/wavedata
+# export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages
 
 #for nvidia-smi
 alias nv='nvidia-smi -l'
@@ -390,3 +385,13 @@ alias docim='docker images'
 # doc push edward0im/dyrosvehicle:ubuntu_cuda9.0
 #----------------------------------------------------------------------- 
 
+# 
+alias cps='cd /home/dyros-vehicle/catkin_ws/src/edward/parkingslam'
+
+alias sopt='source /opt/ros/kinetic/setup.bash'
+
+alias rvizc='rviz -d /home/dyros-vehicle/.rviz/cartographer.rviz'
+
+# set ROS
+source /opt/ros/kinetic/setup.bash
+source /home/dyros-vehicle/catkin_ws/devel/setup.bash
