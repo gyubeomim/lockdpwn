@@ -53,6 +53,6 @@ case $1 in
 		gdb --ex="set print thread-events off"  --ex="r" -args $executable
 		;;
 	d)
-		gdb --ex="set print thread-events off" --ex="b example_kitti.cc:56" --ex="b ORBmatcher.cc:159" --ex="b ORBmatcher.cc:522" --ex="r" -args $executable
+		gdb --ex="set print thread-events off" --ex="b example_kitti.cc:177" --ex="r" -args $executable
 esac
 
