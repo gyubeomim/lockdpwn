@@ -2596,8 +2596,8 @@
 
 ;; PACKAGE: cua-mode
 ; (require 'cua-mode)
-(define-key cua-global-keymap "<SPC>" nil)
-
+; (define-key cua-global-keymap "<SPC>" nil)
+                                        ;
 ;; C언어 모드에서 자동정렬 (들여쓰기 스타일)
 (add-hook 'c-mode-hook
           '(lambda ()
@@ -3342,6 +3342,14 @@ created by edward 180515"
     )
   )
 
+(eval-after-load "make-mode"
+  '(progn
+     (define-key makefile-gmake-mode-map (kbd "M-n") 'highlight-symbol-next)
+     (define-key makefile-gmake-mode-map (kbd "M-p") 'highlight-symbol-prev)
+     )
+  )
+
+
 ;; magit 패키지가 로딩되면 같이 실행되는 코드
 (eval-after-load "magit"
   (lambda ()
@@ -3415,6 +3423,14 @@ created by edward 180515"
     (define-key magit-status-mode-map (kbd ",") 'helm-projectile-switch-project)
     (define-key magit-unstaged-section-map (kbd ",") 'helm-projectile-switch-project)
     (define-key magit-branch-section-map (kbd ",") 'helm-projectile-switch-project)
+
+    ;; ` 키로 dired 모드를 싱행합니다
+    (define-key magit-process-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
+    (define-key magit-log-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
+    (define-key magit-diff-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
+    (define-key magit-status-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
+    (define-key magit-unstaged-section-map (kbd "`") (lambda() (interactive)(dired "./")))
+    (define-key magit-branch-section-map (kbd "`") (lambda() (interactive)(dired "./")))
 
     ))
 

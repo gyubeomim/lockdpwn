@@ -2141,6 +2141,14 @@ created by edward 180515"
     (define-key magit-unstaged-section-map (kbd ",") 'helm-projectile-switch-project)
     (define-key magit-branch-section-map (kbd ",") 'helm-projectile-switch-project)
 
+    ;; ` 키로 dired 모드를 싱행합니다
+    (define-key magit-process-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
+    (define-key magit-log-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
+    (define-key magit-diff-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
+    (define-key magit-status-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
+    (define-key magit-unstaged-section-map (kbd "`") (lambda() (interactive)(dired "./")))
+    (define-key magit-branch-section-map (kbd "`") (lambda() (interactive)(dired "./")))
+
     ))
 
 ;;; 이맥스가 기본적으로 제공하는 Git 백엔드를 켜두면 매우 느려진다. magit만 쓴다.
