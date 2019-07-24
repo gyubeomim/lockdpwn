@@ -1237,6 +1237,9 @@
     (define-key evil-motion-state-map (kbd "K") nil)
     (define-key evil-motion-state-map (kbd "TAB") nil)
     (define-key evil-motion-state-map (kbd "`") nil)
+    
+    ;; 키바인딩 해제 VISUAL MODE
+    (define-key evil-visual-state-map (kbd "a") 'evil-exit-visual-state)
 
     ;; evil 모드에서 e,E 키로 빠르게 단어를 highlight 합니다
     (define-key evil-motion-state-map (kbd "e") 'highlight-symbol)
