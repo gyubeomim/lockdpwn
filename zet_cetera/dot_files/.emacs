@@ -411,9 +411,6 @@
 (require 'company)
 (require 'irony)
 
-;; insert키를 누르면 irony 서버를 다시 시작합니다. 속도가 느려질 경우 사용합니다
-(global-set-key (kbd "<insert>") 'irony-server-kill)
-
 ;; Enable company mode globally
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -1306,9 +1303,6 @@
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
 
-    ;; insert키를 누르면 irony 서버를 다시 시작합니다. 속도가 느려질 경우 사용합니다
-    (define-key evil-normal-state-map (kbd "<insert>") 'irony-server-kill)
-
     ;; m 키로 minimap-mode Toggle
     (define-key evil-normal-state-map (kbd "m") 'minimap-mode)
 
@@ -1345,6 +1339,7 @@
     (define-key evil-normal-state-map (kbd "c") nil)
     (define-key evil-normal-state-map (kbd "J") nil)
     (define-key evil-normal-state-map (kbd "M-.") nil)
+    (define-key evil-normal-state-map (kbd "<insert>") nil)
 
     ;; 키바인딩 설정 ESC MODE
     ;; C-u 키로 page up 키를 설정합니다
@@ -1828,7 +1823,7 @@
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("~/gitrepo_sync/ims_org/org_files/notes/parkingslam.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_c++_coding_style_guideline.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_intern_meeting.org" "~/gitrepo_sync/ims_org/org_files/notes/boj.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/control_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/docker.org" "~/gitrepo_sync/ims_org/org_files/notes/eigenvalue_eigenvector.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_final_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_mid_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/eth_rpg_vision_course2.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/information.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo_sync/ims_org/org_files/notes/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/lie_group_algebra.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/natural_constant_e.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_code_review.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam_a_versatile_and_accurate_monocular_slam_system.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/paper_research.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_space_detection_based_on_avmlidar_sensor_fusion_for_autonomous_valet_parking.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/svd.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/tools_of_titans.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/visual_slam_algorithms_a_survey_from_2010_to_2016.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org")))
+    ("~/gitrepo/ims_org/org_files/notes/atlas.org" "~/gitrepo_sync/ims_org/org_files/notes/parkingslam.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_c++_coding_style_guideline.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_intern_meeting.org" "~/gitrepo_sync/ims_org/org_files/notes/boj.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/control_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/docker.org" "~/gitrepo_sync/ims_org/org_files/notes/eigenvalue_eigenvector.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_final_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_mid_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/eth_rpg_vision_course2.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/information.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo_sync/ims_org/org_files/notes/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/lie_group_algebra.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/natural_constant_e.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_code_review.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam_a_versatile_and_accurate_monocular_slam_system.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/paper_research.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_space_detection_based_on_avmlidar_sensor_fusion_for_autonomous_valet_parking.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/svd.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/tools_of_titans.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/visual_slam_algorithms_a_survey_from_2010_to_2016.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1912,10 +1907,15 @@
                    (point-max)))))
             (if
                 (or
-                 (string= (buffer-name) "CAPTURE-daily.org")
-                 (string= (buffer-name) "CAPTURE-todo.org")
-                 (string= (buffer-name) "CAPTURE-milestone.org")
-                 )
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-daily.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-todo.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-milestone.org"))
                 (return)
               (if
                   (save-excursion
@@ -2580,11 +2580,6 @@
 
 ;; (setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
 
-(eval-after-load "tabbar" '(progn
-                             (define-key tabbar-mode-map (kbd "<end>") 'tabbar-forward)
-                             (define-key tabbar-mode-map (kbd "<home>") 'tabbar-backward)
-                             ))
-
 
 ;; PACKAGE: google-c-style
 (require 'google-c-style)
@@ -2592,7 +2587,6 @@
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 (add-hook 'c++-mode-common-hook 'google-set-c-style)
 (add-hook 'c++-mode-common-hook 'google-make-newline-indent)
-
 
 ;; PACKAGE: cua-mode
 ; (require 'cua-mode)
@@ -2945,20 +2939,19 @@ created by edward 180515"
 ;; f11 키로 전체화면 모드 실행
 (global-set-key (kbd "<f11>") 'toggle-frame-fullscreen)
 
-;; 6 키로 현재 커서까지 실행하고 멈춤
-(define-key evil-motion-state-map (kbd "6") '(lambda ()
-                                               (interactive)
-                                               (call-interactively 'gud-tbreak)
-                                               (call-interactively 'gud-cont)))
+;; Shift + f11 키로 현재 실행중인 함수 리턴후 멈춤
+(global-set-key (kbd "S-<f11>") 'gud-finish)
 
-;; 7 키로 현재 실행중인 함수 리턴후 멈춤
-(define-key evil-motion-state-map (kbd "7") 'gud-finish)
+;; insert 키로 현재 커서까지 실행하고 멈춤
+(global-set-key (kbd "<insert>") '(lambda () (interactive)
+                                    (call-interactively 'gud-tbreak)
+                                    (call-interactively 'gud-cont)))
 
-;; 8 키로 gdb 다중창 On/Off
-(define-key evil-motion-state-map (kbd "8") 'gdb-many-windows)
+;; home 키로 gdb 다중창 On/Off
+(global-set-key (kbd "<home>") 'gdb-many-windows)
 
-;; 9 키로 gdb의 layout을 변경합니다
-(define-key evil-motion-state-map (kbd "9") 'my-gdb-settings-toggle)
+;; end 키로 gdb의 layout을 변경합니다
+(global-set-key (kbd "<end>") 'my-gdb-settings-toggle)
 
 ;; gdb variables
 (setq gdb-show-changed-values t)
@@ -3151,6 +3144,12 @@ created by edward 180515"
      (define-key grep-mode-map (kbd "N") nil)
      ))
 
+
+(eval-after-load "buff-menu"
+  '(progn
+     ;; Space 키로 helm-for-files 명령을 실행합니다.
+     (define-key Buffer-menu-mode-map (kbd "<SPC>") 'helm-for-files)
+     ))
 
 
 ;; c++ 주석 처리 변경 코드 (// -> /* */ 로 변경한다) (deprecated)

@@ -18,10 +18,13 @@ case $1 in
 	rdintern)
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 		;;
-	rd2)
+	rdonly)
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 		;;
 	d)
+		cmake -DCMAKE_BUILD_TYPE=Debug .. 
+		;;
+	donly)
 		cmake -DCMAKE_BUILD_TYPE=Debug .. 
 		;;
 	dintern)
@@ -32,27 +35,26 @@ esac
 make -j12
 cd ../
 
-executable="./thirdparty/orb-slam/examples/stereo/example_kitti 
+executable="./thirdparty/orb-slam/examples/stereo/example_kitti
 			./thirdparty/orb-slam/resource/vocabulary/ORBvoc.txt 
-			./thirdparty/orb-slam/examples/stereo/KITTI03.yaml 
-			/home/atlas1/datasets/kitti/data_odometry/sequences/00 0 0"
+			./thirdparty/orb-slam/examples/stereo/KITTI00-02.yaml 
+			/home/atlas1/datasets/kitti/data_odometry/sequences/02 0 0"
 
-executable_intern="/home/atlas1/gitrepo/orb-sandbox/thirdparty/intern-sandbox/build/example_kitti ../orb-slam/resource/vocabulary/ORBvoc.txt ../orb-slam/examples/stereo/KITTI03.yaml 	/home/atlas1/datasets/kitti/data_odometry/sequences/00 0 0"
+executable_intern="/home/atlas1/gitrepo/orb-sandbox/thirdparty/intern-sandbox/build/example_kitti ../orb-slam/resource/vocabulary/ORBvoc.txt ../orb-slam/examples/stereo/KITTI00-02.yaml 	/home/atlas1/datasets/kitti/data_odometry/sequences/00 0 0"
 
 case $1 in
 	r)
 		$executable
 		;;
 	rd)
+		# gdb --ex="set print thread-events off" --ex="b LoopClosing.cc:102" --ex="r" -args $executable
 		$executable
 		;;
 	rdintern)
 		$executable_intern
 		;;
-	rd2)
-		gdb --ex="set print thread-events off"  --ex="r" -args $executable
-		;;
 	d)
-		gdb --ex="set print thread-events off" --ex="b example_kitti.cc:177" --ex="r" -args $executable
+		gdb --ex="set print thread-events off" --ex="b LoopClosing.cc:102" --ex="r" -args $executable
+		;;
 esac
 

@@ -1364,10 +1364,6 @@
 (require 'tabbar)
 ; turn on the tabbar
 (tabbar-mode t)
-(eval-after-load "tabbar" '(progn
-                             (define-key tabbar-mode-map (kbd "<end>") 'tabbar-forward)
-                             (define-key tabbar-mode-map (kbd "<home>") 'tabbar-backward)
-                             ))
 
 ;; PACKAGE: mic-paren
 ;; 반대편 괄호의 line number를 알려주는 패키지
