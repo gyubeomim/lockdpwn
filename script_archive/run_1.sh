@@ -21,6 +21,9 @@ case $1 in
 	rdonly)
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 		;;
+	rdtest)
+		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+		;;
 	d)
 		cmake -DCMAKE_BUILD_TYPE=Debug .. 
 		;;
@@ -40,6 +43,8 @@ executable="./thirdparty/orb-slam/examples/stereo/example_kitti
 			./thirdparty/orb-slam/examples/stereo/KITTI00-02.yaml 
 			/home/atlas1/datasets/kitti/data_odometry/sequences/02 0 0"
 
+executable_test="./thirdparty/orb-slam/examples/stereo/unit_tests"
+
 executable_intern="/home/atlas1/gitrepo/orb-sandbox/thirdparty/intern-sandbox/build/example_kitti ../orb-slam/resource/vocabulary/ORBvoc.txt ../orb-slam/examples/stereo/KITTI00-02.yaml 	/home/atlas1/datasets/kitti/data_odometry/sequences/00 0 0"
 
 case $1 in
@@ -52,6 +57,9 @@ case $1 in
 		;;
 	rdintern)
 		$executable_intern
+		;;
+	rdtest)
+		$executable_test
 		;;
 	d)
 		gdb --ex="set print thread-events off" --ex="b LoopClosing.cc:102" --ex="r" -args $executable

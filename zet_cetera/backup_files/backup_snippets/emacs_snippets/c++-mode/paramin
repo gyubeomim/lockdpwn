@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: param[in] doxygen by edward
+# key: paramin
+# --
+/// \param[in] $0

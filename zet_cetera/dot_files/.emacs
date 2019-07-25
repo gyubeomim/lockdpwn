@@ -2007,7 +2007,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (cmake-mode zenburn-theme spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (writeroom-mode cmake-mode zenburn-theme spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
@@ -3308,6 +3308,62 @@ created by edward 180515"
 (global-set-key (kbd "M-?") 'cmake-ide-run-cmake)
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
 ;; (global-set-key (kbd "M-/") 'visit-tags-table)
+
+;;; cmake-ide + gdb/exec.
+(defun run-process-in-comint (cmd)
+  (let* ((name (format "Process: %s" cmd))
+         (buf (set-buffer (generate-new-buffer name)))
+         (proc nil)
+         (line-- (make-string 80 ?-))
+         (proc-sentinal-fn (lambda (proc evt)
+                             (insert (format "%s\n%s -- %s\n%s\n" line-- evt (current-time-string) line--))))
+         (comint-mode-result (comint-mode)))
+    ;;
+    (switch-to-buffer-other-window buf)
+    ;;
+    (insert (format "Starting: %s\n%s\n" (current-time-string) line--))
+    (setq proc (start-process-shell-command name buf cmd))
+    (set-process-sentinel proc (lambda (proc evt)
+                                 (insert (format "==========\n%s -- (%s) %s\n"
+                                                 evt
+                                                 (process-exit-status proc)
+                                                 evt (current-time-string)))))
+    ;;
+    proc))
+
+(defun cmake-ide-find-exe-file ()
+  (interactive)
+  (let* ((exec-files (seq-filter 'file-executable-p
+                                 (directory-files-recursively
+                                  (cide--build-dir)
+                                  ".*")))
+         (base-buffer-name (file-name-base (buffer-name)))
+         (calc-dist (lambda (fn) (cons fn
+                                       (levenshtein-distance
+                                        base-buffer-name
+                                        (file-name-base fn)))))
+         (cdr-< (lambda (a b) (< (cdr a) (cdr b))))
+         (distances (sort (mapcar calc-dist exec-files) cdr-<))
+         ;;(---- (message distances))
+         (nearest (car (first distances))))
+    (cons nearest exec-files)))
+
+(defun cmake-ide-gdb-files-source ()
+  "http://kitchingroup.cheme.cmu.edu/blog/2015/01/24/Anatomy-of-a-helm-source/"
+  (interactive)
+  (require 'seq)
+  `((name . "Executable file to debug")
+    (candidates . ,(cmake-ide-find-exe-file))
+    (action . (lambda (sel)
+                (gdb (read-from-minibuffer
+                      "Cmd: " (format "%s %s" gud-gdb-command-name sel)))))))
+
+(defun cmake-ide-helm-run-gdb ()
+  (interactive)
+  (helm :sources (cmake-ide-gdb-files-source)))
+
+(define-key c-mode-base-map (kbd "C-c d")
+  (function cmake-ide-helm-run-gdb))
 
 ;; C-S-l 키로 python 코드에서 들여쓰기를 보여줍니다
 (global-set-key (kbd "C-S-l") 'highlight-indentation-mode)

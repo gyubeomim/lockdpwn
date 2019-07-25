@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: brief doxygen by edward
+# key: brief
+# --
+/// \brief $0
