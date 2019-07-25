@@ -92,6 +92,9 @@
     rtags                  ;; code navigation package
     cmake-ide              ;; cmake-ide for rtags
     cmake-mode             ;; cmake package syntax highlighting
+    eldoc                  ;; 변수의 타입정보를 modeline에 보여주는 패키지
+
+    use-package                ;; package를 관리해주는 패키지
 
     spacemacs-theme        ;; spacemacs theme
 
@@ -101,12 +104,9 @@
     htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
 
 
-
     ;; nlinum                 ;; linum-mode 대체하는 패키지, linum-mode가 속도가 매우 느려서 바꿨다 (26.1 업그레이드하면서 필요없어짐)
-    ;; eldoc
     ;; ycmd
     ;; company-ycmd
-    ;; use-package                ;; package를 관리해주는 패키지
     ;; flymd                  ;; markdown 구문을 preview 해주는 패키지
     ;; ample-theme            ;; ample 테마
     ;; org2jekyll             ;; .org 파일을 github page(jekyll)에서 볼 수 있도록 변환해주는 패키지 (NOT USED)
@@ -400,12 +400,6 @@
 ;; (semantic-add-system-include "/usr/include/c++/5" 'c-mode)
 ;; (semantic-add-system-include "/usr/include/c++/5" 'c++-mode)
 ;; (semantic-add-system-include "/opt/ros/kinetic/include" 'c++-mode)
-
-;; package: eldoc
-;; (require 'eldoc)
-;; (eldoc-mode)
-;; (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
-;; (add-hook 'c++-mode-hook 'c-turn-on-eldoc-mode)
 
 ;; package: company irony
 (require 'company)
@@ -2511,6 +2505,41 @@
 (add-hook 'c-mode-hook 'rtags-start-process-unless-running)
 (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
 
+;; package: eldoc
+(use-package eldoc :ensure t :pin melpa :diminish eldoc-mode)
+
+;;; Rtags + Eldoc:
+;; https://github.com/Andersbakken/rtags/issues/987
+(defun fontify-string (str mode)
+  "Return STR fontified according to MODE."
+  (with-temp-buffer
+    (insert str)
+    (delay-mode-hooks (funcall mode))
+    (font-lock-default-function mode)
+    (font-lock-default-fontify-region
+     (point-min) (point-max) nil)
+    (buffer-string)))
+
+(defun rtags-eldoc-function ()
+  (let ((summary (rtags-get-summary-text)))
+    (and summary
+         (fontify-string
+          (replace-regexp-in-string
+           "{[^}]*$" ""
+           (mapconcat
+            (lambda (str) (if (= 0 (length str)) "//" (string-trim str)))
+            (split-string summary "\r?\n")
+            " "))
+          major-mode))))
+
+(defun rtags-eldoc-mode ()
+  (interactive)
+  (setq-local eldoc-documentation-function #'rtags-eldoc-function)
+  (eldoc-mode 1))
+
+(add-hook 'c-mode-hook 'rtags-eldoc-mode)
+(add-hook 'c++-mode-hook 'rtags-eldoc-mode)
+
 ;; PACKAGE: mic-paren
 ;; 반대편 괄호의 line number를 알려주는 패키지
 (require 'mic-paren) ; loading
@@ -3154,11 +3183,6 @@ created by edward 180515"
      (define-key Buffer-menu-mode-map (kbd "<SPC>") 'helm-for-files)
      ))
 
-
-;; c++ 주석 처리 변경 코드 (// -> /* */ 로 변경한다) (deprecated)
-;; (add-hook 'c++-mode-hook (lambda () (setq comment-start "/* "
-;;                                           comment-end   "*/")))
-
 ;; 괄호 사이를 이동하는 코드
 (defun match-paren (arg)
   "Go to the matching paren if on a paren; otherwise insert %."
@@ -3551,6 +3575,12 @@ created by edward 180515"
 (define-key c++-mode-map (kbd "C-M-j") 'forward-paragraph)
 (global-set-key (kbd "C-M-k") 'backward-paragraph)
 (define-key c++-mode-map (kbd "C-M-k") 'backward-paragraph)
+
+;; (eval-after-load "simple"
+;;   (lambda ()
+;;     ;; SPC 키로 helm-for-files를 실행합니다
+;;     (define-key debugger-mode-map (kbd "SPC") 'helm-for-files)
+;;     ))
 
 ;; Horizontal <--> Vertical view를 토글해주는 함수
 (defun window-split-toggle ()
