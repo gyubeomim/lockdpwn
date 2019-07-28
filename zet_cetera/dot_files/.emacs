@@ -32,7 +32,6 @@
     key-chord              ;; 여러 쉬운 단축키들을 등록해주 수 있는 패키지 ( '..'키를 등록했습니다 )( 클래스 자동완성으로 등록 )
     rainbow-delimiters     ;; 괄호를 색색깔있게 바꿔줍니다
     jedi                   ;; 파이썬용 jedi 패키지 (terminal 창에서 $ pip install jedi epc pylint virtualenv 를 쳐줘야 정상작동하는듯 하다)
-    arduino-mode           ;; 만약 아두이노를 사용한다면 추가해줍니다
     highlight-indentation  ;; 파이썬용 들여쓰기 라인을 보여주는 패키지 (Alt + l로 설정했다)
     ess                    ;; R 언어 전용 패키지입니다
     gtags                  ;; 함수나 여러 변수들의 선언을 찾아볼 수 있게 해주는 패키지
@@ -117,6 +116,7 @@
     ;; helm-ros  ;; ROS용 emacs 패키지 (not used)
     ;; autopair
     ;; function-args
+    ;; arduino-mode           ;; 만약 아두이노를 사용한다면 추가해줍니다
     ;; comment-dwim-2
     ;; volatile-highlights
     ))
@@ -1674,16 +1674,6 @@
 (setq projectile-completion-system 'helm)
 (setq projectile-indexing-method 'alien)
 
-;; Package: arduino-mode
-;; emacs 25.1 버전에서는 왜그런지 모르지만 이 부분에서 에러난다
-;; (require 'arduino-mode)
-;; arduino 아두이노 모드에 자동완성 기능을 추가합니다
-;; (add-hook 'arduino-mode-hook 'auto-complete-mode)
-;; (add-hook 'arduino-mode-hook
-;;          (lambda ()
-;;            (local-set-key (kbd "M-,") 'pop-tag-mark)))
-;; 태그는 etags 기능을 써야하는듯 합니다 terminal >> etags *.ino
-
 ;; highlight symbol mode를 활성화합니다
 (require 'highlight-symbol)
 (add-hook 'c-mode-hook 'highlight-symbol-mode)
@@ -2007,7 +1997,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (writeroom-mode cmake-mode zenburn-theme spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (writeroom-mode cmake-mode zenburn-theme spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
@@ -2228,6 +2218,10 @@
 ;;GUI 환경에서 시작 시 창 화면 최대화 하기
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))(add-to-list 'default-frame-alist '(height . 31))
 ;; (add-to-list 'default-frame-alist '(width . 100))
+(setq frame-title-format "")
+;; hide titlebar (not working at initial booting)
+;; https://www.reddit.com/r/emacs/comments/7wc2to/is_it_possible_to_disable_window_decorations_in/
+(set-frame-parameter nil 'undecorated t)
 (set-frame-position (selected-frame) 0 0)
 
 ;; 매칭되는 괄호 강조하기
