@@ -3356,7 +3356,7 @@ created by edward 180515"
   (interactive)
   (helm :sources (cmake-ide-gdb-files-source)))
 
-(define-key c-mode-base-map (kbd "C-c d")
+(define-key c-mode-base-map (kbd "C-c q")
   (function cmake-ide-helm-run-gdb))
 
 ;; C-S-l 키로 python 코드에서 들여쓰기를 보여줍니다
@@ -3431,6 +3431,8 @@ created by edward 180515"
   (lambda ()
     ;; ed: 키바인딩 해제
     (define-key magit-status-mode-map (kbd "C-w") nil)
+    (define-key magit-status-mode-map (kbd "C-c C-o") nil)
+    (define-key magit-status-mode-map (kbd "C-c C-p") nil)
     (define-key magit-status-mode-map (kbd "M-3") nil)
     (define-key magit-diff-mode-map (kbd "M-3") nil)
     (define-key magit-process-mode-map (kbd "M-3") nil)
