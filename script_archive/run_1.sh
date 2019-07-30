@@ -41,7 +41,7 @@ cd ../
 executable="./thirdparty/orb-slam/examples/stereo/example_kitti
 			./thirdparty/orb-slam/resource/vocabulary/ORBvoc.txt 
 			./thirdparty/orb-slam/examples/stereo/KITTI04-12.yaml 
-			/home/atlas1/datasets/kitti/data_odometry/sequences/05 0 0"
+			/home/atlas1/datasets/kitti/data_odometry/sequences/06 0 0"
 
 executable_test="./thirdparty/orb-slam/examples/stereo/unit_tests"
 
