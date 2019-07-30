@@ -1010,8 +1010,8 @@
 (global-set-key (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
 ;; C-c + s 키로 특정 키워드를 검색합니다
 (global-set-key (kbd "C-c s") (lambda() (interactive)(org-agenda nil "s")))
-;; C-c + a 키로 태그를 검색합니다
-(global-set-key (kbd "C-c a") 'org-tags-view)
+;; C-c + a 키로 subtree를 archive합니다.
+(global-set-key (kbd "C-c a") 'org-archive-subtree)
 ;; C-c + # 키로 특정 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
@@ -1810,7 +1810,7 @@
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/notes/atlas.org" "~/gitrepo_sync/ims_org/org_files/notes/parkingslam.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/archive.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_c++_coding_style_guideline.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_intern_meeting.org" "~/gitrepo_sync/ims_org/org_files/notes/boj.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/control_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/docker.org" "~/gitrepo_sync/ims_org/org_files/notes/eigenvalue_eigenvector.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_final_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_mid_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/eth_rpg_vision_course2.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/information.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo_sync/ims_org/org_files/notes/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/lie_group_algebra.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/natural_constant_e.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_code_review.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam_a_versatile_and_accurate_monocular_slam_system.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/paper_research.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_space_detection_based_on_avmlidar_sensor_fusion_for_autonomous_valet_parking.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/svd.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/tools_of_titans.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/visual_slam_algorithms_a_survey_from_2010_to_2016.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org")))
+    ("~/gitrepo/ims_org/org_files/star.org" "~/gitrepo_sync/ims_org/org_files/notes/parkingslam.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_c++_coding_style_guideline.org" "~/gitrepo_sync/ims_org/org_files/notes/atlas_intern_meeting.org" "~/gitrepo_sync/ims_org/org_files/notes/boj.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/control_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/docker.org" "~/gitrepo_sync/ims_org/org_files/notes/eigenvalue_eigenvector.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_final_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory_mid_2018.org" "~/gitrepo_sync/ims_org/org_files/notes/eth_rpg_vision_course2.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/information.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo_sync/ims_org/org_files/notes/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/lie_group_algebra.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/natural_constant_e.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_code_review.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam2_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/orb-slam_a_versatile_and_accurate_monocular_slam_system.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/paper_research.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_space_detection_based_on_avmlidar_sensor_fusion_for_autonomous_valet_parking.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/svd.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/tools_of_titans.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/visual_slam_algorithms_a_survey_from_2010_to_2016.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -2146,7 +2146,7 @@
  '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.99))))
  '(org-level-6 ((t (:inherit variable-pitch :foreground "yellow3"))))
  '(org-level-7 ((t (:inherit variable-pitch :foreground "light sea green" :weight normal))))
- '(org-link ((t (:foreground "deep sky blue" :box nil :underline t :weight normal))))
+ '(org-link ((t (:foreground "gold" :box nil :underline t :weight normal))))
  '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
  '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
  '(org-scheduled ((t (:foreground "gainsoboro" :weight normal))))
@@ -2475,6 +2475,10 @@
 
      ;; . 키로 .dir-locals.el 파일을 생성합니다.
      (define-key dired-mode-map (kbd ".") 'dired-new-file)
+
+     ;; n,N 키로 evil-search 다음 단어로 이동합니다.
+     (define-key dired-mode-map (kbd "n") 'evil-search-next)
+     (define-key dired-mode-map (kbd "N") 'evil-search-previous)
      ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
@@ -3472,6 +3476,7 @@ created by edward 180515"
 
     ;; Space 키로 helm-for-files 명령을 실행합니다
     (define-key magit-status-mode-map (kbd "<SPC>") 'helm-for-files)
+    (define-key magit-revision-mode-map (kbd "<SPC>") 'helm-for-files)
 
     ;; [ ] 키로 org-agenda, todo 목록을 확인합니다
     (define-key magit-status-mode-map (kbd "]") 'org-agenda-list)
