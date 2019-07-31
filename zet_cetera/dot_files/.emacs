@@ -677,7 +677,7 @@
 ;; "org" because c-h f org-mode ret says that org-mode is defined in org.el
 (eval-after-load "org"
   '(progn
-     ;; ed: 단축키 해제
+     ;; comment(edward): 단축키 해제
      (define-key org-mode-map (kbd "<M-right>") nil)
      (define-key org-mode-map (kbd "<M-left>") nil)
      (define-key org-mode-map (kbd "<S-right>") nil)
@@ -715,7 +715,7 @@
      (define-key org-mode-map (kbd "C-j") nil)
      (define-key org-mode-map (kbd "C-c .") nil)
 
-     ;; ed: 단축키 등록
+     ;; comment(edward): 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
      (define-key org-mode-map (kbd "<M-S-left>") 'org-shiftleft)
      (define-key org-mode-map (kbd "<M-S-up>") 'org-shiftup)
@@ -979,7 +979,7 @@
                                   ;; tab 키로 해당 이벤트를 확인합니다
                                   (define-key org-agenda-mode-map (kbd "<tab>") 'org-agenda-show)
 
-                                  ;; ed: evil-mode의 키바인딩을 사용하기 위해 추가한 코드
+                                  ;; comment(edward): evil-mode의 키바인딩을 사용하기 위해 추가한 코드
                                   (define-key org-agenda-mode-map (kbd "j") 'org-agenda-next-line)
                                   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-previous-line)
                                   (define-key org-agenda-mode-map (kbd "l") 'evil-forward-char)
@@ -1499,7 +1499,7 @@
   '(progn
      (ein:ipynb-mode)
 
-     ;; ed: ein 단축키 해제
+     ;; comment(edward): ein 단축키 해제
      (define-key ein:notebook-mode-map (kbd "C-c i") nil)
      (define-key ein:notebook-mode-map (kbd "H-i") nil)
      (define-key ein:notebook-mode-map (kbd "C-u") nil)
@@ -1507,7 +1507,7 @@
      (define-key ein:ipynb-mode-map (kbd "C-c C-o") nil)
      (define-key ein:ipynb-mode-map (kbd "C-c C-p") nil)
 
-     ;; ed: ein 단축키 등록
+     ;; comment(edward): ein 단축키 등록
      (define-key ein:notebook-mode-map (kbd "C-w") 'ein:notebook-save-notebook-command)
      (define-key ein:notebook-mode-map (kbd "C-c C-d") 'ein:worksheet-delete-cell)
      (define-key ein:notebook-mode-map (kbd "M-<return>") 'ein:worksheet-execute-cell-and-goto-next)
@@ -1533,22 +1533,22 @@
 ;; PACKAGE: latex-mode, tex-mode, bibtex-mode
 (eval-after-load "tex-mode"
   '(progn
-     ;; ed: 단축키 해제
+     ;; comment(edward): 단축키 해제
      (define-key latex-mode-map (kbd "C-c C-o") nil)
      (define-key latex-mode-map (kbd "C-c C-p") nil)
      ))
 
 (eval-after-load "bibtex"
   '(progn
-     ;; ed: 단축키 해제
+     ;; comment(edward): 단축키 해제
      (define-key bibtex-mode-map (kbd "C-c C-o") nil)
      (define-key bibtex-mode-map (kbd "C-c C-p") nil)
      ))
 
 ;; PACKAGE: doc-view-mode
-;; ed: linum-mode가 있으면 pdf viewer가 매우 느려진다
+;; comment(edward): linum-mode가 있으면 pdf viewer가 매우 느려진다
 (add-hook 'doc-view-mode-hook (lambda () (linum-mode -1)))
-;; ed: image도 마찬가지
+;; comment(edward): image도 마찬가지
 (add-hook 'image-mode-hook (lambda () (linum-mode -1)))
 
 ;; PACKAGE: highlight-indentation
@@ -2097,6 +2097,7 @@
  '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
  '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
+ '(cfw:face-today ((t (:background "#262626" :foreground "gainsboro" :weight bold))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
  '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
  '(diff-refine-added ((t (:background "olive drab"))))
@@ -2871,19 +2872,19 @@ Version 2017-04-19"
                              (list-buffers-noselect))))
       (setq gdb-source-window winSrc)
       (set-window-dedicated-p winIO t)
-      ;; ed: Stack Frame added
+      ;; comment(edward): Stack Frame added
       (select-window winIO)
       (let
-          ((winStack (split-window-horizontally (floor (* 15 (window-body-height))))) ;; ed: Stack buffer added
+          ((winStack (split-window-horizontally (floor (* 15 (window-body-height))))) ;; comment(edward): Stack buffer added
            )
-        (set-window-buffer winStack (gdb-get-buffer-create 'gdb-stack-buffer)) ;; ed: Stack buffer added
+        (set-window-buffer winStack (gdb-get-buffer-create 'gdb-stack-buffer)) ;; comment(edward): Stack buffer added
         ))
     ;; (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
     (if (get-buffer " SPEEDBAR")
         (set-window-buffer win0 " SPEEDBAR")
       (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
       )
-    ;; ed: " SPEEDBAR"" 추가!
+    ;; comment(edward): " SPEEDBAR"" 추가!
     (set-window-buffer win3 (gdb-get-buffer-create 'gdb-locals-buffer))
     (set-window-buffer win4 (gdb-get-buffer-create 'gdb-stack-buffer))
     (select-window win2)
@@ -3433,7 +3434,10 @@ created by edward 180515"
 ;; magit 패키지가 로딩되면 같이 실행되는 코드
 (eval-after-load "magit"
   (lambda ()
-    ;; ed: 키바인딩 해제
+    ;; <SPC> keybinding을 해제하기 위해 cua-mode disabled
+    (cua-mode -1)
+
+    ;; comment(edward): 키바인딩 해제
     (define-key magit-status-mode-map (kbd "C-w") nil)
     (define-key magit-status-mode-map (kbd "C-c C-o") nil)
     (define-key magit-status-mode-map (kbd "C-c C-p") nil)
@@ -3441,7 +3445,7 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "M-3") nil)
     (define-key magit-process-mode-map (kbd "M-3") nil)
 
-    ;; ed: j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
+    ;; comment(edward): j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
     (define-key magit-log-mode-map (kbd "j") 'evil-next-line)
     (define-key magit-log-mode-map (kbd "k") 'evil-previous-line)
     (define-key magit-log-mode-map (kbd "C-u") 'evil-scroll-up)
@@ -3476,6 +3480,7 @@ created by edward 180515"
 
     ;; Space 키로 helm-for-files 명령을 실행합니다
     (define-key magit-status-mode-map (kbd "<SPC>") 'helm-for-files)
+    (define-key magit-diff-mode-map (kbd "<SPC>") 'helm-for-files)
     (define-key magit-revision-mode-map (kbd "<SPC>") 'helm-for-files)
 
     ;; [ ] 키로 org-agenda, todo 목록을 확인합니다
