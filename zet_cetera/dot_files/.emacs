@@ -3483,6 +3483,7 @@ created by edward 180515"
     (define-key magit-status-mode-map (kbd "<SPC>") 'helm-for-files)
     (define-key magit-diff-mode-map (kbd "<SPC>") 'helm-for-files)
     (define-key magit-revision-mode-map (kbd "<SPC>") 'helm-for-files)
+    (define-key magit-process-mode-map (kbd "<SPC>") 'helm-for-files)
 
     ;; [ ] 키로 org-agenda, todo 목록을 확인합니다
     (define-key magit-status-mode-map (kbd "]") 'org-agenda-list)

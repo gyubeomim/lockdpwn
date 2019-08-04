@@ -146,7 +146,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_LIGHTYELLOW\u(@lenovo)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTGREEN\u(@lenovo)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # PS1="$C_LIGHTRED[user@user]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
@@ -440,6 +440,9 @@ function setop(){
 # for github page
 alias blog='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io && ./push_master.sh'
 alias blogp='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io && git pull origin master'
+
+# for vim ~/.bashrc
+alias vb='vim ~/.bashrc'
 
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/devel/setup.bash
