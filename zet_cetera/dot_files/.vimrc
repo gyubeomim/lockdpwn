@@ -290,7 +290,7 @@ let g:airline_powerline_fonts=1
 
 " YouCompleteMe
 " .ycm_extra_conf.py가 있는 경로를 입력해야 합니다
-let g:ycm_global_ycm_extra_conf = '/home/dyros-vehicle/.vim/bundle/youcompleteme/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py' 
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/youcompleteme/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py' 
 let g:ycm_confirm_extra_conf = 0 
 let g:ycm_key_list_select_completion = ['', ''] 
 let g:ycm_key_list_previous_completion = ['', ''] 

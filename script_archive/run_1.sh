@@ -40,8 +40,8 @@ cd ../
 
 executable="./thirdparty/orb-slam/examples/stereo/example_kitti
 			./thirdparty/orb-slam/resource/vocabulary/ORBvoc.txt 
-			./thirdparty/orb-slam/examples/stereo/KITTI03.yaml 
-			/home/atlas1/datasets/kitti/data_odometry/sequences/03 0 0"
+			./thirdparty/orb-slam/examples/stereo/KITTI00-02.yaml 
+			/home/atlas1/datasets/kitti/data_odometry/sequences/01 0 0"
 
 executable_test="./thirdparty/orb-slam/examples/stereo/unit_tests"
 
