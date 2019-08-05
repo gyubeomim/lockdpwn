@@ -253,6 +253,12 @@
 
 (add-hook 'after-make-frame-functions 'set_korean_font_after_loading)
 
+;; org-table에서 한글 폰트로 인해 정렬이 깨지지 않도록 하는 방법
+;;https://crazia.tistory.com/entry/Emacs-24x-%EB%B2%84%EC%A0%BC-%ED%95%9C%EA%B8%80-%ED%8F%B0%ED%8A%B8-%EC%84%A4%EC%A0%95-orgmode-%EC%9D%98-%ED%95%9C%EA%B8%80-%ED%85%8C%EC%9D%B4%EB%B8%94-%EA%B9%A8%EC%A7%80%EC%A7%80-%EC%95%8A%EA%B2%8C-%EB%B3%B4%EC%9D%B4%EA%B8%B0
+(setq face-font-rescale-alist
+      '(("NanumGothicCoding" . 1.2307692307692308)
+        ("NanumGothic" . 1.2307692307692308)
+        ))
 
 ;; 파이썬 모드 단축키를 설정합니다
 (add-hook 'python-mode-hook
@@ -623,8 +629,9 @@
                                   (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
 
-                                  ;; [ ] 키로 org-agenda 목록을 보도록 설정합니다
+                                  ;; [ } ] 키로 org-agenda 목록을 보도록 설정합니다
                                   (define-key org-agenda-mode-map (kbd "]") 'org-agenda-list)
+                                  (define-key org-agenda-mode-map (kbd "}") 'cfw:open-org-calendar)
                                   (define-key org-agenda-mode-map (kbd "[") 'org-todo-list)
 
                                   ;; x 키로 emacs 창을 minimize 합니다
@@ -664,8 +671,8 @@
 (global-set-key (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
 ;; C-c + s 키로 태그를 검색합니다
 (global-set-key (kbd "C-c s") (lambda() (interactive)(org-agenda nil "s")))
-;; C-c + a 키로 특정 키워드를 검색합니다
-(global-set-key (kbd "C-c a") 'org-tags-view)
+;; C-c + a 키로 subtree를 archive합니다.
+(global-set-key (kbd "C-c a") 'org-archive-subtree)
 ;; C-c + # 키로 특정 .org 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/todo.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "e:/gitrepo/ims_org/org_files/quick.org")))
@@ -833,6 +840,7 @@
 
     ;; 키바인딩 해제 VISUAL MODE
     (define-key evil-visual-state-map (kbd "a") 'evil-exit-visual-state)
+    (define-key evil-visual-state-map (kbd "\\") 'evil-exit-visual-state)
     
     ;; evil 모드에서 e,E 키로 빠르게 단어를 highlight 합니다
     (define-key evil-motion-state-map (kbd "e") 'highlight-symbol)
@@ -855,8 +863,10 @@
 
     ;; [ ] 키로 org-agenda, todo list를 보도록 설정합니다
     (define-key evil-motion-state-map (kbd "]") 'org-agenda-list)
+    (define-key evil-motion-state-map (kbd "}") 'cfw:open-org-calendar)
     (define-key evil-motion-state-map (kbd "[") 'org-todo-list)
     (define-key evil-normal-state-map (kbd "]") 'org-agenda-list)
+    (define-key evil-normal-state-map (kbd "}") 'cfw:open-org-calendar)
     (define-key evil-normal-state-map (kbd "[") 'org-todo-list)
 
     ;; org-mode에서 w 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
@@ -2126,10 +2136,13 @@ created by edward 180515"
 
     ;; [ ] 키로 org-agenda, todo 목록을 확인합니다
     (define-key magit-status-mode-map (kbd "]") 'org-agenda-list)
+    (define-key magit-status-mode-map (kbd "}") 'cfw:open-org-calendar)
     (define-key magit-status-mode-map (kbd "[") 'org-todo-list)
     (define-key magit-process-mode-map (kbd "]") 'org-agenda-list)
+    (define-key magit-process-mode-map (kbd "}") 'cfw:open-org-calendar)
     (define-key magit-process-mode-map (kbd "[") 'org-todo-list)
     (define-key magit-diff-mode-map (kbd "]") 'org-agenda-list)
+    (define-key magit-diff-mode-map (kbd "}") 'cfw:open-org-calendar)
     (define-key magit-diff-mode-map (kbd "[") 'org-todo-list)
 
     ;; x키로 emacs 창을 최소화합니다.
@@ -2214,6 +2227,11 @@ created by edward 180515"
                                (define-key custom-mode-map (kbd "G") 'evil-goto-line)
                                (define-key custom-mode-map (kbd "C-u") 'evil-scroll-up)
                                (define-key custom-mode-map (kbd "C-d") 'evil-scroll-down)
+                               
+                               ;; [ ] } 키로 org-agenda, todo 목록을 확인합니다
+                               (define-key custom-mode-map (kbd "]") 'org-agenda-list)
+                               (define-key custom-mode-map (kbd "}") 'cfw:open-org-calendar)
+                               (define-key custom-mode-map (kbd "[") 'org-todo-list)
                               ))
 
 ;; Alt + a 키로 해당 단어의 reference를 검색해줍니다
