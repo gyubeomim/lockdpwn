@@ -228,11 +228,14 @@ alias cwc='cd /home/dyros-vehicle/cartographer_ws'
 alias csc='cd /home/dyros-vehicle/cartographer_ws/src'
 alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
+
 alias cwg='cd /home/dyros-vehicle/segmap_ws'
 alias csg='cd /home/dyros-vehicle/segmap_ws/src'
 alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 alias cse='cd /home/dyros-vehicle/catkin_ws/src/edward/'
+# for parking slam
+alias cps='cd /home/dyros-vehicle/catkin_ws/src/edward/parkingslam'
 
 #alias cl='cd /home/dyros-vehicle/gitrepo/ims'
 #alias cr='cd /home/dyros-vehicle/gitrepo/ims/ROS/'
@@ -444,8 +447,8 @@ alias docim='docker images'
 export PYTHONPATH=$PYTHONPATH:'/media/dyros-data/gitrepo/avod'
 export PYTHONPATH=$PYTHONPATH:'/media/dyros-data/gitrepo/avod/wavedata'
 
-# for parking slam
-alias cps='cd /home/dyros-vehicle/catkin_ws/src/edward/parkingslam'
+# for vim ~/.bashrc
+alias vb='vim ~/.bashrc'
 
 # for libclang.7.so
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH 
