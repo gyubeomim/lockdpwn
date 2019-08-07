@@ -73,6 +73,7 @@ T optimize_ba(
   const T min_division = 1e-5;
   std::set<OptEdge<T>*> ff_edges, fp_edges, p_edges;
 
+  // comment(edward): assign edge type (F2F, F2P, P)
   auto assign_domain = [&ff_edges, &fp_edges, &p_edges](const std::set<OptNode<T>*>& nodes,
                                                         std::map<OptNode<T>*, int>& ptr2index, size_t& dim){
                          dim = 0;

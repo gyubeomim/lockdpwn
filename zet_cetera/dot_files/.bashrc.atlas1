@@ -368,5 +368,8 @@ alias gdb='gdb -q'
 # for editing .bashrc
 alias vb='vim ~/.bashrc'
 
+# for vim
+alias v='vim'
+
 source /opt/ros/kinetic/setup.bash
 source /home/atlas1/catkin_ws/devel/setup.bash

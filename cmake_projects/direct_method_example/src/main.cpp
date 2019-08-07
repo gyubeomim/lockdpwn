@@ -2,6 +2,7 @@
 #include "../include/direct.h"
 #include "../include/dataset.h"
 
+// comment(edward): do LBA with keyframes and current frame
 void lba_test(){
   //char c = 0;
   std::map<size_t, std::string> im0_filenames, im1_filenames;

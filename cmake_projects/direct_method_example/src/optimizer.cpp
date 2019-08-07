@@ -82,25 +82,32 @@ void se2_marginalization_test() {
 
   std::vector<T> headings= {10.f, 20.f, 15.f, 20.f, 25.f, 10.f};
   std::vector<T> arr_y   = { 1.f, 1.5f, -2.f,  3.f,  5.f, 15.f};
-  //int n_frames = 3;
+
   int n_frames = headings.size();
+
   headings.erase(headings.begin() + n_frames, headings.end());
   arr_y.erase(arr_y.begin() + n_frames, arr_y.end());
+
   const int n_create = 10;
+
   for(int j = 0; j < static_cast<int>(headings.size()); j++){
     T x = 10.f * j;
     T y = arr_y.at(j);
+
     Sophus::SE2<T>* cw = new Sophus::SE2<T>();
     gt_poses.push_back(cw);
     *cw = Sophus::SE2<T>(headings.at(j)/180.f*3.141592, Eigen::Matrix<T,2,1>(x,y));
+
     // 매 프레임 10개의 점이 새로 추가된다.
     // 점은 3프레임동안 유지된다.
     if(j+1 < static_cast<int>(headings.size()) ){
       for(int i = 0; i < n_create; i++){
         T x0 = x0_distribution(generator);
         T y0 = 0.f;
+
         while(std::abs(y0) < 2.f)
           y0 = y0_distribution(generator);
+
         Eigen::Matrix<T,2,1>* pt = new Eigen::Matrix<T,2,1>(x0,y0);
         gt_points.push_back(pt);
         j0_points.push_back(j);
