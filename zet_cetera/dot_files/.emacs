@@ -96,6 +96,7 @@
     use-package                ;; package를 관리해주는 패키지
 
     spacemacs-theme        ;; spacemacs theme
+    gruvbox-theme          ;; gruvbox theme
 
     calfw                  ;; calendar framework for org-mode
     calfw-org              ;; calfw-org
@@ -1479,10 +1480,11 @@
 
 (setq custom-safe-themes t)
 ;; (load-theme 'solarized-dark t)
-(load-theme 'spacemacs-dark t)
-;; (load-theme 'zenburn t)
-;; (load-theme 'arjen-grey t)
-;; (load-theme 'ample-light t)
+;; (load-theme 'spacemacs-dark t)
+
+;; comment(edward): gruvbox conflicts with tabbar-mode & git-gutter face.
+;; so I removed faces in gruvbox.el and recompile it.
+(load-theme 'gruvbox-dark-medium t)
 
 
 ;; elisp, lisp 모드에서만 rainbow-delimiters를 활성화합니다
@@ -1714,6 +1716,7 @@
 
 ;; PACKAGE: smart-mode-line
 ;; sml 2018버전 패키지가 multi-term하고 충돌하는 오류가 발생한다. 2019 버전부터는 수정된듯
+(setq sml/theme 'dark)
 (sml/setup)
 
 ;; C-n C-S-n 키로 새로운 frame을 만들고 제거합니다
@@ -1998,7 +2001,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (writeroom-mode cmake-mode zenburn-theme spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
+    (cmake-mode  spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
@@ -2119,7 +2122,6 @@
  '(hi-pink ((t (:background "pink" :foreground "#b36b91"))))
  '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
  '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
- '(highlight ((t (:background "grey"))))
  '(highlight-symbol-face ((t (:foreground "yellow"))))
  '(iedit-occurrence ((t (:foreground "magenta" :weight bold))))
  '(iedit-read-only-occurrence ((t (:foreground "magenta"))))
