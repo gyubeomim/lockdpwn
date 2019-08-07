@@ -24,9 +24,9 @@ class Tracker
 public:
     Tracker();
 
-    void trackImage(double _cur_time, const cv::Mat &_img, const cv::Mat &_img1 = cv::Mat());
+    void trackImage(double _cur_time, const cv::Mat &_img);
 
-    void drawTrack(const cv::Mat &imLeft, const cv::Mat &imRight, 
+    void drawTrack(const cv::Mat &imLeft,
                                vector<int> &curLeftIds,
                                vector<cv::Point2f> &curLeftPts, 
                                map<int, cv::Point2f> &prevLeftPtsMap);

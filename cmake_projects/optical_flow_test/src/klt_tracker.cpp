@@ -38,12 +38,9 @@ Tracker::Tracker()
     MIN_DIST = 30;
 }
 
-void Tracker::trackImage(double _cur_time, const cv::Mat &_img, const cv::Mat &_img1)
+void Tracker::trackImage(double _cur_time, const cv::Mat &_img)
 {
     _img.copyTo(cur_img);
-    cv::Mat rightImg;
-    _img1.copyTo(rightImg);
-    // cvtColor(cur_img, cur_img, COLOR_RGB2GRAY);
 
     /*------ step 1 : track pts if prev_pts exists -------*/
     // if(b_init)
@@ -57,8 +54,8 @@ void Tracker::trackImage(double _cur_time, const cv::Mat &_img, const cv::Mat &_
 
     if( !prev_pts.empty() )
     {
-        // ROS_INFO("prev_pts size=%d",prev_pts.size());
-        vector<uchar> status, statusRightLeft;
+        vector<uchar> status;
+        // vector<uchar> statusRightLeft;
         vector<float> err;
 
         if(prev_img.empty())
@@ -67,20 +64,15 @@ void Tracker::trackImage(double _cur_time, const cv::Mat &_img, const cv::Mat &_
    
         int count_status = 0;
         for (int i = 0; i < int(cur_pts.size()); i++){
-            // if (status[i] && !inBorder(cur_pts[i]))
-            //     status[i] = 0;
             if(status[i])
                 count_status++;
         }
-        // ROS_INFO("cur_pts size=%d -> count_status=%d",cur_pts.size(), count_status);
-
         reduceVector(prev_pts, status);
         reduceVector(cur_pts, status);
         reduceVector(track_cnt, status);
         reduceVector(ids, status);
     }
     
-    // ROS_INFO("cur_pts size=%d",cur_pts.size());
     /*------ step 2 : add pts to keep the number of pts to track  -------*/
     int n_max_cnt = MAX_CNT - static_cast<int>(cur_pts.size());
     if (n_max_cnt > 0)
@@ -99,31 +91,25 @@ void Tracker::trackImage(double _cur_time, const cv::Mat &_img, const cv::Mat &_
 
     /*------ step 3 : draw image  -------*/
     if(SHOW_TRACK)
-        drawTrack(cur_img, rightImg, ids, cur_pts, prevLeftPtsMap);
+        drawTrack(cur_img, ids, cur_pts, prevLeftPtsMap);
 
     /*------ step 4 : copy  -------*/
-    // prevLeftPtsMap.clear();
     for(size_t i = 0; i < cur_pts.size(); i++)
     {
-        // prevLeftPtsMap[ids[i]] = cur_pts[i];
         prevLeftPtsMap.insert(make_pair(ids[i],cur_pts[i]));
     }
 
-
-    // prev_img.clear();
-    // prev_img = cur_img;
-    // prev_pts = cur_pts;
     std::swap(prev_pts, cur_pts);
     cv::swap(prev_img, cur_img);
 
 }
 
-void Tracker::drawTrack(const cv::Mat &imLeft, const cv::Mat &imRight, 
+void Tracker::drawTrack(const cv::Mat &imLeft,
                                vector<int> &curLeftIds,
                                vector<cv::Point2f> &curLeftPts, 
                                map<int, cv::Point2f> &prevLeftPtsMap)
 {
-    cv::hconcat(imLeft, imRight, imTrack);
+    imLeft.copyTo(imTrack);
 
     for (size_t j = 0; j < curLeftPts.size(); j++)
     {
@@ -139,7 +125,7 @@ void Tracker::drawTrack(const cv::Mat &imLeft, const cv::Mat &imRight,
         // cout << "id(" << id << ") count : " << prevLeftPtsMap.count(id) << '\n';
         if(mapIt != prevLeftPtsMap.end())
         {
-            cv::arrowedLine(imTrack, curLeftPts[i], mapIt->second, cv::Scalar(0, 255, 0), 1, 8, 0, 0.2);
+            cv::arrowedLine(imTrack, curLeftPts[i], mapIt->second, cv::Scalar(255, 255, 255), 1, 8, 0, 0.2);
         }
     }
 
