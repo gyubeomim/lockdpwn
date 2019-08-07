@@ -37,7 +37,7 @@ typedef float real;
 
 template<typename K, typename T>
 using EigenMap = std::map<K, T, std::less<size_t>,
-      Eigen::aligned_allocator<std::pair<K,T> > >;
+                          Eigen::aligned_allocator<std::pair<K,T> > >;
 
 using VectorMatrixXf = std::vector<Eigen::MatrixXf, Eigen::aligned_allocator<Eigen::MatrixXf> >;
 using VectorMatrixXd = std::vector<Eigen::MatrixXd, Eigen::aligned_allocator<Eigen::MatrixXd> >;
@@ -49,12 +49,12 @@ template<typename T>
 using VectorVectorX = std::vector<Eigen::Matrix<T,-1,1>, Eigen::aligned_allocator<Eigen::Matrix<T,-1,1> > >;
 
 enum TestCase{
-    FULL_OPTIMIZATION,
-    BA_OPTIMIZATION,
-    SE2_MARGINALIZATION,
-    SE3_MARGINALIZATION,
-    INVD_TEST,
-    MOTION_TEST, // Rectoring direct method
+  FULL_OPTIMIZATION,
+  BA_OPTIMIZATION,
+  SE2_MARGINALIZATION,
+  SE3_MARGINALIZATION,
+  INVD_TEST,
+  MOTION_TEST, // Rectoring direct method
 };
 
 #endif
