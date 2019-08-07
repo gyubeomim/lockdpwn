@@ -184,6 +184,7 @@ alias gb='git branch'
 alias gs='git status'
 alias dy='cd /home/atlas1/gitrepo/dv_ws'
 
+alias c='cd /home/atlas1/gitrepo/lockdpwn/cmake_projects'
 alias cpp='cd /home/atlas1/gitrepo/lockdpwn/cpp_archive'
 alias py='cd /home/atlas1/gitrepo/lockdpwn/python_archive'
 alias ipy='cd /home/atlas1/gitrepo/lockdpwn/python_archive/ipython'
@@ -268,12 +269,6 @@ alias cwc='cd /home/atlas1/gitrepo/ims_carto'
 alias csc='cd /home/atlas1/gitrepo/ims_carto/src'
 alias cmc='cd /home/atlas1/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmca='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT__EXPORT_COMPILE_COMMANDS=1 COMPILE_COMMANDS=1'
-
-# for segmap
-alias cwg='cd /home/atlas1/segmap_ws'
-alias csg='cd /home/atlas1/segmap_ws/src'
-alias cmg='cd /home/atlas1/segmap_ws && catkin build segmapper -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
-
 
 # source .bashrc
 alias sob='source /home/atlas1/.bashrc'
@@ -369,6 +364,9 @@ alias moff='/home/atlas1/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off_
 
 # for gdb
 alias gdb='gdb -q'
+
+# for editing .bashrc
+alias vb='vim ~/.bashrc'
 
 source /opt/ros/kinetic/setup.bash
 source /home/atlas1/catkin_ws/devel/setup.bash
