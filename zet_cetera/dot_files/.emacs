@@ -1291,17 +1291,14 @@
     (define-key evil-normal-state-map (kbd ",") 'helm-projectile-switch-project)
 
     ;; org-mode에서 c 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
-    ;; (define-key evil-normal-state-map (kbd "c") (lambda() (interactive)
-    ;;                                               (progn
-    ;;                                                 (outline-hide-other)
-    ;;                                                 (outline-show-subtree))))
-    ;; (define-key evil-motion-state-map (kbd "c") (lambda() (interactive)
-    ;;                                               (progn
-    ;;                                                 (outline-hide-other)
-    ;;                                                 (outline-show-subtree))))
-
-    ;; c 키로 helm-find-files 명령을 실행합니다
-    (define-key evil-normal-state-map (kbd "c") 'helm-find-files)
+    (define-key evil-normal-state-map (kbd "c") (lambda() (interactive)
+                                                  (progn
+                                                    (outline-hide-other)
+                                                    (outline-show-subtree))))
+    (define-key evil-motion-state-map (kbd "c") (lambda() (interactive)
+                                                  (progn
+                                                    (outline-hide-other)
+                                                    (outline-show-subtree))))
 
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
@@ -1483,12 +1480,12 @@
 
 
 (setq custom-safe-themes t)
-;; (load-theme 'solarized-dark t)
-;; (load-theme 'spacemacs-dark t)
-
+;;(load-theme 'solarized-dark t)
+(load-theme 'spacemacs-dark t)
 ;; comment(edward): gruvbox conflicts with tabbar-mode & git-gutter face.
 ;; so I removed faces in gruvbox.el and recompile it.
-(load-theme 'gruvbox-dark-medium t)
+;;(load-theme 'gruvbox-dark-medium t)
+
 
 
 ;; elisp, lisp 모드에서만 rainbow-delimiters를 활성화합니다
@@ -2487,9 +2484,6 @@
      ;; n,N 키로 evil-search 다음 단어로 이동합니다.
      (define-key dired-mode-map (kbd "n") 'evil-search-next)
      (define-key dired-mode-map (kbd "N") 'evil-search-previous)
-
-     ;; c 키로 helm-find-files 명령을 실행합니다
-     (define-key dired-mode-map (kbd "c") 'helm-find-files)
      ))
 
 ;; 엔터 입력시 자동 들여쓰기 다른 방법
