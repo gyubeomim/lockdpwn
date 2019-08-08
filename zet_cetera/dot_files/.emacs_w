@@ -51,7 +51,6 @@
     minimap                ;; navigation view sidebar을 생성해주는 패키지
     latex-preview-pane     ;; .tex 파일에서 해당 파일을 pdf로 변환한 모습을 preview해주는 패키지
     tabbar                 ;; emacs에서 tab을 사용할 수 있게해주는 패키지
-    spacemacs-theme        ;; spacemacs theme
     cmake-mode             ;; cmake package
     use-package            ;; package를 관리해주는 패키지
 
@@ -60,6 +59,8 @@
 
     htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
 
+    spacemacs-theme        ;; spacemacs theme
+    gruvbox-theme          ;; gruvbox theme
 
     ;;WINDOWS-----------------------------------
     ;;anzu                    ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
@@ -1029,7 +1030,8 @@
 (setq custom-safe-themes t)
 
 ;; (load-theme 'solarized-dark t)
-(load-theme 'spacemacs-dark t)
+;; (load-theme 'spacemacs-dark t)
+(load-theme 'gruvbox-dark-medium t)
 
 ;; PACKAGE: wrap-region
 (require 'wrap-region)
@@ -1119,6 +1121,7 @@
 (global-set-key (kbd "C-S-n") 'delete-frame)
 
 ;; PACKAGE: smart-mode-line
+(setq sml/theme 'dark)
 (sml/setup)
 
 ;; 다중모니터에서 C-x-5-2를 통해서 새로운 frame을 생성한 다음에 모니터가 작아서 폰트사이즈가 작은 경우 폰트크기를 크게하기 위해 설정한 함수
