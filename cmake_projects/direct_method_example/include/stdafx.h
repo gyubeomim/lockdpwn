@@ -48,7 +48,8 @@ using VectorMatrixX = std::vector<Eigen::Matrix<T,-1,-1>, Eigen::aligned_allocat
 template<typename T>
 using VectorVectorX = std::vector<Eigen::Matrix<T,-1,1>, Eigen::aligned_allocator<Eigen::Matrix<T,-1,1> > >;
 
-enum TestCase{
+enum TestCase
+{
   FULL_OPTIMIZATION,
   BA_OPTIMIZATION,
   SE2_MARGINALIZATION,

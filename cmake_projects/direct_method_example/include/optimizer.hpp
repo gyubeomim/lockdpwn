@@ -126,8 +126,12 @@ T optimize_ba(
           for(auto it_k = it_j; it_k != rj.end(); it_k++){
             int k = it_k->second;
             OptNode<T>* fk = it_k->first;
+
             auto idx_jk = std::pair<OptNode<T>*,OptNode<T>*>(fj,fk);
-            if(!dUjk.count(idx_jk)) continue;
+
+            if(!dUjk.count(idx_jk))
+              continue;
+
             Ha.block(j, k, fj->dim(), fk->dim() ) += dUjk.at(idx_jk);
           }
 

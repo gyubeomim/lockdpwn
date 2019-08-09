@@ -1,27 +1,31 @@
 #include "../include/intrinsic.h"
 
-Eigen::Matrix<real,2,1> Intrinsic::undistort(const Eigen::Matrix<real,2,1>& xd) const{
+Eigen::Matrix<real,2,1> Intrinsic::undistort(const Eigen::Matrix<real,2,1>& xd) const
+{
   Eigen::Matrix<real,2,1> xbar = xd;
   for(size_t i = 0; i < 50; i++)
     xbar = xbar - distort(xbar) + xd;
   return xbar;
 }
 
-Eigen::Matrix<real,2,1> Intrinsic::unproj(const Eigen::Matrix<real,2,1>& uv) const{
+Eigen::Matrix<real,2,1> Intrinsic::unproj(const Eigen::Matrix<real,2,1>& uv) const
+{
   Eigen::Matrix<real,2,1> xtilde( (uv.x()-K()(0,2))/K()(0,0),
                                   (uv.y()-K()(1,2))/K()(1,1));
   Eigen::Matrix<real,2,1> xbar = undistort(xtilde);
   return xbar;
 }
 
-Eigen::Matrix<real,2,1> Intrinsic::proj(const Eigen::Matrix<real, 3,1>& Xc) const {
+Eigen::Matrix<real,2,1> Intrinsic::proj(const Eigen::Matrix<real, 3,1>& Xc) const
+{
   Eigen::Matrix<real,2,1> xbar = Xc.head<2>() / Xc.z();
   Eigen::Matrix<real,2,1> xtilde = distort(xbar);
   Eigen::Matrix<real,2,1> uv = K().block<2,2>(0,0) * xtilde + K().block<2,1>(0,2);
   return uv;
 }
 
-RadTanRectifier::RadTanRectifier( const Eigen::Matrix<real,3,3>& K, const Eigen::Matrix<real,4,1>& distortion){
+RadTanRectifier::RadTanRectifier( const Eigen::Matrix<real,3,3>& K, const Eigen::Matrix<real,4,1>& distortion)
+{
   distortion_ = (cv::Mat_<float>(4,1)<< distortion(0,0),
                  distortion(1,0), distortion(2,0), distortion(3,0));
   K0_  = (cv::Mat_<float>(3,3) << K(0,0), 0., K(0,2),
@@ -30,13 +34,15 @@ RadTanRectifier::RadTanRectifier( const Eigen::Matrix<real,3,3>& K, const Eigen:
   set_zoom_ratio(0.2);
 }
 
-cv::Mat RadTanRectifier::rectify(cv::Mat src) const{
+cv::Mat RadTanRectifier::rectify(cv::Mat src) const
+{
   cv::Mat dst;
   cv::remap(src, dst, map1_, map2_, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
   return dst;
 }
 
-void RadTanRectifier::set_zoom_ratio(double zoom_ratio){
+void RadTanRectifier::set_zoom_ratio(double zoom_ratio)
+{
   cv::Mat K = K0_.clone();
   K.at<float>(0,2) = 500.;
   K.at<float>(1,2) = 300.;
@@ -47,7 +53,8 @@ void RadTanRectifier::set_zoom_ratio(double zoom_ratio){
 }
 
 
-Eigen::Matrix<real,2,1> RadTanIntrinsic::distort(const Eigen::Matrix<real,2,1>& xbar) const {
+Eigen::Matrix<real,2,1> RadTanIntrinsic::distort(const Eigen::Matrix<real,2,1>& xbar) const
+{
   real x2 = xbar[0]*xbar[0];
   real y2 = xbar[1]*xbar[1];
   real xy = xbar[0]*xbar[1];
@@ -63,7 +70,8 @@ Eigen::Matrix<real,2,1> RadTanIntrinsic::distort(const Eigen::Matrix<real,2,1>& 
   return Eigen::Matrix<real,2,1>(xd,yd);
 }
 
-Eigen::Matrix<real,2,2> RadTanIntrinsic::jac_dxtilde_dxbar(const Eigen::Matrix<real,2,1>& xbar) const{
+Eigen::Matrix<real,2,2> RadTanIntrinsic::jac_dxtilde_dxbar(const Eigen::Matrix<real,2,1>& xbar) const
+{
   Eigen::Matrix<real,2,2> jac;
   real x2 = xbar[0]*xbar[0];
   real y2 = xbar[1]*xbar[1];
@@ -102,7 +110,8 @@ Eigen::Matrix<real,2,2> RadTanIntrinsic::jac_dxtilde_dxbar(const Eigen::Matrix<r
   return jac;
 }
 
-FisheyeRectifier::FisheyeRectifier(const Eigen::Matrix<real,3,3>& K, const Eigen::Matrix<real,4,1>& distortion){
+FisheyeRectifier::FisheyeRectifier(const Eigen::Matrix<real,3,3>& K, const Eigen::Matrix<real,4,1>& distortion)
+{
   distortion_ = (cv::Mat_<float>(4,1)<< distortion(0,0),
                  distortion(1,0), distortion(2,0), distortion(3,0));
   K0_  = (cv::Mat_<float>(3,3) << K(0,0), 0., K(0,2),
@@ -111,13 +120,15 @@ FisheyeRectifier::FisheyeRectifier(const Eigen::Matrix<real,3,3>& K, const Eigen
   set_zoom_ratio(0.2);
 }
 
-cv::Mat FisheyeRectifier::rectify(cv::Mat src) const{
+cv::Mat FisheyeRectifier::rectify(cv::Mat src) const
+{
   cv::Mat dst;
   cv::remap(src, dst, map1_, map2_, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
   return dst;
 }
 
-void FisheyeRectifier::set_zoom_ratio(double zoom_ratio){
+void FisheyeRectifier::set_zoom_ratio(double zoom_ratio)
+{
   cv::Mat K = K0_.clone();
   K.at<float>(0,2) = 500.;
   K.at<float>(1,2) = 300.;
@@ -127,7 +138,8 @@ void FisheyeRectifier::set_zoom_ratio(double zoom_ratio){
                                        K, cv::Size(1000,600), CV_32FC1, map1_, map2_);
 }
 
-Eigen::Matrix<real,2,1> FisheyeIntrinsic::distort(const Eigen::Matrix<real,2,1>& xbar) const {
+Eigen::Matrix<real,2,1> FisheyeIntrinsic::distort(const Eigen::Matrix<real,2,1>& xbar) const
+{
   const real& k1 = distortion_[0];
   const real& k2 = distortion_[1];
   const real& k3 = distortion_[2];
@@ -140,7 +152,8 @@ Eigen::Matrix<real,2,1> FisheyeIntrinsic::distort(const Eigen::Matrix<real,2,1>&
   return Eigen::Matrix<real,2,1>(xd,yd);
 }
 
-Eigen::Matrix<real,2,2> FisheyeIntrinsic::jac_dxtilde_dxbar(const Eigen::Matrix<real,2,1>& xbar) const{
+Eigen::Matrix<real,2,2> FisheyeIntrinsic::jac_dxtilde_dxbar(const Eigen::Matrix<real,2,1>& xbar) const
+{
   const real& k1 = distortion_[0];
   const real& k2 = distortion_[1];
   const real& k3 = distortion_[2];
@@ -179,7 +192,8 @@ Eigen::Matrix<real,2,2> FisheyeIntrinsic::jac_dxtilde_dxbar(const Eigen::Matrix<
   return jac;
 }
 
-Eigen::Matrix<real,2,1> FisheyeIntrinsic::undistort(const Eigen::Matrix<real,2,1>& xd) const{
+Eigen::Matrix<real,2,1> FisheyeIntrinsic::undistort(const Eigen::Matrix<real,2,1>& xd) const
+{
   // thanks for opencv source code, cv::fisheye::undistortPoints
   real scale = 1.0;
   real theta_d = std::sqrt(xd[0]*xd[0] + xd[1]*xd[1]);
@@ -198,65 +212,98 @@ Eigen::Matrix<real,2,1> FisheyeIntrinsic::undistort(const Eigen::Matrix<real,2,1
   return xd * scale; //undistorted point
 }
 
-void distortion_test(){
+void distortion_test()
+{
 #if 1
   Eigen::Matrix<real,3,3> K;
   K << 219.69993,  0.00000,  323.90130,
       0.00000,  218.98447,  225.92588,
       0.00000,  0.00000,  1.00000;
+
   Eigen::Matrix<real, 4,1> D;
   D << -0.01982,  -0.00676,  0.00599,  -0.00226;
+
   cv::Mat cv_K = (cv::Mat_<double>(3,3) <<
                   K(0,0), K(0,1), K(0,2),
                   K(1,0), K(1,1), K(1,2),
                   K(2,0), K(2,1), K(2,2) );
+
   cv::Mat cv_D = (cv::Mat_<double>(4,1) << D[0], D[1], D[2], D[3]);
+
   Intrinsic* intrinsic = new FisheyeIntrinsic(K,D);
+
   //Eigen::Matrix<real,2,1> uv(30, 40); // failure
   Eigen::Matrix<real,2,1> uv(100, 120);
   auto xbar = intrinsic->unproj(uv);
+
   std::cout << "xbar_hat1 = " << xbar.transpose() << std::endl;
+
   std::vector<cv::Point2d> pts_i_uv = {cv::Point2d(uv[0],uv[1]), };
   std::vector<cv::Point2d> pts_o_xbar;
+
   cv::fisheye::undistortPoints(pts_i_uv, pts_o_xbar, cv_K, cv_D);
+
   std::cout << "xbar_hat2 = " << pts_o_xbar.at(0) << std::endl;
+
   real z = 1.;
+
   Eigen::Matrix<real,3,1> Xc(z*xbar[0], z*xbar[1], z);
+
   std::cout << "uv_true = " << uv.transpose() << std::endl;
+
   auto uv_hat = intrinsic->proj(Xc);
+
   std::cout << "uv_hat1 = " << uv_hat.transpose() << std::endl;
+
   cv::Point3d cv_Xc = cv::Point3d(Xc[0], Xc[1], Xc[2]);
+
   std::vector<cv::Point3d> pts_i_Xc = {cv_Xc, };
   std::vector<cv::Point2d> pts_o_uv;
+
   cv::fisheye::projectPoints(pts_i_Xc, pts_o_uv,
                              cv::Vec3d::zeros(), cv::Vec3d::zeros(),
                              cv_K, cv_D);
+
   std::cout << "uv_hat2 = " << pts_o_uv.at(0) << std::endl;
+
 #else
   Eigen::Matrix<real,3,3> K;
   K << 226.29111, 0., 324.16461, 0., 221.78938, 226.75197, 0., 0., 1.;
+
   Eigen::Matrix<real, 4,1> distortion;
   distortion << -0.019787936, 0.011688315, -0.008066264, 0.0017575786;
 
   Intrinsic* intrinsic = new RadTanIntrinsic(K, distortion);
   Eigen::Matrix<real,2,1> uv(200, 400);
+
   auto n_uv = intrinsic->unproj(uv);
   real z = 34.;
+
   Eigen::Matrix<real,3,1> Xc(z*n_uv[0], z*n_uv[1], z);
+
   auto uv_hat = intrinsic->proj(Xc);
   std::cout << "n_uv = " << n_uv.transpose() << std::endl;
   std::cout << "uv_hat = " << uv_hat.transpose() << std::endl;
+
   cv::Mat cv_K = (cv::Mat_<float>(3,3) << K(0,0), K(0,1), K(0,2),
                   K(1,0), K(1,1), K(1,2),
                   K(2,0), K(2,1), K(2,2) );
+
   cv::Mat cv_dist = (cv::Mat_<float>(4,1) << distortion[0], distortion[1],distortion[2],distortion[3]);
+
   std::vector<cv::Point2f> pts_i = {cv::Point2f(uv[0], uv[1]), };
   std::vector<cv::Point2f> pts_o;
+
   cv::undistortPoints(pts_i, pts_o, cv_K, cv_dist);
+
   std::cout << pts_o[0] << std::endl;
+
   cv::vector<cv::Point3f> pts_i_Xc = {cv::Point3f(Xc[0], Xc[1], Xc[2]), };
+
   pts_o.clear();
+
   cv::projectPoints(pts_i_Xc, cv::Vec3f::zeros(), cv::Vec3f::zeros(), cv_K, cv_dist, pts_o);
+
   std::cout << pts_o[0] << std::endl;
 #endif
 }

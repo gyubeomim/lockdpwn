@@ -2,7 +2,8 @@
 
 // Photometric frame
 // Considering exposure gamma gain
-class GammaFrame : public Frame {
+class GammaFrame : public Frame
+{
 public:
     GammaFrame(cv::Mat src,
             int levels,
@@ -56,7 +57,8 @@ FisheyeDirectMethod::FisheyeDirectMethod(
     //g_cw_latest_.translation() = Eigen::Matrix<real,3,1>(-10., -20., -30.);
 }
 
-std::set<Point*> FisheyeDirectMethod::supply_points(GammaFrame* frame){
+std::set<Point*> FisheyeDirectMethod::supply_points(GammaFrame* frame)
+{
     Images* images = frame->images();
     cv::Mat src = images->src();
     std::set<Point*> new_points;
@@ -79,7 +81,8 @@ std::set<Point*> FisheyeDirectMethod::supply_points(GammaFrame* frame){
     return new_points;
 }
 
-class GammaStereoFrame { // Rightside state
+class GammaStereoFrame
+{ // Rightside state
 public:
     GammaStereoFrame(cv::Mat src,
             int levels,
@@ -105,7 +108,8 @@ private:
     const Sophus::SE3<real>*const g_rl_;
 };
 
-class PhStereoEdge : public OptEdge<real>{
+class PhStereoEdge : public OptEdge<real>
+{
     // Photometric projection edge
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -218,7 +222,8 @@ private:
     int lv_;
 };
 
-class GammaPoseSE3PriorEdge : public OptEdge<real>{
+class GammaPoseSE3PriorEdge : public OptEdge<real>
+{
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
@@ -260,7 +265,8 @@ private:
 
 };
 
-class PhProjEdge : public OptEdge<real>{
+class PhProjEdge : public OptEdge<real>
+{
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
@@ -400,7 +406,8 @@ private:
     //GammaPoseSE3<real>
 };
 
-void StereoVisualizer::set_frame(const GammaFrame* frame, const GammaStereoFrame* frame_r){
+void StereoVisualizer::set_frame(const GammaFrame* frame, const GammaStereoFrame* frame_r)
+{
     frame_ = frame;
     frame_r_ = frame_r;
 }
@@ -465,7 +472,8 @@ void StereoVisualizer::on_update(const OptInfo<real>& info)
     return;
 }
 
-cv::Mat draw_epipolar_line(GammaStereoFrame* frame_r, const std::set<Point*>& points ){
+cv::Mat draw_epipolar_line(GammaStereoFrame* frame_r, const std::set<Point*>& points )
+{
     cv::Mat dst = frame_r->images()->src().clone();
     cv::cvtColor(dst, dst, cv::COLOR_GRAY2BGR);
     std::vector<real> depths;
@@ -499,7 +507,8 @@ cv::Mat draw_epipolar_line(GammaStereoFrame* frame_r, const std::set<Point*>& po
     return dst;
 }
 
-void FisheyeDirectMethod::stereo_invd(const GammaFrame* frame, const std::set<Point*>& new_points, cv::Mat im_right, int end_level){
+void FisheyeDirectMethod::stereo_invd(const GammaFrame* frame, const std::set<Point*>& new_points, cv::Mat im_right, int end_level)
+{
     GammaStereoFrame* frame_r = new GammaStereoFrame(im_right, levels_, &g_rl_, intrinsic1_);
     stereo_visualizer_.set_frame(frame, frame_r);
     frames_r_[frame->id()] = frame_r;
@@ -527,7 +536,8 @@ void FisheyeDirectMethod::stereo_invd(const GammaFrame* frame, const std::set<Po
     }
 }
 
-std::set<PhProjEdge*> track(const std::set<Point*>& visible_points, GammaFrame* frame, const FeatureCriteria* feature_criteria){
+std::set<PhProjEdge*> track(const std::set<Point*>& visible_points, GammaFrame* frame, const FeatureCriteria* feature_criteria)
+{
     std::set<PhProjEdge*> prj_edges;
     for(auto it_point = visible_points.begin(); it_point != visible_points.end(); it_point++)
         frame->points().insert(*it_point);

@@ -4,7 +4,8 @@ namespace test{
 class Edge;
 class Graph;
 
-class Node{
+class Node
+{
  public:
   Node() : fixed_(false), marginalized_(false) {
   }
@@ -27,7 +28,8 @@ class Node{
   std::set<test::Edge*> edges_;
 };
 
-class Edge{
+class Edge
+{
  public:
   const std::set<Node*>& nodes() const { return nodes_; }
   std::set<Node*>& nodes() { return nodes_; }
@@ -53,10 +55,10 @@ class Edge{
   std::set<Node*> nodes_;
 };
 
-Node::~Node(){
-}
+Node::~Node(){ }
 
-class Graph{
+class Graph
+{
   // Contain non marginalized nodes only.
  public:
   void marginalize(Node* node){
@@ -104,7 +106,8 @@ class Graph{
 
 };
 
-void Node::set_marginalized(Graph* graph) {
+void Node::set_marginalized(Graph* graph)
+{
   graph->marginalize(this);
   marginalized_ = true;
 }
@@ -112,8 +115,8 @@ void Node::set_marginalized(Graph* graph) {
 // Examples
 // Node는 shared_ptr로만 생성을 제한, 메모리 해제를 자동화.
 // edge의 파괴는 Graph class가 margianlize 함수를 통해 관리.
-
-class PoseNode : public Node {
+class PoseNode : public Node
+{
  public:
   static std::shared_ptr<PoseNode> create(){
     return std::shared_ptr<PoseNode>(new PoseNode());
@@ -125,7 +128,8 @@ class PoseNode : public Node {
   }
 };
 
-class PointNode : public Node {
+class PointNode : public Node
+{
   // It share pose node as a anchor.
  public:
   static std::shared_ptr<PointNode> create(std::shared_ptr<PoseNode> pose0){
@@ -145,7 +149,8 @@ class PointNode : public Node {
   const std::shared_ptr<const PoseNode> pose0_;
 };
 
-class ProjEdge : public Edge {
+class ProjEdge : public Edge
+{
  public:
   ProjEdge(PoseNode* pose, PointNode* pt){
     if(pt->pose0() == pose){
@@ -159,7 +164,8 @@ class ProjEdge : public Edge {
   }
 };
 
-class Frame{
+class Frame
+{
   // Non graph element class
   // It share node
  public:

@@ -30,42 +30,59 @@ void lba_test(){
   return;
 }
 
-void zoomout_test(){
+void zoomout_test()
+{
   std::map<size_t, std::string> im0_filenames, im1_filenames;
+
   real offset;
   Intrinsic* intrinsic;
   load_kitti<real>(im0_filenames, im1_filenames, intrinsic, offset);
+
   std::string fn0 = im1_filenames.at(0);
+
   cv::Mat im0 = cv::imread(fn0, cv::IMREAD_GRAYSCALE);
+
   zoomout_test(im0);
+
   return;
 }
 
-void invd_test(){
+void invd_test()
+{
   std::map<size_t, std::string> im0_filenames, im1_filenames;
   Intrinsic* intrinsic;
   real offset;
+
   load_kitti<real>(im0_filenames, im1_filenames, intrinsic, offset);
+
   std::string fn0 = im0_filenames.at(0);
   std::string fn1 = im1_filenames.at(0);
+
   cv::Mat im0 = cv::imread(fn0, cv::IMREAD_GRAYSCALE);
   cv::Mat im1 = cv::imread(fn1, cv::IMREAD_GRAYSCALE);
+
   motion_invd_test(im0, im1, intrinsic, offset, INVD_TEST);
 }
 
-void motion_test(){
+void motion_test()
+{
   std::map<size_t, std::string> im0_filenames, im1_filenames;
   Intrinsic* intrinsic;
   real offset;
+
   load_kitti<real>(im0_filenames, im1_filenames, intrinsic, offset);
+
   std::string fn0 = im0_filenames.at(0);
   std::string fn1 = im1_filenames.at(0);
+
   cv::Mat im0 = cv::imread(fn0, cv::IMREAD_GRAYSCALE);
   cv::Mat im1 = cv::imread(fn1, cv::IMREAD_GRAYSCALE);
+
   motion_invd_test(im0, im1, intrinsic, offset, MOTION_TEST);
 }
 
-void loop_detect_test(){
+void loop_detect_test()
+{
   printf("TODO Loop detection doesn't working yet.\n");
   exit(1);
   std::map<size_t, std::string> im0_filenames, im1_filenames;
@@ -73,16 +90,22 @@ void loop_detect_test(){
   real offset;
 }
 
-void gamma_test(){
+void gamma_test()
+{
   char c = 0;
   double gamma = 1.;
   double mult = 1.02;
+
   printf("press [a], [s] to change gamma, [r] to reset 1.\n");
+
   cv::Mat im0 = cv::imread("/home/geo/mydataset/cmos_fisheyes/seq0/0/2396.png");
   cv::Mat im1 = cv::imread("/home/geo/mydataset/cmos_fisheyes/seq0/0/2400.png");
   cv::Mat lut(1,256,CV_8UC1);
+
   uchar* ptr = lut.ptr();
-  while(c != 'q'){
+
+  while(c != 'q')
+  {
     for(int i=0; i < 256; i++)
       ptr[i] = cv::saturate_cast<uchar>( std::pow(i/255., gamma) * 255.);
     cv::Mat dst;
@@ -97,7 +120,8 @@ void gamma_test(){
   }
 }
 
-void ris_rectify_test(){
+void ris_rectify_test()
+{
   std::map<size_t, std::string> im0_filenames, im1_filenames;
   Intrinsic *intrinsic0, *intrinsic1;
   Sophus::SE3<real> g_rl;
@@ -127,7 +151,8 @@ void ris_rectify_test(){
   return;
 }
 
-void shuttum_rectify_test(){
+void shuttum_rectify_test()
+{
   std::map<size_t, std::string> im0_filenames;
   std::map<size_t, std::string> im1_filenames;
   Sophus::SE3<real> g_rl;
@@ -150,7 +175,8 @@ void shuttum_rectify_test(){
   return;
 }
 
-void ris_test(){
+void ris_test()
+{
   std::map<size_t, std::string> im0_filenames, im1_filenames;
   Intrinsic *intrinsic0, *intrinsic1;
   Sophus::SE3<real> g_rl;
@@ -168,35 +194,45 @@ void ris_test(){
   return;
 }
 
-
-void refac_test(){
+void refac_test()
+{
   printf("refac test\n");
+
   std::map<size_t, std::string> im0_filenames, im1_filenames;
   Intrinsic *intrinsic0, *intrinsic1;
+
   Sophus::SE3<real> g_rl;
   FeatureCriteria* feature_criteria = NULL;
+
   load_ris<real>(im0_filenames, im1_filenames, intrinsic0, intrinsic1, g_rl, feature_criteria);
 
   int levels = 5;
+
   auto it_start = im0_filenames.begin(); // + n??
-  for(auto it = it_start; it != im1_filenames.end(); it++){
+
+  for(auto it = it_start; it != im1_filenames.end(); it++)
+  {
     cv::Mat im0 = cv::imread(it->second, cv::IMREAD_GRAYSCALE);
     std::shared_ptr<Images> sp = std::make_shared<Images>(im0, levels);
-
-
     break;
   }
   return;
 }
 
-void shuttum_test(){
+void shuttum_test()
+{
   std::map<size_t, std::string> im0_filenames;
   std::map<size_t, std::string> im1_filenames;
+
   Sophus::SE3<real> g_rl;
+
   Intrinsic *intrinsic0, *intrinsic1;
   FeatureCriteria* feature_criteria;
+
   load_shuttum(im0_filenames,im1_filenames, intrinsic0, intrinsic1, g_rl, feature_criteria);
+
   FisheyeDirectMethod method(intrinsic0, intrinsic1, g_rl, feature_criteria, 0);
+
   auto it = im0_filenames.begin(); // + n??
   {
     cv::Mat im0 = cv::imread(it->second, cv::IMREAD_GRAYSCALE);
@@ -205,19 +241,24 @@ void shuttum_test(){
     std::cout << "im1 = " << im1_filenames.at(it->first) << std::endl;
     method.put_image(im0, im1);
   }
+
   for(int i =0; i < 13; i++) it++;
   {
     cv::Mat im0 = cv::imread(it->second, cv::IMREAD_GRAYSCALE);
     cv::Mat im1 = cv::imread(im1_filenames.at(it->first), cv::IMREAD_GRAYSCALE);
     method.put_image(im0, im1);
   }
+
   cv::waitKey(0);
   return;
 }
 
-int main(int argc, char* argv[]){
-  if(argc > 1){
+int main(int argc, char* argv[])
+{
+  if(argc > 1)
+  {
     char* str = argv[argc-1];
+
     if(std::string("invd").compare(str)==0)
       invd_test();
     else if(std::string("opt").compare(str)==0)

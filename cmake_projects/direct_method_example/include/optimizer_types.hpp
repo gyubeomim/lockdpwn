@@ -256,6 +256,7 @@ void GeneralOptMarginals<T>::marginalize_frame(OptNode<T>* frame, bool delete_ed
         ff_indices.insert(it->first);
     }
 
+    // comment(edward): refert to Multple View Geometry p613
     // 3. Schur complement : dU_jk -= W_j0 * U_mg^-1 * W_k0 ^T
     auto idx_ff = std::pair<OptNode<T>*,OptNode<T>*>(frame,frame);
 
@@ -281,9 +282,12 @@ void GeneralOptMarginals<T>::marginalize_frame(OptNode<T>* frame, bool delete_ed
         {
             OptNode<T>* fk = get_f_other(*it_kb);
             Eigen::Matrix<T,-1,-1> W_kb = get_W(fk, *it_kb);
+
             auto idx_jk = std::pair<OptNode<T>*,OptNode<T>*>(fj, fk);
+
             if(!dUjk_.count(idx_jk))
                 dUjk_[idx_jk] = get_zero_hessian();
+
             dUjk_[idx_jk] -= W_jb * U_b_inv * W_kb.transpose();
         }
 

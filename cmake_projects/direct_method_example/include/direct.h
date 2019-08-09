@@ -7,32 +7,41 @@
 
 // Huber loss C = e^2        : for |e| < a
 //        or    = 2a|e|- a^2 : otherwise.
+//
 // C = W * e^2
 // W = C / e^2
+//
 // therefore  W = 1.             : for |e|<a
 //            W =  2a|e|-a^2 / e^2
-inline real huber(const real& error, const real& a){
+inline real huber(const real& error, const real& a)
+{
   real abs_e = std::abs(error);
-  return (abs_e<a) ? 1. : a/abs_e;
+  return (abs_e < a) ? 1. : a/abs_e;
 }
 
 cv::Mat cvt_8UC1(cv::Mat src);
 cv::Mat pyrup_no_filter(const cv::Mat& im);
 cv::Mat sub(cv::Mat im1_32f, cv::Mat im0_32f, cv::Scalar color);
 
-struct ImInfo{
+struct ImInfo
+{
   float *im_ptr_, *ix_ptr_, *iy_ptr_;
   size_t im_es_, ix_es_;
   int hx_, hy_, rows_, cols_;
 
   ImInfo(cv::Mat mat_im);
+
   bool get_pixel(int index, real& i) const;
+
   ImInfo(cv::Mat mat_im, cv::Mat mat_ix, cv::Mat mat_iy);
+
   bool get_pixel(int index, real& i, real& ix, real&iy) const;
+
   Eigen::Matrix<int,2,1> get_dxy(int index) const;
 };
 
-class Images {
+class Images
+{
  public:
   int index_size(int level) const { const cv::Mat& im = im_.at(level); return im.rows * im.cols; }
   int patch_size(int level) const { return im_.at(level).cols; }
@@ -68,13 +77,13 @@ cv::Mat warp(const std::vector<cv::Mat>&vim,
              size_t patch_size);
 
 // <<< to iamge process.h ??
-
 // >>>>>>>>>>>>>>>>>>>>>>
 
 class Point;
 class DirProjEdge;
 // Frame : 최적화 argument-node와 관련된 edge/proj, 고유 id/intrinsic을 정의하는 class
-class Frame{
+class Frame
+{
  public:
   Frame(cv::Mat src,
         int levels,
