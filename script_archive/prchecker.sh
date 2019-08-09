@@ -2,10 +2,11 @@
 # Params
 max_line_change=50
 current_branch_name=$(git branch | grep '*' | sed 's/\*\ \(.*\)/\1/')
-master_branch="origin/master"
+master_branch="origin/feature/ui_drawing"
+#master_branch="origin/master"
 ​
 while true; do
-  echo -e "$current_branch_name \e[1;42m-branch를 PR하려고 하십니까?\e[0m"
+  echo -e "$current_branch_name \e[1;42m-branch를$ PR하려고 하십니까?($master_branch와 비교)\e[0m"
   read -p "[y/n]" yn
   case $yn in
     [Yy]* ) break;;
@@ -31,7 +32,7 @@ else
 fi
 while true; do
     echo -e "\e[1;31m계속 PR준비를 진행하겠습니까?\e[0m";
-    read -p "[y/n]"
+    read -p "[y/n]" yn
     case $yn in
         [Yy]* ) break;;
         [Nn]* ) return;;
@@ -62,11 +63,19 @@ echo -e "\e[1;42m5) 회사 가이드라인에 따라 함수명을 지었나요?\
 read -p "[press any]"
 echo -e "\e[1;42m6) 병합테스트를 실행합니다. (이후 자동으로 원상복구합니다.)\e[0m"
 read -p "[press any]"
-git checkout master && git merge tmp --no-commit --no-ff -X theirs
+git checkout $master_branch && git merge tmp --no-commit --no-ff -X theirs
 git reset --hard $master_branch
 echo -e "\e[1;42m병합테스트를 통과했나요?\e[0m"
 read -p "[press any]"
 git checkout $current_branch_name
 git merge tmp --no-commit
-# git reset HEAD^1  # Remove commit "commit by prchecker"
-git branch -D tmp
+​
+#git log -2
+var=$(git log -1 | grep -i "commit\ by\ prchecker")
+if [ ${#var} -gt 20 ]
+then
+  echo "Remove prchecker commit"
+  git reset HEAD^1;  # Remove commit "commit by prchecker"
+else
+  echo "No commit"
+fi
