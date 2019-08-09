@@ -1252,7 +1252,10 @@
     (define-key evil-motion-state-map (kbd "4") 'xref-find-definitions)
     (define-key evil-motion-state-map (kbd "$") 'xref-pop-marker-stack)
 
-    ;; 0키로 buffer를 새로고침합니다
+    ;; 5 키로 tabbar mode를 toggle합니다.
+    (define-key evil-motion-state-map (kbd "5") 'tabbar-mode)
+
+    ;; 0 키로 buffer를 새로고침합니다
     (define-key evil-motion-state-map (kbd "0") 'my-revert-buffer)
 
     ;; % 키로 cmake 프로젝트를 컴파일합니다
@@ -2002,7 +2005,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (cmake-mode  spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
+    (cmake-mode spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
@@ -2098,8 +2101,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "ADBO" :family "Source Code Pro"))))
- '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black" :box nil))))
+ '(avy-lead-face ((t (:inherit isearch :background "sienna" :foreground "tan"))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "sienna" :foreground "tan" :box nil))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
  '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
  '(cfw:face-today ((t (:background "#262626" :foreground "gainsboro" :weight bold))))
@@ -2590,31 +2593,7 @@
 
 (require 'tabbar)
 ; turn on the tabbar
-(tabbar-mode t)
-; define all tabs to be one of 3 possible groups: “Emacs Buffer”, “Dired”,
-;“User Buffer”.
-
-;; (defun tabbar-buffer-groups ()
-;;   "Return the list of group names the current buffer belongs to.
-;; This function is a custom function for tabbar-mode's tabbar-buffer-groups.
-;; This function group all buffers into 3 groups:
-;; Those Dired, those user buffer, and those emacs buffer.
-;; Emacs buffer are those starting with “*”."
-;;   (list
-;;    (cond
-;;     ((string-equal "*" (substring (buffer-name) 0 1))
-;;      "Emacs Buffer"
-;;      )
-;;     ((eq major-mode 'dired-mode)
-;;      "Dired"
-;;      )
-;;     (t
-;;      "User Buffer"
-;;      )
-;;     )))
-
-;; (setq tabbar-buffer-groups-function 'tabbar-buffer-groups)
-
+;; (tabbar-mode t)
 
 ;; PACKAGE: google-c-style
 (require 'google-c-style)
