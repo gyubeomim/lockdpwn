@@ -405,7 +405,8 @@ void StereoVisualizer::set_frame(const GammaFrame* frame, const GammaStereoFrame
     frame_r_ = frame_r;
 }
 
-void StereoVisualizer::on_update(const OptInfo<real>& info){
+void StereoVisualizer::on_update(const OptInfo<real>& info)
+{
     cv::Mat dst0 = frame_->images()->src().clone();
     cv::Mat dst1 = frame_r_->images()->src().clone();
     cv::cvtColor(dst0, dst0, cv::COLOR_GRAY2RGB);

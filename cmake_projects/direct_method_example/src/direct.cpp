@@ -163,6 +163,7 @@ DirectMethod::DirectMethod(const Intrinsic* intrinsic) //, real offset)
 }
 
 
+// comment(edward): FEJ: First Estimation Jacobian
 // TODO FEJ 다시 적용: Abstract OptEdge에 update외에, pre_update 추가선언
 void DirectMethod::put_image(cv::Mat im0, cv::Mat im1) {
   static int count = 0;
@@ -182,10 +183,11 @@ void DirectMethod::put_image(cv::Mat im0, cv::Mat im1) {
   }
   else {
     std::set<DirProjEdge*> prj_edges = track(visible_points_, dynamic_cast<PoseFrame*>(frame));
+
     visualizer_.set_frame(frame);
 
-    // huber cost에 의한 수렴 늦어지는거 감안 필요
     // comment(edward): where is applied huber cost codes?
+    // huber cost에 의한 수렴 늦어지는거 감안 필요
     estimate_motion(frame->node(), prj_edges, levels_, end_level, motion_option_);
 
     filter(frame, end_level);

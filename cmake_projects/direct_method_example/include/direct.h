@@ -32,7 +32,7 @@ struct ImInfo{
   Eigen::Matrix<int,2,1> get_dxy(int index) const;
 };
 
-class Images{
+class Images {
  public:
   int index_size(int level) const { const cv::Mat& im = im_.at(level); return im.rows * im.cols; }
   int patch_size(int level) const { return im_.at(level).cols; }
@@ -54,7 +54,8 @@ class Images{
 
 };
 
-inline real zoomout_ratio(const Eigen::Matrix<real,3,1>& Xc, real rho){
+inline real zoomout_ratio(const Eigen::Matrix<real,3,1>& Xc, real rho)
+{
   real ratio = 1. / ( Xc[2] * rho);  // cam에서 가까울수록, Xc[2]가 작을수록 확대.
   ratio = std::max((real)1., ratio);
   ratio = std::min((real)4., ratio); // 2.

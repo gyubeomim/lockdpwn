@@ -268,8 +268,10 @@ Images::Images(const std::vector<cv::Mat>& vim, const Eigen::Matrix<real,2,1>& u
   }
 }
 
-void Visualizer::on_update(const OptInfo<real>& info){
+void Visualizer::on_update(const OptInfo<real>& info)
+{
   static int g_iter = 0;
+
   /*if(info.ri_->size() > 0 && info.rj_->size() > 0){
     printf("iter l/g %2ld/%4d, ", info.iter_, g_iter);
     printf("n(rj), n(ri), n, m = %2ld, %3ld, %3ld, %3ld",
@@ -283,120 +285,181 @@ void Visualizer::on_update(const OptInfo<real>& info){
     printf("motion estimation\n");
     }
     printf("iter, chi2 = %3ld, %4.2f\n", info.iter, info.chi2); */
+
   real scale = std::pow(0.5, (real)lv_);
   Images* images = frame_->images();
+
   cv::Mat im = images->src().clone();
   cv::cvtColor(im, im, cv::COLOR_GRAY2RGB);
+
   if(feature_criteria_)
     im = feature_criteria_->draw_mask(im);
   else{
     //printf("TODO : null feature_criteria_\n");
   }
+
   PoseSE3<real>* pose = dynamic_cast<PoseSE3<real>*>(frame_->node());
   std::map<int, Point*> points;
+
   size_t patch_size = 10;
-  for(auto it_point = frame_->points().begin(); it_point != frame_->points().end(); it_point++){
+
+  for(auto it_point = frame_->points().begin(); it_point != frame_->points().end(); it_point++)
+  {
     Point* point = (*it_point);
     points[point->id()] = point;
+
     Images* patch = point->patch();
     patch_size = patch->patch_size(lv_);
   }
+
   const size_t n_patch_cols = 40;
   const size_t n_patch_rows = 3;
   const size_t dst_pyrup_times = 1;
+
   cv::Mat dst_patches = cv::Mat(
       std::pow(2,dst_pyrup_times) * 3 * n_patch_rows * patch_size,
       std::pow(2,dst_pyrup_times) * n_patch_cols * patch_size,
       CV_8UC3);
+
   dst_patches.setTo(0);
+
   size_t pt_n =0;
-  for(auto it = points.begin(); it != points.end(); it++){
+
+  for(auto it = points.begin(); it != points.end(); it++)
+  {
     Point* point = it->second;
     Point3<real>* pt = point->node();
     std::stringstream str_id;
+
     str_id << boost::format("%ld") % point->id();
+
     Images* patch = point->patch();
+
     Eigen::Matrix<real,3,1> Xc = pose->g_cw() * pt->xw();
     Eigen::Matrix<real,2,1> uv1 = frame_->intrinsic()->proj(Xc);
+
     cv::Mat im0 = patch->im().at(lv_);
     real ratio = zoomout_ratio(Xc, pt->invd());
     cv::Mat im1 = warp(images->im(), uv1, ratio, lv_, patch_size);
+
     const ImInfo info0(im0,patch->ix().at(lv_), patch->iy().at(lv_));
     const ImInfo info1(im1);
-    real dx = info0.hx_/scale;
-    real dy = info0.hy_/scale;
+
+    // comment(edward): dx, dy are depending on scale.
+    real dx = info0.hx_ / scale;
+    real dy = info0.hy_ / scale;
+
     cv::Point2f hb(dx, dy);
     cv::Point2f cv_uv( uv1.x(), uv1.y());
+
+    // comment(edward): green rectangle
     cv::rectangle(im, cv_uv-hb, cv_uv+hb, cv::Scalar(0,255,0), 1);
+    // comment(edward): blue rectangle
     cv::rectangle(im, cv_uv-ratio*hb, cv_uv+ratio*hb, cv::Scalar(255,0,0), 1);
+
     std::stringstream str_rho;
+
     str_rho << boost::format("%.4f") % pt->invd();
+
     cv::putText(im, str_id.str(), cv_uv+cv::Point2f(10.,10.),
                 cv::FONT_HERSHEY_PLAIN, 1., cv::Scalar(255, 0), 1);
     cv::putText(im, str_rho.str(), cv_uv+cv::Point2f(10.,20.),
                 cv::FONT_HERSHEY_PLAIN, 0.8, cv::Scalar(255, 0), 1);
+
     if(pt_n >= n_patch_cols*n_patch_rows) continue;
+
     cv::Mat dst_im0 = cvt_8UC1(im0);
     cv::Mat dst_im1 = cvt_8UC1(im1);
+
     cv::Mat patch_3by1(3*patch_size,patch_size, CV_8UC1);
+
     cv::Rect roi1(0,           0,patch_size, patch_size);
     cv::Rect roi2(0,1*patch_size,patch_size, patch_size);
     cv::Rect roi3(0,2*patch_size,patch_size, patch_size);
+
     patch_3by1.setTo(0);
+
     dst_im0.copyTo(patch_3by1(roi1));
     dst_im1.copyTo(patch_3by1(roi2));
+
     cv::cvtColor(patch_3by1, patch_3by1, cv::COLOR_GRAY2RGB);
     cv::Mat dst_error = sub(im0, im1, cv::Scalar(100,50,50));
+
     dst_error.copyTo(patch_3by1(roi3));
-    for(size_t n=0; n<dst_pyrup_times;n++) patch_3by1 = pyrup_no_filter(patch_3by1);
+
+    for(size_t n=0; n<dst_pyrup_times;n++)
+      patch_3by1 = pyrup_no_filter(patch_3by1);
+
     size_t row = (pt_n/n_patch_cols);
     size_t col = pt_n % n_patch_cols;
+
     cv::Rect roi_row( col * patch_3by1.cols,
                       row *patch_3by1.rows,
                       patch_3by1.cols,
                       patch_3by1.rows);
+
     cv::putText(patch_3by1, str_id.str(), cv::Point2f(2.,10.), cv::FONT_HERSHEY_PLAIN, 0.6, cv::Scalar(255,0,0), 1);
+
     std::stringstream str_pos;
+
     str_pos << boost::format("%.f,%.f") % uv1.x() % uv1.y() ;
+
     cv::putText(patch_3by1, str_pos.str(), cv::Point2f(2.,25.), cv::FONT_HERSHEY_PLAIN, 0.8, cv::Scalar(0,0,255), 1);
+
     patch_3by1.copyTo(dst_patches(roi_row));
     pt_n ++;
   }
+
   const auto t = pose->g_cw().inverse().translation();
   const auto quat = pose->g_cw().inverse().unit_quaternion();
+
   std::stringstream ss;
   ss << boost::format("frame[%d] tf_wc(quat, t) = %.3f, %.3f, %.3f, %.3f, %.3f, %.3f")
       % frame_->id() % quat.x() % quat.y() % quat.z() % t.x() % t.y() % t.z();
+
   //cv::rectangle(im, cv::Point(0,0), cv::Point(800., 25.), cv::Scalar(255,255,255), -1);
+
   cv::putText(im, ss.str(), cv::Point(15,15), cv::FONT_HERSHEY_PLAIN,
               1.0, CV_RGB(0, 0, 255), 1);
+
   cv::Mat dst(im.rows+dst_patches.rows, std::max(im.cols, dst_patches.cols), CV_8UC3);
+
   dst.setTo(0);
   im.copyTo(dst(cv::Rect(0,0,im.cols,im.rows)));
   dst_patches.copyTo(dst(cv::Rect(0,im.rows,dst_patches.cols,dst_patches.rows)));
-  cv::imshow("dst", dst);
+
+  cv::imshow("direct method", dst);
+
   if(g_iter==0)
-    cv::moveWindow("dst", 100, 300);
+    cv::moveWindow("direct method", 100, 300);
 
   g_iter ++;
+
   if(info.error_)
     set_stop(true);
+
   char c = cv::waitKey(stopmode_?0:1);
+
   if(c == 'q') exit(1);
   else if(c == 's') stopmode_ = !stopmode_;
 }
 
-void zoomout_test(cv::Mat im0){
+void zoomout_test(cv::Mat im0)
+{
   int levels = 5;
+
   Sophus::SE3<real> g0;
   Eigen::Matrix<real,3,3> K = Eigen::Matrix<real,3,3>::Identity();
+
   Intrinsic* intrinsic = new RadTanIntrinsic(K, Eigen::Matrix<real,4,1>(0.,0.,0.,0.));
   Frame* f0 = new PoseFrame(im0, levels, g0, intrinsic, 0);
 
   std::vector<cv::Point2f> corners;
+
   int max_coners = 100;
   double quality_level = 0.01;
   double min_distance = 10.;
+
   cv::goodFeaturesToTrack(f0->images()->src(),
                           corners,
                           max_coners,
