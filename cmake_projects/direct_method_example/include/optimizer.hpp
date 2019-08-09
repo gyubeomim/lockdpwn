@@ -67,8 +67,8 @@ T optimize_ba(
     size_t point_dim,
     const std::set<OptNode<T>*>& target_frames,
     const std::set<OptNode<T>*>& target_points,
-    const OptimizeBAOption<T>& option
-              ) {
+    const OptimizeBAOption<T>& option)
+{
   static int count = 0;
   const T min_division = 1e-5;
   std::set<OptEdge<T>*> ff_edges, fp_edges, p_edges;
@@ -99,13 +99,14 @@ T optimize_ba(
     Ha = Eigen::Matrix<T,-1,-1>(n,n);
     jra = Eigen::Matrix<T,-1,-1>(n,1);
   }
+
   if(m>0){
     Hb = Eigen::Matrix<T,-1,-1>(m, point_dim );
     jrb = Eigen::Matrix<T,-1,-1>(m,1);
   }
 
   T chi2;
-  for(size_t iter = 0; iter < option.n_iter; iter++){
+  for(size_t iter = 0; iter < option.n_iter; iter++) {
     if(n>0){
       Ha.setZero();
       jra.setZero();
@@ -128,11 +129,14 @@ T optimize_ba(
         }
       }
     }
+
     if(m>0){
       Hb.setZero();
       jrb.setZero();
     }
+
     chi2 = 0.;
+
     for(auto it_e = p_edges.begin(); it_e != p_edges.end(); it_e++){
       // ex) disparity edge
       OptEdge<T>* edge = *it_e;
@@ -145,7 +149,8 @@ T optimize_ba(
       Hb.block(c0, 0, point_dim, point_dim) += hessians.at(0);
       jrb.block(c0,0, point_dim, 1) += jres.at(0);
     }
-    for(auto it_e = ff_edges.begin(); it_e != ff_edges.end(); it_e++){
+
+    for(auto it_e = ff_edges.begin(); it_e != ff_edges.end(); it_e++) {
       // TODO IMU, loop closure, later
       // printf("Error : No implementation yet\n");
       // throw 1;
@@ -160,25 +165,31 @@ T optimize_ba(
       Ha.block(c0, c0, n0->dim(), n0->dim()) += hessians.at(0);
       jra.block(c0, 0, n0->dim(), 1)         += jres.at(0);
     }
+
     for(auto it_e = fp_edges.begin(); it_e != fp_edges.end(); it_e++){
       OptEdge<T>* edge = *it_e;
       edge->update();
       chi2 += edge->error().norm();
+
       const auto& hessians = edge->hessians();
       const auto& jres = edge->jres();
+
       OptNode<T>* n0 = edge->nodes().at(0); // Pose
       OptNode<T>* n1 = edge->nodes().at(1); // Point
+
       if(!n0->fixed() && rj.count(n0) ){
         int c0 = rj.at(n0);
         Ha.block(c0, c0, n0->dim(), n0->dim()) += hessians.at(0);
         jra.block(c0, 0, n0->dim(), 1)         += jres.at(0);
       }
+
       if(!n1->fixed() && ri.count(n1) ){
         int c1 = ri.at(n1);
         Hb.block(c1, 0, point_dim, point_dim) += hessians.at(1);
         jrb.block(c1, 0, point_dim, 1)        += jres.at(1);
       }
     }
+
     // <<<< Ha += ja'ja, Hb += jb'jb  <<
     // >>>> W += ja'*jb >>>>>>>>>>>>>>>>
     // Only for F2P edge
@@ -223,6 +234,7 @@ T optimize_ba(
         } // for it_e1 = pt->edges()
       } // for it_node = target_points
     }// if
+
     Eigen::Matrix<T,-1,1> delpa;
 
     if(n>0){
@@ -247,6 +259,7 @@ T optimize_ba(
         pose->oplus( delpa.block(j, 0, pose->dim(), 1) );
       }
     }
+
     for(auto it_i = ri.begin(); it_i != ri.end(); it_i++){
       OptNode<T>* pt = it_i->first;
       int i = it_i->second;
@@ -266,6 +279,7 @@ T optimize_ba(
       Eigen::Matrix<T,-1,1> dx = - vi.inverse() * part_jrb;
       pt->oplus(dx);
     }
+
     if(option.intf){
       OptInfo<T> info;
       info.iter_ = iter;
@@ -281,6 +295,6 @@ T optimize_ba(
       option.intf->on_update(info);
     }
     count++;
-  }// iter
+  } // iter
   return chi2;
 }

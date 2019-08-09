@@ -40,55 +40,76 @@ Point::~Point(){
   delete node_;
 }
 
-std::set<DirProjEdge*> track(const std::set<Point*>& visible_points, PoseFrame* frame){
+std::set<DirProjEdge*> track(const std::set<Point*>& visible_points,
+                             PoseFrame* frame)
+{
   std::set<DirProjEdge*> prj_edges;
-  for(auto it_point = visible_points.begin(); it_point != visible_points.end(); it_point++)
+
+  for(auto it_point = visible_points.begin(); it_point != visible_points.end(); it_point++) {
     frame->points().insert(*it_point);
-  for(auto it = frame->points().begin(); it != frame->points().end(); it++){
+  }
+
+  for(auto it = frame->points().begin(); it != frame->points().end(); it++) {
     Point* point = *it;
     DirProjEdge* edge = new DirProjEdge(frame, *it);
     frame->proj_edges()[point] = edge;
     prj_edges.insert(edge);
   }
+
   return prj_edges;
 };
 
-void filter(Frame* frame, int end_level){
+void filter(Frame* frame, int end_level) {
   //PoseSE3<real>* pose = dynamic_cast<PoseSE3<real>*>(frame->node());
   Images* images1 = frame->images();
+
   //cv::MatSize im_size = images1->src().size;
   auto im_size = images1->src().size;
+
   std::set<Point*> outliers;
-  for(auto it_point = frame->points().begin();
-      it_point != frame->points().end(); it_point++){
+
+  for(auto it_point = frame->points().begin(); it_point != frame->points().end(); it_point++)
+  {
     Point* point = *it_point;
     Point3<real>* pt = point->node();
     Images* patch = point->patch();
+
     cv::Mat im0 = patch->im().at(end_level);
+
     const int index_size = patch->index_size(end_level);
     const int patch_size = patch->patch_size(end_level);
+
     const Eigen::Matrix<real,3,1> Xc = frame->g_cw() * pt->xw();
     const Eigen::Matrix<real,2,1> uv1 = frame->intrinsic()->proj(Xc);
+
     const ImInfo info0(im0,patch->ix().at(end_level), patch->iy().at(end_level));
+
     bool outlier = false;
+
     if(uv1[0] < patch_size ||
        uv1[1] < patch_size ||
        uv1[0] > im_size[1] - patch_size ||
-       uv1[1] > im_size[0] - patch_size ){
+       uv1[1] > im_size[0] - patch_size )
+    {
       outlier = true;
     }
-    else{
+    else {
       real zoom_ratio = zoomout_ratio(Xc, pt->invd());
       cv::Mat im1 = warp(images1->im(), uv1, zoom_ratio, end_level, patch_size);
+
       const ImInfo info1(im1);
       real outlier_ratio = 0.;
-      for(int index = 0; index < index_size; index++){
+
+      for(int index = 0; index < index_size; index++) {
         real i0, ix, iy, i1;
         bool c0 = info0.get_pixel(index, i0, ix, iy);
         bool c1 = info1.get_pixel(index, i1);
+
         if(!c0) continue;
         if(!c1) continue;
+
         real e = i1 - i0;
+
         if( std::abs(e) > 50.) outlier_ratio += 1.;
       }
       outlier_ratio /= (real) index_size;
@@ -97,13 +118,16 @@ void filter(Frame* frame, int end_level){
     if(outlier)
       outliers.insert(point);
   }
-  for(auto it_point=outliers.begin();it_point != outliers.end(); it_point++){
+
+  for(auto it_point=outliers.begin();it_point != outliers.end(); it_point++) {
     Point* point = *it_point;
     frame->points().erase(point);
+
     OptEdge<real>* edge = frame->proj_edges().at(point);
     frame->proj_edges().erase(point);
     edge->expire();
-    if(frame->node()->edges().count(edge)){
+
+    if(frame->node()->edges().count(edge)) {
       printf("Error : erase failure\n");
       throw 1;
     }
@@ -140,8 +164,7 @@ DirectMethod::DirectMethod(const Intrinsic* intrinsic) //, real offset)
 
 
 // TODO FEJ 다시 적용: Abstract OptEdge에 update외에, pre_update 추가선언
-// ===============================================================================================
-void DirectMethod::put_image(cv::Mat im0, cv::Mat im1){
+void DirectMethod::put_image(cv::Mat im0, cv::Mat im1) {
   static int count = 0;
 
   OptNode<real>::set_print_create_destruct(false);
@@ -154,37 +177,51 @@ void DirectMethod::put_image(cv::Mat im0, cv::Mat im1){
 
   int end_level = 0;
 
-  if(!frame0)
+  if(!frame0) {
     frame->node()->fix(true);
-  else{
+  }
+  else {
     std::set<DirProjEdge*> prj_edges = track(visible_points_, dynamic_cast<PoseFrame*>(frame));
     visualizer_.set_frame(frame);
+
     // huber cost에 의한 수렴 늦어지는거 감안 필요
+    // comment(edward): where is applied huber cost codes?
     estimate_motion(frame->node(), prj_edges, levels_, end_level, motion_option_);
+
     filter(frame, end_level);
+
     visible_points_ = frame->points();
+
     estimate_bundle(frames_, bundle_option_);
   }
 
   g_cw_latest_ = frame->g_cw();
 
-  if(is_keyframe(frame)){
+  if(is_keyframe(frame)) {
     printf("keyframe count %d keyframe %d\n", count, frame->id());
+
     visualizer_.set_frame(frame);
+
     if(frame->id() > 0)
       marginalize();
+
     std::set<Point*> new_points = supply_points(frame);
+
     visible_points_ = frame->points();
     variable_points_.insert(new_points.begin(),new_points.end());
     stereo_invd(new_points, im1, end_level); // increase im_right_
+
     n_frame_++;
   }
-  else{
+  else {
     printf("none keyframe\n");
+
     frames_.erase(frame->id());
+
     for(auto it_edge = frame->proj_edges().begin();
         it_edge != frame->proj_edges().end();
-        it_edge++){
+        it_edge++)
+    {
       OptEdge<real>* edge = it_edge->second;
       edge->expire();
       delete edge;
@@ -193,41 +230,56 @@ void DirectMethod::put_image(cv::Mat im0, cv::Mat im1){
   }
   count++;
 }
-// ===============================================================================================
 
-void DirectMethod::marginalize(){
+void DirectMethod::marginalize() {
 #if 1
   const bool delete_edges = true;
-  auto process_mg_points = [this, delete_edges](const std::set<Point*>& mg_points){
+
+  auto process_mg_points = [this, delete_edges](const std::set<Point*>& mg_points)
+                           {
                              printf("mg %ld points\n", mg_points.size() );
-                             for(auto it_point = mg_points.begin(); it_point != mg_points.end(); it_point++){
+                             for(auto it_point = mg_points.begin(); it_point != mg_points.end(); it_point++)
+                             {
                                Point* point = *it_point;
                                Point3<real>* pt = point->node();
+
                                // proj_edge는 아래 marginalize_point 함수에서 expire된다.
                                marginals_.marginalize_point(pt, delete_edges);
                                variable_points_.erase(point);
+
                                if(visible_points_.count(point))
                                  visible_points_.erase(point);
+
                                // frame들이 가지고있는 point의 proj_edge를 찾아가 erase
-                               for(int j = point->frame0()->id(); ; j++){
+                               for(int j = point->frame0()->id(); ; j++)
+                               {
                                  if(j > n_frame_) break;
                                  if(!frames_.count(j)) continue; // 이미 mg된 frame
+
                                  Frame* f = frames_.at(j);
+
                                  if(!f->points().count(point)) break;
+
                                  f->points().erase(point);
                                  f->proj_edges().erase(point);
                                }
                                delete point;  // it includes delete pt, edges of pt
                              }
                            };
-  auto search_mg_points = [this](std::set<Point*>& mg_points){
-                            for(auto it_point = variable_points_.begin(); it_point != variable_points_.end(); it_point++){
+
+  auto search_mg_points = [this](std::set<Point*>& mg_points)
+                          {
+                            for(auto it_point = variable_points_.begin(); it_point != variable_points_.end(); it_point++)
+                            {
                               Point* point = *it_point;
                               Point3<real>* pt = point->node();
+
                               if(!visible_points_.count(point))       // mg pt case #1
                                 mg_points.insert(point);
+
                               bool is_stereo = im_right_.count(point->frame0()->id()); // stereo point
                               size_t min_edge = is_stereo ? 1 : 0;
+
                               if(pt->edges().size() < min_edge){
                                 printf("Error : min_edge wrong\n");
                                 throw 1;
@@ -236,22 +288,32 @@ void DirectMethod::marginalize(){
                                 mg_points.insert(point);
                             }
                           };
+
   std::set<Point*> mg_points;
+
   search_mg_points(mg_points);
   process_mg_points(mg_points);
+
   std::set<Frame*> mg_frames;
+
   int n = 0;
+
   for(auto it = frames_.rbegin(); it != frames_.rend(); it++, n++){
     Frame* f = it->second;
     bool c1 = f->points().size() == 0;
     bool c2 = n >= 3;
+
     if(c1 || c2)
       mg_frames.insert(f);
   }
+
   for(auto it_frame = mg_frames.begin(); it_frame != mg_frames.end(); it_frame++){
     Frame* mg_f = *it_frame;
+
     printf("mg frame[%d]\n", mg_f->id());
+
     const auto& proj_edges = mg_f->proj_edges();
+
     for(auto it_edge = proj_edges.begin();
         it_edge != proj_edges.end();
         it_edge++){
@@ -261,25 +323,34 @@ void DirectMethod::marginalize(){
       edge->expire();
       delete edge;
     }
+
     if(!mg_f->node()->fixed())
       marginals_.marginalize_frame(mg_f->node(), delete_edges);
     frames_.erase(mg_f->id()); // frames_ : variable frame만 포함
     mg_f->node()->fix(true);
     fixed_frames_.insert(mg_f);
   }
+
   mg_points.clear();
+
   search_mg_points(mg_points);
   process_mg_points(mg_points);
+
   std::set<const Frame*> f0_frames;
-  for(auto it_point = variable_points_.begin(); it_point != variable_points_.end(); it_point++){
+
+  for(auto it_point = variable_points_.begin(); it_point != variable_points_.end(); it_point++)
+  {
     Point* point = *it_point;
     const Frame* f0 = point->frame0();
     f0_frames.insert(f0);
   }
+
   std::set<Frame*> fixed_frames = fixed_frames_;
+
   for(auto it_frame = fixed_frames.begin();
       it_frame != fixed_frames.end();
-      it_frame++){
+      it_frame++)
+  {
     Frame* f = *it_frame;
     if(f0_frames.count(f)) continue; // 아직 필요한 frame
     if(im_right_.count(f->id())){
@@ -301,72 +372,98 @@ void DirectMethod::marginalize(){
 #endif
 }
 
-bool DirectMethod::is_keyframe(Frame* frame) const{
+bool DirectMethod::is_keyframe(Frame* frame) const {
   Eigen::MatrixXi grid(4,1);
   int min_n = 5;
+
   cv::Size size = frame->images()->src().size();
   float w = (float)size.width / (float)grid.rows();
   float h = (float)size.height / (float)grid.cols();
+
   grid.setZero();
+
   for(auto point_it = frame->points().begin();
       point_it != frame->points().end();
-      point_it++){
+      point_it++)
+  {
     Point* point = *point_it;
+
     Eigen::Matrix<real,3,1> Xc = frame->g_cw() * point->node()->xw();
     Eigen::Matrix<real,2,1> x = intrinsic_->proj(Xc);
+
     int ix = x[0] / w;
     int iy = x[1] / h;
+
     if(ix < 0 || iy < 0 || ix >= grid.rows() || iy >= grid.cols() )
       continue;
     grid(ix,iy) += 1;
   }
+
   bool condition = false;
+
   for(int ix = 0 ; ix < grid.rows(); ix++)
     for(int iy = 0; iy < grid.cols(); iy++)
-      if(grid(ix,iy) < min_n ){
+      if(grid(ix,iy) < min_n )
+      {
         condition = true;
         break;
       }
   return condition;
 }
 
-Sophus::SE3<real> DirectMethod::get_g_cw() const{ return g_cw_latest_; }
+Sophus::SE3<real> DirectMethod::get_g_cw() const { return g_cw_latest_; }
 
 void estimate_motion(OptNode<real>* pose,
                      const std::set<DirProjEdge*>& prj_edges,
                      int levels,
                      int end_level,
-                     const OptimizeBAOption<real>& option){
-  if(option.marginals){
+                     const OptimizeBAOption<real>& option)
+{
+  if(option.marginals)
+  {
     printf("Error : Marginals must be NULL for estimate_motion\n");
     throw 1;
   }
+
   Visualizer* vis = NULL;
+
   if(option.intf)
     vis = dynamic_cast<Visualizer*>(option.intf);
+
   std::set<OptNode<real>*> empty_nodes;
   std::set<OptNode<real>*> pose_nodes = { pose };
+
   for(int lv = levels-1; lv > end_level-1; lv--){
     for(auto it_e = prj_edges.begin(); it_e != prj_edges.end(); it_e++)
       (*it_e)->set_level(lv);
+
     if(vis)
       vis->set_level(lv);
+
+    // comment(edward): optimize only for frames (pose nodes)
     optimize_ba<real>(1, pose_nodes, empty_nodes, option);
   }
 }
 
-void estimate_bundle(const std::map<int, Frame*>& frames, const OptimizeBAOption<real>& option){
+void estimate_bundle(const std::map<int, Frame*>& frames, const OptimizeBAOption<real>& option)
+{
   std::set<OptNode<real>*> opt_poses;
   std::set<OptNode<real>*> opt_points;
   Visualizer* vis = NULL;
+
   if(option.intf)
     vis = dynamic_cast<Visualizer*>(option.intf);
+
   for(auto f_it = frames.begin(); f_it != frames.end(); f_it++){
     const auto& points = f_it->second->points();
+
     opt_poses.insert(f_it->second->node());
+
     for(auto point_it = points.begin(); point_it != points.end(); point_it++)
       opt_points.insert((*point_it)->node());
   }
+
+  // comment(edward): optimize frames & points simultaneously
   optimize_ba<real>(1, opt_poses, opt_points, option);
   return;
 }

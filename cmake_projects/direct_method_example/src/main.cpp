@@ -8,9 +8,12 @@ void lba_test(){
   std::map<size_t, std::string> im0_filenames, im1_filenames;
   real offset;
   Intrinsic* intrinsic;
+
   load_kitti<real>(im0_filenames, im1_filenames, intrinsic, offset);
+
   Sophus::SE3<real> g_rl;
   g_rl.translation() = Eigen::Matrix<real,3,1>(-offset,0., 0.);
+
   DirectMethod method(intrinsic);
   method.set_stereo(&g_rl);
 
@@ -20,6 +23,7 @@ void lba_test(){
     cv::Mat im0 = cv::imread(fn0, cv::IMREAD_GRAYSCALE);
     std::string fn1 = im1_filenames.at(n);
     cv::Mat im1 = cv::imread(fn1, cv::IMREAD_GRAYSCALE);
+
     method.put_image(im0, im1);
   }
   printf("end of images\n");
