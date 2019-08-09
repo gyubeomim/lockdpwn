@@ -1030,8 +1030,8 @@
 (setq custom-safe-themes t)
 
 ;; (load-theme 'solarized-dark t)
-;; (load-theme 'spacemacs-dark t)
-(load-theme 'gruvbox-dark-medium t)
+(load-theme 'spacemacs-dark t)
+;; (load-theme 'gruvbox-dark-medium t)
 
 ;; PACKAGE: wrap-region
 (require 'wrap-region)
