@@ -373,3 +373,7 @@ alias v='vim'
 
 source /opt/ros/kinetic/setup.bash
 source /home/atlas1/catkin_ws/devel/setup.bash
+
+# for ORB_SLAM2
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/atlas1/gitrepo/ORB_SLAM2/Examples/ROS
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/LCSD_SLAM/ORB_SLAM2/Examples/ROS
