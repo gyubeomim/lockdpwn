@@ -556,6 +556,9 @@
      (setq org-html-html5-fancy t
            org-html-doctype "html5")
 
+     ;; set the org latex size 
+     (plist-put org-format-latex-options :scale 1.5)
+     
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '((":" "todo.org: [TODO]" entry
@@ -637,6 +640,9 @@
 
                                   ;; x 키로 emacs 창을 minimize 합니다
                                   (define-key org-agenda-mode-map (kbd "x") 'suspend-frame)
+                                  
+                                  ;; Ctrl + s 키로 emacs 창을 minimize 합니다
+                                  (define-key org-agenda-mode-map (kbd "C-s") 'org-save-all-org-buffers)
 
                                   ;; SPC 키로 helm-for-files를 실행합니다
                                   (define-key org-agenda-mode-map (kbd "SPC") 'helm-for-files)
@@ -2451,7 +2457,7 @@ created by edward 180515"
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "e:/gitrepo/ims_org/org_files/issues.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/milestone.org" "e:/gitrepo/ims_org/org_files/daily.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/quick.org")))
+    ("e:/gitrepo/ims_org/org_files/notes/parkingslam.org" "e:/gitrepo/ims_org/org_files/notes/atlas_intern_meeting.org" "e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "e:/gitrepo/ims_org/org_files/issues.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/milestone.org" "e:/gitrepo/ims_org/org_files/daily.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/quick.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -2533,10 +2539,15 @@ created by edward 180515"
                    (point-max)))))
             (if
                 (or
-                 (string= (buffer-name) "CAPTURE-daily.org")
-                 (string= (buffer-name) "CAPTURE-todo.org")
-                 (string= (buffer-name) "CAPTURE-milestone.org")
-                 )
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-daily.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-todo.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-milestone.org"))
                 (return)
               (if
                   (save-excursion
@@ -2710,8 +2721,8 @@ created by edward 180515"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "outline" :family "Roboto Mono"))))
- '(avy-lead-face ((t (:inherit isearch :background "yellow2" :foreground "black"))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "yellow2" :foreground "black"))))
+ '(avy-lead-face ((t (:inherit isearch :background "sienna" :foreground "tan"))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "sienna" :foreground "tan" :box nil))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
  '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))

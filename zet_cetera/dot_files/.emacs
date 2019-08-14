@@ -971,6 +971,9 @@
                                   ;; x 키로 emacs 창을 minimize 합니다
                                   (define-key org-agenda-mode-map (kbd "x") 'suspend-frame)
 
+                                  ;; Ctrl + s 키로 emacs 창을 minimize 합니다
+                                  (define-key org-agenda-mode-map (kbd "C-s") 'org-save-all-org-buffers)
+
                                   ;; , 키로 projectile switch 함수를 실행합니다
                                   (define-key org-agenda-mode-map (kbd ",") 'helm-projectile-switch-project)
 
