@@ -770,7 +770,8 @@
      (define-key org-mode-map (kbd "C-c C-v") 'org-html-open-chrome)
      ;; org-mode에서 ' 키로 tag를 설정합니다
      (define-key org-mode-map (kbd "C-/") 'org-set-tags)
-
+     ;; C-c i 키로 timestamp type을 변경합니다
+     (define-key org-mode-map (kbd "C-c i") 'org-toggle-timestamp-type)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
