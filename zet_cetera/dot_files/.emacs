@@ -835,15 +835,15 @@
      ;; org mode에서만 font를 다르게 설정해주는 variable-pitch-mode를 실행합니다
      (add-hook 'org-mode-hook 'variable-pitch-mode)
 
-     ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
-     (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.8))
-
      ;; org-link 에서 .pdf 파일은 foxit reader로 열도록 설정한다
      (setq org-file-apps
       '((auto-mode . emacs)
         ("\\.pdf\\'" . "~/opt/foxitsoftware/foxitreader/FoxitReader \"%s\"")
         ("\\.pdf::\\([0-9]+\\)\\'" . "~/opt/foxitsoftware/foxitreader/FoxitReader \"%s\" -p %1")
         ))
+
+     ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
+     (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
      (setq org-agenda-files (append (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/*.org") (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/notes/*.org")))

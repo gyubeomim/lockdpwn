@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: figure by edward
+# key: fig
+# --
+[[../pictures/${1:}][${2:}
