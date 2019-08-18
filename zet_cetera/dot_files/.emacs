@@ -846,7 +846,7 @@
      (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
-     (setq org-agenda-files (append (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/*.org") (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/notes/*.org")))
+     (setq org-agenda-files (append (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/*.org") ))
 
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
@@ -864,10 +864,6 @@
 
                                    ("n" "quick.org: [quick]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/quick.org" "quick")
-                                    "*** %i\n%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
-
-                                   ("a" "archive.org: [Archive]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/archive.org" "archive")
                                     "*** %i\n%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
                                    ("m" "milestone.org: [Milestone]" entry

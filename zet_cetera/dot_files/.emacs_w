@@ -534,13 +534,14 @@
                                 (push '("-" .  8226) prettify-symbols-alist)
                (prettify-symbols-mode)))
 
-     (font-lock-add-keywords 'org-mode
-                             '(("\\(src_\\)\\([^[{]+\\)\\(\\[:.*\\]\\){\\([^}]*\\)}"
-                                (1 '(:foreground "black" :weight 'normal :height 10)) ; src_ part
-                                (2 '(:foreground "cyan" :weight 'bold :height 75 :underline "red")) ; "lang" part.
-                                (3 '(:foreground "#555555" :height 70)) ; [:header arguments] part.
-                                (4 'org-code) ; "code..." part.
-                                )))
+     ;; comment(edward): deprecated due to crash when open a specific file
+     ;; (font-lock-add-keywords 'org-mode
+     ;;                         '(("\\(src_\\)\\([^[{]+\\)\\(\\[:.*\\]\\){\\([^}]*\\)}"
+     ;;                            (1 '(:foreground "black" :weight 'normal :height 10)) ; src_ part
+     ;;                            (2 '(:foreground "cyan" :weight 'bold :height 75 :underline "red")) ; "lang" part.
+     ;;                            (3 '(:foreground "#555555" :height 70)) ; [:header arguments] part.
+     ;;                            (4 'org-code) ; "code..." part.
+     ;;                            )))
 
      ;; org-bullets 모드 활성화
      (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))
@@ -579,10 +580,6 @@
                                     (file+headline "e:/gitrepo/ims_org/org_files/quick.org" "quick")
                                     "*** %i\n%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
-                                   ("a" "archive.org: [Archive]" entry
-                                    (file+headline "e:/gitrepo/ims_org/org_files/archive.org" "archive")
-                                    "*** %i\n%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
-                                   
                                    ("m" "milestone.org: [Milestone]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/milestone.org" "milestone")
                                     "*** MILESTONE %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
@@ -611,7 +608,8 @@
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
      (setq org-agenda-log-mode-items '(closed clock state))
-     ))
+     )
+  )
 
 (setq org-publish-project-alist
       '(("org-jekyll"
@@ -878,6 +876,9 @@
     (define-key evil-normal-state-map (kbd "}") 'cfw:open-org-calendar)
     (define-key evil-normal-state-map (kbd "[") 'org-todo-list)
 
+    ;; 5 키로 tabbar mode를 toggle합니다.
+    (define-key evil-motion-state-map (kbd "5") 'tabbar-mode)
+    
     ;; org-mode에서 w 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
     (define-key evil-motion-state-map (kbd "c") (lambda() (interactive)
                                                   (progn
@@ -1394,8 +1395,8 @@
 
 ;; PACKAGE: tabbar
 (require 'tabbar)
-; turn on the tabbar
-(tabbar-mode t)
+;; turn on the tabbar
+;; (tabbar-mode t)
 
 ;; PACKAGE: mic-paren
 ;; 반대편 괄호의 line number를 알려주는 패키지
@@ -2459,7 +2460,7 @@ created by edward 180515"
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("e:/gitrepo/ims_org/org_files/notes/parkingslam.org" "e:/gitrepo/ims_org/org_files/notes/atlas_intern_meeting.org" "e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "e:/gitrepo/ims_org/org_files/issues.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/milestone.org" "e:/gitrepo/ims_org/org_files/daily.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/quick.org")))
+    ("e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "e:/gitrepo/ims_org/org_files/issues.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/milestone.org" "e:/gitrepo/ims_org/org_files/daily.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/quick.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -2766,7 +2767,7 @@ created by edward 180515"
  '(org-block-end-line ((t (:inherit org-meta-line :foreground "gray" :weight normal))))
  '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
  '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
- '(org-code ((t (:background "misty rose" :foreground "deep pink"))))
+ '(org-code ((t (:background "aquamarine" :foreground "dark blue"))))
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
@@ -2785,7 +2786,7 @@ created by edward 180515"
  '(org-tag ((t (:foreground "gainsboro" :underline nil :slant normal :weight bold :height 1.0))))
  '(org-time-grid ((t (:foreground "gainsboro"))))
  '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
- '(org-verbatim ((t (:inherit shadow :background "aquamarine" :foreground "black" :weight normal :height 1.0))))
+ '(org-verbatim ((t (:background "pink" :foreground "deep pink"))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
  '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
