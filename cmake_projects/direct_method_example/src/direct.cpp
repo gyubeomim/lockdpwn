@@ -197,7 +197,7 @@ void DirectMethod::put_image(cv::Mat im0, cv::Mat im1) {
 
     visible_points_ = frame->points();
 
-    // optimize map points
+    // optimize poses & map points (bundle adjustment)
     estimate_bundle(frames_, bundle_option_);
   }
 

@@ -73,9 +73,11 @@ T optimize_ba(
   const T min_division = 1e-5;
   std::set<OptEdge<T>*> ff_edges, fp_edges, p_edges;
 
-  // comment(edward): assign edge type (F2F, F2P, P)
+  // comment(edward): assign edge type to one of those (F2F, F2P, P)
   auto assign_domain = [&ff_edges, &fp_edges, &p_edges](const std::set<OptNode<T>*>& nodes,
-                                                        std::map<OptNode<T>*, int>& ptr2index, size_t& dim){
+                                                        std::map<OptNode<T>*, int>& ptr2index,
+                                                        size_t& dim)
+                       {
                          dim = 0;
                          for(auto it = nodes.begin(); it != nodes.end(); it++){
                            OptNode<T>* node = *it;
@@ -90,6 +92,7 @@ T optimize_ba(
   size_t n, m;
   std::map<OptNode<T>*, int> rj, ri;
 
+  // assign_domain(nodes, ptr2index, dim)
   assign_domain(target_frames, rj, n);
   assign_domain(target_points, ri, m);
 
@@ -149,8 +152,7 @@ T optimize_ba(
 
     chi2 = 0.;
 
-    for(auto it_e = p_edges.begin(); it_e != p_edges.end(); it_e++)
-    {
+    for(auto it_e = p_edges.begin(); it_e != p_edges.end(); it_e++) {
       // ex) disparity edge
       OptEdge<T>* edge = *it_e;
 
@@ -188,8 +190,7 @@ T optimize_ba(
       jra.block(c0, 0, n0->dim(), 1)         += jres.at(0);
     }
 
-    for(auto it_e = fp_edges.begin(); it_e != fp_edges.end(); it_e++)
-    {
+    for(auto it_e = fp_edges.begin(); it_e != fp_edges.end(); it_e++) {
       OptEdge<T>* edge = *it_e;
       edge->update();
       chi2 += edge->error().norm();
@@ -216,10 +217,8 @@ T optimize_ba(
     // <<<< Ha += ja'ja, Hb += jb'jb  <<
     // >>>> W += ja'*jb >>>>>>>>>>>>>>>>
     // Only for F2P edge
-    if(m>0 && n>0)
-    {
-      for(auto it_point = target_points.begin(); it_point != target_points.end(); it_point++)
-      {
+    if(m>0 && n>0) {
+      for(auto it_point = target_points.begin(); it_point != target_points.end(); it_point++) {
         OptNode<T>* pt = *it_point;
 
         if(pt->fixed()) continue;
