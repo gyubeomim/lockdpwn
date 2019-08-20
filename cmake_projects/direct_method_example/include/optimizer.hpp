@@ -79,7 +79,7 @@ T optimize_ba(
                                                         size_t& dim)
                        {
                          dim = 0;
-                         for(auto it = nodes.begin(); it != nodes.end(); it++){
+                         for(auto it = nodes.begin(); it != nodes.end(); it++) {
                            OptNode<T>* node = *it;
                            if(node->fixed()) continue;
                            ptr2index[node] = dim;
@@ -278,8 +278,7 @@ T optimize_ba(
 
     Eigen::Matrix<T,-1,1> delpa;
 
-    if(n > 0)
-    {
+    if(n > 0) {
       if( std::abs( Ha.determinant() ) < 1e-30) {
         // - variable frame이 1개일 경우, Ha의 marginalization 결과는 0 행렬!
         // vi = jb'jb  at ith point, "the" 1st var frame이 되기 때문. sum 사라짐
@@ -308,8 +307,7 @@ T optimize_ba(
       }
     } // if(n > 0)
 
-    for(auto it_i = ri.begin(); it_i != ri.end(); it_i++)
-    {
+    for(auto it_i = ri.begin(); it_i != ri.end(); it_i++) {
       OptNode<T>* pt = it_i->first;
       int i = it_i->second;
 
@@ -339,8 +337,7 @@ T optimize_ba(
       pt->oplus(dx);
     }
 
-    if(option.intf)
-    {
+    if(option.intf) {
       OptInfo<T> info;
       info.iter_ = iter;    info.chi2_ = chi2;
       // comment(edward): info.error_ = false?
