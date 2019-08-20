@@ -33,7 +33,7 @@ Point::~Point(){
     delete edge;
   }
   if(node_->edges().size() > 0){
-    printf("Error : expire and remove entire edge before delete point\n");
+    printf("[+] direct.cpp: Error : expire and remove entire edge before delete point\n");
     exit(1);
   }
   delete patch_;
@@ -119,6 +119,7 @@ void filter(Frame* frame, int end_level) {
       outliers.insert(point);
   }
 
+  // comment(edward): outlier filtering
   for(auto it_point=outliers.begin();it_point != outliers.end(); it_point++) {
     Point* point = *it_point;
     frame->points().erase(point);
@@ -128,7 +129,7 @@ void filter(Frame* frame, int end_level) {
     edge->expire();
 
     if(frame->node()->edges().count(edge)) {
-      printf("Error : erase failure\n");
+      printf("[+] direct.cpp: Error : erase failure\n");
       throw 1;
     }
     delete edge;
@@ -186,21 +187,24 @@ void DirectMethod::put_image(cv::Mat im0, cv::Mat im1) {
 
     visualizer_.set_frame(frame);
 
-    // comment(edward): where is applied huber cost codes?
+    // optimize poses
+    // comment(edward): where the huber cost is applied?
     // huber cost에 의한 수렴 늦어지는거 감안 필요
     estimate_motion(frame->node(), prj_edges, levels_, end_level, motion_option_);
 
+    // filter outliers
     filter(frame, end_level);
 
     visible_points_ = frame->points();
 
+    // optimize map points
     estimate_bundle(frames_, bundle_option_);
   }
 
   g_cw_latest_ = frame->g_cw();
 
   if(is_keyframe(frame)) {
-    printf("keyframe count %d keyframe %d\n", count, frame->id());
+    printf("[+] direct.cpp: keyframe count %d keyframe %d\n", count, frame->id());
 
     visualizer_.set_frame(frame);
 
@@ -216,7 +220,7 @@ void DirectMethod::put_image(cv::Mat im0, cv::Mat im1) {
     n_frame_++;
   }
   else {
-    printf("none keyframe\n");
+    printf("[+] direct.cpp: none keyframe\n");
 
     frames_.erase(frame->id());
 
@@ -239,7 +243,7 @@ void DirectMethod::marginalize() {
 
   auto process_mg_points = [this, delete_edges](const std::set<Point*>& mg_points)
                            {
-                             printf("mg %ld points\n", mg_points.size() );
+                             printf("[+] direct.cpp: marginalize %ld points\n", mg_points.size() );
                              for(auto it_point = mg_points.begin(); it_point != mg_points.end(); it_point++)
                              {
                                Point* point = *it_point;
@@ -283,7 +287,7 @@ void DirectMethod::marginalize() {
                               size_t min_edge = is_stereo ? 1 : 0;
 
                               if(pt->edges().size() < min_edge){
-                                printf("Error : min_edge wrong\n");
+                                printf("[+] direct.cpp: Error : min_edge wrong\n");
                                 throw 1;
                               }
                               else if(pt->edges().size() == min_edge) // mg pt case #2
@@ -309,10 +313,10 @@ void DirectMethod::marginalize() {
       mg_frames.insert(f);
   }
 
-  for(auto it_frame = mg_frames.begin(); it_frame != mg_frames.end(); it_frame++){
+  for(auto it_frame = mg_frames.begin(); it_frame != mg_frames.end(); it_frame++) {
     Frame* mg_f = *it_frame;
 
-    printf("mg frame[%d]\n", mg_f->id());
+    printf("[+] direct.cpp: marginalize frame[%d]\n", mg_f->id());
 
     const auto& proj_edges = mg_f->proj_edges();
 
@@ -360,7 +364,7 @@ void DirectMethod::marginalize() {
       delete im_r;
       im_right_.erase(f->id());
     }
-    printf("delete frame %d\n", f->id());
+    printf("[+] direct.cpp: delete frame %d\n", f->id());
     fixed_frames_.erase(f);
     delete f;
   }
@@ -423,7 +427,7 @@ void estimate_motion(OptNode<real>* pose,
 {
   if(option.marginals)
   {
-    printf("Error : Marginals must be NULL for estimate_motion\n");
+    printf("[+] direct.cpp: Error : Marginals must be NULL for estimate_motion\n");
     throw 1;
   }
 
@@ -511,7 +515,7 @@ std::set<Point*> DirectMethod::supply_points(Frame* frame){
 
 void DirectMethod::stereo_invd(const std::set<Point*>& new_points, cv::Mat im_right, int end_level){
   if(stereo_option_.marginals){
-    printf("Error : Marginals must be NULL for streo_invd\n");
+    printf("[+] direct.cpp: Error : Marginals must be NULL for streo_invd\n");
     throw 1;
   }
   Visualizer* vis = NULL;
