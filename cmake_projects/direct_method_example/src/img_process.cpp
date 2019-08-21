@@ -342,29 +342,29 @@ void Visualizer::on_update(const OptInfo<real>& info)
     real ratio = zoomout_ratio(Xc, pt->invd());
     cv::Mat im1 = warp(images->im(), uv1, ratio, lv_, patch_size);
 
-    const ImInfo info0(im0,patch->ix().at(lv_), patch->iy().at(lv_));
+    const ImInfo info0(im0, patch->ix().at(lv_), patch->iy().at(lv_));
     const ImInfo info1(im1);
 
-    // comment(edward): dx, dy are depending on scale.
+    // dx, dy are depending on scale.
     real dx = info0.hx_ / scale;
     real dy = info0.hy_ / scale;
 
     cv::Point2f hb(dx, dy);
-    cv::Point2f cv_uv( uv1.x(), uv1.y());
+    cv::Point2f cv_uv(uv1.x(), uv1.y());
 
-    // comment(edward): green rectangle
+    // green rectangle
     cv::rectangle(im, cv_uv-hb, cv_uv+hb, cv::Scalar(0,255,0), 1);
-    // comment(edward): blue rectangle
+    // blue rectangle
     cv::rectangle(im, cv_uv-ratio*hb, cv_uv+ratio*hb, cv::Scalar(255,0,0), 1);
 
     std::stringstream str_rho;
 
     str_rho << boost::format("%.4f") % pt->invd();
 
-    cv::putText(im, str_id.str(), cv_uv+cv::Point2f(10.,10.),
-                cv::FONT_HERSHEY_PLAIN, 1., cv::Scalar(255, 0), 1);
-    cv::putText(im, str_rho.str(), cv_uv+cv::Point2f(10.,20.),
-                cv::FONT_HERSHEY_PLAIN, 0.8, cv::Scalar(255, 0), 1);
+    // id on the squares on the image
+    cv::putText(im, str_id.str(), cv_uv+cv::Point2f(10.,10.), cv::FONT_HERSHEY_PLAIN, 1., cv::Scalar(255,0,0), 1);
+    // inverse depth
+    cv::putText(im, str_rho.str(), cv_uv+cv::Point2f(10.,20.), cv::FONT_HERSHEY_PLAIN, 0.8, cv::Scalar(255,0,0), 1);
 
     if(pt_n >= n_patch_cols*n_patch_rows) continue;
 
@@ -398,13 +398,15 @@ void Visualizer::on_update(const OptInfo<real>& info)
                       patch_3by1.cols,
                       patch_3by1.rows);
 
+    // comment(edward): blue text in small pictures
     cv::putText(patch_3by1, str_id.str(), cv::Point2f(2.,10.), cv::FONT_HERSHEY_PLAIN, 0.6, cv::Scalar(255,0,0), 1);
 
     std::stringstream str_pos;
 
     str_pos << boost::format("%.f,%.f") % uv1.x() % uv1.y() ;
 
-    cv::putText(patch_3by1, str_pos.str(), cv::Point2f(2.,25.), cv::FONT_HERSHEY_PLAIN, 0.8, cv::Scalar(0,0,255), 1);
+    // comment(edward): red text in small pictures
+    cv::putText(patch_3by1, str_pos.str(), cv::Point2f(2.,25.), cv::FONT_HERSHEY_PLAIN, 0.6, cv::Scalar(0,0,255), 1);
 
     patch_3by1.copyTo(dst_patches(roi_row));
     pt_n ++;
@@ -414,13 +416,11 @@ void Visualizer::on_update(const OptInfo<real>& info)
   const auto quat = pose->g_cw().inverse().unit_quaternion();
 
   std::stringstream ss;
-  ss << boost::format("frame[%d] tf_wc(quat, t) = %.3f, %.3f, %.3f, %.3f, %.3f, %.3f")
-      % frame_->id() % quat.x() % quat.y() % quat.z() % t.x() % t.y() % t.z();
+  ss << boost::format("frame[%d] tf_wc(quat3, t) = %.3f, %.3f, %.3f, %.3f, %.3f, %.3f") % frame_->id() % quat.x() % quat.y() % quat.z() % t.x() % t.y() % t.z();
 
   //cv::rectangle(im, cv::Point(0,0), cv::Point(800., 25.), cv::Scalar(255,255,255), -1);
 
-  cv::putText(im, ss.str(), cv::Point(15,15), cv::FONT_HERSHEY_PLAIN,
-              1.0, CV_RGB(0, 0, 255), 1);
+  cv::putText(im, ss.str(), cv::Point(15,25), cv::FONT_HERSHEY_COMPLEX_SMALL, 1.0, CV_RGB(255,255,255), 1);
 
   cv::Mat dst(im.rows+dst_patches.rows, std::max(im.cols, dst_patches.cols), CV_8UC3);
 

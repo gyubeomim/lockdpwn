@@ -135,7 +135,7 @@ T optimize_ba(
             if(!dUjk.count(idx_jk))
               continue;
 
-            Ha.block(j, k, fj->dim(), fk->dim() ) += dUjk.at(idx_jk);
+            Ha.block(j, k, fj->dim(), fk->dim()) += dUjk.at(idx_jk);
           }
 
           if(!d_jres.count(fj)) continue;
@@ -225,8 +225,7 @@ T optimize_ba(
 
         int i = ri.at(pt);
 
-        for(auto it_e1 = pt->edges().begin(); it_e1 != pt->edges().end(); it_e1++)
-        {
+        for(auto it_e1 = pt->edges().begin(); it_e1 != pt->edges().end(); it_e1++) {
           OptEdge<T>* e1 = *it_e1;
           if(e1->type() != OptEdge<T>::F2P) continue;
 
@@ -235,8 +234,7 @@ T optimize_ba(
 
           int j1 = rj.at(f1);
 
-          for(auto it_e2 = it_e1; it_e2 != pt->edges().end(); it_e2++)
-          {
+          for(auto it_e2 = it_e1; it_e2 != pt->edges().end(); it_e2++) {
             OptEdge<T>* e2 = *it_e2;
             if(e2->type() != OptEdge<T>::F2P) continue;
 
@@ -287,6 +285,7 @@ T optimize_ba(
         throw 1;
       }
 
+      // comment(edward): calculate the \delta_a
       delpa = - Ha.ldlt().solve(jra);
 
       if(rj.size() > 1)
@@ -333,7 +332,10 @@ T optimize_ba(
 
       if(vi.determinant() < min_division) continue;
 
+      // comment(edward): calculate the \delta_b
       Eigen::Matrix<T,-1,1> dx = - vi.inverse() * part_jrb;
+
+      // update \delta_b
       pt->oplus(dx);
     }
 
