@@ -962,7 +962,6 @@
 
                                   ;; [ ] } 키로 org-agenda 목록을 보도록 설정합니다
                                   (define-key org-agenda-mode-map (kbd "]") 'org-agenda-list)
-                                  (define-key org-agenda-mode-map (kbd "}") 'cfw:open-org-calendar)
                                   (define-key org-agenda-mode-map (kbd "[") 'org-todo-list)
 
                                   ;; x 키로 emacs 창을 minimize 합니다
@@ -1013,6 +1012,8 @@
 (global-set-key (kbd "C-c s") (lambda() (interactive)(org-agenda nil "s")))
 ;; C-c + a 키로 subtree를 archive합니다.
 (global-set-key (kbd "C-c a") 'org-archive-subtree)
+;; C-c + ] 키로 cfw org calendar를 실행합니다.
+(global-set-key (kbd "C-c ]") 'cfw:open-org-calendar)
 ;; C-c + # 키로 특정 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
@@ -1266,10 +1267,8 @@
 
     ;; [ ] } 키로 org-agenda 목록을 보도록 설정합니다
     (define-key evil-motion-state-map (kbd "]") 'org-agenda-list)
-    (define-key evil-motion-state-map (kbd "}") 'cfw:open-org-calendar)
     (define-key evil-motion-state-map (kbd "[") 'org-todo-list)
     (define-key evil-normal-state-map (kbd "]") 'org-agenda-list)
-    (define-key evil-normal-state-map (kbd "}") 'cfw:open-org-calendar)
     (define-key evil-normal-state-map (kbd "[") 'org-todo-list)
 
     ;; x 키로 emacs 창을 minimize 합니다
@@ -1305,6 +1304,12 @@
 
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
+
+    ;; org-mode에서 {, }키로 커서의 라인을 strikethrough 처리합니다.
+    (define-key evil-motion-state-map (kbd "{") 'strike-through-for-org-mode)
+    (define-key evil-normal-state-map (kbd "{") 'strike-through-for-org-mode)
+    (define-key evil-motion-state-map (kbd "}") 'strike-through-for-org-mode-undo)
+    (define-key evil-normal-state-map (kbd "}") 'strike-through-for-org-mode-undo)
 
     ;; m 키로 minimap-mode Toggle
     (define-key evil-normal-state-map (kbd "m") 'minimap-mode)
@@ -3470,15 +3475,12 @@ created by edward 180515"
 
     ;; [ ] 키로 org-agenda, todo 목록을 확인합니다
     (define-key magit-status-mode-map (kbd "]") 'org-agenda-list)
-    (define-key magit-status-mode-map (kbd "}") 'cfw:open-org-calendar)
     (define-key magit-status-mode-map (kbd "[") 'org-todo-list)
 
     (define-key magit-process-mode-map (kbd "]") 'org-agenda-list)
-    (define-key magit-process-mode-map (kbd "}") 'cfw:open-org-calendar)
     (define-key magit-process-mode-map (kbd "[") 'org-todo-list)
 
     (define-key magit-diff-mode-map (kbd "]") 'org-agenda-list)
-    (define-key magit-diff-mode-map (kbd "}") 'cfw:open-org-calendar)
     (define-key magit-diff-mode-map (kbd "[") 'org-todo-list)
 
     ;; x키로 emacs 창을 최소화합니다.
@@ -3570,7 +3572,6 @@ created by edward 180515"
 
                                ;; [ ] } 키로 org-agenda, todo 목록을 확인합니다
                                (define-key custom-mode-map (kbd "]") 'org-agenda-list)
-                               (define-key custom-mode-map (kbd "}") 'cfw:open-org-calendar)
                                (define-key custom-mode-map (kbd "[") 'org-todo-list)
                               ))
 
