@@ -19,7 +19,7 @@ case $1 in
         ;;
     atlas1)
 		# 2개 모니터를 ON
-       xrandr --output HDMI-0 --primary --mode 1920x1080 --pos 1080x420 --output DVI-I-3 --mode 1920x1080 --pos 0x0 --rotate left
+       xrandr --output HDMI-0 --primary --mode 1920x1080 --pos 1080x420 --output DVI-I-3 --mode 1920x1080 --pos 0x0 --rotate right
         ;;
     off_atlas1)
 		# 1개 모니터만 켠다 
