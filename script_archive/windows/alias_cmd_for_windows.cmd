@@ -6,9 +6,9 @@ doskey ll=dir /w
 doskey l=dir /w
 
 doskey gr=cd e:\gitrepo\
-doskey git1=cd e:\gitrepo\lockdpwn
-doskey git2=cd e:\gitrepo\ims
-doskey git3=cd e:\gitrepo\ims_ml
+doskey g1=cd e:\gitrepo\lockdpwn
+doskey g2=cd e:\gitrepo\ims
+doskey g3=cd e:\gitrepo\ims_ml
 
 doskey ipy=cd e:\gitrepo\lockdpwn\python_archive\ipython
 doskey ml=cd e:\gitrepo\lockdpwn\python_archive\machineLearning
