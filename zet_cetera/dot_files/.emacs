@@ -1361,6 +1361,12 @@
 (global-set-key (kbd "C-u") nil)
 (global-set-key (kbd "C-j") nil)
 
+;; for compilation mode
+(defun my-compilation-mode-hook ()
+     ;; Jump at the right column even for tab indentation
+     (define-key compilation-mode-map (kbd "<SPC>") 'helm-for-files)
+     )
+(add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
 
 (defun newline-without-break-of-line ()
   "1. move to end of the line, 2. insert newline with index."
@@ -3020,7 +3026,7 @@ created by edward 180515"
 ;; C-4 키로 *scratch* buffer를 생성하고 이동합니다
 (global-set-key (kbd "C-4") 'create-scratch-buffer)
 
-;; Ctrl + 4 키로 현재 경로를 projectile project로 추가합니다
+;; C-5 키로 현재 경로를 projectile project로 추가합니다
 (global-set-key (kbd "C-5") 'add-current-project-to-projectile)
 
 ;; Ctrl + ^키로 jupyter notebook 서버를 실행합니다
@@ -3049,6 +3055,9 @@ created by edward 180515"
 
 ;; Alt + 3 키로 다음 윈도우 창으로 이동합니다
 (global-set-key (kbd "M-3") 'next-multiframe-window)
+
+;; Alt + 4 키로 다음 윈도우 창으로 이동합니다
+(global-set-key (kbd "M-4") 'previous-multiframe-window)
 
 ;; Alt + 6키로 remote 접속을 위한 notebooklist-open 명령어를 설정합니다
 (global-set-key (kbd "M-6") 'ein:notebooklist-open)

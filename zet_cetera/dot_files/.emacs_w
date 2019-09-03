@@ -1162,6 +1162,9 @@
     (set-face-attribute 'default frame :height (string-to-number num))
     (message (concat "Set frame's default text height to " num))))
 
+;; C + <f#> keybinding set
+(global-set-key (kbd "C-<f1>") 'projectile-add-known-project)
+(global-set-key (kbd "C-<f2>") 'projectile-remove-known-project)
 ;; C + <f5-11> 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
 (global-set-key (kbd "C-<f5>") '(lambda () (interactive) (set-frame-custom "103")))
 (global-set-key (kbd "C-<f6>") '(lambda () (interactive) (set-frame-custom "110")))
@@ -1851,11 +1854,8 @@ created by edward 180515"
 ;; Alt + 3 키로 다음 윈도우 창으로 이동합니다
 (global-set-key (kbd "M-3") 'next-multiframe-window)
 
-;; Alt + 4 키로 현재 경로를 projectile project로 추가합니다
-(global-set-key (kbd "M-4") 'add-current-project-to-projectile)
-
-;; Alt + 5 키로 projectile에 project를 제거합니다
-(global-set-key (kbd "M-5") 'projectile-remove-known-project)
+;; Alt + 4 키로 이전 윈도우 창으로 이동합니다
+(global-set-key (kbd "M-4") 'previous-multiframe-window)
 
 ;; Alt + 9 키로 shell을 불러오는 커맨드를 실행합니다
 (global-set-key (kbd "M-9") 'shell-command)
