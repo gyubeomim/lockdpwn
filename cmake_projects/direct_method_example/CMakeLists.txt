@@ -1,3 +1,4 @@
+# Written by G.U. Lee
 cmake_minimum_required(VERSION 2.6)
 #set(BUILD_TYPE Release)
 #set(BUILD_TYPE RelWithDebInfo)
