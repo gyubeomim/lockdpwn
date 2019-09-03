@@ -1854,7 +1854,7 @@ created by edward 180515"
 ;; Alt + 3 키로 다음 윈도우 창으로 이동합니다
 (global-set-key (kbd "M-3") 'next-multiframe-window)
 
-;; Alt + 4 키로 이전 윈도우 창으로 이동합니다
+;; Alt + 4 키로 다음 윈도우 창으로 이동합니다
 (global-set-key (kbd "M-4") 'previous-multiframe-window)
 
 ;; Alt + 9 키로 shell을 불러오는 커맨드를 실행합니다

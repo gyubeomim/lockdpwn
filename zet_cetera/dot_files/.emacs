@@ -3441,6 +3441,7 @@ created by edward 180515"
     (define-key magit-status-mode-map (kbd "C-c C-p") nil)
     (define-key magit-status-mode-map (kbd "M-3") nil)
     (define-key magit-diff-mode-map (kbd "M-3") nil)
+    (define-key magit-diff-mode-map (kbd "M-4") nil)
     (define-key magit-process-mode-map (kbd "M-3") nil)
 
     ;; comment(edward): j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
