@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.3)
 project(opengl_example)
 
+set(CMAKE_TOOLCHAIN_FILE "e:/gitrepo/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_module")
 

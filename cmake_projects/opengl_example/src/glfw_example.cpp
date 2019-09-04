@@ -1,9 +1,11 @@
-#include <stdlib.h>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
+#include <cstdlib>
+#include <cmath>
 #include <thread>
 #include <chrono>
 #include <iostream>
-#include "math.h"
-#include <GLFW/glfw3.h>
 
 const int width_window = 640;
 const int height_window = 480;
@@ -22,7 +24,7 @@ int main() {
 	}
 
 	glfwMakeContextCurrent(window);
-	glClearColor(1, 1, 1, 1);
+	glClearColor(0.5, 0.5, 0.5, 1);
 
 	int width, height;
 	glfwGetFramebufferSize(window, &width, &height);
@@ -35,6 +37,12 @@ int main() {
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		//TODO: draw here
+		glBegin(GL_TRIANGLES);
+		glColor3f(1.0, 0.0, 0.0);
+		glVertex3f(0.0, 0.0, 0.0);
+		glVertex3f(0.5, 0.0, 0.0);
+		glVertex3f(0.25, 0.5, 0.0);
+		glEnd();
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);

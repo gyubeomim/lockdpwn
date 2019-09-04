@@ -6,7 +6,8 @@
         "stack": "cpp",
         "xstring": "cpp",
         "vector": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "cstdlib": "cpp"
     },
     // Code Runner "CPP" 설정
     "code-runner.executorMap": {
