@@ -12,6 +12,7 @@ alias gr='cd /e/gitrepo/'
 alias ipy='cd /e/gitrepo/lockdpwn/python_archive/ipython'
 alias ml='cd /e/gitrepo/lockdpwn/python_archive/machineLearning'
 alias py='cd /e/gitrepo/lockdpwn/python_archive'
+alias c='cd /e/gitrepo/lockdpwn/cmake_projects'
 alias cpp='cd /e/gitrepo/lockdpwn/cpp_archive'
 alias edc='cd /c/Users/edward/Documents/edward_c'
 
@@ -91,9 +92,14 @@ PS1="$C_LIGHTRED\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # for reverse-i-search
 stty -ixon
 
+alias dy='cd /e/gitrepo/dv_ws'
 
 # Set directory colors
 #eval `dircolors ~/.dir_colors`
+
+# for vim .bashrc
+alias vb='vim ~/.bashrc'
+alias v='vim'
 
 
 # for cd commands

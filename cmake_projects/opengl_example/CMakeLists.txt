@@ -30,6 +30,18 @@ if (GLEW_FOUND)
 	link_libraries(${GLEW_LIBRARIES})
 endif()
 
+if(WIN32)
+	set(CMAKE_PREFIX_PATH "C:/Program Files (x86)/GLFW/lib/cmake/glfw3")
+	set(CMAKE_LIBRARY_PATH "C:/Program Files (x86)/GLFW/lib")
+endif(WIN32)
+#--- Find GLFW
+find_package(glfw3 REQUIRED)
+if (glfw3_FOUND)
+	include_directories("C:/Program Files (x86)/GLFW/include")
+	link_libraries("C:/Program Files (x86)/GLFW/lib")
+	set(glfw3_LIBRARIES "C:/Program Files (x86)/GLFW/lib/glfw3.lib")
+endif()
+
 #--- Find OpenGL
 find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIRS})
@@ -43,11 +55,21 @@ add_executable(opengl_example
 	src/opengl_example.cpp
 	)
 
+add_executable(glfw_example 
+	src/glfw_example.cpp
+	)
+
 if(WIN32)
 target_link_libraries(opengl_example 
 	${OPENGL_LIBRARIES} 
 	${FREEGLUT_LIBRARIES} 
 	${GLEW_LIBRARIES}
+	)
+target_link_libraries(glfw_example 
+	${OPENGL_LIBRARIES} 
+	${FREEGLUT_LIBRARIES} 
+	${GLEW_LIBRARIES}
+	${glfw3_LIBRARIES}
 	)
 else()
 target_link_libraries(opengl_example 
@@ -55,4 +77,11 @@ target_link_libraries(opengl_example
 	${GLUT_LIBRARIES} 
 	${GLEW_LIBRARIES}
 	)
+target_link_libraries(glfw_example 
+	${OPENGL_LIBRARIES} 
+	${GLUT_LIBRARIES} 
+	${GLEW_LIBRARIES}
+	${glfw3_LIBRARIES}
+	)
 endif()
+
