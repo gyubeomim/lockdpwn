@@ -564,23 +564,27 @@
      
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates '((":" "todo.org: [TODO]" entry
+     (setq org-capture-templates '((":" "todo [TODO]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/todo.org" "tasks")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("u" "ubuntu_tips.org: [Tips]" entry
+                                    ("a" "atlas [TODO]" entry
+                                    (file+headline "e:/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "todo")
+                                    "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
+                                   ("u" "ubuntu_tips [Tips]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
-                                   ("o" "pomodoro.org: [GTD]" entry
+                                   ("o" "pomodoro [GTD]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
                                     "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
 
-                                   ("n" "quick.org: [Quick]" entry
+                                   ("n" "quick [Quick]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/quick.org" "quick")
                                     "*** %i\n%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
-                                   ("m" "milestone.org: [Milestone]" entry
+                                   ("m" "milestone [Milestone]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/milestone.org" "milestone")
                                     "*** MILESTONE %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
@@ -2542,6 +2546,9 @@ created by edward 180515"
                  (string=
                   (buffer-name)
                   "CAPTURE-daily.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-atlas.org")
                  (string=
                   (buffer-name)
                   "CAPTURE-todo.org")

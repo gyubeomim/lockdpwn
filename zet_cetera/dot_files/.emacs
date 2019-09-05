@@ -850,27 +850,31 @@
 
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates  '((":" "todo.org: [TODO]" entry
+     (setq org-capture-templates  '((":" "todo [TODO]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("u" "ubuntu_tips.org: [Tips]" entry
+                                    ("a" "atlas [TODO]" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/notes/atlas-robotics/atlas.org" "todo")
+                                    "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
+                                   ("u" "ubuntu_tips [Tips]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
-                                   ("o" "pomodoro.org: [GTD]" entry
+                                   ("o" "pomodoro [GTD]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
                                     "*** %i\n**** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
 
-                                   ("n" "quick.org: [quick]" entry
+                                   ("n" "quick [quick]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/quick.org" "quick")
                                     "*** %i\n%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
-                                   ("m" "milestone.org: [Milestone]" entry
+                                   ("m" "milestone [Milestone]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/milestone.org" "milestone")
                                     "*** MILESTONE %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("d" "daily.org: [Daily]" entry
+                                   ("d" "daily [Daily]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/daily.org" "daily")
                                     "*** %?%i")
 
@@ -1830,7 +1834,7 @@
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "~/gitrepo/ims_org/org_files/notes/feature_based_method.org" "~/gitrepo_sync/ims_org/org_files/notes/parkingslam.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/boj.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/control_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/docker.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo_sync/ims_org/org_files/notes/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/natural_constant_e.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/paper_research.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_space_detection_based_on_avmlidar_sensor_fusion_for_autonomous_valet_parking.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/tools_of_titans.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/visual_slam_algorithms_a_survey_from_2010_to_2016.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org")))
+    ("~/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "~/gitrepo/ims_org/org_files/notes/feature_based_method.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/boj.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/control_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/docker.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo_sync/ims_org/org_files/notes/jupyter_notebook_remotely.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/natural_constant_e.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/paper_research.org" "~/gitrepo_sync/ims_org/org_files/notes/parking_space_detection_based_on_avmlidar_sensor_fusion_for_autonomous_valet_parking.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/tools_of_titans.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/visual_slam_algorithms_a_survey_from_2010_to_2016.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -1920,6 +1924,9 @@
                  (string=
                   (buffer-name)
                   "CAPTURE-todo.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-atlas.org")
                  (string=
                   (buffer-name)
                   "CAPTURE-milestone.org"))
