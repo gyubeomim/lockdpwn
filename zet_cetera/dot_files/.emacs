@@ -63,7 +63,6 @@
     eyebrowse              ;; 워크 스페이스 관리 패키지 (다중 윈도우)
     elpy                   ;; jedi 모드 같이 python code navigation을 해주는 패키지
     markdown-mode          ;; markdown 구문을 하이라이팅해주는 패키지
-    ein                    ;; emacs에서 Ipython Notebook를 사용하게 해주는 패키지
     org-bullets            ;; org-mode에서 마크 모양을 bullet 모양으로 해주는 패키지
     org-gcal               ;; org-mode와 google Calendar를 연동해주는 패키지
     git-gutter             ;; 수정된 파일의 변경된 라인을 하이라이팅해주는 패키지
@@ -104,6 +103,7 @@
     htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
 
 
+    ;; ein                    ;; emacs에서 Ipython Notebook를 사용하게 해주는 패키지
     ;; nlinum                 ;; linum-mode 대체하는 패키지, linum-mode가 속도가 매우 느려서 바꿨다 (26.1 업그레이드하면서 필요없어짐)
     ;; ycmd
     ;; company-ycmd
@@ -1511,30 +1511,6 @@
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 
-;; PACKAGE: ein
-;; (require 'ein)
-;; jupyter notebook을 킨 상태에서 브라우저가 자동으로 켜지지 않도록 설정합니다
-(setq ein:jupyter-server-args (quote ("--no-browser")))
-(setq ein:use-auto-complete t)
-
-;; ein 모드가 실행되고 난 후 세팅에 관한 코드
-(eval-after-load "ein"
-  '(progn
-     (ein:ipynb-mode)
-
-     ;; comment(edward): ein 단축키 해제
-     (define-key ein:notebook-mode-map (kbd "C-c i") nil)
-     (define-key ein:notebook-mode-map (kbd "H-i") nil)
-     (define-key ein:notebook-mode-map (kbd "C-u") nil)
-     (define-key ein:notebook-mode-map (kbd "C-x C-s") nil)
-     (define-key ein:ipynb-mode-map (kbd "C-c C-o") nil)
-     (define-key ein:ipynb-mode-map (kbd "C-c C-p") nil)
-
-     ;; comment(edward): ein 단축키 등록
-     (define-key ein:notebook-mode-map (kbd "C-w") 'ein:notebook-save-notebook-command)
-     (define-key ein:notebook-mode-map (kbd "C-c C-d") 'ein:worksheet-delete-cell)
-     (define-key ein:notebook-mode-map (kbd "M-<return>") 'ein:worksheet-execute-cell-and-goto-next)
-     ))
 
 ;; PACKAGE: flymd
 ;; markdown 언어를 볼 수 있게 해주는 패키지 (not used)
@@ -1986,7 +1962,6 @@
 (fn COLOR DESCRIPTION BACKEND)"])
      ("file+sys")
      ("file+emacs")
-     ("ipynb" :follow ein:org-open :help-echo "Open ipython notebook." :store ein:org-store-link)
      ("doi" :follow org--open-doi-link)
      ("elisp" :follow org--open-elisp-link)
      ("file" :complete org-file-complete-link)
@@ -2133,9 +2108,6 @@
  '(diff-removed ((t (:background "brown" :foreground "white smoke"))))
  '(dired-directory ((t (:foreground "gold" :weight normal))))
  '(ecb-default-highlight-face ((t (:background "dark violet"))))
- '(ein:cell-input-area ((t (:background "black"))))
- '(ein:cell-input-prompt ((t (:inherit header-line :foreground "deep sky blue"))))
- '(ein:cell-output-prompt ((t (:inherit header-line :foreground "red"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
  '(font-lock-comment-face ((t (:foreground "lime green" :slant normal))))
  '(hi-blue ((t (:background "blue" :foreground "#5c95b9"))))
@@ -3036,12 +3008,6 @@ created by edward 180515"
 ;; C-5 키로 현재 경로를 projectile project로 추가합니다
 (global-set-key (kbd "C-5") 'add-current-project-to-projectile)
 
-;; Ctrl + ^키로 jupyter notebook 서버를 실행합니다
-(global-set-key (kbd "C-^") 'ein:jupyter-server-start)
-
-;; Ctrl + 6키로 remote 접속을 위한 notebooklist-login 명령어를 설정합니다
-(global-set-key (kbd "C-6") 'ein:notebooklist-login)
-
 ;; Ctrl + 7 키로 선택한 버퍼를 닫습니다
 (global-set-key (kbd "C-7") 'buffer-menu)
 
@@ -3065,9 +3031,6 @@ created by edward 180515"
 
 ;; Alt + 4 키로 다음 윈도우 창으로 이동합니다
 (global-set-key (kbd "M-4") 'previous-multiframe-window)
-
-;; Alt + 6키로 remote 접속을 위한 notebooklist-open 명령어를 설정합니다
-(global-set-key (kbd "M-6") 'ein:notebooklist-open)
 
 ;; Alt + 8 키로 flycheck 기능을 ON/OFF합니다
 (global-set-key (kbd "M-8") 'global-flycheck-mode)
@@ -3677,7 +3640,6 @@ created by edward 180515"
 (setq key-chord-two-keys-delay 0.1) ; default 0.1
 ;; 1개의 키가 입력되는데 걸리는 시간 설정
 (setq key-chord-one-key-delay 0.17) ; default 0.2
-(key-chord-define-global "66" 'ein:jupyter-server-stop)        ;; jupyter notebook 서버 종료
 (key-chord-define-global ",," 'jedi:complete)                  ;; 코드 자동완성 for python
 (key-chord-define-global "zc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기

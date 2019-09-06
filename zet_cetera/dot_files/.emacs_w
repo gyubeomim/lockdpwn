@@ -2633,7 +2633,6 @@ created by edward 180515"
 (fn COLOR DESCRIPTION BACKEND)"])
      ("file+sys")
      ("file+emacs")
-     ("ipynb" :follow ein:org-open :help-echo "Open ipython notebook." :store ein:org-store-link)
      ("doi" :follow org--open-doi-link)
      ("elisp" :follow org--open-elisp-link)
      ("file" :complete org-file-complete-link)
