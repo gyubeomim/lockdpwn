@@ -8,6 +8,8 @@
 #include <iostream>
 #include <thread>
 
+#include <vector>
+
 const int width_window = 640;
 const int height_window = 480;
 
