@@ -758,8 +758,6 @@
      (define-key org-mode-map (kbd "C-c H-[") 'org-pomodoro-1day-done)
      ;; C-c C-Enter 키로 체크박스를 ON/OFF 합니다
      (define-key org-mode-map (kbd "C-c C-RET") 'org-toggle-checkbox)
-     ;; C-c ] 키로 .org 파일을 agenda에 추가합니다
-     (define-key org-mode-map (kbd "C-c ]") 'org-agenda-file-to-front)
      ;; C-c l 키로 .org 파일에서 latex 수식을 변환합니다 (토글 형식)
      (define-key org-mode-map (kbd "C-c l") 'org-toggle-latex-fragment)
      ;; C-c C-l (or C-;,') 키로 .org 파일에서 latex 수식용 prefix를 생성합니다

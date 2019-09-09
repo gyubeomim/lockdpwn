@@ -7,7 +7,10 @@
         "xstring": "cpp",
         "vector": "cpp",
         "istream": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "cmath": "cpp",
+        "xiosbase": "cpp",
+        "utility": "cpp"
     },
     // Code Runner "CPP" 설정
     "code-runner.executorMap": {
