@@ -45,6 +45,7 @@ int main() {
 
 
 	glfwMakeContextCurrent(window);
+	printf("%s \n", glGetString(GL_VERSION));
 
 	glClearColor(0.5, 0.5, 0.5, 1);
 
