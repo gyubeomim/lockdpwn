@@ -235,6 +235,7 @@ alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_CO
 
 # for ATLAS
 alias co='cd /home/atlas1/gitrepo/orb-sandbox'
+alias cmb='cd /home/atlas1/gitrepo/mapping-pipeline-bravo'
 
 alias cr='cd /home/atlas1/dyros_ws/'
 alias cb='cd ~/bag_files'
