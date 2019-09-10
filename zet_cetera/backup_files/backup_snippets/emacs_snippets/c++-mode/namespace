@@ -3,4 +3,4 @@
 # key: namespace
 # --
 namespace ${1:} {
-}  // end of namespace $1
+}  // namespace $1
