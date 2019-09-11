@@ -21,3 +21,15 @@ GSYMS
 GRTAGS
 GPATH
 TAGS
+
+x64/
+Release/
+Debug/
+*.tlog
+*.pdb
+*.log
+*.obj
+*.exe
+*.dll
+*.iobj
+*.idb
