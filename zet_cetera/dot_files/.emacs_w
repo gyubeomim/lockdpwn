@@ -489,7 +489,8 @@
      (define-key org-mode-map (kbd "C-/") 'org-set-tags)
      ;; C-c i 키로 timestamp type을 변경합니다
      (define-key org-mode-map (kbd "C-c i") 'org-toggle-timestamp-type)
-
+     ;; C-c + ] 키로 cfw org calendar를 실행합니다.
+     (define-key org-mode-map (kbd "C-c ]") 'cfw:open-org-calendar)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -705,23 +706,23 @@
 ;; org-mode용 strike-through를 구현한 함수
 (defun strike-through-for-org-mode ()
   (interactive)
-  (beginning-of-line)  ;; 커서를 맨 앞으로 이동한다
-  (save-excursion      ;; 아래 명령들이 실행하고 현재 커서 위치를 유지한다
+  (beginning-of-line)  
+  (save-excursion     
     (if (string-prefix-p "*" (thing-at-point 'line t))  ;; 현재 커서 라인에 맨 앞에 * 가 있는 경우
         (progn
           (setq go_char (string-match "[ ]" (thing-at-point 'line t)))  ;; *가 있으면 빈칸까지 이동한 후 한 칸 앞에서 +를 추가해야한다
           (forward-char (+ go_char 1))
-          (insert "+")   ;; + 키를 삽입한다
-          (end-of-line)  ;; 문장의 맨 뒤로 이동한다
-          (insert "+")   ;; + 키를 삽입한다
+          (insert "+")   
+          (end-of-line)  
+          (insert "+")   
           )
       (if (string-match "[^ ]" (thing-at-point 'line t))  ;; 현재 커서가 있는 라인에 -,* 문자가 있는지 검사한다
           (progn
             (setq go_char (string-match "[^ ]" (thing-at-point 'line t)))  ;; 있으면 그 문자가 있는 커서의 좌표를 구한다
             (forward-char (+ go_char 2))  ;; 그 좌표로부터 2칸 앞으로 커서를 이동한다
-            (insert "+")   ;; + 키를 삽입한다
-            (end-of-line)  ;; 문장의 맨 뒤로 이동한다
-            (insert "+")   ;; + 키를 삽입한다
+            (insert "+")   
+            (end-of-line) 
+            (insert "+")  
             )
         (message "[-] Not Proper Position!")
         )
@@ -730,8 +731,8 @@
   )
 (defun strike-through-for-org-mode-undo ()
   (interactive)
-  (beginning-of-line)  ;; 커서를 맨 앞으로 이동한다
-  (save-excursion      ;; 아래 명령들이 실행하고 현재 커서 위치를 유지한다
+  (beginning-of-line)  
+  (save-excursion      
     (if (string-match "[+]" (thing-at-point 'line t))  ;; 현재 커서가 있는 라인에 + 문자가 있는지 검사한다
         (progn
           (setq go_char (string-match "[+]" (thing-at-point 'line t)))  ;; + 있으면 그 문자가 있는 커서의 좌표를 구한다
@@ -2459,7 +2460,7 @@ created by edward 180515"
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("e:/gitrepo/ims_org/org_files/daily.org" "e:/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "e:/gitrepo/ims_org/org_files/archive.org" "e:/gitrepo/ims_org/org_files/book.org" "e:/gitrepo/ims_org/org_files/notes/lie_theory.org" "e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "e:/gitrepo/ims_org/org_files/issues.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/milestone.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/quick.org")))
+    ("e:/gitrepo/ims_org/org_files/daily.org" "e:/gitrepo/ims_org/org_files/notes/problem_solving.org" "e:/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "e:/gitrepo/ims_org/org_files/archive.org" "e:/gitrepo/ims_org/org_files/book.org" "e:/gitrepo/ims_org/org_files/notes/lie_theory.org" "e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "e:/gitrepo/ims_org/org_files/issues.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/milestone.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/quick.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
