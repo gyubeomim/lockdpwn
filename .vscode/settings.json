@@ -10,7 +10,8 @@
         "cstdlib": "cpp",
         "cmath": "cpp",
         "xiosbase": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "iostream": "cpp"
     },
     // Code Runner "CPP" 설정
     "code-runner.executorMap": {
