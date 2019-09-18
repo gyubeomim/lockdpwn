@@ -1358,6 +1358,9 @@
     (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
 
     (define-key evil-motion-state-map (kbd "C-v") 'evil-visual-block)
+
+    ;; Ctrl + r 키로 line의 맨 앞으로 이동합니다.
+    (define-key evil-insert-state-map (kbd "C-r") 'move-beginning-of-line)
     ))
 
 ;; evil-mode로 인해 사용하지 않는 전역 키바인딩을 해제합니다
@@ -1407,15 +1410,15 @@
              (local-set-key (kbd "C-e") 'move-end-of-line))
           )
 
-;; Alt + e 키로 현재 커서의 라인 맨 뒤칸으로 이동합니다
-(global-set-key (kbd "M-e") 'move-beginning-of-line)
+;; Ctrl + r 키로 현재 커서의 라인 맨 뒤칸으로 이동합니다
+(global-set-key (kbd "C-r") 'move-beginning-of-line)
 (add-hook 'c-mode-hook
           '(lambda ()
-             (local-set-key (kbd "M-e") 'move-beginning-of-line))
+             (local-set-key (kbd "C-r") 'move-beginning-of-line))
           )
 (add-hook 'c++-mode-hook
           '(lambda ()
-             (local-set-key (kbd "M-e") 'move-beginning-of-line))
+             (local-set-key (kbd "C-r") 'move-beginning-of-line))
           )
 
 ;; Ctrl + w 키로 helm-find-files 명령을 실행합니다
@@ -1498,7 +1501,7 @@
 
 
 (setq custom-safe-themes t)
-;;(load-theme 'solarized-dark t)
+; (load-theme 'solarized-dark t)
 (load-theme 'spacemacs-dark t)
 ;; comment(edward): gruvbox conflicts with tabbar-mode & git-gutter face.
 ;; so I removed faces in gruvbox.el and recompile it.
@@ -1999,7 +2002,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (auto-indent-mode cmake-mode spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
+    (electric-operator auto-indent-mode cmake-mode spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
