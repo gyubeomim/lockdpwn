@@ -443,6 +443,7 @@ alias blogp='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io && git pull ori
 
 # for vim ~/.bashrc
 alias vb='vim ~/.bashrc'
+alias v='vim'
 
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/devel/setup.bash
