@@ -2,7 +2,7 @@
 # name: latex by edward0im
 # key: latex
 # --
-#+LATEX_CLASS_OPTIONS: [a4paper,9pt,twoside]
+#+LATEX_CLASS_OPTIONS: [a4paper,9pt]
 #+LaTeX_HEADER: \renewcommand\maketitle{}
-#+LaTeX_HEADER: \pagenumbering{gobble}
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LaTeX_HEADER: \usepackage{kotex}

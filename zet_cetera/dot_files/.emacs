@@ -846,7 +846,7 @@
      (setq org-agenda-files (append (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/*.org") ))
 
      ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
-     (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.75))
+     (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 
      ;; orgm
      ;; org-capture에서 사용할 목록들 설정
@@ -943,7 +943,28 @@
          :headline-levels 4
          :html-extension "html"
          :body-only t
-)))
+         )))
+
+;; org source code block options for latex export
+;; Use minted
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-listings 'minted)
+
+;; Add the shell-escape flag
+(setq org-latex-pdf-process '(
+                              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                              ;; "bibtex %b"
+                              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                              ))
+
+;; Sample minted options.
+(setq org-latex-minted-options '(
+                                 ("frame" "lines")
+                                 ("fontsize" "\\scriptsize")
+                                 ("xleftmargin" "\\parindent")
+                                 ;;("linenos" "")
+                                 ))
 
 ;; Google Calendar와 연동하는 org-gcal 패키지 추가 & 세팅
 (require 'org-gcal)
