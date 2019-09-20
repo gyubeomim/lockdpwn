@@ -756,6 +756,27 @@
   (cond
    ((eq format 'html)
     (format "<img src=\"/pictures/%s\" alt=\"%s\"/>" path desc))))
+
+;; org source code block options for latex export
+;; Use minted
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-listings 'minted)
+
+;; Add the shell-escape flag
+(setq org-latex-pdf-process '(
+                              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                              ;; "bibtex %b"
+                              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                              ))
+
+;; Sample minted options.
+(setq org-latex-minted-options '(
+                                 ("frame" "lines")
+                                 ("fontsize" "\\scriptsize")
+                                 ("xleftmargin" "\\parindent")
+                                 ;;("linenos" "")
+                                 ))
 ;;org-END=================================================================
 
 ;; PACKAGE: calfw
