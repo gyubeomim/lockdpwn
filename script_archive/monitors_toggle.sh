@@ -18,8 +18,9 @@ case $1 in
        xrandr --output VGA1 --primary --mode 1920x1080R --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 3840x0
         ;;
     atlas1)
-		# 3개 모니터를 ON
-       xrandr --output DVI-I-1 --mode 1920x1080 --pos 3000x873 --output DVI-D-0 --mode 1920x1080 --pos 1080x873 --primary --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate right
+		# 다중 모니터 ON
+       xrandr --output DVI-I-1 --mode 1920x1080 --pos 1920x594 --output DVI-D-0 --mode 1920x1080 --pos 0x1080 --primary
+       # xrandr --output DVI-I-1 --mode 1920x1080 --pos 1920x594 --output DVI-D-0 --mode 1920x1080 --pos 0x1080 --primary --output HDMI-0 --mode 1920x1080 --pos 0x0
         ;;
     off_atlas1)
 		# 1개 모니터만 켠다 
