@@ -9,10 +9,11 @@
 #include <g2o/core/solver.h>
 #include <g2o/core/robust_kernel_impl.h>
 #include <g2o/core/optimization_algorithm_levenberg.h>
-#include <g2o/solvers/cholmod/linear_solver_cholmod.h>
+// #include <g2o/solvers/cholmod/linear_solver_cholmod.h>
 #include <g2o/solvers/dense/linear_solver_dense.h>
 #include <g2o/types/sba/types_six_dof_expmap.h>
-//#include <g2o/math_groups/se3quat.h>
+#include <g2o/types/slam3d/se3quat.h>
+#include <g2o/types/slam3d/edge_se3.h>
 #include <g2o/solvers/structure_only/structure_only_solver.h>
 
 using namespace Eigen;
@@ -53,7 +54,7 @@ double Sample::gaussian(double sigma){
 
 int main(int argc, const char* argv[]){
   std::unique_ptr<g2o::BlockSolver_6_3::LinearSolverType> linearSolver;
-  linearSolver = g2o::make_unique<g2o::LinearSolverCholmod<g2o::BlockSolver_6_3::PoseMatrixType>>();
+  linearSolver = g2o::make_unique<g2o::LinearSolverDense<g2o::BlockSolver_6_3::PoseMatrixType>>();
 
   g2o::OptimizationAlgorithmLevenberg* solver = new g2o::OptimizationAlgorithmLevenberg(
     g2o::make_unique<g2o::BlockSolver_6_3>(std::move(linearSolver));
