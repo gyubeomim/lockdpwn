@@ -4,16 +4,16 @@
 
 #include <unordered_set>
 
-#include "g2o/core/sparse_optimizer.h"
-#include "g2o/core/block_solver.h"
-#include "g2o/core/solver.h"
-#include "g2o/core/robust_kernel_impl.h"
-#include "g2o/core/optimization_algorithm_levenberg.h"
-#include "g2o/solvers/cholmod/linear_solver_cholmod.h"
-#include "g2o/solvers/dense/linear_solver_dense.h"
-#include "g2o/types/sba/types_six_dof_expmap.h"
-//#include "g2o/math_groups/se3quat.h"
-#include "g2o/solvers/structure_only/structure_only_solver.h"
+#include <g2o/core/sparse_optimizer.h>
+#include <g2o/core/block_solver.h>
+#include <g2o/core/solver.h>
+#include <g2o/core/robust_kernel_impl.h>
+#include <g2o/core/optimization_algorithm_levenberg.h>
+#include <g2o/solvers/cholmod/linear_solver_cholmod.h>
+#include <g2o/solvers/dense/linear_solver_dense.h>
+#include <g2o/types/sba/types_six_dof_expmap.h>
+//#include <g2o/math_groups/se3quat.h>
+#include <g2o/solvers/structure_only/structure_only_solver.h>
 
 using namespace Eigen;
 using namespace std;
@@ -72,6 +72,7 @@ int main(int argc, const char* argv[]){
     q.setIdentity();
 
     g2o::SE3Quat pose(q, trans);
+    g2o::SE3Quat prev_pose;
     g2o::VertexSE3Expmap* v_se3;
     v_se3->setId(vertex_id);
 
@@ -82,6 +83,18 @@ int main(int argc, const char* argv[]){
     v_se3->setEstimate(pose);
     optimizer.addVertex(v_se3);
     true_poses.push_back(pose);
+
+    if(i>=2) {
+      g2o::SE3Quat relative_pose = pose.inverse() * prev_pose;
+
+      g2o::EdgeSE3* e_se3(new g2o::EdgeSE3());
+      e_se3->setMeasurement(relative_pose);
+      e_se3->setInformation(Eigen::Isometry3d::Identity());
+      e_se3->vertices()[0] = prev_pose;
+      e_se3->vertices()[1] = pose;
+      optimizer.addEdge(e_se3);
+    }
+    prev_pose = pose;
     vertex_id += 1;
   }
 

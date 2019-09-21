@@ -24,3 +24,13 @@ target_link_libraries(curve_fitting
   ${EIGEN3_LIBRARIES}
   ${OpenCV_LIBS}
   )
+
+# add_executable(slam_toy_example
+#   src/slam_toy_example.cpp)
+#
+# target_link_libraries(slam_toy_example
+#   g2o_core
+#   g2o_stuff
+#   ${EIGEN3_LIBRARIES}
+#   ${OpenCV_LIBS}
+#   )
