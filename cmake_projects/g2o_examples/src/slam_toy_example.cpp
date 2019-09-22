@@ -1,3 +1,5 @@
+#include <Eigen/Core>
+#include <Eigen/Dense>
 #include <Eigen/StdVector>
 #include <iostream>
 #include <stdint.h>
@@ -13,6 +15,7 @@
 #include <g2o/solvers/dense/linear_solver_dense.h>
 #include <g2o/types/sba/types_six_dof_expmap.h>
 #include <g2o/types/slam3d/se3quat.h>
+#include <g2o/types/slam3d/vertex_se3.h>
 #include <g2o/types/slam3d/edge_se3.h>
 #include <g2o/solvers/structure_only/structure_only_solver.h>
 
@@ -57,26 +60,31 @@ int main(int argc, const char* argv[]){
   linearSolver = g2o::make_unique<g2o::LinearSolverDense<g2o::BlockSolver_6_3::PoseMatrixType>>();
 
   g2o::OptimizationAlgorithmLevenberg* solver = new g2o::OptimizationAlgorithmLevenberg(
-    g2o::make_unique<g2o::BlockSolver_6_3>(std::move(linearSolver));
-  );
+    g2o::make_unique<g2o::BlockSolver_6_3>(std::move(linearSolver)));
   
   g2o::SparseOptimizer optimizer;
   optimizer.setVerbose(true);
   optimizer.setAlgorithm(solver);
 
   vector<g2o::SE3Quat, aligned_allocator<g2o::SE3Quat>> true_poses;
+  cout << "debug01" << endl;  // ed: DEBUG
 
   int vertex_id=0;
+
+
   for(size_t i=0; i<5; i++){
     Vector3d trans(i*0.04-1, 0 ,0);
     Eigen::Quaterniond q;
     q.setIdentity();
+  cout << "debug2" << endl;  // ed: DEBUG
 
     g2o::SE3Quat pose(q, trans);
     g2o::SE3Quat prev_pose;
-    g2o::VertexSE3Expmap* v_se3;
+    g2o::VertexSE3* prev_v_se3 = new g2o::VertexSE3();
+    g2o::VertexSE3* v_se3 = new g2o::VertexSE3();
     v_se3->setId(vertex_id);
 
+  cout << "debug3" << endl;  // ed: DEBUG
     if(i==1){
       v_se3->setFixed(true);
     }
@@ -85,19 +93,27 @@ int main(int argc, const char* argv[]){
     optimizer.addVertex(v_se3);
     true_poses.push_back(pose);
 
+  cout << "debug4" << endl;  // ed: DEBUG
     if(i>=2) {
+      prev_v_se3->setEstimate(prev_pose);
+
       g2o::SE3Quat relative_pose = pose.inverse() * prev_pose;
 
+  cout << "debug5" << endl;  // ed: DEBUG
       g2o::EdgeSE3* e_se3(new g2o::EdgeSE3());
       e_se3->setMeasurement(relative_pose);
-      e_se3->setInformation(Eigen::Isometry3d::Identity());
-      e_se3->vertices()[0] = prev_pose;
-      e_se3->vertices()[1] = pose;
+      // e_se3->setInformation(Eigen::Matrix3d::Identity());
+      e_se3->setVertex(0, dynamic_cast<g2o::OptimizableGraph::Vertex*>(prev_v_se3));
+      e_se3->setVertex(1, dynamic_cast<g2o::OptimizableGraph::Vertex*>(v_se3));
       optimizer.addEdge(e_se3);
+  cout << "debug6" << endl;  // ed: DEBUG
     }
     prev_pose = pose;
     vertex_id += 1;
   }
 
+  optimizer.initializeOptimization();
+  optimizer.setVerbose(true);
+  optimizer.optimize(10);
 
 }

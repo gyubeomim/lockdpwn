@@ -17,8 +17,8 @@ docker run \
 	-v /dev/bus/usb:/dev/bus/usb \
 	-v $XSOCK:$XSOCK:rw \
 	-v $XAUTH:$XAUTH:rw \
-	-v /media/dyros-data/gitrepo/ims_ros/docker_ws/src_ubuntu_cuda9.0:/root/docker_ws/src \
-	-v /media/dyros-data/gitrepo/ims_ros/docker_ws/not_used_ubuntu_cuda9.0:/root/docker_ws/not_used \
+	-v /media/dyros-data/gitrepo/dv_ws/dyros_ws/docker_ws/src_ubuntu_cuda9.0:/root/docker_ws/src \
+	-v /media/dyros-data/gitrepo/dv_ws/dyros_ws/docker_ws/not_used_ubuntu_cuda9.0:/root/docker_ws/not_used \
 	-v /home/dyros-vehicle/share_docker:/root/share_docker \
 	-v /media/dyros-data/bag_files:/root/bag_files \
 	--expose 22 \
