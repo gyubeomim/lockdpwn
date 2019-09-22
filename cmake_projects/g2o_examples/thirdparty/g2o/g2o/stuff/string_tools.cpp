@@ -73,7 +73,7 @@ std::string trimRight(const std::string& s)
     return s;
   string::size_type b = 0;
   string::size_type e = s.find_last_not_of(" \t\n");
-  if(e == string::npos)
+  if(b == string::npos)
     return "";
   return std::string(s, b, e - b + 1);
 }

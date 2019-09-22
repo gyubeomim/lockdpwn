@@ -31,9 +31,9 @@
 #include "factory.h"
 #include "parameter.h"
 
-#include "g2o/stuff/macros.h"
-#include "g2o/stuff/color_macros.h"
-#include "g2o/stuff/string_tools.h"
+#include "../stuff/macros.h"
+#include "../stuff/color_macros.h"
+#include "../stuff/string_tools.h"
 
 namespace g2o {
 
@@ -70,21 +70,14 @@ namespace g2o {
   Parameter* ParameterContainer::getParameter(int id) {
     iterator it=find(id);
     if (it==end())
-      return nullptr;
-    return it->second;
-  }
-
-  const Parameter* ParameterContainer::getParameter(int id) const {
-    const_iterator it=find(id);
-    if (it==end())
-      return nullptr;
+      return 0;
     return it->second;
   }
 
   Parameter* ParameterContainer::detachParameter(int id){
     iterator it=find(id);
     if (it==end())
-      return nullptr;
+      return 0;
     Parameter* p=it->second;
     erase(it);
     return p;

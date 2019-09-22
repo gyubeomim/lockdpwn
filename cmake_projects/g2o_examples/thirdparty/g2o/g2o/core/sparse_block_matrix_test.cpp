@@ -31,7 +31,7 @@ using namespace std;
 using namespace g2o;
 using namespace Eigen;
 
-typedef SparseBlockMatrix< MatrixX >
+typedef SparseBlockMatrix< MatrixXd >
 SparseBlockMatrixX;
 
 std::ostream& operator << (std::ostream& os, const SparseBlockMatrixX::SparseMatrixBlock& m) {

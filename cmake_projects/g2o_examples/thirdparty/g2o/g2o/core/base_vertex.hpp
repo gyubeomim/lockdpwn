@@ -33,12 +33,12 @@ BaseVertex<D, T>::BaseVertex() :
 }
 
 template <int D, typename T>
-number_t BaseVertex<D, T>::solveDirect(number_t lambda) {
-  Eigen::Matrix<number_t, D, D, Eigen::ColMajor> tempA=_hessian + Eigen::Matrix<number_t, D, D, Eigen::ColMajor>::Identity()*lambda;
-  number_t det=tempA.determinant();
-  if (g2o_isnan(det) || det < std::numeric_limits<number_t>::epsilon())
+double BaseVertex<D, T>::solveDirect(double lambda) {
+  Matrix <double, D, D> tempA=_hessian + Matrix <double, D, D>::Identity()*lambda;
+  double det=tempA.determinant();
+  if (g2o_isnan(det) || det < std::numeric_limits<double>::epsilon())
     return det;
-  Eigen::Matrix<number_t, D, 1, Eigen::ColMajor> dx=tempA.llt().solve(_b);
+  Matrix <double, D, 1> dx=tempA.llt().solve(_b);
   oplus(&dx[0]);
   return det;
 }
@@ -49,7 +49,7 @@ void BaseVertex<D, T>::clearQuadraticForm() {
 }
 
 template <int D, typename T>
-void BaseVertex<D, T>::mapHessianMemory(number_t* d)
+void BaseVertex<D, T>::mapHessianMemory(double* d)
 {
   new (&_hessian) HessianBlockType(d, D, D);
 }

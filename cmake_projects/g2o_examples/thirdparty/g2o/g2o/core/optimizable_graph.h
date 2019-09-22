@@ -29,6 +29,9 @@
 
 #include <set>
 #include <iostream>
+#include <list>
+#include <limits>
+#include <cmath>
 #include <typeinfo>
 
 #include "openmp_mutex.h"
@@ -37,13 +40,13 @@
 #include "parameter_container.h"
 #include "jacobian_workspace.h"
 
-#include "g2o/stuff/macros.h"
-#include "g2o_core_api.h"
+#include "../stuff/macros.h"
 
 namespace g2o {
 
   class HyperGraphAction;
   struct OptimizationAlgorithmProperty;
+  class Cache;
   class CacheContainer;
   class RobustKernel;
 
@@ -58,7 +61,7 @@ namespace g2o {
      also provides basic functionalities to handle the backup/restore
      of portions of the vertices.
    */
-  struct G2O_CORE_API OptimizableGraph : public HyperGraph {
+  struct  OptimizableGraph : public HyperGraph {
 
     enum ActionType {
       AT_PREITERATION, AT_POSTITERATION,
@@ -68,14 +71,35 @@ namespace g2o {
     typedef std::set<HyperGraphAction*>    HyperGraphActionSet;
 
     // forward declarations
-    class G2O_CORE_API Vertex;
-    class G2O_CORE_API Edge;
+    class  Vertex;
+    class  Edge;
 
+    /**
+     * \brief data packet for a vertex. Extend this class to store in the vertices
+     * the potential additional information you need (e.g. images, laser scans, ...).
+     */
+    class  Data : public HyperGraph::HyperGraphElement
+    {
+      friend struct OptimizableGraph;
+      public:
+        virtual ~Data();
+        Data();
+        //! read the data from a stream
+        virtual bool read(std::istream& is) = 0;
+        //! write the data to a stream
+        virtual bool write(std::ostream& os) const = 0;
+        virtual HyperGraph::HyperGraphElementType elementType() const { return HyperGraph::HGET_DATA;}
+        const Data* next() const {return _next;}
+        Data* next() {return _next;}
+        void setNext(Data* next_) { _next = next_; }
+      protected:
+        Data* _next; // linked list of multiple data;
+    };
 
     /**
      * \brief order vertices based on their ID
      */
-    struct G2O_CORE_API VertexIDCompare {
+    struct  VertexIDCompare {
       bool operator() (const Vertex* v1, const Vertex* v2) const
       {
         return v1->id() < v2->id();
@@ -85,7 +109,7 @@ namespace g2o {
     /**
      * \brief order edges based on the internal ID, which is assigned to the edge in addEdge()
      */
-    struct G2O_CORE_API EdgeIDCompare {
+    struct  EdgeIDCompare {
       bool operator() (const Edge* e1, const Edge* e2) const
       {
         return e1->internalId() < e2->internalId();
@@ -100,7 +124,7 @@ namespace g2o {
     /**
      * \brief A general case Vertex for optimization
      */
-    class G2O_CORE_API Vertex : public HyperGraph::Vertex, public HyperGraph::DataContainer {
+    class  Vertex : public HyperGraph::Vertex {
       private:
         friend struct OptimizableGraph;
       public:
@@ -108,6 +132,18 @@ namespace g2o {
 
         //! returns a deep copy of the current vertex
         virtual Vertex* clone() const ;
+
+        //! the user data associated with this vertex
+        const Data* userData() const { return _userData; }
+        Data* userData() { return _userData; }
+
+        void setUserData(Data* obs) { _userData = obs;}
+	void addUserData(Data* obs) { 
+	  if (obs) {
+	    obs->setNext(_userData);
+	    _userData=obs;
+	  }
+	}
 	
         virtual ~Vertex();
 
@@ -115,25 +151,25 @@ namespace g2o {
         void setToOrigin() { setToOriginImpl(); updateCache();}
 
         //! get the element from the hessian matrix
-        virtual const number_t& hessian(int i, int j) const = 0;
-        virtual number_t& hessian(int i, int j) = 0;
-        virtual number_t hessianDeterminant() const = 0;
-        virtual number_t* hessianData() = 0;
+        virtual const double& hessian(int i, int j) const = 0;
+        virtual double& hessian(int i, int j) = 0;
+        virtual double hessianDeterminant() const = 0;
+        virtual double* hessianData() = 0;
 
         /** maps the internal matrix to some external memory location */
-        virtual void mapHessianMemory(number_t* d) = 0;
+        virtual void mapHessianMemory(double* d) = 0;
 
         /**
          * copies the b vector in the array b_
          * @return the number of elements copied
          */
-        virtual int copyB(number_t* b_) const = 0;
+        virtual int copyB(double* b_) const = 0;
 
         //! get the b vector element
-        virtual const number_t& b(int i) const = 0;
-        virtual number_t& b(int i) = 0;
+        virtual const double& b(int i) const = 0;
+        virtual double& b(int i) = 0;
         //! return a pointer to the b vector associated with this vertex
-        virtual number_t* bData() = 0;
+        virtual double* bData() = 0;
 
         /**
          * set the b vector part of this vertex to zero
@@ -144,21 +180,21 @@ namespace g2o {
          * updates the current vertex with the direct solution x += H_ii\b_ii
          * @return the determinant of the inverted hessian
          */
-        virtual number_t solveDirect(number_t lambda=0) = 0;
+        virtual double solveDirect(double lambda=0) = 0;
 
         /**
-         * sets the initial estimate from an array of number_t
+         * sets the initial estimate from an array of double
          * Implement setEstimateDataImpl()
          * @return true on success
          */
-        bool setEstimateData(const number_t* estimate);
+        bool setEstimateData(const double* estimate);
 
         /**
-         * sets the initial estimate from an array of number_t
+         * sets the initial estimate from an array of double
          * Implement setEstimateDataImpl()
          * @return true on success
          */
-        bool setEstimateData(const std::vector<number_t>& estimate) {
+        bool setEstimateData(const std::vector<double>& estimate) { 
 #ifndef NDEBUG
           int dim = estimateDimension();
           assert((dim == -1) || (estimate.size() == std::size_t(dim)));
@@ -167,16 +203,16 @@ namespace g2o {
         };
 
         /**
-         * writes the estimater to an array of number_t
+         * writes the estimater to an array of double
          * @returns true on success
          */
-        virtual bool getEstimateData(number_t* estimate) const;
+        virtual bool getEstimateData(double* estimate) const;
 
         /**
-         * writes the estimater to an array of number_t
+         * writes the estimater to an array of double
          * @returns true on success
          */
-        virtual bool getEstimateData(std::vector<number_t>& estimate) const {
+        virtual bool getEstimateData(std::vector<double>& estimate) const {
           int dim = estimateDimension();
           if (dim < 0)
             return false;
@@ -185,24 +221,24 @@ namespace g2o {
         };
 
         /**
-         * returns the dimension of the extended representation used by get/setEstimate(number_t*)
+         * returns the dimension of the extended representation used by get/setEstimate(double*)
          * -1 if it is not supported
          */
         virtual int estimateDimension() const;
 
         /**
-         * sets the initial estimate from an array of number_t.
+         * sets the initial estimate from an array of double.
          * Implement setMinimalEstimateDataImpl()
          * @return true on success
          */
-        bool setMinimalEstimateData(const number_t* estimate);
+        bool setMinimalEstimateData(const double* estimate);
 
         /**
-         * sets the initial estimate from an array of number_t.
+         * sets the initial estimate from an array of double.
          * Implement setMinimalEstimateDataImpl()
          * @return true on success
          */
-        bool setMinimalEstimateData(const std::vector<number_t>& estimate) {
+        bool setMinimalEstimateData(const std::vector<double>& estimate) {
 #ifndef NDEBUG
           int dim = minimalEstimateDimension();
           assert((dim == -1) || (estimate.size() == std::size_t(dim)));
@@ -211,16 +247,16 @@ namespace g2o {
         };
 
         /**
-         * writes the estimate to an array of number_t
+         * writes the estimate to an array of double
          * @returns true on success
          */
-        virtual bool getMinimalEstimateData(number_t* estimate) const ;
+        virtual bool getMinimalEstimateData(double* estimate) const ;
 
         /**
-         * writes the estimate to an array of number_t
+         * writes the estimate to an array of double
          * @returns true on success
          */
-        virtual bool getMinimalEstimateData(std::vector<number_t>& estimate) const {
+        virtual bool getMinimalEstimateData(std::vector<double>& estimate) const {
           int dim = minimalEstimateDimension();
           if (dim < 0)
             return false;
@@ -229,7 +265,7 @@ namespace g2o {
         };
 
         /**
-         * returns the dimension of the extended representation used by get/setEstimate(number_t*)
+         * returns the dimension of the extended representation used by get/setEstimate(double*)
          * -1 if it is not supported
          */
         virtual int minimalEstimateDimension() const;
@@ -252,7 +288,7 @@ namespace g2o {
          * out the update.
          * Will also call updateCache() to update the caches of depending on the vertex.
          */
-        void oplus(const number_t* v)
+        void oplus(const double* v)
         {
           oplusImpl(v);
           updateCache();
@@ -287,6 +323,7 @@ namespace g2o {
         int colInHessian() const {return _colInHessian;}
 
         const OptimizableGraph* graph() const {return _graph;}
+
         OptimizableGraph* graph() {return _graph;}
 
         /**
@@ -323,47 +360,46 @@ namespace g2o {
          * update the position of the node from the parameters in v.
          * Implement in your class!
          */
-        virtual void oplusImpl(const number_t* v) = 0;
+        virtual void oplusImpl(const double* v) = 0;
 
         //! sets the node to the origin (used in the multilevel stuff)
         virtual void setToOriginImpl() = 0;
 
         /**
-         * writes the estimater to an array of number_t
+         * writes the estimater to an array of double
          * @returns true on success
          */
-        virtual bool setEstimateDataImpl(const number_t* ) { return false;}
+        virtual bool setEstimateDataImpl(const double* ) { return false;}
 
         /**
-         * sets the initial estimate from an array of number_t
+         * sets the initial estimate from an array of double
          * @return true on success
          */
-        virtual bool setMinimalEstimateDataImpl(const number_t* ) { return false;}
+        virtual bool setMinimalEstimateDataImpl(const double* ) { return false;}
 
     };
-
-    class G2O_CORE_API Edge: public HyperGraph::Edge, public HyperGraph::DataContainer {
+    
+    class  Edge: public HyperGraph::Edge {
       private:
         friend struct OptimizableGraph;
-	
-    public:
+      public:
         Edge();
         virtual ~Edge();
         virtual Edge* clone() const;
-	
+
         // indicates if all vertices are fixed
         virtual bool allVerticesFixed() const = 0;
-
+        
         // computes the error of the edge and stores it in an internal structure
         virtual void computeError() = 0;
 
-        //! sets the measurement from an array of number_t
+        //! sets the measurement from an array of double
         //! @returns true on success
-        virtual bool setMeasurementData(const number_t* m);
+        virtual bool setMeasurementData(const double* m);
 
-        //! writes the measurement to an array of number_t
+        //! writes the measurement to an array of double
         //! @returns true on success
-        virtual bool getMeasurementData(number_t* m) const;
+        virtual bool getMeasurementData(double* m) const;
 
         //! returns the dimension of the measurement in the extended representation which is used
         //! by get/setMeasurement;
@@ -383,15 +419,15 @@ namespace g2o {
         void setRobustKernel(RobustKernel* ptr);
 
         //! returns the error vector cached after calling the computeError;
-        virtual const number_t* errorData() const = 0;
-        virtual number_t* errorData() = 0;
+        virtual const double* errorData() const = 0;
+        virtual double* errorData() = 0;
 
-        //! returns the memory of the information matrix, usable for example with a Eigen::Map<MatrixX>
-        virtual const number_t* informationData() const = 0;
-        virtual number_t* informationData() = 0;
+        //! returns the memory of the information matrix, usable for example with a Eigen::Map<MatrixXd>
+        virtual const double* informationData() const = 0;
+        virtual double* informationData() = 0;
 
         //! computes the chi2 based on the cached error value, only valid after computeError has been called.
-        virtual number_t chi2() const = 0;
+        virtual double chi2() const = 0;
 
         /**
          * Linearizes the constraint in the edge.
@@ -409,7 +445,7 @@ namespace g2o {
          * @param j index of the vertex j (j > i, upper triangular fashion)
          * @param rowMajor if true, will write in rowMajor order to the block. Since EIGEN is columnMajor by default, this results in writing the transposed
          */
-        virtual void mapHessianMemory(number_t* d, int i, int j, bool rowMajor) = 0;
+        virtual void mapHessianMemory(double* d, int i, int j, bool rowMajor) = 0;
 
         /**
          * Linearizes the constraint in the edge in the manifold space, and store
@@ -425,7 +461,7 @@ namespace g2o {
          * The return value may correspond to the cost for initiliaizng the vertex but should be positive if
          * the initialization is possible and negative if not possible.
          */
-        virtual number_t initialEstimatePossible(const OptimizableGraph::VertexSet& from, OptimizableGraph::Vertex* to) { (void) from; (void) to; return -1.;}
+        virtual double initialEstimatePossible(const OptimizableGraph::VertexSet& from, OptimizableGraph::Vertex* to) { (void) from; (void) to; return -1.;}
 
         //! returns the level of the edge
         int level() const { return _level;}
@@ -435,9 +471,8 @@ namespace g2o {
         //! returns the dimensions of the error function
         int dimension() const { return _dimension;}
 
-        G2O_ATTRIBUTE_DEPRECATED(virtual Vertex* createFrom()) {return nullptr;}
-	G2O_ATTRIBUTE_DEPRECATED(virtual Vertex* createTo())   {return nullptr;}
-	virtual Vertex* createVertex(int) {return nullptr;}
+        virtual Vertex* createFrom() {return 0;}
+        virtual Vertex* createTo()   {return 0;}
 
         //! read the vertex from a stream, i.e., the internal state of the vertex
         virtual bool read(std::istream& is) = 0;
@@ -454,15 +489,16 @@ namespace g2o {
         inline const Parameter* parameter(int argNo) const {return *_parameters.at(argNo);}
         inline size_t numParameters() const {return _parameters.size();}
         inline void resizeParameters(size_t newSize) {
-          _parameters.resize(newSize, 0);
+          _parameters.resize(newSize, 0); 
           _parameterIds.resize(newSize, -1);
           _parameterTypes.resize(newSize, typeid(void*).name());
         }
       protected:
-	int _dimension;
+        int _dimension;
         int _level;
         RobustKernel* _robustKernel;
         long long _internalId;
+
         std::vector<int> _cacheIds;
 
         template <typename ParameterType>
@@ -476,8 +512,8 @@ namespace g2o {
           }
 
         template <typename CacheType>
-          void resolveCache(CacheType*& cache, OptimizableGraph::Vertex*,
-              const std::string& _type,
+          void resolveCache(CacheType*& cache, OptimizableGraph::Vertex*, 
+              const std::string& _type, 
               const ParameterVector& parameters);
 
         bool resolveParameters();
@@ -500,15 +536,13 @@ namespace g2o {
 
     //! adds all edges and vertices of the graph <i>g</i> to this graph.
     void addGraph(OptimizableGraph* g);
-
+ 
     /**
      * adds a new vertex. The new vertex is then "taken".
      * @return false if a vertex with the same id as v is already in the graph, true otherwise.
      */
     virtual bool addVertex(HyperGraph::Vertex* v, Data* userData);
     virtual bool addVertex(HyperGraph::Vertex* v) { return addVertex(v, 0);}
-    bool addVertex(OptimizableGraph::Vertex* v, Data* userData);
-    bool addVertex(OptimizableGraph::Vertex* v) { return addVertex(v, 0); }
 
     /**
      * adds a new edge.
@@ -516,16 +550,9 @@ namespace g2o {
      * @return false if the insertion does not work (incompatible types of the vertices/missing vertex). true otherwise.
      */
     virtual bool addEdge(HyperGraph::Edge* e);
-    bool addEdge(OptimizableGraph::Edge* e);
-
-    /**
-     * overridden from HyperGraph, to mantain the bookkeeping of the caches/parameters and jacobian workspaces consistent upon a change in the veretx.
-     * @return false if something goes wriong.
-     */
-    virtual bool setEdgeVertex(HyperGraph::Edge* e, int pos, HyperGraph::Vertex* v);
 
     //! returns the chi2 of the current configuration
-    number_t chi2() const;
+    double chi2() const;
 
     //! return the maximum dimension of all vertices in the graph
     int maxDimension() const;
@@ -571,7 +598,7 @@ namespace g2o {
     //! function provided for convenience, see save() above
     bool save(const char* filename, int level = 0) const;
 
-
+    
     //! save a subgraph to a stream. Again uses the Factory system.
     bool saveSubset(std::ostream& os, HyperGraph::VertexSet& vset, int level = 0);
 
@@ -626,15 +653,8 @@ namespace g2o {
     // helper functions to save an individual vertex
     bool saveVertex(std::ostream& os, Vertex* v) const;
 
-    // helper function to save an individual parameter
-    bool saveParameter(std::ostream& os, Parameter* v) const;
-
     // helper functions to save an individual edge
     bool saveEdge(std::ostream& os, Edge* e) const;
-
-    // helper functions to save the data packets
-    bool saveUserData(std::ostream& os, HyperGraph::Data* v) const;
-
     //! the workspace for storing the Jacobians of the graph
     JacobianWorkspace& jacobianWorkspace() { return _jacobianWorkspace;}
     const JacobianWorkspace& jacobianWorkspace() const { return _jacobianWorkspace;}
@@ -647,9 +667,6 @@ namespace g2o {
      */
     static bool initMultiThreading();
 
-    inline ParameterContainer& parameters() {return _parameters;}
-    inline const ParameterContainer& parameters() const {return _parameters;}
-
   protected:
     std::map<std::string, std::string> _renamedTypesLookup;
     long long _nextEdgeId;
@@ -661,11 +678,11 @@ namespace g2o {
     ParameterContainer _parameters;
     JacobianWorkspace _jacobianWorkspace;
   };
-
+  
   /**
     @}
    */
-
+  
 } // end namespace
 
 #endif

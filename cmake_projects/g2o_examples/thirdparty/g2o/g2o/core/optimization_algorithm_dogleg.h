@@ -28,9 +28,6 @@
 #define G2O_OPTIMIZATION_ALGORITHM_DOGLEG_H
 
 #include "optimization_algorithm_with_hessian.h"
-#include "g2o_core_api.h"
-
-#include <memory>
 
 namespace g2o {
 
@@ -39,7 +36,7 @@ namespace g2o {
   /**
    * \brief Implementation of Powell's Dogleg Algorithm
    */
-  class G2O_CORE_API OptimizationAlgorithmDogleg : public OptimizationAlgorithmWithHessian
+  class  OptimizationAlgorithmDogleg : public OptimizationAlgorithmWithHessian
   {
     public:
       /** \brief type of the step to take */
@@ -53,7 +50,7 @@ namespace g2o {
        * construct the Dogleg algorithm, which will use the given Solver for solving the
        * linearized system.
        */
-      explicit OptimizationAlgorithmDogleg(std::unique_ptr<BlockSolverBase> solver);
+      explicit OptimizationAlgorithmDogleg(BlockSolverBase* solver);
       virtual ~OptimizationAlgorithmDogleg();
 
       virtual SolverResult solve(int iteration, bool online = false);
@@ -63,7 +60,7 @@ namespace g2o {
       //! return the type of the last step taken by the algorithm
       int lastStep() const { return _lastStep;}
       //! return the diameter of the trust region
-      number_t trustRegion() const { return _delta;}
+      double trustRegion() const { return _delta;}
 
       //! convert the type into an integer
       static const char* stepType2Str(int stepType);
@@ -71,23 +68,20 @@ namespace g2o {
     protected:
       // parameters
       Property<int>* _maxTrialsAfterFailure;
-      Property<number_t>* _userDeltaInit;
+      Property<double>* _userDeltaInit;
       // damping to enforce positive definite matrix
-      Property<number_t>* _initialLambda;
-      Property<number_t>* _lamdbaFactor;
+      Property<double>* _initialLambda;
+      Property<double>* _lamdbaFactor;
 
-      VectorX _hsd;         ///< steepest decent step
-      VectorX _hdl;         ///< final dogleg step
-      VectorX _auxVector;   ///< auxilary vector used to perform multiplications or other stuff
+      Eigen::VectorXd _hsd;         ///< steepest decent step
+      Eigen::VectorXd _hdl;         ///< final dogleg step
+      Eigen::VectorXd _auxVector;   ///< auxilary vector used to perform multiplications or other stuff
 
-      number_t _currentLambda;        ///< the damping factor to force positive definite matrix
-      number_t _delta;                ///< trust region
+      double _currentLambda;        ///< the damping factor to force positive definite matrix
+      double _delta;                ///< trust region
       int _lastStep;                ///< type of the step taken by the algorithm
       bool _wasPDInAllIterations;   ///< the matrix we solve was positive definite in all iterations -> if not apply damping
       int _lastNumTries;
-
-  private:
-      std::unique_ptr<BlockSolverBase> m_solver;
   };
 
 } // end namespace

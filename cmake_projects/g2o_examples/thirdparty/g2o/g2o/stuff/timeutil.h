@@ -27,11 +27,14 @@
 #ifndef G2O_TIMEUTIL_H
 #define G2O_TIMEUTIL_H
 
-#include <string>
-#include <chrono>
+#ifdef _WINDOWS
+#include <time.h>
+#else
+#include <sys/time.h>
+#endif
 
-#include "g2o_stuff_api.h"
-#include "g2o/stuff/misc.h"
+#include <string>
+
 
 /** @addtogroup utils **/
 // @{
@@ -45,8 +48,8 @@
 #ifndef DO_EVERY_TS
 #define DO_EVERY_TS(secs, currentTime, code) \
 if (1) {\
-  static number_t s_lastDone_ = (currentTime); \
-  number_t s_now_ = (currentTime); \
+  static double s_lastDone_ = (currentTime); \
+  double s_now_ = (currentTime); \
   if (s_lastDone_ > s_now_) \
     s_lastDone_ = s_now_; \
   if (s_now_ - s_lastDone_ > (secs)) { \
@@ -65,31 +68,42 @@ if (1) {\
 #ifndef MEASURE_TIME
 #define MEASURE_TIME(text, code) \
   if(1) { \
-    number_t _start_time_ = g2o::get_time(); \
+    double _start_time_ = g2o::get_time(); \
     code; \
-    std::cerr << text << " took " << g2o::get_time() - _start_time_ << " sec" << std::endl; \
+    fprintf(stderr, "%s took %f sec\n", text, g2o::get_time() - _start_time_); \
   } else \
     (void) 0
 #endif
 
 namespace g2o {
 
-using seconds = std::chrono::duration<number_t>;
+#ifdef _WINDOWS
+typedef struct timeval {
+  long tv_sec;
+  long tv_usec;
+} timeval;
+ int gettimeofday(struct timeval *tv, struct timezone *tz);
+#endif
 
 /**
  * return the current time in seconds since 1. Jan 1970
  */
-inline number_t get_time() 
+inline double get_time() 
 {
-  return seconds{ std::chrono::system_clock::now().time_since_epoch() }.count();
+  struct timeval ts;
+  gettimeofday(&ts,0);
+  return ts.tv_sec + ts.tv_usec*1e-6;
 }
 
 /**
  * return a monotonic increasing time which basically does not need to
  * have a reference point. Consider this for measuring how long some
  * code fragments required to execute.
+ *
+ * On Linux we call clock_gettime() on other systems we currently
+ * call get_time().
  */
-G2O_STUFF_API number_t get_monotonic_time();
+ double get_monotonic_time();
 
 /**
  * \brief Class to measure the time spent in a scope
@@ -97,13 +111,13 @@ G2O_STUFF_API number_t get_monotonic_time();
  * To use this class, e.g. to measure the time spent in a function,
  * just create and instance at the beginning of the function.
  */
-class G2O_STUFF_API ScopeTime {
+class  ScopeTime {
   public: 
     ScopeTime(const char* title);
     ~ScopeTime();
   private:
     std::string _title;
-    number_t _startTime;
+    double _startTime;
 };
 
 } // end namespace

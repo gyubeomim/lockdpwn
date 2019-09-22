@@ -30,8 +30,6 @@
 #include <Eigen/Core>
 #include <Eigen/Geometry>
 
-#include "g2o/config.h"
-
 namespace g2o {
 
   typedef Eigen::Matrix<int,2,1,Eigen::ColMajor>                                  Vector2I;
@@ -42,16 +40,12 @@ namespace g2o {
   typedef Eigen::Matrix<float,2,1,Eigen::ColMajor>                                Vector2F; 
   typedef Eigen::Matrix<float,3,1,Eigen::ColMajor>                                Vector3F; 
   typedef Eigen::Matrix<float,4,1,Eigen::ColMajor>                                Vector4F; 
-  typedef Eigen::Matrix<float,Eigen::Dynamic,1,Eigen::ColMajor>                   VectorXF;
+  typedef Eigen::Matrix<float,Eigen::Dynamic,1,Eigen::ColMajor>                   VectorXF; 
 
-  template<int N>
-  using VectorN = Eigen::Matrix<number_t, N, 1, Eigen::ColMajor>;
-  using Vector2 = VectorN<2>;
-  using Vector3 = VectorN<3>;
-  using Vector4 = VectorN<4>;
-  using Vector6 = VectorN<6>;
-  using Vector7 = VectorN<7>;
-  using VectorX = VectorN<Eigen::Dynamic>;
+  typedef Eigen::Matrix<double,2,1,Eigen::ColMajor>                               Vector2D;
+  typedef Eigen::Matrix<double,3,1,Eigen::ColMajor>                               Vector3D;
+  typedef Eigen::Matrix<double,4,1,Eigen::ColMajor>                               Vector4D;
+  typedef Eigen::Matrix<double,Eigen::Dynamic,1,Eigen::ColMajor>                  VectorXD;
 
   typedef Eigen::Matrix<int,2,2,Eigen::ColMajor>                                  Matrix2I;
   typedef Eigen::Matrix<int,3,3,Eigen::ColMajor>                                  Matrix3I;
@@ -63,24 +57,16 @@ namespace g2o {
   typedef Eigen::Matrix<float,4,4,Eigen::ColMajor>                                Matrix4F;
   typedef Eigen::Matrix<float,Eigen::Dynamic,Eigen::Dynamic,Eigen::ColMajor>      MatrixXF;
 
-  template<int N>
-  using MatrixN = Eigen::Matrix<number_t, N, N, Eigen::ColMajor>;
-  using Matrix2 = MatrixN<2>;
-  using Matrix3 = MatrixN<3>;
-  using Matrix4 = MatrixN<4>;
-  using MatrixX = MatrixN<Eigen::Dynamic>;
+  typedef Eigen::Matrix<double,2,2,Eigen::ColMajor>                               Matrix2D;
+  typedef Eigen::Matrix<double,3,3,Eigen::ColMajor>                               Matrix3D;
+  typedef Eigen::Matrix<double,4,4,Eigen::ColMajor>                               Matrix4D;
+  typedef Eigen::Matrix<double,Eigen::Dynamic,Eigen::Dynamic,Eigen::ColMajor>     MatrixXD;
 
-  typedef Eigen::Transform<number_t,2,Eigen::Isometry,Eigen::ColMajor>            Isometry2;
-  typedef Eigen::Transform<number_t,3,Eigen::Isometry,Eigen::ColMajor>            Isometry3;
+  typedef Eigen::Transform<double,2,Eigen::Isometry,Eigen::ColMajor>              Isometry2D;
+  typedef Eigen::Transform<double,3,Eigen::Isometry,Eigen::ColMajor>              Isometry3D;
 
-  typedef Eigen::Transform<number_t,2,Eigen::Affine,Eigen::ColMajor>              Affine2;
-  typedef Eigen::Transform<number_t,3,Eigen::Affine,Eigen::ColMajor>              Affine3;
-
-  typedef Eigen::Rotation2D<number_t>                                             Rotation2D;
-
-  typedef Eigen::Quaternion<number_t>                                             Quaternion;
-
-  typedef Eigen::AngleAxis<number_t>                                              AngleAxis;
+  typedef Eigen::Transform<double,2,Eigen::Affine,Eigen::ColMajor>                Affine2D;
+  typedef Eigen::Transform<double,3,Eigen::Affine,Eigen::ColMajor>                Affine3D;
 
 } // end namespace g2o
 

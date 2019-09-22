@@ -89,13 +89,13 @@ namespace g2o {
       return (*foundIt)->construct();
     }
     cerr << "SOLVER FACTORY WARNING: Unable to create solver " << name << endl;
-    return nullptr;
+    return 0;
   }
 
   void OptimizationAlgorithmFactory::destroy()
   {
     delete factoryInstance;
-    factoryInstance = nullptr;
+    factoryInstance = 0;
   }
 
   void OptimizationAlgorithmFactory::listSolvers(std::ostream& os) const

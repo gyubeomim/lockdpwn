@@ -31,10 +31,14 @@
 #include <cassert>
 #include <Eigen/Core>
 
-#include "g2o/config.h"
+#include "../../config.h"
 #include "matrix_operations.h"
 
+#ifdef _MSC_VER
 #include <unordered_map>
+#else
+#include <tr1/unordered_map>
+#endif
 
 namespace g2o {
 
@@ -96,18 +100,18 @@ namespace g2o {
       //! indices of the column blocks
       const std::vector<int>& colBlockIndices() const { return _colBlockIndices;}
 
-      void rightMultiply(number_t*& dest, const number_t* src) const
+      void rightMultiply(double*& dest, const double* src) const
       {
         int destSize=cols();
 
         if (! dest){
-          dest=new number_t[ destSize ];
-          memset(dest,0, destSize*sizeof(number_t));
+          dest=new double [ destSize ];
+          memset(dest,0, destSize*sizeof(double));
         }
 
         // map the memory by Eigen
-        Eigen::Map<VectorX> destVec(dest, destSize);
-        Eigen::Map<const VectorX> srcVec(src, rows());
+        Eigen::Map<Eigen::VectorXd> destVec(dest, destSize);
+        Eigen::Map<const Eigen::VectorXd> srcVec(src, rows());
 
 #      ifdef G2O_OPENMP
 #      pragma omp parallel for default (shared) schedule(dynamic, 10)
@@ -118,7 +122,7 @@ namespace g2o {
             const SparseMatrixBlock* a = it->block;
             int srcOffset = rowBaseOfBlock(it->row);
             // destVec += *a.transpose() * srcVec (according to the sub-vector parts)
-            internal::template atxpy<SparseMatrixBlock>(*a, srcVec, srcOffset, destVec, destOffset);
+            internal::atxpy(*a, srcVec, srcOffset, destVec, destOffset);
           }
         }
       }
@@ -136,7 +140,7 @@ namespace g2o {
       /**
        * fill the CCS arrays of a matrix, arrays have to be allocated beforehand
        */
-      int fillCCS(int* Cp, int* Ci, number_t* Cx, bool upperTriangle = false) const
+      int fillCCS(int* Cp, int* Ci, double* Cx, bool upperTriangle = false) const
       {
         assert(Cp && Ci && Cx && "Target destination is NULL");
         int nz=0;
@@ -169,10 +173,10 @@ namespace g2o {
        * fill the CCS arrays of a matrix, arrays have to be allocated beforehand. This function only writes
        * the values and assumes that column and row structures have already been written.
        */
-      int fillCCS(number_t* Cx, bool upperTriangle = false) const
+      int fillCCS(double* Cx, bool upperTriangle = false) const
       {
         assert(Cx && "Target destination is NULL");
-        number_t* CxStart = Cx;
+        double* CxStart = Cx;
         int cstart = 0;
         for (size_t i=0; i<_blockCols.size(); ++i){
           int csize = _colBlockIndices[i] - cstart;
@@ -184,7 +188,7 @@ namespace g2o {
               int elemsToCopy = b->rows();
               if (upperTriangle && rstart == cstart)
                 elemsToCopy = c + 1;
-              memcpy(Cx, b->data() + c*b->rows(), elemsToCopy * sizeof(number_t));
+              memcpy(Cx, b->data() + c*b->rows(), elemsToCopy * sizeof(double));
               Cx += elemsToCopy;
 
             }
@@ -219,7 +223,7 @@ namespace g2o {
       //! rows of the matrix
       int rows() const {return _rowBlockIndices.size() ? _rowBlockIndices.back() : 0;}
 
-      typedef std::unordered_map<int, MatrixType*> SparseColumn;
+      typedef std::tr1::unordered_map<int, MatrixType*> SparseColumn;
 
       SparseBlockMatrixHashMap(const std::vector<int>& rowIndices, const std::vector<int>& colIndices) :
         _rowBlockIndices(rowIndices), _colBlockIndices(colIndices)

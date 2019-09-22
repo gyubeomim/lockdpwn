@@ -27,7 +27,9 @@
 template <int D, typename E, typename VertexXiType>
 void BaseUnaryEdge<D, E, VertexXiType>::resize(size_t size)
 {
-  assert(size == 1 && "error resizing unary edge where size != 1");
+  if (size != 1) {
+    std::cerr << "WARNING, attempting to resize unary edge " << BaseEdge<D, E>::id() << " to " << size << std::endl;
+  }
   BaseEdge<D, E>::resize(size);
 }
 
@@ -35,14 +37,6 @@ template <int D, typename E, typename VertexXiType>
 bool BaseUnaryEdge<D, E, VertexXiType>::allVerticesFixed() const
 {
   return static_cast<const VertexXiType*> (_vertices[0])->fixed();
-}
-
-template <int D, typename E, typename VertexXiType>
-OptimizableGraph::Vertex* BaseUnaryEdge<D, E, VertexXiType>::createVertex(int i)
-{
-  if (i!=0)
-    return nullptr;
-  return new VertexXiType();
 }
 
 template <int D, typename E, typename VertexXiType>
@@ -60,8 +54,8 @@ void BaseUnaryEdge<D, E, VertexXiType>::constructQuadraticForm()
     from->lockQuadraticForm();
 #endif
     if (this->robustKernel()) {
-      number_t error = this->chi2();
-      Vector3 rho;
+      double error = this->chi2();
+      Eigen::Vector3d rho;
       this->robustKernel()->robustify(error, rho);
       InformationType weightedOmega = this->robustInformation(rho);
 
@@ -80,7 +74,7 @@ void BaseUnaryEdge<D, E, VertexXiType>::constructQuadraticForm()
 template <int D, typename E, typename VertexXiType>
 void BaseUnaryEdge<D, E, VertexXiType>::linearizeOplus(JacobianWorkspace& jacobianWorkspace)
 {
-  new (&_jacobianOplusXi) JacobianXiOplusType(jacobianWorkspace.workspaceForVertex(0), D < 0 ? _dimension : D, VertexXiType::Dimension);
+  new (&_jacobianOplusXi) JacobianXiOplusType(jacobianWorkspace.workspaceForVertex(0), D, VertexXiType::Dimension);
   linearizeOplus();
 }
 
@@ -97,13 +91,13 @@ void BaseUnaryEdge<D, E, VertexXiType>::linearizeOplus()
   vi->lockQuadraticForm();
 #endif
 
-  const number_t delta = cst(1e-9);
-  const number_t scalar = 1 / (2*delta);
+  const double delta = 1e-9;
+  const double scalar = 1.0 / (2*delta);
   ErrorVector error1;
   ErrorVector errorBeforeNumeric = _error;
 
-  number_t add_vi[VertexXiType::Dimension] = {};
-
+  double add_vi[VertexXiType::Dimension];
+  std::fill(add_vi, add_vi + VertexXiType::Dimension, 0.0);
   // add small step along the unit vector in each dimension
   for (int d = 0; d < VertexXiType::Dimension; ++d) {
     vi->push();

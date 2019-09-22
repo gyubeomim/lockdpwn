@@ -28,11 +28,11 @@
 #define G2O_STUFF_MISC_H
 
 #include "macros.h"
-#include "g2o/config.h"
-
 #include <cmath>
-#include <memory>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 /** @addtogroup utils **/
 // @{
@@ -44,26 +44,6 @@
  **/
 
 namespace g2o {
-
-/**
- * helper function for creating an object in a unique_ptr.
- */
-template<typename T, typename ...ArgTs>
-std::unique_ptr<T> make_unique(ArgTs&& ...args)
-{
-  return std::unique_ptr<T>(new T(std::forward<ArgTs>(args)...));
-};
-
-/**
-* converts a number constant to a number_t constant at compile time
-* to avoid having to cast everything to avoid warnings.
-**/
-inline constexpr number_t cst(long double v)
-{
-  return (number_t)v;
-}
-
-constexpr number_t const_pi() { return cst(3.14159265358979323846); }
 
 /**
  * return the square value
@@ -80,7 +60,7 @@ inline T square(T x)
 template <typename T>
 inline T hypot(T x, T y)
 {
-  return (T) (std::sqrt(x*x + y*y));
+  return (T) (sqrt(x*x + y*y));
 }
 
 /**
@@ -95,33 +75,33 @@ inline T hypot_sqr(T x, T y)
 /**
  * convert from degree to radian
  */
-inline number_t deg2rad(number_t degree)
+inline double deg2rad(double degree)
 {
-  return degree * cst(0.01745329251994329576);
+  return degree * 0.01745329251994329576;
 }
 
 /**
  * convert from radian to degree
  */
-inline number_t rad2deg(number_t rad)
+inline double rad2deg(double rad)
 {
-  return rad * cst(57.29577951308232087721);
+  return rad * 57.29577951308232087721;
 }
 
 /**
  * normalize the angle
  */
-inline number_t normalize_theta(number_t theta)
+inline double normalize_theta(double theta)
 {
-  if (theta >= -const_pi() && theta < const_pi())
+  if (theta >= -M_PI && theta < M_PI)
     return theta;
   
-  number_t multiplier = std::floor(theta / (2*const_pi()));
-  theta = theta - multiplier*2*const_pi();
-  if (theta >= const_pi())
-    theta -= 2*const_pi();
-  if (theta < -const_pi())
-    theta += 2*const_pi();
+  double multiplier = floor(theta / (2*M_PI));
+  theta = theta - multiplier*2*M_PI;
+  if (theta >= M_PI)
+    theta -= 2*M_PI;
+  if (theta < -M_PI)
+    theta += 2*M_PI;
 
   return theta;
 }
@@ -129,20 +109,20 @@ inline number_t normalize_theta(number_t theta)
 /**
  * inverse of an angle, i.e., +180 degree
  */
-inline number_t inverse_theta(number_t th)
+inline double inverse_theta(double th)
 {
-  return normalize_theta(th + const_pi());
+  return normalize_theta(th + M_PI);
 }
 
 /**
  * average two angles
  */
-inline number_t average_angle(number_t theta1, number_t theta2)
+inline double average_angle(double theta1, double theta2)
 {
-  number_t x, y;
+  double x, y;
 
-  x = std::cos(theta1) + std::cos(theta2);
-  y = std::sin(theta1) + std::sin(theta2);
+  x = cos(theta1) + cos(theta2);
+  y = sin(theta1) + sin(theta2);
   if(x == 0 && y == 0)
     return 0;
   else
@@ -194,7 +174,7 @@ inline T wrap(T l, T x, T u)
 /**
  * tests whether there is a NaN in the array
  */
-inline bool arrayHasNaN(const number_t* array, int size, int* nanIndex = 0)
+inline bool arrayHasNaN(const double* array, int size, int* nanIndex = 0)
 {
   for (int i = 0; i < size; ++i)
     if (g2o_isnan(array[i])) {
