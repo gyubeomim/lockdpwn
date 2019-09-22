@@ -161,20 +161,13 @@ alias ida='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq.exe'
 alias ida64='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe'
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
-alias g1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
-alias g2='cd /home/dyros-vehicle/gitrepo_sync/ims_org'
-alias g3='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io'
-alias g4='cd /home/dyros-vehicle/dyros_ws'
-alias g5='cd /home/dyros-vehicle/gitrepo/ims_carto'
-alias g6='cd /home/dyros-vehicle/gitrepo/ims_ml'
+alias 1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
+alias 2='cd /home/dyros-vehicle/gitrepo_sync/ims_org'
+alias 3='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io'
+alias 4='cd /home/dyros-vehicle/dyros_ws'
+alias 5='cd /home/dyros-vehicle/gitrepo/ims_carto'
+alias 6='cd /home/dyros-vehicle/gitrepo/ims_ml'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
-
-
-git1='/home/dyros-vehicle/gitrepo/lockdpwn'
-git2='/home/dyros-vehicle/dyros_ws'
-git3='/home/dyros-vehicle/gitrepo/ims_ml'
-git4='/home/dyros-vehicle/gitrepo/ims_ml/SqueezeSeg'
-gr='/home/dyros-vehicle/gitrepo/'
 
 # for git command
 alias gg='git add . && git commit -m '"'updated'"' && git push '
@@ -193,7 +186,7 @@ alias gb='git branch'
 alias gs='git status'
 alias dy='cd /home/dyros-vehicle/gitrepo/dv_ws'
 
-alias cmp='cd /home/dyros-vehicle/gitrepo/lockdpwn/cmake_projects'
+alias c='cd /home/dyros-vehicle/gitrepo/lockdpwn/cmake_projects'
 alias cpp='cd /home/dyros-vehicle/gitrepo/lockdpwn/cpp_archive'
 alias py='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive'
 alias ipy='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive/ipython'
@@ -235,9 +228,9 @@ export ROS_MASTER_URI=http://localhost:11311
 export ROS_HOSTNAME=127.0.0.1
 
 # set ROS alias command
-alias cw='cd /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic'
-alias cs='cd /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/src'
-alias cm='cd /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cw='cd /home/dyros-vehicle/catkin_ws'
+alias cs='cd /home/dyros-vehicle/catkin_ws/src'
+alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
@@ -245,7 +238,6 @@ alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_CO
 # alias cs='cd /home/dyros-vehicle/catkin_ws/src'
 # alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make'
 
-alias cr='cd /home/dyros-vehicle/dyros_ws/'
 alias cb='cd ~/bag_files_4tb'
 alias cbb='cd ~/bag_files'
 alias so='source devel/setup.bash'
@@ -383,7 +375,8 @@ alias vu='netstat -tapno | grep 5902'
 alias tu='netstat -tapno | grep Team'
 
 # for g2o
-export G2O_ROOT=~/gitrepo/openslam_g2o
+# export G2O_ROOT=~/gitrepo/openslam_g2o
+export G2O_ROOT=~/gitrepo/g2o
 
 # for matlab 2018a
 alias matlab=/usr/local/MATLAB/R2018a/bin/matlab
@@ -398,12 +391,13 @@ alias seg='source ~/segmappyenv/bin/activate'
 alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
 
 # for docker
-alias doc='docker'
-alias doca='docker attach'
-alias docps='docker ps -a'
-alias docrm='docker rm'
-alias docrmi='docker rmi'
-alias docim='docker images'
+alias cdo='cd ~/gitrepo/lockdpwn/docker_archive'
+alias d='docker'
+alias da='docker attach'
+alias dps='docker ps -a'
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias dim='docker images'
 # docker PUSH to ONLINE commands
 # docker tag edward0im:ubuntu_cuda9.0 edward0im/dyrosvehicle:ubuntu_cuda9.0
 # doc push edward0im/dyrosvehicle:ubuntu_cuda9.0
@@ -412,8 +406,8 @@ alias docim='docker images'
 alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 775'
 
 # for edward folder
-alias cse='cd /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/src/edward/'
-alias cps='cd /home/dyros-vehicle/dyros_ws/catkin_ws_kinetic/src/edward/parkingslam'
+alias cse='cd /home/dyros-vehicle/catkin_ws/src/edward/'
+alias cps='cd /home/dyros-vehicle/catkin_ws/src/edward/parkingslam'
 
 # for org-mode
 alias o='cd /home/dyros-vehicle/gitrepo_sync/ims_org && ./push_master.sh'

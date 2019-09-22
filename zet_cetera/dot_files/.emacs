@@ -2608,7 +2608,7 @@
 
 (require 'tabbar)
 ; turn on the tabbar
-;; (tabbar-mode t)
+(tabbar-mode t)
 
 ;; PACKAGE: google-c-style
 (require 'google-c-style)

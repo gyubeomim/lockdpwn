@@ -100,7 +100,7 @@ int main(int argc, const char* argv[]){
       g2o::SE3Quat relative_pose = pose.inverse() * prev_pose;
 
   cout << "debug5" << endl;  // ed: DEBUG
-      g2o::EdgeSE3* e_se3(new g2o::EdgeSE3());
+      g2o::EdgeSE3* e_se3 = new g2o::EdgeSE3;
       e_se3->setMeasurement(relative_pose);
       // e_se3->setInformation(Eigen::Matrix3d::Identity());
       e_se3->setVertex(0, dynamic_cast<g2o::OptimizableGraph::Vertex*>(prev_v_se3));
