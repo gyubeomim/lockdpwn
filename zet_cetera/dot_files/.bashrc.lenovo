@@ -161,12 +161,12 @@ alias ida='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq.exe'
 alias ida64='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe'
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
-alias 1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
-alias 2='cd /home/dyros-vehicle/gitrepo_sync/ims_org'
-alias 3='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io'
-alias 4='cd /home/dyros-vehicle/dyros_ws'
-alias 5='cd /home/dyros-vehicle/gitrepo/ims_carto'
-alias 6='cd /home/dyros-vehicle/gitrepo/ims_ml'
+alias g1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
+alias g2='cd /home/dyros-vehicle/gitrepo_sync/ims_org'
+alias g3='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io'
+alias g4='cd /home/dyros-vehicle/dyros_ws'
+alias g5='cd /home/dyros-vehicle/gitrepo/ims_carto'
+alias g6='cd /home/dyros-vehicle/gitrepo/ims_ml'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
 
 # for git command
