@@ -88,7 +88,6 @@ int main(int argc, const char* argv[]){
 
     v_se3->setEstimate(pose);
     optimizer->addVertex(v_se3);
-    cout << "debug01" << endl;  // ed: DEBUG
 
     true_poses.push_back(pose);
     vertex_id += 1;
@@ -97,19 +96,15 @@ int main(int argc, const char* argv[]){
   for(int i=1;i<true_poses.size();i++){
     g2o::EdgeSE3* e_se3(new g2o::EdgeSE3());
     Eigen::Isometry3d relative_pose = true_poses.at(i-1).inverse() * true_poses.at(i);
+
     e_se3->setMeasurement(relative_pose);
     e_se3->setInformation(Eigen::MatrixXd::Identity(6,6));
     e_se3->vertices()[0] = optimizer->vertex(i-1);
     e_se3->vertices()[1] = optimizer->vertex(i);
-    e_se3->setId(i);
     optimizer->addEdge(e_se3);
-    cout << "debug2" << endl;  // ed: DEBUG
   }
 
-    cout << "debug3" << endl;  // ed: DEBUG
   optimizer->initializeOptimization();
   optimizer->setVerbose(true);
   optimizer->optimize(10);
-    cout << "debug4" << endl;  // ed: DEBUG
-
 }
