@@ -70,15 +70,19 @@ int main(int argc, const char* argv[]){
   int vertex_id=0;
 
   for(size_t i=0; i<5; i++){
-    Vector3d trans(i*0.04-1, 0 ,0);
+    Vector3d trans(i, 0 ,0);
     Eigen::Quaterniond q;
     q.setIdentity();
 
     Eigen::Isometry3d pose;
     pose.setIdentity();
-    pose.linear() = q.toRotationMatrix();
+    pose.rotation() = q.toRotationMatrix();
     pose.translation() = trans;
 
+    true_poses.push_back(pose);
+  }
+
+  for(int i=0;i<true_poses.size();i++){
     g2o::VertexSE3* v_se3 = new g2o::VertexSE3();
     v_se3->setId(vertex_id);
 
@@ -86,10 +90,17 @@ int main(int argc, const char* argv[]){
       v_se3->setFixed(true);
     }
 
-    v_se3->setEstimate(pose);
-    optimizer->addVertex(v_se3);
+    Vector3d trans(Sample::gaussian(1),Sample::gaussian(1),Sample::gaussian(1));
+    Eigen::Quaterniond q;
+    q.UnitRandom();
 
-    true_poses.push_back(pose);
+    Eigen::Isometry3d origin = true_poses.at(i);
+    Eigen::Isometry3d noise;
+    noise.rotation() = origin.rotation() * q.toRotationMatrix();
+    noise.translation() = origin.translation() + trans;
+
+    v_se3->setEstimate(noise);
+    optimizer->addVertex(v_se3);
     vertex_id += 1;
   }
 
