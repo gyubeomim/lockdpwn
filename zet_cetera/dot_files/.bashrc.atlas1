@@ -152,19 +152,13 @@ PS1="$C_LIGHTGREEN\aedward(@atlas)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # LANG=ko_KR.utf-8
 # LANGUAGE=ko_KR
 
-alias 1='cd /home/atlas1/gitrepo/lockdpwn'
-alias 2='cd /home/atlas1/gitrepo/ims_org'
-alias 3='cd /home/atlas1/gitrepo/starlaw'
-alias 4='cd /home/atlas1/gitrepo/tigerk0430.github.io'
-alias 5='cd /home/atlas1/gitrepo/ims_dyros'
-alias 6='cd /home/atlas1/gitrepo/ims_ml'
+alias g1='cd /home/atlas1/gitrepo/lockdpwn'
+alias g2='cd /home/atlas1/gitrepo/ims_org'
+alias g3='cd /home/atlas1/gitrepo/starlaw'
+alias g4='cd /home/atlas1/gitrepo/tigerk0430.github.io'
+alias g5='cd /home/atlas1/gitrepo/ims_dyros'
+alias g6='cd /home/atlas1/gitrepo/ims_ml'
 alias gr='cd /home/atlas1/gitrepo/'
-
-git1='/home/atlas1/gitrepo/lockdpwn'
-git2='/home/atlas1/dyros_ws'
-git3='/home/atlas1/gitrepo/ims_ml'
-git4='/home/atlas1/gitrepo/ims_ml/SqueezeSeg'
-gr='/home/atlas1/gitrepo/'
 
 # for git command
 alias gg='git add . && git commit -m '"'updated'"' && git push '
@@ -317,6 +311,7 @@ alias wc='python /home/atlas1/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py
 alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
 
 # for docker
+alias cdo='cd ~/gitrepo/lockdpwn/docker_archive'
 alias d='docker'
 alias da='docker attach'
 alias dps='docker ps -a'
