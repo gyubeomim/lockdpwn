@@ -22,8 +22,8 @@ set enc=utf8
 set fenc=utf-8
 set fencs=ucs-bom,utf-8,cp949,latin1
 " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
-set guifont=Source\ Code\ Pro\ 12
-set guifontwide=Dotumche\ 12
+set guifont=Source\ Code\ Pro\ 10
+set guifontwide=Dotumche\ 10
 "set relativenumber
 
 " Toolbar, Menubar 숨기기
