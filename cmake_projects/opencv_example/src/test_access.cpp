@@ -41,14 +41,27 @@ inline double BilinearInterpolation(cv::Mat image_, const Eigen::Vector2d proj) 
 int main(int argc, const char* argv[]) {
   cv::Mat test_mat;
 
-  test_mat = (cv::Mat_<unsigned char>(3,3) << 1,2,3,4,5,6,7,8,9);
+  test_mat = (cv::Mat_<unsigned char>(3,4) << 1,2,3,4,5,6,7,8,9,10,11,12);
+
+  std::cout << test_mat << std::endl;
+  std::cout << "size: "<<test_mat.size() << std::endl;
+  std::cout << "rows: "<<test_mat.rows << std::endl;
+  std::cout << "cols: "<<test_mat.cols << std::endl;
 
   std::cout << (int)test_mat.at<unsigned char>(0,0) << std::endl;
   std::cout << (int)test_mat.at<unsigned char>(0,1) << std::endl;
   std::cout << (int)test_mat.at<unsigned char>(0,2) << std::endl;
+  std::cout << (int)test_mat.at<unsigned char>(0,3) << std::endl;
+
   std::cout << (int)test_mat.at<unsigned char>(1,0) << std::endl;
   std::cout << (int)test_mat.at<unsigned char>(1,1) << std::endl;
   std::cout << (int)test_mat.at<unsigned char>(1,2) << std::endl;
+  std::cout << (int)test_mat.at<unsigned char>(1,3) << std::endl;
+
+  std::cout << (int)test_mat.at<unsigned char>(2,0) << std::endl;
+  std::cout << (int)test_mat.at<unsigned char>(2,1) << std::endl;
+  std::cout << (int)test_mat.at<unsigned char>(2,2) << std::endl;
+  std::cout << (int)test_mat.at<unsigned char>(2,3) << std::endl;
 
   std::cout << std::endl;
 
