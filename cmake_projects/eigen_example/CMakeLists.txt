@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 3.5)
 
-find_package(Eigen3 REQUIRED)
+IF(NOT CMAKE_BUILD_TYPE)
+  SET(CMAKE_BUILD_TYPE Release)
+ENDIF()
 
-include_directories(${EIGEN_INCLUDE_DIRS})
+find_package(Eigen3 3.1.0 REQUIRED)
+
+include_directories(${EIGEN3_INCLUDE_DIRS})
 
 add_executable(eigen_test eigen_test.cpp)
 
-target_link_libraries(eigen_test ${EIGEN_LIBRARIES})
+target_link_libraries(eigen_test ${EIGEN3_LIBS})

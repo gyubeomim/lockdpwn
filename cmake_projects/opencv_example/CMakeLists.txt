@@ -3,6 +3,15 @@ cmake_minimum_required(VERSION 2.8)
 project(opencv_test)
 
 find_package( OpenCV REQUIRED )
+find_package( Eigen3 REQUIRED )
 
-add_executable(test_opencv src/test.cpp )
-target_link_libraries(test_opencv ${OpenCV_LIBS} )
+include_directories(${EIGEN3_INCLUDE_DIRS})
+
+# add_executable(test_opencv src/test.cpp )
+# target_link_libraries(test_opencv ${OpenCV_LIBS} )
+
+add_executable(test_opencv src/test_access.cpp )
+target_link_libraries(test_opencv
+  ${OpenCV_LIBS}
+  ${EIGEN3_LIBS}
+  )
