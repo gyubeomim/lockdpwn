@@ -11,7 +11,8 @@
         "cmath": "cpp",
         "xiosbase": "cpp",
         "utility": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "deque": "cpp"
     },
     // Code Runner "CPP" 설정
     "code-runner.executorMap": {
