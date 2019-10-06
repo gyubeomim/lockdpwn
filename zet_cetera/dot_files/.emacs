@@ -2073,7 +2073,7 @@
  '(sp-base-key-bindings nil)
  '(sp-escape-quotes-after-insert nil)
  '(speedbar-update-flag t)
- '(split-width-threshold 120)
+ '(split-width-threshold 150)
  '(tabbar-cycle-scope nil)
  '(tabbar-separator (quote ("|")))
  '(term-default-bg-color "#002b36")
@@ -2219,17 +2219,14 @@
     (set-face-attribute 'default frame :height (string-to-number num))
     (message (concat "Set frame's default text height to " num))))
 
-;; C + <f#> keybinding set
+;; C + <f1><f2> keybinding set
 (global-set-key (kbd "C-<f1>") 'projectile-add-known-project)
 (global-set-key (kbd "C-<f2>") 'projectile-remove-known-project)
-;; C + <f5-11> 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
-(global-set-key (kbd "C-<f5>") '(lambda () (interactive) (set-frame-custom "103")))
-(global-set-key (kbd "C-<f6>") '(lambda () (interactive) (set-frame-custom "110")))
-(global-set-key (kbd "C-<f7>") '(lambda () (interactive) (set-frame-custom "120")))
-(global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "130")))
-(global-set-key (kbd "C-<f9>") '(lambda () (interactive) (set-frame-custom "140")))
-(global-set-key (kbd "C-<f10>") '(lambda () (interactive) (set-frame-custom "150")))
-(global-set-key (kbd "C-<f11>") '(lambda () (interactive) (set-frame-custom "160")))
+;; C + <f#> 키로 새로 생성한 프레임의 폰트가 작을 경우 크기를 키우거나 줄일 수 있다
+(global-set-key (kbd "C-<f5>") '(lambda () (interactive) (set-frame-custom "93")))
+(global-set-key (kbd "C-<f6>") '(lambda () (interactive) (set-frame-custom "103")))
+(global-set-key (kbd "C-<f7>") '(lambda () (interactive) (set-frame-custom "110")))
+(global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "120")))
 ;; C-<f12> 키로 어느곳에서나 org-capture 기능을 열게합니다
 (global-set-key (kbd "C-<f12>") 'org-capture)
 
