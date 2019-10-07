@@ -459,7 +459,6 @@
 (set-language-environment "Korean")
 (prefer-coding-system 'utf-8)
 
-
 ;; emacs --daemon 버전에서 M-x load-file 하거나 새로 켜는 경우 한글폰트를 적용하는 함수
 (defun set_korean_font_after_loading (&optional frame)
   (set-fontset-font "fontset-default" 'hangul "NanumGothic"))
@@ -3068,7 +3067,7 @@ created by edward 180515"
 (global-unset-key (kbd "S-SPC"))
 (global-unset-key (kbd "C-S-SPC"))
 ;; Ctrl + tab 키를 한/영키로
-(global-set-key [(control tab)] 'toggle-input-method)
+(global-set-key (kbd "<kana>") 'toggle-input-method)
 (global-set-key (kbd "S-SPC") 'toggle-input-method)
 
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.

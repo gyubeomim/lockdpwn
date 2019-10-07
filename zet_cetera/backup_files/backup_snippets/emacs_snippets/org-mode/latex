@@ -6,3 +6,4 @@
 #+LaTeX_HEADER: \renewcommand\maketitle{}
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LaTeX_HEADER: \usepackage{kotex}
+#+OPTIONS: author:nil date:nil title:nil
