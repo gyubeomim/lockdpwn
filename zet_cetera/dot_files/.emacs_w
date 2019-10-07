@@ -561,7 +561,10 @@
      ;; set the org latex size 
      (plist-put org-format-latex-options :scale 1.3)
      
-     ;; orgm
+     ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
+     (setq org-agenda-files (append (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/*.org" "~/gitrepo_sync/ims_org/org_files/blog/*.org")))
+
+     ;; orgg
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates '((":" "todo [TODO]" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/todo.org" "tasks")
@@ -932,12 +935,6 @@
     (define-key evil-normal-state-map (kbd "{") 'strike-through-for-org-mode)
     (define-key evil-motion-state-map (kbd "}") 'strike-through-for-org-mode-undo)
     (define-key evil-normal-state-map (kbd "}") 'strike-through-for-org-mode-undo)
-
-    ;; 1,2키로 tab들을 이동합니다
-    (define-key evil-motion-state-map (kbd "1") 'tabbar-backward)
-    (define-key evil-motion-state-map (kbd "2") 'tabbar-forward)
-    (define-key evil-normal-state-map (kbd "1") 'tabbar-backward)
-    (define-key evil-normal-state-map (kbd "2") 'tabbar-forward)
 
     ;; 키바인딩 해제 INSERT MODE
     (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -1388,10 +1385,6 @@
 
      ;; dired mode 에서 SPC키로 helm-for-files를 실행합니다
      (define-key dired-mode-map (kbd "SPC") 'helm-for-files)
-
-     ;; 1,2키로 tab을 이동합니다 (dired-mode에서 J,K 키바인딩이 안먹혀서 어쩔 수 없이 1,2로 변경했다 190623 Sun)
-     (define-key dired-mode-map (kbd "1") 'tabbar-backward)
-     (define-key dired-mode-map (kbd "2") 'tabbar-forward)
 
      ;; tab 키로 커서가 가리키고 있는 파일을 임시적으로 봅니다
      (define-key dired-mode-map (kbd "<tab>") 'dired-display-file)
@@ -2478,7 +2471,7 @@ created by edward 180515"
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("e:/gitrepo/ims_org/org_files/daily.org" "e:/gitrepo/ims_org/org_files/notes/problem_solving.org" "e:/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "e:/gitrepo/ims_org/org_files/archive.org" "e:/gitrepo/ims_org/org_files/book.org" "e:/gitrepo/ims_org/org_files/notes/lie_theory.org" "e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "e:/gitrepo/ims_org/org_files/issues.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/milestone.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/quick.org")))
+    ("e:/gitrepo/ims_org/org_files/notes/advanced_animation.org" "e:/gitrepo/ims_org/org_files/daily.org" "e:/gitrepo/ims_org/org_files/notes/problem_solving.org" "e:/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "e:/gitrepo/ims_org/org_files/archive.org" "e:/gitrepo/ims_org/org_files/book.org" "e:/gitrepo/ims_org/org_files/notes/lie_theory.org" "e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "e:/gitrepo/ims_org/org_files/issues.org" "e:/gitrepo/ims_org/org_files/todo.org" "e:/gitrepo/ims_org/org_files/milestone.org" "e:/gitrepo/ims_org/org_files/gcal.org" "e:/gitrepo/ims_org/org_files/quick.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -2741,7 +2734,7 @@ created by edward 180515"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "outline" :family "Roboto Mono"))))
+ '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 103 :width normal :foundry "outline" :family "Roboto Mono"))))
  '(avy-lead-face ((t (:inherit isearch :background "sienna" :foreground "tan"))))
  '(avy-lead-face-0 ((t (:inherit isearch :background "sienna" :foreground "tan" :box nil))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
@@ -2785,7 +2778,7 @@ created by edward 180515"
  '(org-block-end-line ((t (:inherit org-meta-line :foreground "gray" :weight normal))))
  '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
  '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
- '(org-code ((t (:background "aquamarine" :foreground "dark blue"))))
+ '(org-code ((t (:foreground "aquamarine"))))
  '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
@@ -2804,7 +2797,7 @@ created by edward 180515"
  '(org-tag ((t (:foreground "gainsboro" :underline nil :slant normal :weight bold :height 1.0))))
  '(org-time-grid ((t (:foreground "gainsboro"))))
  '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
- '(org-verbatim ((t (:background "pink" :foreground "deep pink"))))
+ '(org-verbatim ((t (:foreground "deep pink"))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
  '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))

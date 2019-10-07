@@ -848,7 +848,7 @@
      ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
      (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 
-     ;; orgm
+     ;; orgg
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates  '((":" "todo [TODO]" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
@@ -1338,12 +1338,6 @@
 
     ;; m 키로 minimap-mode Toggle
     (define-key evil-normal-state-map (kbd "m") 'minimap-mode)
-
-    ;; 1,2키로 tab들을 이동합니다
-    (define-key evil-motion-state-map (kbd "1") 'tabbar-backward)
-    (define-key evil-motion-state-map (kbd "2") 'tabbar-forward)
-    (define-key evil-normal-state-map (kbd "1") 'tabbar-backward)
-    (define-key evil-normal-state-map (kbd "2") 'tabbar-forward)
 
     ;; 키바인딩 해제 INSERT MODE
     (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -2482,10 +2476,6 @@
 
      ;; dired mode 에서 SPC키로 helm-for-files를 실행합니다
      (define-key dired-mode-map (kbd "SPC") 'helm-for-files)
-
-     ;; 1,2키로 tab을 이동합니다
-     (define-key dired-mode-map (kbd "1") 'tabbar-backward)
-     (define-key dired-mode-map (kbd "2") 'tabbar-forward)
 
      ;; - 키로 gtags, etags를 생성하는 명령어들을 실행합니다
      (define-key dired-mode-map (kbd "-") 'create_GTAGS_TAGS)
