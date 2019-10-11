@@ -2,4 +2,4 @@
 # name: debug by edward
 # key: debug
 # --
-std::cout << "${1:debug01}" << std::endl;  // ed: DEBUG$0
+std::cout << "${1:debug1}" << std::endl;  // DEBUG$0
