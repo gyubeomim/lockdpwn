@@ -906,10 +906,10 @@
     (define-key evil-motion-state-map (kbd "5") 'tabbar-mode)
     
     ;; org-mode에서 w 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
-    (define-key evil-motion-state-map (kbd "c") (lambda() (interactive)
-                                                  (progn
-                                                    (outline-hide-other)
-                                                    (outline-show-subtree))))
+    (define-key evil-motion-state-map (kbd "C-c h") (lambda() (interactive)
+                                                      (progn
+                                                        (outline-hide-other)
+                                                        (outline-show-subtree))))
 
     ;; ` 키로 현재 파일의 경로를 dired로 엽니다
     (define-key evil-normal-state-map (kbd "`") (lambda() (interactive)(dired "./")))
@@ -960,7 +960,6 @@
     (define-key evil-normal-state-map (kbd "C-.") nil)
     (define-key evil-normal-state-map (kbd "z") nil)
     (define-key evil-normal-state-map (kbd "x") nil)
-    (define-key evil-normal-state-map (kbd "c") nil)
     (define-key evil-normal-state-map (kbd "J") nil)
     (define-key evil-normal-state-map (kbd "M-.") nil)
 
