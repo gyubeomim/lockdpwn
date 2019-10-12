@@ -281,13 +281,15 @@ alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper -DCMAKE_EX
 
 
 # V-Rep Settings
-export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
+export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04
+export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04
+
+alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04/vrep.sh'
+alias vrep34='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
+alias vrep35='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
+
 alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/dyros_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_for_back_light.ttt'
 alias vrepd2='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/dyros_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_back_light.ttt'
-
-alias vrep2='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
 
 # source .bashrc
 alias sob='source /home/dyros-vehicle/.bashrc'

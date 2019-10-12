@@ -724,8 +724,7 @@
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
      ;; C-. 키로 어느곳에서나 todo.org 파일을 작성합니다
      (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
-     ;; C-<f12> 키로 어느곳에서나 org-capture 기능을 열게합니다
-     (define-key org-mode-map (kbd "C-<f12>") 'org-capture)
+
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
      (define-key org-mode-map (kbd "C-c w") 'org-preview-html/preview)
      ;; code ==> image Update 단축키
@@ -741,8 +740,8 @@
      ;; C-c v,b 키로 org-table 모드에서 열과 행을 추가합니다
      (define-key org-mode-map (kbd "C-c b") 'org-table-insert-row)
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
-     ;; C+| 키로 영역을 table화 합니다
-     (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
+     ;; C+' 키로 현재 날짜를 입력합니다.
+     (define-key org-mode-map (kbd "C-'") 'org-time-stamp)
      ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
      (define-key org-mode-map (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
      ;; C+M+? 키로 agenda를 실행합니다
@@ -771,6 +770,8 @@
      (define-key org-mode-map (kbd "C-c i") 'org-toggle-timestamp-type)
      ;; C-c + ] 키로 cfw org calendar를 실행합니다.
      (define-key org-mode-map (kbd "C-c ]") 'cfw:open-org-calendar)
+     ;; C-| 키로 org-mode에서 편하게 번호 link를 추가합니다
+     (define-key org-mode-map (kbd "C-|") 'insert-number-of-link)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -849,47 +850,43 @@
 
      ;; orgg
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates  '((":" "todo [TODO]" entry
+     (setq org-capture-templates  '(("t" "assign todo" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                    ("a" "atlas [TODO]" entry
+                                    ("a" "assign todo of atlas" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/atlas-robotics/atlas.org" "todo")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("u" "ubuntu_tips [Tips]" entry
+                                   ("u" "add ubuntu tip" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
-                                   ("o" "pomodoro [GTD]" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/pomodoro.org" "GTD")
-                                    "*** %i\n**** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
-
-                                   ("n" "quick [quick]" entry
+                                   ("k" "quick note" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/quick.org" "quick")
                                     "*** %i\n%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
-                                   ("m" "milestone [Milestone]" entry
+                                   ("m" "add milestone" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/milestone.org" "milestone")
                                     "*** MILESTONE %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("d" "daily [Daily]" entry
+                                   ("d" "daily note" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/daily.org" "daily")
                                     "*** %?%i")
 
-                                   ("1" "issues.org: [edward]" entry
+                                   ("1" "issue of edward" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "edward")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("2" "issues.org: [DYROS]" entry
+                                   ("2" "issue of DYROS" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "DYROS")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("3" "issues.org: [SNU]" entry
+                                   ("3" "issue of SNU" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "SNU")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("4" "issues.org: [ATLAS]" entry
+                                   ("4" "issue of ATLAS" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "ATLAS")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("5" "issues.org: [EMACS]" entry
+                                   ("5" "issue of emacs" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "EMACS")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ))
@@ -1007,8 +1004,8 @@
 
 ;; C-`' 키로 ==, '', "" 문자열 바로 옆에 글을 쓸 수 있도록 해주는 함수
 (global-set-key (kbd "C-`") 'escape-wrapped-word)
-;; C-\ 키로 현재 날짜를 입력합니다
-(global-set-key (kbd "C-\\") 'org-time-stamp)
+;; C-\ 키로 org-capture를 실행합니다.
+(global-set-key (kbd "C-\\") 'org-capture)
 ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
 (global-set-key (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
 ;; C-c + s 키로 특정 키워드를 검색합니다
@@ -1030,14 +1027,16 @@
 
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
-;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
-(global-set-key (kbd "C-'") 'insert-number-of-link)
 ;; C-M-? 키로 어느곳에서나 agenda list를 엽니다
 (global-set-key (kbd "C-M-?") 'org-agenda)
-;; C-. 키로 어느곳에서나 todo.org 파일을 작성합니다
-(global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
-;; C-, 키로 어느곳에서나 quick.org 파일을 작성합니다
-(global-set-key (kbd "C-,") (lambda () (interactive)(org-capture nil "n")))
+;; C-. 키로 gtags-based 코드 네비게이션을 합니다.
+(global-set-key (kbd "C-.") 'helm-gtags-dwim)
+;; C-> 키로 gtags-based 코드 네비게이션을 합니다.
+(global-set-key (kbd "C->") 'helm-gtags-pop-stack)
+;; C-, 키로 xref-based 코드 네비게이션을 합니다.
+(global-set-key (kbd "C-,") 'xref-find-definitions)
+;; C-< 키로 xref-based 코드 네비게이션을 합니다.
+(global-set-key (kbd "C-<") 'xref-pop-marker-stack)
 
 ;; org-mode용 strike-through를 구현한 함수
 (defun strike-through-for-org-mode ()
@@ -1270,12 +1269,8 @@
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
 
-    ;; -, 3,#,4,$ 키로 gtag, TAGS 파일을 생성 + 코드 네이버게이션을 하는 명령어를 실행합니다
+    ;; -,키로 gtag, TAGS 파일을 생성합니다.
     (define-key evil-motion-state-map (kbd "-") 'create_GTAGS_TAGS)
-    (define-key evil-motion-state-map (kbd "3") 'helm-gtags-dwim)
-    (define-key evil-motion-state-map (kbd "#") 'helm-gtags-pop-stack)
-    (define-key evil-motion-state-map (kbd "4") 'xref-find-definitions)
-    (define-key evil-motion-state-map (kbd "$") 'xref-pop-marker-stack)
 
     ;; 5 키로 tabbar mode를 toggle합니다.
     (define-key evil-motion-state-map (kbd "5") 'tabbar-mode)
@@ -1317,14 +1312,14 @@
     (define-key evil-normal-state-map (kbd ",") 'helm-projectile-switch-project)
 
     ;; org-mode에서 c 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
-    (define-key evil-normal-state-map (kbd "c") (lambda() (interactive)
-                                                  (progn
-                                                    (outline-hide-other)
-                                                    (outline-show-subtree))))
-    (define-key evil-motion-state-map (kbd "c") (lambda() (interactive)
-                                                  (progn
-                                                    (outline-hide-other)
-                                                    (outline-show-subtree))))
+    (define-key evil-normal-state-map (kbd "C-c h") (lambda() (interactive)
+                                                      (progn
+                                                        (outline-hide-other)
+                                                        (outline-show-subtree))))
+    (define-key evil-motion-state-map (kbd "C-c h") (lambda() (interactive)
+                                                      (progn
+                                                        (outline-hide-other)
+                                                        (outline-show-subtree))))
 
     ;; org-mode에서 q 키로 subtree를 엽니다
     (define-key evil-normal-state-map (kbd "q") 'org-show-subtree)
@@ -1334,9 +1329,6 @@
     (define-key evil-normal-state-map (kbd "{") 'strike-through-for-org-mode)
     (define-key evil-motion-state-map (kbd "}") 'strike-through-for-org-mode-undo)
     (define-key evil-normal-state-map (kbd "}") 'strike-through-for-org-mode-undo)
-
-    ;; m 키로 minimap-mode Toggle
-    (define-key evil-normal-state-map (kbd "m") 'minimap-mode)
 
     ;; 키바인딩 해제 INSERT MODE
     (define-key evil-insert-state-map (kbd "C-b") nil)
@@ -1362,7 +1354,6 @@
     (define-key evil-normal-state-map (kbd "C-.") nil)
     (define-key evil-normal-state-map (kbd "z") nil)
     (define-key evil-normal-state-map (kbd "x") nil)
-    (define-key evil-normal-state-map (kbd "c") nil)
     (define-key evil-normal-state-map (kbd "J") nil)
     (define-key evil-normal-state-map (kbd "M-.") nil)
     (define-key evil-normal-state-map (kbd "<insert>") nil)
@@ -1449,6 +1440,9 @@
 ;;     (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
 ;;     ))
 
+;;PACKAGE: minimap
+;; C-c m 키로 minimap-mode를 토글합니다.
+(global-set-key (kbd "C-c m") 'minimap-mode)
 
 ;; Package: yasnippet
 ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
@@ -1796,7 +1790,7 @@
  '(helm-bookmark-show-location t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-foreground-color "black")
- '(highlight-symbol-idle-delay 0.5)
+ '(highlight-symbol-idle-delay 0.25)
  '(highlight-tail-colors
    (quote
     (("#073642" . 0)
@@ -2112,8 +2106,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 103 :width normal :foundry "ADBO" :family "Source Code Pro"))))
- '(avy-lead-face ((t (:inherit isearch :background "sienna" :foreground "gold"))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "sienna" :foreground "gold" :box nil))))
+ '(avy-lead-face ((t (:inherit isearch :background "#1c1c1c" :foreground "yellow" :weight bold))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "#1c1c1c" :foreground "yellow" :box nil :weight bold))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
  '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
  '(cfw:face-today ((t (:background "#262626" :foreground "gainsboro" :weight bold))))
@@ -2134,7 +2128,7 @@
  '(hi-pink ((t (:background "pink" :foreground "#b36b91"))))
  '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
  '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
- '(highlight-symbol-face ((t (:foreground "yellow"))))
+ '(highlight-symbol-face ((t (:background "#1c1c1c" :foreground "yellow"))))
  '(iedit-occurrence ((t (:foreground "magenta" :weight bold))))
  '(iedit-read-only-occurrence ((t (:foreground "magenta"))))
  '(magit-diff-hunk-heading ((t (:background "dark slate gray" :foreground "light gray"))))
@@ -2220,8 +2214,6 @@
 (global-set-key (kbd "C-<f6>") '(lambda () (interactive) (set-frame-custom "103")))
 (global-set-key (kbd "C-<f7>") '(lambda () (interactive) (set-frame-custom "110")))
 (global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "120")))
-;; C-<f12> 키로 어느곳에서나 org-capture 기능을 열게합니다
-(global-set-key (kbd "C-<f12>") 'org-capture)
 
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)

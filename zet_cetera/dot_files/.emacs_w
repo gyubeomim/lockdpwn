@@ -443,8 +443,7 @@
      (define-key org-mode-map (kbd "<M-S-down>") 'org-shiftdown)
      (define-key org-mode-map (kbd "<C-S-right>") 'org-metaright)
      (define-key org-mode-map (kbd "<C-S-left>") 'org-metaleft)
-     ;; C-<f12> org capture 기능 단축키 
-     (define-key org-mode-map (kbd "C-<f12>") 'org-capture)
+
      ;; C-. 키로 어느곳에서나 todo.org TODO 기능을 열게합니다
      (define-key org-mode-map (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
      ;; org-mode를 저장할 때마다 html로 preview를 보여주는 단축키
@@ -462,8 +461,8 @@
      ;; C-c v,b 키로 org-table 모드에서 열과 행을 추가합니다
      (define-key org-mode-map (kbd "C-c b") 'org-table-insert-row)
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
-     ;; C+| 키로 영역을 table화 합니다
-     (define-key org-mode-map (kbd "C-|") 'org-table-create-or-convert-from-region)
+     ;; C+' 키로 현재 날짜를 입력합니다.
+     (define-key org-mode-map (kbd "C-'") 'org-time-stamp)
      ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
      (define-key org-mode-map (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
      ;; C-down + M-f 키를 기본 cpp,python 파일에서와 같이 구문단위로 이동하도록 설정합니다
@@ -491,6 +490,8 @@
      (define-key org-mode-map (kbd "C-c i") 'org-toggle-timestamp-type)
      ;; C-c + ] 키로 cfw org calendar를 실행합니다.
      (define-key org-mode-map (kbd "C-c ]") 'cfw:open-org-calendar)
+     ;; C-| 키로 org-mode에서 편하게 번호 link를 추가합니다
+     (define-key org-mode-map (kbd "C-|") 'insert-number-of-link)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
@@ -566,50 +567,47 @@
 
      ;; orgg
      ;; org-capture에서 사용할 목록들 설정
-     (setq org-capture-templates '((":" "todo [TODO]" entry
+     (setq org-capture-templates '(("t" "assign todo" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/todo.org" "tasks")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                    ("a" "atlas [TODO]" entry
+                                    ("a" "assign todo of atlas" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "todo")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("u" "ubuntu_tips [Tips]" entry
+                                   ("u" "add ubuntu tip" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
-                                   ("o" "pomodoro [GTD]" entry
-                                    (file+headline "e:/gitrepo/ims_org/org_files/pomodoro.org" "GTD")
-                                    "*** %i\n***** %?\n     - %(org-capture-pomodoro (org-read-date nil t \"\"))")
-
-                                   ("n" "quick [Quick]" entry
+                                   ("k" "quick note" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/quick.org" "quick")
                                     "*** %i\n%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
-                                   ("m" "milestone [Milestone]" entry
+                                   ("m" "add milestone" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/milestone.org" "milestone")
                                     "*** MILESTONE %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                   ("1" "issues.org: [edward]" entry
+                                   ("d" "daily note" entry
+                                    (file+headline "e:/gitrepo/ims_org/org_files/daily.org" "daily")
+                                    "*** %?%i")
+
+                                   ("1" "issue of edward" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/issues.org" "edward")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("2" "issues.org: [DYROS]" entry
+                                   ("2" "issue of DYROS" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/issues.org" "DYROS")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("3" "issues.org: [SNU]" entry
+                                   ("3" "issue of SNU" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/issues.org" "SNU")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("4" "issues.org: [ATLAS]" entry
+                                   ("4" "issue of ATLAS" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/issues.org" "ATLAS")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
-                                   ("5" "issues.org: [EMACS]" entry
+                                   ("5" "issue of emacs" entry
                                     (file+headline "e:/gitrepo/ims_org/org_files/issues.org" "EMACS")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
 
 
-                                   ("d" "daily.org: [Daily]" entry
-                                    (file+headline "e:/gitrepo/ims_org/org_files/daily.org" "daily")
-                                    "*** %?%i")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
@@ -675,10 +673,8 @@
 
 ;; C-`' 키로 ==, '', "" 문자열 바로 옆에 글을 쓸 수 있도록 해주는 함수
 (global-set-key (kbd "C-`") 'escape-wrapped-word)
-;; C-<f12> org capture 기능 단축키 
-(global-set-key (kbd "C-<f12>") 'org-capture)
-;; C-\ 키로 태그를 검색합니다
-(global-set-key (kbd "C-\\") 'org-time-stamp)
+;; C-\ 키로 org-capture를 실행합니다.
+(global-set-key (kbd "C-\\") 'org-capture)
 ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
 (global-set-key (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
 ;; C-c + s 키로 태그를 검색합니다
@@ -700,8 +696,6 @@
 (global-set-key (kbd "C-c 0") (lambda() (interactive)(find-file "~/.emacs")))
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
-;; org-mode에서 C-' 키로 org-mode에서 편하게 번호 link를 추가합니다
-(global-set-key (kbd "C-'") 'insert-number-of-link)
 ;; C-. 키로 어느곳에서나 todo.org 파일을 작성합니다
 (global-set-key (kbd "C-.") (lambda () (interactive)(org-capture nil ":")))
 ;; C-, 키로 어느곳에서나 quick.org 파일을 작성합니다
@@ -920,9 +914,6 @@
     ;; x 키로 emacs를 minimize 합니다
     (define-key evil-motion-state-map (kbd "x") 'suspend-frame)
 
-    ;; m 키로 minimap-mode Toggle
-    (define-key evil-normal-state-map (kbd "m") 'minimap-mode)
-
     ;; SPC 키로 helm-for-files를 실행합니다
     (define-key evil-motion-state-map (kbd "SPC") 'helm-for-files)
     (define-key evil-normal-state-map (kbd "SPC") 'helm-for-files)
@@ -1030,6 +1021,10 @@
 ;;     ;; C-+ 키로 이미지 크기를 자동조정한다
 ;;     (define-key imagex-sticky-mode-map (kbd "C-+") 'imagex-auto-adjust-mode)
 ;;     ))
+
+;;PACKAGE: minimap
+;; C-c m 키로 minimap-mode를 토글합니다.
+(global-set-key (kbd "C-c m") 'minimap-mode)
 
 ;; Package: yasnippet
 ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
@@ -2752,8 +2747,8 @@ created by edward 180515"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 103 :width normal :foundry "outline" :family "Roboto Mono"))))
- '(avy-lead-face ((t (:inherit isearch :background "sienna" :foreground "tan"))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "sienna" :foreground "tan" :box nil))))
+ '(avy-lead-face ((t (:inherit isearch :background "#1c1c1c" :foreground "yellow" :weight bold))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "#1c1c1c" :foreground "yellow" :box nil :weight bold))))
  '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
  '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
  '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
