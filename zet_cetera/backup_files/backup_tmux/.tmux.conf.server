@@ -11,6 +11,9 @@ bind C-a send-prefix
 # prefix + C-a 키로 스크롤 옮기는 키 변경
 bind Up copy-mode
 
+# copy-mode에서 y키로 선택된 영역을 복사한다. (xclip 설치 필요)
+bind-key -t vi-copy 'y' copy-pipe "xclip -sel clip -i"
+
 # visual bell
 set-option -g visual-bell on
 
