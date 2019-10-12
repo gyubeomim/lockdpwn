@@ -796,7 +796,7 @@
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
            '(
-             (sequence "TODO" "|" "CANCELLED" "REPLACED" "DELAYED" "PAUSED" "DONE")
+             (sequence "TODO" "|" "CANCELLED" "DELAYED" "PAUSED" "DONE")
              (sequence "MILESTONE" "|" "COMPLETE")
              (sequence "OPEN" "|" "CLOSED")
              )
@@ -804,7 +804,6 @@
      ;; Setting Colours (faces) for todo states to give clearer view of work
      (setq org-todo-keyword-faces
            '(("CANCELLED" . "goldenrod")
-             ("REPLACED" . "goldenrod")
              ("DELAYED" . "goldenrod")
              ("PAUSED" . "goldenrod")
              ("TODO" . "#86dc2f")
