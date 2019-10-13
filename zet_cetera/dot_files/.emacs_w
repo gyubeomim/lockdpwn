@@ -461,8 +461,8 @@
      ;; C-c v,b 키로 org-table 모드에서 열과 행을 추가합니다
      (define-key org-mode-map (kbd "C-c b") 'org-table-insert-row)
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
-     ;; C+' 키로 현재 날짜를 입력합니다.
-     (define-key org-mode-map (kbd "C-'") 'org-time-stamp)
+     ;; C+/ 키로 현재 날짜를 입력합니다.
+     (define-key org-mode-map (kbd "C-/") 'org-time-stamp)
      ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
      (define-key org-mode-map (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
      ;; C-down + M-f 키를 기본 cpp,python 파일에서와 같이 구문단위로 이동하도록 설정합니다
@@ -482,8 +482,8 @@
      (define-key org-mode-map (kbd "C-c C-l") 'create_latex_prefix)
      ;; C-c C-v 키로 .org 파일에서 .html 파일 버전을 크롬으로 엽니다 (.html 이 있는 경우만)
      (define-key org-mode-map (kbd "C-c C-v") 'org-html-open-chrome)
-     ;; org-mode에서 ' 키로 tag를 설정합니다
-     (define-key org-mode-map (kbd "C-/") 'org-set-tags)
+     ;; org-mode에서 C-' 키로 tag를 설정합니다
+     (define-key org-mode-map (kbd "C-'") 'org-set-tags)
      ;; C-c i 키로 timestamp type을 변경합니다
      (define-key org-mode-map (kbd "C-c i") 'org-toggle-timestamp-type)
      ;; C-c + ] 키로 cfw org calendar를 실행합니다.
@@ -659,8 +659,8 @@
                                   ;; tab 키로 해당 이벤트를 확인합니다
                                   (define-key org-agenda-mode-map (kbd "<tab>") 'org-agenda-show)
 
-                                  ;; org-agenda-mode에서 ' 키로 tag를 설정합니다
-                                  (define-key org-agenda-mode-map (kbd "C-/") 'org-agenda-set-tags)
+                                  ;; org-agenda-mode에서 C-' 키로 tag를 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "C-'") 'org-agenda-set-tags)
 
                                   ;; ' 키로 tag를 설정합니다
                                   (define-key org-agenda-mode-map (kbd "'") 'org-agenda-set-tags)
