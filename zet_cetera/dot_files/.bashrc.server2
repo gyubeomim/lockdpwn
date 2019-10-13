@@ -202,14 +202,14 @@ PERL_MB_OPT="--install_base \"/home/dyros-vehicle/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/dyros-vehicle/perl5"; export PERL_MM_OPT;
 
 
-alias t='tmux'
+alias tm='tmux'
 alias tmux='TERM=xterm-256color tmux -2 -u'
-alias tmls='tmux ls'
-alias tm='tmux switch -t '
-alias tma='tmux attach -t '
-alias tmd='tmux detach'
-alias tmk='tmux kill-session -t '
-alias tm4='tmux -u new-session -d
+alias tls='tmux ls'
+alias t='tmux switch -t '
+alias ta='tmux attach -t '
+alias td='tmux detach'
+alias tk='tmux kill-session -t '
+alias t4='tmux -u new-session -d
 tmux split-window -v
 tmux split-window -h
 tmux select-pane -U

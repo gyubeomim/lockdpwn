@@ -195,14 +195,14 @@ function len(){
 }
 
 # for tmux 
-alias t='tmux'
+alias tm='tmux'
 alias tmux='TERM=xterm-256color tmux -2 -u'
-alias tmls='tmux ls'                   # session list 확인
-alias tm='tmux switch -t '             # 원하는 session으로 이동
-alias tma='tmux attach -t '            # 원하는 session으로 붙음 (tmux를 실행하고 있지 않은 경우)
-alias tmd='tmux detach'                # 해당 session에서 detach 합니다
-alias tmk='tmux kill-session -t '      # 해당 session에서 kill 합니다
-alias tm4='tmux -u new-session -d    
+alias tls='tmux ls'                   # session list 확인
+alias t='tmux switch -t '             # 원하는 session으로 이동
+alias ta='tmux attach -t '            # 원하는 session으로 붙음 (tmux를 실행하고 있지 않은 경우)
+alias td='tmux detach'                # 해당 session에서 detach 합니다
+alias tk='tmux kill-session -t '      # 해당 session에서 kill 합니다
+alias t4='tmux -u new-session -d    
 tmux split-window -v
 tmux split-window -h
 tmux select-pane -U
