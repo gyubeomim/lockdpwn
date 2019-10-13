@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 '''
-	python ==> 네이버에 로그인해서 특정 이메일주소로 메일을 자동으로 보내는 메크로 코드
-                황짱이 알려줌
+	python ==> 네이버에 로그인해서 특정 이메일주소로 메일을 자동으로 보내는 매크로 코드
 '''
 from selenium import webdriver
 from bs4 import BeautifulSoup

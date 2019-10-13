@@ -1,7 +1,0 @@
-C:\Users\Sean\AppData\Local\Temporary Projects\FormStyle\bin\Debug\FormStyle.exe
-C:\Users\Sean\AppData\Local\Temporary Projects\FormStyle\bin\Debug\FormStyle.pdb
-C:\Users\Sean\AppData\Local\Temporary Projects\FormStyle\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Sean\AppData\Local\Temporary Projects\FormStyle\obj\x86\Debug\FormStyle.exe
-C:\Users\Sean\AppData\Local\Temporary Projects\FormStyle\obj\x86\Debug\FormStyle.pdb
-D:\집필\뇌자극C#\20장 WinForm 사용자 인터페이스\FormStyle\FormStyle\obj\x86\Debug\FormStyle.exe
-D:\집필\뇌자극C#\20장 WinForm 사용자 인터페이스\FormStyle\FormStyle\obj\x86\Debug\FormStyle.pdb

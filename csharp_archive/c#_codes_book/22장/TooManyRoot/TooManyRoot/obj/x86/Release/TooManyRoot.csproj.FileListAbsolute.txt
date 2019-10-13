@@ -1,7 +1,0 @@
-C:\Users\Sean\AppData\Local\Temporary Projects\TooManyRoot\obj\x86\Release\ResolveAssemblyReference.cache
-C:\Users\Sean\AppData\Local\Temporary Projects\TooManyRoot\bin\Release\TooManyRoot.exe
-C:\Users\Sean\AppData\Local\Temporary Projects\TooManyRoot\bin\Release\TooManyRoot.pdb
-C:\Users\Sean\AppData\Local\Temporary Projects\TooManyRoot\obj\x86\Release\TooManyRoot.exe
-C:\Users\Sean\AppData\Local\Temporary Projects\TooManyRoot\obj\x86\Release\TooManyRoot.pdb
-D:\집필\뇌자극C#\22장\TooManyRoot\TooManyRoot\obj\x86\Release\TooManyRoot.exe
-D:\집필\뇌자극C#\22장\TooManyRoot\TooManyRoot\obj\x86\Release\TooManyRoot.pdb

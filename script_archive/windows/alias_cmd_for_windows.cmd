@@ -1,5 +1,5 @@
 @echo off
-REM doskey ¸í·É¾î¸¦ »ç¿ëÇØ cmd¿¡¼­ bash °°Àº alias ¸í·É¾î¸¦ »ç¿ëÇÏ´Â ÄÚµå
+REM doskey ï¿½ï¿½É¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ cmdï¿½ï¿½ï¿½ï¿½ bash ï¿½ï¿½ï¿½ï¿½ alias ï¿½ï¿½É¾î¸¦ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Úµï¿½
 
 doskey ls=dir
 doskey ll=dir /w
@@ -16,6 +16,7 @@ doskey ml=cd e:\gitrepo\lockdpwn\python_archive\machineLearning
 doskey up=cd c:\Users\edward\
 doskey down=cd c:\Users\edward\Downloads
 
+doskey py37=activate py37
 doskey tf=activate tf
 doskey qt=ipython qtconsole
 doskey notebook=ipython notebook

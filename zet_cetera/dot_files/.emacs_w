@@ -62,6 +62,11 @@
     spacemacs-theme        ;; spacemacs theme
     gruvbox-theme          ;; gruvbox theme
 
+    cmake-ide              ;; cmake-ide for rtags
+    cmake-mode             ;; cmake package syntax highlighting
+
+
+
     ;;WINDOWS-----------------------------------
     ;;anzu                    ;; 단어를 찾은 다음 교체하는 패키지 (단축키: M-%)
     ;;org-gcal                ;; org-mode와 google Calendar를 연동해주는 패키지
@@ -435,6 +440,7 @@
      (define-key org-mode-map (kbd "C-c '") nil)
      (define-key org-mode-map (kbd "C-c ;") nil)
      (define-key org-mode-map (kbd "C-c C-k") nil)
+     (define-key org-mode-map (kbd "C-c -") nil)
 
      ;; ed: 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -463,8 +469,8 @@
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
      ;; C+/ 키로 현재 날짜를 입력합니다.
      (define-key org-mode-map (kbd "C-/") 'org-time-stamp)
-     ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
-     (define-key org-mode-map (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
+     ;; C-M-/ 키로 현재 날짜(+HH:MM)을 입력합니다
+     (define-key org-mode-map (kbd "C-M-/") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
      ;; C-down + M-f 키를 기본 cpp,python 파일에서와 같이 구문단위로 이동하도록 설정합니다
      ;; org.el에서 remap이 되어있던 코드를 주석처리하니 아래 두 코드가 정상작동한다
      (define-key org-mode-map (kbd "<C-down>") 'forward-paragraph)
@@ -1367,6 +1373,37 @@
   (set-buffer-modified-p nil))
 (add-hook 'dired-after-readin-hook 'sof/dired-sort)
 
+;; refer: https://stackoverflow.com/a/20302565/7402755
+(defun dired-new-file ()
+(interactive)
+  (let* (
+      (n 0)
+      lawlist-filename
+      (dired-buffer-name (buffer-name)))
+    (catch 'done
+      (while t
+        (setq lawlist-filename (concat ".dir-locals"
+          (if (= n 0) "" (int-to-string n))
+            ".el"))
+        (setq n (1+ n))
+        (if (not (file-exists-p lawlist-filename))
+          (throw 'done nil)) ))
+    (message "[b]uffer + file (maybe) | [f]ile + buffer (maybe)")
+    (let ((file-or-buffer (read-char-exclusive)))
+      (cond
+        ((eq file-or-buffer ?b)
+          (switch-to-buffer (get-buffer-create lawlist-filename))
+          (text-mode)
+          (or (y-or-n-p (format "Save Buffer `%s'? "lawlist-filename))
+            (error "Done."))
+          (write-file lawlist-filename)
+          (with-current-buffer dired-buffer-name
+            (revert-buffer)))
+        ((eq file-or-buffer ?f)
+          (start-process "touch-file" nil "touch" lawlist-filename)
+          (revert-buffer))
+        (t (message "You have exited the function.")) ))))
+
 ;; dired mode에서 여러 단축키들을 설정하는 코드
 (eval-after-load "dired"
   '(progn
@@ -1397,6 +1434,9 @@
 
      ;; tab 키로 커서가 가리키고 있는 파일을 임시적으로 봅니다
      (define-key dired-mode-map (kbd "<tab>") 'dired-display-file)
+
+     ;; . 키로 .dir-locals.el 파일을 생성합니다.
+     (define-key dired-mode-map (kbd ".") 'dired-new-file)
 
      ;; n,N 키로 evil-search 다음 단어로 이동합니다.
      (define-key dired-mode-map (kbd "n") 'evil-search-next)
@@ -1974,6 +2014,14 @@ created by edward 180515"
 (add-hook 'c++-mode-hook (lambda () (setq comment-start "/* "
                                           comment-end   "*/")))
 
+(eval-after-load "grep"
+  '(progn
+     ;; 키바인딩 해제 for evil mode keybinding n,N
+     (define-key grep-mode-map (kbd "n") nil)
+     (define-key grep-mode-map (kbd "N") nil)
+     (define-key grep-mode-map (kbd "<SPC>") 'helm-for-files)
+     ))
+
 ;; 괄호 사이를 이동하는 코드
 (defun match-paren (arg)
   "Go to the matching paren if on a paren; otherwise insert %."
@@ -2312,6 +2360,11 @@ created by edward 180515"
 (global-set-key (kbd "C-M-k") 'backward-paragraph)
 (define-key c++-mode-map (kbd "C-M-k") 'backward-paragraph)
 
+;; M-/ 키로 cmake-ide compile_commands.json을 불러옵니다
+(global-set-key (kbd "M-/") 'cmake-ide-load-db)
+;; M-? 키로 cmake-ide cmake를 실행합니다
+(global-set-key (kbd "M-?") 'cmake-ide-run-cmake)
+
 ;; Horizontal <--> Vertical view를 토글해주는 함수
 (defun window-split-toggle ()
   "Toggle between horizontal and vertical split with two windows."
@@ -2471,6 +2524,7 @@ created by edward 180515"
  '(git-gutter:deleted-sign "-")
  '(git-gutter:modified-sign ">")
  '(helm-bookmark-show-location t)
+ '(highlight-symbol-idle-delay 0.25)
  '(minimap-enlarge-certain-faces nil)
  '(minimap-highlight-line nil)
  '(minimap-major-modes (quote (prog-mode org-mode)))
@@ -2698,7 +2752,10 @@ created by edward 180515"
  '(recenter-positions (quote (middle 0.75 top bottom)))
  '(safe-local-variable-values
    (quote
-    ((eval font-lock-add-keywords nil
+    ((cmake-ide-cmake-opts . "-DCMAKE_BUILD_TYPE=Release")
+     (cmake-ide-build-dir . "./build")
+     (cmake-ide-project-dir . "./")
+     (eval font-lock-add-keywords nil
            (\`
             (((\,
                (concat "("

@@ -714,6 +714,7 @@
      (define-key org-mode-map (kbd "C-c C-k") nil)
      (define-key org-mode-map (kbd "C-j") nil)
      (define-key org-mode-map (kbd "C-c .") nil)
+     (define-key org-mode-map (kbd "C-c -") nil)
 
      ;; comment(edward): 단축키 등록
      (define-key org-mode-map (kbd "<M-S-right>") 'org-shiftright)
@@ -742,8 +743,8 @@
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
      ;; C+/ 키로 현재 날짜를 입력합니다b
      (define-key org-mode-map (kbd "C-/") 'org-time-stamp)
-     ;; C-M-\ 키로 현재 날짜(+HH:MM)을 입력합니다
-     (define-key org-mode-map (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
+     ;; C-M-/ 키로 현재 날짜(+HH:MM)을 입력합니다
+     (define-key org-mode-map (kbd "C-M-/") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
      ;; C+M+? 키로 agenda를 실행합니다
      (define-key org-mode-map (kbd "C-M-?") 'org-agenda)
      ;; C-down + M-f 키를 기본 cpp,python 파일에서와 같이 구문단위로 이동하도록 설정합니다
@@ -2596,7 +2597,6 @@
 
 ;; PACKAGE: cua-mode
 ; (require 'cua-mode)
-; (define-key cua-global-keymap "<SPC>" nil)
                                         ;
 ;; C언어 모드에서 자동정렬 (들여쓰기 스타일)
 (add-hook 'c-mode-hook
@@ -3142,6 +3142,7 @@ created by edward 180515"
      ;; 키바인딩 해제 for evil mode keybinding n,N
      (define-key grep-mode-map (kbd "n") nil)
      (define-key grep-mode-map (kbd "N") nil)
+     (define-key grep-mode-map (kbd "<SPC>") 'helm-for-files)
      ))
 
 
@@ -3274,8 +3275,6 @@ created by edward 180515"
 (global-set-key (kbd "M-/") 'cmake-ide-load-db)
 ;; M-? 키로 cmake-ide cmake를 실행합니다
 (global-set-key (kbd "M-?") 'cmake-ide-run-cmake)
-;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
-;; (global-set-key (kbd "M-/") 'visit-tags-table)
 
 ;;; cmake-ide + gdb/exec.
 (defun run-process-in-comint (cmd)

@@ -1,9 +1,0 @@
-C:\Users\Sean\Desktop\UsingControls\bin\Release\UsingControls.exe
-C:\Users\Sean\Desktop\UsingControls\bin\Release\UsingControls.pdb
-C:\Users\Sean\Desktop\UsingControls\obj\x86\Release\ResolveAssemblyReference.cache
-C:\Users\Sean\Desktop\UsingControls\obj\x86\Release\UsingControls.MainForm.resources
-C:\Users\Sean\Desktop\UsingControls\obj\x86\Release\UsingControls.Properties.Resources.resources
-C:\Users\Sean\Desktop\UsingControls\obj\x86\Release\GenerateResource.read.1.tlog
-C:\Users\Sean\Desktop\UsingControls\obj\x86\Release\GenerateResource.write.1.tlog
-C:\Users\Sean\Desktop\UsingControls\obj\x86\Release\UsingControls.exe
-C:\Users\Sean\Desktop\UsingControls\obj\x86\Release\UsingControls.pdb

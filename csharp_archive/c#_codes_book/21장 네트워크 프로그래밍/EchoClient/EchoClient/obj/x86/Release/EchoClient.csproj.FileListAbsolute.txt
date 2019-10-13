@@ -1,5 +1,0 @@
-D:\집필\뇌자극C#\21장 네트워크 프로그래밍\EchoClient\EchoClient\obj\x86\Release\ResolveAssemblyReference.cache
-D:\집필\뇌자극C#\21장 네트워크 프로그래밍\EchoClient\EchoClient\bin\Release\EchoClient.exe
-D:\집필\뇌자극C#\21장 네트워크 프로그래밍\EchoClient\EchoClient\bin\Release\EchoClient.pdb
-D:\집필\뇌자극C#\21장 네트워크 프로그래밍\EchoClient\EchoClient\obj\x86\Release\EchoClient.exe
-D:\집필\뇌자극C#\21장 네트워크 프로그래밍\EchoClient\EchoClient\obj\x86\Release\EchoClient.pdb
