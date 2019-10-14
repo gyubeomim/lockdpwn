@@ -890,17 +890,17 @@
     (define-key evil-motion-state-map (kbd ",") 'helm-projectile-switch-project)
     (define-key evil-normal-state-map (kbd ",") 'helm-projectile-switch-project)
 
-    ;; 0키로 buffer를 새로고침합니다
-    (define-key evil-motion-state-map (kbd "0") 'my-revert-buffer)
-
     ;; [ ] 키로 org-agenda, todo list를 보도록 설정합니다
     (define-key evil-motion-state-map (kbd "]") 'org-agenda-list)
     (define-key evil-motion-state-map (kbd "[") 'org-todo-list)
     (define-key evil-normal-state-map (kbd "]") 'org-agenda-list)
     (define-key evil-normal-state-map (kbd "[") 'org-todo-list)
 
-    ;; 5 키로 tabbar mode를 toggle합니다.
-    (define-key evil-motion-state-map (kbd "5") 'tabbar-mode)
+    ;; C-x t 키로 tabbar mode를 toggle합니다.
+    (define-key evil-motion-state-map (kbd "C-x t") 'tabbar-mode)
+
+    ;; C-x b 키로 buffer를 새로고침합니다
+    (define-key evil-motion-state-map (kbd "C-x b") 'my-revert-buffer)
     
     ;; org-mode에서 w 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
     (define-key evil-motion-state-map (kbd "C-c h") (lambda() (interactive)

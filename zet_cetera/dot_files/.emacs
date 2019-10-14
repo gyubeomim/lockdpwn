@@ -1261,6 +1261,9 @@
     (define-key evil-visual-state-map (kbd "a") 'evil-exit-visual-state)
     (define-key evil-visual-state-map (kbd "\\") 'evil-exit-visual-state)
 
+    ;; evil 모드에서 C-v 키로 visual block을 사용합니다.
+    (define-key evil-motion-state-map (kbd "C-v") 'evil-visual-block)
+
     ;; evil 모드에서 e,E 키로 빠르게 단어를 highlight 합니다
     (define-key evil-motion-state-map (kbd "e") 'highlight-symbol)
     (define-key evil-motion-state-map (kbd "E") 'highlight-symbol-remove-all)
@@ -1272,11 +1275,11 @@
     ;; -,키로 gtag, TAGS 파일을 생성합니다.
     (define-key evil-motion-state-map (kbd "-") 'create_GTAGS_TAGS)
 
-    ;; 5 키로 tabbar mode를 toggle합니다.
-    (define-key evil-motion-state-map (kbd "5") 'tabbar-mode)
+    ;; C-x t 키로 tabbar mode를 toggle합니다.
+    (define-key evil-motion-state-map (kbd "C-x t") 'tabbar-mode)
 
-    ;; 0 키로 buffer를 새로고침합니다
-    (define-key evil-motion-state-map (kbd "0") 'my-revert-buffer)
+    ;; C-x b 키로 buffer를 새로고침합니다
+    (define-key evil-motion-state-map (kbd "C-x b") 'my-revert-buffer)
 
     ;; % 키로 cmake 프로젝트를 컴파일합니다
     (define-key evil-motion-state-map (kbd "%") 'cmake-ide-compile)

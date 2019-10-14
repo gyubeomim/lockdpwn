@@ -10,32 +10,35 @@
 using namespace std;
 using namespace cv;
 
-inline unsigned char GetIntensity(cv::Mat image_, int u, int v) {
-  return image_.at<unsigned char>(u,v);
-}
+inline double GetIntensity(const Eigen::Vector2d proj, cv::Mat* image, bool _bilinear=true) {
+  if(_bilinear) {
+    double u = proj(0);
+    double v = proj(1);
 
-inline double BilinearInterpolation(cv::Mat image_, const Eigen::Vector2d proj) {
-  double x = proj(0);
-  double y = proj(1);
-  double _x = x - floor(x);
-  double _y = y - floor(y);
+    double _u = u - floor(u);
+    double _v = v - floor(v);
 
-  std::cout << _x << ", " << _y << std::endl;
-  std::cout << (int)proj(0) << ", " << (int)proj(1) << std::endl;
+    unsigned char i00 = image->at<unsigned char>(v, u);
+    unsigned char i01 = image->at<unsigned char>(v, u+1);
+    unsigned char i10 = image->at<unsigned char>(v+1, u);
+    unsigned char i11 = image->at<unsigned char>(v+1, u+1);
 
-  unsigned char i00 = image_.at<unsigned char>(x, y);
-  unsigned char i01 = image_.at<unsigned char>(x, y+1);
-  unsigned char i10 = image_.at<unsigned char>(x+1, y);
-  unsigned char i11 = image_.at<unsigned char>(x+1, y+1);
+    Eigen::Vector2d bilinear_u, bilinear_v;
+    bilinear_u << (1-_u), _u;
+    bilinear_v << (1-_v), _v;
 
-  Eigen::Vector2d bilinear_x, bilinear_y;
-  bilinear_x << (1-_x), _x;
-  bilinear_y << (1-_y), _y;
+    Eigen::Matrix2d data_matrix;
+    data_matrix << i00, i01, i10, i11;
 
-  Eigen::Matrix2d data_matrix;
-  data_matrix << i00, i01, i10, i11;
+    return bilinear_v.transpose() * data_matrix * bilinear_u;
+  }
+  else {
+    double u = proj(0);
+    double v = proj(1);
 
-  return bilinear_x.transpose() * data_matrix * bilinear_y;
+    // get intensity in a direct way.
+    return image->at<unsigned char>(v, u);
+  }
 }
 
 int main(int argc, const char* argv[]) {
@@ -65,12 +68,12 @@ int main(int argc, const char* argv[]) {
 
   std::cout << std::endl;
 
-  std::cout << (int)GetIntensity(test_mat, 0,0) << std::endl;
-  std::cout << (int)GetIntensity(test_mat, 0,1) << std::endl;
-  std::cout << (int)GetIntensity(test_mat, 0,2) << std::endl;
-  std::cout << (int)GetIntensity(test_mat, 1,0) << std::endl;
-  std::cout << (int)GetIntensity(test_mat, 1,1) << std::endl;
-  std::cout << (int)GetIntensity(test_mat, 1,2) << std::endl;
+  std::cout << (int)GetIntensity(0,0,test_mat, ) << std::endl;
+  std::cout << (int)GetIntensity(0,1,test_mat, ) << std::endl;
+  std::cout << (int)GetIntensity(0,2,test_mat, ) << std::endl;
+  std::cout << (int)GetIntensity(1,0,test_mat, ) << std::endl;
+  std::cout << (int)GetIntensity(1,1,test_mat, ) << std::endl;
+  std::cout << (int)GetIntensity(1,2,test_mat, ) << std::endl;
 
   std::cout << std::endl;
 
