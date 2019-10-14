@@ -12,8 +12,8 @@ int main(int argc, const char* argv[]) {
   /* cv::Ptr<Feature2D> f2d = ORB::create(); */
 
   // you get the picture, i hope..
-  Mat img_1 = imread("/home/atlas1/Pictures/keep/test/1.pgm", 1);
-  Mat img_2 = imread("/home/atlas1/Pictures/keep/test/2.pgm", 1);
+  cv::Mat img_1 = imread("/home/atlas1/Pictures/keep/test/1.pgm", 1);
+  cv::Mat img_2 = imread("/home/atlas1/Pictures/keep/test/2.pgm", 1);
 
   //-- Step 1: Detect the keypoints:
   std::vector<KeyPoint> keypoints_1, keypoints_2;    
@@ -27,7 +27,7 @@ int main(int argc, const char* argv[]) {
   // cv::imwrite("sift_result2.jpg", out_2);
 
   //-- Step 2: Calculate descriptors (feature vectors)    
-  Mat descriptors_1, descriptors_2;    
+  cv::Mat descriptors_1, descriptors_2;    
   f2d->compute(img_1, keypoints_1, descriptors_1);
   f2d->compute(img_2, keypoints_2, descriptors_2);
 
@@ -37,7 +37,7 @@ int main(int argc, const char* argv[]) {
   matcher.match(descriptors_1, descriptors_2, matches);
 
 
-  Mat img_matches;
+  cv::Mat img_matches;
   drawMatches(img_1, keypoints_1, img_2, keypoints_2,
                matches, img_matches, Scalar::all(-1), Scalar::all(-1),
                vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);

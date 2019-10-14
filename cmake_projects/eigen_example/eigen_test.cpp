@@ -12,7 +12,7 @@ int main() {
    // cout << "Here is the right hand side b:\n" << b << endl;
    //
    Eigen::Matrix<double,4,1> v,w;
-	
+
    int k=0;
    for(int i=0; i<2;i++){
    	for(int j=0;j<2;j++){
