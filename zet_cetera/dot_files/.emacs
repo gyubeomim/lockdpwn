@@ -33,17 +33,14 @@
     rainbow-delimiters     ;; 괄호를 색색깔있게 바꿔줍니다
     jedi                   ;; 파이썬용 jedi 패키지 (terminal 창에서 $ pip install jedi epc pylint virtualenv 를 쳐줘야 정상작동하는듯 하다)
     highlight-indentation  ;; 파이썬용 들여쓰기 라인을 보여주는 패키지 (Alt + l로 설정했다)
-    ess                    ;; R 언어 전용 패키지입니다
     gtags                  ;; 함수나 여러 변수들의 선언을 찾아볼 수 있게 해주는 패키지
     highlight-symbol       ;; 같은 단어들 하이라이팅 해주는 패키지 (보기 좋게 글자를 색상을 칠해준다)
-    ;; highlight-symbol.el 파일에서
-    ;; highlight-symbol-colors ==> highlight-symbol-color로 수정한다 (색깔을 제대로 표시하지 못한다)
-    ;; 바로 적용이 안되므로 .elc 파일을 삭제하던지 아니면 M-x : byte-compile-file을 실시한다
     yasnippet              ;; 여러가지 자주 사용하는 구문들을 쉽게 사용할 수 있게 템플릿 형식으로 제공해주는 패키지
     ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
     hide-comnt             ;; 주석을 감췄다 보여줬다 하는 패키지 (F9 단축키)
     php-mode               ;; php 모드를 활성화합니다 (~/.emacs.d/elpa/php-mode.../php-mode.elc 파일이 잘못된 듯 합니다 이걸 삭제해주면 정상적으로 실행됩니다)
     flycheck               ;; 코드의 오류를 검사해주는 패키지
+    
     robe                   ;; Ruby 관련된 패키지들 : 변수, 함수로 이동할 수 있는 패키지 : robe start를 입력해줘야 합니다
     inf-ruby               ;; Ruby 관련된 패키지들 : ruby shell (irb)를 사용할 수 있는 패키지
     rvm                    ;; Ruby 관련된 패키지들 : ruby version 관리해주는 패키지
@@ -103,6 +100,7 @@
     htmlize                ;; org-preview-html을 실행하기 위한 의존성 패키지
 
 
+    ;; ess                    ;; R 언어 전용 패키지입니다
     ;; ein                    ;; emacs에서 Ipython Notebook를 사용하게 해주는 패키지
     ;; nlinum                 ;; linum-mode 대체하는 패키지, linum-mode가 속도가 매우 느려서 바꿨다 (26.1 업그레이드하면서 필요없어짐)
     ;; ycmd
@@ -2013,7 +2011,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (electric-operator auto-indent-mode cmake-mode spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
+    (electric-operator auto-indent-mode cmake-mode spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)

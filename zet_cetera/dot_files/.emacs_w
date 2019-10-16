@@ -24,9 +24,6 @@
     key-chord              ;; 여러 쉬운 단축키들을 등록해주 수 있는 패키지 ( '..'키를 등록했습니다 )( 클래스 자동완성으로 등록 )
     rainbow-delimiters     ;; 괄호를 색색깔있게 바꿔줍니다
     highlight-symbol       ;; 같은 단어들 하이라이팅 해주는 패키지 (보기 좋게 글자를 색상을 칠해준다)
-    ;; highlight-symbol.el 파일에서
-    ;; highlight-symbol-colors ==> highlight-symbol-color로 수정한다 (색깔을 제대로 표시하지 못한다)
-    ;; 바로 적용이 안되므로 .elc 파일을 삭제하던지 아니면 M-x : byte-compile-file을 실시한다
     yasnippet              ;; 여러가지 자주 사용하는 구문들을 쉽게 사용할 수 있게 템플릿 형식으로 제공해주는 패키지
                            ;; ~/.emacs.d/elpa/yasnippet-.../snippets 에 있는 파일들을 ~/.emacs.d/snippets 에 넣어야 정상적으로 동작합니다
     which-key              ;; 단축키들의 목록을 보여주는 패키지
@@ -2747,7 +2744,7 @@ created by edward 180515"
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (material-theme diminish pandoc-mode org ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile google-c-style flycheck ess ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
+    (material-theme diminish pandoc-mode org ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile google-c-style flycheck ecb duplicate-thing dtrt-indent clean-aindent-mode arduino-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
