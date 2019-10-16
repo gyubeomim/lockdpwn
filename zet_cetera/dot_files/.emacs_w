@@ -2624,6 +2624,9 @@ created by edward 180515"
                   "CAPTURE-todo.org")
                  (string=
                   (buffer-name)
+                  "CAPTURE-atlas.org")
+                 (string=
+                  (buffer-name)
                   "CAPTURE-milestone.org"))
                 (return)
               (if
