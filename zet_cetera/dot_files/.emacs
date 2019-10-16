@@ -887,6 +887,9 @@
                                    ("5" "issue of emacs" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "EMACS")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
+                                   ("6" "issue of SNU" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "SNU")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ))
 
      (setq org-refile-targets '((org-agenda-files :level . 1)))
