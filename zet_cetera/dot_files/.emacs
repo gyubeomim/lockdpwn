@@ -1285,8 +1285,8 @@
     ;; C-x b 키로 buffer를 새로고침합니다
     (define-key evil-motion-state-map (kbd "C-x b") 'my-revert-buffer)
 
-    ;; % 키로 cmake 프로젝트를 컴파일합니다
-    (define-key evil-motion-state-map (kbd "%") 'cmake-ide-compile)
+    ;; C-x / 키로 cmake 프로젝트를 컴파일합니다
+    (define-key evil-motion-state-map (kbd "C-x /") 'cmake-ide-compile)
 
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
