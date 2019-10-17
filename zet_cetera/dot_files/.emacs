@@ -961,9 +961,9 @@
                                   (define-key org-agenda-mode-map (kbd "C-c C-o") nil)
                                   (define-key org-agenda-mode-map (kbd "C-c C-p") nil)
 
-                                  ;; [ ] } 키로 org-agenda 목록을 보도록 설정합니다
-                                  (define-key org-agenda-mode-map (kbd "]") 'org-agenda-list)
-                                  (define-key org-agenda-mode-map (kbd "[") 'org-todo-list)
+                                  ;; C-x [ ] 키로 org-agenda 목록을 보도록 설정합니다
+                                  (define-key org-agenda-mode-map (kbd "C-x ]") 'org-agenda-list)
+                                  (define-key org-agenda-mode-map (kbd "C-x [") 'org-todo-list)
 
                                   ;; x 키로 emacs 창을 minimize 합니다
                                   (define-key org-agenda-mode-map (kbd "x") 'suspend-frame)
@@ -1015,6 +1015,9 @@
 (global-set-key (kbd "C-c a") 'org-archive-subtree)
 ;; C-c + ] 키로 cfw org calendar를 실행합니다.
 (global-set-key (kbd "C-c ]") 'cfw:open-org-calendar)
+;; C-x [ ] 키로 org-agenda 목록을 보도록 설정합니다
+(global-set-key (kbd "C-x ]") 'org-agenda-list)
+(global-set-key (kbd "C-x [") 'org-todo-list)
 ;; C-c + # 키로 특정 파일을 엽니다
 (global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
 (global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
@@ -1287,12 +1290,6 @@
 
     ;; org-mode에서 ' 키로 tag를 설정합니다
     (define-key evil-motion-state-map (kbd "'") 'org-set-tags)
-
-    ;; [ ] } 키로 org-agenda 목록을 보도록 설정합니다
-    (define-key evil-motion-state-map (kbd "]") 'org-agenda-list)
-    (define-key evil-motion-state-map (kbd "[") 'org-todo-list)
-    (define-key evil-normal-state-map (kbd "]") 'org-agenda-list)
-    (define-key evil-normal-state-map (kbd "[") 'org-todo-list)
 
     ;; x 키로 emacs 창을 minimize 합니다
     (define-key evil-normal-state-map (kbd "x") 'suspend-frame)
@@ -3457,16 +3454,6 @@ created by edward 180515"
     (define-key magit-revision-mode-map (kbd "<SPC>") 'helm-for-files)
     (define-key magit-process-mode-map (kbd "<SPC>") 'helm-for-files)
 
-    ;; [ ] 키로 org-agenda, todo 목록을 확인합니다
-    (define-key magit-status-mode-map (kbd "]") 'org-agenda-list)
-    (define-key magit-status-mode-map (kbd "[") 'org-todo-list)
-
-    (define-key magit-process-mode-map (kbd "]") 'org-agenda-list)
-    (define-key magit-process-mode-map (kbd "[") 'org-todo-list)
-
-    (define-key magit-diff-mode-map (kbd "]") 'org-agenda-list)
-    (define-key magit-diff-mode-map (kbd "[") 'org-todo-list)
-
     ;; x키로 emacs 창을 최소화합니다.
     (define-key magit-process-mode-map (kbd "x") 'suspend-frame)
     (define-key magit-log-mode-map (kbd "x") 'suspend-frame)
@@ -3553,10 +3540,6 @@ created by edward 180515"
                                (define-key custom-mode-map (kbd "G") 'evil-goto-line)
                                (define-key custom-mode-map (kbd "C-u") 'evil-scroll-up)
                                (define-key custom-mode-map (kbd "C-d") 'evil-scroll-down)
-
-                               ;; [ ] } 키로 org-agenda, todo 목록을 확인합니다
-                               (define-key custom-mode-map (kbd "]") 'org-agenda-list)
-                               (define-key custom-mode-map (kbd "[") 'org-todo-list)
                               ))
 
 ;; C-u 키로 swiper (버퍼 간 빠른이동) 기능을 실행합니다 (NOT USED)
