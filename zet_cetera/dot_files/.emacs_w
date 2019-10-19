@@ -760,8 +760,9 @@
     (format "<img src=\"/pictures/%s\" alt=\"%s\"/>" path desc))))
 
 ;; org source code block options for latex export
-;; Use minted
-(add-to-list 'org-latex-packages-alist '("" "minted"))
+;; use minted and to exclute minted from latex preview, apply below code
+;; https://orgmode.org/worg/org-tutorials/org-latex-preview.html
+(add-to-list 'org-latex-packages-alist '("" "minted" nil))
 (setq org-latex-listings 'minted)
 
 ;; Add the shell-escape flag
