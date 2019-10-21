@@ -1011,8 +1011,6 @@
 (global-set-key (kbd "C-M-\\") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
 ;; C-c + s 키로 특정 키워드를 검색합니다
 (global-set-key (kbd "C-c s") (lambda() (interactive)(org-agenda nil "s")))
-;; C-c + a 키로 subtree를 archive합니다.
-(global-set-key (kbd "C-c a") 'org-archive-subtree)
 ;; C-c + ] 키로 cfw org calendar를 실행합니다.
 (global-set-key (kbd "C-c ]") 'cfw:open-org-calendar)
 ;; C-x [ ] 키로 org-agenda 목록을 보도록 설정합니다
