@@ -771,6 +771,11 @@
      (define-key org-mode-map (kbd "C-c ]") 'cfw:open-org-calendar)
      ;; C-| 키로 org-mode에서 편하게 번호 link를 추가합니다
      (define-key org-mode-map (kbd "C-|") 'insert-number-of-link)
+     ;; C-x + c 키로 다른 tree를 숨기고 현재 tree만 보여주는 명령을 실행합니다.
+     (define-key org-mode-map (kbd "C-x c") (lambda() (interactive)
+                                              (progn
+                                                (outline-hide-other)
+                                                (outline-show-subtree))))
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
