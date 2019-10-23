@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: daily.org snippet by edward0im
+# key: [
+# --
+[ ] $0`(delete-forward-char 1)`

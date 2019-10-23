@@ -1275,13 +1275,13 @@
     ;; evil 모드에서 e,E 키로 빠르게 단어를 highlight 합니다
     (define-key evil-motion-state-map (kbd "e") 'highlight-symbol)
     (define-key evil-motion-state-map (kbd "E") 'highlight-symbol-remove-all)
-    ;; evil 모드에서 f 키로 빠르게 단어 사이를 이동합니다
-    (define-key evil-motion-state-map (kbd "f") 'avy-goto-word-0)
+    ;; evil 모드에서 - 키로 빠르게 단어 사이를 이동합니다
+    (define-key evil-motion-state-map (kbd "-") 'avy-goto-word-0)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
 
-    ;; -,키로 gtag, TAGS 파일을 생성합니다.
-    (define-key evil-motion-state-map (kbd "-") 'create_GTAGS_TAGS)
+    ;; C-x -키로 gtag, TAGS 파일을 생성합니다.
+    (define-key evil-motion-state-map (kbd "C-x -") 'create_GTAGS_TAGS)
 
     ;; C-x t 키로 tabbar mode를 toggle합니다.
     (define-key evil-motion-state-map (kbd "C-x t") 'tabbar-mode)
@@ -2447,8 +2447,8 @@
          (interactive)
          (find-alternate-file "..")))
 
-     ;; for avy-goto-0
-     (define-key dired-mode-map "f" 'avy-goto-word-0)
+     ;; - 키로 빠르게 단어 사이를 이동합니다
+     (define-key dired-mode-map "-" 'avy-goto-word-0)
 
      ;; dired mode 관련 단축키들을 추가했다
      ;; dired mode : Emacs's adaption of find
@@ -2473,8 +2473,8 @@
      ;; dired mode 에서 SPC키로 helm-for-files를 실행합니다
      (define-key dired-mode-map (kbd "SPC") 'helm-for-files)
 
-     ;; - 키로 gtags, etags를 생성하는 명령어들을 실행합니다
-     (define-key dired-mode-map (kbd "-") 'create_GTAGS_TAGS)
+     ;; C-x - 키로 gtags, etags를 생성하는 명령어들을 실행합니다
+     (define-key dired-mode-map (kbd "C-x -") 'create_GTAGS_TAGS)
 
      ;; tab 키로 커서가 가리키고 있는 파일을 임시적으로 봅니다
      (define-key dired-mode-map (kbd "<tab>") 'dired-display-file)
