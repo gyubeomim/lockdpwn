@@ -154,10 +154,8 @@ PS1="$C_LIGHTGREEN\aedward(@atlas)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 alias g1='cd /home/atlas1/gitrepo/lockdpwn'
 alias g2='cd /home/atlas1/gitrepo/ims_org'
-alias g3='cd /home/atlas1/gitrepo/starlaw'
-alias g4='cd /home/atlas1/gitrepo/tigerk0430.github.io'
-alias g5='cd /home/atlas1/gitrepo/ims_dyros'
-alias g6='cd /home/atlas1/gitrepo/ims_ml'
+alias g3='cd /home/atlas1/gitrepo/tigerk0430.github.io'
+alias g4='cd /home/atlas1/gitrepo/starlaw'
 alias gr='cd /home/atlas1/gitrepo/'
 
 # for git command

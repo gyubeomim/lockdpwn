@@ -1369,8 +1369,8 @@
 
     (define-key evil-motion-state-map (kbd "C-v") 'evil-visual-block)
 
-    ;; Ctrl + r 키로 line의 맨 앞으로 이동합니다.
-    (define-key evil-insert-state-map (kbd "C-r") 'move-beginning-of-line)
+    ;; Alt + e 키로 line의 맨 앞으로 이동합니다.
+    (define-key evil-insert-state-map (kbd "M-e") 'move-beginning-of-line)
     ))
 
 ;; evil-mode로 인해 사용하지 않는 전역 키바인딩을 해제합니다
@@ -1420,15 +1420,15 @@
              (local-set-key (kbd "C-e") 'move-end-of-line))
           )
 
-;; Ctrl + r 키로 현재 커서의 라인 맨 뒤칸으로 이동합니다
-(global-set-key (kbd "C-r") 'move-beginning-of-line)
+;; Alt + e 키로 현재 커서의 라인 맨 뒤칸으로 이동합니다
+(global-set-key (kbd "M-e") 'move-beginning-of-line)
 (add-hook 'c-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-r") 'move-beginning-of-line))
+             (local-set-key (kbd "M-e") 'move-beginning-of-line))
           )
 (add-hook 'c++-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-r") 'move-beginning-of-line))
+             (local-set-key (kbd "M-e") 'move-beginning-of-line))
           )
 
 ;; Ctrl + w 키로 helm-find-files 명령을 실행합니다
@@ -3207,6 +3207,12 @@ created by edward 180515"
 ;; Alt + G 단축키로 구문을 fold 접거나 펼치거나 합니다
 (global-set-key "\M-g" 'hs-toggle-hiding)
 
+;; C-x + g 단축키로 같은 level의 구문을 fold 접거나 펼치거나 합니다
+(global-set-key (kbd "C-x g") 'hs-hide-level)
+
+;; C-x + h 단축키로 같은 모든 접힌 구문을 펼칩니다.
+(global-set-key (kbd "C-x h") 'hs-show-all)
+
 ;; Ctrl + Alt + G 키로 주석을 감췄다 보여줬다 하는 단축키 설정
 (hide/show-comments)
 (global-set-key (kbd "C-M-g") 'hide/show-comments-toggle)
@@ -3418,6 +3424,7 @@ created by edward 180515"
     (define-key magit-diff-mode-map (kbd "M-3") nil)
     (define-key magit-diff-mode-map (kbd "M-4") nil)
     (define-key magit-process-mode-map (kbd "M-3") nil)
+    (define-key magit-file-mode-map (kbd "C-x g") nil)
 
     ;; comment(edward): j,k 키를 evil-mode의 vim 키바인딩으로 설정한다
     (define-key magit-log-mode-map (kbd "j") 'evil-next-line)
