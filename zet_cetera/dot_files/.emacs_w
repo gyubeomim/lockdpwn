@@ -1075,7 +1075,7 @@
 
 ;; (load-theme 'solarized-dark t)
 (load-theme 'spacemacs-dark t)
-;; (load-theme 'gruvbox-dark-medium t)
+;(load-theme 'gruvbox-dark-medium t)
 
 ;; PACKAGE: wrap-region
 (require 'wrap-region)
@@ -1165,7 +1165,7 @@
 (global-set-key (kbd "C-S-n") 'delete-frame)
 
 ;; PACKAGE: smart-mode-line
-(setq sml/theme 'dark)
+(setq sml/theme 'respectful)
 (sml/setup)
 
 ;; 다중모니터에서 C-x-5-2를 통해서 새로운 frame을 생성한 다음에 모니터가 작아서 폰트사이즈가 작은 경우 폰트크기를 크게하기 위해 설정한 함수

@@ -1514,8 +1514,8 @@
 
 
 (setq custom-safe-themes t)
-; (load-theme 'solarized-dark t)
-(load-theme 'spacemacs-dark t)
+(load-theme 'solarized-dark t)
+; (load-theme 'spacemacs-dark t)
 ;; comment(edward): gruvbox conflicts with tabbar-mode & git-gutter face.
 ;; so I removed faces in gruvbox.el and recompile it.
 ;;(load-theme 'gruvbox-dark-medium t)
@@ -1728,7 +1728,6 @@
 
 ;; PACKAGE: smart-mode-line
 ;; sml 2018버전 패키지가 multi-term하고 충돌하는 오류가 발생한다. 2019 버전부터는 수정된듯
-(setq sml/theme 'dark)
 (sml/setup)
 
 ;; C-n C-S-n 키로 새로운 frame을 만들고 제거합니다
@@ -2060,6 +2059,7 @@
  '(sml/show-remote nil)
  '(sml/show-trailing-N nil)
  '(sml/size-indication-format "")
+ '(sml/theme (quote respectful))
  '(sml/use-projectile-p (quote before-prefixes))
  '(sml/vc-mode-show-backend nil)
  '(sp-base-key-bindings nil)
@@ -2133,7 +2133,7 @@
  '(hi-pink ((t (:background "pink" :foreground "#b36b91"))))
  '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
  '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
- '(highlight-symbol-face ((t (:background "#1c1c1c" :foreground "yellow"))))
+ '(highlight-symbol-face ((t (:foreground "yellow"))))
  '(iedit-occurrence ((t (:foreground "magenta" :weight bold))))
  '(iedit-read-only-occurrence ((t (:foreground "magenta"))))
  '(magit-diff-hunk-heading ((t (:background "dark slate gray" :foreground "light gray"))))
@@ -2148,8 +2148,9 @@
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-agenda-done ((t (:foreground "gainsboro" :slant italic))))
  '(org-block ((t (:foreground "gainsboro"))))
- '(org-block-begin-line ((t (:inherit org-meta-line :background "#333333" :foreground "gray" :weight normal))))
- '(org-block-end-line ((t (:inherit org-meta-line :background "#333333" :foreground "gray" :weight normal))))
+ '(org-block-begin-line ((t (:inherit org-meta-line :background "#073642" :foreground "gray" :weight normal))))
+ '(org-block-end-line ((t (:inherit org-meta-line :background "#073642" :foreground "gray" :weight normal))))
+ '(org-checkbox ((t (:background "#002b36" :foreground "#839496" :box nil))))
  '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
  '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
  '(org-code ((t (:foreground "aquamarine"))))
@@ -2172,7 +2173,6 @@
  '(org-time-grid ((t (:foreground "gainsboro"))))
  '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
  '(org-verbatim ((t (:foreground "deep pink"))))
- '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
  '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
  '(tabbar-default ((t (:foreground "white" :height 0.9))))
@@ -3207,8 +3207,8 @@ created by edward 180515"
 ;; Alt + G 단축키로 구문을 fold 접거나 펼치거나 합니다
 (global-set-key "\M-g" 'hs-toggle-hiding)
 
-;; C-x + g 단축키로 같은 level의 구문을 fold 접거나 펼치거나 합니다
-(global-set-key (kbd "C-x g") 'hs-hide-level)
+;; C-x + l 단축키로 같은 level의 구문을 fold 접거나 펼치거나 합니다
+(global-set-key (kbd "C-x l") 'hs-hide-level)
 
 ;; C-x + h 단축키로 같은 모든 접힌 구문을 펼칩니다.
 (global-set-key (kbd "C-x h") 'hs-show-all)
