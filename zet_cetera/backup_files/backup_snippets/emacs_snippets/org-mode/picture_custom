@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: picture by edward
+# key: picture
+# --
+#+attr_html: :width ${1:}
+[[../../pictures/${2:}]${3:}

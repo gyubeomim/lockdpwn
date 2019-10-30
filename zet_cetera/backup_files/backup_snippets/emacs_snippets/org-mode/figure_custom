@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: figure by edward
-# key: figure
-# --
-#+CAPTION: ${1:}
-#+LABEL: ${2:}
-#+ATTR_LATEX: :placement [h]
-[[../../pictures/${3:}]${4:}

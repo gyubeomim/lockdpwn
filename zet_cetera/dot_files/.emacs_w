@@ -1882,7 +1882,14 @@ created by edward 180515"
 
                                 ;; org 모드에서 ../pictrues/{path} 경로를 html로 변환할 때는 /pictures/{path}로 변환해주기 위한 함수
                                 ;; 단 경로가 ~/gitrepo/tigerk0430.github.io에 있어야 한다.
-                                (shell-command "sed -i 's/\\.\\.\\/pictures/\\/pictures/g' e:/gitrepo/tigerk0430.github.io/_posts/*.html" t)
+                                (shell-command "sed -i 's/\\.\\.\\/\\.\\.\\/pictures/\\/pictures/g' e:/gitrepo/tigerk0430.github.io/_posts/*.html" t)
+                                ))
+
+;; Ctrl + Alt + 2 키로 jekyll 블로그의 .org 포스트를 올립니다 (현재 버퍼의 파일만)
+(global-set-key (kbd "C-M-2") (lambda ()
+                                (interactive)
+                                (org-publish-current-file)
+                                (shell-command "sed -i 's/\\.\\.\\/\\.\\.\\/pictures/\\/pictures/g' e:/gitrepo/tigerk0430.github.io/_posts/*.html" t)
                                 ))
 
 ;; Ctrl + 1 키로 .org 파일을 twitter bootstrap 스타일의 html 파일로 저장합니다

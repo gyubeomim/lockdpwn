@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
-# name: latexfigure by edward0im
-# key: latexfig
+# name: figure by edward
+# key: figure
 # --
 #+CAPTION: ${1:}
 #+LABEL: ${2:}
-#+ATTR_LATEX: ${3::placement [h]}
-[[${4:}]]
+#+ATTR_LATEX: :placement [h]
+[[../../pictures/${3:}]${4:}
