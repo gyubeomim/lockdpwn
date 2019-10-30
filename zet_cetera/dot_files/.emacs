@@ -857,9 +857,13 @@
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
-                                    ("a" "assign todo of atlas" entry
+                                    ("a" "assign todo in atlas" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/atlas-robotics/atlas.org" "todo")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
+                                    ("i" "assign issue in atlas" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/notes/atlas-robotics/atlas.org" "issue")
+                                    "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("u" "add ubuntu tip" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
