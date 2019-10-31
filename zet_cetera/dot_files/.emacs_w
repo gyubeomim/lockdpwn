@@ -2758,6 +2758,7 @@ created by edward 180515"
               1
               (quote font-lock-variable-name-face))))))))
  '(selection-coding-system (quote utf-8-unix))
+ '(shell-escape-mode "-shell-escape")
  '(sml/battery-format "")
  '(sml/col-number-format "")
  '(sml/full-mode-string " ")

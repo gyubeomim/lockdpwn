@@ -2033,6 +2033,7 @@
                        "\\_>"))
               1
               (quote font-lock-variable-name-face))))))))
+ '(shell-escape-mode "-shell-escape")
  '(sml/battery-format "")
  '(sml/col-number-format "")
  '(sml/full-mode-string " ")
