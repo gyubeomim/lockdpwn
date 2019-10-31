@@ -443,6 +443,10 @@ alias nv='nvidia-smi -l'
 alias blog='cd /home/edward/gitrepo/tigerk0430.github.io && ./push_master.sh'
 alias blogp='cd /home/edward/gitrepo/tigerk0430.github.io && git pull origin master'
 
+# for vim
+alias v='vim'
+alias vb='vim ~/.bashrc'
+
 source /opt/ros/kinetic/setup.bash
 source /home/edward/catkin_ws/devel/setup.bash
 # source /home/edward/cartographer_ws/install_isolated/setup.bash

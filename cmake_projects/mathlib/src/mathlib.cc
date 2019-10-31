@@ -2,7 +2,9 @@
 
 namespace mathlib {
 
-
+	Quaternion::Quaternion() {
+	
+	}
 
 
 } // namespace mathlib
