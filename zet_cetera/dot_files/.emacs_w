@@ -2560,19 +2560,7 @@ created by edward 180515"
             (point-at-eol)
             (quote
              (face
-              (:foreground "white" :weight bold)))))))
-     (lambda nil
-       (save-excursion
-         (goto-char
-          (point-min))
-         (while
-             (re-search-forward "deadline" nil t)
-           (add-text-properties
-            (match-beginning 0)
-            (point-at-eol)
-            (quote
-             (face
-              (:foreground "gold" :underline t :weight bold))))))))))
+              (:foreground "white" :weight bold))))))))))
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-time-grid
@@ -2866,7 +2854,7 @@ created by edward 180515"
  '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
  '(org-tag ((t (:foreground "gainsboro" :underline nil :slant normal :weight bold :height 1.0))))
  '(org-time-grid ((t (:foreground "gainsboro"))))
- '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight bold))))
+ '(org-upcoming-deadline ((t (:foreground "yellow2" :underline nil :weight regular))))
  '(org-verbatim ((t (:foreground "deep pink"))))
  '(sml/projectile ((t (:inherit sml/git :foreground "deep sky blue" :weight bold))))
  '(tabbar-button ((t (:inherit tabbar-default))))
