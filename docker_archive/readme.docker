@@ -1,0 +1,7 @@
+# How to build
+
+1. Go to directory which has Dockerfile
+2. run command
+
+docker build -t {tag name} -f Dockerfile .
+
