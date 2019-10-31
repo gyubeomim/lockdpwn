@@ -1518,8 +1518,8 @@
 
 
 (setq custom-safe-themes t)
-(load-theme 'solarized-dark t)
-; (load-theme 'spacemacs-dark t)
+;;(load-theme 'solarized-dark t)
+(load-theme 'spacemacs-dark t)
 ;; comment(edward): gruvbox conflicts with tabbar-mode & git-gutter face.
 ;; so I removed faces in gruvbox.el and recompile it.
 ;;(load-theme 'gruvbox-dark-medium t)
@@ -2152,9 +2152,9 @@
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-agenda-done ((t (:foreground "gainsboro" :slant italic))))
  '(org-block ((t (:foreground "gainsboro"))))
- '(org-block-begin-line ((t (:inherit org-meta-line :background "#073642" :foreground "gray" :weight normal))))
- '(org-block-end-line ((t (:inherit org-meta-line :background "#073642" :foreground "gray" :weight normal))))
- '(org-checkbox ((t (:background "#002b36" :foreground "#839496" :box nil))))
+ ;;'(org-block-begin-line ((t (:inherit org-meta-line :background "#073642" :foreground "gray" :weight normal))))
+ ;;'(org-block-end-line ((t (:inherit org-meta-line :background "#073642" :foreground "gray" :weight normal))))
+ ;;'(org-checkbox ((t (:background "#002b36" :foreground "#839496" :box nil))))
  '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
  '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
  '(org-code ((t (:foreground "aquamarine"))))
@@ -3007,7 +3007,7 @@ created by edward 180515"
 (global-set-key (kbd "C-M-2") (lambda ()
                                 (interactive)
                                 (org-publish-current-file)
-                                (shell-command "sed -i 's/\\.\\.\\/\\.\\.\\/pictures/\\/pictures/g' e:/gitrepo/tigerk0430.github.io/_posts/*.html" t)
+                                (shell-command "sed -i 's/..\\/..\\/pictures/\\/pictures/g' ~/gitrepo/tigerk0430.github.io/_posts/*.html" t)
                                 ))
 
 ;; C-1 키로 현재 파일에서 빠르게 특정 함수나 변수로 이동합니다
