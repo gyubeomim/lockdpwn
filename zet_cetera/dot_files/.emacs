@@ -1120,6 +1120,7 @@
 ;; Sample minted options.
 (setq org-latex-minted-options '(
                                  ("frame" "lines")
+                                 ("breaklines")
                                  ("fontsize" "\\scriptsize")
                                  ("xleftmargin" "\\parindent")
                                  ;;("linenos" "")
