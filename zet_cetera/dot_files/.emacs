@@ -1567,6 +1567,10 @@
 ;; PACKAGE: doc-view-mode
 ;; comment(edward): linum-mode가 있으면 pdf viewer가 매우 느려진다
 (add-hook 'doc-view-mode-hook (lambda () (linum-mode -1)))
+
+;; 해당 옵션을 추가하지 않으면 latex preview 도중 계속 "Error running timer `doc-view-display': (error "Selecting deleted buffer") 에러가 발생한다.
+(cancel-function-timers 'doc-view-display)
+
 ;; comment(edward): image도 마찬가지
 (add-hook 'image-mode-hook (lambda () (linum-mode -1)))
 
