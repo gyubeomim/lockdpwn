@@ -29,5 +29,9 @@ namespace mathlib {
 
   };
 
+  class AngleAxis { 
+
+  };
+
 } // namespace mathlib
 
