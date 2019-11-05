@@ -1,9 +1,10 @@
 # -*- mode: snippet -*-
-# name: figure
-# key: fig
+# name: figure (edited by edward)
+# key: figure
 # --
-\begin{figure}[ht]
+\begin{figure}[${1:}]
   \centering
-  \includegraphics[${1:options}]{figures/${2:path.pdf}}
-  \caption{\label{fig:${3:label}} $0}
+  \label{${2:}}
+  \includegraphics[${3:}]{${4:}}
+  \caption{$0}
 \end{figure}
