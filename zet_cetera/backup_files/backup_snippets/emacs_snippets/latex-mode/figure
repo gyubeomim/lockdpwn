@@ -4,7 +4,7 @@
 # --
 \begin{figure}[${1:}]
   \centering
-  \label{${2:}}
-  \includegraphics[${3:}]{${4:}}
-  \caption{$0}
+  \includegraphics[${2:}]{${3:}}
+  \caption{${4:}}
+  \label{$0}
 \end{figure}
