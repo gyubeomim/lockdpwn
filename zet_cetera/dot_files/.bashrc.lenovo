@@ -441,6 +441,8 @@ alias blogp='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io && git pull ori
 alias vb='vim ~/.bashrc'
 alias v='vim'
 
+alias downd='cd /media/dyros-data/Downloads_d'
+
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/catkin_ws/devel/setup.bash
 source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash

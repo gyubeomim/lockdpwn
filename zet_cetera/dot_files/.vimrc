@@ -379,7 +379,7 @@ filetype plugin indent on
 
 
 " 자동으로 라인의 끝에서 다음라인으로 넘어가게 해주는 코드
-set whichwrap+=h,l
+set whichwrap+=h,l,<,>
 set noswapfile
 
 
