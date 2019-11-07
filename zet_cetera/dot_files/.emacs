@@ -1111,10 +1111,10 @@
 
 ;; Add the shell-escape flag
 (setq org-latex-pdf-process '(
-                              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                              "pdflatex -interaction nonstopmode -output-directory %o %f"
                               ;; "bibtex %b"
-                              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-                              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                              "pdflatex -interaction nonstopmode -output-directory %o %f"
+                              "pdflatex -interaction nonstopmode -output-directory %o %f"
                               ))
 
 ;; Sample minted options.
@@ -1556,6 +1556,15 @@
      ;; comment(edward): 단축키 해제
      (define-key latex-mode-map (kbd "C-c C-o") nil)
      (define-key latex-mode-map (kbd "C-c C-p") nil)
+
+     ;; C-c C-v 키로 한번에 latex bibtex latex latex 컴파일을 수행합니다.
+     (define-key latex-mode-map (kbd "C-c C-v") (lambda ()
+                                                  (interactive)
+                                                  (tex-compile (file-name-directory buffer-file-name) (concat "pdflatex " (file-name-nondirectory (buffer-file-name))))
+                                                  (tex-compile (file-name-directory buffer-file-name) (concat "bibtex --min-crossref=100 " (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))))
+                                                  (tex-compile (file-name-directory buffer-file-name) (concat "pdflatex " (file-name-nondirectory (buffer-file-name))))
+                                                  (tex-compile (file-name-directory buffer-file-name) (concat "pdflatex " (file-name-nondirectory (buffer-file-name))))
+                                                  ))
      ))
 
 (eval-after-load "bibtex"
