@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: return doxygen by edward
+# key: return
+# --
+/// \return $0
