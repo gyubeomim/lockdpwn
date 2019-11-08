@@ -7,28 +7,38 @@ namespace mathlib {
 
 class SO3{
  private:
+  /// \brief Lie algera so3 element.
   Eigen::Matrix3d so3_;
+
+  /// \brief Lie group SO3 element.
   Eigen::Matrix3d SO3_;
 
  public:
+  /// \brief The constructor.
   SO3();
 
+  /// \brief The constructor.
+  /// \param[in] so3 Lie algebra so3 element.
   SO3(Eigen::Matrix3d so3);
 
+  /// \brief The destructor.
   ~SO3() {}
 
-  /// \brief Get lie algebra so(3) from 3D vector.
+  /// \brief Compute lie algebra so(3) from 3D vector.
   /// \param[in] w Input vector
   /// \return so3 element.
-  Eigen::Matrix3d Compute_so3(Eigen::Vector3d w);
+  void Compute_so3(Eigen::Vector3d w);
 
   /// \brief Perform exponential mapping.
   /// \param[in] so3 Lie algebra so3 element.
   /// \return SO(3) rotation matrix.
-  Eigen::Matrix3d exp(Eigen::Matrix3d so3);
+  void exp(Eigen::Matrix3d so3);
 
  public:
+  /// \brief Get so3 element.
   Eigen::Matrix3d Getso3() { return so3_; }
+
+  /// \brief Get SO3 rotation matrix.
   Eigen::Matrix3d GetSO3() { return SO3_; }
 };
 

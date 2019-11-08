@@ -45,5 +45,22 @@ double GetMagnitudeAndNormalize(Eigen::Matrix3d& X) {
   return magnitude;
 }
 
+Eigen::Matrix3d RotateZ(double yaw) {
+  Eigen::Matrix3d result;
+
+  result(0,0) = std::cos(yaw);
+  result(0,1) = -std::sin(yaw);
+  result(0,2) = 0;
+
+  result(1,0) = std::sin(yaw);
+  result(1,1) = std::cos(yaw);
+  result(1,2) = 0;
+
+  result(2,0) = 0;
+  result(2,1) = 0;
+  result(2,2) = 1;
+
+  return result;
+}
 
 } // namespace mathlib

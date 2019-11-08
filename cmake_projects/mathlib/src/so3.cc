@@ -9,12 +9,12 @@ SO3::SO3(Eigen::Matrix3d so3) {
   exp(so3);
 }
 
-Eigen::Matrix3d SO3::Compute_so3(Eigen::Vector3d w) {
+void SO3::Compute_so3(Eigen::Vector3d w) {
   so3_ =  skew(w);
 }
 
 // https://en.wikipedia.org/wiki/3D_rotation_group
-Eigen::Matrix3d SO3::exp(Eigen::Matrix3d so3) {
+void SO3::exp(Eigen::Matrix3d so3) {
   double theta = GetMagnitudeAndNormalize(so3);
 
   double s = std::sin(theta);
