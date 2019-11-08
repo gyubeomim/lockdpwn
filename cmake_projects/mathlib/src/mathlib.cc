@@ -45,15 +45,51 @@ double GetMagnitudeAndNormalize(Eigen::Matrix3d& X) {
   return magnitude;
 }
 
-Eigen::Matrix3d RotateZ(double yaw) {
+Eigen::Matrix3d RotateX(double angle) {
   Eigen::Matrix3d result;
 
-  result(0,0) = std::cos(yaw);
-  result(0,1) = -std::sin(yaw);
+  result(0,0) = 1;
+  result(0,1) = 0;
   result(0,2) = 0;
 
-  result(1,0) = std::sin(yaw);
-  result(1,1) = std::cos(yaw);
+  result(1,0) = 0;
+  result(1,1) = std::cos(angle);
+  result(1,2) = -std::sin(angle);
+
+  result(2,0) = 0;
+  result(2,1) = std::sin(angle);
+  result(2,2) = std::cos(angle);
+
+  return result;
+}
+
+Eigen::Matrix3d RotateY(double angle) {
+  Eigen::Matrix3d result;
+
+  result(0,0) = std::cos(angle);
+  result(0,1) = 0;
+  result(0,2) = std::sin(angle);
+
+  result(1,0) = 0;
+  result(1,1) = 1;
+  result(1,2) = 0;
+
+  result(2,0) = -std::sin(angle);
+  result(2,1) = 0;
+  result(2,2) = std::cos(angle);
+
+  return result;
+}
+
+Eigen::Matrix3d RotateZ(double angle) {
+  Eigen::Matrix3d result;
+
+  result(0,0) = std::cos(angle);
+  result(0,1) = -std::sin(angle);
+  result(0,2) = 0;
+
+  result(1,0) = std::sin(angle);
+  result(1,1) = std::cos(angle);
   result(1,2) = 0;
 
   result(2,0) = 0;

@@ -33,7 +33,20 @@ double dot(Eigen::Vector3d v, Eigen::Vector3d w);
 /// \return Magnitude of the matrix.
 double GetMagnitudeAndNormalize(Eigen::Matrix3d& X);
 
+/// \brief Get rotation matrix of x axis.
+/// \param[in] angle Amount of rotation.
+/// \return Rotation matrix.
+Eigen::Matrix3d RotateX(double angle);
 
+/// \brief Get rotation matrix of y axis.
+/// \param[in] angle Amount of rotation.
+/// \return Rotation matrix.
+Eigen::Matrix3d RotateY(double angle);
+
+/// \brief Get rotation matrix of z axis.
+/// \param[in] angle Amount of rotation.
+/// \return Rotation matrix.
+Eigen::Matrix3d RotateZ(double angle);
 
 }// namespace mathlib
 #endif /* MATHLIB_H */
