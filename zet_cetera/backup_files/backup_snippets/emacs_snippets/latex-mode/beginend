@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: beginend by edward
+# key: beginend
+# --
+\begin{${1:}}
+$0
+\end{$1}
