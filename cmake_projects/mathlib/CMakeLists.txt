@@ -15,15 +15,15 @@ include_directories(
 
 add_library(mathlib
   src/mathlib.cc
+  src/so3.cc
   )
 target_link_libraries(mathlib
   ${EIGEN3_LIBS}
   )
 
 #executable--------------------------------------
-
 add_executable(mathlib_test
-  src/mathlib_test.cc
+  src/test/mathlib_test.cc
   )
 target_link_libraries(mathlib_test
   ${EIGEN3_LIBS}

@@ -1,7 +1,5 @@
 #include "mathlib.h"
 
-#include <iostream>
-
 int main(int argc, char **argv) {
   Eigen::Vector3d v = Eigen::Vector3d(1,2,3);
   Eigen::Vector3d w = Eigen::Vector3d(4,5,6);

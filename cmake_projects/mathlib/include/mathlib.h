@@ -1,9 +1,15 @@
+#ifndef MATHLIB_H
+#define MATHLIB_H
+
 #include <Eigen/Dense>
 #include <Eigen/Core>
 
 #include <iostream>
 
+#include "so3.h"
+
 namespace mathlib {
+
 
 /// \brief Perform skew symmetric matrix.
 /// \param[in] w Input 3D vector.
@@ -28,17 +34,6 @@ double dot(Eigen::Vector3d v, Eigen::Vector3d w);
 double GetMagnitudeAndNormalize(Eigen::Matrix3d& X);
 
 
-namespace SO3 {
-/// \brief Get lie algebra so(3) from 3D vector.
-/// \param[in] w Input vector
-/// \return so3 element.
-Eigen::Matrix3d so3(Eigen::Vector3d w);
-
-/// \brief Perform exponential mapping.
-/// \param[in] so3 Lie algebra so3 element.
-/// \return SO(3) rotation matrix.
-Eigen::Matrix3d exp(Eigen::Matrix3d so3);
-}// namespace SO3
-
 
 }// namespace mathlib
+#endif /* MATHLIB_H */
