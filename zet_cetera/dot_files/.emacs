@@ -3765,4 +3765,7 @@ created by edward 180515"
 ;; <2018-12-19 수> ==> <2018-12-19 Wed>
 (setq system-time-locale "C")
 
+;; emacs titlebar의 이름을 제거합니다.
+(setq frame-title-format "")
+
 (message "[+] All Settings are loaded!")

@@ -2492,6 +2492,9 @@ created by edward 180515"
  'user
  '(variable-pitch ((t (:family "Roboto Mono" :weight normal)))))
 
+;; emacs titlebar의 이름을 제거합니다.
+(setq frame-title-format "")
+
 ;; Variable Customizing==========================================================================
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
