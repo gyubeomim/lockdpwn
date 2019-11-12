@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "so3.h"
+#include "rotation_matrix.h"
 
 namespace mathlib {
 
