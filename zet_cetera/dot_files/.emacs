@@ -2912,7 +2912,7 @@ created by edward 180515"
 
 ;; 처음 gdb를 시작할 때 생성되는 창을 설정하는 함수 (my-gdb-setup-windows5) 로 설정했다 (defadvice로 설정하는 듯)
 (defadvice gdb-setup-windows (around setup-more-gdb-windows activate)
-  (my-gdb-setup-windows5)
+  (my-gdb-setup-windows1)
   )
 
 ;;f1 이전 버퍼창 이동
