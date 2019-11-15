@@ -27,6 +27,7 @@ endif()
 add_library(mathlib
 	src/mathlib.cc
 	src/so3.cc
+	src/rotation_matrix.cc
 	)
 target_link_libraries(mathlib
 	${EIGEN3_LIBS}

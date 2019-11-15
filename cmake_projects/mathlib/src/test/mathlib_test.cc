@@ -14,6 +14,7 @@ double rad2deg(double radian) {
 }
 
 int main(int argc, char** argv) {
+  // general operations
   Eigen::Vector3d v = Eigen::Vector3d(1, 2, 3);
   Eigen::Vector3d w = Eigen::Vector3d(4, 5, 6);
 
@@ -25,6 +26,7 @@ int main(int argc, char** argv) {
   std::cout << std::endl
             << mathlib::dot(v, w) << std::endl;
 
+  // SO3
   mathlib::SO3* _SO3 = new mathlib::SO3();
 
   _SO3->Compute_so3(w);
@@ -44,6 +46,17 @@ int main(int argc, char** argv) {
             << mathlib::RotateY(deg2rad(90)) << std::endl;
   std::cout << std::endl
             << mathlib::RotateZ(deg2rad(90)) << std::endl;
+
+  // Rotation Matrix
+  mathlib::RotationMatrix* rot = new mathlib::RotationMatrix();
+
+  Eigen::Vector4d quat = Eigen::Vector4d(0, 0, 0, 1);
+  std::cout << quat.transpose() << std::endl;
+
+  rot->ConvertFromQuaternion(quat);
+
+  std::cout << "Rotation Matrix: \n"
+            << rot->GetR() << std::endl;
 
   delete _SO3;
 
