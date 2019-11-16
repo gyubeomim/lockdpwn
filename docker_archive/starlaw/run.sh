@@ -17,9 +17,13 @@ docker run \
 	-v /dev/bus/usb:/dev/bus/usb \
 	-v $XSOCK:$XSOCK:rw \
 	-v $XAUTH:$XAUTH:rw \
-	-v /media/data/gitrepo/dv_ws/dyros_ws/docker_ws/src_ubuntu_cuda9.0:/root/docker_ws/src \
-	-v /media/data/gitrepo/dv_ws/dyros_ws/docker_ws/not_used_ubuntu_cuda9.0:/root/docker_ws/not_used \
 	-v /media/data/bag_files:/root/bag_files \
-	-v ~/share_docker:/root/share_docker \
+	-v /home/${USER}/share_docker:/root/share_docker \
 	--expose 22 \
 	edward0im/starlaw
+
+
+
+#deprecated
+# -v /media/data/gitrepo/dv_ws/dyros_ws/docker_ws/src_ubuntu_cuda9.0:/root/docker_ws/src \
+# -v /media/data/gitrepo/dv_ws/dyros_ws/docker_ws/not_used_ubuntu_cuda9.0:/root/docker_ws/not_used \

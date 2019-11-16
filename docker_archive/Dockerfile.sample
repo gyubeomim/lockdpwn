@@ -1,3 +1,4 @@
+# comment(edward): this Dockerfile creates another Ubuntu 16.04 environment.
 FROM ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 

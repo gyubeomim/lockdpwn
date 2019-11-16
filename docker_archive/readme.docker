@@ -1,7 +1,7 @@
 # How to build
 
-1. Go to directory which has Dockerfile
-2. run command
+1. Go to directory which has Dockerfile.
+2. run shell script.
 
 docker build -t {tag name} -f {Dockerfile name} .
 
