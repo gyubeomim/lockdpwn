@@ -447,6 +447,8 @@ source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/catkin_ws/devel/setup.bash
 source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash
 
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/dyros-vehicle/gitrepo/ORB_SLAM2/Examples/ROS
+
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'
 # alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/directorPython'
