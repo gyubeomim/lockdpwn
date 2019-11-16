@@ -3,9 +3,9 @@
 # key: class
 # --
 class ${1: }{
-private:
+ public:
         ${2: }
-public:
+ private:
         ${3: }
 };
 $0
