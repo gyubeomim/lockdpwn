@@ -7,9 +7,7 @@ xhost +local:docker
 docker run \
 	--runtime=nvidia \
 	--net=host \
-	--name starlaw \
-	-d \
-	-p 8654:22 \
+	--name starlaw-slam1 \
 	-it \
 	--env="XAUTHORITY=${XAUTH}" \
 	--env="DISPLAY=unix${DISPLAY}" \
@@ -19,13 +17,13 @@ docker run \
 	-v /dev/bus/usb:/dev/bus/usb \
 	-v ${XSOCK}:${XSOCK}:rw \
 	-v ${XAUTH}:${XAUTH}:rw \
-	-v /media/data/bag_files:/root/bag_files \
 	-v /home/${USER}/share_docker:/root/share_docker \
 	--expose 22 \
-	edward0im/starlaw:scratch
+	edward0im/starlaw:slam1
 
 
 
 #deprecated
 # -v /media/data/gitrepo/dv_ws/dyros_ws/docker_ws/src_ubuntu_cuda9.0:/root/docker_ws/src \
 # -v /media/data/gitrepo/dv_ws/dyros_ws/docker_ws/not_used_ubuntu_cuda9.0:/root/docker_ws/not_used \
+# -v /media/data/bag_files:/root/bag_files \
