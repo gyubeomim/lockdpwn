@@ -2,7 +2,6 @@
 set -e
 
 ## 버전을 변경하고 싶으시면 아래 코드를 변경하면 됩니다.
-## 24.5, 25.1, 25.2 recommended
 readonly version="26.1"
 
 # install dependencies
