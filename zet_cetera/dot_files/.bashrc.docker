@@ -126,7 +126,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_LIGHTBLUE\u(@docker_lsdslam)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTBLUE\u(@docker)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # for git command
 alias gg='git add . && git commit -m '"'updated'"' && git push '
@@ -142,6 +142,23 @@ alias cred='git config credential.helper "cache --timeout=864000000" --global'
 alias gc='git checkout'
 alias gb='git branch'
 alias gs='git status'
+
+
+# for tmux 
+alias tm='tmux'
+alias tmux='TERM=xterm-256color tmux -2 -u'
+alias tls='tmux ls'                   # session list 확인
+alias t='tmux switch -t '             # 원하는 session으로 이동
+alias ta='tmux attach -t '            # 원하는 session으로 붙음 (tmux를 실행하고 있지 않은 경우)
+alias td='tmux detach'                # 해당 session에서 detach 합니다
+alias tk='tmux kill-session -t '      # 해당 session에서 kill 합니다
+alias t4='tmux -u new-session -d    
+tmux split-window -v
+tmux split-window -h
+tmux select-pane -U
+tmux split-window -h
+tmux select-pane -L
+tmux attach-session -d'
 
 # for cd command 
 alias cd='cd '

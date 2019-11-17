@@ -7,7 +7,8 @@ xhost +local:docker
 docker run \
 	--runtime=nvidia \
 	--net=host \
-	--name lsdslam_docker -it \
+	--name lsdslam \
+    -it \
 	--env="XAUTHORITY=${XAUTH}" \
 	--env="DISPLAY=unix${DISPLAY}" \
 	--env="XDG_RUNTIME_DIR=/run/user/1000" \
