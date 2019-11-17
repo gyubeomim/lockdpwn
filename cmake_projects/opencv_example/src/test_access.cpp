@@ -68,16 +68,16 @@ int main(int argc, const char* argv[]) {
 
   std::cout << std::endl;
 
-  std::cout << (int)GetIntensity(0,0,test_mat, ) << std::endl;
-  std::cout << (int)GetIntensity(0,1,test_mat, ) << std::endl;
-  std::cout << (int)GetIntensity(0,2,test_mat, ) << std::endl;
-  std::cout << (int)GetIntensity(1,0,test_mat, ) << std::endl;
-  std::cout << (int)GetIntensity(1,1,test_mat, ) << std::endl;
-  std::cout << (int)GetIntensity(1,2,test_mat, ) << std::endl;
+  // std::cout << (int)GetIntensity(0,0,test_mat, ) << std::endl;
+  // std::cout << (int)GetIntensity(0,1,test_mat, ) << std::endl;
+  // std::cout << (int)GetIntensity(0,2,test_mat, ) << std::endl;
+  // std::cout << (int)GetIntensity(1,0,test_mat, ) << std::endl;
+  // std::cout << (int)GetIntensity(1,1,test_mat, ) << std::endl;
+  // std::cout << (int)GetIntensity(1,2,test_mat, ) << std::endl;
 
   std::cout << std::endl;
 
-  std::cout << BilinearInterpolation(test_mat, Eigen::Vector2d(.5,.5)) << std::endl;
+  // std::cout << BilinearInterpolation(test_mat, Eigen::Vector2d(.5,.5)) << std::endl;
 
   return 0;
 }

@@ -3353,10 +3353,10 @@ created by edward 180515"
   (interactive)
   (helm :sources (cmake-ide-gdb-files-source)))
 
-(define-key c-mode-base-map (kbd "C-c q")
-  (function cmake-ide-helm-run-gdb))
+;; C-c q 키로 해당 cmake 프로젝트에서 gdb exe 파일을 찾아주는 명령을 실행합니다.
+(define-key c-mode-base-map (kbd "C-c q") (function cmake-ide-helm-run-gdb))
 
-;; C-S-l 키로 python 코드에서 들여쓰기를 보여줍니다
+;; C-S-l 키로 python 코드에서 들여쓰기를 보여줍니다.
 (global-set-key (kbd "C-S-l") 'highlight-indentation-mode)
 
 
