@@ -234,9 +234,9 @@ alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE
 alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
-# alias cw='cd /home/dyros-vehicle/catkin_ws'
-# alias cs='cd /home/dyros-vehicle/catkin_ws/src'
-# alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make'
+# for debugging
+alias cm_relwithdebinfo='cd /home/dyros-vehicle/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE="RelWithDebInfo"'
+alias cma_relwithdebinfo='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE="RelWithDebInfo"'
 
 alias cb='cd ~/bag_files'
 alias cbb='cd ~/bag_files_4tb'
