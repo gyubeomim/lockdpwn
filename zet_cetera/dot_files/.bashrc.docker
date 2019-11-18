@@ -126,7 +126,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_LIGHTBLUE\u(@docker)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTBLUE\u(@docker.starlaw)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # for git command
 alias gg='git add . && git commit -m '"'updated'"' && git push '
@@ -142,7 +142,6 @@ alias cred='git config credential.helper "cache --timeout=864000000" --global'
 alias gc='git checkout'
 alias gb='git branch'
 alias gs='git status'
-
 
 # for tmux 
 alias tm='tmux'
@@ -174,7 +173,7 @@ alias sob='source ~/.bashrc'
 
 source /opt/ros/kinetic/setup.bash
 source /root/catkin_ws/devel/setup.bash
-source /root/build_ws/devel/setup.bash
+#source /root/build_ws/devel/setup.bash
 
 alias gr='cd ~/gitrepo'
 alias down='cd ~/Downloads'

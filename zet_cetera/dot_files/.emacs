@@ -1282,8 +1282,8 @@
     ;; evil 모드에서 e,E 키로 빠르게 단어를 highlight 합니다
     (define-key evil-motion-state-map (kbd "e") 'highlight-symbol)
     (define-key evil-motion-state-map (kbd "E") 'highlight-symbol-remove-all)
-    ;; evil 모드에서 - 키로 빠르게 단어 사이를 이동합니다
-    (define-key evil-motion-state-map (kbd "-") 'avy-goto-word-0)
+    ;; ` 키로 빠르게 단어 사이를 이동합니다
+    (define-key evil-motion-state-map (kbd "`") 'avy-goto-word-0)
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
 
@@ -1306,8 +1306,8 @@
     (define-key evil-normal-state-map (kbd "x") 'suspend-frame)
     (define-key evil-motion-state-map (kbd "x") 'suspend-frame)
 
-    ;; ` 키로 dired 모드를 싱행합니다
-    (define-key evil-motion-state-map (kbd "`") (lambda() (interactive)(dired "./")))
+    ;; - 키로 dired 모드를 싱행합니다
+    (define-key evil-motion-state-map (kbd "-") (lambda() (interactive)(dired "./")))
 
     ;; \ 키로 checkbox를 toggle합니다
     (define-key evil-motion-state-map (kbd "\\") 'org-toggle-checkbox)
@@ -2453,8 +2453,8 @@
          (interactive)
          (find-alternate-file "..")))
 
-     ;; - 키로 빠르게 단어 사이를 이동합니다
-     (define-key dired-mode-map "-" 'avy-goto-word-0)
+     ;; ` 키로 빠르게 단어 사이를 이동합니다
+     (define-key dired-mode-map "`" 'avy-goto-word-0)
 
      ;; dired mode 관련 단축키들을 추가했다
      ;; dired mode : Emacs's adaption of find

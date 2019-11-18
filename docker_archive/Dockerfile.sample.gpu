@@ -1,5 +1,5 @@
 # comment(edward): this Dockerfile creates another Ubuntu 16.04 environment.
-FROM ubuntu:16.04
+FROM nvidia/cuda:10.1-cudnn7-runtime-ubuntu16.04
 ENV DEBIAN_FRONTEND noninteractive
 
 # install dependencies via apt
