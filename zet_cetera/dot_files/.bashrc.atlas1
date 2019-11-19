@@ -305,7 +305,9 @@ alias matlab=/usr/local/MATLAB/R2018a/bin/matlab
 # for ubuntu-live-wallpaper change
 alias wc='python /home/atlas1/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py'
 
-# cmake for rtags
+# cmake for various options
+alias cmake_relwithdebinfo="cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo"
+alias cmake_debug="cmake -DCMAKE_BUILD_TYPE=Debug"
 alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
 
 # for docker
