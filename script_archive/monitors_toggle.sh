@@ -19,11 +19,11 @@ case $1 in
         ;;
     atlas1)
 		# 다중 모니터 ON
-       xrandr --output DVI-I-1 --mode 1920x1080 --pos 1920x0 --output DVI-D-0 --mode 1920x1080 --pos 0x0 --primary
+       xrandr --output DVI-I-1 --mode 1920x1080 --pos 1920x0 --output DVI-D-1 --mode 1920x1080 --pos 0x0 --primary
        # xrandr --output DVI-I-1 --mode 1920x1080 --pos 1920x594 --output DVI-D-0 --mode 1920x1080 --pos 0x1080 --primary --output HDMI-0 --mode 1920x1080 --pos 0x0
         ;;
     off_atlas1)
 		# 1개 모니터만 켠다 
-       xrandr --output DVI-D-0 --primary --mode 1920x1080 --pos 0x0  --output DVI-I-1 --off --output HDMI-0 --off
+       xrandr --output DVI-D-1 --primary --mode 1920x1080 --pos 0x0  --output DVI-I-1 --off --output HDMI-0 --off
         ;;
 esac
