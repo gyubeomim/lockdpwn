@@ -1788,10 +1788,13 @@
  '(display-time-day-and-date t)
  '(display-time-default-load-average nil)
  '(display-time-format "%H:%M, %D")
- '(ecb-layout-name "right3")
+ '(ecb-layout-name "right2")
  '(ecb-layout-window-sizes
    (quote
-    (("left3"
+    (("right2"
+      (ecb-directories-buffer-name 0.33189655172413796 . 0.27586206896551724)
+      (ecb-methods-buffer-name 0.33189655172413796 . 0.7241379310344828))
+     ("left3"
       (ecb-directories-buffer-name 0.2 . 0.29411764705882354)
       (ecb-sources-buffer-name 0.2 . 0.3333333333333333)
       (ecb-methods-buffer-name 0.2 . 0.35294117647058826))
