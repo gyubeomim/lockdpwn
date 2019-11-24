@@ -1289,8 +1289,8 @@
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
 
-    ;; C-x -키로 gtag, TAGS 파일을 생성합니다.
-    (define-key evil-motion-state-map (kbd "C-x -") 'create_GTAGS_TAGS)
+    ;; C-x .키로 gtag, TAGS 파일을 생성합니다.
+    (define-key evil-motion-state-map (kbd "C-x .") 'create_GTAGS_TAGS)
 
     ;; C-x t 키로 tabbar mode를 toggle합니다.
     (define-key evil-motion-state-map (kbd "C-x t") 'tabbar-mode)
@@ -1725,12 +1725,9 @@
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
 
-;; C + v 키로 multi-term 모드에서 붙여넣기를 설정한다
-;; multi-term은 term-mode를 사용하므로
+;; multi-term은 term-mode를 사용한다
 (add-hook 'term-mode-hook
           (lambda ()
-            (cua-mode)
-
             (define-key term-raw-map (kbd "C-b") nil)
             (define-key term-raw-map (kbd "C-q") nil)
             (define-key term-raw-map (kbd "<S-insert>") nil)
@@ -1739,14 +1736,14 @@
             (define-key term-mode-map (kbd "C-b") 'helm-for-files)
             ))
 
-;; C-c u 키로 cua-mode를 껐다 켰다 합니다
+;; C-c u 키로 cua-mode를 껐다 켰다 합니다 (deprecated)
 ;; multi-term을 사용하면 .cpp 버퍼에서 C-c : copy(cua-mode)가 안먹히는 버그가 있는데 이 때 사용하기 위한 단축키
-(global-set-key (kbd "C-C u") (lambda ()
-                                (interactive)
-                                (cua-mode -1)
-                                (cua-mode 1)
-                                (message "[+] cua-mode restarted..")
-                                ))
+;; (global-set-key (kbd "C-C u") (lambda ()
+;;                                 (interactive)
+;;                                 (cua-mode -1)
+;;                                 (cua-mode 1)
+;;                                 (message "[+] cua-mode restarted..")
+;;                                 ))
 
 ;; PACKAGE: smart-mode-line
 ;; sml 2018버전 패키지가 multi-term하고 충돌하는 오류가 발생한다. 2019 버전부터는 수정된듯
@@ -1780,11 +1777,6 @@
  '(column-number-mode t)
  '(company-backends (quote (company-irony company-clang company-cmake)))
  '(compilation-message-face (quote default))
- '(cua-global-mark-cursor-color "#2aa198")
- '(cua-mode t nil (cua-base))
- '(cua-normal-cursor-color "#839496")
- '(cua-overwrite-cursor-color "#b58900")
- '(cua-read-only-cursor-color "#859900")
  '(display-time-day-and-date t)
  '(display-time-default-load-average nil)
  '(display-time-format "%H:%M, %D")
@@ -2611,8 +2603,6 @@
 (add-hook 'c++-mode-common-hook 'google-set-c-style)
 (add-hook 'c++-mode-common-hook 'google-make-newline-indent)
 
-;; PACKAGE: cua-mode
-; (require 'cua-mode)
                                         ;
 ;; C언어 모드에서 자동정렬 (들여쓰기 스타일)
 (add-hook 'c-mode-hook
@@ -3084,8 +3074,9 @@ created by edward 180515"
 (global-set-key (kbd "<kana>") 'toggle-input-method)
 (global-set-key (kbd "S-SPC") 'toggle-input-method)
 
+;; PACKAGE: cua-mode
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.
-(cua-mode)
+;; (cua-mode)
 
 ;;북 마크에 저장 하기 Alt + b
 (global-set-key (kbd "M-b") 'bookmark-set)
@@ -3095,7 +3086,6 @@ created by edward 180515"
 
 ;;북 마크 열기 Alt + v
 (global-set-key (kbd "M-v") 'bookmark-jump)
-(define-key cua--cua-keys-keymap (kbd "M-v") 'bookmark-jump)
 
 ;; Ctrl + k 키로 해당 커서의 한 줄 전체를 지웁니다
 (global-set-key "\C-k" 'kill-whole-line)
@@ -3297,7 +3287,6 @@ created by edward 180515"
 
              ;; C-z 키는 undo-tree 의 undo 명령어가 실행되도록 합니다 (for org-mode)
              (undo-tree-mode t)
-             (define-key cua--cua-keys-keymap (kbd "C-z") 'undo-tree-undo)
              ))
 
 ;; M-/ 키로 cmake-ide compile_commands.json을 불러옵니다
@@ -3431,9 +3420,6 @@ created by edward 180515"
 ;; magit 패키지가 로딩되면 같이 실행되는 코드
 (eval-after-load "magit"
   (lambda ()
-    ;; <SPC> keybinding을 해제하기 위해 cua-mode disabled
-    (cua-mode -1)
-
     ;; comment(edward): 키바인딩 해제
     (define-key magit-status-mode-map (kbd "C-w") nil)
     (define-key magit-status-mode-map (kbd "C-c C-o") nil)
@@ -3651,12 +3637,6 @@ created by edward 180515"
 
 ;; Alt + ] 키로 horizontal <--> vertical을 토글하는 키를 설정한다
 (global-set-key (kbd "M-]") 'window-split-toggle)
-
-
-
-;; M-c, C-v 키를 복사, 붙여넣기로 전역적으로 설정합니다 (not used)
-;; (global-set-key (kbd "C-c") 'cua--prefix-override-handler)
-;; (global-set-key (kbd "C-v") 'cua-paste)
 
 ;; Package: key-chord
 (require 'key-chord)

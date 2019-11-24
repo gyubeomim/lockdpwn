@@ -1165,14 +1165,14 @@
 ;; hs-minor-mode 를 활성화합니다. 코드를 접엇다 펼쳤다 하는 모드
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
-;; C-c u 키로 cua-mode를 껐다 켰다 합니다
+;; C-c u 키로 cua-mode를 껐다 켰다 합니다 (deprecated)
 ;; multi-term을 사용하면 .cpp 버퍼에서 C-c : copy(cua-mode)가 안먹히는 버그가 있는데 이 때 사용하기 위한 단축키
-(global-set-key (kbd "C-C u") (lambda ()
-                                (interactive)
-                                (cua-mode -1)
-                                (cua-mode 1)
-                                (message "[+] cua-mode restarted..")
-                                ))
+;; (global-set-key (kbd "C-C u") (lambda ()
+;;                                 (interactive)
+;;                                 (cua-mode -1)
+;;                                 (cua-mode 1)
+;;                                 (message "[+] cua-mode restarted..")
+;;                                 ))
 
 ;; C-n C-S-n 키로 새로운 frame을 만들고 제거합니다
 (global-set-key (kbd "C-n") 'make-frame-command)
@@ -1969,7 +1969,7 @@ created by edward 180515"
 (global-set-key (kbd "<kana>") 'toggle-input-method)
 
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.
-(cua-mode)
+;; (cua-mode)
 
 ;;북 마크에 저장 하기 Alt + b
 (global-set-key (kbd "M-b") 'bookmark-set)
@@ -1979,7 +1979,6 @@ created by edward 180515"
 
 ;;북 마크 열기 Alt + v
 (global-set-key (kbd "M-v") 'bookmark-jump)
-(define-key cua--cua-keys-keymap (kbd "M-v") 'bookmark-jump)
 
 ;; Ctrl + k 키로 해당 커서의 한 줄 전체를 지웁니다
 (global-set-key "\C-k" 'kill-whole-line)
@@ -2152,7 +2151,6 @@ created by edward 180515"
 
              ;; C-z 키는 undo-tree 의 undo 명령어가 실행되도록 합니다 (for org-mode)
              (undo-tree-mode t)
-             (define-key cua--cua-keys-keymap (kbd "C-z") 'undo-tree-undo)
              ))
 
 ;; M-/ 키로 함수참조에 사용할 TAGS 파일을 변경합니다
@@ -2518,7 +2516,6 @@ created by edward 180515"
                   (company-dabbrev-code company-etags company-keywords)
                   company-oddmuse company-dabbrev)))
  '(company-idle-delay 0.3)
- '(cua-mode t nil (cua-base))
  '(default-input-method "korean-hangul")
  '(ecb-layout-name "right1")
  '(ecb-layout-window-sizes
