@@ -162,6 +162,8 @@
 ;; M-j,k로 helm에서 위아래로 커서를 움직이는 명령어를 실행합니다.
 (define-key helm-map (kbd "M-j") 'helm-next-line)
 (define-key helm-map (kbd "M-k") 'helm-previous-line)
+(define-key helm-map (kbd "<right>") 'helm-next-source)
+(define-key helm-map (kbd "<left>") 'helm-previous-source)
 ;; (define-key helm-grep-mode-map (kbd "<return>")  'helm-grep-mode-jump-other-window)
 ;; (define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
 ;; (define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
@@ -982,8 +984,8 @@
                                   ;; Ctrl + s 키로 emacs 창을 minimize 합니다
                                   (define-key org-agenda-mode-map (kbd "C-s") 'org-save-all-org-buffers)
 
-                                  ;; , 키로 projectile switch 함수를 실행합니다
-                                  (define-key org-agenda-mode-map (kbd ",") 'helm-projectile-switch-project)
+                                  ;; C-x + , 키로 projectile switch 함수를 실행합니다
+                                  (define-key org-agenda-mode-map (kbd "C-x ,") 'helm-projectile-switch-project)
 
                                   ;; SPC 키로 helm-for-files를 실행합니다
                                   (define-key org-agenda-mode-map (kbd "SPC") 'helm-for-files)
@@ -1287,8 +1289,8 @@
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
 
-    ;; C-x -키로 gtag, TAGS 파일을 생성합니다.
-    (define-key evil-motion-state-map (kbd "C-x -") 'create_GTAGS_TAGS)
+    ;; C-x .키로 gtag, TAGS 파일을 생성합니다.
+    (define-key evil-motion-state-map (kbd "C-x .") 'create_GTAGS_TAGS)
 
     ;; C-x t 키로 tabbar mode를 toggle합니다.
     (define-key evil-motion-state-map (kbd "C-x t") 'tabbar-mode)
@@ -1319,9 +1321,9 @@
     ;; irony-server가 느려질 경우 끄기 위한 단축키
     (define-key evil-motion-state-map (kbd "z") 'irony-server-kill)
 
-    ;; , 키로 projectile switch 를 실행합니다
-    (define-key evil-motion-state-map (kbd ",") 'helm-projectile-switch-project)
-    (define-key evil-normal-state-map (kbd ",") 'helm-projectile-switch-project)
+    ;; C-x , 키로 projectile switch 를 실행합니다
+    (define-key evil-motion-state-map (kbd "C-x ,") 'helm-projectile-switch-project)
+    (define-key evil-normal-state-map (kbd "C-x ,") 'helm-projectile-switch-project)
 
     ;; org-mode에서 c 키로 다른 tree들을 숨기고 현재 tree만 잘 보여줍니다
     (define-key evil-normal-state-map (kbd "C-c h") (lambda() (interactive)
@@ -1723,12 +1725,9 @@
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
 
-;; C + v 키로 multi-term 모드에서 붙여넣기를 설정한다
-;; multi-term은 term-mode를 사용하므로
+;; multi-term은 term-mode를 사용한다
 (add-hook 'term-mode-hook
           (lambda ()
-            (cua-mode)
-
             (define-key term-raw-map (kbd "C-b") nil)
             (define-key term-raw-map (kbd "C-q") nil)
             (define-key term-raw-map (kbd "<S-insert>") nil)
@@ -1737,14 +1736,14 @@
             (define-key term-mode-map (kbd "C-b") 'helm-for-files)
             ))
 
-;; C-c u 키로 cua-mode를 껐다 켰다 합니다
+;; C-c u 키로 cua-mode를 껐다 켰다 합니다 (deprecated)
 ;; multi-term을 사용하면 .cpp 버퍼에서 C-c : copy(cua-mode)가 안먹히는 버그가 있는데 이 때 사용하기 위한 단축키
-(global-set-key (kbd "C-C u") (lambda ()
-                                (interactive)
-                                (cua-mode -1)
-                                (cua-mode 1)
-                                (message "[+] cua-mode restarted..")
-                                ))
+;; (global-set-key (kbd "C-C u") (lambda ()
+;;                                 (interactive)
+;;                                 (cua-mode -1)
+;;                                 (cua-mode 1)
+;;                                 (message "[+] cua-mode restarted..")
+;;                                 ))
 
 ;; PACKAGE: smart-mode-line
 ;; sml 2018버전 패키지가 multi-term하고 충돌하는 오류가 발생한다. 2019 버전부터는 수정된듯
@@ -1778,18 +1777,16 @@
  '(column-number-mode t)
  '(company-backends (quote (company-irony company-clang company-cmake)))
  '(compilation-message-face (quote default))
- '(cua-global-mark-cursor-color "#2aa198")
- '(cua-mode t nil (cua-base))
- '(cua-normal-cursor-color "#839496")
- '(cua-overwrite-cursor-color "#b58900")
- '(cua-read-only-cursor-color "#859900")
  '(display-time-day-and-date t)
  '(display-time-default-load-average nil)
  '(display-time-format "%H:%M, %D")
- '(ecb-layout-name "right1")
+ '(ecb-layout-name "right2")
  '(ecb-layout-window-sizes
    (quote
-    (("left3"
+    (("right2"
+      (ecb-directories-buffer-name 0.33189655172413796 . 0.27586206896551724)
+      (ecb-methods-buffer-name 0.33189655172413796 . 0.7241379310344828))
+     ("left3"
       (ecb-directories-buffer-name 0.2 . 0.29411764705882354)
       (ecb-sources-buffer-name 0.2 . 0.3333333333333333)
       (ecb-methods-buffer-name 0.2 . 0.35294117647058826))
@@ -2597,7 +2594,7 @@
 
 (require 'tabbar)
 ; turn on the tabbar
-(tabbar-mode t)
+(tabbar-mode -1)
 
 ;; PACKAGE: google-c-style
 (require 'google-c-style)
@@ -2606,8 +2603,6 @@
 (add-hook 'c++-mode-common-hook 'google-set-c-style)
 (add-hook 'c++-mode-common-hook 'google-make-newline-indent)
 
-;; PACKAGE: cua-mode
-; (require 'cua-mode)
                                         ;
 ;; C언어 모드에서 자동정렬 (들여쓰기 스타일)
 (add-hook 'c-mode-hook
@@ -3079,8 +3074,9 @@ created by edward 180515"
 (global-set-key (kbd "<kana>") 'toggle-input-method)
 (global-set-key (kbd "S-SPC") 'toggle-input-method)
 
+;; PACKAGE: cua-mode
 ;;잘라내기, 붙여넣기, CTRL+C, V를 활성화 시켜준다.
-(cua-mode)
+;; (cua-mode)
 
 ;;북 마크에 저장 하기 Alt + b
 (global-set-key (kbd "M-b") 'bookmark-set)
@@ -3090,7 +3086,6 @@ created by edward 180515"
 
 ;;북 마크 열기 Alt + v
 (global-set-key (kbd "M-v") 'bookmark-jump)
-(define-key cua--cua-keys-keymap (kbd "M-v") 'bookmark-jump)
 
 ;; Ctrl + k 키로 해당 커서의 한 줄 전체를 지웁니다
 (global-set-key "\C-k" 'kill-whole-line)
@@ -3292,7 +3287,6 @@ created by edward 180515"
 
              ;; C-z 키는 undo-tree 의 undo 명령어가 실행되도록 합니다 (for org-mode)
              (undo-tree-mode t)
-             (define-key cua--cua-keys-keymap (kbd "C-z") 'undo-tree-undo)
              ))
 
 ;; M-/ 키로 cmake-ide compile_commands.json을 불러옵니다
@@ -3426,9 +3420,6 @@ created by edward 180515"
 ;; magit 패키지가 로딩되면 같이 실행되는 코드
 (eval-after-load "magit"
   (lambda ()
-    ;; <SPC> keybinding을 해제하기 위해 cua-mode disabled
-    (cua-mode -1)
-
     ;; comment(edward): 키바인딩 해제
     (define-key magit-status-mode-map (kbd "C-w") nil)
     (define-key magit-status-mode-map (kbd "C-c C-o") nil)
@@ -3486,21 +3477,29 @@ created by edward 180515"
     (define-key magit-unstaged-section-map (kbd "x") 'suspend-frame)
     (define-key magit-branch-section-map (kbd "x") 'suspend-frame)
 
-    ;; , 키로 projectile switch 를 실행합니다
-    (define-key magit-process-mode-map (kbd ",") 'helm-projectile-switch-project)
-    (define-key magit-log-mode-map (kbd ",") 'helm-projectile-switch-project)
-    (define-key magit-diff-mode-map (kbd ",") 'helm-projectile-switch-project)
-    (define-key magit-status-mode-map (kbd ",") 'helm-projectile-switch-project)
-    (define-key magit-unstaged-section-map (kbd ",") 'helm-projectile-switch-project)
-    (define-key magit-branch-section-map (kbd ",") 'helm-projectile-switch-project)
+    ;; C-x , 키로 projectile switch 를 실행합니다
+    (define-key magit-process-mode-map (kbd "C-x ,") 'helm-projectile-switch-project)
+    (define-key magit-log-mode-map (kbd "C-x ,") 'helm-projectile-switch-project)
+    (define-key magit-diff-mode-map (kbd "C-x ,") 'helm-projectile-switch-project)
+    (define-key magit-status-mode-map (kbd "C-x ,") 'helm-projectile-switch-project)
+    (define-key magit-unstaged-section-map (kbd "C-x ,") 'helm-projectile-switch-project)
+    (define-key magit-branch-section-map (kbd "C-x ,") 'helm-projectile-switch-project)
 
-    ;; ` 키로 dired 모드를 싱행합니다
-    (define-key magit-process-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
-    (define-key magit-log-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
-    (define-key magit-diff-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
-    (define-key magit-status-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
-    (define-key magit-unstaged-section-map (kbd "`") (lambda() (interactive)(dired "./")))
-    (define-key magit-branch-section-map (kbd "`") (lambda() (interactive)(dired "./")))
+    ;; - 키로 dired 모드를 실행합니다
+    (define-key magit-process-mode-map (kbd "-") (lambda() (interactive)(dired "./")))
+    (define-key magit-log-mode-map (kbd "-") (lambda() (interactive)(dired "./")))
+    (define-key magit-diff-mode-map (kbd "-") (lambda() (interactive)(dired "./")))
+    (define-key magit-status-mode-map (kbd "-") (lambda() (interactive)(dired "./")))
+    (define-key magit-unstaged-section-map (kbd "-") (lambda() (interactive)(dired "./")))
+    (define-key magit-branch-section-map (kbd "-") (lambda() (interactive)(dired "./")))
+
+    ;; ` 키로 avy-goto-mode-0 를 실행한다.
+    (define-key magit-process-mode-map (kbd "`") 'avy-goto-word-0)
+    (define-key magit-log-mode-map (kbd "`") 'avy-goto-word-0)
+    (define-key magit-diff-mode-map (kbd "`") 'avy-goto-word-0)
+    (define-key magit-status-mode-map (kbd "`") 'avy-goto-word-0)
+    (define-key magit-unstaged-section-map (kbd "`") 'avy-goto-word-0)
+    (define-key magit-branch-section-map (kbd "`") 'avy-goto-word-0)
 
     ))
 
@@ -3638,12 +3637,6 @@ created by edward 180515"
 
 ;; Alt + ] 키로 horizontal <--> vertical을 토글하는 키를 설정한다
 (global-set-key (kbd "M-]") 'window-split-toggle)
-
-
-
-;; M-c, C-v 키를 복사, 붙여넣기로 전역적으로 설정합니다 (not used)
-;; (global-set-key (kbd "C-c") 'cua--prefix-override-handler)
-;; (global-set-key (kbd "C-v") 'cua-paste)
 
 ;; Package: key-chord
 (require 'key-chord)

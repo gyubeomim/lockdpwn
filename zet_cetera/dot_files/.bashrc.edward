@@ -146,7 +146,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_LIGHTBLUE\u(@desktop)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTYELLOW\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
 # LANGUAGE=ko_KR
@@ -160,23 +160,17 @@ alias ida='/home/edward/.wine/drive_c/programfilesx86/ida6.8/idaq.exe'
 alias ida64='/home/edward/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe'
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
+alias c='cd /home/edward/gitrepo/lockdpwn/cmake_projects'
+
 alias g1='cd /home/edward/gitrepo/lockdpwn'
 alias g2='cd /home/edward/gitrepo_sync/ims_org'
 alias g3='cd /home/edward/gitrepo/tigerk0430.github.io'
-alias g4='cd /home/edward/dyros_ws'
+alias g4='cd /home/edward/gitrepo/dv_ws/dyros_ws'
 alias g5='cd /home/edward/gitrepo/ims_carto'
 alias g6='cd /home/edward/gitrepo/ims_ml'
 alias gr='cd /home/edward/gitrepo/'
 
-
-git1='/home/edward/gitrepo/lockdpwn'
-git2='/home/edward/dyros_ws'
-git3='/home/edward/gitrepo/ims_ml'
-git4='/home/edward/gitrepo/ims_ml/SqueezeSeg'
-gr='/home/edward/gitrepo/'
-
 # for git command
-alias gg='git add . && git commit -m '"'updated'"' && git push '
 alias add='git add'
 alias commit='git commit'
 alias push='git push'
@@ -186,11 +180,12 @@ alias pull_1='git pull origin server1_ws'
 alias pull_2='git pull origin server2_ws'
 alias clone='git clone'
 alias add='git add -u'  # not for untracked file
+# alias cred='git config credential.helper "cache --timeout=864000000 --socket=/tmp/.git-credential-cache/socket_$BASHPID"'
 alias cred='git config credential.helper "cache --timeout=864000000" --global'
 alias gc='git checkout'
 alias gb='git branch'
 alias gs='git status'
-alias dy='cd /home/edward/gitrepo/dv_ws'
+alias ed='cd /home/edward/gitrepo/edward_ws'
 
 alias cmp='cd /home/edward/gitrepo/lockdpwn/cmake_projects'
 alias cpp='cd /home/edward/gitrepo/lockdpwn/cpp_archive'
@@ -245,11 +240,11 @@ alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_CO
 # alias cm='cd /home/edward/catkin_ws && catkin_make'
 
 alias cr='cd /home/edward/dyros_ws/'
-alias cb='cd ~/bag_files_4tb'
-alias cbb='cd ~/bag_files'
+alias cb='cd ~/bag_files'
+alias cbb='cd ~/bag_files_4tb'
 alias so='source devel/setup.bash'
 alias so2='rospack profile && source devel/setup.bash'
-alias cdd='cd /media/dyros-data'
+alias cdd='cd /media/data'
 alias down='cd ~/Downloads'
 alias docu='cd ~/Documents'
 
@@ -293,6 +288,7 @@ export VREP_ROOT=/home/edward/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
 alias vrep='/home/edward/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
 alias vrepd='/home/edward/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/catkin_ws/src/controller_msk/controller_msk/vrep/mc_for_back_light.ttt'
 alias vrepd2='/home/edward/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/catkin_ws/src/controller_msk/controller_msk/vrep/mc_back_light.ttt'
+alias vreplcdd='/home/edward/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/Documents/deprecated/lcdd.ttt'
 
 alias vrep2='/home/edward/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
 
@@ -370,7 +366,7 @@ alias moff='/home/edward/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off'
 # for hed gitrepository (pycaffe)
 export PYTHONPATH=~/gitrepo/hed/python:$PYTHONPATH
 export CAFFE_ROOT=~/gitrepo/hed/caffe
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
 
 # for tmux command history
 # export HISTCONTROL=ignoredups:erasedups
@@ -397,15 +393,19 @@ alias seg='source ~/segmappyenv/bin/activate'
 alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
 
 # for docker
-alias doc='docker'
-alias doca='docker attach'
-alias docps='docker ps -a'
-alias docrm='docker rm'
-alias docrmi='docker rmi'
-alias docim='docker images'
+alias cdo='cd ~/gitrepo/lockdpwn/docker_archive'
+alias d='docker'
+alias da='docker attach'
+alias dps='docker ps -a'
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias dim='docker images'
 # docker PUSH to ONLINE commands
 # docker tag edward0im:ubuntu_cuda9.0 edward0im/dyrosvehicle:ubuntu_cuda9.0
 # doc push edward0im/dyrosvehicle:ubuntu_cuda9.0
+
+# for downdload_d
+alias downd='cd /media/data/Downloads_d'
 
 # for chmod
 alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 775'
@@ -443,10 +443,19 @@ alias nv='nvidia-smi -l'
 alias blog='cd /home/edward/gitrepo/tigerk0430.github.io && ./push_master.sh'
 alias blogp='cd /home/edward/gitrepo/tigerk0430.github.io && git pull origin master'
 
-# for vim
-alias v='vim'
+# for vim ~/.bashrc
 alias vb='vim ~/.bashrc'
+alias v='vim'
+
+# for openvslam-sandbox
+alias cdv='cd ~/gitrepo/openvslam-sandbox'
+
+# for cuda
+export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}$ 
+export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 source /opt/ros/kinetic/setup.bash
 source /home/edward/catkin_ws/devel/setup.bash
-# source /home/edward/cartographer_ws/install_isolated/setup.bash
+source /home/edward/cartographer_ws/install_isolated/setup.bash
+
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/ORB_SLAM2/Examples/ROS
