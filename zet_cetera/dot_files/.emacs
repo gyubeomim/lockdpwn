@@ -162,6 +162,8 @@
 ;; M-j,k로 helm에서 위아래로 커서를 움직이는 명령어를 실행합니다.
 (define-key helm-map (kbd "M-j") 'helm-next-line)
 (define-key helm-map (kbd "M-k") 'helm-previous-line)
+(define-key helm-map (kbd "<right>") 'helm-next-source)
+(define-key helm-map (kbd "<left>") 'helm-previous-source)
 ;; (define-key helm-grep-mode-map (kbd "<return>")  'helm-grep-mode-jump-other-window)
 ;; (define-key helm-grep-mode-map (kbd "n")  'helm-grep-mode-jump-other-window-forward)
 ;; (define-key helm-grep-mode-map (kbd "p")  'helm-grep-mode-jump-other-window-backward)
@@ -1786,7 +1788,7 @@
  '(display-time-day-and-date t)
  '(display-time-default-load-average nil)
  '(display-time-format "%H:%M, %D")
- '(ecb-layout-name "right1")
+ '(ecb-layout-name "right3")
  '(ecb-layout-window-sizes
    (quote
     (("left3"
