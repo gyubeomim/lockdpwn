@@ -146,7 +146,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_LIGHTGREEN\u(@lenovo)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="${C_LIGHTGREEN}\u(lenovo)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # PS1="$C_LIGHTRED[user@user]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
@@ -184,7 +184,7 @@ alias cred='git config credential.helper "cache --timeout=864000000" --global'
 alias gc='git checkout'
 alias gb='git branch'
 alias gs='git status'
-alias dy='cd /home/dyros-vehicle/gitrepo/dv_ws'
+alias ed='cd /home/dyros-vehicle/gitrepo/edward_ws'
 
 alias c='cd /home/dyros-vehicle/gitrepo/lockdpwn/cmake_projects'
 alias cpp='cd /home/dyros-vehicle/gitrepo/lockdpwn/cpp_archive'
