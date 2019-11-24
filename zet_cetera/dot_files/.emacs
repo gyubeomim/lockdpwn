@@ -802,7 +802,7 @@
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
            '(
-             (sequence "TODO" "|" "CANCELLED" "DELAYED" "PAUSED" "DONE")
+             (sequence "TODO" "|" "CANCELLED" "DELAYED" "INACTIVATE" "DONE")
              (sequence "MILESTONE" "|" "COMPLETE")
              (sequence "OPEN" "|" "CLOSED")
              )
@@ -811,7 +811,7 @@
      (setq org-todo-keyword-faces
            '(("CANCELLED" . "goldenrod")
              ("DELAYED" . "goldenrod")
-             ("PAUSED" . "goldenrod")
+             ("INACTIVATE" . "goldenrod")
              ("TODO" . "#86dc2f")
              ("MILESTONE" . "#86dc2f")
              ("OPEN" . "#86dc2f")
