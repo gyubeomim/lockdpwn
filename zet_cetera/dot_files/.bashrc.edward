@@ -163,17 +163,10 @@ alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 alias g1='cd /home/edward/gitrepo/lockdpwn'
 alias g2='cd /home/edward/gitrepo_sync/ims_org'
 alias g3='cd /home/edward/gitrepo/tigerk0430.github.io'
-alias g4='cd /home/edward/dyros_ws'
+alias g4='cd /home/edward/edward_ws'
 alias g5='cd /home/edward/gitrepo/ims_carto'
 alias g6='cd /home/edward/gitrepo/ims_ml'
 alias gr='cd /home/edward/gitrepo/'
-
-
-git1='/home/edward/gitrepo/lockdpwn'
-git2='/home/edward/dyros_ws'
-git3='/home/edward/gitrepo/ims_ml'
-git4='/home/edward/gitrepo/ims_ml/SqueezeSeg'
-gr='/home/edward/gitrepo/'
 
 # for git command
 alias gg='git add . && git commit -m '"'updated'"' && git push '
@@ -244,7 +237,7 @@ alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_CO
 # alias cs='cd /home/edward/catkin_ws/src'
 # alias cm='cd /home/edward/catkin_ws && catkin_make'
 
-alias cr='cd /home/edward/dyros_ws/'
+alias cr='cd /home/edward/edward_ws/'
 alias cb='cd ~/bag_files_4tb'
 alias cbb='cd ~/bag_files'
 alias so='source devel/setup.bash'
