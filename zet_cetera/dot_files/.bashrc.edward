@@ -168,13 +168,6 @@ alias g5='cd /home/edward/gitrepo/ims_carto'
 alias g6='cd /home/edward/gitrepo/ims_ml'
 alias gr='cd /home/edward/gitrepo/'
 
-
-git1='/home/edward/gitrepo/lockdpwn'
-git2='/home/edward/edward_ws'
-git3='/home/edward/gitrepo/ims_ml'
-git4='/home/edward/gitrepo/ims_ml/SqueezeSeg'
-gr='/home/edward/gitrepo/'
-
 # for git command
 alias gg='git add . && git commit -m '"'updated'"' && git push '
 alias add='git add'
