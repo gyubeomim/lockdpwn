@@ -804,7 +804,7 @@
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
            '(
-             (sequence "TODO" "|" "CANCELLED" "DELAYED" "INACTIVATE" "DONE")
+             (sequence "TODO" "|" "CANCELLED" "DELAYED" "PAUSED" "DONE")
              (sequence "MILESTONE" "|" "COMPLETE")
              (sequence "OPEN" "|" "CLOSED")
              )
@@ -813,7 +813,7 @@
      (setq org-todo-keyword-faces
            '(("CANCELLED" . "goldenrod")
              ("DELAYED" . "goldenrod")
-             ("INACTIVATE" . "goldenrod")
+             ("PAUSED" . "goldenrod")
              ("TODO" . "#86dc2f")
              ("MILESTONE" . "#86dc2f")
              ("OPEN" . "#86dc2f")
@@ -2599,7 +2599,7 @@
 
 (require 'tabbar)
 ; turn on the tabbar
-(tabbar-mode t)
+(tabbar-mode -1)
 
 ;; PACKAGE: google-c-style
 (require 'google-c-style)
@@ -3496,13 +3496,21 @@ created by edward 180515"
     (define-key magit-unstaged-section-map (kbd "C-x ,") 'helm-projectile-switch-project)
     (define-key magit-branch-section-map (kbd "C-x ,") 'helm-projectile-switch-project)
 
-    ;; ` 키로 dired 모드를 싱행합니다
-    (define-key magit-process-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
-    (define-key magit-log-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
-    (define-key magit-diff-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
-    (define-key magit-status-mode-map (kbd "`") (lambda() (interactive)(dired "./")))
-    (define-key magit-unstaged-section-map (kbd "`") (lambda() (interactive)(dired "./")))
-    (define-key magit-branch-section-map (kbd "`") (lambda() (interactive)(dired "./")))
+    ;; - 키로 dired 모드를 실행합니다
+    (define-key magit-process-mode-map (kbd "-") (lambda() (interactive)(dired "./")))
+    (define-key magit-log-mode-map (kbd "-") (lambda() (interactive)(dired "./")))
+    (define-key magit-diff-mode-map (kbd "-") (lambda() (interactive)(dired "./")))
+    (define-key magit-status-mode-map (kbd "-") (lambda() (interactive)(dired "./")))
+    (define-key magit-unstaged-section-map (kbd "-") (lambda() (interactive)(dired "./")))
+    (define-key magit-branch-section-map (kbd "-") (lambda() (interactive)(dired "./")))
+
+    ;; ` 키로 avy-goto-mode-0 를 실행한다.
+    (define-key magit-process-mode-map (kbd "`") 'avy-goto-word-0)
+    (define-key magit-log-mode-map (kbd "`") 'avy-goto-word-0)
+    (define-key magit-diff-mode-map (kbd "`") 'avy-goto-word-0)
+    (define-key magit-status-mode-map (kbd "`") 'avy-goto-word-0)
+    (define-key magit-unstaged-section-map (kbd "`") 'avy-goto-word-0)
+    (define-key magit-branch-section-map (kbd "`") 'avy-goto-word-0)
 
     ))
 
