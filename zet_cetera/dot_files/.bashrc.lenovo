@@ -164,7 +164,7 @@ alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 alias g1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
 alias g2='cd /home/dyros-vehicle/gitrepo_sync/ims_org'
 alias g3='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io'
-alias g4='cd /home/dyros-vehicle/dyros_ws'
+alias g4='cd /home/dyros-vehicle/edward_ws'
 alias g5='cd /home/dyros-vehicle/gitrepo/ims_carto'
 alias g6='cd /home/dyros-vehicle/gitrepo/ims_ml'
 alias gr='cd /home/dyros-vehicle/gitrepo/'
@@ -288,8 +288,8 @@ alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04/vrep.
 alias vrep34='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
 alias vrep35='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
 
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/dyros_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_for_back_light.ttt'
-alias vrepd2='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/dyros_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_back_light.ttt'
+alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/edward_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_for_back_light.ttt'
+alias vrepd2='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/edward_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_back_light.ttt'
 
 # source .bashrc
 alias sob='source /home/dyros-vehicle/.bashrc'
@@ -455,10 +455,10 @@ export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/dyros-vehicle/gitrepo/ORB_SLAM
 # for source gazebo config
 # alias sog='source /usr/share/gazebo-2.2/setup.sh'
 # alias sog2='source /usr/share/gazebo/setup.sh'
-# alias cmb='cd ~/dyros_ws/rosbook_ws && catkin_make'
-# alias cdb='cd ~/dyros_ws/rosbook_ws'
+# alias cmb='cd ~/edward_ws/rosbook_ws && catkin_make'
+# alias cdb='cd ~/edward_ws/rosbook_ws'
 # # for stockroom_bot
-# #alias sb='source ~/dyros_ws/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/dyros_ws/stockroombot_ws/src/stockroom_bot'/models
+# #alias sb='source ~/edward_ws/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/edward_ws/stockroombot_ws/src/stockroom_bot'/models
 # PERL5LIB="/home/dyros-vehicle/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 # PERL_LOCAL_LIB_ROOT="/home/dyros-vehicle/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 # PERL_MB_OPT="--install_base \"/home/dyros-vehicle/perl5\""; export PERL_MB_OPT;
