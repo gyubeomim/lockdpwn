@@ -147,17 +147,16 @@ int RunSingleCamera(PGRGuid guid)
 
         // Set header timestamp as embedded for now
         TimeStamp embeddedTime = rawImage.GetTimeStamp();
-        int time = embeddedTime.seconds;
-        int ntime = 1000 * embeddedTime.microSeconds;
+        int seconds = embeddedTime.seconds;
+        int nseconds = 1000 * embeddedTime.microSeconds;
 
         ss.str("");
-        ss << std::to_string(imageCnt) << " " << std::to_string(time) << "." << std::to_string(ntime) << " " << prop.absValue / 1000. << std::endl;
+        ss << "000" + std::to_string(imageCnt) << " " << std::to_string(seconds) << "." << std::to_string(nseconds) << " " << prop.absValue / 1000. << std::endl;
         fout<< ss.str();
 
         // Create a unique filename
         ostringstream filename;
-        filename << "photometric_calibration-" << camInfo.serialNumber << "-"
-                 << imageCnt << ".png";
+        filename << "000"  << imageCnt << ".png";
 
         // Save the image. If a file format is not passed in, then the file
         // extension is parsed to attempt to determine the file format.
@@ -188,8 +187,7 @@ int RunSingleCamera(PGRGuid guid)
     return 0;
 }
 
-int main(int /*argc*/, char ** /*argv*/)
-{
+int main(int argc, char **argv) {
     PrintBuildInfo();
 
     Error error;
