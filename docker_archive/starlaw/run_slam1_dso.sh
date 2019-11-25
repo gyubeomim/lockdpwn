@@ -7,7 +7,7 @@ xhost +local:docker
 docker run \
 	--runtime=nvidia \
 	--net=host \
-	--name starlaw-slam1-orb \
+	--name starlaw-slam1-dso \
 	--rm \
 	-it \
 	--env="XAUTHORITY=${XAUTH}" \
@@ -21,7 +21,7 @@ docker run \
 	-v /home/${USER}/share_docker:/root/share_docker \
 	--expose 22 \
 	edward0im/starlaw:slam1 \
-	/root/run_orbslam.sh
+	/root/run_dso3.sh
 
 
 #deprecated

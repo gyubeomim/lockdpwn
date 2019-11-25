@@ -18,6 +18,7 @@ docker run \
 	-v ${XSOCK}:${XSOCK}:rw \
 	-v ${XAUTH}:${XAUTH}:rw \
 	-v /home/${USER}/share_docker:/root/share_docker \
+	-v /media/data/dataset:/root/dataset \
 	--expose 22 \
 	edward0im/starlaw:scratch
 
