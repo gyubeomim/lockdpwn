@@ -7,8 +7,7 @@ xhost +local:docker
 docker run \
 	--runtime=nvidia \
 	--net=host \
-	--name starlaw-slam1-orb \
-	--rm \
+	--name starlaw-lcsd-slam \
 	-it \
 	--env="XAUTHORITY=${XAUTH}" \
 	--env="DISPLAY=unix${DISPLAY}" \
@@ -19,12 +18,14 @@ docker run \
 	-v ${XSOCK}:${XSOCK}:rw \
 	-v ${XAUTH}:${XAUTH}:rw \
 	-v /home/${USER}/share_docker:/root/share_docker \
+	-v /media/data/dataset:/root/dataset \
 	--expose 22 \
-	edward0im/starlaw:slam1 \
-	/root/run_orbslam.sh
+	edward0im/starlaw:lcsd-slam
+
 
 
 #deprecated
 # -v /media/data/gitrepo/dv_ws/dyros_ws/docker_ws/src_ubuntu_cuda9.0:/root/docker_ws/src \
 # -v /media/data/gitrepo/dv_ws/dyros_ws/docker_ws/not_used_ubuntu_cuda9.0:/root/docker_ws/not_used \
 # -v /media/data/bag_files:/root/bag_files \
+# -v /usr/local/cuda-10.1:/usr/local/cuda-10.1 \
