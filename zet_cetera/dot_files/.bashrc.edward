@@ -146,7 +146,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_LIGHTYELLOW\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTYELLOW\u(@desktop)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
 # LANGUAGE=ko_KR
@@ -458,6 +458,4 @@ source /opt/ros/kinetic/setup.bash
 source /home/edward/catkin_ws/devel/setup.bash
 source /home/edward/cartographer_ws/install_isolated/setup.bash
 
-# export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/ORB_SLAM2/Examples/ROS
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/LCSD_SLAM/ORB_SLAM2/Examples/ROS
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/LCSD_SLAM/ORB_SLAM2/Examples/ROS
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/ORB_SLAM2/Examples/ROS
