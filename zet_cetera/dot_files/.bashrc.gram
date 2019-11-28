@@ -146,7 +146,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_LIGHTYELLOW\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="${C_LIGHTGREEN}\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
 # LANGUAGE=ko_KR
@@ -163,7 +163,7 @@ alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 alias c='cd /home/edward/gitrepo/lockdpwn/cmake_projects'
 
 alias g1='cd /home/edward/gitrepo/lockdpwn'
-alias g2='cd /home/edward/gitrepo_sync/ims_org'
+alias g2='cd /home/edward/gitrepo/ims_org'
 alias g3='cd /home/edward/gitrepo/tigerk0430.github.io'
 alias g4='cd /home/edward/gitrepo/dv_ws/dyros_ws'
 alias g5='cd /home/edward/gitrepo/ims_carto'
@@ -296,7 +296,7 @@ alias vrep2='/home/edward/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
 alias sob='source /home/edward/.bashrc'
 
 # vnc viewer
-alias vncviewer='/home/edward/Documents/VNC-Viewer-6.18.907-Linux-x64'
+alias vncviewer='/home/edward/Documents/VNC-Viewer-6.19.1115-Linux-x64'
 
 # emacs 26.1
 alias emacs='/home/edward/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
@@ -415,13 +415,13 @@ alias cse='cd /home/edward/catkin_ws/src/edward/'
 alias cps='cd /home/edward/catkin_ws/src/edward/parkingslam'
 
 # for org-mode
-alias o='cd /home/edward/gitrepo_sync/ims_org && ./push_master.sh'
-alias op='cd /home/edward/gitrepo_sync/ims_org && git pull origin master'
+alias o='cd /home/edward/gitrepo/ims_org && ./push_master.sh'
+alias op='cd /home/edward/gitrepo/ims_org && git pull origin master'
 
 # for org-mode
 function seto(){
 	echo "[+] push ims_org origin master..."
-	cd ~/gitrepo_sync/ims_org
+	cd ~/gitrepo/ims_org
 	./push_master.sh
 	echo "[+] push lockdpwn origin master..."
 	cd ~/gitrepo/lockdpwn
@@ -429,7 +429,7 @@ function seto(){
 }
 function setop(){
 	echo "[+] pull ims_org origin master..."
-	cd ~/gitrepo_sync/ims_org
+	cd ~/gitrepo/ims_org
 	git pull origin master
 	echo "[+] pull lockdpwn origin master..."
 	cd ~/gitrepo/lockdpwn
@@ -456,8 +456,6 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 
 source /opt/ros/kinetic/setup.bash
 source /home/edward/catkin_ws/devel/setup.bash
-source /home/edward/cartographer_ws/install_isolated/setup.bash
+# source /home/edward/cartographer_ws/install_isolated/setup.bash
 
-# export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/ORB_SLAM2/Examples/ROS
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/LCSD_SLAM/ORB_SLAM2/Examples/ROS
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/LCSD_SLAM/ORB_SLAM2/Examples/ROS
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/ORB_SLAM2/Examples/ROS
