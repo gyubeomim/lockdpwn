@@ -7,8 +7,11 @@
 using namespace FlyCapture2;
 using namespace std;
 
-void PrintBuildInfo()
-{
+void PrintError(Error error) {
+  error.PrintErrorTrace();
+}
+
+void PrintBuildInfo() {
   FC2Version fc2Version;
   Utilities::GetLibraryVersion(&fc2Version);
 
@@ -23,8 +26,7 @@ void PrintBuildInfo()
   cout << timeStamp.str() << endl << endl;
 }
 
-void PrintCameraInfo(CameraInfo *pCamInfo)
-{
+void PrintCameraInfo(CameraInfo *pCamInfo) {
   cout << endl;
   cout << "*** CAMERA INFORMATION ***" << endl;
   cout << "Serial number - " << pCamInfo->serialNumber << endl;
@@ -37,41 +39,92 @@ void PrintCameraInfo(CameraInfo *pCamInfo)
        << endl;
 }
 
-void PrintError(Error error) { error.PrintErrorTrace(); }
+bool SetProperty(Camera& camera, const FlyCapture2::PropertyType &type, const bool &autoSet, double value) {
+  // return true if we can set values as desired.
+  bool retVal = true;
 
+  PropertyInfo pInfo;
+  pInfo.type = type;
+  Error error = camera.GetPropertyInfo(&pInfo);
+  if (error != PGRERROR_OK) {
+    PrintError(error);
+    return -1;
+  }
+
+  if(pInfo.present)
+  {
+    Property prop;
+    prop.type = type;
+    prop.autoManualMode = (autoSet && pInfo.autoSupported);
+    prop.absControl = pInfo.absValSupported;
+    prop.onOff = pInfo.onOffSupported;
+
+    if(value < pInfo.absMin)
+    {
+      value = pInfo.absMin;
+      retVal &= false;
+    }
+    else if(value > pInfo.absMax)
+    {
+      value = pInfo.absMax;
+      retVal &= false;
+    }
+    prop.absValue = value;
+    error = camera.SetProperty(&prop);
+  if (error != PGRERROR_OK) {
+    PrintError(error);
+    return -1;
+  }
+
+    // Read back setting to confirm
+    error = camera.GetProperty(&prop);
+    if (error != PGRERROR_OK) {
+      PrintError(error);
+      return -1;
+    }
+    if(!prop.autoManualMode)
+    {
+      value = prop.absValue;
+    }
+  }
+  else     // Not supported
+  {
+    value = 0.0;
+  }
+  return retVal;
+}
 int RunSingleCamera(PGRGuid guid) {
-  const int k_num_images = 100;
+  const int k_num_images = 600;
 
   Error error;
 
   // Connect to a camera
-  Camera cam;
-  error = cam.Connect(&guid);
-  if (error != PGRERROR_OK)
-  {
+  Camera camera;
+  error = camera.Connect(&guid);
+  if (error != PGRERROR_OK) {
     PrintError(error);
     return -1;
   }
 
   // Get the camera information
-  CameraInfo camInfo;
-  error = cam.GetCameraInfo(&camInfo);
-  if (error != PGRERROR_OK)
-  {
+  CameraInfo camera_info;
+  error = camera.GetCameraInfo(&camera_info);
+  if (error != PGRERROR_OK) {
     PrintError(error);
     return -1;
   }
 
-  PrintCameraInfo(&camInfo);
+  PrintCameraInfo(&camera_info);
+
+  SetProperty(camera, FlyCapture2::FRAME_RATE, false, 30.);
 
   // // Turn Timestamp on
-  EmbeddedImageInfo imageInfo;
-  imageInfo.timestamp.onOff = true;
-  imageInfo.exposure.onOff = true;
-  imageInfo.shutter.onOff = true;
-  error = cam.SetEmbeddedImageInfo(&imageInfo);
-  if (error != PGRERROR_OK)
-  {
+  EmbeddedImageInfo image_info;
+  image_info.timestamp.onOff = true;
+  // image_info.exposure.onOff = true;
+  // image_info.shutter.onOff = true;
+  error = camera.SetEmbeddedImageInfo(&image_info);
+  if (error != PGRERROR_OK) {
     PrintError(error);
     cout << "Press Enter to exit." << endl;
     cin.ignore();
@@ -80,7 +133,7 @@ int RunSingleCamera(PGRGuid guid) {
 
   // Get the camera configuration
   FC2Config config;
-  error = cam.GetConfiguration(&config);
+  error = camera.GetConfiguration(&config);
   if (error != PGRERROR_OK)
   {
     PrintError(error);
@@ -91,56 +144,53 @@ int RunSingleCamera(PGRGuid guid) {
   config.numBuffers = 10;
 
   // Set the camera configuration
-  error = cam.SetConfiguration(&config);
-  if (error != PGRERROR_OK)
-  {
+  error = camera.SetConfiguration(&config);
+  if (error != PGRERROR_OK) {
     PrintError(error);
     return -1;
   }
   // Start capturing images
-  error = cam.StartCapture();
-  if (error != PGRERROR_OK)
-  {
+  error = camera.StartCapture();
+  if (error != PGRERROR_OK) {
     PrintError(error);
     return -1;
   }
 
   Property prop;
   prop.type = FlyCapture2::SHUTTER;
-  error = cam.GetProperty(&prop);
-  if (error != PGRERROR_OK)
-  {
+  error = camera.GetProperty(&prop);
+  if (error != PGRERROR_OK) {
     PrintError(error);
     return -1;
   }
 
   stringstream ss;
-  ofstream fout("times.txt");
+  ofstream fout_time("times.txt");
+  ostringstream fout_img;
 
   Image rawImage;
-  for (int imageCnt = 0; imageCnt < k_num_images; imageCnt++) {
+  for (int image_count = 0; image_count < k_num_images; image_count++) {
     // Retrieve an image
-    error = cam.RetrieveBuffer(&rawImage);
-    if (error != PGRERROR_OK)
-    {
+    error = camera.RetrieveBuffer(&rawImage);
+    if (error != PGRERROR_OK) {
       PrintError(error);
       continue;
     }
 
-    cout << "Grabbed image " << imageCnt << endl;
+    cout << "Grabbed image " << image_count << endl;
 
     // Create a converted image
-    Image convertedImage;
+    Image converted_image;
 
     // Convert the raw image
-    error = rawImage.Convert(PIXEL_FORMAT_MONO8, &convertedImage);
-    if (error != PGRERROR_OK)
-    {
+    error = rawImage.Convert(PIXEL_FORMAT_MONO8, &converted_image);
+
+    if (error != PGRERROR_OK) {
       PrintError(error);
       return -1;
     }
     // get shutter speed (= exposure speed)
-    error = cam.GetProperty(&prop);
+    error = camera.GetProperty(&prop);
     std::cout << prop.absValue << std::endl;
 
     // Set header timestamp as embedded for now
@@ -149,26 +199,26 @@ int RunSingleCamera(PGRGuid guid) {
     int ntime = 1000 * embeddedTime.microSeconds;
 
     ss.str("");
-    ss << std::to_string(imageCnt) << " " << std::to_string(time) << "." << std::to_string(ntime) << " " << prop.absValue / 1000. << std::endl;
-    fout<< ss.str();
+    ss << std::to_string(image_count) << " " << std::to_string(time) << "." << std::to_string(ntime) << " " << prop.absValue / 1000. << std::endl;
 
-    // Create a unique filename
-    ostringstream filename;
-    filename << "photometric_calibration-" << camInfo.serialNumber << "-"
-             << imageCnt << ".png";
+    // save timestamps into times.txt
+    fout_time<< ss.str();
+
+    // Create a unique fout_img
+    fout_img.str("");
+    fout_img << "000" << image_count << ".png";
 
     // Save the image. If a file format is not passed in, then the file
     // extension is parsed to attempt to determine the file format.
-    error = convertedImage.Save(filename.str().c_str());
-    if (error != PGRERROR_OK)
-    {
+    error = converted_image.Save(fout_img.str().c_str());
+    if (error != PGRERROR_OK) {
       PrintError(error);
       return -1;
     }
   }
 
   // Stop capturing images
-  error = cam.StopCapture();
+  error = camera.StopCapture();
   if (error != PGRERROR_OK)
   {
     PrintError(error);
@@ -176,7 +226,7 @@ int RunSingleCamera(PGRGuid guid) {
   }
 
   // Disconnect the camera
-  error = cam.Disconnect();
+  error = camera.Disconnect();
   if (error != PGRERROR_OK)
   {
     PrintError(error);
@@ -186,43 +236,25 @@ int RunSingleCamera(PGRGuid guid) {
   return 0;
 }
 
-int main(int /*argc*/, char ** /*argv*/)
-{
+int main(int argc, char **argv) {
   PrintBuildInfo();
 
   Error error;
 
-  // Since this application saves images in the current folder
-  // we must ensure that we have permission to write to this folder.
-  // If we do not have permission, fail right away.
-  FILE *tempFile = fopen("test.txt", "w+");
-  if (tempFile == NULL)
-  {
-    cout << "Failed to create file in current folder.  Please check "
-        "permissions."
-         << endl;
-    return -1;
-  }
-  fclose(tempFile);
-  remove("test.txt");
-
-  BusManager busMgr;
-  unsigned int numCameras;
-  error = busMgr.GetNumOfCameras(&numCameras);
-  if (error != PGRERROR_OK)
-  {
+  BusManager bus_manager;
+  unsigned int num_cameras;
+  error = bus_manager.GetNumOfCameras(&num_cameras);
+  if (error != PGRERROR_OK) {
     PrintError(error);
     return -1;
   }
 
-  cout << "Number of cameras detected: " << numCameras << endl;
+  cout << "Number of cameras detected: " << num_cameras << endl;
 
-  for (unsigned int i = 0; i < numCameras; i++)
-  {
+  for (unsigned int i = 0; i < num_cameras; i++) {
     PGRGuid guid;
-    error = busMgr.GetCameraFromIndex(i, &guid);
-    if (error != PGRERROR_OK)
-    {
+    error = bus_manager.GetCameraFromIndex(i, &guid);
+    if (error != PGRERROR_OK) {
       PrintError(error);
       return -1;
     }
