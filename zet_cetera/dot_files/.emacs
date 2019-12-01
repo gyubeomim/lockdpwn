@@ -1769,6 +1769,7 @@
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(async-bytecomp-allowed-packages (quote (async helm helm-core helm-ls-git helm-ls-hg magit)))
  '(auto-hscroll-mode t)
+ '(avy-all-windows nil)
  '(avy-keys
    (quote
     (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
@@ -3603,16 +3604,6 @@ created by edward 180515"
 ;; Alt + r 키로 backward paragraph (C-<up>) 과 같은 명령을 실행합니다
 (global-set-key (kbd "M-r") 'backward-paragraph)
 (define-key c++-mode-map (kbd "M-r") 'backward-paragraph)
-
-;; C-M-r,f 키로 buffer의 맨 처음과 끝으로 이동합니다
-(global-set-key (kbd "C-M-r") 'beginning-of-buffer)
-(global-set-key (kbd "C-M-f") 'end-of-buffer)
-
-;; C-M-j,k 키로 forward, backward paragraph 명령을 수행합니다
-(global-set-key (kbd "C-M-j") 'forward-paragraph)
-(define-key c++-mode-map (kbd "C-M-j") 'forward-paragraph)
-(global-set-key (kbd "C-M-k") 'backward-paragraph)
-(define-key c++-mode-map (kbd "C-M-k") 'backward-paragraph)
 
 ;; (eval-after-load "simple"
 ;;   (lambda ()
