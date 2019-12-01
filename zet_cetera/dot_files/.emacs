@@ -93,6 +93,7 @@
 
     spacemacs-theme        ;; spacemacs theme
     gruvbox-theme          ;; gruvbox theme
+    zenburn-theme         ;; zenburn theme
 
     calfw                  ;; calendar framework for org-mode
     calfw-org              ;; calfw-org
@@ -1523,8 +1524,9 @@
 
 
 (setq custom-safe-themes t)
-;;(load-theme 'solarized-dark t)
-(load-theme 'spacemacs-dark t)
+;; (load-theme 'solarized-dark t)
+;; (load-theme 'spacemacs-dark t)
+(load-theme 'zenburn t)
 ;; comment(edward): gruvbox conflicts with tabbar-mode & git-gutter face.
 ;; so I removed faces in gruvbox.el and recompile it.
 ;;(load-theme 'gruvbox-dark-medium t)
@@ -2020,7 +2022,7 @@
  '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
  '(package-selected-packages
    (quote
-    (docker-tramp electric-operator auto-indent-mode cmake-mode spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
+    (monokai-theme zenburn-theme docker-tramp electric-operator auto-indent-mode cmake-mode spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
  '(pomodoro-break-time 5)
  '(pomodoro-extra-time 5)
  '(pomodoro-play-sounds nil)
