@@ -1526,11 +1526,9 @@
 (setq custom-safe-themes t)
 ;; (load-theme 'solarized-dark t)
 ;; (load-theme 'spacemacs-dark t)
-(load-theme 'zenburn t)
-;; comment(edward): gruvbox conflicts with tabbar-mode & git-gutter face.
-;; so I removed faces in gruvbox.el and recompile it.
-;;(load-theme 'gruvbox-dark-medium t)
-;;(load-theme 'gruvbox-light-medium t)
+;; (load-theme 'zenburn t)
+;; comment(edward): gruvbox conflicts with tabbar-mode & git-gutter face. So, i removed faces in gruvbox.el and recompile it.
+(load-theme 'gruvbox-dark-soft t)
 
 
 
