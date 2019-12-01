@@ -23,11 +23,13 @@ fi
 # fi
 
 cd emacs-"$version"
-./configure \
-    --with-xft \
-    --with-x-toolkit=lucid
-make
-sudo make install prefix=/usr/local/stow/emacs-"$version"
+./configure
+# ./configure \
+#     --with-xft \
+#     --with-x-toolkit=lucid
 
+make -j4
+
+#sudo make install prefix=/usr/local/stow/emacs-"$version"
 # cd /usr/local/stow
 # sudo stow emacs-"$version"
