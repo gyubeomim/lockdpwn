@@ -1759,436 +1759,6 @@
 ;; PACKAGE: protobuf-mode
 (require 'protobuf-mode)
 
-;; Variable Customizing
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(async-bytecomp-allowed-packages (quote (async helm helm-core helm-ls-git helm-ls-hg magit)))
- '(auto-hscroll-mode t)
- '(avy-all-windows nil)
- '(avy-keys
-   (quote
-    (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
- '(avy-style (quote at-full))
- '(cmake-ide-make-command "make -j4")
- '(column-number-mode t)
- '(company-backends (quote (company-irony company-clang company-cmake)))
- '(compilation-message-face (quote default))
- '(display-time-day-and-date t)
- '(display-time-default-load-average nil)
- '(display-time-format "%H:%M, %D")
- '(ecb-layout-name "right2")
- '(ecb-layout-window-sizes
-   (quote
-    (("right2"
-      (ecb-directories-buffer-name 0.33189655172413796 . 0.27586206896551724)
-      (ecb-methods-buffer-name 0.33189655172413796 . 0.7241379310344828))
-     ("left3"
-      (ecb-directories-buffer-name 0.2 . 0.29411764705882354)
-      (ecb-sources-buffer-name 0.2 . 0.3333333333333333)
-      (ecb-methods-buffer-name 0.2 . 0.35294117647058826))
-     ("right1"
-      (ecb-directories-buffer-name 0.3151515151515151 . 0.20833333333333334)
-      (ecb-sources-buffer-name 0.3151515151515151 . 0.2916666666666667)
-      (ecb-methods-buffer-name 0.3151515151515151 . 0.4791666666666667))
-     ("left14"
-      (ecb-directories-buffer-name 0.271523178807947 . 0.7317073170731707)
-      (ecb-history-buffer-name 0.271523178807947 . 0.24390243902439024)))))
- '(ecb-options-version "2.50")
- '(ecb-tip-of-the-day nil)
- '(elpy-modules
-   (quote
-    (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
- '(evil-mode-line-format (quote (after)))
- '(fci-rule-color "#073642")
- '(find-file-visit-truename t)
- '(git-gutter:added-sign "+")
- '(git-gutter:deleted-sign "-")
- '(git-gutter:modified-sign "▸")
- '(helm-bookmark-show-location t)
- '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
- '(highlight-symbol-foreground-color "black")
- '(highlight-symbol-idle-delay 0.25)
- '(highlight-tail-colors
-   (quote
-    (("#073642" . 0)
-     ("#546E00" . 20)
-     ("#00736F" . 30)
-     ("#00629D" . 50)
-     ("#7B6000" . 60)
-     ("#8B2C02" . 70)
-     ("#93115C" . 85)
-     ("#073642" . 100))))
- '(hl-bg-colors
-   (quote
-    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
- '(hl-fg-colors
-   (quote
-    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
- '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
- '(magit-diff-use-overlays nil)
- '(minimap-enlarge-certain-faces nil)
- '(minimap-highlight-line nil)
- '(minimap-major-modes (quote (prog-mode org-mode)))
- '(minimap-minimum-width 20)
- '(minimap-update-delay 0.01)
- '(minimap-window-location (quote right))
- '(nrepl-message-colors
-   (quote
-    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
- '(org-agenda-current-time-string "now ------------------------------------------")
- '(org-agenda-files
-   (quote
-    ("~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "~/gitrepo/ims_org/org_files/notes/feature_based_method.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org")))
- '(org-agenda-finalize-hook
-   (quote
-    ((lambda nil
-       (save-excursion
-         (goto-char
-          (point-min))
-         (while
-             (re-search-forward "gcal:" nil t)
-           (add-text-properties
-            (match-beginning 0)
-            (point-at-eol)
-            (quote
-             (face
-              (:foreground "dark gray")))))))
-     (lambda nil
-       (save-excursion
-         (goto-char
-          (point-min))
-         (while
-             (re-search-forward "now" nil t)
-           (add-text-properties
-            (match-beginning 0)
-            (point-at-eol)
-            (quote
-             (face
-              (:foreground "deep sky blue" :weight bold))))))))))
- '(org-agenda-skip-deadline-if-done t)
- '(org-agenda-skip-scheduled-if-done t)
- '(org-agenda-time-grid
-   (quote
-    ((daily today require-timed)
-     (800 1000 1200 1400 1600 1800 2000)
-     "......" " ")))
- '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
- '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
- '(org-capture-bookmark nil)
- '(org-capture-prepare-finalize-hook
-   (quote
-    ((lambda nil
-       (goto-line
-        (+
-         (line-number-at-pos)
-         -2))
-       (beginning-of-line)
-       (insert "*"))
-     (lambda nil
-       (progn
-         (setq num 1)
-         (loop
-          (< num 2000)
-          (let
-              ((numbering
-                (concat "#"
-                        (number-to-string num)))
-               (content
-                (with-current-buffer
-                    (cadr
-                     (split-string
-                      (buffer-name)
-                      "-"))
-                  (buffer-substring-no-properties
-                   (point-min)
-                   (point-max))))
-               (capture_content
-                (with-current-buffer
-                    (buffer-name)
-                  (buffer-substring-no-properties
-                   (point-min)
-                   (point-max)))))
-            (if
-                (or
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-daily.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-todo.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-atlas.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-milestone.org"))
-                (return)
-              (if
-                  (save-excursion
-                    (goto-char
-                     (point-min))
-                    (string-match numbering content))
-                  nil
-                (return
-                 (progn
-                   (if
-                       (string=
-                        (buffer-name)
-                        "CAPTURE-issues.org")
-                       (progn
-                         (beginning-of-line)
-                         (search-forward "OPEN")
-                         (insert
-                          (concat " " numbering)))
-                     (progn
-                       (end-of-line)
-                       (insert numbering)))))))
-            (setq num
-                  (1+ num)))))))))
- '(org-default-priority 66)
- '(org-gcal-auto-archive nil)
- '(org-hide-emphasis-markers t)
- '(org-keep-stored-link-after-insertion t)
- '(org-link-file-path-type (quote relative))
- '(org-link-parameters
-   (quote
-    (("bibtex" :follow org-bibtex-open :store org-bibtex-store-link)
-     ("colorbold" :follow
-      #[257 "\300\207"
-            ["No follow action."]
-            2 "No follow action.
-
-(fn PATH)"]
-      :export
-      #[771
-        [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s);font-weight:bold\">%s</span>" truncate "No Color RGB for %s"]
-        13 "
-
-(fn COLOR DESCRIPTION BACKEND)"])
-     ("color" :follow
-      #[257 "\300\207"
-            ["No follow action."]
-            2 "No follow action.
-
-(fn PATH)"]
-      :export
-      #[771
-        [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s)\">%s</span>" truncate "No Color RGB for %s"]
-        13 "
-(fn COLOR DESCRIPTION BACKEND)"])
-     ("file+sys")
-     ("file+emacs")
-     ("doi" :follow org--open-doi-link)
-     ("elisp" :follow org--open-elisp-link)
-     ("file" :complete org-file-complete-link)
-     ("ftp" :follow
-      (lambda
-        (path)
-        (browse-url
-         (concat "ftp:" path))))
-     ("help" :follow org--open-help-link)
-     ("http" :follow
-      (lambda
-        (path)
-        (browse-url
-         (concat "http:" path))))
-     ("https" :follow
-      (lambda
-        (path)
-        (browse-url
-         (concat "https:" path))))
-     ("mailto" :follow
-      (lambda
-        (path)
-        (browse-url
-         (concat "mailto:" path))))
-     ("news" :follow
-      (lambda
-        (path)
-        (browse-url
-         (concat "news:" path))))
-     ("shell" :follow org--open-shell-link))))
- '(org-lowest-priority 68)
- '(org-reverse-note-order nil)
- '(org-scheduled-delay-days 0)
- '(org-tags-column -80)
- '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
- '(package-selected-packages
-   (quote
-    (monokai-theme zenburn-theme docker-tramp electric-operator auto-indent-mode cmake-mode spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
- '(pomodoro-break-time 5)
- '(pomodoro-extra-time 5)
- '(pomodoro-play-sounds nil)
- '(pomodoro-work-time 25)
- '(pos-tip-background-color "#073642")
- '(pos-tip-foreground-color "#93a1a1")
- '(recenter-positions (quote (middle top bottom)))
- '(rtags-other-window-window-size-percentage 1)
- '(rtags-split-window-function (quote split-window-below))
- '(rtags-tracking t)
- '(rtags-tracking-timer-interval 0.1)
- '(rtags-use-bookmarks nil)
- '(safe-local-variable-values
-   (quote
-    ((cmake-ide-cmake-args . "RelWithDebInfo")
-     (eval font-lock-add-keywords nil
-           (\`
-            (((\,
-               (concat "("
-                       (regexp-opt
-                        (quote
-                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
-                        t)
-                       "\\_>"))
-              1
-              (quote font-lock-variable-name-face))))))))
- '(shell-escape-mode "-shell-escape")
- '(sml/battery-format "")
- '(sml/col-number-format "")
- '(sml/full-mode-string " ")
- '(sml/line-number-format "")
- '(sml/mode-width 2)
- '(sml/modified-char "* ")
- '(sml/no-confirm-load-theme t)
- '(sml/numbers-separator "")
- '(sml/position-percentage-format "")
- '(sml/prefix-face-list (quote ((":SU:" sml/sudo) (":G" sml/git) ("" sml/prefix))))
- '(sml/prefix-regexp (quote (":\\(.*:\\)" "\\[.*]" "~/")))
- '(sml/projectile-replacement-format "[%s] ")
- '(sml/read-only-char "R ")
- '(sml/shorten-directory nil)
- '(sml/show-client t)
- '(sml/show-remote nil)
- '(sml/show-trailing-N nil)
- '(sml/size-indication-format "")
- '(sml/theme (quote respectful))
- '(sml/use-projectile-p (quote before-prefixes))
- '(sml/vc-mode-show-backend nil)
- '(sp-base-key-bindings nil)
- '(sp-escape-quotes-after-insert nil)
- '(speedbar-update-flag t)
- '(split-width-threshold 150)
- '(tabbar-cycle-scope nil)
- '(tabbar-separator (quote ("|")))
- '(term-default-bg-color "#002b36")
- '(term-default-fg-color "#839496")
- '(vc-annotate-background nil)
- '(vc-annotate-background-mode nil)
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#dc322f")
-     (40 . "#c8805d801780")
-     (60 . "#bec073400bc0")
-     (80 . "#b58900")
-     (100 . "#a5008e550000")
-     (120 . "#9d0091000000")
-     (140 . "#950093aa0000")
-     (160 . "#8d0096550000")
-     (180 . "#859900")
-     (200 . "#66aa9baa32aa")
-     (220 . "#57809d004c00")
-     (240 . "#48559e556555")
-     (260 . "#392a9faa7eaa")
-     (280 . "#2aa198")
-     (300 . "#28669833af33")
-     (320 . "#279993ccbacc")
-     (340 . "#26cc8f66c666")
-     (360 . "#268bd2"))))
- '(vc-annotate-very-old-color nil)
- '(vc-follow-symlinks t)
- '(weechat-color-list
-   (quote
-    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
- '(xterm-color-names
-   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
- '(xterm-color-names-bright
-   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"])
- '(yas-also-auto-indent-first-line t)
- '(yas-also-indent-empty-lines t))
-
-;; Custom Face + 영어폰트 설정  (height 부분을 바꾸면 크기가 바뀝니다)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 103 :width normal :foundry "ADBO" :family "Source Code Pro"))))
- '(avy-lead-face ((t (:inherit isearch :background "#1c1c1c" :foreground "yellow" :weight bold))))
- '(avy-lead-face-0 ((t (:inherit isearch :background "#1c1c1c" :foreground "yellow" :box nil :weight bold))))
- '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
- '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
- '(cfw:face-today ((t (:background "#262626" :foreground "gainsboro" :weight bold))))
- '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
- '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
- '(diff-refine-added ((t (:background "olive drab"))))
- '(diff-refine-changed ((t (:background "nil"))))
- '(diff-refine-removed ((t (:background "firebrick"))))
- '(diff-removed ((t (:background "brown" :foreground "white smoke"))))
- '(dired-directory ((t (:foreground "gold" :weight normal))))
- '(ecb-default-highlight-face ((t (:background "dark violet"))))
- '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
- '(font-lock-comment-face ((t (:foreground "lime green" :slant normal))))
- '(hi-blue ((t (:background "blue" :foreground "#5c95b9"))))
- '(hi-blue-b ((t (:background "cyan" :foreground "#49a19a" :weight bold))))
- '(hi-green ((t (:background "green" :foreground "#8c9d50"))))
- '(hi-green-b ((t (:background "chartreuse" :foreground "#899b30" :weight bold))))
- '(hi-pink ((t (:background "pink" :foreground "#b36b91"))))
- '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
- '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
- '(highlight-symbol-face ((t (:foreground "yellow"))))
- '(iedit-occurrence ((t (:foreground "magenta" :weight bold))))
- '(iedit-read-only-occurrence ((t (:foreground "magenta"))))
- '(magit-diff-hunk-heading ((t (:background "dark slate gray" :foreground "light gray"))))
- '(magit-diff-hunk-heading-highlight ((t (:background "dark cyan" :foreground "light gray"))))
- '(minimap-active-region-background ((t nil)))
- '(minimap-semantic-function-face ((t (:inherit (font-lock-function-name-face minimap-font-face)))))
- '(minimap-semantic-type-face ((t (:inherit (font-lock-type-face minimap-font-face)))))
- '(minimap-semantic-variable-face ((t (:inherit (font-lock-function-name-face minimap-font-face)))))
- '(org-agenda-calendar-event ((t (:foreground "gainsboro"))))
- '(org-agenda-date ((t (:background "light gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
- '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#002b36" :foreground "deep sky blue" :inverse-video t :overline nil :weight normal))))
- '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
- '(org-agenda-done ((t (:foreground "gainsboro" :slant italic))))
- '(org-block ((t (:foreground "gainsboro"))))
- '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
- '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
- '(org-code ((t (:foreground "aquamarine"))))
- '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
- '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
- '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
- '(org-level-3 ((t (:inherit variable-pitch :foreground "medium spring green" :weight normal :height 0.99))))
- '(org-level-4 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.99))))
- '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.99))))
- '(org-level-6 ((t (:inherit variable-pitch :foreground "yellow3"))))
- '(org-level-7 ((t (:inherit variable-pitch :foreground "light sea green" :weight normal))))
- '(org-link ((t (:foreground "gold" :box nil :underline t :weight normal))))
- '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
- '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
- '(org-scheduled ((t (:foreground "gainsoboro" :weight normal))))
- '(org-scheduled-previously ((t (:foreground "gainsboro" :slant normal :weight normal))))
- '(org-scheduled-today ((t (:foreground "gainsoboro" :weight normal :height 1.0))))
- '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
- '(org-tag ((t (:foreground "gainsboro" :underline nil :slant normal :weight bold :height 1.0))))
- '(org-time-grid ((t (:foreground "gainsboro"))))
- '(org-upcoming-deadline ((t (:inherit org-priority :foreground "yellow2" :underline nil :weight normal))))
- '(org-verbatim ((t (:foreground "deep pink"))))
- '(tabbar-button ((t (:inherit tabbar-default))))
- '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
- '(tabbar-default ((t (:foreground "white" :height 0.9))))
- '(tabbar-highlight ((t (:foreground "white"))))
- '(tabbar-modified ((t (:inherit tabbar-default :foreground "green"))))
- '(tabbar-selected ((t (:inherit tabbar-default :foreground "cyan"))))
- '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red"))))
- '(tabbar-unselected ((t (:inherit tabbar-default))))
- '(variable-pitch ((t (:family "Roboto Mono for Powerline" :weight normal)))))
-
 ;; 다중모니터에서 C-x-5-2를 통해서 새로운 frame을 생성한 다음에 모니터가 작아서 폰트사이즈가 작은 경우 폰트크기를 크게하기 위해 설정한 함수
 ;; https://stackoverflow.com/questions/24705984/increase-decrease-font-size-in-an-emacs-frame-not-just-buffer
 (defun zoom-frame (&optional n frame amt)
@@ -3756,4 +3326,430 @@ created by edward 180515"
 ;; emacs titlebar의 이름을 제거합니다.
 (setq frame-title-format "")
 
-(message "[+] All Settings are loaded!")
+;; Variable Customizing========================================================================
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :foreground "gainsboro" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 103 :width normal :foundry "ADBO" :family "Source Code Pro"))))
+ '(avy-lead-face ((t (:inherit isearch :background "#1c1c1c" :foreground "yellow" :weight bold))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "#1c1c1c" :foreground "yellow" :box nil :weight bold))))
+ '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
+ '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
+ '(cfw:face-today ((t (:background "#262626" :foreground "gainsboro" :weight bold))))
+ '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
+ '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
+ '(diff-refine-added ((t (:background "olive drab"))))
+ '(diff-refine-changed ((t (:background "nil"))))
+ '(diff-refine-removed ((t (:background "firebrick"))))
+ '(diff-removed ((t (:background "brown" :foreground "white smoke"))))
+ '(dired-directory ((t (:foreground "gold" :weight normal))))
+ '(ecb-default-highlight-face ((t (:background "dark violet"))))
+ '(font-lock-comment-delimiter-face ((t (:foreground "forest green"))))
+ '(font-lock-comment-face ((t (:foreground "lime green" :slant normal))))
+ '(hi-blue ((t (:background "blue" :foreground "#5c95b9"))))
+ '(hi-blue-b ((t (:background "cyan" :foreground "#49a19a" :weight bold))))
+ '(hi-green ((t (:background "green" :foreground "#8c9d50"))))
+ '(hi-green-b ((t (:background "chartreuse" :foreground "#899b30" :weight bold))))
+ '(hi-pink ((t (:background "pink" :foreground "#b36b91"))))
+ '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
+ '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
+ '(highlight-symbol-face ((t (:foreground "yellow"))))
+ '(iedit-occurrence ((t (:foreground "magenta" :weight bold))))
+ '(iedit-read-only-occurrence ((t (:foreground "magenta"))))
+ '(magit-diff-hunk-heading ((t (:background "dark slate gray" :foreground "light gray"))))
+ '(magit-diff-hunk-heading-highlight ((t (:background "dark cyan" :foreground "light gray"))))
+ '(minimap-active-region-background ((t nil)))
+ '(minimap-semantic-function-face ((t (:inherit (font-lock-function-name-face minimap-font-face)))))
+ '(minimap-semantic-type-face ((t (:inherit (font-lock-type-face minimap-font-face)))))
+ '(minimap-semantic-variable-face ((t (:inherit (font-lock-function-name-face minimap-font-face)))))
+ '(org-agenda-calendar-event ((t (:foreground "gainsboro"))))
+ '(org-agenda-date ((t (:background "light gray" :foreground "black" :inverse-video nil :box (:line-width 2 :color "#002b36") :overline nil :slant normal :weight normal :height 1.0))))
+ '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#002b36" :foreground "deep sky blue" :inverse-video t :overline nil :weight normal))))
+ '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
+ '(org-agenda-done ((t (:foreground "gainsboro" :slant italic))))
+ '(org-block ((t (:foreground "gainsboro"))))
+ '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
+ '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
+ '(org-code ((t (:foreground "aquamarine"))))
+ '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
+ '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
+ '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
+ '(org-level-3 ((t (:inherit variable-pitch :foreground "medium spring green" :weight normal :height 0.99))))
+ '(org-level-4 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.99))))
+ '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.99))))
+ '(org-level-6 ((t (:inherit variable-pitch :foreground "yellow3"))))
+ '(org-level-7 ((t (:inherit variable-pitch :foreground "light sea green" :weight normal))))
+ '(org-link ((t (:foreground "gold" :box nil :underline t :weight normal))))
+ '(org-meta-line ((t (:foreground "#586e75" :slant normal))))
+ '(org-priority ((t (:inherit font-lock-keyword-face :foreground "gray"))))
+ '(org-scheduled ((t (:foreground "gainsoboro" :weight normal))))
+ '(org-scheduled-previously ((t (:foreground "gainsboro" :slant normal :weight normal))))
+ '(org-scheduled-today ((t (:foreground "gainsoboro" :weight normal :height 1.0))))
+ '(org-special-keyword ((((class color) (min-colors 89)) (:foreground "#586e75" :weight bold))))
+ '(org-tag ((t (:foreground "gainsboro" :underline nil :slant normal :weight bold :height 1.0))))
+ '(org-time-grid ((t (:foreground "gainsboro"))))
+ '(org-upcoming-deadline ((t (:inherit org-priority :foreground "yellow2" :underline nil :weight normal))))
+ '(org-verbatim ((t (:foreground "deep pink"))))
+ '(tabbar-button ((t (:inherit tabbar-default))))
+ '(tabbar-button-highlight ((t (:inherit tabbar-default :foreground "white"))))
+ '(tabbar-default ((t (:foreground "white" :height 0.9))))
+ '(tabbar-highlight ((t (:foreground "white"))))
+ '(tabbar-modified ((t (:inherit tabbar-default :foreground "green"))))
+ '(tabbar-selected ((t (:inherit tabbar-default :foreground "cyan"))))
+ '(tabbar-selected-modified ((t (:inherit tabbar-default :foreground "red"))))
+ '(tabbar-unselected ((t (:inherit tabbar-default))))
+ '(variable-pitch ((t (:family "Roboto Mono for Powerline" :weight normal)))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(async-bytecomp-allowed-packages (quote (async helm helm-core helm-ls-git helm-ls-hg magit)))
+ '(auto-hscroll-mode t)
+ '(avy-all-windows nil)
+ '(avy-keys
+   (quote
+    (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
+ '(avy-style (quote at-full))
+ '(cmake-ide-make-command "make -j4")
+ '(column-number-mode t)
+ '(company-backends (quote (company-irony company-clang company-cmake)))
+ '(compilation-message-face (quote default))
+ '(display-time-day-and-date t)
+ '(display-time-default-load-average nil)
+ '(display-time-format "%H:%M, %D")
+ '(ecb-layout-name "right2")
+ '(ecb-layout-window-sizes
+   (quote
+    (("right2"
+      (ecb-directories-buffer-name 0.33189655172413796 . 0.27586206896551724)
+      (ecb-methods-buffer-name 0.33189655172413796 . 0.7241379310344828))
+     ("left3"
+      (ecb-directories-buffer-name 0.2 . 0.29411764705882354)
+      (ecb-sources-buffer-name 0.2 . 0.3333333333333333)
+      (ecb-methods-buffer-name 0.2 . 0.35294117647058826))
+     ("right1"
+      (ecb-directories-buffer-name 0.3151515151515151 . 0.20833333333333334)
+      (ecb-sources-buffer-name 0.3151515151515151 . 0.2916666666666667)
+      (ecb-methods-buffer-name 0.3151515151515151 . 0.4791666666666667))
+     ("left14"
+      (ecb-directories-buffer-name 0.271523178807947 . 0.7317073170731707)
+      (ecb-history-buffer-name 0.271523178807947 . 0.24390243902439024)))))
+ '(ecb-options-version "2.50")
+ '(ecb-tip-of-the-day nil)
+ '(elpy-modules
+   (quote
+    (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
+ '(evil-mode-line-format (quote (after)))
+ '(fci-rule-color "#073642")
+ '(find-file-visit-truename t)
+ '(git-gutter:added-sign "+")
+ '(git-gutter:deleted-sign "-")
+ '(git-gutter:modified-sign "▸")
+ '(helm-bookmark-show-location t)
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-symbol-foreground-color "black")
+ '(highlight-symbol-idle-delay 0.25)
+ '(highlight-tail-colors
+   (quote
+    (("#073642" . 0)
+     ("#546E00" . 20)
+     ("#00736F" . 30)
+     ("#00629D" . 50)
+     ("#7B6000" . 60)
+     ("#8B2C02" . 70)
+     ("#93115C" . 85)
+     ("#073642" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+ '(hl-fg-colors
+   (quote
+    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+ '(magit-diff-use-overlays nil)
+ '(minimap-enlarge-certain-faces nil)
+ '(minimap-highlight-line nil)
+ '(minimap-major-modes (quote (prog-mode org-mode)))
+ '(minimap-minimum-width 20)
+ '(minimap-update-delay 0.01)
+ '(minimap-window-location (quote right))
+ '(nrepl-message-colors
+   (quote
+    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(org-agenda-current-time-string "now ------------------------------------------")
+ '(org-agenda-files
+   (quote
+    ("~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "~/gitrepo/ims_org/org_files/notes/feature_based_method.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org")))
+ '(org-agenda-finalize-hook
+   (quote
+    ((lambda nil
+       (save-excursion
+         (goto-char
+          (point-min))
+         (while
+             (re-search-forward "gcal:" nil t)
+           (add-text-properties
+            (match-beginning 0)
+            (point-at-eol)
+            (quote
+             (face
+              (:foreground "dark gray")))))))
+     (lambda nil
+       (save-excursion
+         (goto-char
+          (point-min))
+         (while
+             (re-search-forward "now" nil t)
+           (add-text-properties
+            (match-beginning 0)
+            (point-at-eol)
+            (quote
+             (face
+              (:foreground "deep sky blue" :weight bold))))))))))
+ '(org-agenda-skip-deadline-if-done t)
+ '(org-agenda-skip-scheduled-if-done t)
+ '(org-agenda-time-grid
+   (quote
+    ((daily today require-timed)
+     (800 1000 1200 1400 1600 1800 2000)
+     "......" " ")))
+ '(org-bullets-bullet-list (quote ("●" "◉" "▸" "✸")))
+ '(org-capture-before-finalize-hook (quote (org-gcal--capture-post)))
+ '(org-capture-bookmark nil)
+ '(org-capture-prepare-finalize-hook
+   (quote
+    ((lambda nil
+       (goto-line
+        (+
+         (line-number-at-pos)
+         -2))
+       (beginning-of-line)
+       (insert "*"))
+     (lambda nil
+       (progn
+         (setq num 1)
+         (loop
+          (< num 2000)
+          (let
+              ((numbering
+                (concat "#"
+                        (number-to-string num)))
+               (content
+                (with-current-buffer
+                    (cadr
+                     (split-string
+                      (buffer-name)
+                      "-"))
+                  (buffer-substring-no-properties
+                   (point-min)
+                   (point-max))))
+               (capture_content
+                (with-current-buffer
+                    (buffer-name)
+                  (buffer-substring-no-properties
+                   (point-min)
+                   (point-max)))))
+            (if
+                (or
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-daily.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-todo.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-atlas.org")
+                 (string=
+                  (buffer-name)
+                  "CAPTURE-milestone.org"))
+                (return)
+              (if
+                  (save-excursion
+                    (goto-char
+                     (point-min))
+                    (string-match numbering content))
+                  nil
+                (return
+                 (progn
+                   (if
+                       (string=
+                        (buffer-name)
+                        "CAPTURE-issues.org")
+                       (progn
+                         (beginning-of-line)
+                         (search-forward "OPEN")
+                         (insert
+                          (concat " " numbering)))
+                     (progn
+                       (end-of-line)
+                       (insert numbering)))))))
+            (setq num
+                  (1+ num)))))))))
+ '(org-default-priority 66)
+ '(org-gcal-auto-archive nil)
+ '(org-hide-emphasis-markers t)
+ '(org-keep-stored-link-after-insertion t)
+ '(org-link-file-path-type (quote relative))
+ '(org-link-parameters
+   (quote
+    (("bibtex" :follow org-bibtex-open :store org-bibtex-store-link)
+     ("colorbold" :follow
+      #[257 "\300\207"
+            ["No follow action."]
+            2 "No follow action.
+
+(fn PATH)"]
+      :export
+      #[771
+        [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s);font-weight:bold\">%s</span>" truncate "No Color RGB for %s"]
+        13 "
+
+(fn COLOR DESCRIPTION BACKEND)"])
+     ("color" :follow
+      #[257 "\300\207"
+            ["No follow action."]
+            2 "No follow action.
+
+(fn PATH)"]
+      :export
+      #[771
+        [color-name-rgb-alist latex format "{\\color{%s}%s}" html assoc nil 65535.0 255 2 65535.0 3 65535.0 "<span style=\"color: rgb(%s,%s,%s)\">%s</span>" truncate "No Color RGB for %s"]
+        13 "
+(fn COLOR DESCRIPTION BACKEND)"])
+     ("file+sys")
+     ("file+emacs")
+     ("doi" :follow org--open-doi-link)
+     ("elisp" :follow org--open-elisp-link)
+     ("file" :complete org-file-complete-link)
+     ("ftp" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "ftp:" path))))
+     ("help" :follow org--open-help-link)
+     ("http" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "http:" path))))
+     ("https" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "https:" path))))
+     ("mailto" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "mailto:" path))))
+     ("news" :follow
+      (lambda
+        (path)
+        (browse-url
+         (concat "news:" path))))
+     ("shell" :follow org--open-shell-link))))
+ '(org-lowest-priority 68)
+ '(org-reverse-note-order nil)
+ '(org-scheduled-delay-days 0)
+ '(org-tags-column -80)
+ '(org-time-stamp-custom-formats (quote ("[%m/%d/%y %a]" . "[%m/%d/%y %a %H:%M]")))
+ '(package-selected-packages
+   (quote
+    (monokai-theme zenburn-theme docker-tramp electric-operator auto-indent-mode cmake-mode spacemacs-theme tabbar cmake-ide rtags centered-cursor-mode minimap ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar org-gcal company-irony irony mic-paren htmlize org-preview-html jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
+ '(pomodoro-break-time 5)
+ '(pomodoro-extra-time 5)
+ '(pomodoro-play-sounds nil)
+ '(pomodoro-work-time 25)
+ '(pos-tip-background-color "#073642")
+ '(pos-tip-foreground-color "#93a1a1")
+ '(recenter-positions (quote (middle top bottom)))
+ '(rtags-other-window-window-size-percentage 1)
+ '(rtags-split-window-function (quote split-window-below))
+ '(rtags-tracking t)
+ '(rtags-tracking-timer-interval 0.1)
+ '(rtags-use-bookmarks nil)
+ '(safe-local-variable-values
+   (quote
+    ((cmake-ide-cmake-args . "RelWithDebInfo")
+     (eval font-lock-add-keywords nil
+           (\`
+            (((\,
+               (concat "("
+                       (regexp-opt
+                        (quote
+                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
+                        t)
+                       "\\_>"))
+              1
+              (quote font-lock-variable-name-face))))))))
+ '(shell-escape-mode "-shell-escape")
+ '(sml/battery-format "")
+ '(sml/col-number-format "")
+ '(sml/full-mode-string " ")
+ '(sml/line-number-format "")
+ '(sml/mode-width 2)
+ '(sml/modified-char "* ")
+ '(sml/no-confirm-load-theme t)
+ '(sml/numbers-separator "")
+ '(sml/position-percentage-format "")
+ '(sml/prefix-face-list (quote ((":SU:" sml/sudo) (":G" sml/git) ("" sml/prefix))))
+ '(sml/prefix-regexp (quote (":\\(.*:\\)" "\\[.*]" "~/")))
+ '(sml/projectile-replacement-format "[%s] ")
+ '(sml/read-only-char "R ")
+ '(sml/shorten-directory nil)
+ '(sml/show-client t)
+ '(sml/show-remote nil)
+ '(sml/show-trailing-N nil)
+ '(sml/size-indication-format "")
+ '(sml/theme (quote respectful))
+ '(sml/use-projectile-p (quote before-prefixes))
+ '(sml/vc-mode-show-backend nil)
+ '(sp-base-key-bindings nil)
+ '(sp-escape-quotes-after-insert nil)
+ '(speedbar-update-flag t)
+ '(split-width-threshold 150)
+ '(tabbar-cycle-scope nil)
+ '(tabbar-separator (quote ("|")))
+ '(term-default-bg-color "#002b36")
+ '(term-default-fg-color "#839496")
+ '(vc-annotate-background nil)
+ '(vc-annotate-background-mode nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#dc322f")
+     (40 . "#c8805d801780")
+     (60 . "#bec073400bc0")
+     (80 . "#b58900")
+     (100 . "#a5008e550000")
+     (120 . "#9d0091000000")
+     (140 . "#950093aa0000")
+     (160 . "#8d0096550000")
+     (180 . "#859900")
+     (200 . "#66aa9baa32aa")
+     (220 . "#57809d004c00")
+     (240 . "#48559e556555")
+     (260 . "#392a9faa7eaa")
+     (280 . "#2aa198")
+     (300 . "#28669833af33")
+     (320 . "#279993ccbacc")
+     (340 . "#26cc8f66c666")
+     (360 . "#268bd2"))))
+ '(vc-annotate-very-old-color nil)
+ '(vc-follow-symlinks t)
+ '(weechat-color-list
+   (quote
+    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
+ '(xterm-color-names
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
+ '(xterm-color-names-bright
+   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"])
+ '(yas-also-auto-indent-first-line t)
+ '(yas-also-indent-empty-lines t))
