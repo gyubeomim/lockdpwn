@@ -58,6 +58,7 @@
 
     spacemacs-theme        ;; spacemacs theme
     gruvbox-theme          ;; gruvbox theme
+    zenburn-theme          ;; zenburn theme
 
     cmake-ide              ;; cmake-ide for rtags
     cmake-mode             ;; cmake package syntax highlighting
@@ -1088,8 +1089,9 @@
 (setq custom-safe-themes t)
 
 ;;(load-theme 'solarized-dark t)
-(load-theme 'spacemacs-dark t)
-;(load-theme 'gruvbox-dark-medium t)
+;;(load-theme 'spacemacs-dark t)
+(load-theme 'zenburn t)
+;;(load-theme 'gruvbox-dark-medium t)
 
 ;; PACKAGE: wrap-region
 (require 'wrap-region)
@@ -2539,6 +2541,7 @@ created by edward 180515"
  '(org-agenda-date-weekend ((t (:inherit org-agenda-date :foreground "black" :inverse-video nil :overline nil :underline t))))
  '(org-agenda-done ((t (:foreground "gainsboro" :slant italic))))
  '(org-block ((t (:foreground "gainsboro"))))
+ '(org-checkbox ((t (:background "#3f3f3f" :foreground "white" :box nil))))
  '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
  '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
  '(org-code ((t (:foreground "aquamarine"))))
@@ -2582,6 +2585,7 @@ created by edward 180515"
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(async-bytecomp-allowed-packages (quote (async helm helm-core helm-ls-git helm-ls-hg magit)))
  '(auto-hscroll-mode t)
+ '(avy-all-windows nil)
  '(avy-keys
    (quote
     (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
