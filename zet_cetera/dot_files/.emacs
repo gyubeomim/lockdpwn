@@ -965,10 +965,10 @@
 ;; agenda mode
 (add-hook 'org-agenda-mode-hook (lambda ()
                                   ;; atlas1 계정에서는 gcal을 동기화하지 않습니다
-                                  (if (string= (user-login-name) "atlas1")
-                                      nil
-                                    (org-gcal-sync nil nil t)
-                                    )
+                                  ;; (if (string= (user-login-name) "atlas1")
+                                  ;;     nil
+                                  ;;   (org-gcal-sync nil nil t)
+                                  ;;   )
 
                                   ;; 키바인딩 해제
                                   (define-key org-agenda-mode-map (kbd "C-n") nil)
