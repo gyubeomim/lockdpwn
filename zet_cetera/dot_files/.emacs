@@ -3352,7 +3352,7 @@ created by edward 180515"
  '(hi-pink ((t (:background "pink" :foreground "#b36b91"))))
  '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
  '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
- '(highlight-symbol-face ((t (:foreground "yellow"))))
+ '(highlight-symbol-face ((t (:background "#5f5f5f" :foreground "yellow"))))
  '(iedit-occurrence ((t (:foreground "magenta" :weight bold))))
  '(iedit-read-only-occurrence ((t (:foreground "magenta"))))
  '(magit-diff-hunk-heading ((t (:background "dark slate gray" :foreground "light gray"))))
