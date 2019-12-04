@@ -366,6 +366,8 @@ alias vb='vim ~/.bashrc'
 # for vim
 alias v='vim'
 
+alias docmake='mkdir build && cd build && cmake ..'
+
 source /opt/ros/kinetic/setup.bash
 source /home/atlas1/catkin_ws/devel/setup.bash
 
