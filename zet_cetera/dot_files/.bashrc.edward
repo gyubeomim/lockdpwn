@@ -461,8 +461,20 @@ source /home/edward/cartographer_ws/install_isolated/setup.bash
 # for cmake build
 alias docmake='mkdir build && cd build && cmake ..'
 
-# for vncviewer
-alias 1200='xrandr --fb 1920x1200'
-alias 1080='xrandr --fb 1920x1080'
+# for vncviewer resolution
+function res1200(){
+	xrandr --fb 1920x1200
+
+	# set terminal font size to 11
+	# https://askubuntu.com/questions/1110903/change-terminal-font-size-programatically 
+	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ font 'Roboto Mono for Powerline 11'
+}
+function res1080(){
+	xrandr --fb 1920x1080
+
+	# set terminal font size to 11
+	# https://askubuntu.com/questions/1110903/change-terminal-font-size-programatically 
+	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ font 'Roboto Mono for Powerline 10'
+}
 
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/ORB_SLAM2/Examples/ROS

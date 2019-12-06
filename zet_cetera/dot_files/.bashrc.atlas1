@@ -174,7 +174,6 @@ alias gc='git checkout'
 alias gm='git merge'
 alias gb='git branch'
 alias gs='git status'
-alias dy='cd /home/atlas1/gitrepo/dv_ws'
 
 alias c='cd /home/atlas1/gitrepo/lockdpwn/cmake_projects'
 alias c2='cd /home/atlas1/gitrepo/starlaw/cmake_projects'
@@ -366,6 +365,8 @@ alias vb='vim ~/.bashrc'
 
 # for vim
 alias v='vim'
+
+alias docmake='mkdir build && cd build && cmake ..'
 
 source /opt/ros/kinetic/setup.bash
 source /home/atlas1/catkin_ws/devel/setup.bash
