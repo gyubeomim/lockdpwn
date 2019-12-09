@@ -146,7 +146,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="$C_LIGHTYELLOW\u(@desktop)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTYELLOW\u@desktop$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
 # LANGUAGE=ko_KR
@@ -391,8 +391,11 @@ alias wc='python /home/edward/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py
 #python virtualenv for segmap
 alias seg='source ~/segmappyenv/bin/activate'
 
-# cmake for rtags
+# for various cmake 
 alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
+alias cmakedebug="cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+alias cmakereldebug="cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+alias cmakebuild='mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 # for docker
 alias cdo='cd ~/gitrepo/lockdpwn/docker_archive'
@@ -456,9 +459,6 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 source /opt/ros/kinetic/setup.bash
 source /home/edward/catkin_ws/devel/setup.bash
 source /home/edward/cartographer_ws/install_isolated/setup.bash
-
-# for cmake build
-alias docmake='mkdir build && cd build && cmake ..'
 
 # for vncviewer resolution
 function res1200(){
