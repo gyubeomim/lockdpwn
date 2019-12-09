@@ -312,12 +312,16 @@ export UE4_ROOT='/home/edward/gitrepo/UnrealEngine'
 alias qt2='~/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
 alias qt3='~/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 
-
 # for chown to edward
-alias chown-ed='sudo chown edward:edward * -R'
+function chown-ed() {
+	chown edward:edward * -R
+}
 
-# for chmod 
-alias chmod-ed='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 775'
+# for chmod 644 for file and 775 for directory.
+function chmod-ed() {
+ find . -type f -print0 | xargs -0 chmod 644
+ find . -type d -print0 | xargs -0 chmod 775
+}
 
 # for foxit reader
 alias foxit='/home/edward/opt/foxitsoftware/foxitreader/FoxitReader'

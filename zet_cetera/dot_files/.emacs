@@ -1742,11 +1742,11 @@
                                 (if (bound-and-true-p cua-mode)
                                   (progn
                                     (cua-mode -1)
-                                    (message "[+] cua-mode disabled..")
+                                    (message "[+] cua-mode disabled")
                                     )
                                   (progn
                                     (cua-mode 1)
-                                    (message "[+] cua-mode enabled..")
+                                    (message "[+] cua-mode enabled")
                                     )
                                   )
                                 ))
