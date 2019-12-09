@@ -146,7 +146,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="${C_LIGHTYELLOW}\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="${C_LIGHTYELLOW}\u@gram$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
 # LANGUAGE=ko_KR
@@ -391,8 +391,11 @@ alias wc='python /home/edward/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py
 #python virtualenv for segmap
 alias seg='source ~/segmappyenv/bin/activate'
 
-# cmake for rtags
+# for various cmake 
 alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
+alias cmakedebug="cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+alias cmakereldebug="cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+alias cmakebuild='mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 # for docker
 alias cdo='cd ~/gitrepo/lockdpwn/docker_archive'
