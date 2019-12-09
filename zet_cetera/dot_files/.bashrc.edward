@@ -314,8 +314,10 @@ alias qt3='~/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 
 
 # for chown to edward
-alias chownd='sudo chown edward:edward * -R'
+alias chown-ed='sudo chown edward:edward * -R'
 
+# for chmod
+alias chmod-ed='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 775'
 
 # for foxit reader
 alias foxit='/home/edward/opt/foxitsoftware/foxitreader/FoxitReader'
@@ -406,9 +408,6 @@ alias dim='docker images'
 
 # for downdload_d
 alias downd='cd /media/data/Downloads_d'
-
-# for chmod
-alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 775'
 
 # for edward folder
 alias cse='cd /home/edward/catkin_ws/src/edward/'
