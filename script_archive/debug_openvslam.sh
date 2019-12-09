@@ -11,7 +11,7 @@ case $1 in
 			-d /media/data/dataset/kitti/data_odometry/sequences/00 \
 			-c /media/data/gitrepo/openvslam-sandbox/example/kitti/KITTI_stereo_00-02.yaml"
 
-		gdb --ex="set print thread-events off" --ex="r" -args $executable
+		gdb --ex="set print thread-events off" --ex="b tracking_module.cc:171" --ex="r" -args $executable
 		;;
 	d)
 		cmake -DCMAKE_BUILD_TYPE=Debug ..

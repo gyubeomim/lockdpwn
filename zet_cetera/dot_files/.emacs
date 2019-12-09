@@ -1735,14 +1735,21 @@
             (define-key term-mode-map (kbd "C-b") 'helm-for-files)
             ))
 
-;; C-c u 키로 cua-mode를 껐다 켰다 합니다 (deprecated)
+;; C-c u 키로 cua-mode를 On/Off합니다.
 ;; multi-term을 사용하면 .cpp 버퍼에서 C-c : copy(cua-mode)가 안먹히는 버그가 있는데 이 때 사용하기 위한 단축키
-;; (global-set-key (kbd "C-C u") (lambda ()
-;;                                 (interactive)
-;;                                 (cua-mode -1)
-;;                                 (cua-mode 1)
-;;                                 (message "[+] cua-mode restarted..")
-;;                                 ))
+(global-set-key (kbd "C-C u") (lambda ()
+                                (interactive)
+                                (if (bound-and-true-p cua-mode)
+                                  (progn
+                                    (cua-mode -1)
+                                    (message "[+] cua-mode disabled..")
+                                    )
+                                  (progn
+                                    (cua-mode 1)
+                                    (message "[+] cua-mode enabled..")
+                                    )
+                                  )
+                                ))
 
 ;; PACKAGE: smart-mode-line
 ;; sml 2018버전 패키지가 multi-term하고 충돌하는 오류가 발생한다. 2019 버전부터는 수정된듯
