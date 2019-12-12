@@ -313,12 +313,12 @@ alias qt2='~/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
 alias qt3='~/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 
 # for chown to edward
-function chown-ed() {
+function chown-auto() {
 	chown edward:edward * -R
 }
 
 # for chmod 644 for file and 775 for directory.
-function chmod-ed() {
+function chmod-auto() {
  find . -type f -print0 | xargs -0 chmod 644
  find . -type d -print0 | xargs -0 chmod 775
 }

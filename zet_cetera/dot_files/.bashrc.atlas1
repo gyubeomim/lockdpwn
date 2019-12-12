@@ -348,6 +348,11 @@ function setop(){
 	git pull origin master
 }
 
+# for chmod 644 for file and 775 for directory.
+function chmod-auto() {
+ find . -type f -print0 | xargs -0 chmod 644
+ find . -type d -print0 | xargs -0 chmod 775
+}
 
 # for github page
 alias blog='cd /home/atlas1/gitrepo/tigerk0430.github.io && ./push_master.sh'
@@ -366,7 +371,7 @@ alias vb='vim ~/.bashrc'
 # for vim
 alias v='vim'
 
-alias docmake='mkdir build && cd build && cmake ..'
+alias cmakebuild='mkdir build && cd build && cmake ..'
 
 source /opt/ros/kinetic/setup.bash
 source /home/atlas1/catkin_ws/devel/setup.bash
