@@ -197,7 +197,7 @@ alias ml='cd /home/edward/gitrepo/lockdpwn/python_archive/machineLearning'
 alias notebook='jupyter notebook --no-browser'
 
 # for counting files
-function len(){
+function size(){
     tree $1 | tail -1
     du -sh $1
 }
@@ -312,9 +312,9 @@ export UE4_ROOT='/home/edward/gitrepo/UnrealEngine'
 alias qt2='~/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
 alias qt3='~/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 
-# for chown to edward
+# for chown to user.previledge.
 function chown-auto() {
-	chown edward:edward * -R
+	chown ${USER}:${USER} * -R
 }
 
 # for chmod 644 for file and 775 for directory.

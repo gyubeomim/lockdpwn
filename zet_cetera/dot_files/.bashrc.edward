@@ -197,7 +197,7 @@ alias ml='cd /home/edward/gitrepo/lockdpwn/python_archive/machineLearning'
 alias notebook='jupyter notebook --no-browser'
 
 # for counting files
-function len(){
+function size(){
     tree $1 | tail -1
     du -sh $1
 }
@@ -312,6 +312,16 @@ export UE4_ROOT='/home/edward/gitrepo/UnrealEngine'
 alias qt2='~/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
 alias qt3='~/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 
+# for chown to user.previledge.
+function chown-auto() {
+	chown ${USER}:${USER} * -R
+}
+
+# for chmod 644 for file and 775 for directory.
+function chmod-auto() {
+ find . -type f -print0 | xargs -0 chmod 644
+ find . -type d -print0 | xargs -0 chmod 775
+}
 
 # for chown to edward
 alias chown-ed='sudo chown edward:edward * -R'
@@ -391,7 +401,7 @@ alias wc='python /home/edward/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py
 #python virtualenv for segmap
 alias seg='source ~/segmappyenv/bin/activate'
 
-# for various cmake 
+# for various cmake commands.
 alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
 alias cmakedebug="cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
 alias cmakereldebug="cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
@@ -476,4 +486,4 @@ function res1080(){
 	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ font 'Roboto Mono for Powerline 10'
 }
 
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/ORB_SLAM2/Examples/ROS
+rexport ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/ORB_SLAM2/Examples/ROS

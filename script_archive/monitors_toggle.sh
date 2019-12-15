@@ -15,7 +15,7 @@ case $1 in
         ;;
     two)
 		# 2개 모니터를 ON (Notebook 모니터는 끔)
-       xrandr --output VGA1 --primary --mode 1920x1080R --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 3840x0
+       xrandr --output VGA1 --primary --mode 1920x1080R --pos 1920x0 --output HDMI1 --mode 1920x1080 --pos 3840x0 --output eDP1 --off
         ;;
     atlas1)
 		# 다중 모니터 ON

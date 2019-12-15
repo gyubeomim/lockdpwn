@@ -146,7 +146,7 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="${C_LIGHTGREEN}dyros(@lenovo)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="${C_LIGHTGREEN}edward(@dyros)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # PS1="$C_LIGHTRED[user@user]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
@@ -196,7 +196,7 @@ alias ml='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning
 alias notebook='jupyter notebook --no-browser'
 
 # for counting files
-function len(){
+function size(){
     tree $1 | tail -1
     du -sh $1
 }
@@ -242,7 +242,7 @@ alias cb='cd ~/bag_files'
 alias cbb='cd ~/bag_files_4tb'
 alias so='source devel/setup.bash'
 alias so2='rospack profile && source devel/setup.bash'
-alias cdd='cd /media/dyros-data'
+alias cdd='cd /media/data'
 alias down='cd ~/Downloads'
 alias docu='cd ~/Documents'
 
@@ -311,6 +311,16 @@ export UE4_ROOT='/home/dyros-vehicle/gitrepo/UnrealEngine'
 alias qt2='~/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
 alias qt3='~/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 
+# for chown to edward
+function chown-auto() {
+	chown ${USER}:${USER} * -R
+}
+
+# for chmod 644 for file and 775 for directory.
+function chmod-auto() {
+ find . -type f -print0 | xargs -0 chmod 644
+ find . -type d -print0 | xargs -0 chmod 775
+}
 
 # for chown to dyros-vehicle
 alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
@@ -389,8 +399,12 @@ alias wc='python /home/dyros-vehicle/gitrepo/ubuntu-live-wallpaper/wallpaper-cha
 #python virtualenv for segmap
 alias seg='source ~/segmappyenv/bin/activate'
 
-# cmake for rtags
+# for various cmake commands.
 alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
+alias cmakedebug="cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+alias cmakereldebug="cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+alias cmakebuild='mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+
 
 # for docker
 alias cdo='cd ~/gitrepo/lockdpwn/docker_archive'
@@ -441,7 +455,10 @@ alias blogp='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io && git pull ori
 alias vb='vim ~/.bashrc'
 alias v='vim'
 
-alias downd='cd /media/dyros-data/Downloads_d'
+alias downd='cd /media/data/Downloads_d'
+
+# for openvslam-sandbox
+alias cdv='cd ~/gitrepo/openvslam-sandbox'
 
 source /opt/ros/kinetic/setup.bash
 source /home/dyros-vehicle/catkin_ws/devel/setup.bash
