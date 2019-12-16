@@ -19,7 +19,7 @@ case $1 in
         ;;
     atlas1)
 		# 다중 모니터 ON
-       xrandr --output DVI-I-1 --mode 1920x1080 --pos 1920x0 --output DVI-D-1 --mode 1920x1080 --pos 0x0 --primary
+       xrandr --output DVI-I-1 --mode 1920x1080 --pos 0x0 --primary --output HDMI-1 --mode 1920x1080 --pos 1920x0
        # xrandr --output DVI-I-1 --mode 1920x1080 --pos 1920x594 --output DVI-D-0 --mode 1920x1080 --pos 0x1080 --primary --output HDMI-0 --mode 1920x1080 --pos 0x0
         ;;
     off_atlas1)
