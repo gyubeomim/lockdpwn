@@ -1288,8 +1288,10 @@
     ;; evil 모드에서 e,E 키로 빠르게 단어를 highlight 합니다
     (define-key evil-motion-state-map (kbd "e") 'highlight-symbol)
     (define-key evil-motion-state-map (kbd "E") 'highlight-symbol-remove-all)
+
     ;; ` 키로 빠르게 단어 사이를 이동합니다
     (define-key evil-motion-state-map (kbd "`") 'avy-goto-word-0)
+
     ;; org-mode에서 t,T 키로 TODO DONE을 이동합니다
     (define-key evil-motion-state-map (kbd "t") 'org-shiftright)
 
@@ -1321,6 +1323,12 @@
     ;; SPC 키로 helm-for-files
     (define-key evil-motion-state-map (kbd "SPC") 'helm-for-files)
     (define-key evil-normal-state-map (kbd "SPC") 'helm-for-files)
+
+    ;; , . 키로 forward, backward를 빠르게 이동합니다.
+    (define-key evil-motion-state-map (kbd ",") 'forward-paragraph)
+    (define-key evil-normal-state-map (kbd ",") 'forward-paragraph)
+    (define-key evil-motion-state-map (kbd ".") 'backward-paragraph)
+    (define-key evil-normal-state-map (kbd ".") 'backward-paragraph)
 
     ;; C-x , 키로 projectile switch 를 실행합니다
     (define-key evil-motion-state-map (kbd "C-x ,") 'helm-projectile-switch-project)
@@ -3211,7 +3219,7 @@ created by edward 180515"
 (setq key-chord-two-keys-delay 0.1) ; default 0.1
 ;; 1개의 키가 입력되는데 걸리는 시간 설정
 (setq key-chord-one-key-delay 0.17) ; default 0.2
-(key-chord-define-global ",," 'jedi:complete)                  ;; 코드 자동완성 for python
+(key-chord-define-global "mm" 'jedi:complete)                  ;; 코드 자동완성 for python
 (key-chord-define-global "zc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
