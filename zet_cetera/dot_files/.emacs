@@ -1807,8 +1807,8 @@
 (global-set-key (kbd "C-<f6>") '(lambda () (interactive) (set-frame-custom "103")))
 (global-set-key (kbd "C-<f7>") '(lambda () (interactive) (set-frame-custom "110")))
 (global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "120")))
-(global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "130")))
-(global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "140")))
+(global-set-key (kbd "C-<f9>") '(lambda () (interactive) (set-frame-custom "130")))
+(global-set-key (kbd "C-<f10>") '(lambda () (interactive) (set-frame-custom "140")))
 
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
