@@ -486,4 +486,4 @@ function res1080(){
 	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ font 'Roboto Mono for Powerline 10'
 }
 
-rexport ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/ORB_SLAM2/Examples/ROS
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/edward/gitrepo/ORB_SLAM2/Examples/ROS

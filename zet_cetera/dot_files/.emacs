@@ -1807,6 +1807,8 @@
 (global-set-key (kbd "C-<f6>") '(lambda () (interactive) (set-frame-custom "103")))
 (global-set-key (kbd "C-<f7>") '(lambda () (interactive) (set-frame-custom "110")))
 (global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "120")))
+(global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "130")))
+(global-set-key (kbd "C-<f8>") '(lambda () (interactive) (set-frame-custom "140")))
 
 (global-set-key (kbd "C-=") 'zoom-frame)
 (global-set-key (kbd "C--") 'zoom-frame-out)
@@ -3219,10 +3221,10 @@ created by edward 180515"
 (setq key-chord-two-keys-delay 0.1) ; default 0.1
 ;; 1개의 키가 입력되는데 걸리는 시간 설정
 (setq key-chord-one-key-delay 0.17) ; default 0.2
-(key-chord-define-global "mm" 'jedi:complete)                  ;; 코드 자동완성 for python
 (key-chord-define-global "zc" 'save-buffers-kill-terminal)     ;; emacs 종료하기 (or emacsclient)
 (key-chord-define-global "zv" 'kill-emacs)                     ;; emacs --daemon 종료하기
 (key-chord-mode t)
+;; (key-chord-define-global "mm" 'jedi:complete)                  ;; 코드 자동완성 for python
 ;; (key-chord-define-global "zz" 'helm-gtags-dwim)                ;; 코드 네비게이션 함수 찾아가기
 ;; (key-chord-define-global "aa" 'helm-gtags-pop-stack)           ;; 코드 네비게이션 돌아오기
 ;; (key-chord-define-global "ZZ" 'xref-find-definitions)          ;; 코드 네비게이션 함수 찾아가기 (up to emacs 25.2)
