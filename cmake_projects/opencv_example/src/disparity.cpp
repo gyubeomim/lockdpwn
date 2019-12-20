@@ -62,8 +62,8 @@ int main(int argc, char **argv) {
   double vis_mult = 1.0;
   cv::ximgproc::getDisparityVis(left_disp, raw_disp_vis, vis_mult);
 
-  // cv::imshow("raw disparity", raw_disp_vis);
-  // cv::waitKey(0);
+  cv::imshow("raw disparity", raw_disp_vis);
+  cv::waitKey(0);
 
   // default paramters.
   double lambda = 8000;

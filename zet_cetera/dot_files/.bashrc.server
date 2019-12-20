@@ -150,8 +150,8 @@ PS1="$C_LIGHTRED\u(@server1)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 #LANG=ko_KR.utf-8
 #LANGUAGE=ko_KR
-PATH=$PATH:/home/$USER/.wine/drive_c/programfilesx86/ida6.8
-ida=/home/$USER/.wine/drive_c/programfilesx86/ida6.8
+PATH=$PATH:${HOME}/.wine/drive_c/programfilesx86/ida6.8
+ida=${HOME}/.wine/drive_c/programfilesx86/ida6.8
 alias g1='cd /media/dyros-data/gitrepo/lockdpwn'
 alias g2='cd /media/dyros-data/gitrepo/ims_ros'
 alias g3='cd /media/dyros-data/gitrepo/ims_carto'
@@ -190,11 +190,11 @@ function len(){
 
 
 
-PATH="/home/$USER/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/$USER/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/$USER/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/$USER/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/$USER/perl5"; export PERL_MM_OPT;
+PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT;
 
 
 alias tm='tmux'
@@ -219,13 +219,13 @@ alias rm='trash-put'
 
 
 # set ROS alias command
-alias cw='cd /home/$USER/catkin_ws'
-alias cs='cd /home/$USER/catkin_ws/src'
-alias cm='cd /home/$USER/catkin_ws && catkin_make'
+alias cw='cd ${HOME}/catkin_ws'
+alias cs='cd ${HOME}/catkin_ws/src'
+alias cm='cd ${HOME}/catkin_ws && catkin_make'
 
-alias cwc='cd /home/$USER/cartographer_ws'
-alias csc='cd /home/$USER/cartographer_ws/src'
-alias cmc='cd /home/$USER/cartographer_ws && catkin_make_isolated --install --use-ninja '
+alias cwc='cd ${HOME}/cartographer_ws'
+alias csc='cd ${HOME}/cartographer_ws/src'
+alias cmc='cd ${HOME}/cartographer_ws && catkin_make_isolated --install --use-ninja '
 
 #export ROS_MASTER_URI=http://192.168.137.2:11311
 #export ROS_HOSTNAME=127.0.0.1
@@ -240,8 +240,8 @@ if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline
 fi
 
 
-# alias emacs='/home/$USER/Downloads/emacs-25.2/src/emacs'
-alias emacs='/home/$USER/Downloads/emacs-25.2/lib-src/emacsclient -a '"''"' -c'
+# alias emacs='${HOME}/Downloads/emacs-25.2/src/emacs'
+alias emacs='${HOME}/Downloads/emacs-25.2/lib-src/emacsclient -a '"''"' -c'
 
 # for stockroom_bot
 #alias sb='source ~/gitrepo/ims_ros/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims_ros/stockroombot_ws/src/stockroom_bot'/models
@@ -252,7 +252,7 @@ alias sog='source /usr/share/gazebo-2.2/setup.sh'
 alias sog2='source /usr/share/gazebo/setup.sh'
 
 # for source .bashrc
-alias sob='source /home/$USER/.bashrc'
+alias sob='source ${HOME}/.bashrc'
 
 alias cdb='cd ~/gitrepo/ims_ros/rosbook_ws'
 alias cb='cd /media/dyros-data/bag_files'
@@ -265,13 +265,13 @@ alias cma='catkin_make'
 alias cmca='catkin_make_isolated --install --use-ninja'
 
 
-export VREP_ROOT_DIR=/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-export VREP_ROOT=/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-alias vrep='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
-alias vrepd='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /media/dyros-data/gitrepo/ims_ros/vrep_ws/dyros_simulator_v5.ttt'
+export VREP_ROOT_DIR=${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+export VREP_ROOT=${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+alias vrep='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
+alias vrepd='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /media/dyros-data/gitrepo/ims_ros/vrep_ws/dyros_simulator_v5.ttt'
 
-alias vrepjw='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /home/$USER/JW/vrep_ttt/ParkingSimulator.ttt'
-alias vreptracker='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh /home/$USER/JW/vrep_ttt/Path_tracking.ttt'
+alias vrepjw='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ${HOME}/JW/vrep_ttt/ParkingSimulator.ttt'
+alias vreptracker='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ${HOME}/JW/vrep_ttt/Path_tracking.ttt'
 
 alias co='cd /opt/ros/kinetic/share/'
 
@@ -281,7 +281,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
 
-alias directorPython='/home/$USER/Downloads/director/build/install/bin/directorPython'
+alias directorPython='${HOME}/Downloads/director/build/install/bin/directorPython'
 
 
 # setting for Tensorflow GPU version 
@@ -307,9 +307,9 @@ alias carla='cd /media/dyros-data/gitrepo/CARLA_0.8.4 && ./CarlaUE4.sh -windowed
 
 # set ROS
 source /opt/ros/kinetic/setup.bash
-source /home/$USER/catkin_ws/devel/setup.bash
+source ${HOME}/catkin_ws/devel/setup.bash
 
-alias ti='cd /home/$USER/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
+alias ti='cd ${HOME}/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
 
 # for reverse-i-search
 stty -ixon
@@ -337,7 +337,7 @@ alias ccc='/media/dyros-data/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh
 alias chownd='sudo chown $USER:$USER * -R'
 
 # for REAL vncviwer 
-alias vncviewer='/home/$USER/Documents/VNC-Viewer-6.17.1113-Linux-x64'
+alias vncviewer='${HOME}/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 
 
 #for nvidia-smi

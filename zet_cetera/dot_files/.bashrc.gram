@@ -152,23 +152,23 @@ PS1="${C_LIGHTYELLOW}\u@gram$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # LANGUAGE=ko_KR
 
 # ida & msfconsole aliases
-PATH=$PATH:/home/$USER/.wine/drive_c/programfilesx86/ida6.8
-ida=/home/$USER/.wine/drive_c/programfilesx86/ida6.8
+PATH=$PATH:${HOME}/.wine/drive_c/programfilesx86/ida6.8
+ida=${HOME}/.wine/drive_c/programfilesx86/ida6.8
 msf=/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15
 
-alias ida='/home/$USER/.wine/drive_c/programfilesx86/ida6.8/idaq.exe'
-alias ida64='/home/$USER/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe'
+alias ida='${HOME}/.wine/drive_c/programfilesx86/ida6.8/idaq.exe'
+alias ida64='${HOME}/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe'
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
-alias c='cd /home/$USER/gitrepo/lockdpwn/cmake_projects'
+alias c='cd ${HOME}/gitrepo/lockdpwn/cmake_projects'
 
-alias g1='cd /home/$USER/gitrepo/lockdpwn'
-alias g2='cd /home/$USER/gitrepo/ims_org'
-alias g3='cd /home/$USER/gitrepo/tigerk0430.github.io'
-alias g4='cd /home/$USER/gitrepo/dv_ws/dyros_ws'
-alias g5='cd /home/$USER/gitrepo/ims_carto'
-alias g6='cd /home/$USER/gitrepo/ims_ml'
-alias gr='cd /home/$USER/gitrepo/'
+alias g1='cd ${HOME}/gitrepo/lockdpwn'
+alias g2='cd ${HOME}/gitrepo/ims_org'
+alias g3='cd ${HOME}/gitrepo/tigerk0430.github.io'
+alias g4='cd ${HOME}/gitrepo/dv_ws/dyros_ws'
+alias g5='cd ${HOME}/gitrepo/ims_carto'
+alias g6='cd ${HOME}/gitrepo/ims_ml'
+alias gr='cd ${HOME}/gitrepo/'
 
 # for git command
 alias add='git add'
@@ -185,13 +185,13 @@ alias cred='git config credential.helper "cache --timeout=864000000" --global'
 alias gc='git checkout'
 alias gb='git branch'
 alias gs='git status'
-alias ed='cd /home/$USER/gitrepo/$USER_ws'
+alias ed='cd ${HOME}/gitrepo/$USER_ws'
 
-alias cmp='cd /home/$USER/gitrepo/lockdpwn/cmake_projects'
-alias cpp='cd /home/$USER/gitrepo/lockdpwn/cpp_archive'
-alias py='cd /home/$USER/gitrepo/lockdpwn/python_archive'
-alias ipy='cd /home/$USER/gitrepo/lockdpwn/python_archive/ipython'
-alias ml='cd /home/$USER/gitrepo/lockdpwn/python_archive/machineLearning'
+alias cmp='cd ${HOME}/gitrepo/lockdpwn/cmake_projects'
+alias cpp='cd ${HOME}/gitrepo/lockdpwn/cpp_archive'
+alias py='cd ${HOME}/gitrepo/lockdpwn/python_archive'
+alias ipy='cd ${HOME}/gitrepo/lockdpwn/python_archive/ipython'
+alias ml='cd ${HOME}/gitrepo/lockdpwn/python_archive/machineLearning'
 
 # for jupyter notebook
 alias notebook='jupyter notebook --no-browser'
@@ -229,17 +229,17 @@ export ROS_MASTER_URI=http://localhost:11311
 export ROS_HOSTNAME=127.0.0.1
 
 # set ROS alias command
-alias cw='cd /home/$USER/catkin_ws'
-alias cs='cd /home/$USER/catkin_ws/src'
-alias cm='cd /home/$USER/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cw='cd ${HOME}/catkin_ws'
+alias cs='cd ${HOME}/catkin_ws/src'
+alias cm='cd ${HOME}/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
-# alias cw='cd /home/$USER/catkin_ws'
-# alias cs='cd /home/$USER/catkin_ws/src'
-# alias cm='cd /home/$USER/catkin_ws && catkin_make'
+# alias cw='cd ${HOME}/catkin_ws'
+# alias cs='cd ${HOME}/catkin_ws/src'
+# alias cm='cd ${HOME}/catkin_ws && catkin_make'
 
-alias cr='cd /home/$USER/dyros_ws/'
+alias cr='cd ${HOME}/dyros_ws/'
 alias cb='cd ~/bag_files'
 alias cbb='cd ~/bag_files_4tb'
 alias so='source devel/setup.bash'
@@ -259,8 +259,8 @@ alias cd...='cd ../..'
 alias cd....='cd ../../..'
 
 # for triple-monitors
-alias cvt='/home/$USER/gitrepo/lockdpwn/script_archive/cvt_1920_1080.sh'
-alias cvt2='/home/$USER/gitrepo/lockdpwn/script_archive/cvt_1920_1080_2.sh'
+alias cvt='${HOME}/gitrepo/lockdpwn/script_archive/cvt_1920_1080.sh'
+alias cvt2='${HOME}/gitrepo/lockdpwn/script_archive/cvt_1920_1080_2.sh'
 
 # for systemctl
 alias stl='sudo systemctl'
@@ -270,43 +270,43 @@ alias cl='clear'
 
 # Cartographer Settings
 alias soc='source install_isolated/setup.bash'
-alias cwc='cd /home/$USER/gitrepo/ims_carto'
-alias csc='cd /home/$USER/gitrepo/ims_carto/src'
-alias cmc='cd /home/$USER/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cwc='cd ${HOME}/gitrepo/ims_carto'
+alias csc='cd ${HOME}/gitrepo/ims_carto/src'
+alias cmc='cd ${HOME}/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmca='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT__EXPORT_COMPILE_COMMANDS=1 COMPILE_COMMANDS=1'
 
 # for segmap
-alias cwg='cd /home/$USER/segmap_ws'
-alias csg='cd /home/$USER/segmap_ws/src'
-alias cmg='cd /home/$USER/segmap_ws && catkin build segmapper -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cwg='cd ${HOME}/segmap_ws'
+alias csg='cd ${HOME}/segmap_ws/src'
+alias cmg='cd ${HOME}/segmap_ws && catkin build segmapper -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 
 
 # V-Rep Settings
-export VREP_ROOT_DIR=/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-export VREP_ROOT=/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-alias vrep='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
-alias vrepd='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/catkin_ws/src/controller_msk/controller_msk/vrep/mc_for_back_light.ttt'
-alias vrepd2='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/catkin_ws/src/controller_msk/controller_msk/vrep/mc_back_light.ttt'
-alias vreplcdd='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/Documents/deprecated/lcdd.ttt'
+export VREP_ROOT_DIR=${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+export VREP_ROOT=${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+alias vrep='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
+alias vrepd='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/catkin_ws/src/controller_msk/controller_msk/vrep/mc_for_back_light.ttt'
+alias vrepd2='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/catkin_ws/src/controller_msk/controller_msk/vrep/mc_back_light.ttt'
+alias vreplcdd='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/Documents/deprecated/lcdd.ttt'
 
-alias vrep2='/home/$USER/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
+alias vrep2='${HOME}/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
 
 # source .bashrc
-alias sob='source /home/$USER/.bashrc'
+alias sob='source ${HOME}/.bashrc'
 
 # vnc viewer
-alias vncviewer='/home/$USER/Documents/VNC-Viewer-6.19.1115-Linux-x64'
+alias vncviewer='${HOME}/Documents/VNC-Viewer-6.19.1115-Linux-x64'
 
 # emacs 26.1
-alias emacs='/home/$USER/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
+alias emacs='${HOME}/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
 
 # Ti-Nspire CX CAS emulator
-alias ti='cd /home/$USER/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
+alias ti='cd ${HOME}/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
 
 # UE4Editor
 alias ueditor='~/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
-export UE4_ROOT='/home/$USER/gitrepo/UnrealEngine'
+export UE4_ROOT='${HOME}/gitrepo/UnrealEngine'
 
 # ipython qtconsole
 alias qt2='~/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
@@ -324,7 +324,7 @@ function chmod-auto() {
 }
 
 # for foxit reader
-alias foxit='/home/$USER/opt/foxitsoftware/foxitreader/FoxitReader'
+alias foxit='${HOME}/opt/foxitsoftware/foxitreader/FoxitReader'
 
 # setting for Tensorflow GPU version
 # Using CUDA 8.0 & cuDNN 6.0
@@ -344,30 +344,30 @@ stty -ixon
 
 
 # for caffe
-export PYTHONPATH=/home/$USER/gitrepo/fast-rcnn/caffe-fast-rcnn/python:$PYTHONPATH
+export PYTHONPATH=${HOME}/gitrepo/fast-rcnn/caffe-fast-rcnn/python:$PYTHONPATH
 # for Fast R-CNN
-export FRCN_ROOT=/home/$USER/gitrepo/fast-rcnn
+export FRCN_ROOT=${HOME}/gitrepo/fast-rcnn
 # for simdat
-export PYTHONPATH=/home/$USER/gitrepo:$PYTHONPATH
+export PYTHONPATH=${HOME}/gitrepo:$PYTHONPATH
 # for vtk 6.2
 export LD_LIBRARY_PATH=/usr/include/vtk-6.2/:$LD_LIBRARY_PATH 
 # for vtk 5.xx
-export LD_LIBRARY_PATH=/home/$USER/Documents/VTK-5.10.1/build:/home/$USER/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
+export LD_LIBRARY_PATH=${HOME}/Documents/VTK-5.10.1/build:${HOME}/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
 
 # for opencv 3.3.1
 export LD_LIBRARY_PATH=/usr/local/include/opencv2/:$LD_LIBRARY_PATH 
 
 # for cling with Jupyter
-export PATH=/home/$USER/Documents/cling_2018-05-10_ubuntu16/bin:$PATH 
+export PATH=${HOME}/Documents/cling_2018-05-10_ubuntu16/bin:$PATH 
 
 # for caps lock <==> ctrl swapping
-alias ccc='/home/$USER/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
+alias ccc='${HOME}/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
 
 # for 3 Monitors Toggle ON/OFF
-alias mon='/home/$USER/gitrepo/lockdpwn/script_archive/monitors_toggle.sh three1'
-alias mon2='/home/$USER/gitrepo/lockdpwn/script_archive/monitors_toggle.sh two'
-alias mon3='/home/$USER/gitrepo/lockdpwn/script_archive/monitors_toggle.sh three2'
-alias moff='/home/$USER/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off'
+alias mon='${HOME}/gitrepo/lockdpwn/script_archive/monitors_toggle.sh three1'
+alias mon2='${HOME}/gitrepo/lockdpwn/script_archive/monitors_toggle.sh two'
+alias mon3='${HOME}/gitrepo/lockdpwn/script_archive/monitors_toggle.sh three2'
+alias moff='${HOME}/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off'
 
 # for hed gitrepository (pycaffe)
 export PYTHONPATH=~/gitrepo/hed/python:$PYTHONPATH
@@ -390,7 +390,7 @@ export G2O_ROOT=~/gitrepo/openslam_g2o
 alias matlab=/usr/local/MATLAB/R2018a/bin/matlab
 
 # for ubuntu-live-wallpaper change
-alias wc='python /home/$USER/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py'
+alias wc='python ${HOME}/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py'
 
 #python virtualenv for segmap
 alias seg='source ~/segmappyenv/bin/activate'
@@ -417,12 +417,12 @@ alias dim='docker images'
 alias downd='cd /media/data/Downloads_d'
 
 # for $USER folder
-alias cse='cd /home/$USER/catkin_ws/src/$USER/'
-alias cps='cd /home/$USER/catkin_ws/src/$USER/parkingslam'
+alias cse='cd ${HOME}/catkin_ws/src/$USER/'
+alias cps='cd ${HOME}/catkin_ws/src/$USER/parkingslam'
 
 # for org-mode
-alias o='cd /home/$USER/gitrepo/ims_org && ./push_master.sh'
-alias op='cd /home/$USER/gitrepo/ims_org && git pull origin master'
+alias o='cd ${HOME}/gitrepo/ims_org && ./push_master.sh'
+alias op='cd ${HOME}/gitrepo/ims_org && git pull origin master'
 
 # for org-mode
 function seto(){
@@ -446,8 +446,8 @@ function setop(){
 alias nv='nvidia-smi -l'
 
 # for github page
-alias blog='cd /home/$USER/gitrepo/tigerk0430.github.io && ./push_master.sh'
-alias blogp='cd /home/$USER/gitrepo/tigerk0430.github.io && git pull origin master'
+alias blog='cd ${HOME}/gitrepo/tigerk0430.github.io && ./push_master.sh'
+alias blogp='cd ${HOME}/gitrepo/tigerk0430.github.io && git pull origin master'
 
 # for vim ~/.bashrc
 alias vb='vim ~/.bashrc'
@@ -461,8 +461,8 @@ export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}$
 export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 source /opt/ros/kinetic/setup.bash
-source /home/$USER/catkin_ws/devel/setup.bash
-# source /home/$USER/cartographer_ws/install_isolated/setup.bash
+source ${HOME}/catkin_ws/devel/setup.bash
+# source ${HOME}/cartographer_ws/install_isolated/setup.bash
 
 
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/$USER/gitrepo/ORB_SLAM2/Examples/ROS
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:${HOME}/gitrepo/ORB_SLAM2/Examples/ROS

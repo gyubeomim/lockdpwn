@@ -149,18 +149,18 @@ PS1="$C_LIGHTPURPLE\u(@dv_left)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 #LANG=ko_KR.utf-8
 #LANGUAGE=ko_KR
-PATH=$PATH:/home/$USER/.wine/drive_c/programfilesx86/ida6.8
-ida=/home/$USER/.wine/drive_c/programfilesx86/ida6.8
+PATH=$PATH:${HOME}/.wine/drive_c/programfilesx86/ida6.8
+ida=${HOME}/.wine/drive_c/programfilesx86/ida6.8
 
 
-alias g1='cd /home/$USER/gitrepo/lockdpwn'
-alias g2='cd /home/$USER/gitrepo/ims_ros'
-alias g3='cd /home/$USER/gitrepo/ims_carto'
-alias g4='cd /home/$USER/gitrepo/ims_ml'
-alias gr='cd /home/$USER/gitrepo/'
+alias g1='cd ${HOME}/gitrepo/lockdpwn'
+alias g2='cd ${HOME}/gitrepo/ims_ros'
+alias g3='cd ${HOME}/gitrepo/ims_carto'
+alias g4='cd ${HOME}/gitrepo/ims_ml'
+alias gr='cd ${HOME}/gitrepo/'
 
-alias ipy='cd /home/$USER/gitrepo/lockdpwn/python_archive/ipython'
-alias ml='cd /home/$USER/gitrepo/lockdpwn/python_archive/machineLearning'
+alias ipy='cd ${HOME}/gitrepo/lockdpwn/python_archive/ipython'
+alias ml='cd ${HOME}/gitrepo/lockdpwn/python_archive/machineLearning'
 alias down='cd ~/Downloads'
 alias docu='cd ~/Documents'
 alias cl='clear'
@@ -200,11 +200,11 @@ tmux attach-session -d'
 msf=/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15
 
 
-PATH="/home/$USER/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/$USER/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/$USER/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/$USER/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/$USER/perl5"; export PERL_MM_OPT;
+PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT;
 
 
 # for counting files & get size
@@ -214,19 +214,19 @@ function len(){
 }
 
 # set ROS alias command
-alias cw='cd /home/$USER/catkin_ws'
-alias cs='cd /home/$USER/catkin_ws/src'
-alias cm='cd /home/$USER/catkin_ws && catkin_make'
+alias cw='cd ${HOME}/catkin_ws'
+alias cs='cd ${HOME}/catkin_ws/src'
+alias cm='cd ${HOME}/catkin_ws && catkin_make'
 
-alias cwc='cd /home/$USER/cartographer_ws'
-alias csc='cd /home/$USER/cartographer_ws/src'
-alias cmc='cd /home/$USER/cartographer_ws && catkin_make_isolated --install --use-ninja '
+alias cwc='cd ${HOME}/cartographer_ws'
+alias csc='cd ${HOME}/cartographer_ws/src'
+alias cmc='cd ${HOME}/cartographer_ws && catkin_make_isolated --install --use-ninja '
 
 #export ROS_MASTER_URI=http://192.168.137.2:11311
 #export ROS_HOSTNAME=127.0.0.1
 
-#alias cl='cd /home/$USER/gitrepo/ims'
-#alias cr='cd /home/$USER/gitrepo/ims/ROS/'
+#alias cl='cd ${HOME}/gitrepo/ims'
+#alias cr='cd ${HOME}/gitrepo/ims/ROS/'
 alias so='source devel/setup.bash'
 alias so2='rospack profile && source devel/setup.bash'
 
@@ -235,7 +235,7 @@ if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline
 fi
 
 
-alias emacs='/home/$USER/Downloads/emacs-25.2/lib-src/emacsclient -a '"''"' -c'
+alias emacs='${HOME}/Downloads/emacs-25.2/lib-src/emacsclient -a '"''"' -c'
 
 # for stockroom_bot
 #alias sb='source ~/gitrepo/ims/ROS/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims/ROS/stockroombot_ws/src/stockroom_bot'/models
@@ -246,18 +246,18 @@ alias sog='source /usr/share/gazebo-2.2/setup.sh'
 alias sog2='source /usr/share/gazebo/setup.sh'
 
 # for source .bashrc
-alias sob='source /home/$USER/.bashrc'
+alias sob='source ${HOME}/.bashrc'
 
 alias cdb='cd ~/gitrepo/ims/ROS/rosbook_ws'
-alias cb='cd /home/$USER/bag_files'
+alias cb='cd ${HOME}/bag_files'
 
 alias cma='catkin_make'
 alias cmb='cd ~/gitrepo/ims/ROS/rosbook_ws && catkin_make'
 
 
-export VREP_ROOT_DIR=/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-export VREP_ROOT=/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
-alias vrep='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
+export VREP_ROOT_DIR=${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+export VREP_ROOT=${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/
+alias vrep='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
 
 alias co='cd /opt/ros/kinetic/share/'
 
@@ -267,7 +267,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
 
-alias directorPython='/home/$USER/Downloads/director/build/install/bin/directorPython'
+alias directorPython='${HOME}/Downloads/director/build/install/bin/directorPython'
 
 
 # setting for Tensorflow GPU version 
@@ -277,22 +277,22 @@ export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 alias soc='source install_isolated/setup.bash'
-alias gr='cd /home/$USER/gitrepo/'
+alias gr='cd ${HOME}/gitrepo/'
 
 
 #UE4Editor-------------
 alias ueditor='~/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
-export UE4_ROOT='/home/$USER/gitrepo/UnrealEngine'
+export UE4_ROOT='${HOME}/gitrepo/UnrealEngine'
 
 
 # set ROS
 source /opt/ros/kinetic/setup.bash
-source /home/$USER/catkin_ws/devel/setup.bash
+source ${HOME}/catkin_ws/devel/setup.bash
 
-alias ti='cd /home/$USER/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
+alias ti='cd ${HOME}/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
 alias cdd='cd /media/dyros-data/'
 
-alias cr='cd /home/$USER/gitrepo/ims/ROS/'
+alias cr='cd ${HOME}/gitrepo/ims/ROS/'
 alias t='tmux'
 
 
@@ -320,15 +320,15 @@ stty -ixon
 
 
 # for caffe
-export PYTHONPATH=/home/$USER/gitrepo/fast-rcnn/caffe-fast-rcnn/python:$PYTHONPATH
+export PYTHONPATH=${HOME}/gitrepo/fast-rcnn/caffe-fast-rcnn/python:$PYTHONPATH
 
 
 # for Fast R-CNN
-export FRCN_ROOT=/home/$USER/gitrepo/fast-rcnn
+export FRCN_ROOT=${HOME}/gitrepo/fast-rcnn
 
 
 # for simdat
-export PYTHONPATH=/home/$USER/gitrepo:$PYTHONPATH
+export PYTHONPATH=${HOME}/gitrepo:$PYTHONPATH
 
 
 # for vtk 6.2
@@ -336,7 +336,7 @@ export LD_LIBRARY_PATH=/usr/include/vtk-6.2/:$LD_LIBRARY_PATH
 
 
 # for vtk 5.xx
-export LD_LIBRARY_PATH=/home/$USER/Documents/VTK-5.10.1/build:/home/$USER/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
+export LD_LIBRARY_PATH=${HOME}/Documents/VTK-5.10.1/build:${HOME}/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
 
 
 # for cd command 
@@ -357,7 +357,7 @@ alias stl='systemctl'
 alias chownd='sudo chown $USER:$USER * -R'
 
 # for ccc
-alias ccc='/home/$USER/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
+alias ccc='${HOME}/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
 
 # export ROS_MASTER_URI=http://192.168.4.102:11311
 # export ROS_HOSTNAME=192.168.4.102
@@ -365,7 +365,7 @@ export ROS_MASTER_URI=http://127.0.0.1:11311
 export ROS_HOSTNAME=127.0.0.1
 
 # for RealVNC viewer
-alias vncviewer='/home/$USER/Documents/VNC-Viewer-6.18.907-Linux-x64'
+alias vncviewer='${HOME}/Documents/VNC-Viewer-6.18.907-Linux-x64'
 
 # for tmux command history
 export HISTCONTROL=ignoredups:erasedups
