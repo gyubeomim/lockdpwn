@@ -152,11 +152,11 @@ PS1="$C_LIGHTGREEN\aedward(@atlas)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # LANG=ko_KR.utf-8
 # LANGUAGE=ko_KR
 
-alias g1='cd /home/atlas1/gitrepo/lockdpwn'
-alias g2='cd /home/atlas1/gitrepo/ims_org'
-alias g3='cd /home/atlas1/gitrepo/tigerk0430.github.io'
-alias g4='cd /home/atlas1/gitrepo/starlaw'
-alias gr='cd /home/atlas1/gitrepo/'
+alias g1='cd /home/$USER/gitrepo/lockdpwn'
+alias g2='cd /home/$USER/gitrepo/ims_org'
+alias g3='cd /home/$USER/gitrepo/tigerk0430.github.io'
+alias g4='cd /home/$USER/gitrepo/starlaw'
+alias gr='cd /home/$USER/gitrepo/'
 
 # for git command
 alias gg='git add . && git commit -m '"'updated'"' && git push '
@@ -175,12 +175,12 @@ alias gm='git merge'
 alias gb='git branch'
 alias gs='git status'
 
-alias c='cd /home/atlas1/gitrepo/lockdpwn/cmake_projects'
-alias c2='cd /home/atlas1/gitrepo/starlaw/cmake_projects'
-alias cpp='cd /home/atlas1/gitrepo/lockdpwn/cpp_archive'
-alias py='cd /home/atlas1/gitrepo/lockdpwn/python_archive'
-alias ipy='cd /home/atlas1/gitrepo/lockdpwn/python_archive/ipython'
-alias ml='cd /home/atlas1/gitrepo/lockdpwn/python_archive/machineLearning'
+alias c='cd /home/$USER/gitrepo/lockdpwn/cmake_projects'
+alias c2='cd /home/$USER/gitrepo/starlaw/cmake_projects'
+alias cpp='cd /home/$USER/gitrepo/lockdpwn/cpp_archive'
+alias py='cd /home/$USER/gitrepo/lockdpwn/python_archive'
+alias ipy='cd /home/$USER/gitrepo/lockdpwn/python_archive/ipython'
+alias ml='cd /home/$USER/gitrepo/lockdpwn/python_archive/machineLearning'
 
 # for jupyter notebook
 alias notebook='jupyter notebook --no-browser'
@@ -218,15 +218,15 @@ export ROS_MASTER_URI=http://localhost:11311
 export ROS_HOSTNAME=127.0.0.1
 
 # set ROS alias command
-alias cw='cd /home/atlas1/catkin_ws'
-alias cs='cd /home/atlas1/catkin_ws/src'
-alias cm='cd /home/atlas1/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cw='cd /home/$USER/catkin_ws'
+alias cs='cd /home/$USER/catkin_ws/src'
+alias cm='cd /home/$USER/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 # for ATLAS
-alias co='cd /home/atlas1/gitrepo/orb-sandbox'
-alias cmb='cd /home/atlas1/gitrepo/mapping-pipeline-bravo'
+alias co='cd /home/$USER/gitrepo/orb-sandbox'
+alias cmb='cd /home/$USER/gitrepo/mapping-pipeline-bravo'
 
 alias cb='cd ~/bag_files'
 alias so='source devel/setup.bash'
@@ -246,8 +246,8 @@ alias cd...='cd ../..'
 alias cd....='cd ../../..'
 
 # for triple-monitors
-alias cvt='/home/atlas1/gitrepo/lockdpwn/script_archive/cvt_1920_1080.sh'
-alias cvt2='/home/atlas1/gitrepo/lockdpwn/script_archive/cvt_1920_1080_2.sh'
+alias cvt='/home/$USER/gitrepo/lockdpwn/script_archive/cvt_1920_1080.sh'
+alias cvt2='/home/$USER/gitrepo/lockdpwn/script_archive/cvt_1920_1080_2.sh'
 
 # for systemctl
 alias stl='sudo systemctl'
@@ -257,32 +257,32 @@ alias cl='clear'
 
 # Cartographer Settings
 alias soc='source install_isolated/setup.bash'
-alias cwc='cd /home/atlas1/gitrepo/ims_carto'
-alias csc='cd /home/atlas1/gitrepo/ims_carto/src'
-alias cmc='cd /home/atlas1/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cwc='cd /home/$USER/gitrepo/ims_carto'
+alias csc='cd /home/$USER/gitrepo/ims_carto/src'
+alias cmc='cd /home/$USER/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmca='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT__EXPORT_COMPILE_COMMANDS=1 COMPILE_COMMANDS=1'
 
 # source .bashrc
-alias sob='source /home/atlas1/.bashrc'
+alias sob='source /home/$USER/.bashrc'
 
 # vnc viewer
-alias vncviewer='/home/atlas1/Documents/VNC-Viewer-6.19.325-Linux-x64'
+alias vncviewer='/home/$USER/Documents/VNC-Viewer-6.19.325-Linux-x64'
 
 # emacs 26.1
-alias emacs='/home/atlas1/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
+alias emacs='/home/$USER/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
 
 # Ti-Nspire CX CAS emulator
-alias ti='cd /home/atlas1/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
+alias ti='cd /home/$USER/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
 
 # ipython qtconsole
 alias qt2='~/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
 alias qt3='~/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 
 # for chown to dyros-vehicle
-alias chownd='sudo chown atlas1:atlas1 * -R'
+alias chownd='sudo chown $USER:$USER * -R'
 
 # for foxit reader
-alias foxit='/home/atlas1/opt/foxitsoftware/foxitreader/FoxitReader'
+alias foxit='/home/$USER/opt/foxitsoftware/foxitreader/FoxitReader'
 
 # for reverse-i-search
 stty -ixon
@@ -301,7 +301,7 @@ export G2O_ROOT=~/gitrepo/openslam_g2o
 alias matlab=/usr/local/MATLAB/R2018a/bin/matlab
 
 # for ubuntu-live-wallpaper change
-alias wc='python /home/atlas1/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py'
+alias wc='python /home/$USER/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py'
 
 # cmake for various options
 alias cmake_relwithdebinfo="cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo"
@@ -324,11 +324,11 @@ alias dim='docker images'
 alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 775'
 
 # for edward folder
-alias cse='cd /home/atlas1/catkin_ws/src/edward/'
+alias cse='cd /home/$USER/catkin_ws/src/edward/'
 
 # for org-mode
-alias o='cd /home/atlas1/gitrepo/ims_org && ./push_master.sh'
-alias op='cd /home/atlas1/gitrepo/ims_org && git pull origin master'
+alias o='cd /home/$USER/gitrepo/ims_org && ./push_master.sh'
+alias op='cd /home/$USER/gitrepo/ims_org && git pull origin master'
 
 # for org-mode & lockdpwn
 function seto(){
@@ -355,12 +355,12 @@ function chmod-auto() {
 }
 
 # for github page
-alias blog='cd /home/atlas1/gitrepo/tigerk0430.github.io && ./push_master.sh'
-alias blogp='cd /home/atlas1/gitrepo/tigerk0430.github.io && git pull origin master'
+alias blog='cd /home/$USER/gitrepo/tigerk0430.github.io && ./push_master.sh'
+alias blogp='cd /home/$USER/gitrepo/tigerk0430.github.io && git pull origin master'
 
 # for 3 Monitors Toggle ON/OFF
-alias mon='/home/atlas1/gitrepo/lockdpwn/script_archive/monitors_toggle.sh atlas1'
-alias moff='/home/atlas1/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off_atlas1'
+alias mon='/home/$USER/gitrepo/lockdpwn/script_archive/monitors_toggle.sh $USER'
+alias moff='/home/$USER/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off_$USER'
 
 # for gdb
 alias gdb='gdb -q'
@@ -374,8 +374,8 @@ alias v='vim'
 alias cmakebuild='mkdir build && cd build && cmake ..'
 
 source /opt/ros/kinetic/setup.bash
-source /home/atlas1/catkin_ws/devel/setup.bash
+source /home/$USER/catkin_ws/devel/setup.bash
 
 # for ORB_SLAM2
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/atlas1/gitrepo/ORB_SLAM2/Examples/ROS
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/$USER/gitrepo/ORB_SLAM2/Examples/ROS
 # export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/gitrepo/LCSD_SLAM/ORB_SLAM2/Examples/ROS

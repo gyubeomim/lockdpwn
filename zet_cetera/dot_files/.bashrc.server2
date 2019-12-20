@@ -150,8 +150,8 @@ PS1="$C_LIGHTYELLOW\u(@server2)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 #LANG=ko_KR.utf-8
 #LANGUAGE=ko_KR
-PATH=$PATH:/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
-ida=/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
+PATH=$PATH:/home/$USER/.wine/drive_c/programfilesx86/ida6.8
+ida=/home/$USER/.wine/drive_c/programfilesx86/ida6.8
 alias g1='cd /media/dyros-data/gitrepo/lockdpwn'
 alias g2='cd /media/dyros-data/gitrepo/edward_ws/edward_ws'
 alias g3='cd /media/dyros-data/gitrepo/ims_carto'
@@ -195,11 +195,11 @@ function len(){
 
 
 
-PATH="/home/dyros-vehicle/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/dyros-vehicle/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/dyros-vehicle/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/dyros-vehicle/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/dyros-vehicle/perl5"; export PERL_MM_OPT;
+PATH="/home/$USER/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/$USER/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/$USER/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/$USER/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/$USER/perl5"; export PERL_MM_OPT;
 
 
 alias tm='tmux'
@@ -224,13 +224,13 @@ alias rm='trash-put'
 
 
 # set ROS alias command
-alias cw='cd /home/dyros-vehicle/catkin_ws'
-alias cs='cd /home/dyros-vehicle/catkin_ws/src'
-alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make'
+alias cw='cd /home/$USER/catkin_ws'
+alias cs='cd /home/$USER/catkin_ws/src'
+alias cm='cd /home/$USER/catkin_ws && catkin_make'
 
-alias cwc='cd /home/dyros-vehicle/cartographer_ws'
-alias csc='cd /home/dyros-vehicle/cartographer_ws/src'
-alias cmc='cd /home/dyros-vehicle/cartographer_ws && catkin_make_isolated --install --use-ninja '
+alias cwc='cd /home/$USER/cartographer_ws'
+alias csc='cd /home/$USER/cartographer_ws/src'
+alias cmc='cd /home/$USER/cartographer_ws && catkin_make_isolated --install --use-ninja '
 
 #export ROS_MASTER_URI=http://192.168.137.2:11311
 #export ROS_HOSTNAME=127.0.0.1
@@ -245,7 +245,7 @@ if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline
 fi
 
 
-alias emacs='/home/dyros-vehicle/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
+alias emacs='/home/$USER/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
 
 # for stockroom_bot
 #alias sb='source ~/gitrepo/ims_ros/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/gitrepo/ims_ros/stockroombot_ws/src/stockroom_bot'/models
@@ -256,11 +256,11 @@ alias sog='source /usr/share/gazebo-2.2/setup.sh'
 alias sog2='source /usr/share/gazebo/setup.sh'
 
 # for source .bashrc
-alias sob='source /home/dyros-vehicle/.bashrc'
+alias sob='source /home/$USER/.bashrc'
 
 alias cdb='cd ~/gitrepo/ims_ros/rosbook_ws'
 alias cb='cd /media/dyros-data/bag_files'
-alias cbb='cd /home/dyros-vehicle/bag_files'
+alias cbb='cd /home/$USER/bag_files'
 alias cdd='cd /media/dyros-data/'
 alias down='cd ~/Downloads'
 alias docu='cd ~/Documents'
@@ -270,11 +270,11 @@ alias cma='catkin_make'
 alias cmca='catkin_make_isolated --install --use-ninja'
 
 
-export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/
-export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/
-alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh /media/dyros-data/gitrepo/ims_ros/vrep_ws/dyros_simulator2_parking.ttt'
-alias vrepjw='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh /home/dyros-vehicle/JW/vrep_ttt/ParkingSimulator.ttt'
+export VREP_ROOT_DIR=/home/$USER/Documents/V-REP_PRO_EDU_V3_5_0_Linux/
+export VREP_ROOT=/home/$USER/Documents/V-REP_PRO_EDU_V3_5_0_Linux/
+alias vrep='/home/$USER/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
+alias vrepd='/home/$USER/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh /media/dyros-data/gitrepo/ims_ros/vrep_ws/dyros_simulator2_parking.ttt'
+alias vrepjw='/home/$USER/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh /home/$USER/JW/vrep_ttt/ParkingSimulator.ttt'
 
 alias co='cd /opt/ros/kinetic/share/'
 
@@ -284,7 +284,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
 
-alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/directorPython'
+alias directorPython='/home/$USER/Downloads/director/build/install/bin/directorPython'
 
 
 # setting for Tensorflow GPU version 
@@ -302,9 +302,9 @@ alias soc='source install_isolated/setup.bash'
 
 
 #UE4Editor-------------
-#alias ueditor='/home/dyros-vehicle/gitrepo/UnrealEngine_4.19/Engine/Binaries/Linux/UE4Editor'
-alias ueditor='/home/dyros-vehicle/UnrealEngine_/Engine/Binaries/Linux/UE4Editor'
-export UE4_ROOT='/home/dyros-vehicle/UnrealEngine_'
+#alias ueditor='/home/$USER/gitrepo/UnrealEngine_4.19/Engine/Binaries/Linux/UE4Editor'
+alias ueditor='/home/$USER/UnrealEngine_/Engine/Binaries/Linux/UE4Editor'
+export UE4_ROOT='/home/$USER/UnrealEngine_'
 
 # for carla
 alias carla='cd /media/dyros-data/gitrepo/CARLA_0.8.4 && ./CarlaUE4.sh -windowed -resx=600 -resy=480 -carla-settings=./Example.CarlaSettings.ini'
@@ -321,7 +321,7 @@ alias carla_test='cd /media/dyros-data/gitrepo/DDPGlearningPrj && python manual_
 #alias carla_ms='/media/dyros-data/gitrepo/carla-0.8.4_source/Unreal/CarlaUE4/LinuxNoEditor/#CarlaUE4/Binaries/Linux/CarlaUE4  -windowed -resx=800 -resy=640'
 
 
-alias ti='cd /home/dyros-vehicle/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
+alias ti='cd /home/$USER/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
 
 # for reverse-i-search
 stty -ixon
@@ -346,10 +346,10 @@ alias cd....='cd ../../..'
 alias ccc='/media/dyros-data/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
 
 # for chown
-alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
+alias chownd='sudo chown $USER:$USER * -R'
 
 # for REAL vncviwer 
-alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.17.1113-Linux-x64'
+alias vncviewer='/home/$USER/Documents/VNC-Viewer-6.17.1113-Linux-x64'
 
 # for hed git repository (pycaffe)
 # export PYTHONPATH=/media/dyros-data/gitrepo/hed/python:$PYTHONPATH
@@ -386,12 +386,12 @@ alias docim='docker images'
 #----------------------------------------------------------------------- 
 
 # 
-alias cps='cd /home/dyros-vehicle/catkin_ws/src/edward/parkingslam'
+alias cps='cd /home/$USER/catkin_ws/src/edward/parkingslam'
 
 alias sopt='source /opt/ros/kinetic/setup.bash'
 
-alias rvizc='rviz -d /home/dyros-vehicle/.rviz/cartographer.rviz'
+alias rvizc='rviz -d /home/$USER/.rviz/cartographer.rviz'
 
 # set ROS
 source /opt/ros/kinetic/setup.bash
-source /home/dyros-vehicle/catkin_ws/devel/setup.bash
+source /home/$USER/catkin_ws/devel/setup.bash

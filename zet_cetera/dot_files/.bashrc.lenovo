@@ -153,21 +153,21 @@ PS1="${C_LIGHTGREEN}edward(@dyros)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # LANGUAGE=ko_KR
 
 # ida & msfconsole aliases
-PATH=$PATH:/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
-ida=/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8
+PATH=$PATH:/home/$USER/.wine/drive_c/programfilesx86/ida6.8
+ida=/home/$USER/.wine/drive_c/programfilesx86/ida6.8
 msf=/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15
 
-alias ida='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq.exe'
-alias ida64='/home/dyros-vehicle/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe'
+alias ida='/home/$USER/.wine/drive_c/programfilesx86/ida6.8/idaq.exe'
+alias ida64='/home/$USER/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe'
 alias msfconsole='cd ~/Documents/metasploit-framework/ && ./msfconsole'
 
-alias g1='cd /home/dyros-vehicle/gitrepo/lockdpwn'
-alias g2='cd /home/dyros-vehicle/gitrepo_sync/ims_org'
-alias g3='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io'
-alias g4='cd /home/dyros-vehicle/edward_ws'
-alias g5='cd /home/dyros-vehicle/gitrepo/ims_carto'
-alias g6='cd /home/dyros-vehicle/gitrepo/ims_ml'
-alias gr='cd /home/dyros-vehicle/gitrepo/'
+alias g1='cd /home/$USER/gitrepo/lockdpwn'
+alias g2='cd /home/$USER/gitrepo_sync/ims_org'
+alias g3='cd /home/$USER/gitrepo/tigerk0430.github.io'
+alias g4='cd /home/$USER/edward_ws'
+alias g5='cd /home/$USER/gitrepo/ims_carto'
+alias g6='cd /home/$USER/gitrepo/ims_ml'
+alias gr='cd /home/$USER/gitrepo/'
 
 # for git command
 alias gg='git add . && git commit -m '"'updated'"' && git push '
@@ -184,13 +184,13 @@ alias cred='git config credential.helper "cache --timeout=864000000" --global'
 alias gc='git checkout'
 alias gb='git branch'
 alias gs='git status'
-alias ed='cd /home/dyros-vehicle/gitrepo/edward_ws'
+alias ed='cd /home/$USER/gitrepo/edward_ws'
 
-alias c='cd /home/dyros-vehicle/gitrepo/lockdpwn/cmake_projects'
-alias cpp='cd /home/dyros-vehicle/gitrepo/lockdpwn/cpp_archive'
-alias py='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive'
-alias ipy='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive/ipython'
-alias ml='cd /home/dyros-vehicle/gitrepo/lockdpwn/python_archive/machineLearning'
+alias c='cd /home/$USER/gitrepo/lockdpwn/cmake_projects'
+alias cpp='cd /home/$USER/gitrepo/lockdpwn/cpp_archive'
+alias py='cd /home/$USER/gitrepo/lockdpwn/python_archive'
+alias ipy='cd /home/$USER/gitrepo/lockdpwn/python_archive/ipython'
+alias ml='cd /home/$USER/gitrepo/lockdpwn/python_archive/machineLearning'
 
 # for jupyter notebook
 alias notebook='jupyter notebook --no-browser'
@@ -228,14 +228,14 @@ export ROS_MASTER_URI=http://localhost:11311
 export ROS_HOSTNAME=127.0.0.1
 
 # set ROS alias command
-alias cw='cd /home/dyros-vehicle/catkin_ws'
-alias cs='cd /home/dyros-vehicle/catkin_ws/src'
-alias cm='cd /home/dyros-vehicle/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cw='cd /home/$USER/catkin_ws'
+alias cs='cd /home/$USER/catkin_ws/src'
+alias cm='cd /home/$USER/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 # for debugging
-alias cm_relwithdebinfo='cd /home/dyros-vehicle/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE="RelWithDebInfo"'
+alias cm_relwithdebinfo='cd /home/$USER/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE="RelWithDebInfo"'
 alias cma_relwithdebinfo='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE="RelWithDebInfo"'
 
 alias cb='cd ~/bag_files'
@@ -257,8 +257,8 @@ alias cd...='cd ../..'
 alias cd....='cd ../../..'
 
 # for triple-monitors
-alias cvt='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/cvt_1920_1080.sh'
-alias cvt2='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/cvt_1920_1080_2.sh'
+alias cvt='/home/$USER/gitrepo/lockdpwn/script_archive/cvt_1920_1080.sh'
+alias cvt2='/home/$USER/gitrepo/lockdpwn/script_archive/cvt_1920_1080_2.sh'
 
 # for systemctl
 alias stl='sudo systemctl'
@@ -268,44 +268,42 @@ alias cl='clear'
 
 # Cartographer Settings
 alias soc='source install_isolated/setup.bash'
-alias cwc='cd /home/dyros-vehicle/gitrepo/ims_carto'
-alias csc='cd /home/dyros-vehicle/gitrepo/ims_carto/src'
-alias cmc='cd /home/dyros-vehicle/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cwc='cd /home/$USER/gitrepo/ims_carto'
+alias csc='cd /home/$USER/gitrepo/ims_carto/src'
+alias cmc='cd /home/$USER/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmca='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT__EXPORT_COMPILE_COMMANDS=1 COMPILE_COMMANDS=1'
 
 # for segmap
-alias cwg='cd /home/dyros-vehicle/segmap_ws'
-alias csg='cd /home/dyros-vehicle/segmap_ws/src'
-alias cmg='cd /home/dyros-vehicle/segmap_ws && catkin build segmapper -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
-
-
+alias cwg='cd /home/$USER/segmap_ws'
+alias csg='cd /home/$USER/segmap_ws/src'
+alias cmg='cd /home/$USER/segmap_ws && catkin build segmapper -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 # V-Rep Settings
-export VREP_ROOT_DIR=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04
-export VREP_ROOT=/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04
+export VREP_ROOT_DIR=/home/$USER/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04
+export VREP_ROOT=/home/$USER/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04
 
-alias vrep='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04/vrep.sh'
-alias vrep34='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
-alias vrep35='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
+alias vrep='/home/$USER/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04/vrep.sh'
+alias vrep34='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
+alias vrep35='/home/$USER/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
 
-alias vrepd='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/gitrepo/edward_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_for_back_light.ttt'
-alias vrepd2='/home/dyros-vehicle/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/gitrepo/edward_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_back_light.ttt'
+alias vrepd='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/gitrepo/edward_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_for_back_light.ttt'
+alias vrepd2='/home/$USER/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ~/gitrepo/edward_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_back_light.ttt'
 
 # source .bashrc
-alias sob='source /home/dyros-vehicle/.bashrc'
+alias sob='source /home/$USER/.bashrc'
 
 # vnc viewer
-alias vncviewer='/home/dyros-vehicle/Documents/VNC-Viewer-6.18.907-Linux-x64'
+alias vncviewer='/home/$USER/Documents/VNC-Viewer-6.18.907-Linux-x64'
 
 # emacs 26.1
-alias emacs='/home/dyros-vehicle/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
+alias emacs='/home/$USER/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
 
 # Ti-Nspire CX CAS emulator
-alias ti='cd /home/dyros-vehicle/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
+alias ti='cd /home/$USER/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
 
 # UE4Editor
 alias ueditor='~/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
-export UE4_ROOT='/home/dyros-vehicle/gitrepo/UnrealEngine'
+export UE4_ROOT='/home/$USER/gitrepo/UnrealEngine'
 
 # ipython qtconsole
 alias qt2='~/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
@@ -322,12 +320,12 @@ function chmod-auto() {
  find . -type d -print0 | xargs -0 chmod 775
 }
 
-# for chown to dyros-vehicle
-alias chownd='sudo chown dyros-vehicle:dyros-vehicle * -R'
+# for chown to $USER
+alias chownd='sudo chown $USER:$USER * -R'
 
 
 # for foxit reader
-alias foxit='/home/dyros-vehicle/opt/foxitsoftware/foxitreader/FoxitReader'
+alias foxit='/home/$USER/opt/foxitsoftware/foxitreader/FoxitReader'
 
 # setting for Tensorflow GPU version
 # Using CUDA 8.0 & cuDNN 6.0
@@ -347,30 +345,30 @@ stty -ixon
 
 
 # for caffe
-export PYTHONPATH=/home/dyros-vehicle/gitrepo/fast-rcnn/caffe-fast-rcnn/python:$PYTHONPATH
+export PYTHONPATH=/home/$USER/gitrepo/fast-rcnn/caffe-fast-rcnn/python:$PYTHONPATH
 # for Fast R-CNN
-export FRCN_ROOT=/home/dyros-vehicle/gitrepo/fast-rcnn
+export FRCN_ROOT=/home/$USER/gitrepo/fast-rcnn
 # for simdat
-export PYTHONPATH=/home/dyros-vehicle/gitrepo:$PYTHONPATH
+export PYTHONPATH=/home/$USER/gitrepo:$PYTHONPATH
 # for vtk 6.2
 export LD_LIBRARY_PATH=/usr/include/vtk-6.2/:$LD_LIBRARY_PATH 
 # for vtk 5.xx
-export LD_LIBRARY_PATH=/home/dyros-vehicle/Documents/VTK-5.10.1/build:/home/dyros-vehicle/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
+export LD_LIBRARY_PATH=/home/$USER/Documents/VTK-5.10.1/build:/home/$USER/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
 
 # for opencv 3.3.1
 export LD_LIBRARY_PATH=/usr/local/include/opencv2/:$LD_LIBRARY_PATH 
 
 # for cling with Jupyter
-export PATH=/home/dyros-vehicle/Documents/cling_2018-05-10_ubuntu16/bin:$PATH 
+export PATH=/home/$USER/Documents/cling_2018-05-10_ubuntu16/bin:$PATH 
 
 # for caps lock <==> ctrl swapping
-alias ccc='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
+alias ccc='/home/$USER/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
 
 # for 3 Monitors Toggle ON/OFF
-alias mon='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/monitors_toggle.sh three1'
-alias mon2='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/monitors_toggle.sh two'
-alias mon3='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/monitors_toggle.sh three2'
-alias moff='/home/dyros-vehicle/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off'
+alias mon='/home/$USER/gitrepo/lockdpwn/script_archive/monitors_toggle.sh three1'
+alias mon2='/home/$USER/gitrepo/lockdpwn/script_archive/monitors_toggle.sh two'
+alias mon3='/home/$USER/gitrepo/lockdpwn/script_archive/monitors_toggle.sh three2'
+alias moff='/home/$USER/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off'
 
 # for hed gitrepository (pycaffe)
 export PYTHONPATH=~/gitrepo/hed/python:$PYTHONPATH
@@ -394,7 +392,7 @@ export G2O_ROOT=~/gitrepo/g2o
 alias matlab=/usr/local/MATLAB/R2018a/bin/matlab
 
 # for ubuntu-live-wallpaper change
-alias wc='python /home/dyros-vehicle/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py'
+alias wc='python /home/$USER/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py'
 
 #python virtualenv for segmap
 alias seg='source ~/segmappyenv/bin/activate'
@@ -422,12 +420,12 @@ alias dim='docker images'
 alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 775'
 
 # for edward folder
-alias cse='cd /home/dyros-vehicle/catkin_ws/src/edward/'
-alias cps='cd /home/dyros-vehicle/catkin_ws/src/edward/parkingslam'
+alias cse='cd /home/$USER/catkin_ws/src/edward/'
+alias cps='cd /home/$USER/catkin_ws/src/edward/parkingslam'
 
 # for org-mode
-alias o='cd /home/dyros-vehicle/gitrepo_sync/ims_org && ./push_master.sh'
-alias op='cd /home/dyros-vehicle/gitrepo_sync/ims_org && git pull origin master'
+alias o='cd /home/$USER/gitrepo_sync/ims_org && ./push_master.sh'
+alias op='cd /home/$USER/gitrepo_sync/ims_org && git pull origin master'
 
 # for org-mode
 function seto(){
@@ -448,8 +446,8 @@ function setop(){
 }
 
 # for github page
-alias blog='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io && ./push_master.sh'
-alias blogp='cd /home/dyros-vehicle/gitrepo/tigerk0430.github.io && git pull origin master'
+alias blog='cd /home/$USER/gitrepo/tigerk0430.github.io && ./push_master.sh'
+alias blogp='cd /home/$USER/gitrepo/tigerk0430.github.io && git pull origin master'
 
 # for vim ~/.bashrc
 alias vb='vim ~/.bashrc'
@@ -461,14 +459,14 @@ alias downd='cd /media/data/Downloads_d'
 alias cdv='cd ~/gitrepo/openvslam-sandbox'
 
 source /opt/ros/kinetic/setup.bash
-source /home/dyros-vehicle/catkin_ws/devel/setup.bash
-source /home/dyros-vehicle/cartographer_ws/install_isolated/setup.bash
+source /home/$USER/catkin_ws/devel/setup.bash
+source /home/$USER/cartographer_ws/install_isolated/setup.bash
 
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/dyros-vehicle/gitrepo/ORB_SLAM2/Examples/ROS
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/$USER/gitrepo/ORB_SLAM2/Examples/ROS
 
 #START NOT USED------------------------------------------------------
 # alias co='cd /opt/ros/kinetic/share/'
-# alias directorPython='/home/dyros-vehicle/Downloads/director/build/install/bin/directorPython'
+# alias directorPython='/home/$USER/Downloads/director/build/install/bin/directorPython'
 # for source gazebo config
 # alias sog='source /usr/share/gazebo-2.2/setup.sh'
 # alias sog2='source /usr/share/gazebo/setup.sh'
@@ -476,11 +474,11 @@ export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/dyros-vehicle/gitrepo/ORB_SLAM
 # alias cdb='cd ~/edward_ws/rosbook_ws'
 # # for stockroom_bot
 # #alias sb='source ~/edward_ws/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/edward_ws/stockroombot_ws/src/stockroom_bot'/models
-# PERL5LIB="/home/dyros-vehicle/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-# PERL_LOCAL_LIB_ROOT="/home/dyros-vehicle/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-# PERL_MB_OPT="--install_base \"/home/dyros-vehicle/perl5\""; export PERL_MB_OPT;
-# PERL_MM_OPT="INSTALL_BASE=/home/dyros-vehicle/perl5"; export PERL_MM_OPT;
-# PATH="/home/dyros-vehicle/perl5/bin${PATH:+:${PATH}}"; export PATH;
+# PERL5LIB="/home/$USER/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+# PERL_LOCAL_LIB_ROOT="/home/$USER/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+# PERL_MB_OPT="--install_base \"/home/$USER/perl5\""; export PERL_MB_OPT;
+# PERL_MM_OPT="INSTALL_BASE=/home/$USER/perl5"; export PERL_MM_OPT;
+# PATH="/home/$USER/perl5/bin${PATH:+:${PATH}}"; export PATH;
 # if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
 #     source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
 # fi
