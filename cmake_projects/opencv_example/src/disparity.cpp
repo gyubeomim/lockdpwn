@@ -8,8 +8,8 @@
 #include <string>
 
 int main(int argc, char **argv) {
-  std::string left_im = "/home/edward/Pictures/left.jpg";
-  std::string right_im = "/home/edward/Pictures/right.jpg";
+  std::string left_im = std::string(getenv("HOME")) +"/Pictures/keep/000000_left.png";
+  std::string right_im = std::string(getenv("HOME")) + "/Pictures/keep/000000_right.png";
 
   cv::Mat left = cv::imread(left_im, cv::IMREAD_COLOR);
   cv::Mat right = cv::imread(right_im, cv::IMREAD_COLOR);
@@ -49,16 +49,42 @@ int main(int argc, char **argv) {
 
   cv::Mat left_disp, right_disp;
   cv::Mat filtered_disp, solved_disp, solved_filtered_disp;
+  cv::Mat conf_map = cv::Mat(left.rows, left.cols, CV_8U);
+  conf_map = cv::Scalar(255);
 
   left_matcher->compute(left_for_matcher, right_for_matcher, left_disp);
   right_matcher->compute(right_for_matcher, right_for_matcher, right_disp);
 
   cv::Mat raw_disp_vis;
-  double vis_mult = 1.0; // default parameter.
+  cv::Mat filtered_disp_vis;
+
+// default parameter.
+  double vis_mult = 1.0;
   cv::ximgproc::getDisparityVis(left_disp, raw_disp_vis, vis_mult);
 
-  cv::imshow("raw disparity", raw_disp_vis);
+  // cv::imshow("raw disparity", raw_disp_vis);
+  // cv::waitKey(0);
+
+  // default paramters.
+  double lambda = 8000;
+  double sigma = 1.5;
+
+  wls_filter->setLambda(lambda);
+  wls_filter->setSigmaColor(sigma);
+  wls_filter->filter(left_disp, left, filtered_disp, right_disp);
+  conf_map = wls_filter->getConfidenceMap();
+
+  cv::ximgproc::getDisparityVis(filtered_disp, filtered_disp_vis, vis_mult);
+  cv::imshow("filtered disparity", filtered_disp_vis);
   cv::waitKey(0);
+
+  // double fbs_spatial = 16.0;
+  // double fbs_luma = 8.0;
+  // double fbs_chroma = 8.0;
+  // double fbs_lambda = 128.0;
+
+  // cv::ximgproc::FastBilateralSolverFilter(left, left_disp, conf_map/255.0f, solved_disp, fbs_spatial, fbs_luma, fbs_chroma, fbs_lambda);
+  // cv::ximgproc::FastBilateralSolverFilter(left, filtered_disp, conf_map/255.0f, solved_filtered_disp, fbs_spatial, fbs_luma, fbs_chroma, fbs_lambda);
 
   return 0;
 }

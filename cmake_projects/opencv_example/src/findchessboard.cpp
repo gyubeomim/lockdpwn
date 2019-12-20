@@ -52,7 +52,7 @@ std::string to_zero_lead(const int value, const unsigned precision) {
 
 int main(int argc, char **argv) {
   for(int k=0; k < 400; k+=20) {
-    std::string fn_chessboard = "/home/"+ std::string(getenv("USER")) +"/Pictures/keep/camera/" + to_zero_lead(k, 6) + ".png";
+    std::string fn_chessboard = std::string(getenv("HOME")) +"/Pictures/keep/camera/" + to_zero_lead(k, 6) + ".png";
     cv::Mat image_raw = cv::imread(fn_chessboard, cv::IMREAD_GRAYSCALE);
     cv::Mat image_rect;
 
