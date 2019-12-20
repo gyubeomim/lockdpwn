@@ -29,3 +29,10 @@ target_link_libraries(disparity
   ${OpenCV_LIBS}
   ${EIGEN3_LIBS}
   )
+
+add_executable(findchessboard
+  src/findchessboard.cpp
+  )
+target_link_libraries(findchessboard
+  ${OpenCV_LIBS}
+  )

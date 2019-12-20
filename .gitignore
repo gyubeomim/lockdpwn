@@ -35,3 +35,6 @@ Debug/
 *.idb
 
 .dir-locals.el
+
+reldebug/
+debug/

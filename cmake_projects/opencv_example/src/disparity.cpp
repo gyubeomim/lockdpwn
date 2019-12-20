@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
   wls_filter = cv::ximgproc::createDisparityWLSFilter(left_matcher);
   cv::Ptr<cv::StereoMatcher> right_matcher = cv::ximgproc::createRightMatcher(left_matcher);
 
- cv::cvtColor(left_for_matcher, left_for_matcher, cv::COLOR_RGB2GRAY);
+  cv::cvtColor(left_for_matcher, left_for_matcher, cv::COLOR_RGB2GRAY);
   cv::cvtColor(right_for_matcher, right_for_matcher, cv::COLOR_RGB2GRAY);
 
   cv::Mat left_disp, right_disp;
