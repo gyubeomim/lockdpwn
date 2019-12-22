@@ -1,4 +1,4 @@
-export STEREODSO_PATH=${HOME}/gitrepo/stereo-dso
+export STEREODSO_PATH=${HOME}/gitrepo/stereo-dso-sandbox
 
 seq=$1
 
