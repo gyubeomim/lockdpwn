@@ -1,3 +1,5 @@
+cd ${HOME}/gitrepo/openvslam-sandbox/build && make -j 
+
 case $1 in
 	r) # semi-direct kitti seq 0
 		${HOME}/gitrepo/openvslam-sandbox/build/run_kitti_slam \
@@ -26,10 +28,12 @@ case $1 in
 		;;
 
 	ros)
-		source ${HOME}/gitrepo/openvslam-sandbox/ros/devel/setup.bash
-		rosrun openvslam run_slam \
+		cd ${HOME}/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+		source ${HOME}/catkin_ws/devel/setup.bash
+		rospack profile
+		rosrun openvslam-ros run_semi_direct \
 		-v /media/data/weights/orb_vocab.dbow2 \
-		-c ${HOME}/gitrepo/openvslam-sandbox/example/dyros_half.yaml
+		-c ${HOME}/gitrepo/openvslam-sandbox/example/kitti/KITTI_stereo_00-02.yaml
 		;;
 
 	oros) # (original) 
@@ -39,3 +43,13 @@ case $1 in
 		-c ${HOME}/gitrepo/openvslam/example/dyros_half.yaml
 		;;
 esac
+
+# deprecated===================================================================
+	# rosmono)
+	# 	cd ${HOME}/gitrepo/openvslam-sandbox/ros/ && catkin_make
+	# 	source ${HOME}/gitrepo/openvslam-sandbox/ros/devel/setup.bash
+	# 	rospack profile
+	# 	rosrun openvslam run_slam \
+	# 	-v /media/data/weights/orb_vocab.dbow2 \
+	# 	-c ${HOME}/gitrepo/openvslam-sandbox/example/dyros_half.yaml
+	# 	;;

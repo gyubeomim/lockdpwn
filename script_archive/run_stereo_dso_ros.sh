@@ -1,5 +1,9 @@
 killall stereo_image_proc
 
+cd ${HOME}/gitrepo/stereo-dso-sandbox/build && make -j
+
+cd ${HOME}/catkin_ws && catkin_make
+
 ROS_NAMESPACE=camera rosrun stereo_image_proc stereo_image_proc &
 
 rosrun stereo_dso_ros stero_dso_ros \
@@ -7,6 +11,4 @@ rosrun stereo_dso_ros stero_dso_ros \
 	gamma=${HOME}/catkin_ws/config/dso/pcalib.txt \
 	vignette=${HOME}/catkin_ws/config/dso/vignette.png \
 	preset=0 \
-	mode=1 \
-	/cam0/image_raw:=/camera/left/image_rect \
-	/cam1/image_raw:=/camera/right/image_rect
+	mode=1 
