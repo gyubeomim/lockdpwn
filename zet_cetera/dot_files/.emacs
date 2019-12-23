@@ -1314,6 +1314,10 @@
     (define-key evil-normal-state-map (kbd "x") 'suspend-frame)
     (define-key evil-motion-state-map (kbd "x") 'suspend-frame)
 
+    ;; U 키로 redo 합니다.
+    (define-key evil-normal-state-map (kbd "U") 'undo-tree-redo)
+    (define-key evil-motion-state-map (kbd "U") 'undo-tree-redo)
+
     ;; - 키로 dired 모드를 싱행합니다
     (define-key evil-motion-state-map (kbd "-") (lambda() (interactive)(dired "./")))
 

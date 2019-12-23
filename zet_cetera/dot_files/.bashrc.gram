@@ -362,6 +362,7 @@ export PATH=${HOME}/Documents/cling_2018-05-10_ubuntu16/bin:$PATH
 
 # for caps lock <==> ctrl swapping
 alias ccc='${HOME}/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
+alias cccu='${HOME}/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh undo'
 
 # for 3 Monitors Toggle ON/OFF
 alias mon='${HOME}/gitrepo/lockdpwn/script_archive/monitors_toggle.sh three1'

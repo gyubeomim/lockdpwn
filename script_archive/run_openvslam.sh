@@ -1,4 +1,4 @@
-cd ${HOME}/gitrepo/openvslam-sandbox/build && make -j 
+cd ${HOME}/gitrepo/openvslam-sandbox/build && make -j6
 
 case $1 in
 	r) # semi-direct kitti seq 0
