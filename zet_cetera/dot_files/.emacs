@@ -672,8 +672,8 @@
 
 ;; package: ycmd
 ;; (require 'ycmd)
-;; (set-variable 'ycmd-server-command '("python3" "-u" "/media/dyros-data/gitrepo/ycmd/ycmd"))
-;; (set-variable 'ycmd-global-config "/media/dyros-data/gitrepo/ycmd/examples/.ycm_extra_conf.py")
+;; (set-variable 'ycmd-server-command '("python3" "-u" "/media/data/gitrepo/ycmd/ycmd"))
+;; (set-variable 'ycmd-global-config "/media/data/gitrepo/ycmd/examples/.ycm_extra_conf.py")
 ;; (add-hook 'c++-mode-hook 'ycmd-mode)
 ;; (add-hook 'after-init-hook 'global-ycmd-mode)
 ;; (require 'company-ycmd)
@@ -1043,6 +1043,7 @@
 ;; C-c 8,9 키로 .emacs .emacs_w 파일을 열도록 설정합니다
 (global-set-key (kbd "C-c 8") (lambda() (interactive)(find-file "~/gitrepo/lockdpwn/zet_cetera/dot_files/.emacs_w")))
 (global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/.emacs")))
+(global-set-key (kbd "C-c 0") (lambda() (interactive)(find-file "~/gitrepo/lockdpwn/zet_cetera/dot_files/.emacs")))
 
 ;; C + ; 키로 org mode에서 링크를 타기 위한 단축키를 설정합니다
 (global-set-key (kbd "C-;") 'org-store-link)
@@ -1173,7 +1174,7 @@
 ;; for easy-jekyll mode
 (setq easy-jekyll-basedir "~/gitrepo/tigerk0430.github.io/")
 (setq easy-jekyll-url "https://tigerk0430.github.io")
-(setq easy-jekyll-root "/home/dyros-vehicle/")
+(setq easy-jekyll-root "/home/edward/")
 (setq easy-jekyll-previewtime "300")
 
 (define-key global-map (kbd "C-c C-e") 'easy-jekyll)
