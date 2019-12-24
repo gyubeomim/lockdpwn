@@ -76,6 +76,7 @@ int main(int argc, char **argv) {
                  -0.0319, 0.01858, 0.9993);
 
 #if RECTIFICATION
+ std::cout << "[+] RECTIFICATION ON" << std::endl;
     cv::Mat map1a, map1b;
     cv::Size image_size(1384, 1024);
     cv::initUndistortRectifyMap(K, d, R, newK, image_size, CV_32FC1, map1a, map1b);
@@ -84,6 +85,8 @@ int main(int argc, char **argv) {
     cv::remap(image_raw, image_rect, map1a, map1b, cv::INTER_LINEAR);
 
     image_rect.copyTo(image_raw);
+#else
+ std::cout << "[+] RECTIFICATION OFF" << std::endl;
 #endif
 
     cv::Size patternsize(8,6);
@@ -98,6 +101,11 @@ int main(int argc, char **argv) {
       cv::cornerSubPix(image_raw, imagepoints, cv::Size(11,11), cv::Size(-1,-1), cv::TermCriteria(CV_TERMCRIT_EPS + CV_TERMCRIT_ITER, 30, 0.1));
     }
 
+    // // debugging (comment out).
+    // for(auto it : imagepoints) {
+    //   std::cout << it << std::endl;
+    // }
+
     std::vector<cv::Point3f> objectpoints;
 
     // add object points.
@@ -105,21 +113,21 @@ int main(int argc, char **argv) {
       for(int row=0; row<8; row++) {
         cv::Point3f objpoint(0.108*col, 0.108*row, 0);
         objectpoints.push_back(objpoint);
-        // for debug (comment out).
+        // // debugging (comment out).
         // std::cout << "objpoint: " << objpoint << std::endl;
       }
     }
 
-    cv::Mat rvec, tvec, rmat;
-    cv::Vec3f reuler;
+    cv::Mat angleaxis, tvec, rotmat;
+    cv::Vec3f euler;
 
-    cv::solvePnPRansac(objectpoints, imagepoints, K, d, rvec, tvec);
+    cv::solvePnPRansac(objectpoints, imagepoints, K, d, angleaxis, tvec);
 
     // convert angle axis to rotation matrix.
-    cv::Rodrigues(rvec, rmat);
+    cv::Rodrigues(angleaxis, rotmat);
 
     // conver rotation matrix to euler angles.
-    reuler = RotMatToEuler(rmat);
+    euler = RotMatToEuler(rotmat);
 
     cv::Ptr<cv::Formatter> round = cv::Formatter::get(cv::Formatter::FMT_DEFAULT);
     round->set64fPrecision(3);
@@ -127,9 +135,9 @@ int main(int argc, char **argv) {
 
     std::cout << std::endl << "[+] IMAGE " << to_zero_lead(k,6) << std::endl;
     // for debug (comment out).
-    // std::cout << "R(angle axis): " << std::endl << round->format(rvec.t()) << std::endl;
-    // std::cout << std::endl << "R(rotation matrix): " << std::endl << round->format(rmat) << std::endl;
-    std::cout << "R(euler angle):   " <<  std::setprecision(3) << "[" << reuler.val[0] << ", " << reuler.val[1] << ", " << reuler.val[2] << "]" << std::endl;
+    // std::cout << "R(angle axis): " << std::endl << round->format(angleaxis.t()) << std::endl;
+    // std::cout << std::endl << "R(rotation matrix): " << std::endl << round->format(rotmat) << std::endl;
+    std::cout << "R(euler angle):   " <<  std::setprecision(3) << "[" << euler.val[0] << ", " << euler.val[1] << ", " << euler.val[2] << "]" << std::endl;
     std::cout << "Translate(x,y,z): " << round->format(tvec.t()) << std::endl;
 
     // draw result.
