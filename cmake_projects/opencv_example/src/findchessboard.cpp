@@ -45,14 +45,19 @@ cv::Vec3f RotMatToEuler(cv::Mat &R) {
 }
 
 std::string to_zero_lead(const int value, const unsigned precision) {
-     std::ostringstream oss;
-     oss << std::setw(precision) << std::setfill('0') << value;
-     return oss.str();
+  std::ostringstream oss;
+  oss << std::setw(precision) << std::setfill('0') << value;
+  return oss.str();
 }
 
 int main(int argc, char **argv) {
-  for(int k=0; k < 400; k+=20) {
-    std::string fn_chessboard = std::string(getenv("HOME")) +"/Pictures/keep/camera/" + to_zero_lead(k, 6) + ".png";
+#if RECTIFICATION
+  std::cout << "[+] RECTIFICATION ON" << std::endl;
+#else
+  std::cout << "[+] RECTIFICATION OFF" << std::endl;
+#endif
+  for(int k=0; k < 600; k+=1) {
+    std::string fn_chessboard = std::string(getenv("HOME")) +"/Pictures/keep/camera_left/" + to_zero_lead(k, 6) + ".png";
     cv::Mat image_raw = cv::imread(fn_chessboard, cv::IMREAD_GRAYSCALE);
     cv::Mat image_rect;
 
@@ -76,7 +81,6 @@ int main(int argc, char **argv) {
                  -0.0319, 0.01858, 0.9993);
 
 #if RECTIFICATION
- std::cout << "[+] RECTIFICATION ON" << std::endl;
     cv::Mat map1a, map1b;
     cv::Size image_size(1384, 1024);
     cv::initUndistortRectifyMap(K, d, R, newK, image_size, CV_32FC1, map1a, map1b);
@@ -85,8 +89,6 @@ int main(int argc, char **argv) {
     cv::remap(image_raw, image_rect, map1a, map1b, cv::INTER_LINEAR);
 
     image_rect.copyTo(image_raw);
-#else
- std::cout << "[+] RECTIFICATION OFF" << std::endl;
 #endif
 
     cv::Size patternsize(8,6);
@@ -101,11 +103,6 @@ int main(int argc, char **argv) {
       cv::cornerSubPix(image_raw, imagepoints, cv::Size(11,11), cv::Size(-1,-1), cv::TermCriteria(CV_TERMCRIT_EPS + CV_TERMCRIT_ITER, 30, 0.1));
     }
 
-    // // debugging (comment out).
-    // for(auto it : imagepoints) {
-    //   std::cout << it << std::endl;
-    // }
-
     std::vector<cv::Point3f> objectpoints;
 
     // add object points.
@@ -118,7 +115,14 @@ int main(int argc, char **argv) {
       }
     }
 
-    cv::Mat angleaxis, tvec, rotmat;
+    for(size_t i=0; i<imagepoints.size(); i++) {
+      cv::Point2f ipt = imagepoints.at(i);
+      cv::Point3f opt = objectpoints.at(i);
+
+      std::cout << i << ", " << ipt << ", " << opt << std::endl;
+    }
+
+    cv::Mat angleaxis, tvec, rotmat, tvec_new;
     cv::Vec3f euler;
 
     cv::solvePnPRansac(objectpoints, imagepoints, K, d, angleaxis, tvec);
@@ -128,6 +132,7 @@ int main(int argc, char **argv) {
 
     // conver rotation matrix to euler angles.
     euler = RotMatToEuler(rotmat);
+    euler *= 180/3.14159;
 
     cv::Ptr<cv::Formatter> round = cv::Formatter::get(cv::Formatter::FMT_DEFAULT);
     round->set64fPrecision(3);
@@ -136,9 +141,12 @@ int main(int argc, char **argv) {
     std::cout << std::endl << "[+] IMAGE " << to_zero_lead(k,6) << std::endl;
     // for debug (comment out).
     // std::cout << "R(angle axis): " << std::endl << round->format(angleaxis.t()) << std::endl;
-    // std::cout << std::endl << "R(rotation matrix): " << std::endl << round->format(rotmat) << std::endl;
+    std::cout << std::endl << "R(rotation matrix): " << std::endl << round->format(rotmat) << std::endl;
     std::cout << "R(euler angle):   " <<  std::setprecision(3) << "[" << euler.val[0] << ", " << euler.val[1] << ", " << euler.val[2] << "]" << std::endl;
-    std::cout << "Translate(x,y,z): " << round->format(tvec.t()) << std::endl;
+    // std::cout << "Translate(x,y,z): " << round->format(tvec.t()) << std::endl;
+
+    tvec_new = -rotmat.t() * tvec;
+    std::cout << "Translate(x,y,z): " << round->format(tvec_new.t()) << std::endl;
 
     // draw result.
     cv::Mat result = image_raw.clone();
