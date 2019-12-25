@@ -18,5 +18,5 @@ docker run \
 	-v /dev/bus/usb:/dev/bus/usb \
 	-v ${XSOCK}:${XSOCK}:rw \
 	-v ${XAUTH}:${XAUTH}:rw \
-	edward0im/dyrosvehicle:ubuntu_lsd_slam \
+	edward0im/starlaw:lsd-slam \
 	/root/run_lsdslam.sh

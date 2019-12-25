@@ -17,7 +17,5 @@ docker run \
 	-v /dev/bus/usb:/dev/bus/usb \
 	-v ${XSOCK}:${XSOCK}:rw \
 	-v ${XAUTH}:${XAUTH}:rw \
-	-v /home/${USER}/share_docker:/root/share_docker \
-	-v /home/${USER}/bag_files:/root/bag_files \
-	edward0im/dyrosvehicle:ubuntu_lsd_slam \
+	edward0im/starlaw:lsd-slam \
 	/bin/bash
