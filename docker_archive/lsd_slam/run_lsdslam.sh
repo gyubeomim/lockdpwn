@@ -4,8 +4,8 @@ XAUTH=/home/${USER}/.Xauthority
 
 xhost +local:docker
 
+	# --runtime=nvidia \
 docker run \
-	--runtime=nvidia \
 	--net=host \
 	--name lsdslam \
 	--rm \
