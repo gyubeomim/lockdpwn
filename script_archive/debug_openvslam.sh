@@ -49,4 +49,7 @@ case $2 in
 	2)
 		gdb --ex="set print thread-events off" --ex="b pose_opt_edge_wrapper.h:107" --ex="r" -args $executable
 		;;
+	3)
+		gdb --ex="set print thread-events off" --ex="b pose_optimizer.cc:13" --ex="r" -args $executable
+		;;
 esac
