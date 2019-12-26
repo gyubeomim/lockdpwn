@@ -808,7 +808,7 @@
      (setq org-scheduled-past-days 0)
      (setq org-todo-keywords
            '(
-             (sequence "TODO" "|" "CANCELLED" "DELAYED" "INACTIVATE" "DONE")
+             (sequence "TODO" "IN-PROGRESS" "|" "CANCELLED" "DELAYED" "INACTIVATE" "DONE")
              (sequence "MILESTONE" "|" "COMPLETE")
              (sequence "OPEN" "|" "CLOSED")
              )
@@ -864,6 +864,10 @@
      (setq org-capture-templates  '(("t" "assign todo" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
+
+                                    ("s" "assign todo in SLAMpaper" entry
+                                    (file+headline "~/gitrepo_sync/ims_org/org_files/notes/slam-paper/slam-paper.org" "things to do")
+                                    "* TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                     ("a" "assign todo in atlas" entry
                                     (file+headline "~/gitrepo_sync/ims_org/org_files/notes/atlas-robotics/atlas.org" "todo")
@@ -3432,7 +3436,7 @@ created by edward 180515"
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "~/gitrepo/ims_org/org_files/notes/feature_based_method.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org")))
+    ("~/gitrepo/ims_org/org_files/notes/slam-paper/slam-paper.org" "~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "~/gitrepo/ims_org/org_files/notes/feature_based_method.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
@@ -3480,65 +3484,59 @@ created by edward 180515"
        (insert "*"))
      (lambda nil
        (progn
-         (setq num 1)
-         (loop
-          (< num 2000)
-          (let
-              ((numbering
-                (concat "#"
-                        (number-to-string num)))
-               (content
-                (with-current-buffer
-                    (cadr
-                     (split-string
-                      (buffer-name)
-                      "-"))
-                  (buffer-substring-no-properties
-                   (point-min)
-                   (point-max))))
-               (capture_content
-                (with-current-buffer
-                    (buffer-name)
-                  (buffer-substring-no-properties
-                   (point-min)
-                   (point-max)))))
-            (if
-                (or
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-daily.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-todo.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-atlas.org")
-                 (string=
-                  (buffer-name)
-                  "CAPTURE-milestone.org"))
-                (return)
-              (if
-                  (save-excursion
-                    (goto-char
-                     (point-min))
-                    (string-match numbering content))
-                  nil
-                (return
-                 (progn
-                   (if
-                       (string=
-                        (buffer-name)
-                        "CAPTURE-issues.org")
-                       (progn
-                         (beginning-of-line)
-                         (search-forward "OPEN")
-                         (insert
-                          (concat " " numbering)))
-                     (progn
-                       (end-of-line)
-                       (insert numbering)))))))
-            (setq num
-                  (1+ num)))))))))
+         (if (or
+              (string=
+               (buffer-name)
+               "CAPTURE-issues.org")
+              (string=
+               (buffer-name)
+               "CAPTURE-quick.org"))
+             (progn
+               (setq num 1)
+              (loop
+               (< num 2000)
+               (let
+                   ((numbering
+                     (concat "#"
+                             (number-to-string num)))
+                    (content
+                     (with-current-buffer
+                         (cadr
+                          (split-string
+                           (buffer-name)
+                           "-"))
+                       (buffer-substring-no-properties
+                        (point-min)
+                        (point-max))))
+                    (capture_content
+                     (with-current-buffer
+                         (buffer-name)
+                       (buffer-substring-no-properties
+                        (point-min)
+                        (point-max)))))
+                 (if
+                     (save-excursion
+                       (goto-char
+                        (point-min))
+                       (string-match numbering content))
+                     nil
+                   (return
+                    (progn
+                      (if
+                          (string=
+                           (buffer-name)
+                           "CAPTURE-issues.org")
+                          (progn
+                            (beginning-of-line)
+                            (search-forward "OPEN")
+                            (insert
+                             (concat " " numbering)))
+                        (progn
+                          (end-of-line)
+                          (insert numbering))))))
+                 (setq num
+                       (1+ num)))))
+           ))))))
  '(org-default-priority 66)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
@@ -3746,11 +3744,11 @@ created by edward 180515"
  '(org-checkbox-statistics-done ((t (:foreground "gainsboro" :weight bold))))
  '(org-checkbox-statistics-todo ((t (:foreground "gainsboro" :weight bold))))
  '(org-code ((t (:foreground "aquamarine"))))
- '(org-date ((t (:foreground "#eee8d5" :underline nil :height 0.8))))
+ '(org-date ((t (:foreground "goldenrod" :underline nil :height 0.8))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 1.0))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "green yellow" :weight normal :height 0.99))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "medium spring green" :weight normal :height 0.99))))
- '(org-level-4 ((t (:inherit variable-pitch :foreground "goldenrod" :weight normal :height 0.99))))
+ '(org-level-4 ((t (:inherit variable-pitch :foreground "gainsboro" :weight normal :height 0.99))))
  '(org-level-5 ((t (:inherit variable-pitch :foreground "sky blue" :weight normal :height 0.99))))
  '(org-level-6 ((t (:inherit variable-pitch :foreground "yellow3"))))
  '(org-level-7 ((t (:inherit variable-pitch :foreground "light sea green" :weight normal))))

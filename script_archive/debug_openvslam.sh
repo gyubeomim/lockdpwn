@@ -1,9 +1,11 @@
 case $1 in
 	rd)
+		cd ${HOME}/gitrepo/openvslam-sandbox/reldebug
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 		make -j
 		;;
 	d)
+		cd ${HOME}/gitrepo/openvslam-sandbox/debug
 		cmake -DCMAKE_BUILD_TYPE=Debug ..
 		make -j
 		;;
