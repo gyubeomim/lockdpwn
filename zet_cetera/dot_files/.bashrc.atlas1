@@ -234,6 +234,7 @@ alias so2='rospack profile && source devel/setup.bash'
 alias cdd='cd /media/dyros-data'
 alias down='cd ~/Downloads'
 alias docu='cd ~/Documents'
+alias pic='cd ~/Pictures'
 
 # for cd command 
 alias cd='cd '
