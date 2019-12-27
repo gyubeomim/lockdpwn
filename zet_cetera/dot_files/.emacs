@@ -3484,7 +3484,8 @@ created by edward 180515"
        (insert "*"))
      (lambda nil
        (progn
-         (if (or
+         (if
+             (or
               (string=
                (buffer-name)
                "CAPTURE-issues.org")
@@ -3493,50 +3494,49 @@ created by edward 180515"
                "CAPTURE-quick.org"))
              (progn
                (setq num 1)
-              (loop
-               (< num 2000)
-               (let
-                   ((numbering
-                     (concat "#"
-                             (number-to-string num)))
-                    (content
-                     (with-current-buffer
-                         (cadr
-                          (split-string
-                           (buffer-name)
-                           "-"))
-                       (buffer-substring-no-properties
-                        (point-min)
-                        (point-max))))
-                    (capture_content
-                     (with-current-buffer
-                         (buffer-name)
-                       (buffer-substring-no-properties
-                        (point-min)
-                        (point-max)))))
-                 (if
-                     (save-excursion
-                       (goto-char
-                        (point-min))
-                       (string-match numbering content))
-                     nil
-                   (return
-                    (progn
-                      (if
-                          (string=
-                           (buffer-name)
-                           "CAPTURE-issues.org")
-                          (progn
-                            (beginning-of-line)
-                            (search-forward "OPEN")
-                            (insert
-                             (concat " " numbering)))
-                        (progn
-                          (end-of-line)
-                          (insert numbering))))))
-                 (setq num
-                       (1+ num)))))
-           ))))))
+               (loop
+                (< num 2000)
+                (let
+                    ((numbering
+                      (concat "#"
+                              (number-to-string num)))
+                     (content
+                      (with-current-buffer
+                          (cadr
+                           (split-string
+                            (buffer-name)
+                            "-"))
+                        (buffer-substring-no-properties
+                         (point-min)
+                         (point-max))))
+                     (capture_content
+                      (with-current-buffer
+                          (buffer-name)
+                        (buffer-substring-no-properties
+                         (point-min)
+                         (point-max)))))
+                  (if
+                      (save-excursion
+                        (goto-char
+                         (point-min))
+                        (string-match numbering content))
+                      nil
+                    (return
+                     (progn
+                       (if
+                           (string=
+                            (buffer-name)
+                            "CAPTURE-issues.org")
+                           (progn
+                             (beginning-of-line)
+                             (search-forward "OPEN")
+                             (insert
+                              (concat " " numbering)))
+                         (progn
+                           (end-of-line)
+                           (insert numbering))))))
+                  (setq num
+                        (1+ num)))))))))))
  '(org-default-priority 66)
  '(org-gcal-auto-archive nil)
  '(org-hide-emphasis-markers t)
@@ -3726,6 +3726,7 @@ created by edward 180515"
  '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
  '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
  '(highlight-symbol-face ((t (:background "#5f5f5f" :foreground "yellow"))))
+ '(hl-line ((t (:background "#2b2b2b"))))
  '(iedit-occurrence ((t (:foreground "magenta" :weight bold))))
  '(iedit-read-only-occurrence ((t (:foreground "magenta"))))
  '(magit-diff-hunk-heading ((t (:background "dark slate gray" :foreground "light gray"))))
