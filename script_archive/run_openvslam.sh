@@ -33,7 +33,8 @@ case $1 in
 		rospack profile
 		rosrun openvslam-ros run_semi_direct \
 		-v /media/data/weights/orb_vocab.dbow2 \
-		-c ${HOME}/gitrepo/openvslam-sandbox/example/kitti/KITTI_stereo_00-02.yaml
+		-c ${HOME}/gitrepo/openvslam-sandbox/example/kitti/KITTI_stereo_00-02.yaml \
+		calib=${HOME}/catkin_ws/config/dso/camera_kitti.txt gamma=${HOME}/catkin_ws/config/dso/pcalib.txt vignette=${HOME}/catkin_ws/config/dso/vignette.png preset=0 mode=1
 		;;
 
 	oros) # (original) 

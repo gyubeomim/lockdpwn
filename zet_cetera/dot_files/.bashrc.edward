@@ -232,7 +232,10 @@ export ROS_HOSTNAME=127.0.0.1
 alias cw='cd ${HOME}/catkin_ws'
 alias cs='cd ${HOME}/catkin_ws/src'
 alias cm='cd ${HOME}/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+
 alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cm_relwithdebinfo='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo'
+alias cm_debug='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug'
 alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 # alias cw='cd ${HOME}/catkin_ws'
