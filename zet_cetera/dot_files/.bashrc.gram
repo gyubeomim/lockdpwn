@@ -233,6 +233,9 @@ alias cw='cd ${HOME}/catkin_ws'
 alias cs='cd ${HOME}/catkin_ws/src'
 alias cm='cd ${HOME}/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias cm_relwithdebinfo='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo'
+alias cm_debug='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug'
+
 alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 # alias cw='cd ${HOME}/catkin_ws'
@@ -414,9 +417,8 @@ alias dim='docker images'
 # for downdload_d
 alias downd='cd /media/data/Downloads_d'
 
-# for $USER folder
-alias cse='cd ${HOME}/catkin_ws/src/$USER/'
-alias cps='cd ${HOME}/catkin_ws/src/$USER/parkingslam'
+# for catkin_ws/src/edward
+alias cse='cd ${HOME}/catkin_ws/src/edward/'
 
 # for org-mode
 alias o='cd ${HOME}/gitrepo/ims_org && ./push_master.sh'
