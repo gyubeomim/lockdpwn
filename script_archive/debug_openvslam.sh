@@ -52,4 +52,10 @@ case $2 in
 	3)
 		gdb --ex="set print thread-events off" --ex="b pose_optimizer.cc:13" --ex="r" -args $executable
 		;;
+	4)
+		gdb --ex="set print thread-events off" --ex="b direct_method_utils.cc:157" --ex="r" -args $executable
+		;;
+	5)
+		gdb --ex="set print thread-events off" --ex="b direct_perspective_pose_opt_edge.cc:8" --ex="r" -args $executable
+		;;
 esac
