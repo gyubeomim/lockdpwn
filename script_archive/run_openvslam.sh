@@ -1,4 +1,9 @@
-cd ${HOME}/gitrepo/openvslam-sandbox/build && make -j6
+
+if [ "$1" == "r" ]; then
+	cd ${HOME}/gitrepo/openvslam-sandbox/build && make -j6
+elif [ "$1" == "rd" ]; then
+	cd ${HOME}/gitrepo/openvslam-sandbox/reldebug && make -j6
+fi
 
 case $1 in
 	r) # semi-direct kitti seq 0
