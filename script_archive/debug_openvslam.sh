@@ -2,12 +2,12 @@ case $1 in
 	rd)
 		cd ${HOME}/gitrepo/openvslam-sandbox/reldebug
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
-		make -j
+		make -j7
 		;;
 	d)
 		cd ${HOME}/gitrepo/openvslam-sandbox/debug
 		cmake -DCMAKE_BUILD_TYPE=Debug ..
-		make -j
+		make -j7
 		;;
 
 	rdd)  # make directory
@@ -19,7 +19,7 @@ case $1 in
 		fi
 
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
-		make -j
+		make -j7
 		;;
 	dd) # make directory
 		if [ ! -d debug ]; then
@@ -30,7 +30,7 @@ case $1 in
 		fi
 
 		cmake -DCMAKE_BUILD_TYPE=Debug ..
-		make -j
+		make -j7
 		;;
 esac
 
@@ -57,5 +57,8 @@ case $2 in
 		;;
 	5)
 		gdb --ex="set print thread-events off" --ex="b direct_perspective_pose_opt_edge.cc:8" --ex="r" -args $executable
+		;;
+	6)
+		gdb --ex="set print thread-events off" --ex="b ImageRW_dummy.cpp:35" --ex="r" -args $executable
 		;;
 esac
