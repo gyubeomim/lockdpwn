@@ -230,6 +230,7 @@ alias cm_debug='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE
 # for ATLAS
 alias co='cd ${HOME}/gitrepo/orb-sandbox'
 alias cmb='cd ${HOME}/gitrepo/mapping-pipeline-bravo'
+alias cdb='cd ${HOME}/debug_ws'
 
 alias cb='cd ~/bag_files'
 alias so='source devel/setup.bash'
