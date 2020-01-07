@@ -38,3 +38,17 @@ add_executable(findchessboard
 target_link_libraries(findchessboard
   ${OpenCV_LIBS}
   )
+
+add_executable(extract_rgb
+  src/extract_rgb.cpp
+  )
+target_link_libraries(extract_rgb
+  ${OpenCV_LIBS}
+  )
+
+add_executable(morphology
+  src/morphology.cpp
+  )
+target_link_libraries(morphology
+  ${OpenCV_LIBS}
+  )
