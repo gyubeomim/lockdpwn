@@ -1,8 +1,8 @@
 
 if [ "$1" == "r" ]; then
-	cd ${HOME}/gitrepo/openvslam-sandbox/build && make -j6
+	cd ${HOME}/gitrepo/openvslam-sandbox/build && make -j
 elif [ "$1" == "rd" ]; then
-	cd ${HOME}/gitrepo/openvslam-sandbox/reldebug && make -j6
+	cd ${HOME}/gitrepo/openvslam-sandbox/reldebug && make -j
 fi
 
 case $1 in
