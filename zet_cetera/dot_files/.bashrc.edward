@@ -473,6 +473,8 @@ source /opt/ros/kinetic/setup.bash
 source ${HOME}/catkin_ws/devel/setup.bash
 source ${HOME}/cartographer_ws/install_isolated/setup.bash
 
+alias lan_desktop="cd ~/Documents/r8152-2.09.0 && make && sudo make install"
+
 # for vncviewer resolution
 function res1200(){
 	xrandr --fb 1920x1200
