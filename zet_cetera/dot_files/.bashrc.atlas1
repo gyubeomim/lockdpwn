@@ -375,6 +375,9 @@ alias vb='vim ~/.bashrc'
 # for vim
 alias v='vim'
 
+# for nvidia-smi
+alias nv='nvidia-smi -l'
+
 alias cmakebuild='mkdir build && cd build && cmake ..'
 
 source /opt/ros/kinetic/setup.bash
