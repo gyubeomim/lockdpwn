@@ -852,7 +852,7 @@
         ))
 
      ;; 해당 폴더 내에 모든 .org 파일을 agenda view에 등록한다
-     (setq org-agenda-files (append (file-expand-wildcards "~/gitrepo_sync/ims_org/org_files/*.org") ))
+     (setq org-agenda-files (append (file-expand-wildcards "~/gitrepo/ims_org/org_files/*.org") ))
 
      ;; org-mode 에서 latex 사용할 때 수식의 크기 설정
      (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
@@ -860,54 +860,54 @@
      ;; orgg
      ;; org-capture에서 사용할 목록들 설정
      (setq org-capture-templates  '(("t" "assign todo" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/todo.org" "tasks")
+                                    (file+headline "~/gitrepo/ims_org/org_files/todo.org" "tasks")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                     ("s" "assign todo in SLAMpaper" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/notes/slam-paper/slam-paper.org" "things to do")
+                                    (file+headline "~/gitrepo/ims_org/org_files/notes/slam-paper/slam-paper.org" "things to do")
                                     "* TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                     ("a" "assign todo in atlas" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/notes/atlas-robotics/atlas.org" "todo")
+                                    (file+headline "~/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "todo")
                                     "*** TODO %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                     ("i" "assign issue in atlas" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/notes/atlas-robotics/atlas.org" "issue")
+                                    (file+headline "~/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "issue")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("u" "add ubuntu tip" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
+                                    (file+headline "~/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "Ubuntu Tips")
                                     "*** %i\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
                                    ("k" "quick note" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/quick.org" "quick")
+                                    (file+headline "~/gitrepo/ims_org/org_files/quick.org" "quick")
                                     "*** %i\n%(org-insert-time-stamp (org-read-date nil t \"\"))\n%?")
 
                                    ("m" "add milestone" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/milestone.org" "milestone")
+                                    (file+headline "~/gitrepo/ims_org/org_files/milestone.org" "milestone")
                                     "*** MILESTONE %i%?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"\"))")
 
                                    ("d" "daily note" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/daily.org" "daily")
+                                    (file+headline "~/gitrepo/ims_org/org_files/daily.org" "daily")
                                     "*** %?%i")
 
                                    ("1" "issue of edward" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "edward")
+                                    (file+headline "~/gitrepo/ims_org/org_files/issues.org" "edward")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("2" "issue of DYROS" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "DYROS")
+                                    (file+headline "~/gitrepo/ims_org/org_files/issues.org" "DYROS")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("3" "issue of SNU" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "SNU")
+                                    (file+headline "~/gitrepo/ims_org/org_files/issues.org" "SNU")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("4" "issue of ATLAS" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "ATLAS")
+                                    (file+headline "~/gitrepo/ims_org/org_files/issues.org" "ATLAS")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("5" "issue of emacs" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "EMACS")
+                                    (file+headline "~/gitrepo/ims_org/org_files/issues.org" "EMACS")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ("6" "issue of SNU" entry
-                                    (file+headline "~/gitrepo_sync/ims_org/org_files/issues.org" "SNU")
+                                    (file+headline "~/gitrepo/ims_org/org_files/issues.org" "SNU")
                                     "*** OPEN %i%?\n%(org-insert-time-stamp (org-read-date nil t \"\"))")
                                    ))
 
@@ -921,35 +921,35 @@
 ;; (setq org-publish-project-alist
 ;;       '(
 ;;         ("paper"
-;;          :base-directory "~/gitrepo_sync/ims_org/org_files/paper"
-;;          :publishing-directory "~/gitrepo_sync/ims_org/org_files/paper/"
+;;          :base-directory "~/gitrepo/ims_org/org_files/paper"
+;;          :publishing-directory "~/gitrepo/ims_org/org_files/paper/"
 ;;          :base-extension "org"
 ;;          :publishing-function org-twbs-publish-to-html)
 ;;       ("note"
-;;          :base-directory "~/gitrepo_sync/ims_org/org_files/note"
-;;          :publishing-directory "~/gitrepo_sync/ims_org/org_files/note/"
+;;          :base-directory "~/gitrepo/ims_org/org_files/note"
+;;          :publishing-directory "~/gitrepo/ims_org/org_files/note/"
 ;;          :base-extension "org"
 ;;          :publishing-function org-twbs-publish-to-html)
 ;;       ("emacs"
-;;        :base-directory "~/gitrepo_sync/ims_org/org_files/emacs"
-;;        :publishing-directory "~/gitrepo_sync/ims_org/org_files/emacs/"
+;;        :base-directory "~/gitrepo/ims_org/org_files/emacs"
+;;        :publishing-directory "~/gitrepo/ims_org/org_files/emacs/"
 ;;        :base-extension "org"
 ;;        :publishing-function org-twbs-publish-to-html)
 ;;       ("STEM"
-;;        :base-directory "~/gitrepo_sync/ims_org/org_files/STEM"
-;;        :publishing-directory "~/gitrepo_sync/ims_org/org_files/STEM/"
+;;        :base-directory "~/gitrepo/ims_org/org_files/STEM"
+;;        :publishing-directory "~/gitrepo/ims_org/org_files/STEM/"
 ;;        :base-extension "org"
 ;;        :publishing-function org-twbs-publish-to-html)
 ;;       ("link"
-;;        :base-directory "~/gitrepo_sync/ims_org/org_files/link"
-;;        :publishing-directory "~/gitrepo_sync/ims_org/org_files/link/"
+;;        :base-directory "~/gitrepo/ims_org/org_files/link"
+;;        :publishing-directory "~/gitrepo/ims_org/org_files/link/"
 ;;        :base-extension "org"
 ;;        :publishing-function org-twbs-publish-to-html)
 ;;       ("all" :components ("paper" "note" "emacs" "STEM" "link"))))
 (setq org-publish-project-alist
       '(("org-jekyll"
          ;; Path to org files.
-         :base-directory "~/gitrepo_sync/ims_org/org_files/blog/"
+         :base-directory "~/gitrepo/ims_org/org_files/blog/"
          :base-extension "org"
 
          ;; Path to Jekyll Posts
@@ -966,7 +966,7 @@
 (setq package-check-signature nil)
 (setq org-gcal-client-id "815785509878-3gn7mhcti240j6am59uk95s230n11172.apps.googleusercontent.com"
       org-gcal-client-secret "_bYrUIkY5zYh62fxGRtNryTj"
-      org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo_sync/ims_org/org_files/gcal.org")))
+      org-gcal-file-alist '(("gyurse@gmail.com" .  "~/gitrepo/ims_org/org_files/gcal.org")))
 ;; agenda mode
 (add-hook 'org-agenda-mode-hook (lambda ()
                                   ;; atlas1 계정에서는 gcal을 동기화하지 않습니다
@@ -1036,12 +1036,12 @@
 (global-set-key (kbd "C-x ]") 'org-agenda-list)
 (global-set-key (kbd "C-x [") 'org-todo-list)
 ;; C-c + # 키로 특정 파일을 엽니다
-(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/todo.org")))
-(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/quick.org")))
-(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/milestone.org")))
-(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/daily.org")))
-(global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/issues.org")))
-(global-set-key (kbd "C-c 6") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org")))
+(global-set-key (kbd "C-c 1") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/todo.org")))
+(global-set-key (kbd "C-c 2") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/quick.org")))
+(global-set-key (kbd "C-c 3") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/milestone.org")))
+(global-set-key (kbd "C-c 4") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/daily.org")))
+(global-set-key (kbd "C-c 5") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/issues.org")))
+(global-set-key (kbd "C-c 6") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/notes/ubuntu_tips.org")))
 ;; C-c 8,9 키로 .emacs .emacs_w 파일을 열도록 설정합니다
 (global-set-key (kbd "C-c 8") (lambda() (interactive)(find-file "~/gitrepo/lockdpwn/zet_cetera/dot_files/.emacs_w")))
 (global-set-key (kbd "C-c 9") (lambda() (interactive)(find-file "~/.emacs")))
@@ -3264,7 +3264,7 @@ created by edward 180515"
 ;; Alt + g 키로 xml 파일 내에서 코드를 folding할 수 있습니다
 (define-key nxml-mode-map (kbd "M-g") 'hs-toggle-hiding)
 ;; nxml(.launch file) 모드에서도 C-c + / 키로 edward.org 파일을 엽니다 (deprecated)
-;; (define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo_sync/ims_org/org_files/edward.org")))
+;; (define-key nxml-mode-map (kbd "C-c /") (lambda() (interactive)(find-file "~/gitrepo/ims_org/org_files/edward.org")))
 
 ;; grep-find (C-p) 명령어에서 새로운 grep 창이 열리지 않고 바로 현재창이 바뀌도록 하는 코드
 (eval-when-compile (require 'cl))
@@ -3434,7 +3434,7 @@ created by edward 180515"
  '(org-agenda-current-time-string "now ------------------------------------------")
  '(org-agenda-files
    (quote
-    ("~/gitrepo/ims_org/org_files/notes/slam-paper/slam-paper.org" "~/gitrepo_sync/ims_org/org_files/notes/ip_list.org" "~/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "~/gitrepo/ims_org/org_files/notes/feature_based_method.org" "~/gitrepo_sync/ims_org/org_files/notes/computer_specification.org" "~/gitrepo_sync/ims_org/org_files/daily.org" "~/gitrepo_sync/ims_org/org_files/gcal.org" "~/gitrepo_sync/ims_org/org_files/issues.org" "~/gitrepo_sync/ims_org/org_files/milestone.org" "~/gitrepo_sync/ims_org/org_files/quick.org" "~/gitrepo_sync/ims_org/org_files/todo.org" "~/gitrepo_sync/ims_org/org_files/notes/algorithm.org" "~/gitrepo_sync/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo_sync/ims_org/org_files/notes/cmd_command.org" "~/gitrepo_sync/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo_sync/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo_sync/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo_sync/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo_sync/ims_org/org_files/notes/homography.org" "~/gitrepo_sync/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo_sync/ims_org/org_files/notes/least_square.org" "~/gitrepo_sync/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo_sync/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo_sync/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo_sync/ims_org/org_files/notes/private_stuff.org" "~/gitrepo_sync/ims_org/org_files/notes/road-slam.org" "~/gitrepo_sync/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo_sync/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo_sync/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo_sync/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo_sync/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo_sync/ims_org/org_files/notes/vs2017.org")))
+    ("~/gitrepo/ims_org/org_files/notes/slam-paper/slam-paper.org" "~/gitrepo/ims_org/org_files/notes/ip_list.org" "~/gitrepo/ims_org/org_files/notes/atlas-robotics/atlas.org" "~/gitrepo/ims_org/org_files/notes/feature_based_method.org" "~/gitrepo/ims_org/org_files/notes/computer_specification.org" "~/gitrepo/ims_org/org_files/daily.org" "~/gitrepo/ims_org/org_files/gcal.org" "~/gitrepo/ims_org/org_files/issues.org" "~/gitrepo/ims_org/org_files/milestone.org" "~/gitrepo/ims_org/org_files/quick.org" "~/gitrepo/ims_org/org_files/todo.org" "~/gitrepo/ims_org/org_files/notes/algorithm.org" "~/gitrepo/ims_org/org_files/notes/camera_calibration.org" "~/gitrepo/ims_org/org_files/notes/cmd_command.org" "~/gitrepo/ims_org/org_files/notes/convex_optimization.org" "~/gitrepo/ims_org/org_files/notes/emacs_custom_commands.org" "~/gitrepo/ims_org/org_files/notes/estimation_theory.org" "~/gitrepo/ims_org/org_files/notes/freiburg_robotics.org" "~/gitrepo/ims_org/org_files/notes/homography.org" "~/gitrepo/ims_org/org_files/notes/intelligent_convergence_system_mid_2019.org" "~/gitrepo/ims_org/org_files/notes/least_square.org" "~/gitrepo/ims_org/org_files/notes/matrix_cookbook.org" "~/gitrepo/ims_org/org_files/notes/org-bullet-windows.org" "~/gitrepo/ims_org/org_files/notes/org-colored-text.org" "~/gitrepo/ims_org/org_files/notes/private_stuff.org" "~/gitrepo/ims_org/org_files/notes/road-slam.org" "~/gitrepo/ims_org/org_files/notes/rodrigues_formula.org" "~/gitrepo/ims_org/org_files/notes/rtags_cmake_ide.org" "~/gitrepo/ims_org/org_files/notes/snu_interviews.org" "~/gitrepo/ims_org/org_files/notes/tigerk0430.github.io.org" "~/gitrepo/ims_org/org_files/notes/ubuntu_tips.org" "~/gitrepo/ims_org/org_files/notes/vs2017.org")))
  '(org-agenda-finalize-hook
    (quote
     ((lambda nil
