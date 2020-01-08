@@ -20,4 +20,9 @@ case $1 in
 
 		${ORB_HOME}/Examples/ROS/ORB_SLAM2/Stereo ${HOME}/gitrepo/ORB_SLAM2/Vocabulary/ORBvoc.txt ${HOME}/catkin_ws/config/orb/atlas_stereo.yaml 0 /camera/left/image_raw:=/camera/left/image_rect /camera/right/image_raw:=/camera/right/image_rect
 		;;
+	baglaunch)
+		cd ${HOME}/gitrepo/ORB_SLAM2
+		${HOME}/gitrepo/ORB_SLAM2/build_ros.sh
+		roslaunch ${HOME}/gitrepo/ORB_SLAM2/Examples/ROS/ORB_SLAM2/launch/bag_ros_stereo_orbslam2.launch
+		;;
 esac
