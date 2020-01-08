@@ -119,8 +119,8 @@ alias clone="git clone"
 alias push="git push"
 alias pull="git pull"
 
-# repos
-alias g1="cd ~/gitrepo/lockdpwn"
+# gitrepos
+alias g1="cd ${HOME}/gitrepo/lockdpwn"
 
 # for cd command 
 alias cd='cd '
@@ -132,3 +132,7 @@ alias cd..='cd ..'
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
 
+# for convenience
+alias c='cd ${HOME}/gitrepo/lockdpwn/cmake_projects'
+alias down='cd ${HOME}/Downloads'
+alias docu='cd ${HOME}/Documents'

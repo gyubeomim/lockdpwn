@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.5)
+project(eigen_test)
 
 IF(NOT CMAKE_BUILD_TYPE)
   SET(CMAKE_BUILD_TYPE Release)
 ENDIF()
 
-find_package(Eigen3 3.1.0 REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 include_directories(${EIGEN3_INCLUDE_DIRS})
 
@@ -15,9 +16,9 @@ target_link_libraries(eigen_test
   ${EIGEN3_LIBS}
 )
 
-add_executable(quaternion_test 
- 	src/quaternion_test.cpp
-)
-target_link_libraries(quaternion_test 
-  ${EIGEN3_LIBS}
-)
+#add_executable(quaternion_test 
+# 	src/quaternion_test.cpp
+#)
+#target_link_libraries(quaternion_test 
+#  ${EIGEN3_LIBS}
+#)
