@@ -216,7 +216,7 @@ filetype plugin on
 " 파이썬 관련 설정들
 let python_version_2 = 1              " python 2 문법을 따른다고 옵션을 설정합니다.
 " let python_highlight_all = 1          " 모든 강조(색상) 기능을 켭니다.
-let g:pydiction_location='/home/edward/.vim/pydiction/complete-dict'
+let g:pydiction_location='~/.vim/pydiction/complete-dict'
 let g:neocomplcache_enable_at_startup = 1
 
 " 디버거 설정
