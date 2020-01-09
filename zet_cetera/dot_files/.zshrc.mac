@@ -121,6 +121,7 @@ alias pull="git pull"
 
 # gitrepos
 alias g1="cd ${HOME}/gitrepo/lockdpwn"
+alias g2="cd ${HOME}/gitrepo/ims_org"
 
 # for cd command 
 alias cd='cd '
