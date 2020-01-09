@@ -136,3 +136,23 @@ alias cd....='cd ../../..'
 alias c='cd ${HOME}/gitrepo/lockdpwn/cmake_projects'
 alias down='cd ${HOME}/Downloads'
 alias docu='cd ${HOME}/Documents'
+
+# for org-mode
+function seto(){
+	echo "[+] push ims_org origin master..."
+	cd ~/gitrepo/ims_org
+	./push_master.sh
+	echo "[+] push lockdpwn origin master..."
+	cd ~/gitrepo/lockdpwn
+	./push_master.sh
+}
+function setop(){
+	echo "[+] pull ims_org origin master..."
+	cd ~/gitrepo/ims_org
+	git pull origin master
+	echo "[+] pull lockdpwn origin master..."
+	cd ~/gitrepo/lockdpwn
+	git pull origin master
+}
+
+alias emacs='emacsclient -a '"''"' -c &'

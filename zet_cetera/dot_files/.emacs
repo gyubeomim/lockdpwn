@@ -1825,11 +1825,11 @@
 ;;GUI 환경에서 시작 시 창 화면 최대화 하기
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))(add-to-list 'default-frame-alist '(height . 31))
 ;; (add-to-list 'default-frame-alist '(width . 100))
-(setq frame-title-format "")
+; (setq frame-title-format "")
 ;; hide titlebar (not working at initial booting)
 ;; https://www.reddit.com/r/emacs/comments/7wc2to/is_it_possible_to_disable_window_decorations_in/
-(set-frame-parameter nil 'undecorated t)
-(set-frame-position (selected-frame) 0 0)
+; (set-frame-parameter nil 'undecorated t)
+; (set-frame-position (selected-frame) 0 0)
 
 ;; 매칭되는 괄호 강조하기
 ;;show paren mode
