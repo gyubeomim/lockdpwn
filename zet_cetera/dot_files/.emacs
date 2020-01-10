@@ -3348,7 +3348,6 @@ created by edward 180515"
 (setq frame-title-format "")
 
 ;; Variable Customizing========================================================================
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -3724,7 +3723,7 @@ created by edward 180515"
  '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
  '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
  '(highlight-symbol-face ((t (:background "#5f5f5f" :foreground "yellow"))))
- '(hl-line ((t (:background "#2b2b2b"))))
+ '(hl-line ((t (:background "dim gray"))))
  '(iedit-occurrence ((t (:foreground "magenta" :weight bold))))
  '(iedit-read-only-occurrence ((t (:foreground "magenta"))))
  '(magit-diff-hunk-heading ((t (:background "dark slate gray" :foreground "light gray"))))
