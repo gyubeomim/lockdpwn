@@ -99,11 +99,20 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #CUSTOMIZE===============================================================
+#zsh ps1 color changing
+##https://stackoverflow.com/a/2534676/7402755
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)${USER}@mac"
+	  ## no username
+	  # prompt_segment(){}
+	  ## default color (white)
+	  # prompt_segment black default "%(!.%{%F{yellow}%}.)${USER}@mac"
+	  ## customizing prompt
+	  prompt_segment black default "%(!.%{%F{yellow}%}.)%{$fg[yellow]%}%n@mac%{$reset_color%}"
   fi
 }
+
+alias ll='ls -alF'
 
 # vim shortcut
 alias v="vim"
@@ -173,3 +182,14 @@ tmux select-pane -U
 tmux split-window -h
 tmux select-pane -L
 tmux attach-session -d'
+
+alias rm="trash"
+
+# for ros installation
+export LIBRARY_PATH=/usr/local/lib
+export QT514DIR=/usr/local/Cellar/qt/5.14.0
+export QT55DIR=/Users/edward/Qt5.5.1/5.5/clang_64
+export QT5DIR=${QT514DIR}
+
+# zsh syntax highlighting
+source /Users/edward/gitrepo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
