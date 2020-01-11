@@ -189,7 +189,9 @@ alias rm="trash"
 export LIBRARY_PATH=/usr/local/lib
 export QT514DIR=/usr/local/Cellar/qt/5.14.0
 export QT55DIR=/Users/edward/Qt5.5.1/5.5/clang_64
-export QT5DIR=${QT514DIR}
+export QT5DIR=${QT55DIR}
 
 # zsh syntax highlighting
 source /Users/edward/gitrepo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH="/Users/edward/Qt5.5.1/5.5/clang_64/bin:${PATH}"
