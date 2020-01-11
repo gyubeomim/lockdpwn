@@ -1,6 +1,7 @@
 git add . -A
 
-if [[ "$OSTYPE" == "darwin19.0" ]]; then
+OS=$(uname)
+if [[ "$OS" == "Darwin" ]]; then
 	if [ -z "$1" ]
 	then
 		git commit -m "$(date +%Y%m%d) : OSX" 
