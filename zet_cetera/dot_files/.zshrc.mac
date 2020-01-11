@@ -103,8 +103,12 @@ source $ZSH/oh-my-zsh.sh
 ##https://stackoverflow.com/a/2534676/7402755
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    # prompt_segment black default "%(!.%{%F{yellow}%}.)${USER}@mac"
-    prompt_segment black default "%(!.%{%F{yellow}%}.)%{$fg[yellow]%}%n@mac%{$reset_color%}"
+	  ## no username
+	  # prompt_segment(){}
+	  ## default color (white)
+	  # prompt_segment black default "%(!.%{%F{yellow}%}.)${USER}@mac"
+	  ## customizing prompt
+	  prompt_segment black default "%(!.%{%F{yellow}%}.)%{$fg[yellow]%}%n@mac%{$reset_color%}"
   fi
 }
 
