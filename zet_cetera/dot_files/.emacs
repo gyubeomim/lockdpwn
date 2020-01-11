@@ -3348,7 +3348,6 @@ created by edward 180515"
 (setq frame-title-format "")
 
 ;; Variable Customizing========================================================================
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
