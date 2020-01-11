@@ -782,6 +782,8 @@
                                               (progn
                                                 (outline-hide-other)
                                                 (outline-show-subtree))))
+     ;; C-c i 키로 org-mode에서 timestamp의 타입을 변경합니다.
+     (define-key org-mode-map (kbd "C-c i") 'org-toggle-timestamp-type)
 
      ;; DONE 시에 CLOSED timestamp를 사용하는 설정
      (setq org-log-done 'time)
