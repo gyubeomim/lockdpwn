@@ -183,6 +183,13 @@ tmux split-window -h
 tmux select-pane -L
 tmux attach-session -d'
 
+# for various cmake 
+alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
+alias cmakedebug="cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+alias cmakereldebug="cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+alias cmakebuild='mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+
+# for safe remove
 alias rm="trash"
 alias trash-empty="trash -ey"
 

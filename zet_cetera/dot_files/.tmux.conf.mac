@@ -1,3 +1,6 @@
+# from https://thoughtbot.com/blog/how-to-copy-and-paste-with-tmux-on-mac-os-x
+set-option -g default-command "reattach-to-user-namespace -l zsh"
+
 # reload conf
 # prefix r 을 누르면 .tmux.conf 를 읽어서 적용
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
@@ -11,7 +14,7 @@ bind C-a send-prefix
 bind Up copy-mode
 
 # copy-mode에서 y키로 선택된 영역을 복사한다. (xclip 설치 필요)
-# bind-key -t vi-copy 'y' copy-pipe "xclip -sel clip -i"
+bind-key -t vi-copy 'y' copy-pipe "xclip -sel clip -i"
 
 # visual bell
 set-option -g visual-bell on

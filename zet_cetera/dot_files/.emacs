@@ -749,8 +749,8 @@
      (define-key org-mode-map (kbd "C-c v") 'org-table-insert-column)
      ;; C+/ 키로 현재 날짜를 입력합니다b
      (define-key org-mode-map (kbd "C-/") 'org-time-stamp)
-     ;; C-M-/ 키로 현재 날짜(+HH:MM)을 입력합니다
-     (define-key org-mode-map (kbd "C-M-/") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
+     ;; C-? 키로 현재 날짜(+HH:MM)을 입력합니다
+     (define-key org-mode-map (kbd "C-?") (lambda() (interactive)(org-insert-time-stamp (current-time) t)))
      ;; C+M+? 키로 agenda를 실행합니다
      (define-key org-mode-map (kbd "C-M-?") 'org-agenda)
      ;; C-down + M-f 키를 기본 cpp,python 파일에서와 같이 구문단위로 이동하도록 설정합니다
