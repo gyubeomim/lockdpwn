@@ -184,14 +184,24 @@ tmux select-pane -L
 tmux attach-session -d'
 
 alias rm="trash"
+alias trash-empty="trash -ey"
 
 # for ros installation
 export LIBRARY_PATH=/usr/local/lib
+export QT4876DIR=/usr/local/Cellar/qt@4/4.8.7_6
 export QT514DIR=/usr/local/Cellar/qt/5.14.0
 export QT55DIR=/Users/edward/Qt5.5.1/5.5/clang_64
+
+export QT4DIR=${QT4876DIR}
 export QT5DIR=${QT55DIR}
 
 # zsh syntax highlighting
 source /Users/edward/gitrepo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export PATH="/Users/edward/Qt5.5.1/5.5/clang_64/bin:${PATH}"
+export PATH="/Users/edward/Qt5.6.0/5.6/clang_64/bin:${PATH}"
+#For compilers to find qt you may need to set
+export LDFLAGS="-L/usr/local/opt/qt/lib"
+export CPPFLAGS="-I/usr/local/opt/qt/include"
+
+#For pkg-config to find qt you may need to set
+export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
