@@ -102,6 +102,7 @@
 
     docker-tramp           ;; docker container에 있는 파일을 emacs에서 접근할 수 있도록 하는 패키지 (/docker:{container id}: 로 접근 가능)
 
+    neotree                ;; emacs verision of nerd-tree
 
     ;; ess                    ;; R 언어 전용 패키지입니다
     ;; ein                    ;; emacs에서 Ipython Notebook를 사용하게 해주는 패키지
@@ -489,6 +490,10 @@
 (add-hook 'text-mode 'ws-butler-mode)
 (add-hook 'fundamental-mode 'ws-butler-mode)
 
+;; PACKAGE: neotree
+(require 'neotree)
+;; C-x + n 키로 neotree를 토글합니다.
+(global-set-key (kbd "C-x n") 'neotree-toggle)
 
 ;; PACKAGE: jedi
 ;; $ pip install jedi epc pylint virtualenv
@@ -3373,7 +3378,7 @@ created by edward 180515"
  '(display-time-day-and-date t)
  '(display-time-default-load-average nil)
  '(display-time-format "%H:%M, %D")
- '(ecb-layout-name "right2")
+ '(ecb-layout-name "left3")
  '(ecb-layout-window-sizes
    (quote
     (("right2"
