@@ -52,3 +52,10 @@ add_executable(morphology
 target_link_libraries(morphology
   ${OpenCV_LIBS}
   )
+
+add_executable(demo
+  src/demo.cpp
+  )
+target_link_libraries(demo
+  ${OpenCV_LIBS}
+  )

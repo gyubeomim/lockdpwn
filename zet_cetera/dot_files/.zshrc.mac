@@ -171,8 +171,8 @@ alias emacs='emacsclient -a '"''"' -c &'
 alias tm='tmux'
 alias tmux='TERM=xterm-256color tmux -2 -u'
 alias tls='tmux ls'                   # session list 확인
-alias t='tmux switch -t '             # 원하는 session으로 이동
-alias ta='tmux attach -t '            # 원하는 session으로 붙음 (tmux를 실행하고 있지 않은 경우)
+alias t='tmux switch -t'             # 원하는 session으로 이동
+alias ta='tmux attach -t'            # 원하는 session으로 붙음 (tmux를 실행하고 있지 않은 경우)
 alias td='tmux detach'                # 해당 session에서 detach 합니다
 alias tk='tmux kill-session -t '      # 해당 session에서 kill 합니다
 alias t4='tmux -u new-session -d    
@@ -195,20 +195,25 @@ alias trash-empty="trash -ey"
 
 # for ros installation
 export LIBRARY_PATH=/usr/local/lib
-export QT4876DIR=/usr/local/Cellar/qt@4/4.8.7_6
-export QT514DIR=/usr/local/Cellar/qt/5.14.0
-export QT55DIR=/Users/edward/Qt5.5.1/5.5/clang_64
-
-export QT4DIR=${QT4876DIR}
-export QT5DIR=${QT55DIR}
-
-# zsh syntax highlighting
-source /Users/edward/gitrepo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 export PATH="/Users/edward/Qt5.6.0/5.6/clang_64/bin:${PATH}"
+export QT5PATH="/Users/edward/Qt5.6.0/5.6/clang_64"
+export cvVersion="3.4.4"
+
+# for ros
+source ${HOME}/ros_catkin_ws/install_isolated/setup.zsh
+export ROS_MASTER_URI=http://localhost:11311
+export ROS_HOSTNAME=127.0.0.1
+
 #For compilers to find qt you may need to set
 export LDFLAGS="-L/usr/local/opt/qt/lib"
 export CPPFLAGS="-I/usr/local/opt/qt/include"
 
 #For pkg-config to find qt you may need to set
 export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
+
+# zsh syntax highlighting
+source /Users/edward/gitrepo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Virtual Environment Wrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
