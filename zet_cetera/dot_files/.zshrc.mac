@@ -108,7 +108,7 @@ prompt_context() {
 	  ## default color (white)
 	  # prompt_segment black default "%(!.%{%F{yellow}%}.)${USER}@mac"
 	  ## customizing prompt
-	  prompt_segment black default "%(!.%{%F{yellow}%}.)%{$fg[yellow]%}%n@mac%{$reset_color%}"
+	  prompt_segment black default "%(!.%{%F{yellow}%}.)%{$fg[white]%}%n@mac%{$reset_color%}"
   fi
 }
 
@@ -217,3 +217,5 @@ source /Users/edward/gitrepo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Virtual Environment Wrapper
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
+
+export LLVM_DIR="/usr/local/Cellar/llvm/9.0.0_1/lib/cmake"
