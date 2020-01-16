@@ -152,6 +152,13 @@ PS1="$C_LIGHTGREEN\aedward@atlas$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 # LANG=ko_KR.utf-8
 # LANGUAGE=ko_KR
 
+# for case-insensitive
+# If ~/.inputrc doesn't exist yet: First include the original /etc/inputrc
+# so it won't get overriden
+if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
+# Add shell-option to ~/.inputrc to enable case-insensitive tab completion
+echo 'set completion-ignore-case On' >> ~/.inputrc
+
 alias g1='cd ${HOME}/gitrepo/lockdpwn'
 alias g2='cd ${HOME}/gitrepo/ims_org'
 alias g3='cd ${HOME}/gitrepo/tigerk0430.github.io'
@@ -387,3 +394,6 @@ source ${HOME}/catkin_ws/devel/setup.bash
 # for ORB_SLAM2
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:${HOME}/gitrepo/ORB_SLAM2/Examples/ROS
 # export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/gitrepo/LCSD_SLAM/ORB_SLAM2/Examples/ROS
+
+# for case-insensitive
+bind 'set completion-ignore-case on'
