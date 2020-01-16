@@ -108,7 +108,7 @@ prompt_context() {
 	  ## default color (white)
 	  # prompt_segment black default "%(!.%{%F{yellow}%}.)${USER}@mac"
 	  ## customizing prompt
-	  prompt_segment black default "%(!.%{%F{yellow}%}.)%{$fg[white]%}%n@mac%{$reset_color%}"
+	  prompt_segment black default "%(!.%{%F{yellow}%}.)%{$fg_bold[white]%}%n@mac%{$reset_color%}"
   fi
 }
 
