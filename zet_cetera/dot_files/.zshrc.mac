@@ -201,8 +201,10 @@ export cvVersion="3.4.4"
 
 # for ros
 # source ${HOME}/ros_catkin_ws/install_isolated/setup.zsh
-# export ROS_MASTER_URI=http://localhost:11311
-# export ROS_HOSTNAME=127.0.0.1
+source /opt/ros/lunar/setup.zsh
+export ROS_MASTER_URI=http://localhost:11311
+export ROS_HOSTNAME=127.0.0.1
+export ROS_DISTRO="lunar"
 
 # #For compilers to find qt you may need to set
 # export LDFLAGS="-L/usr/local/opt/qt/lib"
