@@ -200,16 +200,21 @@ export QT5PATH="/Users/edward/Qt5.6.0/5.6/clang_64"
 export cvVersion="3.4.4"
 
 # for ros
-source ${HOME}/ros_catkin_ws/install_isolated/setup.zsh
-export ROS_MASTER_URI=http://localhost:11311
-export ROS_HOSTNAME=127.0.0.1
+# source ${HOME}/ros_catkin_ws/install_isolated/setup.zsh
+# export ROS_MASTER_URI=http://localhost:11311
+# export ROS_HOSTNAME=127.0.0.1
+
+# #For compilers to find qt you may need to set
+# export LDFLAGS="-L/usr/local/opt/qt/lib"
+# export CPPFLAGS="-I/usr/local/opt/qt/include"
+# #For pkg-config to find qt you may need to set
+# export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
 
 #For compilers to find qt you may need to set
-export LDFLAGS="-L/usr/local/opt/qt/lib"
-export CPPFLAGS="-I/usr/local/opt/qt/include"
-
+export LDFLAGS="-L${QT5PATH}/lib"
+export CPPFLAGS="-I${QT5PATH}/include"
 #For pkg-config to find qt you may need to set
-export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
+export PKG_CONFIG_PATH="${QT5PATH}/lib/pkgconfig"
 
 # zsh syntax highlighting
 source /Users/edward/gitrepo/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
