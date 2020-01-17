@@ -89,12 +89,12 @@ fi
 
 # some more ls aliases
 alias ll='ls -alFh'
-alias la='ls -Ah'
-alias l='ls -CFh'
+alias la='ls -A'
+alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-# alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -146,27 +146,23 @@ C_BG_PURPLE="\[\033[45m\]"
 C_BG_CYAN="\[\033[46m\]"
 C_BG_LIGHTGRAY="\[\033[47m\]"
 
-PS1="${C_LIGHTGREEN}edward(@dyros)$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
-# PS1="$C_LIGHTRED[user@user]$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+PS1="$C_LIGHTGREEN\aedward@atlas$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
+# PS1="$C_LIGHTGREEN\u$C_DEFAULT:$C_CYAN2\w$C_DEFAULT\$ "
 
 # LANG=ko_KR.utf-8
 # LANGUAGE=ko_KR
 
-# ida & msfconsole aliases
-PATH=$PATH:${HOME}/.wine/drive_c/programfilesx86/ida6.8
-ida=${HOME}/.wine/drive_c/programfilesx86/ida6.8
-msf=/opt/metasploit/apps/pro/vendor/bundle/ruby/2.3.0/gems/metasploit-framework-4.13.15
-
-alias ida='${HOME}/.wine/drive_c/programfilesx86/ida6.8/idaq.exe'
-alias ida64='${HOME}/.wine/drive_c/programfilesx86/ida6.8/idaq64.exe'
-alias msfconsole='cd ${HOME}/Documents/metasploit-framework/ && ./msfconsole'
+# for case-insensitive
+# If ~/.inputrc doesn't exist yet: First include the original /etc/inputrc
+# so it won't get overriden
+if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
+# Add shell-option to ~/.inputrc to enable case-insensitive tab completion
+echo 'set completion-ignore-case On' >> ~/.inputrc
 
 alias g1='cd ${HOME}/gitrepo/lockdpwn'
-alias g2='cd ${HOME}/gitrepo_sync/ims_org'
+alias g2='cd ${HOME}/gitrepo/ims_org'
 alias g3='cd ${HOME}/gitrepo/tigerk0430.github.io'
-alias g4='cd ${HOME}/edward_ws'
-alias g5='cd ${HOME}/gitrepo/ims_carto'
-alias g6='cd ${HOME}/gitrepo/ims_ml'
+alias g4='cd ${HOME}/gitrepo/starlaw'
 alias gr='cd ${HOME}/gitrepo/'
 
 # for git command
@@ -182,11 +178,12 @@ alias clone='git clone'
 alias add='git add -u'  # not for untracked file
 alias cred='git config credential.helper "cache --timeout=864000000" --global'
 alias gc='git checkout'
+alias gm='git merge'
 alias gb='git branch'
 alias gs='git status'
-alias ed='cd ${HOME}/gitrepo/edward_ws'
 
 alias c='cd ${HOME}/gitrepo/lockdpwn/cmake_projects'
+alias c2='cd ${HOME}/gitrepo/starlaw/cmake_projects'
 alias cpp='cd ${HOME}/gitrepo/lockdpwn/cpp_archive'
 alias py='cd ${HOME}/gitrepo/lockdpwn/python_archive'
 alias ipy='cd ${HOME}/gitrepo/lockdpwn/python_archive/ipython'
@@ -202,11 +199,8 @@ function size(){
 }
 
 # for tmux 
-alias tm='tmux'
 alias tmux='TERM=xterm-256color tmux -2 -u'
 alias tls='tmux ls'                   # session list 확인
-alias t='tmux switch -t '             # 원하는 session으로 이동
-alias ta='tmux attach -t '            # 원하는 session으로 붙음 (tmux를 실행하고 있지 않은 경우)
 alias td='tmux detach'                # 해당 session에서 detach 합니다
 alias tk='tmux kill-session -t '      # 해당 session에서 kill 합니다
 alias t4='tmux -u new-session -d    
@@ -217,6 +211,16 @@ tmux split-window -h
 tmux select-pane -L
 tmux attach-session -d'
 
+# tmux function for attaching, switching, creating in one command.
+function t() {
+	if [ -z "$1" ]; then
+		tmux
+	elif [ -z ${TMUX} ]; then
+		tmux attach -t $1
+	else 
+		tmux switch -t $1
+	fi
+}
 
 # sudo apt-get install trash-cli -y
 # for rm to put files to Trash folder
@@ -234,17 +238,21 @@ alias cm='cd ${HOME}/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cma='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmac='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
-# for debugging
-alias cm_relwithdebinfo='cd ${HOME}/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE="RelWithDebInfo"'
-alias cma_relwithdebinfo='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE="RelWithDebInfo"'
+alias cm_relwithdebinfo='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo'
+alias cm_debug='catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug'
 
-alias cb='cd ${HOME}/bag_files'
-alias cbb='cd ${HOME}/bag_files_4tb'
+# for ATLAS
+alias co='cd ${HOME}/gitrepo/orb-sandbox'
+alias cmb='cd ${HOME}/gitrepo/mapping-pipeline-bravo'
+alias cdb='cd ${HOME}/debug_ws'
+
+alias cb='cd ~/bag_files'
 alias so='source devel/setup.bash'
 alias so2='rospack profile && source devel/setup.bash'
-alias cdd='cd /media/data'
-alias down='cd ${HOME}/Downloads'
-alias docu='cd ${HOME}/Documents'
+alias cdd='cd /media/dyros-data'
+alias down='cd ~/Downloads'
+alias docu='cd ~/Documents'
+alias pic='cd ~/Pictures'
 
 # for cd command 
 alias cd='cd '
@@ -273,27 +281,11 @@ alias csc='cd ${HOME}/gitrepo/ims_carto/src'
 alias cmc='cd ${HOME}/gitrepo/ims_carto && catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias cmca='catkin_make_isolated --install --use-ninja -DCMAKE_EXPORT__EXPORT_COMPILE_COMMANDS=1 COMPILE_COMMANDS=1'
 
-# for segmap
-alias cwg='cd ${HOME}/segmap_ws'
-alias csg='cd ${HOME}/segmap_ws/src'
-alias cmg='cd ${HOME}/segmap_ws && catkin build segmapper -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
-
-# V-Rep Settings
-export VREP_ROOT_DIR=${HOME}/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04
-export VREP_ROOT=${HOME}/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04
-
-alias vrep='${HOME}/Documents/V-REP_PRO_EDU_V3_6_2_Ubuntu16_04/vrep.sh'
-alias vrep34='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh'
-alias vrep35='${HOME}/Documents/V-REP_PRO_EDU_V3_5_0_Linux/vrep.sh'
-
-alias vrepd='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ${HOME}/gitrepo/edward_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_for_back_light.ttt'
-alias vrepd2='${HOME}/Documents/V-REP_PRO_EDU_V3_4_0_Linux/vrep.sh ${HOME}/gitrepo/edward_ws/catkin_ws_kinetic/src/controller_msk/controller_msk/vrep/mc_back_light.ttt'
-
 # source .bashrc
 alias sob='source ${HOME}/.bashrc'
 
 # vnc viewer
-alias vncviewer='${HOME}/Documents/VNC-Viewer-6.18.907-Linux-x64'
+alias vncviewer='${HOME}/Documents/VNC-Viewer-6.19.325-Linux-x64'
 
 # emacs 26.1
 alias emacs='${HOME}/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
@@ -301,92 +293,28 @@ alias emacs='${HOME}/Documents/emacs-26.1/lib-src/emacsclient -a '"''"' -c'
 # Ti-Nspire CX CAS emulator
 alias ti='cd ${HOME}/Documents/TI-Nspire-CX-CAS\ emulator && wine TI-Nspire-CX-CAS.exe'
 
-# UE4Editor
-alias ueditor='${HOME}/gitrepo/UnrealEngine/Engine/Binaries/Linux/UE4Editor'
-export UE4_ROOT='${HOME}/gitrepo/UnrealEngine'
-
 # ipython qtconsole
-alias qt2='${HOME}/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
-alias qt3='${HOME}/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
+alias qt2='~/gitrepo/lockdpwn/script_archive/qtipython_2.sh'
+alias qt3='~/gitrepo/lockdpwn/script_archive/qtipython_3.sh'
 
-# for chown to edward
-function chown-auto() {
-	chown ${USER}:${USER} * -R
-}
-
-# for chmod 644 for file and 775 for directory.
-function chmod-auto() {
- find . -type f -print0 | xargs -0 chmod 644
- find . -type d -print0 | xargs -0 chmod 775
-}
-
-# for chown to $USER
+# for chown to dyros-vehicle
 alias chownd='sudo chown $USER:$USER * -R'
-
 
 # for foxit reader
 alias foxit='${HOME}/opt/foxitsoftware/foxitreader/FoxitReader'
 
-# setting for Tensorflow GPU version
-# Using CUDA 8.0 & cuDNN 6.0
-export CUDA_HOME=/usr/local/cuda-8.0
-export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
-
-# variables for point-cloud-viewer from googlecartographer
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 # for reverse-i-search
 stty -ixon
 
-
-# for caffe
-export PYTHONPATH=${HOME}/gitrepo/fast-rcnn/caffe-fast-rcnn/python:$PYTHONPATH
-# for Fast R-CNN
-export FRCN_ROOT=${HOME}/gitrepo/fast-rcnn
-# for simdat
-export PYTHONPATH=${HOME}/gitrepo:$PYTHONPATH
-# for vtk 6.2
-export LD_LIBRARY_PATH=/usr/include/vtk-6.2/:$LD_LIBRARY_PATH 
-# for vtk 5.xx
-export LD_LIBRARY_PATH=${HOME}/Documents/VTK-5.10.1/build:${HOME}/Documents/VTK-5.10.1/build/bin:$LD_LIBRARY_PATH 
-
 # for opencv 3.3.1
 export LD_LIBRARY_PATH=/usr/local/include/opencv2/:$LD_LIBRARY_PATH 
-
-# for cling with Jupyter
-export PATH=${HOME}/Documents/cling_2018-05-10_ubuntu16/bin:$PATH 
-
-# for caps lock <==> ctrl swapping
-alias ccc='${HOME}/gitrepo/lockdpwn/script_archive/ctrl_caps_change.sh'
-
-# for 3 Monitors Toggle ON/OFF
-alias mon='${HOME}/gitrepo/lockdpwn/script_archive/monitors_toggle.sh three1'
-alias mon2='${HOME}/gitrepo/lockdpwn/script_archive/monitors_toggle.sh two'
-alias mon3='${HOME}/gitrepo/lockdpwn/script_archive/monitors_toggle.sh three2'
-alias moff='${HOME}/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off'
-
-# for hed gitrepository (pycaffe)
-export PYTHONPATH=${HOME}/gitrepo/hed/python:$PYTHONPATH
-export CAFFE_ROOT=${HOME}/gitrepo/hed/caffe
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-
-# for tmux command history
-# export HISTCONTROL=ignoredups:erasedups
-# shopt -s histappend
-# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # for x11vnc && TeamViewer connected user
 alias vu='netstat -tapno | grep 5902'
 alias tu='netstat -tapno | grep Team'
 
 # for g2o
-# export G2O_ROOT=${HOME}/gitrepo/openslam_g2o
-export G2O_ROOT=${HOME}/gitrepo/g2o
+export G2O_ROOT=~/gitrepo/openslam_g2o
 
 # for matlab 2018a
 alias matlab=/usr/local/MATLAB/R2018a/bin/matlab
@@ -394,18 +322,13 @@ alias matlab=/usr/local/MATLAB/R2018a/bin/matlab
 # for ubuntu-live-wallpaper change
 alias wc='python ${HOME}/gitrepo/ubuntu-live-wallpaper/wallpaper-changer.py'
 
-#python virtualenv for segmap
-alias seg='source ${HOME}/segmappyenv/bin/activate'
-
-# for various cmake commands.
+# cmake for various options
+alias cmakerelwithdebinfo="cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo"
+alias cmakedebug="cmake -DCMAKE_BUILD_TYPE=Debug"
 alias cmakertags="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "
-alias cmakedebug="cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
-alias cmakereldebug="cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
-alias cmakebuild='mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
-
 
 # for docker
-alias cdo='cd ${HOME}/gitrepo/lockdpwn/docker_archive'
+alias cdo='cd ~/gitrepo/lockdpwn/docker_archive'
 alias d='docker'
 alias da='docker attach'
 alias dps='docker ps -a'
@@ -421,69 +344,63 @@ alias chmodd='find . -type f | xargs chmod 644 && find . -type d | xargs chmod 7
 
 # for edward folder
 alias cse='cd ${HOME}/catkin_ws/src/edward/'
-alias cps='cd ${HOME}/catkin_ws/src/edward/parkingslam'
 
 # for org-mode
-alias o='cd ${HOME}/gitrepo_sync/ims_org && ./push_master.sh'
-alias op='cd ${HOME}/gitrepo_sync/ims_org && git pull origin master'
+alias o='cd ${HOME}/gitrepo/ims_org && ./push_master.sh'
+alias op='cd ${HOME}/gitrepo/ims_org && git pull origin master'
 
-# for org-mode
+# for org-mode & lockdpwn
 function seto(){
 	echo "[+] push ims_org origin master..."
-	cd ${HOME}/gitrepo_sync/ims_org
+	cd ~/gitrepo/ims_org
 	./push_master.sh
 	echo "[+] push lockdpwn origin master..."
-	cd ${HOME}/gitrepo/lockdpwn
+	cd ~/gitrepo/lockdpwn
 	./push_master.sh
 }
 function setop(){
 	echo "[+] pull ims_org origin master..."
-	cd ${HOME}/gitrepo_sync/ims_org
+	cd ~/gitrepo/ims_org
 	git pull origin master
 	echo "[+] pull lockdpwn origin master..."
-	cd ${HOME}/gitrepo/lockdpwn
+	cd ~/gitrepo/lockdpwn
 	git pull origin master
+}
+
+# for chmod 644 for file and 775 for directory.
+function chmod-auto() {
+ find . -type f -print0 | xargs -0 chmod 644
+ find . -type d -print0 | xargs -0 chmod 775
 }
 
 # for github page
 alias blog='cd ${HOME}/gitrepo/tigerk0430.github.io && ./push_master.sh'
 alias blogp='cd ${HOME}/gitrepo/tigerk0430.github.io && git pull origin master'
 
-# for vim ${HOME}/.bashrc
-alias vb='vim ${HOME}/.bashrc'
+# for 3 Monitors Toggle ON/OFF
+alias mon='${HOME}/gitrepo/lockdpwn/script_archive/monitors_toggle.sh $USER'
+alias moff='${HOME}/gitrepo/lockdpwn/script_archive/monitors_toggle.sh off_$USER'
+
+# for gdb
+alias gdb='gdb -q'
+
+# for editing .bashrc
+alias vb='vim ~/.bashrc'
+
+# for vim
 alias v='vim'
 
-alias downd='cd /media/data/Downloads_d'
+# for nvidia-smi
+alias nv='nvidia-smi -l'
 
-# for openvslam-sandbox
-alias cdv='cd ${HOME}/gitrepo/openvslam-sandbox'
-
-alias dot='cd ${HOME}/gitrepo/lockdpwn/zet_cetera/dot_files'
+alias cmakebuild='mkdir build && cd build && cmake ..'
 
 source /opt/ros/kinetic/setup.bash
 source ${HOME}/catkin_ws/devel/setup.bash
-source ${HOME}/cartographer_ws/install_isolated/setup.bash
 
+# for ORB_SLAM2
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:${HOME}/gitrepo/ORB_SLAM2/Examples/ROS
+# export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/gitrepo/LCSD_SLAM/ORB_SLAM2/Examples/ROS
 
-#START NOT USED------------------------------------------------------
-# alias co='cd /opt/ros/kinetic/share/'
-# alias directorPython='${HOME}/Downloads/director/build/install/bin/directorPython'
-# for source gazebo config
-# alias sog='source /usr/share/gazebo-2.2/setup.sh'
-# alias sog2='source /usr/share/gazebo/setup.sh'
-# alias cmb='cd ${HOME}/edward_ws/rosbook_ws && catkin_make'
-# alias cdb='cd ${HOME}/edward_ws/rosbook_ws'
-# # for stockroom_bot
-# #alias sb='source ${HOME}/edward_ws/stockroombot_ws/devel/setup.bash; export GAZEBO_MODEL_PATH=${HOME}/edward_ws/stockroombot_ws/src/stockroom_bot'/models
-# PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-# PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-# PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT;
-# PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT;
-# PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"; export PATH;
-# if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
-#     source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
-# fi
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
-#END------------------------------------------------------
+# for case-insensitive
+bind 'set completion-ignore-case on'
