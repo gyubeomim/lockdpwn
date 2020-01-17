@@ -476,3 +476,7 @@ source ${HOME}/catkin_ws/devel/setup.bash
 export G2O_ROOT=$HOME/gitrepo/slambook/3rdparty/g2o
 
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:${HOME}/gitrepo/ORB_SLAM2/Examples/ROS
+
+# for case-insensitive
+bind 'set completion-ignore-case on'
+
