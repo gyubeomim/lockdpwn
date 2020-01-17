@@ -2513,17 +2513,20 @@ created by edward 180515"
   (my-gdb-setup-windows1)
   )
 
-;;f1 이전 버퍼창 이동
+;; f1 키로 이전 버퍼창 이동
 (global-set-key [f1] 'tabbar-backward)
 
-;;f2 다음 버퍼창 이동
+;; f2 키로 다음 버퍼창 이동
 (global-set-key [f2] 'tabbar-forward)
 
 ;; f3 키로 다음 창으로 이동
 (global-set-key [f3] 'next-multiframe-window)
 
-;; f4 키로 org-show-todo-tree 명령어 실행 (for org-mode)
-(global-set-key [f4] '(lambda() (interactive)(org-show-todo-tree '(4))))
+;; f4 키로 다음 창으로 이동
+(global-set-key [f4] 'previous-multiframe-window)
+
+;; C-f5 키로 org-show-todo-tree 명령어 실행 (for org-mode)
+(global-set-key (kbd "C-<f5>") '(lambda() (interactive)(org-show-todo-tree '(4))))
 
 ;; f5 키로 org-match-sparse-tree 명령어 실행 (for org-mode)
 (global-set-key [f5] 'org-match-sparse-tree)
