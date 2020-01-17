@@ -126,7 +126,7 @@ set ls=2
 set background=dark 
 
 " colorscheme 세팅 
-colorscheme gruvbox
+colorscheme zenburn
 
  
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

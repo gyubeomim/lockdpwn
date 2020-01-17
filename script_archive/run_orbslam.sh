@@ -1,7 +1,5 @@
 ORB_HOME="${HOME}/gitrepo/ORB_SLAM2"
 
-# cd ${ORB_HOME}/Examples/ROS/ORB_SLAM2/
-
 killall stereo_image_proc
 rospack profile
 
