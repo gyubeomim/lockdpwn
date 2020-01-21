@@ -1,1 +1,0 @@
-/home/atlas1/gitrepo/lockdpwn/shell_scripts/mp4_compressor.sh
