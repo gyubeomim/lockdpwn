@@ -35,8 +35,8 @@ case $1 in
 esac
 
 executable="${HOME}/gitrepo/openvslam-sandbox/reldebug/run_kitti_slam \
-	-v /media/data/weights/orb_vocab.dbow2 \
-	-d /media/data/dataset/kitti/data_odometry/sequences/00 \
+	-v ${HOME}/weights/orb_vocab.dbow2 \
+	-d ${HOME}/dataset/kitti/data_odometry/sequences/00 \
 	-c ${HOME}/gitrepo/openvslam-sandbox/example/kitti/KITTI_stereo_00-02.yaml"
 
 case $2 in
