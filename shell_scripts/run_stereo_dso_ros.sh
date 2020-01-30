@@ -3,7 +3,7 @@ killall stereo_image_proc
 # cd ${HOME}/gitrepo/stereo-dso-sandbox/build && make -j
 cd ${HOME}/gitrepo/stereo-dso/build && make -j
 
-cd ${HOME}/catkin_ws && catkin_make
+cd ${HOME}/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 
 case $1 in 
 	0)
