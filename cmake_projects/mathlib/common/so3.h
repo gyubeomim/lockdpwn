@@ -5,7 +5,8 @@
 
 namespace mathlib {
 
-class SO3{
+/// \class SO3Group
+class SO3Group{
  private:
   /// \brief Lie algera so3 element.
   Eigen::Matrix3d so3_;
@@ -15,14 +16,14 @@ class SO3{
 
  public:
   /// \brief The constructor.
-  SO3();
+  SO3Group();
 
   /// \brief The constructor.
   /// \param[in] so3 Lie algebra so3 element.
-  SO3(Eigen::Matrix3d so3);
+  SO3Group(Eigen::Matrix3d so3);
 
   /// \brief The destructor.
-  ~SO3() {}
+  ~SO3Group() {}
 
   /// \brief Compute lie algebra so(3) from 3D vector.
   /// \param[in] w Input vector
@@ -36,10 +37,10 @@ class SO3{
 
  public:
   /// \brief Get so3 element.
-  Eigen::Matrix3d Getso3() { return so3_; }
+  Eigen::Matrix3d so3() { return so3_; }
 
   /// \brief Get SO3 rotation matrix.
-  Eigen::Matrix3d GetSO3() { return SO3_; }
+  Eigen::Matrix3d SO3() { return SO3_; }
 };
 
 }  // namespace mathlib

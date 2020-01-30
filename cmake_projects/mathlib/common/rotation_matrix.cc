@@ -11,11 +11,16 @@ namespace mathlib {
     :R_(R) {}
 
   void RotationMatrix::ConvertFromEulerAngle(Eigen::Vector3d euler) {
+    double cr = std::cos(euler(0));
+    double sr = std::sin(euler(0));
+    double cp = std::cos(euler(1));
+    double sp = std::sin(euler(1));
+    double cy = std::cos(euler(2));
+    double sy = std::sin(euler(2));
 
-  }
-
-  void RotationMatrix::ConvertFromFixedAngle(Eigen::Vector3d fixed) {
-
+    R_ << cp*cy, -cr*sy + sr*sp*cy, sr*sy + cr*sp*cy,
+        cp*sy, cr*cy + sr*sp*sy, -sr*cy + cr*sp*sy,
+        -sp, sr*cp, cr*cp;
   }
 
   void RotationMatrix::ConvertFromAngleAxis(Eigen::Vector4d angleaxis) { 

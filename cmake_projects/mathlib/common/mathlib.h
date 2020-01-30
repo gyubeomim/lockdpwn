@@ -49,5 +49,20 @@ Eigen::Matrix3d RotateY(double angle);
 /// \return Rotation matrix.
 Eigen::Matrix3d RotateZ(double angle);
 
+/// \brief Get pi.
+inline const double pi() {
+  return std::atan(1) * 4;
+}
+
+/// \brief Convert degree to radian.
+inline double deg2rad(double degree) {
+  return degree * pi() / 180.0;
+}
+
+/// \brief Convert radian to degree.
+inline double rad2deg(double radian) {
+  return radian * 180.0 / pi();
+}
+
 }// namespace mathlib
 #endif /* MATHLIB_H */

@@ -19,17 +19,21 @@ class RotationMatrix {
   /// \brief The destructor.
   ~RotationMatrix() {}
 
+  /// \brief Convert Euler angle to Rotation matrix.
+  /// \param[in] euler Euler angle.
   void ConvertFromEulerAngle(Eigen::Vector3d euler);
 
-  void ConvertFromFixedAngle(Eigen::Vector3d fixed);
-
+  /// \brief Convert Angle axis to Rotation matrix.
+  /// \param[in] angleaxis Angle axis angle.
   void ConvertFromAngleAxis(Eigen::Vector4d angleaxis);
 
+  /// \brief Convert Quaternion to Rotation matrix.
+  /// \param[in] quaternion Quaternion.
   void ConvertFromQuaternion(Eigen::Vector4d quaternion);
 
  public:
   /// \brief Get rotation matrix.
-  Eigen::Matrix3d GetR() { return R_; }
+  Eigen::Matrix3d R() { return R_; }
 
   /// \brief Set rotation matrix.
   void SetR(Eigen::Matrix3d R) { R_ = R; }
