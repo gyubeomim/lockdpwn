@@ -53,4 +53,16 @@ case $2 in
 	0)
 		gdb --ex="set print thread-events off" --ex="r" -args $executable
 		;;
+	1)
+		gdb --ex="set print thread-events off" --ex="b CoarseTracker.cpp:899" --ex="r" -args $executable
+		;;
+	2)
+		gdb --ex="set print thread-events off" --ex="b CoarseTracker.cpp:598" --ex="r" -args $executable
+		;;
+	3)
+		gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:linearizeOplus()" --ex="b dso_g2o_edge.cpp:computeError()" --ex="r" -args $executable
+		;;
+	4)
+		gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:linearizeOplus()" --ex="r" -args $executable
+		;;
 esac
