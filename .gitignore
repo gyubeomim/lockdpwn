@@ -40,3 +40,5 @@ reldebug/
 debug/
 
 $Recycle.Bin
+
+.DS_Store
