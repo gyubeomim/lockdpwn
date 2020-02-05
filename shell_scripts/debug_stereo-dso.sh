@@ -54,7 +54,7 @@ case $2 in
 		gdb --ex="set print thread-events off" --ex="r" -args $executable
 		;;
 	1)
-		gdb --ex="set print thread-events off" --ex="b CoarseTracker.cpp:1011" --ex="r" -args $executable
+		gdb --ex="set print thread-events off" --ex="b CoarseTracker.cpp:1015" --ex="r" -args $executable
 		;;
 	2)
 		gdb --ex="set print thread-events off" --ex="b CoarseTracker.cpp:598" --ex="r" -args $executable
