@@ -8,3 +8,8 @@ add_executable(pure_virtual_class
 target_link_libraries(pure_virtual_class
   )
 
+add_executable(time_interval
+  src/time_interval.cc
+  )
+target_link_libraries(time_interval
+  )
