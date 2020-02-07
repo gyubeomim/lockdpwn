@@ -3,7 +3,7 @@ project(CylinderExample)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-find_package(VTK 6 REQUIRED)
+find_package(VTK REQUIRED)
 
 message (STATUS "VTK_VERSION: ${VTK_VERSION}")
 
@@ -28,13 +28,3 @@ target_link_libraries(HighlightSelectedPoints
   PRIVATE
   ${VTK_LIBRARIES}
   )
-
-
-# =========================We're currently using vtk 6.x.==============================
-# if (NOT VTK_VERSION VERSION_LESS "8.90.0")
-#   # vtk_module_autoinit is needed, if VTK version is > 8.9
-#   vtk_module_autoinit(
-#     TARGETS CylinderExample
-#     MODULES ${VTK_LIBRARIES}
-#     )
-# endif ()
