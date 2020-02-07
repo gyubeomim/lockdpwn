@@ -22,3 +22,40 @@
 #include <vtkVertexGlyphFilter.h>
 #include <vtkIdFilter.h>
 
+class InteractorStyle : public vtkInteractorStyleRubberBandPick {
+ public:
+  static InteractorStyle* New();
+  vtkTypeMacro(InteractorStyle, vtkInteractorStyleRubberBandPick);
+
+  InteractorStyle() {
+    this->SelectedMapper = vtkSmartPointer<vtkDataSetMapper>::New();
+    this->SelectedActor = vtkSmartPointer<vtkActor>::New();
+    this->SelectedActor->SetMapper(SelectedMapper);
+  }
+
+  virtual void OnLeftButtonUp() {
+    // Forward events
+    vtkInteractorStyleRubberBandPick::OnLeftButtonUp();
+
+    vtkPlanes* frustum = static_cast<vtkAreaPicker*>(this->GetInteractor()->GetPicker())->GetFrustum();
+
+    vtkSmartPointer<vtkExtractGeometry> extractGeometry = vtkSmartPointer<vtkExtractGeometry>::New();
+
+    extractGeometry->SetImplicitFunction(frustum);
+
+  }
+
+  void SetPoints(vtkSmartPointer<vtkPolyData> points) { this->Points = points; }
+
+ private:
+  vtkSmartPointer<vtkPolyData> Points;
+  vtkSmartPointer<vtkActor> SelectedActor;
+  vtkSmartPointer<vtkDataSetMapper> SelectedMapper;
+};
+vtkStandardNewMacro(InteractorStyle);
+
+int main(int argc, char **argv) {
+
+
+  return 0;
+}
