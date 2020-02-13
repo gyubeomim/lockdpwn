@@ -28,3 +28,13 @@ target_link_libraries(HighlightSelectedPoints
   PRIVATE
   ${VTK_LIBRARIES}
   )
+
+# PointPicker
+add_executable(PointPicker
+  MACOSX_BUNDLE
+  src/PointPicker.cxx
+  )
+target_link_libraries(PointPicker
+  PRIVATE
+  ${VTK_LIBRARIES}
+  )
