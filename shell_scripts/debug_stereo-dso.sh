@@ -65,4 +65,7 @@ case $2 in
 	4)
 		gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:linearizeOplus()" --ex="r" -args $executable
 		;;
+	l0)
+		lldb -o run -- $executable
+		;;
 esac
