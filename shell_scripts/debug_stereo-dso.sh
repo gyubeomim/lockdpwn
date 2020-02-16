@@ -57,13 +57,16 @@ case $2 in
 		gdb --ex="set print thread-events off" --ex="b CoarseTracker.cpp:1015" --ex="r" -args $executable
 		;;
 	2)
-		gdb --ex="set print thread-events off" --ex="b CoarseTracker.cpp:721" --ex="r" -args $executable
+		gdb --ex="set print thread-events off" --ex="b CoarseTracker.cpp:927" --ex="r" -args $executable
 		;;
 	3)
 		gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:linearizeOplus()" --ex="b dso_g2o_edge.cpp:computeError()" --ex="r" -args $executable
 		;;
 	4)
 		gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:linearizeOplus()" --ex="r" -args $executable
+		;;
+	5)
+		gdb --ex="set print thread-events off" --ex="b linear_solver_eigen.h:92()" --ex="r" -args $executable
 		;;
 	l0)
 		lldb -o run -- $executable
