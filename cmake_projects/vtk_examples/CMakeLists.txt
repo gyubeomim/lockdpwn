@@ -38,3 +38,13 @@ target_link_libraries(PointPicker
   PRIVATE
   ${VTK_LIBRARIES}
   )
+
+# SelectAVertex
+add_executable(SelectAVertex
+  MACOSX_BUNDLE
+  src/SelectAVertex.cxx
+  )
+target_link_libraries(SelectAVertex
+  PRIVATE
+  ${VTK_LIBRARIES}
+  )
