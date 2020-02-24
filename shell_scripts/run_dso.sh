@@ -6,11 +6,6 @@ case $1 in
 		cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
 		make -j6
 		;;
-	rmac)
-		cd ${DSO_PATH}/build
-		cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
-		make -j6
-		;;
 	rd)
 		cd ${DSO_PATH}/reldebug
 		cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
