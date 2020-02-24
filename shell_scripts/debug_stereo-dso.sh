@@ -63,12 +63,15 @@ case $2 in
 		gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:linearizeOplus()" --ex="b dso_g2o_edge.cpp:computeError()" --ex="r" -args $executable
 		;;
 	4)
-		gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:linearizeOplus()" --ex="r" -args $executable
+		gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:111" --ex="r" -args $executable
 		;;
 	5)
 		gdb --ex="set print thread-events off" --ex="b linear_solver_eigen.h:92()" --ex="r" -args $executable
 		;;
-	l0)
+	6)
+		gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:111" --ex="b dso_g2o_edge.cpp:144" --ex="r" -args $executable
+		;;
+	lldb0)
 		lldb -o run -- $executable
 		;;
 esac
