@@ -35,11 +35,11 @@ target_link_libraries(circle_fitting
 	${G2O_LIBS}
 	)
 
-add_executable(slam_toy_example
-	src/slam_toy_example.cpp)
-
-target_link_libraries(slam_toy_example
-	${EIGEN3_LIBS}
-	${OpenCV_LIBS}
-	${G2O_LIBS}
-	)
+# add_executable(slam_toy_example
+# 	src/slam_toy_example.cpp)
+#
+# target_link_libraries(slam_toy_example
+# 	${EIGEN3_LIBS}
+# 	${OpenCV_LIBS}
+# 	${G2O_LIBS}
+# 	)
