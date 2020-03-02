@@ -1,4 +1,4 @@
-#include <Eigen/Core>
+#include <Eigen/Core> 
 #include <Eigen/Dense>
 
 #include <iostream>
@@ -8,7 +8,7 @@
 #include <boost/algorithm/string.hpp>
 
 int main(int argc, char **argv) {
-  std::ifstream file("/media/data/dataset/kitti/data_odometry/poses/00.txt");
+  std::ifstream file(std::string(getenv("HOME")) + "/dataset/kitti/data_odometry/poses/00.txt");
 
   Eigen::Matrix3d Rwc;
   Eigen::Quaterniond q;
