@@ -5,10 +5,10 @@ rospack profile
 
 case $1 in
 	m)
-		${ORB_HOME}/Examples/Monocular/mono_kitti ${HOME}/gitrepo/ORB_SLAM2/Vocabulary/ORBvoc.txt ${HOME}/catkin_ws/config/orb/mono_KITTI00-02.yaml ${HOME}/datasets/kitti/data_odometry/sequences/00
+		${ORB_HOME}/Examples/Monocular/mono_kitti ${HOME}/gitrepo/ORB_SLAM2/Vocabulary/ORBvoc.txt ${HOME}/catkin_ws/config/orb/mono_KITTI00-02.yaml ${HOME}/dataset/kitti/data_odometry/sequences/00
 		;;
 	s)
-		${ORB_HOME}/Examples/Stereo/stereo_kitti ${HOME}/gitrepo/ORB_SLAM2/Vocabulary/ORBvoc.txt ${HOME}/catkin_ws/config/orb/stereo_KITTI00-02.yaml ${HOME}/datasets/kitti/data_odometry/sequences/00
+		${ORB_HOME}/Examples/Stereo/stereo_kitti ${HOME}/gitrepo/ORB_SLAM2/Vocabulary/ORBvoc.txt ${HOME}/catkin_ws/config/orb/stereo_KITTI00-02.yaml ${HOME}/dataset/kitti/data_odometry/sequences/00
 		;;
 	mros)
 		${ORB_HOME}/Examples/ROS/ORB_SLAM2/Mono ${HOME}/gitrepo/ORB_SLAM2/Vocabulary/ORBvoc.txt ${HOME}/catkin_ws/config/orb/KITTI00-02.yaml /camera/image_raw:=/camera/left/image_rect
