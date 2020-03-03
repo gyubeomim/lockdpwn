@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: while by edward
-# key: while
-# --
-while(${1: }) {
-      $0
-}

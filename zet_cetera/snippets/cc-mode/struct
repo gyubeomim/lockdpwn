@@ -1,6 +1,0 @@
-#name : struct by edward
-# key: struct
-# --
-struct ${1:name} {
-    $0
-};

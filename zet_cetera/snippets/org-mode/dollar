@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: dollar by edward0im
-# key: \
-# --
-$${1:}$ $0

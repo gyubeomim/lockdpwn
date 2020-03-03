@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: parenthesis by edward
-# key: {
-# --
-{
-$0
-}`(delete-forward-char 1)`

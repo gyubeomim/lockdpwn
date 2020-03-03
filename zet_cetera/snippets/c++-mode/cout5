@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# contributor: York Zhao <gtdplatform@gmail.com>
-# name: cout5 by edward
-# key: coutn
-# --
-cout << ${1:} << '\n';

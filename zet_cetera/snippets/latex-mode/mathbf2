@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: mathbf2 of latex by edward im
-# key: $mb
-# --
-$\mathbf{${1:}}$0

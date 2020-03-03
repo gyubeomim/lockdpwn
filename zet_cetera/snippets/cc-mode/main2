@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: main2 by edward
-# key: mainn
-# --
-int main(${1:int argc, char **argv}) {
-    $0
-    
-    return 0;
-}

@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# contributor: York Zhao <gtdplatform@gmail.com>
-# name: cout2 by edward
-# key: coutendl
-# --
-cout << ${1:} << endl;

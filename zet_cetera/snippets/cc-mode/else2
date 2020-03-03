@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name : else2 { ... } by edward
-# key: elsee
-# --
-else
-   $0

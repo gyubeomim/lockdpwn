@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: size of picture
-# key: size
-# --
-#+attr_org: :width $0

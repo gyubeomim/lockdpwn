@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: header by edward.im
-# key: header
-# --
-#+TITLE: ${1:}
-#+AUTHOR: ${2:Gyubeom Edward Im}
-#+STARTUP: indent
-#+OPTIONS: \n:t num:nil toc:nil whn:2  H:6

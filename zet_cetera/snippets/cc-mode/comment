@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: comment of edward
-# key: comment
-# --
-/// \comment(edward): $0

@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# contributor: York Zhao <gtdplatform@gmail.com>
-# name: cout by edward
-# key: cout
-# --
-cout << $0;

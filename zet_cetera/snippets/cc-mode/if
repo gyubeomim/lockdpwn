@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name : if (...) { ... }  by edward
-# key: if
-# --
-if(${1: }) {
-   $0
-}

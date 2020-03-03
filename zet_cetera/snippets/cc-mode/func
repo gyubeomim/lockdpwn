@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: function by edward
-# key: q
-# --
-${1:}(${2:}) {
-    $0
-}

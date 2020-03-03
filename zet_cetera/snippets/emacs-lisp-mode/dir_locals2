@@ -1,9 +1,0 @@
-#contributor: Gyubeom Edward Im
-#name: .dir-locals.el version 2 by edward
-#key: dlros
-# --
-((nil . (
-    (cmake-ide-project-dir . "~/catkin_ws/src")
-    (cmake-ide-build-dir . "~/catkin_ws/build")
-    (cmake-ide-cmake-opts . "-DCMAKE_BUILD_TYPE=Release  -DCMAKE_PREFIX_PATH=/usr/local/lib;/opt/ros/kinetic")
-)))

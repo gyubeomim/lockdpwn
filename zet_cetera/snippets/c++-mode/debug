@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: debug by edward
-# key: debug
-# --
-std::cout << "${1:debug1}" << std::endl;  // DEBUG$0

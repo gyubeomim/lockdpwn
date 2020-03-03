@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: picture by edward
-# key: picture
-# --
-#+attr_html: :align center :width ${1:}
-[[../../pictures/${2:}]${3:}

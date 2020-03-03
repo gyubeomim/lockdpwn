@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name : switch by edward
-# key: switch
-# --
-switch (${1:}) {
-$0    
-}

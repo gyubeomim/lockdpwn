@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: cin by edward
-# key: cin
-# --
-cin >> $0;
