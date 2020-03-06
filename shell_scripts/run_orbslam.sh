@@ -1,8 +1,9 @@
-if [[ "${OSTYPE}" == "darwin"* ]]; then
-	ORB_HOME="${HOME}/gitrepo/orbslam2-sandbox"
-else 
-	ORB_HOME="${HOME}/gitrepo/ORB_SLAM2"
-fi
+# if [[ "${OSTYPE}" == "darwin"* ]]; then
+# 	ORB_HOME="${HOME}/gitrepo/orbslam2-sandbox"
+# else 
+# 	ORB_HOME="${HOME}/gitrepo/ORB_SLAM2"
+# fi
+ORB_HOME="${HOME}/gitrepo/orbslam2-sandbox"
 
 killall stereo_image_proc
 rospack profile
@@ -20,7 +21,7 @@ case $1 in
 	sros)
 		ROS_NAMESPACE=camera rosrun stereo_image_proc stereo_image_proc &
 
-		${ORB_HOME}/Examples/ROS/ORB_SLAM2/Stereo ${ORB_HOME}/Vocabulary/ORBvoc.txt ${HOME}/catkin_ws/config/orb/atlas_stereo.yaml 0 /camera/left/image_raw:=/camera/left/image_rect /camera/right/image_raw:=/camera/right/image_rect
+		${ORB_HOME}/Examples/ROS/ORB_SLAM2/Stereo ${ORB_HOME}/Vocabulary/ORBvoc.txt ${HOME}/catkin_ws/config/orb/dv.yaml 0 /camera/left/image_raw:=/camera/left/image_rect /camera/right/image_raw:=/camera/right/image_rect
 		;;
 	baglaunch)
 		cd ${ORB_HOME}
