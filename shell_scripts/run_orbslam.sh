@@ -24,8 +24,6 @@ case $1 in
 		${ORB_HOME}/Examples/ROS/ORB_SLAM2/Stereo ${ORB_HOME}/Vocabulary/ORBvoc.txt ${HOME}/catkin_ws/config/orb/dv.yaml 0 /camera/left/image_raw:=/camera/left/image_rect /camera/right/image_raw:=/camera/right/image_rect
 		;;
 	baglaunch)
-		cd ${ORB_HOME}
-		${ORB_HOME}/build_ros.sh
-		roslaunch ${ORB_HOME}/Examples/ROS/ORB_SLAM2/launch/bag_ros_stereo_orbslam2.launch
+		roslaunch orbslam2_ros bag_ros_stereo_orbslam2.launch
 		;;
 esac
