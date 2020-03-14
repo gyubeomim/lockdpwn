@@ -6,6 +6,9 @@ xhost +local:docker
 
 case $1 in
 	cpu)
+		LDPRELOAD=${HOME}/.empty
+		touch ${LDPRELOAD}
+
 		docker run \
 			--net=host \
 			--name starlaw-slam1 \
@@ -18,11 +21,15 @@ case $1 in
 			-v /dev/bus/usb:/dev/bus/usb \
 			-v ${XSOCK}:${XSOCK}:rw \
 			-v ${XAUTH}:${XAUTH}:rw \
+			-v ${LDPRELOAD}:/etc/ld.so.preload \
 			-v ${HOME}/share_docker:/root/share_docker \
+			-v /usr/local/lib/x86_64-linux-gnu:/usr/local/lib/x86_64-linux-gnu \
 			--expose 22 \
 			edward0im/starlaw:slam1
 		;;
 	*)
+		LDPRELOAD=${HOME}/gitrepo/lockdpwn/docker/util/ld.so.preload
+		
 		docker run \
 			--runtime=nvidia \
 			--net=host \
@@ -36,6 +43,7 @@ case $1 in
 			-v /dev/bus/usb:/dev/bus/usb \
 			-v ${XSOCK}:${XSOCK}:rw \
 			-v ${XAUTH}:${XAUTH}:rw \
+			-v ${LDPRELOAD}:/etc/ld.so.preload \
 			-v ${HOME}/share_docker:/root/share_docker \
 			--expose 22 \
 			edward0im/starlaw:slam1
