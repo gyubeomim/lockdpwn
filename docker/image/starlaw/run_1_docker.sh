@@ -7,6 +7,7 @@ xhost +local:docker
 case $1 in
 	cpu)
 		LDPRELOAD=${HOME}/.empty
+		X8664LINUXGNU=${HOME}/.empty
 		touch ${LDPRELOAD}
 
 		docker run \
@@ -22,13 +23,14 @@ case $1 in
 			-v ${XSOCK}:${XSOCK}:rw \
 			-v ${XAUTH}:${XAUTH}:rw \
 			-v ${LDPRELOAD}:/etc/ld.so.preload \
+			-v ${X8664LINUXGNU}:/usr/local/lib/x86_64-linux-gnu \
 			-v ${HOME}/share_docker:/root/share_docker \
-			-v /usr/local/lib/x86_64-linux-gnu:/usr/local/lib/x86_64-linux-gnu \
 			--expose 22 \
 			edward0im/starlaw:slam1
 		;;
 	*)
 		LDPRELOAD=${HOME}/gitrepo/lockdpwn/docker/util/ld.so.preload
+		X8664LINUXGNU=${HOME}/gitrepo/lockdpwn/docker/util/x86_64-linux-gnu
 		
 		docker run \
 			--runtime=nvidia \
@@ -44,6 +46,7 @@ case $1 in
 			-v ${XSOCK}:${XSOCK}:rw \
 			-v ${XAUTH}:${XAUTH}:rw \
 			-v ${LDPRELOAD}:/etc/ld.so.preload \
+			-v ${X8664LINUXGNU}:/usr/local/lib/x86_64-linux-gnu \
 			-v ${HOME}/share_docker:/root/share_docker \
 			--expose 22 \
 			edward0im/starlaw:slam1
