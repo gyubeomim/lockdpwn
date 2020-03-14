@@ -1,3 +1,0 @@
-# this file enables opengl with nvidia gpu.
-/usr/local/$LIB/libGL.so.1
-/usr/local/$LIB/libEGL.so.1
