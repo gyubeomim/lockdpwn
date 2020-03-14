@@ -7,7 +7,7 @@ xhost +local:docker
 case $1 in
 	cpu)
 		LDPRELOAD=${HOME}/.empty
-		X8664LINUXGNU=${HOME}/.empty
+		X8664LINUXGNU=${HOME}/gitrepo/lockdpwn/docker/util/x86_64-linux-gnu.intel
 		touch ${LDPRELOAD}
 
 		docker run \
