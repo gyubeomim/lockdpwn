@@ -1,8 +1,3 @@
-# if [[ "${OSTYPE}" == "darwin"* ]]; then
-# 	ORB_HOME="${HOME}/gitrepo/orbslam2-sandbox"
-# else 
-# 	ORB_HOME="${HOME}/gitrepo/ORB_SLAM2"
-# fi
 ORB_HOME="${HOME}/gitrepo/orbslam2-sandbox"
 
 killall stereo_image_proc
