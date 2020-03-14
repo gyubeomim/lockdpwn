@@ -1,9 +1,29 @@
 #!/bin/sh
 XSOCK=/tmp/.X11-unix
-XAUTH=/home/${USER}/.Xauthority
+XAUTH=${HOME}/.Xauthority
 
 xhost +local:docker
 
+case $1 in 
+	cpu)
+docker run \
+	--net=host \
+	--name starlaw-scratch \
+	-it \
+	--env="XAUTHORITY=${XAUTH}" \
+	--env="DISPLAY=unix${DISPLAY}" \
+	--env="XDG_RUNTIME_DIR=/run/user/1000" \
+	--privileged  \
+	-v /run/user/1000:/run/user/1000 \
+	-v /dev/bus/usb:/dev/bus/usb \
+	-v ${XSOCK}:${XSOCK}:rw \
+	-v ${XAUTH}:${XAUTH}:rw \
+	-v ${HOME}/share_docker:/root/share_docker \
+	-v /media/data/dataset:/root/dataset \
+	--expose 22 \
+	edward0im/starlaw:scratch
+;;
+	*)
 docker run \
 	--runtime=nvidia \
 	--net=host \
@@ -17,11 +37,12 @@ docker run \
 	-v /dev/bus/usb:/dev/bus/usb \
 	-v ${XSOCK}:${XSOCK}:rw \
 	-v ${XAUTH}:${XAUTH}:rw \
-	-v /home/${USER}/share_docker:/root/share_docker \
+	-v ${HOME}/share_docker:/root/share_docker \
 	-v /media/data/dataset:/root/dataset \
 	--expose 22 \
 	edward0im/starlaw:scratch
-
+		;;
+esac
 
 
 #deprecated

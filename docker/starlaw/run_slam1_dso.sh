@@ -1,9 +1,30 @@
 #!/bin/sh
 XSOCK=/tmp/.X11-unix
-XAUTH=/home/${USER}/.Xauthority
+XAUTH=${HOME}/.Xauthority
 
 xhost +local:docker
 
+case $1 in
+	cpu)
+docker run \
+	--net=host \
+	--name starlaw-slam1-dso \
+	--rm \
+	-it \
+	--env="XAUTHORITY=${XAUTH}" \
+	--env="DISPLAY=unix${DISPLAY}" \
+	--env="XDG_RUNTIME_DIR=/run/user/1000" \
+	--privileged  \
+	-v /run/user/1000:/run/user/1000 \
+	-v /dev/bus/usb:/dev/bus/usb \
+	-v ${XSOCK}:${XSOCK}:rw \
+	-v ${XAUTH}:${XAUTH}:rw \
+	-v ${HOME}/share_docker:/root/share_docker \
+	--expose 22 \
+	edward0im/starlaw:slam1 \
+	/root/run_dso3.sh
+;;
+*)
 docker run \
 	--runtime=nvidia \
 	--net=host \
@@ -18,10 +39,12 @@ docker run \
 	-v /dev/bus/usb:/dev/bus/usb \
 	-v ${XSOCK}:${XSOCK}:rw \
 	-v ${XAUTH}:${XAUTH}:rw \
-	-v /home/${USER}/share_docker:/root/share_docker \
+	-v ${HOME}/share_docker:/root/share_docker \
 	--expose 22 \
 	edward0im/starlaw:slam1 \
 	/root/run_dso3.sh
+	;;
+	esac
 
 
 #deprecated
