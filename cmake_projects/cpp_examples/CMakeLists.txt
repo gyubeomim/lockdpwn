@@ -22,3 +22,10 @@ add_executable(csv_reader
   )
 target_link_libraries(csv_reader
   )
+
+#===========================================
+add_executable(tictoc
+  src/tictoc.cc
+  )
+target_link_libraries(tictoc
+  )
