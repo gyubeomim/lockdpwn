@@ -53,15 +53,19 @@ case $2 in
 	0)
 		gdb --ex="set print thread-events off" --ex="r" -args $executable
 		;;
+
 	1)
-		gdb --ex="set print thread-events off" --ex="b FullSystemOptimize.cpp:525" --ex="r" -args $executable
+		gdb --ex="set print thread-events off" --ex="b FullSystemOptimize.cpp:711" --ex="r" -args $executable
 		;;
+
 	2)
 		gdb --ex="set print thread-events off" --ex="b Residuals.cpp:129 if Kv==-2" --ex="r" -args $executable
 		;;
+
 	3)
 		gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:209" --ex="r" -args $executable
 		;;
+
 	lldb0)
 		lldb -o run -- $executable
 		;;
