@@ -8,7 +8,7 @@
 #include <boost/algorithm/string.hpp>
 
 int main(int argc, char **argv) {
-  std::ifstream file(std::string(getenv("HOME")) + "/catkin_ws/evaluation/200312_outdoor_stereo1/keyframe_trans.txt");
+  std::ifstream file(std::string(getenv("HOME")) + "/catkin_ws/evaluation/200312_outdoor_stereo2/keyframe_trans.txt");
 
   Eigen::Vector3d prev_trans;
   Eigen::Vector3d curr_trans;
