@@ -14,23 +14,34 @@ find_package(Eigen3 REQUIRED)
 
 include_directories(${EIGEN3_INCLUDE_DIRS})
 
+#------------------------------------
 add_executable(eigen_test 
- 	src/eigen_test.cpp
+ 	src/eigen_test.cc
 )
 target_link_libraries(eigen_test 
   ${EIGEN3_LIBS}
 )
 
+#------------------------------------
 #add_executable(quaternion_test 
-# 	src/quaternion_test.cpp
+# 	src/quaternion_test.cc
 #)
 #target_link_libraries(quaternion_test 
 #  ${EIGEN3_LIBS}
 #)
 
+#------------------------------------
 add_executable(rotmat_to_quat
-	src/rotmat_to_quat.cpp
+	src/rotmat_to_quat.cc
 )
 target_link_libraries(rotmat_to_quat
+ ${EIGEN3_LIBS}
+)
+
+#------------------------------------
+add_executable(trans_accumulator
+	src/trans_accumulator.cc
+)
+target_link_libraries(trans_accumulator
  ${EIGEN3_LIBS}
 )
