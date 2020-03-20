@@ -4,13 +4,13 @@ case $1 in
 	rd)
 		cd ${STEREODSO_PATH}/reldebug
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
-		make -j7
+		make -j
 		STEREODSO_FINAL_PATH=${STEREODSO_PATH}/reldebug
 		;;
 	d)
 		cd ${STEREODSO_PATH}/debug
 		cmake -DCMAKE_BUILD_TYPE=Debug ..
-		make -j7
+		make -j
 		STEREODSO_FINAL_PATH=${STEREODSO_PATH}/debug
 		;;
 
@@ -23,7 +23,7 @@ case $1 in
 		fi
 
 		cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
-		make -j7
+		make -j
 		STEREODSO_FINAL_PATH=${STEREODSO_PATH}/reldebug
 		;;
 	dd) # make directory
@@ -35,7 +35,7 @@ case $1 in
 		fi
 
 		cmake -DCMAKE_BUILD_TYPE=Debug ..
-		make -j7
+		make -j
 		STEREODSO_FINAL_PATH=${STEREODSO_PATH}/debug
 		;;
 esac
