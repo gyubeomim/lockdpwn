@@ -49,24 +49,30 @@ executable="${STEREODSO_FINAL_PATH}/bin/dso_dataset \
 	speed=1 \
 	mode=1"
 
+emacs_executable="(gdb "'"gdb -q -i=mi -args '${executable}'"'")"
+
 case $2 in
-	0)
-		gdb --ex="set print thread-events off" --ex="r" -args $executable
-		;;
+    0)
+        gdb --ex="set print thread-events off" --ex="r" -args $executable
+        ;;
 
-	1)
-		gdb --ex="set print thread-events off" --ex="b FullSystemOptimize.cpp:711" --ex="r" -args $executable
-		;;
+    1)
+        gdb --ex="set print thread-events off" --ex="b FullSystemOptimize.cpp:711" --ex="r" -args $executable
+        ;;
 
-	2)
-		gdb --ex="set print thread-events off" --ex="b Residuals.cpp:129 if Kv==-2" --ex="r" -args $executable
-		;;
+    2)
+        gdb --ex="set print thread-events off" --ex="b Residuals.cpp:129 if Kv==-2" --ex="r" -args $executable
+        ;;
 
-	3)
-		gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:209" --ex="r" -args $executable
-		;;
+    3)
+        gdb --ex="set print thread-events off" --ex="b dso_g2o_edge.cpp:209" --ex="r" -args $executable
+        ;;
 
-	lldb0)
-		lldb -o run -- $executable
-		;;
+    lldb0)
+        lldb -o run -- $executable
+        ;;
+
+    emacs0)
+        emacsclient --eval "${emacs_executable}"
+        ;;
 esac
