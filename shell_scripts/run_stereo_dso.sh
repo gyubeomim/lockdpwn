@@ -11,6 +11,8 @@ case $1 in
 			calib=${HOME}/catkin_ws/config/dso/camera_kitti.txt \
 			gamma=${HOME}/catkin_ws/config/dso/pcalib.txt \
 			vignette=${HOME}/catkin_ws/config/dso/vignette.png \
+            vocab=${HOME}/vocabulary/ORBvoc.bin \
+            gtPath=${HOME}/dataset/kitti/data_odometry/poses/00.txt \
 			preset=0 \
 			speed=1 \
 			mode=1
