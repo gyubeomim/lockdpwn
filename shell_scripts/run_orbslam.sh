@@ -1,6 +1,5 @@
 ORB_HOME="${HOME}/gitrepo/orbslam2-sandbox"
 
-killall stereo_image_proc
 rospack profile
 
 case $1 in
@@ -14,8 +13,6 @@ case $1 in
 		${ORB_HOME}/Examples/ROS/ORB_SLAM2/Mono ${ORB_HOME}/Vocabulary/ORBvoc.txt ${HOME}/catkin_ws/config/orb/KITTI00-02.yaml /camera/image_raw:=/camera/left/image_rect
 		;;
 	sros)
-		ROS_NAMESPACE=camera rosrun stereo_image_proc stereo_image_proc &
-
 		${ORB_HOME}/Examples/ROS/ORB_SLAM2/Stereo ${ORB_HOME}/Vocabulary/ORBvoc.txt ${HOME}/catkin_ws/config/orb/dv.yaml 0 /camera/left/image_raw:=/camera/left/image_rect /camera/right/image_raw:=/camera/right/image_rect
 		;;
 	bag)
