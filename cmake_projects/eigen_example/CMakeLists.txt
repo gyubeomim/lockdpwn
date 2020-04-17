@@ -38,10 +38,3 @@ target_link_libraries(rotmat_to_quat
  ${EIGEN3_LIBS}
 )
 
-#------------------------------------
-add_executable(trans_accumulator
-	src/trans_accumulator.cc
-)
-target_link_libraries(trans_accumulator
- ${EIGEN3_LIBS}
-)
