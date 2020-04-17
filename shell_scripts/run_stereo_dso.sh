@@ -14,7 +14,7 @@ case $1 in
             vocab=${HOME}/vocabulary/ORBvoc.bin \
             gtPath=${HOME}/dataset/kitti/data_odometry/poses/00.txt \
 			preset=0 \
-			speed=1 \
+			speed=0 \
 			mode=1
 		;;
 esac
