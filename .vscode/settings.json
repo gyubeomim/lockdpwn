@@ -12,7 +12,8 @@
         "xiosbase": "cpp",
         "utility": "cpp",
         "iostream": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "chrono": "cpp"
     },
     // Code Runner "CPP" setting
     "code-runner.executorMap": {
