@@ -54,9 +54,16 @@ int main(int argc, char **argv) {
   cv::hconcat(crop3, crop4, concat3);
 
   cv::imshow("concat1", concat1);
-  cv::imshow("concat2", concat2);
+  // cv::imshow("concat2", concat2);
   cv::imshow("concat3", concat3);
   cv::moveWindow("concat2", 0, 1030);
+
+  cv::Mat diff;
+  cv::absdiff(crop3, crop4, diff);
+  cv::cvtColor(diff, diff, CV_BGR2GRAY);
+  cv::imshow("diff", diff);
+  cv::moveWindow("diff", 0, 1030);
+
   cv::waitKey(0);
 
   return 0;
