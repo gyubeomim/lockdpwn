@@ -7,9 +7,9 @@ using namespace std;
 using namespace cv;
 
 int main(int argc, const char* argv[]) {
-  cv::Ptr<Feature2D> f2d = xfeatures2d::SIFT::create();
-  /* cv::Ptr<Feature2D> f2d = xfeatures2d::SURF::create(); */
-  /* cv::Ptr<Feature2D> f2d = ORB::create(); */
+  cv::Ptr<Feature2D> extractor = xfeatures2d::SIFT::create();
+  /* cv::Ptr<Feature2D> extractor = xfeatures2d::SURF::create(); */
+  /* cv::Ptr<Feature2D> extractor = ORB::create(); */
 
   // you get the picture, i hope..
   cv::Mat img_1 = imread(std::string(getenv("HOME")) + "/Pictures/keep/test/1.pgm", 1);
@@ -17,8 +17,8 @@ int main(int argc, const char* argv[]) {
 
   //-- Step 1: Detect the keypoints:
   std::vector<KeyPoint> keypoints_1, keypoints_2;    
-  f2d->detect(img_1, keypoints_1);
-  f2d->detect(img_2, keypoints_2);
+  extractor->detect(img_1, keypoints_1);
+  extractor->detect(img_2, keypoints_2);
 
   cv::Mat out_1, out_2;
   cv::drawKeypoints(img_1, keypoints_1, out_1);
@@ -28,8 +28,8 @@ int main(int argc, const char* argv[]) {
 
   //-- Step 2: Calculate descriptors (feature vectors)    
   cv::Mat descriptors_1, descriptors_2;    
-  f2d->compute(img_1, keypoints_1, descriptors_1);
-  f2d->compute(img_2, keypoints_2, descriptors_2);
+  extractor->compute(img_1, keypoints_1, descriptors_1);
+  extractor->compute(img_2, keypoints_2, descriptors_2);
 
   //-- Step 3: Matching descriptor vectors using BFMatcher :
   BFMatcher matcher;
