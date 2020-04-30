@@ -15,7 +15,8 @@ case $1 in
             gtPath=${HOME}/dataset/kitti/data_odometry/poses/00.txt \
 			preset=0 \
 			speed=0 \
-			mode=1
+			mode=1 \
+            openLoop=1
 		;;
 esac
 # set speed=1 to play with real-time. otherwise, it plays as fast as possible.
