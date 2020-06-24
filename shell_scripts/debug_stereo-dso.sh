@@ -42,14 +42,16 @@ esac
 
 executable="${STEREODSO_FINAL_PATH}/bin/dso_dataset \
 	files=${HOME}/dataset/kitti/data_odometry/sequences/00 \
-	calib=${HOME}/catkin_ws/config/dso/camera_kitti.txt \
-	gamma=${HOME}/catkin_ws/config/dso/pcalib.txt \
-	vignette=${HOME}/catkin_ws/config/dso/vignette.png \
+	calib=${HOME}/catkin_ws/config/dso/camera_kitti_left.txt \
+	calib_right=${HOME}/catkin_ws/config/dso/camera_kitti_right.txt \
 	vocab=${HOME}/vocabulary/ORBvoc.bin \
 	gtPath=${HOME}/dataset/kitti/data_odometry/poses/00.txt \
 	preset=0 \
-	speed=0 \
+	speed=1 \
 	mode=1"
+
+# gamma=${HOME}/catkin_ws/config/dso/pcalib.txt \
+# vignette=${HOME}/catkin_ws/config/dso/vignette.png \
 
 emacs_executable="(gdb "'"gdb -q -i=mi -args '${executable}'"'")"
 

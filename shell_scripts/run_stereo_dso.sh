@@ -8,15 +8,16 @@ case $1 in
 
 		${STEREODSO_PATH}/build/bin/dso_dataset \
 			files=${HOME}/dataset/kitti/data_odometry/sequences/${seq} \
-			calib=${HOME}/catkin_ws/config/dso/camera_kitti.txt \
-			gamma=${HOME}/catkin_ws/config/dso/pcalib.txt \
-			vignette=${HOME}/catkin_ws/config/dso/vignette.png \
+			calib=${HOME}/catkin_ws/config/dso/camera_kitti_left.txt \
+			calib_right=${HOME}/catkin_ws/config/dso/camera_kitti_right.txt \
             vocab=${HOME}/vocabulary/ORBvoc.bin \
             gtPath=${HOME}/dataset/kitti/data_odometry/poses/00.txt \
 			preset=0 \
-			speed=0 \
+			speed=1 \
 			mode=1 \
             openLoop=1
 		;;
 esac
+# gamma=${HOME}/catkin_ws/config/dso/pcalib.txt \
+# vignette=${HOME}/catkin_ws/config/dso/vignette.png \
 # set speed=1 to play with real-time. otherwise, it plays as fast as possible.
