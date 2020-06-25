@@ -2,7 +2,7 @@
 set -e
 
 ## 버전을 변경하고 싶으시면 아래 코드를 변경하면 됩니다.
-readonly version="26.1"
+readonly version="27.1"
 
 # install dependencies
 sudo apt-get install -y stow build-essential libx11-dev xaw3dg-dev \
