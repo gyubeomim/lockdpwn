@@ -1,34 +1,35 @@
 #!/bin/bash
 set -e
 
-## 버전을 변경하고 싶으시면 아래 코드를 변경하면 됩니다.
-readonly version="27.1"
+# set the version to want to install.
+readonly version="26.3"
 
-# install dependencies
+# install dependencies.
 sudo apt-get install -y stow build-essential libx11-dev xaw3dg-dev \
-     libjpeg-dev libpng12-dev libgif-dev libtiff4-dev libncurses5-dev \
+     libjpeg-dev libpng-dev libgif-dev libtiff5-dev libncurses5-dev \
      libxft-dev librsvg2-dev libmagickcore-dev libmagick++-dev \
-     libxml2-dev libgpm-dev libghc-gconf-dev libotf-dev libm17n-dev \
-     libgnutls-dev
+     libxml2-dev libgpm-dev libotf-dev libm17n-dev libgnutls28-dev
 
-# download source package
+# download source package.
 if [[ ! -d emacs-"$version" ]]; then
    wget http://ftp.gnu.org/gnu/emacs/emacs-"$version".tar.xz
    tar xvf emacs-"$version".tar.xz
 fi
 
+cd emacs-"$version"
+./configure --with-x-toolkit=lucid
+
+make -j
+
+# install emacs into machine. To use "Add to Favorites" feature in Launcher bar.
+sudo make install 
+
+
+# Deprecated(2020.07)==========================
 # buil and install (do not use stow)
 # if [ ! -d /usr/local/stow ]; then
 #      sudo mkdir /usr/local/stow
 # fi
-
-cd emacs-"$version"
-./configure
-# ./configure \
-#     --with-xft \
-#     --with-x-toolkit=lucid
-
-make -j4
 
 #sudo make install prefix=/usr/local/stow/emacs-"$version"
 # cd /usr/local/stow
