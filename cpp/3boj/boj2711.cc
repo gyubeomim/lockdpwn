@@ -1,3 +1,6 @@
+// @level:             1
+// @category:          Basic
+// @description:       2711. 오타맨 고창영
 #include <iostream>
 #include <vector>
 #include <algorithm>

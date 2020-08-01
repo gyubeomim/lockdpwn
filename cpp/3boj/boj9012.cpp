@@ -1,10 +1,8 @@
 /*
- * #+DESCRIPTION:  백준 9012, 괄호 문제를 푼 정답 코드
+ * #+DESCRIPTION:  백준 9012, 괄호
  * #+CATEGORY:     STACK
  * #+LEVEL:        -
  * #+FROM:         알고리즘기초 스택
- * #+DATE:         2018-06-10-일
- * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <cstdio>
 #include <iostream>

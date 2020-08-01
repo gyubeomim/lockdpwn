@@ -1,11 +1,9 @@
 /*
- * #+DESCRIPTION:       백준 1722, 순열의 순서 문제를 푼 코드
+ * #+DESCRIPTION:       백준 1722, 순열의 순서
  * #+CATEGORY:          PERMUTATION
  * #+TIME_COMPLEXITY:   -
  * #+LEVEL:             -
  * #+FROM:              중급1 순열
- * #+DATE:              2018-06-25-월
- * #+AUTHOR:            Edward Im (gyurse@gmail.com)
  */
 #include <iostream>
 #include <cstdio>

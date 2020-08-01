@@ -1,5 +1,5 @@
 /*
-  c++ ==> 백준 1181번, 단어정렬 (미완성)
+  c++ ==> 백준 1181번, 단어정렬
 */
 #include <iostream>
 #include <vector>

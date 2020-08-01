@@ -1,10 +1,8 @@
 /*
- * #+DESCRIPTION:  백준 1001번, A-B 문제를 푼 코드
+ * #+DESCRIPTION:  백준 1001번, A-B
  * #+CATEGORY:
  * #+LEVEL:        -
  * #+FROM:         -
- * #+DATE:         2018-06-10-일
- * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <iostream>
 

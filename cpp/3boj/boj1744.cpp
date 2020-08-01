@@ -1,10 +1,8 @@
 /*
- * #+DESCRIPTION:  백준 1744, 수 묶기 문제를 푼 코드
+ * #+DESCRIPTION:  백준 1744, 수 묶기
  * #+CATEGORY:     GREEDY
  * #+LEVEL:        -
  * #+FROM:         중급1 그리디 알고리즘 part 2
- * #+DATE:         2018-06-21-목
- * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <iostream>
 #include <cstdio>

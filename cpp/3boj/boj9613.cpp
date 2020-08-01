@@ -1,10 +1,8 @@
 /*
- * #+DESCRIPTION:  백준 9613, GCD 합 문제를 푼 정답코드
+ * #+DESCRIPTION:  백준 9613, GCD 합
  * #+CATEGORY:     수학
  * #+LEVEL:        -
  * #+FROM:         알고리즘기초 수학1
- * #+DATE:         2018-06-12-화
- * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <iostream>
 using namespace std;

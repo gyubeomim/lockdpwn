@@ -1,10 +1,8 @@
 /*
- * #+DESCRIPTION:  백준 9466, 텀 프로젝트 문제를 푼 정답코드, DFS를 사용해서 짝이되는 학생들의 수를 구하고(ans) n-ans를 통해 정답을 구한다
+ * #+DESCRIPTION:  백준 9466, 텀 프로젝트
  * #+CATEGORY:     GRAPH
  * #+LEVEL:        -
  * #+FROM:         알고리즘기초 그래프1 그래프 문제풀이
- * #+DATE:         2018-06-20-수
- * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <cstdio>
 #include <iostream>

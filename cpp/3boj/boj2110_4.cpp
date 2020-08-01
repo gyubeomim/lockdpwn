@@ -1,11 +1,9 @@
 /*
- * #+DESCRIPTION:       백준 2110, 공유기 설치 문제를 푼 코드
+ * #+DESCRIPTION:       백준 2110, 공유기 설치
  * #+CATEGORY:          Binary Search
  * #+TIME_COMPLEXITY:   -
  * #+LEVEL:             -
  * #+FROM:              중급1 이분탐색으로 정답찾기 part 1
- * #+DATE:              2018-06-24-일
- * #+AUTHOR:            Edward Im (gyurse@gmail.com)
  */
 #include <iostream>
 #include <cstdio>

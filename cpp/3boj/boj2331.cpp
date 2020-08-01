@@ -1,10 +1,8 @@
 /*
- * #+DESCRIPTION:  백준 2331, 반복수열 문제를 푼 정답코드
+ * #+DESCRIPTION:  백준 2331, 반복수열
  * #+CATEGORY:     GRAPH
  * #+LEVEL:        -
  * #+FROM:         알고리즘기초 그래프1 그래프 문제풀이
- * #+DATE:         2018-06-19-화
- * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <iostream>
 using namespace std;

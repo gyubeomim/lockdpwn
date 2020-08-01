@@ -1,10 +1,8 @@
 /*
- * #+DESCRIPTION:  백준 1018, 체스판 문제를 푼 정답 코드
+ * #+DESCRIPTION:  백준 1018, 체스판
  * #+CATEGORY:     brute force
  * #+LEVEL:        -
  * #+FROM:         http://blog.naver.com/PostView.nhn?blogId=kks227&logNo=220613894923&parentCategoryNo=271&categoryNo=303&viewDate=&isShowPopularPosts=false&from=postList
- * #+DATE:         2018-06-10-일
- * #+AUTHOR:       Edward Im (gyurse@gmail.com)
  */
 #include <iostream>
 #include <cstdio>
