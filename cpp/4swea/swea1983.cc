@@ -1,7 +1,6 @@
-// @date:              2020.07.26.Sun
 // @level:             D2
-// @level:             -
-// @description:       1983. 조교의 성적매기기
+// @category:          -
+// @description:       조교의 성적매기기
 #include <iostream>
 #include <vector>
 #include <algorithm>

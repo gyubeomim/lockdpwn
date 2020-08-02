@@ -1,7 +1,6 @@
-// @date:              2020.07.26.Sun
 // @level:             D2
-// @level:             -
-// @description:       2001.
+// @category:          -
+// @description:       파리 퇴치
 #include <iostream>
 #include <vector>
 #include <string>

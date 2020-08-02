@@ -1,7 +1,6 @@
-// @date:              2020.07.27.Mon
 // @level:             D2
 // @category:          Simulation
-// @description:       1979. 어디에 단어가 들어갈 수 있을까
+// @description:       어디에 단어가 들어갈 수 있을까
 #include <iostream>
 #include <vector>
 #include <algorithm>

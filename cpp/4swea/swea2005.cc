@@ -1,7 +1,6 @@
-// @date:              2020.07.26.Sun
 // @level:             D2
-// @level:             -
-// @description:       2005.
+// @category:          -
+// @description:       파스칼의 삼각형
 #include <iostream>
 #include <vector>
 #include <string>

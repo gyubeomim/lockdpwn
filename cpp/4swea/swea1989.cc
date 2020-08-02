@@ -1,7 +1,6 @@
-// @date:              2020.07.26.Sun
 // @level:             D2
-// @level:             -
-// @description:       1989.
+// @category:          -
+// @description:       초심자의 회문 검사
 #include <iostream>
 #include <vector>
 #include <string>

@@ -1,3 +1,6 @@
+// @level:             D2
+// @category:          -
+// @description:       간단한 369게임
 #include <iostream>
 #include <string>
 
