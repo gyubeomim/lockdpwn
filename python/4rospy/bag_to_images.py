@@ -40,8 +40,7 @@ def main():
         count += 1
 
     bag.close()
-    aaa
-
+    
     return
 
 if __name__ == '__main__':
