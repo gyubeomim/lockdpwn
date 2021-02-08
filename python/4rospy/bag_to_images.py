@@ -38,7 +38,6 @@ def main():
         print "Wrote image %i" % count
 
         count += 1
-
     bag.close()
     
     return
