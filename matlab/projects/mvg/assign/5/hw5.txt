@@ -1,0 +1,5 @@
+1. Exercises 12.8.2 (iii)
+2. 13.5.2 (iii)
+3. 13.5.2 (vii)
+4. 13.5.2 (viii)
+5. (MATLAB) 두 장의 사진에서 scene plane homography 를 이용하여 fundamental matrix를 계산하시오.
