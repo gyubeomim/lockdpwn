@@ -1,4 +1,4 @@
-cd ${HOME}/gitrepo/stereo-dso/build && make -j
+cd ${HOME}/gitrepo/stereo-dso/build && make -j$(nproc-1)
 
 cd ${HOME}/catkin_ws && catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 

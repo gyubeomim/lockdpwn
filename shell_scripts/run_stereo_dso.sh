@@ -1,6 +1,6 @@
 export STEREODSO_PATH=${HOME}/gitrepo/stereo-dso-sandbox
 
-cd ${STEREODSO_PATH}/build && make -j6
+cd ${STEREODSO_PATH}/build && make -j$(nproc-1)
 
 case $1 in
     00)

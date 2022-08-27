@@ -1,7 +1,7 @@
 ORB_HOME="${HOME}/gitrepo/orbslam2-sandbox"
 
 cd ${ORB_HOME}/build
-make -j
+make -j$(nproc-1)
 cd ~/catkin_ws
 catkin_make
 
