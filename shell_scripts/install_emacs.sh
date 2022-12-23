@@ -2,7 +2,8 @@
 set -e
 
 # set the version to want to install.
-readonly version="26.3"
+# readonly version="26.3"
+readonly version="28.1"
 
 # install dependencies.
 sudo apt-get install -y stow build-essential libx11-dev xaw3dg-dev \
