@@ -1,0 +1,2316 @@
+;;; -*- mode: emacs-lisp; coding: utf-8; -*-
+(setq user-full-name "set your name")
+(setq user-mail-address "setyour@email.com")
+
+;; set the number of bytes of consing before a garbage collection is invoked
+(setq gc-cons-threshold 100000000)
+
+(setq gc-timer nil)
+(defun maybe-gc ()
+  (let ((original gc-cons-threshold))
+    (setq gc-cons-threshold 800000)
+    (setq gc-cons-threshold original
+          gc-timer (run-with-timer 2 nil #'schedule-maybe-gc))))
+
+(defun schedule-maybe-gc ()
+  (setq gc-timer (run-with-idle-timer 2 nil #'maybe-gc)))
+
+(schedule-maybe-gc)
+
+(setq custom-safe-themes t)
+
+;; set the initial message of Scratch buffer.
+(setq initial-scratc-message "")
+
+;; change 'yes or no' to 'y or n'
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; mouse scroll speed set up.
+(setq mouse-wheel-scroll-amount '(0.02))
+(setq mouse-wheel-progressive-speed nil)
+(setq scroll-step 1)
+(setq scroll-conservatively 10000)
+(setq ring-bell-function 'ignore)
+
+;; emacs speed up.
+(setq fast-but-imprecise-scrolling nil)
+(setq jit-lock-defer-time 0)
+(setq redisplay-dont-pause t)
+
+;; set default frame window size.
+(add-to-list 'default-frame-alist '(height . 40))
+(add-to-list 'default-frame-alist '(width . 110))
+
+;; skip the startup screen.
+(setq inhibit-startup-screen t)
+(setq initial-scratc-message "")
+
+;; set initial scratch buffer mode.
+(setq initial-major-mode 'emacs-lisp-mode)
+
+;; set korean font.
+(set-fontset-font "fontset-default" 'hangul '("NanumGothic" . "unicode-bmp"))
+(set-fontset-font t 'hangul  (font-spec :name "NanumGothicCoding"))
+
+;; set encoding style.
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-language-environment "Korean")
+(prefer-coding-system 'utf-8)
+
+;; for emacs --daemon version.
+(defun set_korean_font_after_loading (&optional frame)
+  (set-fontset-font "fontset-default" 'hangul "NanumGothicCoding"))
+
+(add-hook 'after-make-frame-functions 'set_korean_font_after_loading)
+
+;; display line number and column number.
+(setq line-number-mode t)
+(setq column-number-mode t)
+
+;; current line highlighting.
+(global-hl-line-mode t)
+
+;; show paren mode (disabled to use custom face)
+(show-paren-mode -1)
+(setq show-paren-delay 0)
+
+;; make selected block to inverted color.
+(setq-default transient-mark-mode t)
+
+(global-auto-revert-mode t)
+
+;; use space instead of tab.
+(setq-default indent-tabs-mode nil)
+
+;; set tab size.
+(setq tab-width nil)
+
+;; do not make a backup file (#Readmin.md#).
+(setq make-backup-files nil)
+
+;; display time
+(setq display-time-default-load-average nil)
+(display-time)
+
+;; remember last edited directory.
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (concat (getenv "HOME") "/_places.sav"))
+
+;; recent edit files.
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 20) ;; number of recent files.
+
+;; line spacing in gui mode.
+(setq-default line-spacing 1)
+
+;; global line number mode
+(global-display-line-numbers-mode)
+
+;; turn off autosave. (Readme.md~)
+(setq auto-save-default nil)
+
+;; disbable interlocking file. (.#Readme.md)
+(setq create-lockfiles nil)
+
+;; make all tmp files in tmp directory.
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+;; don't add next new line.
+(setq next-line-add-newlines nil)
+
+(setq next-screen-context-lines 3)
+
+(setq search-highlight t)
+
+;; hide menu bar.
+(menu-bar-mode 0)
+
+;; hide tool bar.
+(tool-bar-mode 0)
+
+;; hide scroll bar.
+(scroll-bar-mode 0)
+
+;; set number of column to newline.
+(setq-default fill-column 120)
+
+;; use recently used word lists to autocomplete.
+(dynamic-completion-mode)
+
+;; set alt to meta (for vnc)
+(setq x-alt-keysym 'meta)
+
+;; ignore warning ad-handle-definition 'winner-mode' got redefined.
+(setq ad-redefinition-action 'accept)
+
+;; disable beeping (for vnc)
+(setq visible-bell 1)
+
+;; disable evil-mode search freezing
+;; https://github.com/syl20bnr/spacemacs/issues/3623
+(setq-default search-invisible t)
+
+(setq system-time-locale "C")
+
+;; remove emacs titlebar
+(setq frame-title-format "")
+
+;; term-mode open file.
+(setq server-window 'pop-to-buffer)
+
+;; custom extension file type.
+(setq auto-mode-alist (append '((".*\\.h\\'" . c++-mode)) auto-mode-alist))
+(setq auto-mode-alist (append '((".*\\.cu\\'" . c++-mode)) auto-mode-alist))             
+
+
+;; FUNCTION START===========================================================================
+(defun neotree-go-to-upper-directory ()
+  "go to upper directory. "
+  (interactive)
+  (progn
+    (evil-goto-first-line)
+    (evil-next-line)
+    (evil-forward-word-begin)
+    (push-button)
+    )
+  )
+
+(defun sof/dired-sort ()
+  "Dired sort hook to list directories first."
+  (save-excursion
+    (let (buffer-read-only)
+      (forward-line 2)
+      (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max))))
+  (and (featurep 'xemacs)
+       (fboundp 'dired-insert-set-properties)
+       (dired-insert-set-properties (point-min) (point-max)))
+  (set-buffer-modified-p nil)
+  )
+
+(add-hook 'dired-after-readin-hook 'sof/dired-sort)
+
+
+(defun gdb-setup-windows-default ()
+  "Layout the window pattern for option `gdb-many-windows'."
+  (gdb-get-buffer-create 'gdb-locals-buffer)
+  (gdb-get-buffer-create 'gdb-stack-buffer)
+  (gdb-get-buffer-create 'gdb-breakpoints-buffer)
+  (set-window-dedicated-p (selected-window) nil)
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (let ((win0 (selected-window))
+        (win1 (split-window nil ( / ( * (window-height) 3) 4)))
+        (win2 (split-window nil ( / (window-height) 3)))
+        (win3 (split-window-right)))
+    (gdb-set-window-buffer (gdb-locals-buffer-name) nil win3)
+    (select-window win2)
+    (set-window-buffer
+     win2
+     (if gud-last-last-frame
+         (gud-find-file (car gud-last-last-frame))
+       (if gdb-main-file
+           (gud-find-file gdb-main-file)
+         ;; Put buffer list in window if we
+         ;; can't find a source file.
+         (list-buffers-noselect))))
+    (setq gdb-source-window (selected-window))
+    (let ((win4 (split-window-right)))
+      (gdb-set-window-buffer
+       (gdb-get-buffer-create 'gdb-inferior-io) nil win4))
+    (select-window win1)
+    (gdb-set-window-buffer (gdb-stack-buffer-name))
+    (let ((win5 (split-window-right)))
+      (gdb-set-window-buffer (if gdb-show-threads-by-default
+                                 (gdb-threads-buffer-name)
+                               (gdb-breakpoints-buffer-name))
+                             nil win5))
+    (select-window win0)))
+
+;; custom gdb windows
+(defun my-gdb-setup-windows1 ()
+  "Restore GUD buffer, IO buffer and source buffer next to each other.
+;; http://dschrempf.github.io/posts/Emacs/2015-06-24-Debugging-with-Emacs-and-GDB.html#orgb894a48
+"
+  (interactive)
+  ;; Select dedicated GUD buffer.
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (set-window-dedicated-p (get-buffer-window) t)
+  (when (or gud-last-last-frame gdb-show-main)
+    (let ((side-win (split-window nil nil t))
+          (bottom-win (split-window)))
+      ;; Put source to the right.
+      (set-window-buffer
+       side-win
+       (if gud-last-last-frame
+           (gud-find-file (car gud-last-last-frame))
+         (gud-find-file gdb-main-file)))
+      (setq gdb-source-window side-win)
+      ;; Show dedicated IO buffer below.
+      (set-window-buffer
+       bottom-win
+       (gdb-get-buffer-create 'gdb-inferior-io))
+      (set-window-dedicated-p bottom-win t)
+      )))
+
+(defun my-gdb-setup-windows2 ()
+  (interactive)
+  "Layout the window pattern for option `gdb-many-windows'.
+;; https://github.com/saogog123456/.emacs.d/blob/e065ad86fa548d67a114f222154e6e2f399ad4c8/core/neoclear-window.el
+"
+  (gdb-get-buffer-create 'gdb-locals-buffer)
+  (gdb-get-buffer-create 'gdb-stack-buffer)
+  (gdb-get-buffer-create 'gdb-breakpoints-buffer)
+  (gdb-get-buffer-create 'gdb-inferior-io)
+  (set-window-dedicated-p (selected-window) nil)
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (let ((win0 (selected-window))
+        (win1 (split-window nil (/ (* (window-height) 3) 4)))
+        (win2 (split-window-right (/ (* (window-width) 2) 6))))
+    (gdb-set-window-buffer (gdb-locals-buffer-name) nil win1)
+    (set-window-buffer win2
+                       (if gud-last-last-frame
+                           (gud-find-file (car gud-last-last-frame))
+                         (if gdb-main-file
+                             (gud-find-file gdb-main-file)
+                           ;; Put buffer list in window if we
+                           ;; can't find a source file.
+                           (list-buffers-noselect))))
+    (select-window win1)
+    (let ((win3 (split-window-right (/ (* (window-width) 3) 5)))
+          (win4 (split-window-right (/ (* (window-width) 3) 5))))
+      (gdb-set-window-buffer (gdb-breakpoints-buffer-name) nil win3)
+      (gdb-set-window-buffer (gdb-stack-buffer-name) nil win4))
+    (select-window win2)
+    (setq gdb-source-window (selected-window))
+    (select-window win0)
+    (let ((win5 (split-window nil (/ (* (window-height) 3) 5))))
+      (gdb-set-window-buffer (gdb-inferior-io-name) nil win5))
+    (select-window win2)))
+
+(defun my-gdb-setup-windows3 ()
+  (interactive)
+  "my gdb ui,fix sizes of every buffer
+;; https://github.com/shanhaiying/.emacs.d-1/blob/b5e126649887f9099b0320c3432f719c52278e02/lisp/init-cc-mode.el
+"
+  (gdb-get-buffer-create 'gdb-locals-buffer)
+  (gdb-get-buffer-create 'gdb-stack-buffer)
+  (gdb-get-buffer-create 'gdb-breakpoints-buffer)
+  (set-window-dedicated-p (selected-window) nil)
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (setq gud-gdb-buffer-width (/ (* (window-width) 3) 4)) ;for input/output buffer and locals buffer of gud mode
+  (let ((win0 (selected-window))
+        (win1 (split-window nil (/ (* (window-height) 8) 10)))
+        (win2 (split-window nil (/ (* (window-height) 3) 8)))
+        ;; (win3 (split-window nil (- (/ (* (window-width) 2) 3) 1) 'right))
+        (win3 (split-window nil gud-gdb-buffer-width 'right)) ;input/output
+	)
+    (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-inferior-io) nil win3)
+    (select-window win2)
+    (set-window-buffer
+     win2
+     (if gud-last-last-frame
+         (gud-find-file (car gud-last-last-frame))
+       (if gdb-main-file
+           (gud-find-file gdb-main-file)
+         ;; Put buffer list in window if we
+         ;; can't find a source file.
+         (list-buffers-noselect))))
+    (setq gdb-source-window (selected-window))
+    (let ((win4 (split-window nil gud-gdb-buffer-width 'right))) ;locals
+      (gdb-set-window-buffer (gdb-locals-buffer-name) nil win4))
+    (select-window win1)
+    (gdb-set-window-buffer (gdb-stack-buffer-name))
+    (let ((win5 (split-window-right)))
+      (gdb-set-window-buffer (if gdb-show-threads-by-default
+                                 (gdb-threads-buffer-name)
+                               (gdb-breakpoints-buffer-name))
+                             nil win5))
+    (select-window win0)))
+
+(defun my-gdb-setup-windows4 ()
+  (interactive)
+  "my gdb ui, just source,gdb,io,stack buffers"
+  (gdb-get-buffer-create 'gdb-locals-buffer)
+  (gdb-get-buffer-create 'gdb-stack-buffer)
+  (set-window-dedicated-p (selected-window) nil)
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (let ((win0 (selected-window))
+        (win1 (split-window nil (/ (* (window-width) 1) 2) 'left)) ;; code and output
+        (win2 (split-window-below (/ (* (window-height) 3) 4)))    ;; stack
+        )
+    (select-window win2)
+    (gdb-set-window-buffer (gdb-stack-buffer-name))
+    (select-window win1)
+    (set-window-buffer
+     win1
+     (if gud-last-last-frame
+         (gud-find-file (car gud-last-last-frame))
+       (if gdb-main-file
+           (gud-find-file gdb-main-file)
+         ;; Put buffer list in window if we
+         ;; can't find a source file.
+         (list-buffers-noselect))))
+    (setq gdb-source-window (selected-window))
+    (let ((win3 (split-window nil (/ (* (window-height) 3) 4))))  ;; io
+      (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-inferior-io) nil win3)) ;; gdb-inferior-io
+    ;; (gdb-set-window-buffer (gdb-get-buffer-create 'gdb-locals-buffer) nil win3)
+    (select-window win0)
+    ))
+
+(defun my-gdb-setup-windows5 ()
+  "https://stackoverflow.com/questions/39762833/emacsgdb-customization-how-to-display-source-buffer-in-one-window
+"
+  (set-window-dedicated-p (selected-window) nil)
+  (switch-to-buffer gud-comint-buffer)
+  (delete-other-windows)
+  (let
+      ((win0 (selected-window))             ; breakpoints ==> Speedbar Watch Expression
+       (win1 (split-window-horizontally
+              (floor (* 0.4 (window-width)))))   ; source + i/o
+       (win2 (split-window-vertically
+              (floor (* 0.5 (window-body-height))))) ; gdb
+       (win3 (split-window-vertically
+              (floor (* 0.5 (window-body-height))))) ; locals
+       ;; (win4 (split-window-vertically
+       ;;     (floor (* 0.6 (window-body-height))))) ; stack
+       )
+    (select-window win1)
+                                        ; configurating right window
+    (let
+        ((winSrc (selected-window)) ; source
+         (winIO (split-window-vertically (floor (* 0.9 (window-body-height))))) ; I/O
+         )
+      (set-window-buffer winIO (gdb-get-buffer-create 'gdb-inferior-io))
+      (set-window-buffer winSrc
+                         (if gud-last-last-frame
+                             (gud-find-file (car gud-last-last-frame))
+                           (if gdb-main-file
+                               (gud-find-file gdb-main-file)
+                             (list-buffers-noselect))))
+      (setq gdb-source-window winSrc)
+      (set-window-dedicated-p winIO t)
+      ;; comment(edward): Stack Frame added
+      (select-window winIO)
+      (let
+          ((winStack (split-window-horizontally (floor (* 15 (window-body-height))))) ;; comment(edward): Stack buffer added
+           )
+        (set-window-buffer winStack (gdb-get-buffer-create 'gdb-stack-buffer)) ;; comment(edward): Stack buffer added
+        ))
+    ;; (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
+    (if (get-buffer " SPEEDBAR")
+        (set-window-buffer win0 " SPEEDBAR")
+      (set-window-buffer win0 (gdb-get-buffer-create 'gdb-breakpoints-buffer))
+      )
+    ;; comment(edward): " SPEEDBAR"" 추가!
+    (set-window-buffer win3 (gdb-get-buffer-create 'gdb-locals-buffer))
+    (set-window-buffer win4 (gdb-get-buffer-create 'gdb-stack-buffer))
+    (select-window win2)
+    )
+  )
+
+(defun my-gdb-settings-toggle ()
+  "load gdb windows sequentially. created by edward 180515"
+  (interactive)
+  (let ()
+    (when (not (eq last-command this-command))
+      (put this-command 'state 0))
+    (cond
+     ((equal 0 (get this-command 'state))
+      (gdb-setup-windows-default)
+      (message "[+] Setting my-gdb-setup-default...")
+      (put this-command 'state 1))
+     ((equal 1 (get this-command 'state))
+      (my-gdb-setup-windows1)
+      (message "[+] Setting my-gdb-setup-windows1...")
+      (put this-command 'state 2))
+     ((equal 2  (get this-command 'state))
+      (my-gdb-setup-windows2)
+      (message "[+] Setting my-gdb-setup-windows2...")
+      (put this-command 'state 3))
+     ((equal 3 (get this-command 'state))
+      (my-gdb-setup-windows3)
+      (message "[+] Setting my-gdb-setup-windows3...")
+      (put this-command 'state 4))
+     ((equal 4 (get this-command 'state))
+      (my-gdb-setup-windows4)
+      (message "[+] Setting my-gdb-setup-windows4...")
+      (put this-command 'state 5))
+     ((equal 5 (get this-command 'state))
+      (my-gdb-setup-windows5)
+      (message "[+] Setting my-gdb-setup-windows5...")
+      (put this-command 'state 0))
+     )))
+
+;; set initial gdb window.
+(defadvice gdb-setup-windows (around setup-more-gdb-windows activate)
+  (my-gdb-setup-windows1)
+  )
+
+;; add current project to projectile project.
+(defun add-current-project-to-projectile ()
+  (interactive)
+  (write-region "" "" ".projectile")
+  (projectile-add-known-project default-directory)
+  (message (concat "[+] This Project has added to projectile!: " default-directory))
+  )
+
+(defun save-all ()
+  "save-all buffers."
+  (interactive)
+  (save-some-buffers t)
+  (message "[+] saving all buffers..."))
+
+(defun copy-buffer-to-file ()
+  "save current buffer to /.emacs.d/.temporary/ directory."
+  (interactive)
+  (let ((bufname (concat "~/.emacs.d/.temporary/" (concat (format-time-string "%Y%m%d_%T")
+                                         "_"
+                                         (buffer-name)
+                                         ))))
+    (if (file-directory-p "~/.emacs.d/.temporary")
+        (progn
+          (write-region (point-min) (point-max) bufname t)
+          (message (concat "[+] saving a temp file in " bufname)))
+      (progn
+        (make-directory "~/.emacs.d/.temporary")
+        (write-region (point-min) (point-max) bufname t)
+        (message (concat "[+] created folder && saving a temp file in " bufname)))
+      )))
+
+(defun my-multi-term (&optional ratio)
+    "multi-term + split window"
+  (interactive)
+  (setq num 1)
+  (unless ratio (setq ratio 0.75))
+  (loop (< num 10)
+        (let ((terminal_name (concat "*terminal<" (number-to-string num) ">*")))
+          (if (get-buffer terminal_name)
+              (if (eq (count-windows) 1)
+                  (return (progn
+                            (split-window-vertically (truncate (* (window-total-height) ratio)))
+                            (next-multiframe-window)
+                            (switch-to-buffer terminal_name)
+                            ))
+                (return (progn
+                          (next-multiframe-window)
+                          (switch-to-buffer terminal_name)
+                          ))
+                )
+            (if (eq (count-windows) 1)
+                (progn
+                  (split-window-vertically (truncate (* (window-total-height) ratio)))
+                  (next-multiframe-window)
+                  (multi-term)
+                  (switch-to-buffer terminal_name)
+                  (return))
+              (progn
+                (next-multiframe-window)
+                (multi-term)
+                (switch-to-buffer terminal_name)
+                (return))
+              ))
+          )
+        (setq num (1+ num))
+        ))
+
+
+(defun my-revert-buffer()
+  (interactive)
+  (revert-buffer t t t)
+  (message "[+] reverted this buffer...")
+  )
+
+(defun my-kill-this-buffer ()
+  (interactive)
+  (menu-bar-mode 1)
+  (kill-this-buffer)
+  (menu-bar-mode -1)
+  )
+
+(defun create-scratch-buffer nil
+  "create a scratch buffer"
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (emacs-lisp-mode)
+  )
+
+;; toggle Horizontal <--> Vertical view
+(defun window-split-toggle ()
+  "Toggle between horizontal and vertical split with two windows."
+  (interactive)
+  (if (> (length (window-list)) 2)
+      (error "Can't toggle with more than 2 windows!")
+    (let ((func (if (window-full-height-p)
+                    #'split-window-vertically
+                  #'split-window-horizontally)))
+      (delete-other-windows)
+      (funcall func)
+      (save-selected-window
+        (other-window 1)
+        (switch-to-buffer (other-buffer))))))
+
+;; refer: https://stackoverflow.com/a/20302565/7402755
+(defun dired-new-file ()
+(interactive)
+  (let* (
+      (n 0)
+      lawlist-filename
+      (dired-buffer-name (buffer-name)))
+    (catch 'done
+      (while t
+        (setq lawlist-filename (concat ".dir-locals"
+          (if (= n 0) "" (int-to-string n))
+            ".el"))
+        (setq n (1+ n))
+        (if (not (file-exists-p lawlist-filename))
+          (throw 'done nil)) ))
+    (message "[b]uffer + file (maybe) | [f]ile + buffer (maybe)")
+    (let ((file-or-buffer (read-char-exclusive)))
+      (cond
+        ((eq file-or-buffer ?b)
+          (switch-to-buffer (get-buffer-create lawlist-filename))
+          (text-mode)
+          (or (y-or-n-p (format "Save Buffer `%s'? "lawlist-filename))
+            (error "Done."))
+          (write-file lawlist-filename)
+          (with-current-buffer dired-buffer-name
+            (revert-buffer)))
+        ((eq file-or-buffer ?f)
+          (start-process "touch-file" nil "touch" lawlist-filename)
+          (revert-buffer))
+        (t (message "You have exited the function.")) ))))
+
+;; helm buffer sorting
+(defun sort-dired-buffers (buffers)
+  "Sort BUFFERS by moving all Dired buffers to the end."
+  (let (dired-buffers other-buffers)
+    (dolist (buf buffers)
+      (if (with-current-buffer buf
+            (eq major-mode 'dired-mode))
+          (push buf dired-buffers)
+        (push buf other-buffers)))
+    (nreverse (append dired-buffers other-buffers))))
+
+(defun helm-buffers-sort-dired-buffers (orig-fun &rest args)
+  (sort-dired-buffers (apply orig-fun args)))
+
+(advice-add 'helm-buffers-sort-transformer :around #'helm-buffers-sort-dired-buffers)
+
+;; for compilation mode
+(defun my-compilation-mode-hook ()
+  ;; helm find, for files
+  (define-key compilation-mode-map (kbd "<SPC> f") 'helm-for-files)
+  (define-key compilation-mode-map (kbd "<SPC> w") 'helm-find-files)
+     )
+(add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
+
+(defun newline-without-break-of-line ()
+  "1. move to end of the line, 2. insert newline with index."
+  (interactive)
+  (let ((oldpos (point)))
+    (end-of-line)
+    (newline-and-indent)))
+
+(defun newline-without-break-of-line-upper ()
+  "1. move to end of the line, 2. insert newline with index above."
+  (interactive)
+  (let ((oldpos (point)))
+    (beginning-of-line)
+    (open-line 1)))
+
+;; https://stackoverflow.com/questions/24705984/increase-decrease-font-size-in-an-emacs-frame-not-just-buffer
+(defun zoom-frame (&optional n frame amt)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (or frame (selected-frame)))
+        (height (+ (face-attribute 'default :height frame) (* n (or amt 10)))))
+    (set-face-attribute 'default frame :height height)
+    (message "Set frame's default text height to %d." height)))
+
+(defun zoom-frame-out (&optional n frame amt)
+  "Call `zoom-frame' with -N."
+  (interactive "p")
+  (zoom-frame (- n) frame amt))
+
+(defun set-frame-custom (&optional num)
+  "Increase the default size of text by AMT inside FRAME N times.
+  N can be given as a prefix arg.
+  AMT will default to 10.
+  FRAME will default the selected frame."
+  (interactive "p")
+  (let ((frame (selected-frame)))
+    (set-face-attribute 'default frame :height (string-to-number num))
+    (message (concat "Set frame's default text height to " num))))
+
+(defun set-custom-fontsize (size)
+  "Set custom font size."
+  (interactive "sEnter the font size: ")
+  (set-frame-custom size)
+  )
+
+
+(defun xah-toggle-letter-case ()
+  "Toggle the letter case of current word or text selection.
+Always cycle in this order: Init Caps, ALL CAPS, all lower.
+URL `http://ergoemacs.org/emacs/modernization_upcase-word.html'
+Version 2017-04-19"
+  (interactive)
+  (let (
+        (deactivate-mark nil)
+        $p1 $p2)
+    (if (use-region-p)
+        (setq $p1 (region-beginning)
+              $p2 (region-end))
+      (save-excursion
+        (skip-chars-backward "[:alnum:]-_")
+        (setq $p1 (point))
+        (skip-chars-forward "[:alnum:]-_")
+        (setq $p2 (point))))
+    (when (not (eq last-command this-command))
+      (put this-command 'state 0))
+    (cond
+     ((equal 0 (get this-command 'state))
+      (upcase-initials-region $p1 $p2)
+      (put this-command 'state 1))
+     ((equal 1  (get this-command 'state))
+      (upcase-region $p1 $p2)
+      (put this-command 'state 2))
+     ((equal 2 (get this-command 'state))
+      (downcase-region $p1 $p2)
+      (put this-command 'state 0)))))
+
+(defun match-paren (arg)
+  "Go to the matching paren if on a paren; otherwise insert %."
+  (interactive "p")
+  (cond ((looking-at "\\s(")
+         (forward-list 1) (backward-char 1))
+        ((looking-at "\\s)")
+         (forward-char 1) (backward-list 1))
+        (t nil)))
+
+(defun increment-number-at-point ()
+  "Increment number at point."
+  (interactive)
+  (skip-chars-backward "0-9")
+  (or (search-forward-regexp "[0-9]+"))  
+  (replace-match (number-to-string
+                  (1+ (string-to-number
+                       (match-string 0)))))
+  )
+
+(defun select-current-line-and-comment ()
+  "Select the current line"
+  (interactive)
+  (end-of-line) ; move to end of line
+  (set-mark (line-beginning-position))
+  (comment-dwim 1))
+
+(defun kill-whitespace ()
+  "Kill the whitespace between two non-whitespace characters"
+  (interactive "*")
+  (save-excursion
+    (save-restriction
+      (save-match-data
+        (progn
+          (re-search-forward "[ \t\r\n]+" nil t)
+          (replace-match "" nil nil))))))
+
+(eval-when-compile (require 'cl))
+(defun kill-grep-window ()
+  (destructuring-bind (window major-mode)
+      (with-selected-window (next-window (selected-window))
+        (list (selected-window) major-mode))
+    (when (eq major-mode 'grep-mode)
+      (delete-window window))))
+
+;;FUNCTION END===========================================================================
+(require 'package)
+
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if nil "http" "https")))
+
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  (add-to-list 'package-archives (cons "marmalade" (concat proto "://marmalade-repo.org/packages/")) t)
+  (add-to-list 'package-archives (cons "gnu" (concat proto "://mirros.163.com/elpa/gnu")) t)
+  )
+
+(package-initialize) ;; You might already have this line
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package)
+  )
+
+;;;; USEPACKAGE START======================================================
+(use-package f :ensure t)
+(use-package s :ensure t)
+
+;;; helm-projectile
+(use-package helm-projectile :ensure t :pin melpa
+  :config (progn
+           (helm-projectile-on)
+
+           (global-set-key (kbd "M-a") 'helm-projectile-grep)
+           ))
+
+;;; helm
+(use-package helm :ensure t :pin melpa
+  :config (progn
+
+            (require 'helm-config)
+            (require 'helm-grep)
+            
+            ;; rebihnd tab to do persistent action
+            (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
+            ;; rebihnd tab to do persistent action
+            (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)            
+
+            ;; helm navigation keybinding.
+            (define-key helm-map (kbd "M-j") 'helm-next-line)
+            (define-key helm-map (kbd "M-k") 'helm-previous-line)
+            (define-key helm-map (kbd "<right>") 'helm-next-source)
+            (define-key helm-map (kbd "<left>") 'helm-previous-source)
+
+            (when (executable-find "curl")
+              (setq helm-google-suggest-use-curl-p t))
+
+            (setq
+             helm-scroll-amount 4              ;; scroll 4 lines other window using M-<next>/M-<prior>
+             helm-ff-search-library-in-sexp t  ;; search for library in `require' and `declare-function' sexp.
+             helm-split-window-in-side-p t     ;; open helm buffer inside current window, not occupy whole other window
+             helm-candidate-number-limit 500   ;; limit the number of displayed canidates
+             
+             ;; helm-ff-file-name-history-use-recentf t
+             
+             helm-move-to-line-cycle-in-source t    ;; move to end or beginning of source when reaching top or bottom of source.
+             helm-buffers-fuzzy-matching t          ;; fuzzy matching buffer names when non-nil
+             )
+
+            (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
+
+            ;; Save current position to mark ring
+            (add-hook 'helm-goto-line-before-hook 'helm-save-current-pos-to-mark-ring)
+
+            (helm-mode t)
+
+            (require 'helm-bookmark)
+
+            ;; helm-for-files navigation.
+            (define-key helm-buffer-map (kbd "M-h") 'helm-previous-source)
+            (define-key helm-buffer-map (kbd "M-k") 'helm-previous-line)
+            (define-key helm-buffer-map (kbd "M-j") 'helm-next-line)
+            (define-key helm-buffer-map (kbd "M-l") 'helm-next-source)
+
+            (define-key helm-generic-files-map (kbd "M-h") 'helm-previous-source)
+            (define-key helm-generic-files-map (kbd "M-k") 'helm-previous-line)
+            (define-key helm-generic-files-map (kbd "M-j") 'helm-next-line)
+            (define-key helm-generic-files-map (kbd "M-l") 'helm-next-source)
+
+            (define-key helm-bookmark-map (kbd "M-h") 'helm-previous-source)
+            (define-key helm-bookmark-map (kbd "M-k") 'helm-previous-line)
+            (define-key helm-bookmark-map (kbd "M-j") 'helm-next-line)
+            (define-key helm-bookmark-map (kbd "M-l") 'helm-next-source)
+
+            (define-key helm-read-file-map (kbd "M-h") 'helm-previous-source)
+            (define-key helm-read-file-map (kbd "M-k") 'helm-previous-line)
+            (define-key helm-read-file-map (kbd "M-j") 'helm-next-line)
+            (define-key helm-read-file-map (kbd "M-l") 'helm-next-source)
+
+            (global-set-key (kbd "C-c h") 'helm-command-prefix)
+            (global-set-key (kbd "M-x") 'helm-M-x)
+            ))
+
+;;; undo-tree
+(use-package undo-tree :diminish :ensure t :init (global-undo-tree-mode)
+  :config (progn
+            (define-key undo-tree-map (kbd "C-/") nil)
+            
+            (global-set-key (kbd "C-z") 'undo-tree-undo)
+            ))
+
+;;; diminish (cleaner modeline)
+(use-package diminish :ensure t :pin melpa 
+  :config
+  (progn
+    (add-hook 'auto-revert-mode-hook (lambda() (diminish 'auto-revert-mode)))
+    (add-hook 'ivy-mode-hook (lambda () (diminish 'ivy-mode)))
+
+    (diminish 'hs-minor-mode)
+    (diminish 'counsel-mode)
+    (diminish 'ivy-mode)
+    (diminish 'undo-tree-mode)
+    ))
+
+;;; which-key
+(use-package which-key :ensure t :disabled
+  :diminish which-key-mode
+  :config (progn (which-key-mode)
+                 (which-key-setup-side-window-bottom))
+  )
+
+;;; hs
+(load-library "hideshow")
+;; toggle folding.
+(global-set-key (kbd "M-g") 'hs-toggle-hiding)
+
+;;; highlight-indentation
+(use-package highlight-indentation :ensure t :pin melpa
+  :config
+  (progn
+    ;; set highlight-indentation for python code.
+    (global-set-key (kbd "C-S-l") 'highlight-indentation-mode)
+    )
+  )
+
+;;; neotree
+(use-package neotree :ensure t :pin melpa)
+
+;;; wgrep
+(use-package wgrep :ensure t :pin melpa)
+
+;;; projectile
+(use-package projectile :pin melpa
+  :config (progn
+
+            (projectile-global-mode)
+            (setq projectile-enable-caching t)
+
+            ;; open dired-mode after doing helm-projectile-switch-project.
+            (setq projectile-switch-project-action 'projectile-dired)
+            (setq projectile-completion-system 'helm)
+            (setq projectile-indexing-method 'alien)
+            )
+  )
+
+
+;;; magit
+(use-package magit :ensure t :pin melpa :defer 5
+  :config (progn
+            ;; disable keybindings.
+    (define-key magit-status-mode-map (kbd "C-w") nil)
+    (define-key magit-status-mode-map (kbd "C-c C-o") nil)
+    (define-key magit-status-mode-map (kbd "C-c C-p") nil)
+    (define-key magit-status-mode-map (kbd "M-3") nil)
+    (define-key magit-diff-mode-map (kbd "M-3") nil)
+    (define-key magit-diff-mode-map (kbd "M-4") nil)
+    (define-key magit-process-mode-map (kbd "M-3") nil)
+    (define-key magit-file-mode-map (kbd "C-x g") nil)
+    (define-key magit-status-mode-map (kbd "<SPC>") nil)
+    (define-key magit-diff-mode-map (kbd "<SPC>") nil)
+    (define-key magit-revision-mode-map (kbd "<SPC>") nil)
+    (define-key magit-process-mode-map (kbd "<SPC>") nil)
+
+    (define-key magit-log-mode-map (kbd "j") 'evil-next-line)
+    (define-key magit-log-mode-map (kbd "k") 'evil-previous-line)
+    (define-key magit-log-mode-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-log-mode-map (kbd "C-d") 'evil-scroll-down)
+
+    (define-key magit-status-mode-map (kbd "j") 'evil-next-line)
+    (define-key magit-status-mode-map (kbd "k") 'evil-previous-line)
+    (define-key magit-status-mode-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-status-mode-map (kbd "C-d") 'evil-scroll-down)
+
+    (define-key magit-process-mode-map (kbd "j") 'evil-next-line)
+    (define-key magit-process-mode-map (kbd "k") 'evil-previous-line)
+    (define-key magit-process-mode-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-process-mode-map (kbd "C-d") 'evil-scroll-down)
+
+    (define-key magit-branch-section-map (kbd "k") 'evil-previous-line)
+    (define-key magit-branch-section-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-branch-section-map (kbd "C-d") 'evil-scroll-down)
+
+    (define-key magit-unstaged-section-map (kbd "k") 'evil-previous-line)
+    (define-key magit-unstaged-section-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-unstaged-section-map (kbd "C-d") 'evil-scroll-down)
+
+    (define-key magit-diff-mode-map (kbd "j") 'evil-next-line)
+    (define-key magit-diff-mode-map (kbd "k") 'evil-previous-line)
+    (define-key magit-diff-mode-map (kbd "C-u") 'evil-scroll-up)
+    (define-key magit-diff-mode-map (kbd "C-d") 'evil-scroll-down)
+
+    ;;;; m binding =============================================================
+    (define-key magit-status-mode-map   (kbd "<SPC> m m") 'multi-term)
+    (define-key magit-diff-mode-map     (kbd "<SPC> m m") 'multi-term)
+    (define-key magit-revision-mode-map (kbd "<SPC> m m") 'multi-term)
+    (define-key magit-process-mode-map  (kbd "<SPC> m m") 'multi-term)
+
+    (define-key magit-status-mode-map   (kbd "<SPC> m t") 'my-multi-term)
+    (define-key magit-diff-mode-map     (kbd "<SPC> m t") 'my-multi-term)
+    (define-key magit-revision-mode-map (kbd "<SPC> m t") 'my-multi-term)
+    (define-key magit-process-mode-map  (kbd "<SPC> m t") 'my-multi-term)
+
+    (define-key magit-status-mode-map   (kbd "<SPC> m s") 'shell-command)
+    (define-key magit-diff-mode-map     (kbd "<SPC> m s") 'shell-command)
+    (define-key magit-revision-mode-map (kbd "<SPC> m s") 'shell-command)
+    (define-key magit-process-mode-map  (kbd "<SPC> m s") 'shell-command)
+
+    ;;;; b binding =============================================================
+    ;; bookmark
+    (define-key magit-status-mode-map   (kbd "<SPC> b v") 'bookmark-jump)
+    (define-key magit-diff-mode-map     (kbd "<SPC> b v") 'bookmark-jump)
+    (define-key magit-revision-mode-map (kbd "<SPC> b v") 'bookmark-jump)
+    (define-key magit-process-mode-map  (kbd "<SPC> b v") 'bookmark-jump)
+
+    (define-key magit-status-mode-map   (kbd "<SPC> b b") 'bookmark-set)
+    (define-key magit-diff-mode-map     (kbd "<SPC> b b") 'bookmark-set)
+    (define-key magit-revision-mode-map (kbd "<SPC> b b") 'bookmark-set)
+    (define-key magit-process-mode-map  (kbd "<SPC> b b") 'bookmark-set)
+
+    (define-key magit-status-mode-map   (kbd "<SPC> b d") 'bookmark-delete)
+    (define-key magit-diff-mode-map     (kbd "<SPC> b d") 'bookmark-delete)
+    (define-key magit-revision-mode-map (kbd "<SPC> b d") 'bookmark-delete)
+    (define-key magit-process-mode-map  (kbd "<SPC> b d") 'bookmark-delete)
+
+    ;;;; c binding =============================================================
+    (define-key magit-status-mode-map   (kbd "<SPC> c y") 'flycheck-mode)
+    (define-key magit-diff-mode-map     (kbd "<SPC> c y") 'flycheck-mode)
+    (define-key magit-revision-mode-map (kbd "<SPC> c y") 'flycheck-mode)
+    (define-key magit-process-mode-map  (kbd "<SPC> c y") 'flycheck-mode)
+
+
+    ;;;; z binding =============================================================
+    ;; minimize emacs
+    (define-key magit-process-mode-map     (kbd "<SPC> z m") 'suspend-frame)
+    (define-key magit-log-mode-map         (kbd "<SPC> z m") 'suspend-frame)
+    (define-key magit-diff-mode-map        (kbd "<SPC> z m") 'suspend-frame)
+    (define-key magit-status-mode-map      (kbd "<SPC> z m") 'suspend-frame)
+    (define-key magit-unstaged-section-map (kbd "<SPC> z m") 'suspend-frame)
+    (define-key magit-branch-section-map   (kbd "<SPC> z m") 'suspend-frame)
+
+    ;; split window
+    (define-key magit-status-mode-map   (kbd "<SPC> \\") 'split-window-right)
+    (define-key magit-diff-mode-map     (kbd "<SPC> \\") 'split-window-right)
+    (define-key magit-revision-mode-map (kbd "<SPC> \\") 'split-window-right)
+    (define-key magit-process-mode-map  (kbd "<SPC> \\") 'split-window-right)
+
+    (define-key magit-status-mode-map   (kbd "<SPC> -") 'split-window-vertically)
+    (define-key magit-diff-mode-map     (kbd "<SPC> -") 'split-window-vertically)
+    (define-key magit-revision-mode-map (kbd "<SPC> -") 'split-window-vertically)
+    (define-key magit-process-mode-map  (kbd "<SPC> -") 'split-window-vertically)
+
+
+    ;; helm-find-files
+    (define-key magit-status-mode-map   (kbd "<SPC> w") 'helm-find-files)
+    (define-key magit-diff-mode-map     (kbd "<SPC> w") 'helm-find-files)
+    (define-key magit-revision-mode-map (kbd "<SPC> w") 'helm-find-files)
+    (define-key magit-process-mode-map  (kbd "<SPC> w") 'helm-find-files)
+
+    ;; helm-for-files
+    (define-key magit-status-mode-map   (kbd "<SPC> f") 'helm-for-files)
+    (define-key magit-diff-mode-map     (kbd "<SPC> f") 'helm-for-files)
+    (define-key magit-revision-mode-map (kbd "<SPC> f") 'helm-for-files)
+    (define-key magit-process-mode-map  (kbd "<SPC> f") 'helm-for-files)
+
+
+    ;; projectile switch
+    (define-key magit-process-mode-map     (kbd "<SPC> ,") 'helm-projectile-switch-project)
+    (define-key magit-log-mode-map         (kbd "<SPC> ,") 'helm-projectile-switch-project)
+    (define-key magit-diff-mode-map        (kbd "<SPC> ,") 'helm-projectile-switch-project)
+    (define-key magit-status-mode-map      (kbd "<SPC> ,") 'helm-projectile-switch-project)
+    (define-key magit-unstaged-section-map (kbd "<SPC> ,") 'helm-projectile-switch-project)
+    (define-key magit-branch-section-map   (kbd "<SPC> ,") 'helm-projectile-switch-project)
+
+    ;; dired
+    (define-key magit-process-mode-map     (kbd "<SPC> d") (lambda() (interactive)(dired "./")))
+    (define-key magit-log-mode-map         (kbd "<SPC> d") (lambda() (interactive)(dired "./")))
+    (define-key magit-diff-mode-map        (kbd "<SPC> d") (lambda() (interactive)(dired "./")))
+    (define-key magit-status-mode-map      (kbd "<SPC> d") (lambda() (interactive)(dired "./")))
+    (define-key magit-unstaged-section-map (kbd "<SPC> d") (lambda() (interactive)(dired "./")))
+    (define-key magit-branch-section-map   (kbd "<SPC> d") (lambda() (interactive)(dired "./")))
+
+    ;; avy-goto-mode-0
+    (define-key magit-process-mode-map     (kbd "<SPC> `") 'avy-goto-word-0)
+    (define-key magit-log-mode-map         (kbd "<SPC> `") 'avy-goto-word-0)
+    (define-key magit-diff-mode-map        (kbd "<SPC> `") 'avy-goto-word-0)
+    (define-key magit-status-mode-map      (kbd "<SPC> `") 'avy-goto-word-0)
+    (define-key magit-unstaged-section-map (kbd "<SPC> `") 'avy-goto-word-0)
+    (define-key magit-branch-section-map   (kbd "<SPC> `") 'avy-goto-word-0)
+
+    ;; eyebrowse
+    (define-key magit-process-mode-map (kbd "<SPC> 0") 'eyebrowse-switch-to-window-config-0)
+    (define-key magit-log-mode-map (kbd "<SPC> 0") 'eyebrowse-switch-to-window-config-0)
+    (define-key magit-diff-mode-map (kbd "<SPC> 0") 'eyebrowse-switch-to-window-config-0)
+    (define-key magit-status-mode-map (kbd "<SPC> 0") 'eyebrowse-switch-to-window-config-0)
+    (define-key magit-unstaged-section-map (kbd "<SPC> 0") 'eyebrowse-switch-to-window-config-0)
+    (define-key magit-branch-section-map (kbd "<SPC> 0") 'eyebrowse-switch-to-window-config-0)
+    
+    (define-key magit-process-mode-map (kbd "<SPC> 1") 'eyebrowse-switch-to-window-config-1)
+    (define-key magit-log-mode-map (kbd "<SPC> 1") 'eyebrowse-switch-to-window-config-1)
+    (define-key magit-diff-mode-map (kbd "<SPC> 1") 'eyebrowse-switch-to-window-config-1)
+    (define-key magit-diff-mode-map (kbd "<SPC> 1") 'eyebrowse-switch-to-window-config-1)
+    (define-key magit-unstaged-section-map (kbd "<SPC> 1") 'eyebrowse-switch-to-window-config-1)
+    (define-key magit-branch-section-map (kbd "<SPC> 1") 'eyebrowse-switch-to-window-config-1)
+    
+    (define-key magit-process-mode-map (kbd "<SPC> 2") 'eyebrowse-switch-to-window-config-2)
+    (define-key magit-log-mode-map (kbd "<SPC> 2") 'eyebrowse-switch-to-window-config-2)
+    (define-key magit-diff-mode-map (kbd "<SPC> 2") 'eyebrowse-switch-to-window-config-2)
+    (define-key magit-status-mode-map (kbd "<SPC> 2") 'eyebrowse-switch-to-window-config-2)
+    (define-key magit-unstaged-section-map (kbd "<SPC> 2") 'eyebrowse-switch-to-window-config-2)
+    (define-key magit-branch-section-map (kbd "<SPC> 2") 'eyebrowse-switch-to-window-config-2)
+    
+    (define-key magit-process-mode-map (kbd "<SPC> 3") 'eyebrowse-switch-to-window-config-3)
+    (define-key magit-log-mode-map (kbd "<SPC> 3") 'eyebrowse-switch-to-window-config-3)
+    (define-key magit-diff-mode-map (kbd "<SPC> 3") 'eyebrowse-switch-to-window-config-3)
+    (define-key magit-status-mode-map (kbd "<SPC> 3") 'eyebrowse-switch-to-window-config-3)
+    (define-key magit-unstaged-section-map (kbd "<SPC> 3") 'eyebrowse-switch-to-window-config-3)
+    (define-key magit-branch-section-map (kbd "<SPC> 3") 'eyebrowse-switch-to-window-config-3)
+    
+    ))
+
+;;; git-gutter
+(use-package git-gutter :ensure t :pin melpa
+  :config (progn
+            (global-git-gutter-mode t)
+
+            ;; set custom face.
+            (set-face-foreground 'git-gutter:modified "yellow")
+            (set-face-foreground 'git-gutter:added "green")
+            (set-face-foreground 'git-gutter:deleted "red")
+            ))
+
+;;; flycheck
+(use-package flycheck :ensure t :pin melpa
+  :hook (
+         (c-mode . flycheck-mode)
+         (c++-mode . flycheck-mode)
+         )
+  :config (progn
+            ;; add c++11 grammar checking.
+            (add-hook 'c++-mode-hook
+                      (lambda ()
+                        (setq flycheck-gcc-language-standard "c++11")
+                        (setq flycheck-clang-language-standard "c++11")
+                        ))
+
+            ;; add ros include path.
+            (setq flycheck-clang-include-path (list (expand-file-name "/opt/ros/kinetic/include")))
+
+            ;; disable emacs syntax warning + error checking.
+            (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
+            (setq flycheck-clang-args (list "-extra-arg-before=-xc++"))
+            ))
+
+;;; company
+(use-package company :ensure t :pin melpa
+  :diminish company-mode
+  :config (progn
+            (require 'company)
+
+            ;; Enable company mode globally
+            (add-hook 'after-init-hook 'global-company-mode)
+
+            (setq company-idle-delay 0)
+            )
+  )
+
+;;; eldoc
+(use-package eldoc :ensure t :pin melpa
+  :diminish eldoc-mode
+  :config (global-eldoc-mode -1)
+  )
+
+;;; centaur-tabs
+(use-package centaur-tabs :ensure t :pin melpa 
+  :config (progn
+            (centaur-tabs-mode t)
+            ))
+
+;;; yasnippet
+(use-package yasnippet :ensure t :pin melpa
+  :diminish yas-minor-mode
+  :config (progn
+            ;; make a link ~/.emacs.d/elpa/yasnippet-.../snippets to ~/.emacs.d/snippets to work.
+            (require 'yasnippet)
+            (yas-global-mode t)
+            (setq warning-suppress-types nil)
+            ;; ingore warnings of elisp functions.
+            (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
+            )
+  )
+
+;;; avy
+(use-package avy :ensure t :pin melpa)
+
+;;; iedit
+(use-package iedit :ensure t :pin melpa :diminish iedit
+  :config (progn
+            ;; deselect iedit.
+            (define-key iedit-mode-keymap (kbd "<escape>") 'iedit-toggle-selection)
+            (define-key iedit-mode-occurrence-keymap (kbd "<escape>") 'iedit-toggle-selection)
+
+            (global-set-key (kbd "M-[") 'iedit-mode)
+            ))
+
+
+;;; auto-complete
+(use-package auto-complete :ensure t :pin melpa 
+  :config (progn
+            (require 'auto-complete)
+            (require 'auto-complete-config)
+            (ac-config-default)
+            ))
+
+;;; semantic
+(require 'semantic)
+(semantic-mode t)
+
+
+;; semantic mode freezing probelm fixing code
+;; https://github.com/syl20bnr/spacemacs/issues/7038#issuecomment-254980900
+(eval-after-load 'semantic
+    (add-hook 'semantic-mode-hook
+              (lambda ()
+                (dolist (x (default-value 'completion-at-point-functions))
+                  (when (string-prefix-p "semantic-" (symbol-name x))
+                    (remove-hook 'completion-at-point-functions x))))
+              ))
+
+;;; dtrt-indent
+(use-package dtrt-indent :ensure t :pin melpa
+  :config (progn
+            (dtrt-indent-mode t)
+            (setq dtrt-indent-verbosity 0)
+            ))
+
+;;; ws-butler
+(use-package ws-butler :ensure t :pin melpa
+  :config (progn
+            (add-hook 'c-mode-common-hook 'ws-butler-mode)
+            (add-hook 'text-mode 'ws-butler-mode)
+            (add-hook 'fundamental-mode 'ws-butler-mode)
+           ))
+
+;;; elpy
+(use-package elpy :ensure t :pin melpa
+  :config (progn
+            ;; disable all keybindings.
+            (setq elpy-mode-map nil)
+
+            ;; fine references.
+            (local-set-key (kbd "M-t") 'elpy-rgrep-symbol)
+
+            ;; disable unused elpy-mode.
+            (remove-hook 'elpy-modules 'elpy-module-flymake)
+            (remove-hook 'elpy-modules 'elpy-module-yasnippet)
+            (remove-hook 'elpy-modules 'elpy-module-highlight-indentation)
+            (remove-hook 'elpy-modules 'elpy-module-django)
+            (remove-hook 'elpy-modules 'elpy-module-company)
+            (remove-hook 'elpy-modules 'elpy-module-eldoc)
+            (remove-hook 'elpy-modules 'elpy-module-pyvenv)
+            (remove-hook 'elpy-modules 'elpy-module-sane-defaults)
+            ))
+
+;;; jedi
+;; run "pip install jedi epc pylint virtualenv" to use jedi.
+(use-package jedi :ensure t :pin melpa
+  :config (progn
+            ;; python auto complete
+            (setq jedi:install-server t)
+            (setq jedi:complete-on-dot t)
+
+            ;; python hook
+            (add-hook 'python-mode-hook
+                      (lambda ()
+                        (jedi:setup)
+                        (jedi:ac-setup)
+                        (define-key jedi-mode-map (kbd "C-c /") nil)
+                        (local-set-key (kbd "M-,") 'jedi:goto-definition-pop-marker)
+                        (local-set-key (kbd "M-.") 'jedi:goto-definition)
+
+                        ;; indent shift move.
+                        (local-unset-key (kbd "C-c >"))
+                        (local-unset-key (kbd "C-c <"))
+                        (local-set-key (kbd "C-<") 'python-indent-shift-left)
+                        (local-set-key (kbd "C->") 'python-indent-shift-right)
+                        (setq indent-tabs-mode t)
+                        (setq python-indent-offset 4)
+                        (setq tab-width 4)
+                        (elpy-mode)
+                        ))
+            ))
+
+;;; smartparens
+(use-package smartparens :ensure t :pin melpa
+  :config (progn
+            (require 'smartparens-config)
+            (smartparens-global-mode t)
+            ))
+
+;;; cmake-ide
+(use-package cmake-ide :ensure t :pin melpa
+  :config (progn
+            ;; load cmake-ide compile_commands.json
+            (global-set-key (kbd "M-/") 'cmake-ide-load-db)
+            ;; run cmake-ide cmake
+            (global-set-key (kbd "M-?") 'cmake-ide-run-cmake)
+            ))
+
+;;; cmake-mode
+(use-package cmake-mode :ensure t :pin melpa)
+
+
+;;; duplicate-thing
+(use-package duplicate-thing :ensure t :pin melpa
+  :config (progn
+            (global-set-key (kbd "M-c") 'duplicate-thing)
+            ))
+
+;;; eyebrowse
+(use-package eyebrowse :ensure t :pin melpa
+  :config (progn
+            (eyebrowse-mode t)
+
+            (setq eyebrowse-new-workspace t)
+            (setq eyebrowse-wrap-around t)
+            (setq eyebrowse-new-workspace nil)
+            ))
+
+;;; which-func
+(use-package which-func :ensure t :pin melpa
+  :config (progn
+            (add-to-list 'which-function-mode 'ruby-mode)
+            (add-to-list 'which-function-mode 'emacs-lisp-mode)
+            (add-to-list 'which-function-mode 'cc-mode)
+            (setq which-func-unknown "n/a")
+            (which-function-mode)
+            ;; (setq-default header-line-format
+            ;;               '((which-function-mode ("" which-func-format " "))))
+            ))
+
+;;; highlight-symbol
+(use-package highlight-symbol :ensure t :pin melpa
+  :config (progn
+            (add-hook 'c-mode-hook 'highlight-symbol-mode)
+            (add-hook 'c++-mode-hook 'highlight-symbol-mode)
+            (add-hook 'python-mode-hook 'highlight-symbol-mode)
+            (add-hook 'prog-mode-hook 'highlight-symbol-mode)
+
+            (global-set-key (kbd "M-n") 'highlight-symbol-next)
+            (global-set-key (kbd "M-p") 'highlight-symbol-prev)
+            ))
+
+;;; multi-term
+(use-package multi-term :ensure t :pin melpa
+  :config (progn
+            ;; to display clear line wrapping
+            ;; https://stackoverflow.com/questions/24517172/is-there-a-way-to-make-regions-in-term-modes-respect-line-wrapping
+            (setq term-suppress-hard-newline t)
+
+            ;; if OSX, use zsh. otherwise, use bash.
+            (if (eq system-type 'darwin)
+                (setq multi-term-program "/bin/zsh")
+              (setq multi-term-program "/bin/bash")
+              )
+
+            (define-key term-raw-map (kbd "C-b") nil)
+            (define-key term-raw-map (kbd "M-r") nil)
+            (define-key term-raw-map (kbd "C-q") nil)
+            (define-key term-raw-map (kbd "<S-insert>") nil)
+
+            (define-key term-mode-map (kbd "<SPC> f") 'helm-for-files)
+
+            (define-key term-mode-map (kbd "<SPC> w") 'helm-find-files)
+
+            ;; same as terminal's C-r.
+            (define-key term-raw-map (kbd "C-r") 'term-send-reverse-search-history)
+            (define-key term-mode-map (kbd "C-r") 'term-send-reverse-search-history)
+            ))
+
+
+;;; dired
+(eval-after-load "dired"
+  '(progn
+     (define-key dired-mode-map (kbd "<SPC>") nil)
+
+     ;; dired mode : Move to the parent directory
+     (define-key dired-mode-map "a"
+       (lambda ()
+         (interactive)
+         (find-alternate-file "..")))
+
+     ;; Emacs's adaption of find
+     (define-key dired-mode-map "F" 'find-name-dired);
+
+     ;; Move up and down
+     (define-key dired-mode-map "j" 'dired-next-line)
+     (define-key dired-mode-map "k" 'dired-previous-line);
+
+     ;; Jump to a file with ido
+     (define-key dired-mode-map "i" 'ido-find-file)
+
+     ;; chmod
+     (define-key dired-mode-map "M" 'chmod)
+
+     ;; execute
+     (define-key dired-mode-map "X" 'dired-do-flagged-delete)
+
+     (define-key dired-mode-map (kbd "<tab>") 'dired-display-file)
+
+     ;; evil-search
+     (define-key dired-mode-map (kbd "n") 'evil-search-next)
+     (define-key dired-mode-map (kbd "N") 'evil-search-previous)
+
+     ;; centaur-tabs
+     (define-key dired-mode-map "K" 'centaur-tabs-forward-tab)
+     (define-key dired-mode-map "J" 'centaur-tabs-backward-tab)
+     (define-key dired-mode-map (kbd "C-w") 'centaur-tabs--kill-this-buffer-dont-ask)
+
+     ;; helm-for-files
+     (define-key dired-mode-map (kbd "<SPC> f") 'helm-for-files)
+
+     ;; helm-find-files
+     (define-key dired-mode-map (kbd "<SPC> w") 'helm-find-files)
+
+     ;; create .dir-locals.el
+     (define-key dired-mode-map (kbd "<SPC> .") 'dired-new-file)
+
+     ))
+
+;;; mic-parent
+(use-package mic-paren :ensure t :pin melpa
+  :config (progn
+            (paren-activate)     ; activating
+            ;; notify line number for offscreen parenthesis.
+            (setq paren-message-show-linenumber "absolute")
+            ))
+
+;;; ecb
+(use-package ecb :ensure t :pin melpa
+  :config (progn
+            (require 'ecb)
+
+            ;; disable keybinding F3,F4 of ECB tree view.
+            (add-hook 'ecb-common-tree-buffer-after-create-hook
+                      (lambda ()
+                        (local-unset-key [f3])
+                        (local-unset-key [f4])
+                        ))
+            (add-hook 'ecb-directories-buffer-after-create-hook
+                      (lambda ()
+                        (local-unset-key [f3])
+                        (local-unset-key [f4])
+                        ))
+            ))
+
+;;; google-c-style
+(use-package google-c-style :ensure t :pin melpa
+  :config (progn
+            (add-hook 'c-mode-common-hook 'google-set-c-style)
+            (add-hook 'c-mode-common-hook 'google-make-newline-indent)
+            (add-hook 'c++-mode-common-hook 'google-set-c-style)
+            (add-hook 'c++-mode-common-hook 'google-make-newline-indent)
+            ))
+
+;;; gdb
+(eval-after-load "gud"
+  '(progn
+     (define-key gud-minor-mode-map (kbd "C-M-w") 'gud-watch)
+
+     (global-set-key (kbd "<f10>") 'gud-next)
+     (global-set-key (kbd "S-<f10>") 'gud-step)
+     
+     (setq gdb-show-changed-values t)
+     (setq gdb-use-colon-colon-notation t)
+     (setq gdb-use-separate-io-buffer nil)
+     (setq gdb-display-io-nopopup nil)
+     (setq gdb-delete-out-of-scope t)
+     (setq gdb-speedbar-auto-raise t)
+
+     ;; gdb multi windows
+     (setq gdb-many-windows t)
+     (setq gdb-show-main t)
+
+     ;; gdb commands
+     (setq gud-gdb-command-name "gdb -q -i=mi --args")
+     ))
+
+;; compile command.
+(setq compile-command "g++ -m64 -std=c++11 -Wall -O2 -g -o ")
+
+;;; grep
+;;(setq grep-find-template
+;;"find . <X> -type f <F> -exec grep <C> -nH -ie <R> \\{\\} +")
+;;"find . -type f -exec grep --exclude=*{ph.h, rviz, rst} --include={cpp,c,h,py} -nH -ie   {} +"
+(grep-apply-setting 'grep-find-command '("find . -type f -exec grep -nH -ie   {} +" . 35))
+
+(eval-after-load "grep"
+  '(progn
+     ;; disable keybindings.
+     (define-key grep-mode-map (kbd "<SPC>") nil)
+     (define-key grep-mode-map (kbd "n") nil)
+     (define-key grep-mode-map (kbd "N") nil)
+
+     (define-key grep-mode-map (kbd "<SPC> f") 'helm-for-files)
+     (define-key grep-mode-map (kbd "<SPC> w") 'helm-find-files)
+     ))
+
+(add-hook 'next-error-hook 'kill-grep-window)
+
+;;; buff-menu
+(eval-after-load "buff-menu"
+  '(progn
+     (define-key Buffer-menu-mode-map (kbd "<SPC>") nil)
+
+     ;; helm-for-files
+     (define-key Buffer-menu-mode-map (kbd "<SPC> f") 'helm-for-files)
+     ;; helm-find-files
+     (define-key Buffer-menu-mode-map (kbd "<SPC> w") 'helm-find-files)
+     ))
+
+
+;;; diff-mode
+(eval-after-load "diff-mode"
+  '(progn
+    (define-key diff-mode-map (kbd "M-3") nil)
+    )
+  )
+
+
+;;; make-mode
+(eval-after-load "make-mode"
+  '(progn
+     (define-key makefile-gmake-mode-map (kbd "M-n") 'highlight-symbol-next)
+     (define-key makefile-gmake-mode-map (kbd "M-p") 'highlight-symbol-prev)
+     )
+  )
+
+;;; smerge
+(eval-after-load "smerge-mode"
+  (lambda()
+    (define-key smerge-mode-map (kbd "C-c e") 'smerge-ediff)
+
+    (define-key smerge-mode-map (kbd "C-c n") 'smerge-next)
+    (define-key smerge-mode-map (kbd "C-c p") 'smerge-prev)
+
+    ;; choose conflict version.
+    (define-key smerge-mode-map (kbd "C-c a") 'smerge-keep-mine)
+    (define-key smerge-mode-map (kbd "C-c b") 'smerge-keep-other)
+    ))
+
+;;; customize mode
+(add-hook 'custom-mode-hook
+          (lambda ()
+            (define-key custom-mode-map (kbd "<SPC>") nil)
+
+            (define-key custom-mode-map (kbd "j") 'evil-next-line)
+            (define-key custom-mode-map (kbd "k") 'evil-previous-line)
+            (define-key custom-mode-map (kbd "l") 'evil-forward-char)
+            (define-key custom-mode-map (kbd "h") 'evil-backward-char)
+            (define-key custom-mode-map (kbd "g g") 'evil-goto-first-line)
+            (define-key custom-mode-map (kbd "G") 'evil-goto-line)
+            (define-key custom-mode-map (kbd "C-u") 'evil-scroll-up)
+            (define-key custom-mode-map (kbd "C-d") 'evil-scroll-down)
+
+            ;; b binding =============================================================
+            ;; bookmark
+            (define-key custom-mode-map (kbd "<SPC> b v") 'bookmark-jump)
+            (define-key custom-mode-map (kbd "<SPC> b b") 'bookmark-set)
+            (define-key custom-mode-map (kbd "<SPC> b d") 'bookmark-delete)
+
+            ;; o binding =============================================================
+            (define-key custom-mode-map (kbd "<SPC> w") 'helm-find-files)
+            (define-key custom-mode-map (kbd "<SPC> f") 'helm-for-files)
+
+            ;; close current centaur-tab
+            (define-key custom-mode-map (kbd "C-w") 'centaur-tabs--kill-this-buffer-dont-ask)
+            ))
+
+(use-package all-the-icons :ensure t)
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :config (progn
+            (setq doom-modeline-height 1)
+            (setq doom-modeline-bar-width 3)
+            (setq doom-modeline-window-width-limit fill-column)
+            (setq doom-modeline-project-detection 'project)
+
+            (setq doom-modeline-icon t)
+            (setq doom-modeline-checker-simple-format nil)
+            (setq doom-modeline-buffer-modification-icon t)
+
+            (setq doom-modeline-major-mode-icon t)
+            (setq doom-modeline-major-mode-color-icon t)
+            (setq doom-modeline-minor-modes nil)
+            (setq doom-modeline-github nil)
+))
+
+;;; themes
+(use-package doom-themes :ensure t :pin melpa
+  :config (progn
+            (load-theme 'doom-dark+)
+            ))
+
+;;; evil
+(use-package evil :ensure t :pin melpa :demand
+  :config (progn
+            (require 'evil)
+            (evil-mode t)
+
+            (setq evil-cross-lines t)
+
+            ;; disable keybindings ESC MODE
+            (define-key evil-motion-state-map (kbd "C-b") nil)
+            (define-key evil-motion-state-map (kbd "C-w") nil)
+            (define-key evil-motion-state-map (kbd "C-f") nil)
+            (define-key evil-motion-state-map (kbd "C-o") nil)
+            (define-key evil-motion-state-map (kbd "C-z") nil)
+            (define-key evil-motion-state-map (kbd "C-y") nil)
+            (define-key evil-motion-state-map (kbd "C-e") nil)
+            (define-key evil-motion-state-map (kbd "C-m") nil)
+            (define-key evil-motion-state-map (kbd "C-p") nil)
+            (define-key evil-motion-state-map (kbd "C-]") nil)
+            (define-key evil-motion-state-map (kbd "C-6") nil)
+            (define-key evil-motion-state-map (kbd "K") nil)
+            (define-key evil-motion-state-map (kbd "TAB") nil)
+            (define-key evil-motion-state-map (kbd "`") nil)
+            (define-key evil-motion-state-map (kbd "<SPC>") nil)
+            (define-key evil-motion-state-map (kbd "\\") nil)
+
+            ;; disable keybindings INSERT MODE
+            (define-key evil-insert-state-map (kbd "C-b") nil)
+            (define-key evil-insert-state-map (kbd "C-d") nil)
+            (define-key evil-insert-state-map (kbd "C-w") nil)
+            (define-key evil-insert-state-map (kbd "C-f") nil)
+            (define-key evil-insert-state-map (kbd "C-o") nil)
+            (define-key evil-insert-state-map (kbd "C-z") nil)
+            (define-key evil-insert-state-map (kbd "C-t") nil)
+            (define-key evil-insert-state-map (kbd "C-y") nil)
+            (define-key evil-insert-state-map (kbd "C-e") nil)
+            (define-key evil-insert-state-map (kbd "C-a") nil)
+            (define-key evil-insert-state-map (kbd "C-n") nil)
+            (define-key evil-insert-state-map (kbd "C-k") nil)
+            (define-key evil-insert-state-map (kbd "C-p") nil)
+            (define-key evil-insert-state-map (kbd "C-v") nil)
+            (define-key evil-insert-state-map (kbd "C-r") nil)
+
+            ;; disable keybindings NORMAL MODE
+            (define-key evil-normal-state-map (kbd "C-t") nil)
+            (define-key evil-normal-state-map (kbd "C-n") nil)
+            (define-key evil-normal-state-map (kbd "C-p") nil)
+            (define-key evil-normal-state-map (kbd "C-.") nil)
+            (define-key evil-normal-state-map (kbd "z") nil)
+            (define-key evil-normal-state-map (kbd "x") nil)
+            (define-key evil-normal-state-map (kbd "J") nil)
+            (define-key evil-normal-state-map (kbd "M-.") nil)
+            (define-key evil-normal-state-map (kbd "<insert>") nil)
+            (define-key evil-normal-state-map (kbd "\\") nil)
+
+            ;; evvv
+
+    ;;;; m binding =============================================================
+            (define-key evil-normal-state-map (kbd "<SPC> m m") 'multi-term)
+            (define-key evil-motion-state-map (kbd "<SPC> m m") 'multi-term)
+
+            (define-key evil-normal-state-map (kbd "<SPC> m t") 'my-multi-term)
+            (define-key evil-motion-state-map (kbd "<SPC> m t") 'my-multi-term)
+
+            (define-key evil-normal-state-map (kbd "<SPC> m s") 'shell-command)
+            (define-key evil-motion-state-map (kbd "<SPC> m s") 'shell-command)
+
+            ;; run magit-status
+            (define-key evil-normal-state-map (kbd "<SPC> m \\") 'magit-status)
+            (define-key evil-motion-state-map (kbd "<SPC> m \\") 'magit-status)
+
+            ;; magit-ediff-dwim
+            (define-key evil-normal-state-map (kbd "<SPC> m e") 'magit-ediff-dwim)
+            (define-key evil-motion-state-map (kbd "<SPC> m e") 'magit-ediff-dwim)
+
+            ;; magit-diff-dwim
+            (define-key evil-normal-state-map (kbd "<SPC> m d") 'magit-diff-dwim)
+            (define-key evil-motion-state-map (kbd "<SPC> m d") 'magit-diff-dwim)
+
+            ;; show file logs.
+            (define-key evil-normal-state-map (kbd "<SPC> m l") 'magit-log-buffer-file)
+            (define-key evil-motion-state-map (kbd "<SPC> m l") 'magit-log-buffer-file)
+
+            ;; check other branch.
+            (define-key evil-normal-state-map (kbd "<SPC> m f") 'magit-find-file)
+            (define-key evil-motion-state-map (kbd "<SPC> m f") 'magit-find-file)
+
+            ;; git gutter next hunk
+            (define-key evil-normal-state-map (kbd "<SPC> m n") 'git-gutter:next-hunk)
+            (define-key evil-motion-state-map (kbd "<SPC> m n") 'git-gutter:next-hunk)
+
+            ;; git gutter previous hunk
+            (define-key evil-normal-state-map (kbd "<SPC> m p") 'git-gutter:previous-hunk)
+            (define-key evil-motion-state-map (kbd "<SPC> m p") 'git-gutter:previous-hunk)
+
+            ;; gitgutter revert hunk
+            (define-key evil-motion-state-map (kbd "<SPC> m r") 'git-gutter:revert-hunk)
+            (define-key evil-normal-state-map (kbd "<SPC> m r") 'git-gutter:revert-hunk)
+
+    ;;;; c binding =============================================================
+            ;; ecb
+            (define-key evil-motion-state-map (kbd "<SPC> c e") 'ecb-minor-mode)
+            (define-key evil-normal-state-map (kbd "<SPC> c e") 'ecb-minor-mode)
+
+            ;; load .el file.
+            (define-key evil-normal-state-map (kbd "<SPC> c f") 'load-file)
+            (define-key evil-motion-state-map (kbd "<SPC> c f") 'load-file)
+
+            ;; close current buffer.
+            (define-key evil-normal-state-map (kbd "<SPC> c k") 'my-kill-this-buffer)
+            (define-key evil-motion-state-map (kbd "<SPC> c k") 'my-kill-this-buffer)
+
+            ;; show current working directory.
+            (define-key evil-normal-state-map (kbd "<SPC> c p") 'pwd)
+            (define-key evil-motion-state-map (kbd "<SPC> c p") 'pwd)
+
+            ;; customize variables.
+            (define-key evil-normal-state-map (kbd "<SPC> c v") 'customize-variable)
+            (define-key evil-motion-state-map (kbd "<SPC> c v") 'customize-variable)
+
+            ;; save tmp files.
+            (define-key evil-normal-state-map (kbd "<SPC> c '") 'copy-buffer-to-file)
+            (define-key evil-motion-state-map (kbd "<SPC> c '") 'copy-buffer-to-file)
+
+            ;; grep
+            (define-key evil-motion-state-map (kbd "<SPC> c g") 'grep-find)
+            (define-key evil-normal-state-map (kbd "<SPC> c g") 'grep-find)
+
+            ;; close eyebrowse window.
+            (define-key evil-motion-state-map (kbd "<SPC> c \"") 'eyebrowse-close-window-config)
+            (define-key evil-normal-state-map (kbd "<SPC> c \"") 'eyebrowse-close-window-config)
+
+            ;; visualize undo tree.
+            (define-key evil-motion-state-map (kbd "<SPC> c z") 'undo-tree-visualize)
+            (define-key evil-normal-state-map (kbd "<SPC> c z") 'undo-tree-visualize)
+
+            ;; highlight symbol
+            (define-key evil-motion-state-map (kbd "<SPC> c m") 'highlight-symbol)
+            (define-key evil-normal-state-map (kbd "<SPC> c m") 'highlight-symbol)
+
+            (define-key evil-motion-state-map (kbd "<SPC> c n") 'highlight-symbol-remove-all)
+            (define-key evil-normal-state-map (kbd "<SPC> c n") 'highlight-symbol-remove-all)
+
+            ;; toggle tab bar mode.
+            (define-key evil-motion-state-map (kbd "<SPC> c t") 'centaur-tabs-mode)
+            (define-key evil-normal-state-map (kbd "<SPC> c t") 'centaur-tabs-mode)
+            
+            ;; move tabs
+            (define-key evil-motion-state-map (kbd "<SPC> c <left>") 'centaur-tabs-move-current-tab-to-left)
+            (define-key evil-normal-state-map (kbd "<SPC> c <right>") 'centaur-tabs-move-current-tab-to-right)
+            
+            ;; syntax checking
+            (define-key evil-normal-state-map (kbd "<SPC> c y") 'flycheck-mode)
+            (define-key evil-motion-state-map (kbd "<SPC> c y") 'flycheck-mode)
+
+    ;;;; p binding =============================================================
+            ;; add current project to projectile project.
+            (define-key evil-normal-state-map (kbd "<SPC> p p") 'add-current-project-to-projectile)
+            (define-key evil-motion-state-map (kbd "<SPC> p p") 'add-current-project-to-projectile)
+
+            (define-key evil-normal-state-map (kbd "<SPC> p r") 'projectile-remove-known-project)
+            (define-key evil-motion-state-map (kbd "<SPC> p r") 'projectile-remove-known-project)
+
+            (define-key evil-normal-state-map (kbd "<SPC> p a") 'projectile-add-known-project)
+            (define-key evil-motion-state-map (kbd "<SPC> p a") 'projectile-add-known-project)
+
+            ;; find directory.
+            (define-key evil-normal-state-map (kbd "<SPC> p d") 'helm-projectile-find-dir)
+            (define-key evil-motion-state-map (kbd "<SPC> p d") 'helm-projectile-find-dir)
+
+
+    ;;;; z binding =============================================================
+            ;; kill or exit frame
+            (define-key evil-normal-state-map (kbd "<SPC> z c") 'save-buffers-kill-terminal)
+            (define-key evil-motion-state-map (kbd "<SPC> z c") 'save-buffers-kill-terminal)
+
+            (define-key evil-normal-state-map (kbd "<SPC> z v") 'kill-emacs)
+            (define-key evil-motion-state-map (kbd "<SPC> z v") 'kill-emacs)
+
+            (define-key evil-normal-state-map (kbd "<SPC> z f") 'toggle-frame-fullscreen)
+            (define-key evil-motion-state-map (kbd "<SPC> z f") 'toggle-frame-fullscreen)
+
+            ;; minimize emacs
+            (define-key evil-normal-state-map (kbd "<SPC> z m") 'suspend-frame)
+            (define-key evil-motion-state-map (kbd "<SPC> z m") 'suspend-frame)
+
+    ;;;; x binding =============================================================
+            (define-key evil-normal-state-map (kbd "<SPC> x b") 'my-revert-buffer)
+            (define-key evil-motion-state-map (kbd "<SPC> x b") 'my-revert-buffer)
+
+            ;; show all codes.
+            (define-key evil-normal-state-map (kbd "<SPC> x s") 'hs-show-all)
+            (define-key evil-motion-state-map (kbd "<SPC> x s") 'hs-show-all)
+
+            ;; hide and show codes.
+            (define-key evil-normal-state-map (kbd "<SPC> x l") 'hs-hide-level)
+            (define-key evil-motion-state-map (kbd "<SPC> x l") 'hs-hide-level)
+
+            ;; toggle git-gutter mode
+            (define-key evil-normal-state-map (kbd "<SPC> x g") 'git-gutter-mode)
+            (define-key evil-motion-state-map (kbd "<SPC> x g") 'git-gutter-mode)
+
+    ;;;; b binding =============================================================
+            ;; bookmark
+            (define-key evil-motion-state-map (kbd "<SPC> b v") 'bookmark-jump)
+            (define-key evil-normal-state-map (kbd "<SPC> b v") 'bookmark-jump)
+            
+            (define-key evil-motion-state-map (kbd "<SPC> b b") 'bookmark-set)
+            (define-key evil-normal-state-map (kbd "<SPC> b b") 'bookmark-set)
+            
+            (define-key evil-motion-state-map (kbd "<SPC> b d") 'bookmark-delete)
+            (define-key evil-normal-state-map (kbd "<SPC> b d") 'bookmark-delete)
+
+
+    ;;;; g binding =============================================================
+            (define-key evil-motion-state-map (kbd "<SPC> g d") 'gdb)
+            (define-key evil-normal-state-map (kbd "<SPC> g d") 'gdb)
+
+            ;; run gud.
+            (define-key evil-motion-state-map (kbd "<SPC> g s") 'gud-run)
+            (define-key evil-normal-state-map (kbd "<SPC> g s") 'gud-run)
+
+            ;; set breakpoint.
+            (define-key evil-motion-state-map (kbd "<SPC> g b") 'gud-break)
+            (define-key evil-normal-state-map (kbd "<SPC> g b") 'gud-break)
+
+            (define-key evil-motion-state-map (kbd "<SPC> g f") 'gud-finish)
+            (define-key evil-normal-state-map (kbd "<SPC> g f") 'gud-finish)
+
+            (define-key evil-motion-state-map (kbd "<SPC> g h") '(lambda () (interactive)
+                                                                   (call-interactively 'gud-tbreak)
+                                                                   (call-interactively 'gud-cont)))
+            (define-key evil-normal-state-map (kbd "<SPC> g h") '(lambda () (interactive)
+                                                                   (call-interactively 'gud-tbreak)
+                                                                   (call-interactively 'gud-cont)))
+            ;; toggle gdb multiwindow 
+            (define-key evil-motion-state-map (kbd "<SPC> g w") 'gdb-many-windows)
+            (define-key evil-normal-state-map (kbd "<SPC> g w") 'gdb-many-windows)
+
+            ;; change gdb layout.
+            (define-key evil-motion-state-map (kbd "<SPC> g n") 'my-gdb-settings-toggle)
+            (define-key evil-normal-state-map (kbd "<SPC> g n") 'my-gdb-settings-toggle)
+
+    ;;;; n binding =============================================================
+            ;; refresh neotree
+            (define-key evil-motion-state-map (kbd "<SPC> n r") 'neotree-refresh)
+            (define-key evil-normal-state-map (kbd "<SPC> n r") 'neotree-refresh)
+
+            ;; toggle neotree (nerdtree in vim)
+            (define-key evil-motion-state-map (kbd "<SPC> n n") 'neotree-toggle)
+            (define-key evil-normal-state-map (kbd "<SPC> n n") 'neotree-toggle)
+
+            ;; go to upper directory
+            (define-key evil-motion-state-map (kbd "<SPC> n a") 'neotree-go-to-upper-directory)
+            (define-key evil-normal-state-map (kbd "<SPC> n a") 'neotree-go-to-upper-directory)
+            
+            ;; stretch neotree
+            (define-key evil-motion-state-map (kbd "<SPC> n t") 'neotree-stretch-toggle)
+            (define-key evil-normal-state-map (kbd "<SPC> n t") 'neotree-stretch-toggle)
+
+    ;;;; END binding =============================================================
+            ;; semantic codes navigation.
+            (define-key evil-normal-state-map (kbd "<SPC> a") 'helm-semantic)
+            (define-key evil-motion-state-map (kbd "<SPC> a") 'helm-semantic)
+
+            ;; move window
+            (define-key evil-normal-state-map (kbd "<SPC> j") 'next-multiframe-window)
+            (define-key evil-motion-state-map (kbd "<SPC> j") 'next-multiframe-window)
+            (define-key evil-normal-state-map (kbd "<SPC> k") 'previous-multiframe-window)
+            (define-key evil-motion-state-map (kbd "<SPC> k") 'previous-multiframe-window)
+
+            ;; create *scratch* buffer and move to it.
+            (define-key evil-normal-state-map (kbd "<SPC> s") 'create-scratch-buffer)
+            (define-key evil-motion-state-map (kbd "<SPC> s") 'create-scratch-buffer)
+
+            ;; toggle horizontal <--> vertical
+            (define-key evil-normal-state-map (kbd "<SPC> ]") 'window-split-toggle)
+            (define-key evil-motion-state-map (kbd "<SPC> ]") 'window-split-toggle)
+
+            ;; helm-for-files
+            (define-key evil-motion-state-map (kbd "<SPC> f") 'helm-for-files)
+            (define-key evil-normal-state-map (kbd "<SPC> f") 'helm-for-files)
+
+            ;; helm-find-files
+            (define-key evil-motion-state-map (kbd "<SPC> w") 'helm-find-files)
+            (define-key evil-normal-state-map (kbd "<SPC> w") 'helm-find-files)
+
+            ;; split window
+            (define-key evil-motion-state-map (kbd "<SPC> \\") 'split-window-right)
+            (define-key evil-normal-state-map (kbd "<SPC> \\") 'split-window-right)
+            (define-key evil-motion-state-map (kbd "<SPC> -") 'split-window-vertically)
+            (define-key evil-normal-state-map (kbd "<SPC> -") 'split-window-vertically)
+
+            ;; projectile switch projects
+            (define-key evil-motion-state-map (kbd "<SPC> ,") 'helm-projectile-switch-project)
+            (define-key evil-normal-state-map (kbd "<SPC> ,") 'helm-projectile-switch-project)
+
+            ;; eyebrowse
+            (define-key evil-motion-state-map (kbd "<SPC> 0") 'eyebrowse-switch-to-window-config-0)
+            (define-key evil-normal-state-map (kbd "<SPC> 0") 'eyebrowse-switch-to-window-config-0)
+            (define-key evil-motion-state-map (kbd "<SPC> 1") 'eyebrowse-switch-to-window-config-1)
+            (define-key evil-normal-state-map (kbd "<SPC> 1") 'eyebrowse-switch-to-window-config-1)
+            (define-key evil-motion-state-map (kbd "<SPC> 2") 'eyebrowse-switch-to-window-config-2)
+            (define-key evil-normal-state-map (kbd "<SPC> 2") 'eyebrowse-switch-to-window-config-2)
+            (define-key evil-motion-state-map (kbd "<SPC> 3") 'eyebrowse-switch-to-window-config-3)
+            (define-key evil-normal-state-map (kbd "<SPC> 3") 'eyebrowse-switch-to-window-config-3)
+            
+            ;; tab bar navigation
+            (define-key evil-motion-state-map (kbd "C-<tab>") 'centaur-tabs-forward-tab)
+            (define-key evil-normal-state-map (kbd "C-<tab>") 'centaur-tabs-forward-tab)
+            (define-key evil-motion-state-map (kbd "K") 'centaur-tabs-forward-tab)
+            (define-key evil-normal-state-map (kbd "K") 'centaur-tabs-forward-tab)
+            (define-key evil-motion-state-map (kbd "J") 'centaur-tabs-backward-tab)
+            (define-key evil-normal-state-map (kbd "J") 'centaur-tabs-backward-tab)
+            (define-key evil-motion-state-map (kbd "C-w") 'centaur-tabs--kill-this-buffer-dont-ask)
+            (define-key evil-normal-state-map (kbd "C-w") 'centaur-tabs--kill-this-buffer-dont-ask)
+
+            ;; forward, backward
+            (define-key evil-motion-state-map (kbd ",") 'forward-paragraph)
+            (define-key evil-normal-state-map (kbd ",") 'forward-paragraph)
+            (define-key evil-motion-state-map (kbd ".") 'backward-paragraph)
+            (define-key evil-normal-state-map (kbd ".") 'backward-paragraph)
+
+            (define-key evil-visual-state-map (kbd "a") 'evil-exit-visual-state)
+
+            ;; evil visual block
+            (define-key evil-motion-state-map (kbd "C-v") 'evil-visual-block)
+
+            ;; navigate same words.
+            (define-key evil-motion-state-map (kbd "[") 'highlight-symbol-next)
+            (define-key evil-motion-state-map (kbd "]") 'highlight-symbol-prev)
+
+            ;; code navigation.
+            (define-key evil-motion-state-map (kbd "<SPC> `") 'avy-goto-word-0)
+
+            ;; redo
+            (define-key evil-normal-state-map (kbd "U") 'undo-tree-redo)
+            (define-key evil-motion-state-map (kbd "U") 'undo-tree-redo)
+
+            ;; dired 
+            (define-key evil-motion-state-map (kbd "<SPC> d") (lambda() (interactive)(dired "./")))
+
+            ;; page up
+            (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up)
+            (define-key evil-motion-state-map (kbd "C-d") 'evil-scroll-down)
+
+            ;; go to beginning of line.
+            (define-key evil-insert-state-map (kbd "M-e") 'move-beginning-of-line)
+
+            ))
+
+;;; evil-surround
+(use-package evil-surround :ensure t :pin melpa)
+
+;;; prog-mode-hook
+(add-hook 'prog-mode-hook '(lambda()
+                             (hs-minor-mode)
+                             ;; wrap lines.
+                             (setq truncate-lines nil)
+                             ))
+
+;;; c mode
+(load "cc-mode")
+(add-hook 'c-mode-hook
+          '(lambda ()
+             (define-key c-mode-map (kbd "M-j") nil)
+             (define-key c-mode-map (kbd "C-c C-c") nil)
+
+             (define-key c-mode-map (kbd "C-e") 'move-end-of-line)
+             (define-key c-mode-map (kbd "M-e") 'move-beginning-of-line)
+             ;; auto reindent when newline.
+             (define-key c-mode-map "\r" 'reindent-then-newline-and-indent)
+
+             (c-set-style "google")
+
+             ;; find gdb's exe file in cmake project.
+             (define-key c-mode-base-map (kbd "C-c q") (function cmake-ide-helm-run-gdb))
+             )
+          )
+
+;;; c++ mode
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (define-key c++-mode-map (kbd "M-j") nil)
+             (define-key c++-mode-map (kbd "C-c C-c") nil)
+
+             (define-key c++-mode-map (kbd "C-e") 'move-end-of-line)
+             (define-key c++-mode-map (kbd "M-e") 'move-beginning-of-line)
+             (define-key c++-mode-map (kbd "C-c C-o") 'pomodoro-start-edward)
+             (define-key c++-mode-map (kbd "C-c C-p") 'pomodoro-stop)
+
+             (define-key c++-mode-map (kbd "M-a") 'helm-projectile-grep)
+
+             (define-key c++-mode-map (kbd "M-q") 'delete-window)
+
+             (define-key c++-mode-map (kbd "C-=") 'zoom-frame)
+             (define-key c++-mode-map (kbd "C--") 'zoom-frame-out)
+
+             (define-key c++-mode-map (kbd "M-f") 'forward-paragraph)
+             (define-key c++-mode-map (kbd "M-r") 'backward-paragraph)
+
+             (define-key c++-mode-map (kbd "M-a") 'helm-projectile-grep)
+             (define-key c++-mode-map (kbd "M-w") 'kill-whitespace)
+
+             ;; auto reindent when newline.
+             (define-key c++-mode-map "\r" 'reindent-then-newline-and-indent)
+
+             (c-set-style "google")
+             )
+          )
+
+;;; python mode
+(add-hook 'python-mode-hook (lambda ()
+                              (define-key python-mode-map (kbd "C-c C-p") 'pomodoro-stop)
+                              (local-set-key (kbd "C-c C-c") (lambda ()
+                                                               (interactive)
+                                                               (enlarge-window-horizontally 2)
+                                                               (enlarge-window 2)
+                                                               ))
+                              ))
+
+
+(use-package hide-comnt :ensure t :pin melpa :disabled
+  :config (progn
+			(hide/show-comments)
+
+            (global-set-key (kbd "M-g") 'hs-toggle-hiding)
+            (global-set-key (kbd "C-M-g") 'hide/show-comments-toggle)
+            ))
+
+
+(use-package lsp-mode
+  :hook (
+         (c-mode . lsp)
+         (c++-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration)
+         )
+  :commands lsp
+  :config (progn
+            (setq lsp-prefer-flymake nil)
+            
+            ;; C++
+            ;; $ sudo apt install clangd-9
+            (if (eq system-type 'darwin)
+                (progn
+                  ;; Mac
+                  (setq lsp-clangd-executable "clangd")
+                  (setq lsp-clients-clangd-executable "clangd")
+                  )
+              (progn
+                ;; Linux
+                (setq lsp-clangd-executable "clangd-9")
+                (setq lsp-clients-clangd-executable "clangd-9")
+                (setq lsp-clients-clangd-args (list "--query-driver=/usr/bin/clang*9*"))
+                )
+              )
+                  
+            ;; Python
+            ;; $ pip install python-language-server --user
+            ;; $ pyls --version
+            (lsp-register-custom-settings
+             '(("pyls.plugins.pyls_mypy.enabled" t t)
+               ("pyls.plugins.pyls_mypy.live_mode" nil t)
+               ("pyls.plugins.pyls_black.enabled" t t)
+               ("pyls.plugins.pyls_isort.enabled" t t)))
+            
+            ;; disable timer error
+            (setq lsp-enable-links nil)
+            
+            (setq read-process-output-max (* 1024 1024)
+                  treemacs-space-between-root-nodes nil
+                  company-minimum-prefix-length 1
+                  lsp-idle-delay 0.1 ;; clangd is fast
+                  ;; be more ide-ish
+                  lsp-headerline-breadcrumb-enable t)
+
+            (setq lsp-headerline-breadcrumb-enable nil)
+            ))
+
+(use-package lsp-ui :ensure t :disabled
+  :config (progn
+            (setq lsp-ui-flycheck-live-reporting nil)
+            ))
+
+(use-package company-lsp :ensure t
+  :commands company-lsp
+  :config (push 'company-lsp company-backends))
+(use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol)
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; USEPACKAGE END=============================================================
+;; global unset key
+(global-unset-key (kbd "M-3"))
+(global-unset-key (kbd "C-u"))
+(global-unset-key (kbd "C-t"))
+(global-unset-key (kbd "C-j"))
+(global-unset-key (kbd "M-v"))
+(global-unset-key (kbd "S-SPC"))
+(global-unset-key (kbd "C-S-SPC"))
+(global-unset-key (kbd "C-x c"))
+(global-unset-key (kbd "C-x C-z"))
+(global-unset-key (kbd "C-/"))
+(global-unset-key (kbd "C-w"))
+(global-unset-key (kbd "C-;"))
+
+;; save-all buffers
+(global-set-key (kbd "C-S-s") 'save-all)
+
+;; change input method.
+(global-set-key (kbd "<kana>") 'toggle-input-method)
+(global-set-key (kbd "S-<SPC>") 'toggle-input-method)
+
+(global-set-key (kbd "M-'") 'comment-dwim)
+
+;; xref-based code navigation
+(global-set-key (kbd "C-,") 'xref-find-definitions)
+(global-set-key (kbd "C-<") 'xref-pop-marker-stack)
+
+;; add new line.
+(global-set-key (kbd "C-f") 'newline-without-break-of-line)
+
+;; goto line.
+(global-set-key (kbd "C-g") 'goto-line)
+
+;; add new line above.
+(global-set-key (kbd "C-o") 'newline-without-break-of-line-upper)
+
+;; Move beginning or end of the line.
+(global-set-key (kbd "C-e") 'move-end-of-line)
+(global-set-key (kbd "M-e") 'move-beginning-of-line)
+
+;; make new frame or delete frame.
+(global-set-key (kbd "C-n") 'make-frame-command)
+(global-set-key (kbd "C-S-n") 'delete-frame)
+
+;; set custom font size.
+(global-set-key (kbd "C-c =") 'set-custom-fontsize)
+(global-set-key (kbd "C-=") 'zoom-frame)
+(global-set-key (kbd "C--") 'zoom-frame-out)
+
+;; change upper & lower case.
+(global-set-key (kbd "M-u") 'xah-toggle-letter-case)
+
+(global-set-key (kbd "<f3>") 'next-multiframe-window)
+(global-set-key (kbd "<f4>") 'previous-multiframe-window)
+
+;; toggle fullscreen
+(global-set-key (kbd "<f11>") 'toggle-frame-fullscreen)
+
+;; go to previous window.
+(global-set-key (kbd "M-j") 'previous-multiframe-window)
+(global-set-key (kbd "M-l") 'previous-multiframe-window)
+
+;; go to next window.
+(global-set-key (kbd "M-k") 'next-multiframe-window)
+(global-set-key (kbd "M-h") 'next-multiframe-window)
+
+;; navigation windows.
+(global-set-key (kbd "<M-right>") 'next-multiframe-window)
+(global-set-key (kbd "<M-down>") 'next-multiframe-window)
+(global-set-key (kbd "<M-left>") 'previous-multiframe-window)
+(global-set-key (kbd "<M-up>") 'previous-multiframe-window)
+
+;; quit other windows.
+(global-set-key (kbd "C-q") 'delete-other-windows)
+
+;; quit current window.
+(global-set-key (kbd "M-q") 'delete-window)
+
+;; go to end of parenthesis.
+(global-set-key (kbd "C-]") 'match-paren)
+
+;; create new line.
+(global-set-key (kbd "M-<return>") 'open-line)
+
+;; increment number at point.
+(global-set-key (kbd "C-a") 'increment-number-at-point)
+
+;; adjust window size.
+(global-set-key (kbd "C-c C-c") (lambda ()
+                                  (interactive)
+                                  (enlarge-window-horizontally 2)
+                                  (enlarge-window 2)
+                                  ))
+
+
+;; comment out current line.
+(global-set-key (kbd "M-;") 'select-current-line-and-comment)
+
+;; diff
+(global-set-key (kbd "C-c f") 'diff)
+
+;; ediff
+(global-set-key (kbd "C-c r") 'ediff)
+
+;; region-based ediff.
+(global-set-key (kbd "C-c w") 'ediff-regions-linewise)
+
+;; compile .el to .elc
+(global-set-key (kbd "C-c b") 'byte-compile-file)
+
+(global-set-key (kbd "<escape> <escape>") 'keyboard-escape-quit)
+
+;; remove white-space
+(global-set-key (kbd "M-w") 'kill-whitespace)
+
+;; remove blank lines.
+(global-set-key (kbd "M-m") 'delete-blank-lines)
+
+;; forward paragraph 
+(global-set-key (kbd "M-f") 'forward-paragraph)
+
+;; backward paragraph 
+(global-set-key (kbd "M-r") 'backward-paragraph)
+
+;; VARIABLE CUSTOMIZING========================================================================
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(async-bytecomp-allowed-packages (quote (async helm helm-core helm-ls-git helm-ls-hg magit)))
+ '(auto-hscroll-mode t)
+ '(avy-all-windows nil)
+ '(avy-keys
+   (quote
+    (97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122)))
+ '(avy-style (quote at-full))
+ '(cfw:display-calendar-holidays nil)
+ '(cmake-ide-make-command "make -j4")
+ '(column-number-mode t)
+ '(company-backends (quote (company-clang)))
+ '(compilation-message-face (quote default))
+ '(ecb-layout-name "left3")
+ '(ecb-layout-window-sizes
+   (quote
+    (("right2"
+      (ecb-directories-buffer-name 0.33189655172413796 . 0.27586206896551724)
+      (ecb-methods-buffer-name 0.33189655172413796 . 0.7241379310344828))
+     ("left3"
+      (ecb-directories-buffer-name 0.2 . 0.2962962962962963)
+      (ecb-sources-buffer-name 0.2 . 0.35185185185185186)
+      (ecb-methods-buffer-name 0.2 . 0.35185185185185186))
+     ("right1"
+      (ecb-directories-buffer-name 0.20108695652173914 . 0.2)
+      (ecb-sources-buffer-name 0.20108695652173914 . 0.3090909090909091)
+      (ecb-methods-buffer-name 0.20108695652173914 . 0.4727272727272727))
+     ("left14"
+      (ecb-directories-buffer-name 0.271523178807947 . 0.7317073170731707)
+      (ecb-history-buffer-name 0.271523178807947 . 0.24390243902439024)))))
+ '(ecb-options-version "2.50")
+ '(ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
+ '(ecb-tip-of-the-day nil)
+ '(elpy-modules
+   (quote
+    (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
+ '(fci-rule-color "#073642")
+ '(find-file-visit-truename t)
+ '(git-gutter:added-sign "+")
+ '(git-gutter:deleted-sign "-")
+ '(git-gutter:modified-sign "▸")
+ '(helm-bookmark-show-location t)
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-symbol-foreground-color "black")
+ '(highlight-symbol-idle-delay 0.25)
+ '(highlight-tail-colors
+   (quote
+    (("#073642" . 0)
+     ("#546E00" . 20)
+     ("#00736F" . 30)
+     ("#00629D" . 50)
+     ("#7B6000" . 60)
+     ("#8B2C02" . 70)
+     ("#93115C" . 85)
+     ("#073642" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+ '(hl-fg-colors
+   (quote
+    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+ '(magit-diff-use-overlays nil)
+ '(nrepl-message-colors
+   (quote
+    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(package-selected-packages
+   (quote
+    (doom-modeline centaur-tabs persist doom-themes neotree evil-surround monokai-theme zenburn-theme docker-tramp auto-indent-mode cmake-mode cmake-ide centered-cursor-mode ov ox-twbs per-buffer-theme use-package smart-mode-line pomodoro tea-time image+ sr-speedbar mic-paren htmlize jedi-direx yasnippet ws-butler undo-tree smartparens rainbow-delimiters key-chord jedi highlight-indentation helm-swoop helm-projectile helm-gtags google-c-style flycheck ecb duplicate-thing dtrt-indent clean-aindent-mode anzu)))
+ '(pos-tip-background-color "#073642")
+ '(pos-tip-foreground-color "#93a1a1")
+ '(recenter-positions (quote (middle top bottom)))
+ '(safe-local-variable-values
+   (quote
+    ((cmake-ide-cmake-args . "RelWithDebInfo")
+     (eval font-lock-add-keywords nil
+           (\`
+            (((\,
+               (concat "("
+                       (regexp-opt
+                        (quote
+                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
+                        t)
+                       "\\_>"))
+              1
+              (quote font-lock-variable-name-face))))))))
+ '(shell-escape-mode "-shell-escape")
+ '(sp-base-key-bindings nil)
+ '(sp-escape-quotes-after-insert nil)
+ '(speedbar-update-flag t)
+ '(split-width-threshold 150)
+ '(term-buffer-maximum-size 9999)
+ '(term-default-bg-color "#002b36")
+ '(term-default-fg-color "#839496")
+ '(tramp-remote-path
+   (quote
+    (tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin" "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin" "/opt/bin" "/opt/sbin" "/opt/local/bin")) nil (tramp))
+ '(xterm-color-names
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
+ '(xterm-color-names-bright
+   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"])
+ '(yas-also-auto-indent-first-line t)
+ '(yas-also-indent-empty-lines t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :height 130 :foundry "ADBO" :family "Hack"))))
+ '(avy-lead-face ((t (:inherit isearch :background "#1c1c1c" :foreground "yellow" :weight bold))))
+ '(avy-lead-face-0 ((t (:inherit isearch :background "#1c1c1c" :foreground "yellow" :box nil :weight bold))))
+ '(avy-lead-face-1 ((((class color) (min-colors 89)) (:inherit isearch :background "#cb4b16"))))
+ '(avy-lead-face-2 ((t (:inherit isearch :background "gold"))))
+ '(centaur-tabs-selected ((t (:background "dim gray" :foreground "#d4d4d4"))))
+ '(diff-added ((t (:background "dark olive green" :foreground "white smoke"))))
+ '(diff-hunk-header ((t (:inherit diff-header :background "black"))))
+ '(diff-refine-added ((t (:background "olive drab"))))
+ '(diff-refine-changed ((t (:background "nil"))))
+ '(diff-refine-removed ((t (:background "firebrick"))))
+ '(diff-removed ((t (:background "brown" :foreground "white smoke"))))
+ '(ecb-default-highlight-face ((t (:background "dark violet"))))
+ '(eyebrowse-mode-line-active ((t (:inherit mode-line-emphasis :underline t))))
+ '(hi-blue ((t (:background "blue" :foreground "#5c95b9"))))
+ '(hi-blue-b ((t (:background "cyan" :foreground "#49a19a" :weight bold))))
+ '(hi-green ((t (:background "green" :foreground "#8c9d50"))))
+ '(hi-green-b ((t (:background "chartreuse" :foreground "#899b30" :weight bold))))
+ '(hi-pink ((t (:background "pink" :foreground "#b36b91"))))
+ '(hi-red-b ((t (:background "orange" :foreground "#c65351" :weight bold))))
+ '(hi-yellow ((t (:background "yellow" :foreground "#a39450"))))
+ '(highlight-symbol-face ((t (:background "#5f5f5f"))))
+ '(hl-line ((t (:background "dark slate gray"))))
+ '(magit-diff-hunk-heading ((t (:background "dark slate gray" :foreground "light gray"))))
+ '(magit-diff-hunk-heading-highlight ((t (:background "dark cyan" :foreground "light gray"))))
+ '(paren-face-match ((t (:background "#93e0e3" :foreground "#3f3f3f" :weight bold)))))
